@@ -1,12 +1,9 @@
-import { NgModule } from '@angular/core';
-import { NgxSemanticComponent } from './ngx-semantic.component';
-
-
+import {NgModule} from '@angular/core';
 
 @NgModule({
-  declarations: [NgxSemanticComponent],
-  imports: [
-  ],
-  exports: [NgxSemanticComponent]
+  declarations: [],
+  imports: [],
+  exports: []
 })
-export class NgxSemanticModule { }
+export class NgxSemanticModule {
+}
