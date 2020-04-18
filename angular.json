@@ -120,6 +120,23 @@
             "browserTarget": "docs:build"
           }
         },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/docs/src/test.ts",
+            "polyfills": "projects/docs/src/polyfills.ts",
+            "tsConfig": "projects/docs/tsconfig.spec.json",
+            "karmaConfig": "projects/docs/karma.conf.js",
+            "assets": [
+              "projects/docs/src/favicon.ico",
+              "projects/docs/src/assets"
+            ],
+            "styles": [
+              "projects/docs/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -130,8 +147,20 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/docs/e2e/protractor.conf.js",
+            "devServerTarget": "docs:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "docs:serve:production"
+            }
+          }
         }
       }
     }},
-  "defaultProject": "ngx-semantic"
-}
+    "defaultProject": "ngx-semantic"
+  }
