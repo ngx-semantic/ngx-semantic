@@ -6,7 +6,7 @@ import {Component, ElementRef, OnInit} from '@angular/core';
     <ng-content></ng-content>
   `
 })
-export class ButtonComponent implements OnInit {
+export class SuiButtonComponent implements OnInit {
 
   constructor(private el: ElementRef) { }
 
