@@ -21,9 +21,7 @@ install:
 before_build:
   - yarn install
 
-build_script:
-  - yarn run build:lib:prod
-  - yarn run build:docs:prod
+build: off
 
 test_script:
   - yarn test
