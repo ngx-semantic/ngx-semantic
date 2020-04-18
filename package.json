@@ -5,9 +5,13 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "test": "ng test ngx-semantic",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:lib": "ng build ngx-semantic",
+    "build:docs": "ng build docs",
+    "build:lib:prod": "ng build ngx-semantic --prod",
+    "build:docs:prod": "ng build docs --prod"
   },
   "private": true,
   "dependencies": {
