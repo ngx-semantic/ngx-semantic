@@ -1,0 +1,27 @@
+version: "{build}"
+
+image: Visual Studio 2019
+
+environment:
+  nodejs_version: "13.7.0"
+
+platform:
+  - x64
+
+init:
+  - git config --global core.autocrlf true
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - yarn install --no-progress
+
+build: off
+
+test_script:
+  - yarn ng -- build --prod --aot --no-progress
+  - yarn test -- --single-run --no-progress
+  - yarn lint
+
+cache:
+  - node_modules -> yarn.lock
+  - "%LOCALAPPDATA%/Yarn"
