@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 export type SuiButtonType = 'primary' | 'secondary' | 'animated' | 'labeled' | 'basic' | null;
 export type SuiButtonSize = 'mini' | 'tiny' | 'small' | 'medium' | 'large' | 'big' | 'huge' | 'massive' | null;
@@ -10,10 +10,22 @@ export type SuiButtonSize = 'mini' | 'tiny' | 'small' | 'medium' | 'large' | 'bi
   `,
   host: {
     '[class.ui]': `true`,
-    '[class.button]': `true`
+    '[class.button]': `true`,
+    '[class.basic]': `suiType == 'basic'`,
+    '[class.mini]': `suiSize == 'mini'`,
+    '[class.tiny]': `suiSize == 'tiny'`,
+    '[class.small]': `suiSize == 'small'`,
+    '[class.medium]': `suiSize == 'medium'`,
+    '[class.large]': `suiSize == 'large'`,
+    '[class.big]': `suiSize == 'big'`,
+    '[class.huge]': `suiSize == 'huge'`,
+    '[class.massive]': `suiSize == 'massive'`
   }
 })
 export class SuiButtonComponent {
-  constructor(private el: ElementRef) {
+  @Input() suiType: SuiButtonType = null;
+  @Input() suiSize: SuiButtonSize = null;
+
+  constructor() {
   }
 }
