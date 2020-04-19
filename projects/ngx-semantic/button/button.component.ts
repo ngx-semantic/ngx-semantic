@@ -12,6 +12,8 @@ export type SuiButtonSize = 'mini' | 'tiny' | 'small' | 'medium' | 'large' | 'bi
     '[class.ui]': `true`,
     '[class.button]': `true`,
     '[class.basic]': `suiType == 'basic'`,
+    '[class.primary]': `suiType == 'primary'`,
+    '[class.secondary]': `suiType == 'secondary'`,
     '[class.mini]': `suiSize == 'mini'`,
     '[class.tiny]': `suiSize == 'tiny'`,
     '[class.small]': `suiSize == 'small'`,
