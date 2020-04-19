@@ -1,0 +1,32 @@
+version: "{build}"
+
+image: Visual Studio 2019
+
+environment:
+  nodejs_version: "13.7.0"
+
+platform:
+  - x64
+
+init:
+  - git config --global core.autocrlf true
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - npm install -g yarn
+  - yarn global add @angular/cli
+  - node --version
+  - yarn --version
+
+before_build:
+  - yarn install
+
+build: off
+
+test_script:
+  - yarn test
+  - yarn lint
+
+cache:
+  - node_modules -> yarn.lock
+  - "%LOCALAPPDATA%/Yarn"
