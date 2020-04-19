@@ -1,9 +1,15 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {ElementsComponent} from './elements/elements.component';
-import {ButtonsComponent} from './elements/buttons/buttons.component';
+import {ElementsComponent} from './pages/elements/elements.component';
+import {ButtonsComponent} from './pages/elements/buttons/buttons.component';
+import {HomeComponent} from './pages/home/home.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    component: HomeComponent
+  },
   {
     path: 'elements',
     component: ElementsComponent,
@@ -13,6 +19,10 @@ const routes: Routes = [
         component: ButtonsComponent
       }
     ]
+  },
+  {
+    path: '**',
+    component: HomeComponent
   }
 ];
 
