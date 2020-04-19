@@ -1,7 +1,6 @@
 # NgxSemantic
 
-[![Build status](https://ci.appveyor.com/api/projects/status/8b424gx2aq6gfdo8/branch/master?svg=true)](https://ci.appveyor.com/project/BolorunduroWinnerTimothy/ngx-semantic/branch/master)
-
+[![Build Status](https://travis-ci.org/ngx-semantic/ngx-semantic.svg?branch=master)](https://travis-ci.org/ngx-semantic/ngx-semantic)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
 
