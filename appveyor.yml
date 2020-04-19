@@ -1,7 +1,5 @@
 version: "{build}"
 
-image: Visual Studio 2019
-
 environment:
   nodejs_version: "13.7.0"
 
@@ -14,6 +12,7 @@ init:
 install:
   - ps: Install-Product node $env:nodejs_version
   - npm install -g yarn
+  - yarn global add @angular/cli@9.1.1
   - node --version
   - yarn --version
 
