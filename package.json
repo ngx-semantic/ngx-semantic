@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test ngx-semantic --no-watch --code-coverage",
+    "test": "ng test ngx-semantic --no-watch --no-progress --browsers=ChromeHeadlessCI --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:lib": "ng build ngx-semantic",
