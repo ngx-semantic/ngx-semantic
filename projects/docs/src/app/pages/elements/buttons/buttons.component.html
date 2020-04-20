@@ -1,9 +1,39 @@
-<button sui-button>Standard</button>
-<button sui-button
-        suiType="basic">
-  Basic
-</button>
-<button sui-button
-        suiSize="huge">
-  Huge
-</button>
+<div class="main ui container">
+  <h2 class="ui dividing header">Types</h2>
+  <div class="follow example">
+    <h4 class="ui header">Button</h4>
+    <p>A standard button</p>
+    <button sui-button>
+      Follow
+    </button>
+  </div>
+
+  <div class="example" data-class="primary, secondary">
+    <h4 class="ui header">Emphasis</h4>
+    <p>A button can be formatted to show different levels of emphasis</p>
+    <button sui-button
+            suiStyle="primary">
+      Save
+    </button>
+    <button sui-button>
+      Discard
+    </button>
+  </div>
+
+  <div class="another example">
+    <button sui-button
+            suiStyle="secondary">
+      Okay
+    </button>
+    <button sui-button>
+      Cancel
+    </button>
+  </div>
+
+
+  <div
+    sui-button-group>
+    <button sui-button></button>
+    <button sui-button></button>
+  </div>
+</div>
