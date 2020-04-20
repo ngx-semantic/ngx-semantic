@@ -18,10 +18,19 @@ export type SuiButtonColour = 'red' | 'orange' | 'yellow' | 'olive' | 'green' | 
     '[class.labeled]': `suiLabeled`,
     '[class.inverted]': `suiInverted`,
     '[class.icon]': `suiIcon`,
+
+    // states
+    '[class.disabled]': `suiDisabled`,
+    '[class.active]': `suiActive`,
+    '[class.loading]': `suiLoading`,
+
+    // styles
     '[class.primary]': `suiStyle == 'primary'`,
     '[class.secondary]': `suiStyle == 'secondary'`,
     '[class.positive]': `suiStyle == 'positive'`,
     '[class.negative]': `suiStyle == 'negative'`,
+
+    // sizes
     '[class.mini]': `suiSize == 'mini'`,
     '[class.tiny]': `suiSize == 'tiny'`,
     '[class.small]': `suiSize == 'small'`,
@@ -32,6 +41,8 @@ export type SuiButtonColour = 'red' | 'orange' | 'yellow' | 'olive' | 'green' | 
     '[class.massive]': `suiSize == 'massive'`,
     '[class.right]': `suiDirection == 'right'`,
     '[class.left]': `suiDirection == 'left'`,
+
+    // colours
     '[class.red]': `suiColour == 'red'`,
     '[class.orange]': `suiColour == 'orange'`,
     '[class.yellow]': `suiColour == 'yellow'`,
@@ -55,6 +66,9 @@ export class SuiButtonComponent {
   @Input() suiInverted = false;
   @Input() suiAnimated = false;
   @Input() suiLabeled = false;
+  @Input() suiActive = false;
+  @Input() suiDisabled = false;
+  @Input() suiLoading = false;
 
   constructor() {
   }
