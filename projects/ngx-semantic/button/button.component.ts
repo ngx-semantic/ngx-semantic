@@ -7,7 +7,7 @@ export type SuiButtonColour = 'red' | 'orange' | 'yellow' | 'olive' | 'green' | 
   | 'black' | null;
 
 @Component({
-  selector: 'button[sui-button], a[sui-button]',
+  selector: 'button[sui-button], a[sui-button], div[sui-button]',
   template: `
     <ng-content></ng-content>
   `,
