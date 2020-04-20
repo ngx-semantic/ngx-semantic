@@ -1,7 +1,9 @@
 import {Component, Input} from '@angular/core';
 
-export type SuiButtonType = 'primary' | 'secondary' | 'animated' | 'labeled' | 'basic' | null;
+export type SuiButtonStyle = 'primary' | 'secondary' | 'positive' | 'negative' | null;
 export type SuiButtonSize = 'mini' | 'tiny' | 'small' | 'medium' | 'large' | 'big' | 'huge' | 'massive' | null;
+export type SuiButtonColour = 'red' | 'orange' | 'yellow' | 'olive' | 'green' | 'teal' | 'blue' | 'pink' | 'brown' | 'grey'
+  | 'black' | null;
 
 @Component({
   selector: 'button[sui-button], a[sui-button]',
@@ -11,9 +13,14 @@ export type SuiButtonSize = 'mini' | 'tiny' | 'small' | 'medium' | 'large' | 'bi
   host: {
     '[class.ui]': `true`,
     '[class.button]': `true`,
-    '[class.basic]': `suiType == 'basic'`,
-    '[class.primary]': `suiType == 'primary'`,
-    '[class.secondary]': `suiType == 'secondary'`,
+    '[class.basic]': `suiBasic`,
+    '[class.labeled]': `suiLabeled`,
+    '[class.inverted]': `suiInverted`,
+    '[class.icon]': `suiIcon`,
+    '[class.primary]': `suiStyle == 'primary'`,
+    '[class.secondary]': `suiStyle == 'secondary'`,
+    '[class.positive]': `suiStyle == 'positive'`,
+    '[class.negative]': `suiStyle == 'negative'`,
     '[class.mini]': `suiSize == 'mini'`,
     '[class.tiny]': `suiSize == 'tiny'`,
     '[class.small]': `suiSize == 'small'`,
@@ -25,8 +32,13 @@ export type SuiButtonSize = 'mini' | 'tiny' | 'small' | 'medium' | 'large' | 'bi
   }
 })
 export class SuiButtonComponent {
-  @Input() suiType: SuiButtonType = null;
+  @Input() suiStyle: SuiButtonStyle = null;
   @Input() suiSize: SuiButtonSize = null;
+  @Input() suiIcon = false;
+  @Input() suiBasic = false;
+  @Input() suiInverted = false;
+  @Input() suiAnimated = false;
+  @Input() suiLabeled = false;
 
   constructor() {
   }
