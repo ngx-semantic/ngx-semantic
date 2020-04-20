@@ -39,6 +39,8 @@ export type SuiButtonColour = 'red' | 'orange' | 'yellow' | 'olive' | 'green' | 
     '[class.big]': `suiSize == 'big'`,
     '[class.huge]': `suiSize == 'huge'`,
     '[class.massive]': `suiSize == 'massive'`,
+
+    // directions
     '[class.right]': `suiDirection == 'right'`,
     '[class.left]': `suiDirection == 'left'`,
 

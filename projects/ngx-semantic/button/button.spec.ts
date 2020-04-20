@@ -6,7 +6,7 @@ import {By} from '@angular/platform-browser';
 
 describe('SuiButtonComponent', () => {
   let component: TestButtonComponent;
-  let fixture: ComponentFixture<SuiButtonComponent>;
+  let fixture: ComponentFixture<TestButtonComponent>;
   let buttonElement: HTMLButtonElement;
 
   beforeEach(async(() => {
@@ -32,11 +32,19 @@ describe('SuiButtonComponent', () => {
     expect(buttonElement.className).toBe('ui button');
   });
 
-  it('should apply class name if basic type', () => {
-    expect(buttonElement.classList).not.toContain('basic');
-    component.suiType = 'basic';
+  it('should apply class name by style', () => {
+    component.suiStyle = 'primary';
     fixture.detectChanges();
-    expect(buttonElement.classList).toContain('basic');
+    expect(buttonElement.classList).toContain('primary');
+    component.suiStyle = 'secondary';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('secondary');
+    component.suiStyle = 'positive';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('positive');
+    component.suiStyle = 'negative';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('negative');
   });
 
   it('should apply class name by size', () => {
@@ -65,6 +73,15 @@ describe('SuiButtonComponent', () => {
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('massive');
   });
+
+  it('should apply class name by direction', () => {
+    component.suiDirection = 'left';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('left');
+    component.suiDirection = 'right';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('right');
+  });
 });
 
 @Component({
@@ -72,12 +89,14 @@ describe('SuiButtonComponent', () => {
     <button
       sui-button
       [suiSize]="suiSize"
-      [suiType]="suiType">
+      [suiStyle]="suiStyle"
+      [suiDirection]="suiDirection">
       Button
     </button>
   `
 })
 export class TestButtonComponent {
-  @Input() suiType: any = null;
+  @Input() suiStyle: any = null;
   @Input() suiSize: any = null;
+  @Input() suiDirection: any = null;
 }
