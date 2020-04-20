@@ -82,6 +82,21 @@ describe('SuiButtonComponent', () => {
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('right');
   });
+
+  it('should apply class name by state', () => {
+    component.suiIcon = true;
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('icon');
+    component.suiActive = true;
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('active');
+    component.suiDisabled = true;
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('disabled');
+    component.suiLoading = true;
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('loading');
+  });
 });
 
 @Component({
@@ -90,7 +105,15 @@ describe('SuiButtonComponent', () => {
       sui-button
       [suiSize]="suiSize"
       [suiStyle]="suiStyle"
-      [suiDirection]="suiDirection">
+      [suiDirection]="suiDirection"
+      [suiIcon]="suiIcon"
+      [suiBasic]="suiBasic"
+      [suiInverted]="suiInverted"
+      [suiAnimated]="suiAnimated"
+      [suiLabeled]="suiLabeled"
+      [suiActive]="suiActive"
+      [suiDisabled]="suiDisabled"
+      [suiLoading]="suiLoading">
       Button
     </button>
   `
@@ -99,4 +122,12 @@ export class TestButtonComponent {
   @Input() suiStyle: any = null;
   @Input() suiSize: any = null;
   @Input() suiDirection: any = null;
+  @Input() suiIcon = false;
+  @Input() suiBasic = false;
+  @Input() suiInverted = false;
+  @Input() suiAnimated = false;
+  @Input() suiLabeled = false;
+  @Input() suiActive = false;
+  @Input() suiDisabled = false;
+  @Input() suiLoading = false;
 }
