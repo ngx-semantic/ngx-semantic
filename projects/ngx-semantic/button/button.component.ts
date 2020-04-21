@@ -56,7 +56,16 @@ export type SuiSocialButtonStyle = 'facebook' | 'twitter' | 'google' | 'vk' | 'l
     '[class.pink]': `suiColour == 'pink'`,
     '[class.brown]': `suiColour == 'brown'`,
     '[class.grey]': `suiColour == 'grey'`,
-    '[class.black]': `suiColour == 'black'`
+    '[class.black]': `suiColour == 'black'`,
+
+    // social buttons
+    '[class.facebook]': `suiSocial == 'facebook'`,
+    '[class.twitter]': `suiSocial == 'twitter'`,
+    '[class.google]': `suiSocial == 'google'`,
+    '[class.vk]': `suiSocial == 'vk'`,
+    '[class.linkedin]': `suiSocial == 'linkedin'`,
+    '[class.instagram]': `suiSocial == 'instagram'`,
+    '[class.youtube]': `suiSocial == 'youtube'`,
   }
 })
 export class SuiButtonComponent {
