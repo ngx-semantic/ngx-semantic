@@ -133,6 +133,42 @@ describe('SuiButtonComponent', () => {
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('youtube');
   });
+
+  it('should apply class name by colour', () => {
+    component.suiColour = 'red';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('red');
+    component.suiColour = 'orange';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('orange');
+    component.suiColour = 'yellow';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('yellow');
+    component.suiColour = 'olive';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('olive');
+    component.suiColour = 'green';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('green');
+    component.suiColour = 'teal';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('teal');
+    component.suiColour = 'blue';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('blue');
+    component.suiColour = 'pink';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('pink');
+    component.suiColour = 'brown';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('brown');
+    component.suiColour = 'grey';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('grey');
+    component.suiColour = 'black';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('black');
+  });
 });
 
 @Component({
@@ -143,6 +179,7 @@ describe('SuiButtonComponent', () => {
       [suiStyle]="suiStyle"
       [suiDirection]="suiDirection"
       [suiSocial]="suiSocial"
+      [suiColour]="suiColour"
       [suiIcon]="suiIcon"
       [suiBasic]="suiBasic"
       [suiInverted]="suiInverted"
@@ -163,6 +200,7 @@ export class TestButtonComponent {
   @Input() suiSize: any = null;
   @Input() suiDirection: any = null;
   @Input() suiSocial: any = null;
+  @Input() suiColour: any = null;
   @Input() suiIcon = false;
   @Input() suiBasic = false;
   @Input() suiInverted = false;
