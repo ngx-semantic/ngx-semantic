@@ -84,9 +84,6 @@ describe('SuiButtonComponent', () => {
   });
 
   it('should apply class name by state', () => {
-    component.suiIcon = true;
-    fixture.detectChanges();
-    expect(buttonElement.classList).toContain('icon');
     component.suiActive = true;
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('active');
@@ -96,6 +93,21 @@ describe('SuiButtonComponent', () => {
     component.suiLoading = true;
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('loading');
+  });
+
+  it('should apply class name by other factors', () => {
+    component.suiIcon = true;
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('icon');
+    component.suiCompact = true;
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('compact');
+    component.suiFluid = true;
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('fluid');
+    component.suiToggle = true;
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('toggle');
   });
 });
 
@@ -113,7 +125,10 @@ describe('SuiButtonComponent', () => {
       [suiLabeled]="suiLabeled"
       [suiActive]="suiActive"
       [suiDisabled]="suiDisabled"
-      [suiLoading]="suiLoading">
+      [suiLoading]="suiLoading"
+      [suiCompact]="suiCompact"
+      [suiToggle]="suiToggle"
+      [suiFluid]="suiFluid">
       Button
     </button>
   `
@@ -130,4 +145,7 @@ export class TestButtonComponent {
   @Input() suiActive = false;
   @Input() suiDisabled = false;
   @Input() suiLoading = false;
+  @Input() suiCompact = false;
+  @Input() suiToggle = false;
+  @Input() suiFluid = false;
 }
