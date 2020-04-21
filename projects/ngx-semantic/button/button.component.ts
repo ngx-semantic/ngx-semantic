@@ -5,6 +5,7 @@ export type SuiButtonDirection = 'left' | 'right' | null;
 export type SuiButtonSize = 'mini' | 'tiny' | 'small' | 'medium' | 'large' | 'big' | 'huge' | 'massive' | null;
 export type SuiButtonColour = 'red' | 'orange' | 'yellow' | 'olive' | 'green' | 'teal' | 'blue' | 'pink' | 'brown' | 'grey'
   | 'black' | null;
+export type SuiSocialButtonStyle = 'facebook' | 'twitter' | 'google' | 'vk' | 'linkedin' | 'instagram' | 'youtube' | null;
 
 @Component({
   selector: 'button[sui-button], a[sui-button], div[sui-button]',
@@ -18,6 +19,9 @@ export type SuiButtonColour = 'red' | 'orange' | 'yellow' | 'olive' | 'green' | 
     '[class.labeled]': `suiLabeled`,
     '[class.inverted]': `suiInverted`,
     '[class.icon]': `suiIcon`,
+    '[class.compact]': `suiCompact`,
+    '[class.toggle]': `suiToggle`,
+    '[class.fluid]': `suiFluid`,
 
     // states
     '[class.disabled]': `suiDisabled`,
@@ -55,7 +59,16 @@ export type SuiButtonColour = 'red' | 'orange' | 'yellow' | 'olive' | 'green' | 
     '[class.pink]': `suiColour == 'pink'`,
     '[class.brown]': `suiColour == 'brown'`,
     '[class.grey]': `suiColour == 'grey'`,
-    '[class.black]': `suiColour == 'black'`
+    '[class.black]': `suiColour == 'black'`,
+
+    // social buttons
+    '[class.facebook]': `suiSocial == 'facebook'`,
+    '[class.twitter]': `suiSocial == 'twitter'`,
+    '[class.google]': `suiSocial == 'google'`,
+    '[class.vk]': `suiSocial == 'vk'`,
+    '[class.linkedin]': `suiSocial == 'linkedin'`,
+    '[class.instagram]': `suiSocial == 'instagram'`,
+    '[class.youtube]': `suiSocial == 'youtube'`,
   }
 })
 export class SuiButtonComponent {
@@ -63,11 +76,15 @@ export class SuiButtonComponent {
   @Input() suiSize: SuiButtonSize = null;
   @Input() suiDirection: SuiButtonDirection = null;
   @Input() suiColour: SuiButtonColour = null;
+  @Input() suiSocial: SuiSocialButtonStyle = null;
   @Input() suiIcon = false;
   @Input() suiBasic = false;
   @Input() suiInverted = false;
   @Input() suiAnimated = false;
   @Input() suiLabeled = false;
+  @Input() suiCompact = false;
+  @Input() suiToggle = false;
+  @Input() suiFluid = false;
   @Input() suiActive = false;
   @Input() suiDisabled = false;
   @Input() suiLoading = false;

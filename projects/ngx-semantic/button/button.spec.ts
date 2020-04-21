@@ -84,9 +84,6 @@ describe('SuiButtonComponent', () => {
   });
 
   it('should apply class name by state', () => {
-    component.suiIcon = true;
-    fixture.detectChanges();
-    expect(buttonElement.classList).toContain('icon');
     component.suiActive = true;
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('active');
@@ -97,6 +94,81 @@ describe('SuiButtonComponent', () => {
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('loading');
   });
+
+  it('should apply class name by other factors', () => {
+    component.suiIcon = true;
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('icon');
+    component.suiCompact = true;
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('compact');
+    component.suiFluid = true;
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('fluid');
+    component.suiToggle = true;
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('toggle');
+  });
+
+  it('should apply class name by social style', () => {
+    component.suiSocial = 'facebook';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('facebook');
+    component.suiSocial = 'twitter';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('twitter');
+    component.suiSocial = 'google';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('google');
+    component.suiSocial = 'vk';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('vk');
+    component.suiSocial = 'linkedin';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('linkedin');
+    component.suiSocial = 'instagram';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('instagram');
+    component.suiSocial = 'youtube';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('youtube');
+  });
+
+  it('should apply class name by colour', () => {
+    component.suiColour = 'red';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('red');
+    component.suiColour = 'orange';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('orange');
+    component.suiColour = 'yellow';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('yellow');
+    component.suiColour = 'olive';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('olive');
+    component.suiColour = 'green';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('green');
+    component.suiColour = 'teal';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('teal');
+    component.suiColour = 'blue';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('blue');
+    component.suiColour = 'pink';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('pink');
+    component.suiColour = 'brown';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('brown');
+    component.suiColour = 'grey';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('grey');
+    component.suiColour = 'black';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('black');
+  });
 });
 
 @Component({
@@ -106,6 +178,8 @@ describe('SuiButtonComponent', () => {
       [suiSize]="suiSize"
       [suiStyle]="suiStyle"
       [suiDirection]="suiDirection"
+      [suiSocial]="suiSocial"
+      [suiColour]="suiColour"
       [suiIcon]="suiIcon"
       [suiBasic]="suiBasic"
       [suiInverted]="suiInverted"
@@ -113,7 +187,10 @@ describe('SuiButtonComponent', () => {
       [suiLabeled]="suiLabeled"
       [suiActive]="suiActive"
       [suiDisabled]="suiDisabled"
-      [suiLoading]="suiLoading">
+      [suiLoading]="suiLoading"
+      [suiCompact]="suiCompact"
+      [suiToggle]="suiToggle"
+      [suiFluid]="suiFluid">
       Button
     </button>
   `
@@ -122,6 +199,8 @@ export class TestButtonComponent {
   @Input() suiStyle: any = null;
   @Input() suiSize: any = null;
   @Input() suiDirection: any = null;
+  @Input() suiSocial: any = null;
+  @Input() suiColour: any = null;
   @Input() suiIcon = false;
   @Input() suiBasic = false;
   @Input() suiInverted = false;
@@ -130,4 +209,7 @@ export class TestButtonComponent {
   @Input() suiActive = false;
   @Input() suiDisabled = false;
   @Input() suiLoading = false;
+  @Input() suiCompact = false;
+  @Input() suiToggle = false;
+  @Input() suiFluid = false;
 }
