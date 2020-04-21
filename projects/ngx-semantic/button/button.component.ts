@@ -5,6 +5,7 @@ export type SuiButtonDirection = 'left' | 'right' | null;
 export type SuiButtonSize = 'mini' | 'tiny' | 'small' | 'medium' | 'large' | 'big' | 'huge' | 'massive' | null;
 export type SuiButtonColour = 'red' | 'orange' | 'yellow' | 'olive' | 'green' | 'teal' | 'blue' | 'pink' | 'brown' | 'grey'
   | 'black' | null;
+export type SuiSocialButtonStyle = 'facebook' | 'twitter' | 'google' | 'vk' | 'linkedin' | 'instagram' | 'youtube' | null;
 
 @Component({
   selector: 'button[sui-button], a[sui-button], div[sui-button]',
@@ -63,6 +64,7 @@ export class SuiButtonComponent {
   @Input() suiSize: SuiButtonSize = null;
   @Input() suiDirection: SuiButtonDirection = null;
   @Input() suiColour: SuiButtonColour = null;
+  @Input() suiSocial: SuiSocialButtonStyle = null;
   @Input() suiIcon = false;
   @Input() suiBasic = false;
   @Input() suiInverted = false;
