@@ -109,6 +109,30 @@ describe('SuiButtonComponent', () => {
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('toggle');
   });
+
+  it('should apply class name by social style', () => {
+    component.suiSocial = 'facebook';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('facebook');
+    component.suiSocial = 'twitter';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('twitter');
+    component.suiSocial = 'google';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('google');
+    component.suiSocial = 'vk';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('vk');
+    component.suiSocial = 'linkedin';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('linkedin');
+    component.suiSocial = 'instagram';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('instagram');
+    component.suiSocial = 'youtube';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('youtube');
+  });
 });
 
 @Component({
@@ -118,6 +142,7 @@ describe('SuiButtonComponent', () => {
       [suiSize]="suiSize"
       [suiStyle]="suiStyle"
       [suiDirection]="suiDirection"
+      [suiSocial]="suiSocial"
       [suiIcon]="suiIcon"
       [suiBasic]="suiBasic"
       [suiInverted]="suiInverted"
@@ -137,6 +162,7 @@ export class TestButtonComponent {
   @Input() suiStyle: any = null;
   @Input() suiSize: any = null;
   @Input() suiDirection: any = null;
+  @Input() suiSocial: any = null;
   @Input() suiIcon = false;
   @Input() suiBasic = false;
   @Input() suiInverted = false;
