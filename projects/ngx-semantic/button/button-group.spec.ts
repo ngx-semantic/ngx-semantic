@@ -42,18 +42,45 @@ describe('SuiButtonGroupComponent', () => {
     fixture.detectChanges();
     expect(groupElement.classList).toContain('icon');
   });
+
+  it('should apply class name by direction', () => {
+    component.suiDirection = 'vertical';
+    fixture.detectChanges();
+    expect(groupElement.classList).toContain('vertical');
+  });
+
+  it('should apply class name if attached', () => {
+    component.suiAttached = true;
+    fixture.detectChanges();
+    expect(groupElement.classList).toContain('attached');
+  });
+
+  it('should apply class name by location', () => {
+    component.suiLocation = 'top';
+    fixture.detectChanges();
+    expect(groupElement.classList).toContain('top');
+    component.suiLocation = 'bottom';
+    fixture.detectChanges();
+    expect(groupElement.classList).toContain('bottom');
+  });
 });
 
 @Component({
   template: `
     <div
       sui-button-group
-      [suiIcon]="suiIcon">
+      [suiLocation]="suiLocation"
+      [suiDirection]="suiDirection"
+      [suiIcon]="suiIcon"
+      [suiAttached]="suiAttached">
       <button sui-button></button>
       <button sui-button></button>
     </div>
   `
 })
 export class TestButtonGroupComponent {
+  @Input() suiDirection: any = null;
+  @Input() suiLocation: any = null;
   @Input() suiIcon = false;
+  @Input() suiAttached = false;
 }
