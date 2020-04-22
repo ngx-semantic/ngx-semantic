@@ -22,6 +22,7 @@ export type SuiSocialButtonStyle = 'facebook' | 'twitter' | 'google' | 'vk' | 'l
     '[class.compact]': `suiCompact`,
     '[class.toggle]': `suiToggle`,
     '[class.fluid]': `suiFluid`,
+    '[class.circular]': `suiCircular`,
 
     // states
     '[class.disabled]': `suiDisabled`,
@@ -85,6 +86,7 @@ export class SuiButtonComponent {
   @Input() suiCompact = false;
   @Input() suiToggle = false;
   @Input() suiFluid = false;
+  @Input() suiCircular = false;
   @Input() suiActive = false;
   @Input() suiDisabled = false;
   @Input() suiLoading = false;
