@@ -1,10 +1,7 @@
 import {Component, Input} from '@angular/core';
+import {SuiColour, SuiLocation, SuiSize} from '../common';
 
 export type SuiButtonStyle = 'primary' | 'secondary' | 'positive' | 'negative' | null;
-export type SuiButtonDirection = 'left' | 'right' | null;
-export type SuiButtonSize = 'mini' | 'tiny' | 'small' | 'medium' | 'large' | 'big' | 'huge' | 'massive' | null;
-export type SuiButtonColour = 'red' | 'orange' | 'yellow' | 'olive' | 'green' | 'teal' | 'blue' | 'pink' | 'brown' | 'grey'
-  | 'black' | null;
 export type SuiSocialButtonStyle = 'facebook' | 'twitter' | 'google' | 'vk' | 'linkedin' | 'instagram' | 'youtube' | null;
 
 @Component({
@@ -22,6 +19,8 @@ export type SuiSocialButtonStyle = 'facebook' | 'twitter' | 'google' | 'vk' | 'l
     '[class.compact]': `suiCompact`,
     '[class.toggle]': `suiToggle`,
     '[class.fluid]': `suiFluid`,
+    '[class.circular]': `suiCircular`,
+    '[class.attached]': `suiAttached`,
 
     // states
     '[class.disabled]': `suiDisabled`,
@@ -44,9 +43,11 @@ export type SuiSocialButtonStyle = 'facebook' | 'twitter' | 'google' | 'vk' | 'l
     '[class.huge]': `suiSize == 'huge'`,
     '[class.massive]': `suiSize == 'massive'`,
 
-    // directions
-    '[class.right]': `suiDirection == 'right'`,
-    '[class.left]': `suiDirection == 'left'`,
+    // locations
+    '[class.right]': `suiLocation == 'right'`,
+    '[class.left]': `suiLocation == 'left'`,
+    '[class.top]': `suiLocation == 'top'`,
+    '[class.bottom]': `suiLocation == 'bottom'`,
 
     // colours
     '[class.red]': `suiColour == 'red'`,
@@ -73,9 +74,9 @@ export type SuiSocialButtonStyle = 'facebook' | 'twitter' | 'google' | 'vk' | 'l
 })
 export class SuiButtonComponent {
   @Input() suiStyle: SuiButtonStyle = null;
-  @Input() suiSize: SuiButtonSize = null;
-  @Input() suiDirection: SuiButtonDirection = null;
-  @Input() suiColour: SuiButtonColour = null;
+  @Input() suiSize: SuiSize = null;
+  @Input() suiLocation: SuiLocation = null;
+  @Input() suiColour: SuiColour = null;
   @Input() suiSocial: SuiSocialButtonStyle = null;
   @Input() suiIcon = false;
   @Input() suiBasic = false;
@@ -85,6 +86,8 @@ export class SuiButtonComponent {
   @Input() suiCompact = false;
   @Input() suiToggle = false;
   @Input() suiFluid = false;
+  @Input() suiCircular = false;
+  @Input() suiAttached = false;
   @Input() suiActive = false;
   @Input() suiDisabled = false;
   @Input() suiLoading = false;

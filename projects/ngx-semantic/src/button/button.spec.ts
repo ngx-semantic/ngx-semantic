@@ -74,13 +74,19 @@ describe('SuiButtonComponent', () => {
     expect(buttonElement.classList).toContain('massive');
   });
 
-  it('should apply class name by direction', () => {
-    component.suiDirection = 'left';
+  it('should apply class name by location', () => {
+    component.suiLocation = 'left';
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('left');
-    component.suiDirection = 'right';
+    component.suiLocation = 'right';
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('right');
+    component.suiLocation = 'top';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('top');
+    component.suiLocation = 'bottom';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('bottom');
   });
 
   it('should apply class name by state', () => {
@@ -108,6 +114,12 @@ describe('SuiButtonComponent', () => {
     component.suiToggle = true;
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('toggle');
+    component.suiCircular = true;
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('circular');
+    component.suiAttached = true;
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('attached');
   });
 
   it('should apply class name by social style', () => {
@@ -177,7 +189,7 @@ describe('SuiButtonComponent', () => {
       sui-button
       [suiSize]="suiSize"
       [suiStyle]="suiStyle"
-      [suiDirection]="suiDirection"
+      [suiLocation]="suiLocation"
       [suiSocial]="suiSocial"
       [suiColour]="suiColour"
       [suiIcon]="suiIcon"
@@ -190,7 +202,9 @@ describe('SuiButtonComponent', () => {
       [suiLoading]="suiLoading"
       [suiCompact]="suiCompact"
       [suiToggle]="suiToggle"
-      [suiFluid]="suiFluid">
+      [suiFluid]="suiFluid"
+      [suiCircular]="suiCircular"
+      [suiAttached]="suiAttached">
       Button
     </button>
   `
@@ -198,7 +212,7 @@ describe('SuiButtonComponent', () => {
 export class TestButtonComponent {
   @Input() suiStyle: any = null;
   @Input() suiSize: any = null;
-  @Input() suiDirection: any = null;
+  @Input() suiLocation: any = null;
   @Input() suiSocial: any = null;
   @Input() suiColour: any = null;
   @Input() suiIcon = false;
@@ -212,4 +226,6 @@ export class TestButtonComponent {
   @Input() suiCompact = false;
   @Input() suiToggle = false;
   @Input() suiFluid = false;
+  @Input() suiCircular = false;
+  @Input() suiAttached = false;
 }
