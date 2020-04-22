@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 
 export type SuiButtonStyle = 'primary' | 'secondary' | 'positive' | 'negative' | null;
-export type SuiButtonDirection = 'left' | 'right' | null;
+export type SuiButtonDirection = 'left' | 'right' | 'top' | 'bottom' | null;
 export type SuiButtonSize = 'mini' | 'tiny' | 'small' | 'medium' | 'large' | 'big' | 'huge' | 'massive' | null;
 export type SuiButtonColour = 'red' | 'orange' | 'yellow' | 'olive' | 'green' | 'teal' | 'blue' | 'pink' | 'brown' | 'grey'
   | 'black' | null;
