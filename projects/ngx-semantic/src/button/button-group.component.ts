@@ -3,7 +3,7 @@
  */
 
 import {Component, Input} from '@angular/core';
-import {SuiColour, SuiDirection, SuiLocation} from '../common/enums';
+import {SuiColour, SuiLocation, SuiDirection} from '../common';
 
 @Component({
   selector: '[sui-button-group]',

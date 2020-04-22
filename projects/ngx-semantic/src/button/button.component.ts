@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {SuiColour, SuiLocation, SuiSize} from '../common/enums';
+import {SuiColour, SuiLocation, SuiSize} from '../common';
 
 export type SuiButtonStyle = 'primary' | 'secondary' | 'positive' | 'negative' | null;
 export type SuiSocialButtonStyle = 'facebook' | 'twitter' | 'google' | 'vk' | 'linkedin' | 'instagram' | 'youtube' | null;
