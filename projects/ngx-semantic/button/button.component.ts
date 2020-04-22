@@ -46,9 +46,11 @@ export type SuiSocialButtonStyle = 'facebook' | 'twitter' | 'google' | 'vk' | 'l
     '[class.huge]': `suiSize == 'huge'`,
     '[class.massive]': `suiSize == 'massive'`,
 
-    // directions
-    '[class.right]': `suiDirection == 'right'`,
-    '[class.left]': `suiDirection == 'left'`,
+    // locations
+    '[class.right]': `suiLocation == 'right'`,
+    '[class.left]': `suiLocation == 'left'`,
+    '[class.top]': `suiLocation == 'top'`,
+    '[class.bottom]': `suiLocation == 'bottom'`,
 
     // colours
     '[class.red]': `suiColour == 'red'`,
@@ -76,7 +78,7 @@ export type SuiSocialButtonStyle = 'facebook' | 'twitter' | 'google' | 'vk' | 'l
 export class SuiButtonComponent {
   @Input() suiStyle: SuiButtonStyle = null;
   @Input() suiSize: SuiButtonSize = null;
-  @Input() suiDirection: SuiLocation = null;
+  @Input() suiLocation: SuiLocation = null;
   @Input() suiColour: SuiButtonColour = null;
   @Input() suiSocial: SuiSocialButtonStyle = null;
   @Input() suiIcon = false;

@@ -177,7 +177,7 @@ describe('SuiButtonComponent', () => {
       sui-button
       [suiSize]="suiSize"
       [suiStyle]="suiStyle"
-      [suiDirection]="suiDirection"
+      [suiLocation]="suiDirection"
       [suiSocial]="suiSocial"
       [suiColour]="suiColour"
       [suiIcon]="suiIcon"

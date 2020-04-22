@@ -17,7 +17,7 @@ import {SuiLocation} from '../common/enums';
   }
 })
 export class SuiButtonGroupComponent {
-  @Input() suiDirection: SuiLocation = null;
+  @Input() suiLocation: SuiLocation = null;
   @Input() suiIcon = false;
   @Input() suiAttached = false;
 }
