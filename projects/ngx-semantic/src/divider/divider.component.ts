@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'sui-divider',
-  templateUrl: './divider.component.html',
-  styleUrls: ['./divider.component.css']
-})
-export class DividerComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  selector: '[sui-divider]',
+  template: `
+    <ng-content></ng-content>
+  `,
+  host: {
+    '[class.ui]': `true`,
+    '[class.divider': `true`
   }
-
+})
+export class SuiDividerComponent {
+  constructor() {
+  }
 }
