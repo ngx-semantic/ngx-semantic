@@ -3,6 +3,7 @@
  */
 
 import {Component, Input} from '@angular/core';
+import {SuiLocation} from '../common/enums';
 
 @Component({
   selector: '[sui-button-group]',
@@ -16,5 +17,7 @@ import {Component, Input} from '@angular/core';
   }
 })
 export class SuiButtonGroupComponent {
+  @Input() suiDirection: SuiLocation = null;
   @Input() suiIcon = false;
+  @Input() suiAttached = false;
 }

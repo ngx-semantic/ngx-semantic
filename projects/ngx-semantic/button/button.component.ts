@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
+import {SuiLocation} from '../common/enums';
 
 export type SuiButtonStyle = 'primary' | 'secondary' | 'positive' | 'negative' | null;
-export type SuiButtonDirection = 'left' | 'right' | 'top' | 'bottom' | null;
 export type SuiButtonSize = 'mini' | 'tiny' | 'small' | 'medium' | 'large' | 'big' | 'huge' | 'massive' | null;
 export type SuiButtonColour = 'red' | 'orange' | 'yellow' | 'olive' | 'green' | 'teal' | 'blue' | 'pink' | 'brown' | 'grey'
   | 'black' | null;
@@ -76,7 +76,7 @@ export type SuiSocialButtonStyle = 'facebook' | 'twitter' | 'google' | 'vk' | 'l
 export class SuiButtonComponent {
   @Input() suiStyle: SuiButtonStyle = null;
   @Input() suiSize: SuiButtonSize = null;
-  @Input() suiDirection: SuiButtonDirection = null;
+  @Input() suiDirection: SuiLocation = null;
   @Input() suiColour: SuiButtonColour = null;
   @Input() suiSocial: SuiSocialButtonStyle = null;
   @Input() suiIcon = false;
