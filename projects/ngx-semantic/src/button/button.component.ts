@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {SuiColour, SuiLocation, SuiSize} from '../common';
 
 export type SuiButtonStyle = 'primary' | 'secondary' | 'positive' | 'negative' | null;
-export type SuiSocialButtonStyle = 'facebook' | 'twitter' | 'google' | 'vk' | 'linkedin' | 'instagram' | 'youtube' | null;
+export type SuiSocialButtonStyle = 'facebook' | 'twitter' | 'google' | 'plus' | 'vk' | 'linkedin' | 'instagram' | 'youtube' | null;
 
 @Component({
   selector: 'button[sui-button], a[sui-button], div[sui-button]',
@@ -66,6 +66,7 @@ export type SuiSocialButtonStyle = 'facebook' | 'twitter' | 'google' | 'vk' | 'l
     '[class.facebook]': `suiSocial == 'facebook'`,
     '[class.twitter]': `suiSocial == 'twitter'`,
     '[class.google]': `suiSocial == 'google'`,
+    '[class.plus]': `suiSocial == 'google'`,
     '[class.vk]': `suiSocial == 'vk'`,
     '[class.linkedin]': `suiSocial == 'linkedin'`,
     '[class.instagram]': `suiSocial == 'instagram'`,
