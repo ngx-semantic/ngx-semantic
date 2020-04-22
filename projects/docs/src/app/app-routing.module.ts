@@ -3,6 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {ElementsComponent} from './pages/elements/elements.component';
 import {ButtonsComponent} from './pages/elements/buttons/buttons.component';
 import {HomeComponent} from './pages/home/home.component';
+import {DividerComponent} from './pages/elements/divider/divider.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
       {
         path: 'buttons',
         component: ButtonsComponent
+      },
+      {
+        path: 'dividers',
+        component: DividerComponent
       }
     ]
   },
