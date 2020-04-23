@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {SuiFlagComponent} from './flag.component';
 import {By} from '@angular/platform-browser';
 
-describe('FlagComponent', () => {
+describe('SuiFlagComponent', () => {
   let component: TestFlagComponent;
   let fixture: ComponentFixture<TestFlagComponent>;
   let flagElement: any;
