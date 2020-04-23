@@ -4,4 +4,5 @@
 
 export * from './button';
 export * from './common';
+export * from './divider';
 export * from './ngx-semantic.module';

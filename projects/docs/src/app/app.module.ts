@@ -6,13 +6,15 @@ import {NgxSemanticModule} from 'ngx-semantic';
 import {HomeComponent} from './pages/home/home.component';
 import {ButtonsComponent} from './pages/elements/buttons/buttons.component';
 import {ElementsComponent} from './pages/elements/elements.component';
+import { DividerComponent } from './pages/elements/divider/divider.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ButtonsComponent,
     ElementsComponent,
-    HomeComponent
+    HomeComponent,
+    DividerComponent
   ],
   imports: [
     BrowserModule,
