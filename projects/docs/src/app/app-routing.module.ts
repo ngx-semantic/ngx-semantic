@@ -4,6 +4,7 @@ import {ElementsComponent} from './pages/elements/elements.component';
 import {ButtonsComponent} from './pages/elements/buttons/buttons.component';
 import {HomeComponent} from './pages/home/home.component';
 import {DividerComponent} from './pages/elements/divider/divider.component';
+import {FlagsComponent} from './pages/elements/flags/flags.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: 'dividers',
         component: DividerComponent
+      },
+      {
+        path: 'flags',
+        component: FlagsComponent
       }
     ]
   },
