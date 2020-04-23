@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './flag.component.html',
   styleUrls: ['./flag.component.css']
 })
-export class FlagComponent implements OnInit {
+export class SuiFlagComponent implements OnInit {
 
   constructor() { }
 
