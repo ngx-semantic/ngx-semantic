@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
-  selector: 'sui-flag',
-  templateUrl: './flag.component.html',
-  styleUrls: ['./flag.component.css']
-})
-export class SuiFlagComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  selector: '[sui-flag]',
+  template: `
+    <ng-content></ng-content>
+  `,
+  host: {
+    '[class.flag]': `true`
   }
-
+})
+export class SuiFlagComponent {
+  constructor() {
+  }
 }
