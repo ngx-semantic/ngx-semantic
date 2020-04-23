@@ -1,45 +1,49 @@
 <div class="main ui container">
   <h2 class="ui dividing header">Types</h2>
-  <div class="follow example">
+  <div class="example">
     <h4 class="ui header">Divider</h4>
     <p>A standard divider</p>
     <div sui-divider></div>
   </div>
 
-  <div class="ui segment">
-    <div class="ui two column very relaxed grid">
-      <div class="column">
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
+  <div class="example">
+    <div class="ui segment">
+      <div class="ui two column very relaxed grid">
+        <div class="column">
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+        </div>
+        <div class="column">
+          <p></p>
+          <p></p>
+          <p></p>
+          <p></p>
+        </div>
       </div>
-      <div class="column">
-        <p></p>
-        <p></p>
-        <p></p>
-        <p></p>
+      <div sui-divider
+           suiDirection="vertical">
+        and
       </div>
-    </div>
-    <div sui-divider
-         suiDirection="vertical">
-      and
     </div>
   </div>
 
-  <div class="ui center aligned basic segment">
-    <div class="ui left icon action input">
-      <i class="search icon"></i>
-      <input type="text" placeholder="Order #">
-      <div class="ui blue submit button">Search</div>
-    </div>
-    <div sui-divider
-         suiDirection="horizontal" >
-      Or
-    </div>
-    <div class="ui teal labeled icon button">
-      Create New Order
-      <i class="add icon"></i>
+  <div class="example">
+    <div class="ui center aligned basic segment">
+      <div class="ui left icon action input">
+        <i class="search icon"></i>
+        <input type="text" placeholder="Order #">
+        <div class="ui blue submit button">Search</div>
+      </div>
+      <div sui-divider
+           suiDirection="horizontal">
+        Or
+      </div>
+      <div class="ui teal labeled icon button">
+        Create New Order
+        <i class="add icon"></i>
+      </div>
     </div>
   </div>
 </div>
