@@ -16,6 +16,9 @@ import {Component} from '@angular/core';
           <a class="item" routerLink="elements/dividers" routerLinkActive="active">
             Dividers
           </a>
+          <a class="item" routerLink="elements/flags">
+            Flags
+          </a>
           <a class="item" routerLink="elements/headers" routerLinkActive="active">
             Headers
           </a>

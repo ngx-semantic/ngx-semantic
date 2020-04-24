@@ -24,7 +24,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-semantic/test.ts",
+            "main": "projects/ngx-semantic/src/test.ts",
             "tsConfig": "projects/ngx-semantic/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-semantic/karma.conf.js"
           }
