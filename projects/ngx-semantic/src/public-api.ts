@@ -6,5 +6,5 @@ export * from './lib/button';
 export * from './lib/common';
 export * from './lib/divider';
 export * from './lib/flag';
-export * from './header';
+export * from './lib/header';
 export * from './lib/ngx-semantic.module';
