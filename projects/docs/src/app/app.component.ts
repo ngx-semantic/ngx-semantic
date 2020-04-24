@@ -10,14 +10,17 @@ import {Component} from '@angular/core';
       <div class="item">
         <div class="header">Elements</div>
         <div class="menu">
-          <a class="item" routerLink="elements/buttons">
+          <a class="item" routerLink="elements/buttons" routerLinkActive="active">
             Buttons
           </a>
-          <a class="item" routerLink="elements/dividers">
+          <a class="item" routerLink="elements/dividers" routerLinkActive="active">
             Dividers
           </a>
           <a class="item" routerLink="elements/flags">
             Flags
+          </a>
+          <a class="item" routerLink="elements/headers" routerLinkActive="active">
+            Headers
           </a>
         </div>
       </div>
