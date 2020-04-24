@@ -9,9 +9,9 @@ import {SuiHeaderModule} from './header';
   imports: [],
   exports: [
     SuiButtonModule,
-    SuiDividerModule,,
+    SuiDividerModule,
     SuiFlagModule,
-    SuiHeaderModule,
+    SuiHeaderModule
   ]
 })
 export class NgxSemanticModule {
