@@ -1,15 +1,15 @@
 /**
- * Created by bolor on 4/22/2020
+ * Created by bolor on 4/24/2020
  */
 
 import {NgModule} from '@angular/core';
-import {SuiDividerComponent} from './header.component';
+import {SuiHeaderComponent} from './header.component';
 import {CommonModule} from '@angular/common';
 
 @NgModule({
-  declarations: [SuiDividerComponent],
+  declarations: [SuiHeaderComponent],
   imports: [CommonModule],
-  exports: [SuiDividerComponent]
+  exports: [SuiHeaderComponent]
 })
-export class SuiDividerModule {
+export class SuiHeaderModule {
 }

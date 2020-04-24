@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {SuiDirection} from '../common';
 
 @Component({
-  selector: '[sui-divider]',
+  selector: '[sui-header]',
   template: `
     <ng-content></ng-content>
   `,
@@ -21,7 +21,7 @@ import {SuiDirection} from '../common';
     '[class.horizontal]': `suiDirection === 'horizontal'`
   }
 })
-export class SuiDividerComponent {
+export class SuiHeaderComponent {
   @Input() suiDirection: SuiDirection = null;
   @Input() suiHeader = false;
   @Input() suiInverted = false;

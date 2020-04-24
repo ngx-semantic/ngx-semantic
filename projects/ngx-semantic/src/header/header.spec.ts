@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, Input} from '@angular/core';
 import {SuiDirection} from '../common';
 import {CommonModule} from '@angular/common';
-import {SuiDividerComponent} from './header.component';
+import {SuiHeaderComponent} from './header.component';
 import {By} from '@angular/platform-browser';
 import {SuiButtonComponent} from '../button';
 
@@ -14,7 +14,7 @@ describe('SuiDividerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [CommonModule],
-        declarations: [TestDividerComponent, SuiDividerComponent]
+        declarations: [TestDividerComponent, SuiHeaderComponent]
       })
       .compileComponents();
   }));
@@ -23,7 +23,7 @@ describe('SuiDividerComponent', () => {
     fixture = TestBed.createComponent(TestDividerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    dividerElement = fixture.debugElement.query(By.directive(SuiDividerComponent)).nativeElement;
+    dividerElement = fixture.debugElement.query(By.directive(SuiHeaderComponent)).nativeElement;
   });
 
   it('should create component', () => {
@@ -77,7 +77,7 @@ describe('SuiDividerComponent', () => {
 @Component({
   template: `
     <div
-      sui-divider
+      sui-header
       [suiHeader]="suiHeader"
       [suiFitted]="suiFitted"
       [suiHidden]="suiHidden"
