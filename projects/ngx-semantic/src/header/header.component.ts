@@ -41,6 +41,7 @@ export type SuiHeaderAlignment = 'left' | 'right' | 'center' | 'justified' | nul
     '[class.left]': `suiAlignment === 'left'`,
     '[class.right]': `suiAlignment === 'right'`,
     '[class.center]': `suiAlignment === 'center'`,
+    '[class.justified]': `suiAlignment === 'justified'`,
 
     // colours
     '[class.red]': `suiColour == 'red'`,
