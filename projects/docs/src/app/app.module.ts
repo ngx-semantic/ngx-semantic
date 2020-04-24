@@ -7,6 +7,7 @@ import {HomeComponent} from './pages/home/home.component';
 import {ButtonsComponent} from './pages/elements/buttons/buttons.component';
 import {ElementsComponent} from './pages/elements/elements.component';
 import { DividerComponent } from './pages/elements/divider/divider.component';
+import { HeadersComponent } from './pages/elements/headers/headers.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { DividerComponent } from './pages/elements/divider/divider.component';
     ButtonsComponent,
     ElementsComponent,
     HomeComponent,
-    DividerComponent
+    DividerComponent,
+    HeadersComponent
   ],
   imports: [
     BrowserModule,
