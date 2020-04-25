@@ -1,17 +1,21 @@
-import {Component, Input} from '@angular/core';
+import {Component, HostBinding, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: '[sui-icon]',
   template: `
     <ng-content></ng-content>
-  `,
-  host: {
-    '[class.icon]': `true`
-  }
+  `
 })
-export class SuiIconComponent {
+export class SuiIconComponent implements OnInit {
+  @HostBinding('class') classes = 'icon';
   @Input() suiIconType = '';
 
   constructor() {
+  }
+
+  ngOnInit(): void {
+    if (this.suiIconType) {
+      this.classes += this.suiIconType;
+    }
   }
 }
