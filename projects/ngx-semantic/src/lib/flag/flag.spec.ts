@@ -22,19 +22,20 @@ describe('SuiFlagComponent', () => {
     flagElement = fixture.debugElement.query(By.directive(SuiFlagComponent)).nativeElement;
   });
 
-  it('should create', () => {
+  it('should create component', () => {
     expect(component).toBeTruthy();
   });
 
   it('should apply class name', () => {
-    expect(flagElement.className).toBe('myanmar flag');
+    expect(flagElement.className).toBe('flag myanmar');
   });
 });
 
 @Component({
   template: `
-    <i class="myanmar"
-       sui-flag>
+    <i
+      sui-flag
+      suiCountry="myanmar">
     </i>
   `
 })

@@ -15,7 +15,7 @@ export class SuiIconComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.suiIconType) {
-      this.classes += this.suiIconType;
+      this.classes = this.suiIconType + ' ' + this.classes;
     }
   }
 }

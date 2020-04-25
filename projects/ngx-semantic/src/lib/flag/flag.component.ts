@@ -15,7 +15,7 @@ export class SuiFlagComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.suiCountry) {
-      this.classes += this.suiCountry;
+      this.classes = this.suiCountry + ' ' + this.classes;
     }
   }
 }
