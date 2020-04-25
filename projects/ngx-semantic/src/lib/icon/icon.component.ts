@@ -1,4 +1,4 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
+import {Component, HostBinding, Input} from '@angular/core';
 
 @Component({
   selector: '[sui-icon]',
@@ -6,16 +6,14 @@ import {Component, HostBinding, Input, OnInit} from '@angular/core';
     <ng-content></ng-content>
   `
 })
-export class SuiIconComponent implements OnInit {
-  @HostBinding('class') classes = 'icon';
+export class SuiIconComponent {
   @Input() suiIconType = '';
 
-  constructor() {
+  @HostBinding('class')
+  get classes(): string {
+    return [this.suiIconType, 'icon'].join((' '));
   }
 
-  ngOnInit(): void {
-    if (this.suiIconType) {
-      this.classes = this.suiIconType + ' ' + this.classes;
-    }
+  constructor() {
   }
 }

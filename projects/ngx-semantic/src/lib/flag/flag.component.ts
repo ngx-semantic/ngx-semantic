@@ -1,4 +1,4 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
+import {Component, HostBinding, Input} from '@angular/core';
 
 @Component({
   selector: '[sui-flag]',
@@ -6,16 +6,14 @@ import {Component, HostBinding, Input, OnInit} from '@angular/core';
     <ng-content></ng-content>
   `
 })
-export class SuiFlagComponent implements OnInit {
-  @HostBinding('class') classes = 'flag';
+export class SuiFlagComponent {
   @Input() suiCountry = '';
 
-  constructor() {
+  @HostBinding('class')
+  get classes(): string {
+    return [this.suiCountry, 'flag'].join((' '));
   }
 
-  ngOnInit(): void {
-    if (this.suiCountry) {
-      this.classes = this.suiCountry + ' ' + this.classes;
-    }
+  constructor() {
   }
 }
