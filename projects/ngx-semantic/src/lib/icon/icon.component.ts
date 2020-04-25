@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
-  selector: 'sui-icon',
+  selector: '[sui-icon]',
   template: `
     <ng-content></ng-content>
   `,
@@ -10,6 +10,8 @@ import {Component} from '@angular/core';
   }
 })
 export class SuiIconComponent {
+  @Input() suiIconType = '';
+
   constructor() {
   }
 }
