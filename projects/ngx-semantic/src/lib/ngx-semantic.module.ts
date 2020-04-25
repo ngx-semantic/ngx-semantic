@@ -3,6 +3,7 @@ import {SuiButtonModule} from './button';
 import {SuiDividerModule} from './divider';
 import {SuiFlagModule} from './flag';
 import {SuiHeaderModule} from './header';
+import {SuiIconModule} from './icon';
 
 @NgModule({
   declarations: [],
@@ -11,7 +12,8 @@ import {SuiHeaderModule} from './header';
     SuiButtonModule,
     SuiDividerModule,
     SuiFlagModule,
-    SuiHeaderModule
+    SuiHeaderModule,
+    SuiIconModule
   ]
 })
 export class NgxSemanticModule {
