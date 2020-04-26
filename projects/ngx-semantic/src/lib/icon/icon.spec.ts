@@ -1,25 +1,25 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
-import {SuiFlagComponent} from './flag.component';
+import {SuiIconComponent} from './icon.component';
 import {By} from '@angular/platform-browser';
 
-describe('SuiFlagComponent', () => {
-  let component: TestFlagComponent;
-  let fixture: ComponentFixture<TestFlagComponent>;
-  let flagElement: any;
+describe('SuiIconComponent', () => {
+  let component: TestIconComponent;
+  let fixture: ComponentFixture<TestIconComponent>;
+  let iconElement: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        declarations: [TestFlagComponent, SuiFlagComponent]
+        declarations: [TestIconComponent, SuiIconComponent]
       })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TestFlagComponent);
+    fixture = TestBed.createComponent(TestIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    flagElement = fixture.debugElement.query(By.directive(SuiFlagComponent)).nativeElement;
+    iconElement = fixture.debugElement.query(By.directive(SuiIconComponent)).nativeElement;
   });
 
   it('should create component', () => {
@@ -27,17 +27,18 @@ describe('SuiFlagComponent', () => {
   });
 
   it('should apply class name', () => {
-    expect(flagElement.className).toBe('flag myanmar');
+    expect(iconElement.className).toBe('braille icon');
   });
 });
 
 @Component({
   template: `
     <i
-      sui-flag
-      suiCountry="myanmar">
+      sui-icon
+      suiIconType="braille">
     </i>
   `
 })
-export class TestFlagComponent {
+export class TestIconComponent {
 }
+

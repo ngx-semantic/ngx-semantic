@@ -16,11 +16,14 @@ import {Component} from '@angular/core';
           <a class="item" routerLink="elements/dividers" routerLinkActive="active">
             Dividers
           </a>
-          <a class="item" routerLink="elements/flags">
+          <a class="item" routerLink="elements/flags" routerLinkActive="active">
             Flags
           </a>
           <a class="item" routerLink="elements/headers" routerLinkActive="active">
             Headers
+          </a>
+          <a class="item" routerLink="elements/icons" routerLinkActive="active">
+            Icons
           </a>
         </div>
       </div>

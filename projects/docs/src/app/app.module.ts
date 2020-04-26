@@ -9,6 +9,7 @@ import {ElementsComponent} from './pages/elements/elements.component';
 import {FlagsComponent} from './pages/elements/flags/flags.component';
 import {DividerComponent} from './pages/elements/divider/divider.component';
 import {HeadersComponent} from './pages/elements/headers/headers.component';
+import { IconsComponent } from './pages/elements/icons/icons.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {HeadersComponent} from './pages/elements/headers/headers.component';
     DividerComponent,
     FlagsComponent,
     HeadersComponent,
+    IconsComponent,
   ],
   imports: [
     BrowserModule,

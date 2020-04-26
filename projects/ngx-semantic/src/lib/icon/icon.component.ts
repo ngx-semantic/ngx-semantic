@@ -1,17 +1,17 @@
 import {Component, HostBinding, Input} from '@angular/core';
 
 @Component({
-  selector: '[sui-flag]',
+  selector: '[sui-icon]',
   template: `
     <ng-content></ng-content>
   `
 })
-export class SuiFlagComponent {
-  @Input() suiCountry = '';
+export class SuiIconComponent {
+  @Input() suiIconType = '';
 
   @HostBinding('class')
   get classes(): string {
-    return [this.suiCountry, 'flag'].join((' '));
+    return [this.suiIconType, 'icon'].join((' '));
   }
 
   constructor() {
