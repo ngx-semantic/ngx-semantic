@@ -12,7 +12,7 @@ import {SuiSize} from '../common';
   `,
   host: {
     '[class.ui]': `true`,
-    '[class.image]': `true`,
+    '[class.images]': `true`,
 
     // sizes
     '[class.mini]': `suiSize == 'mini'`,
