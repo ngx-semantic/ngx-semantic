@@ -8,4 +8,5 @@ export * from './lib/divider';
 export * from './lib/flag';
 export * from './lib/header';
 export * from './lib/icon';
+export * from './lib/image';
 export * from './lib/ngx-semantic.module';
