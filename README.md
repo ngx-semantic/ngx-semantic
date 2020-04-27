@@ -2,8 +2,19 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/gd04694avya0aa2f/branch/master?svg=true)](https://ci.appveyor.com/project/BolorunduroWinnerTimothy/ngx-semantic/branch/master) ![npm (tag)](https://img.shields.io/npm/v/ngx-semantic/latest) ![npm (tag)](https://img.shields.io/npm/v/ngx-semantic/alpha)
 
+## Installation
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+```bash
+npm install ngx-semantic@alpha
+```
+or
+```bash
+yarn add ngx-semantic@alpha
+```
+
+## Usage
+
+Check out the docs at the [wiki](http://ngx-semantic.github.io/)
 
 ## Development server
 
