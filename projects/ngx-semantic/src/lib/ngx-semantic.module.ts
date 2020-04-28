@@ -5,6 +5,7 @@ import {SuiFlagModule} from './flag';
 import {SuiHeaderModule} from './header';
 import {SuiIconModule} from './icon';
 import {SuiImageModule} from './image';
+import {SuiInputModule} from './input';
 
 @NgModule({
   declarations: [],
@@ -15,7 +16,8 @@ import {SuiImageModule} from './image';
     SuiFlagModule,
     SuiHeaderModule,
     SuiIconModule,
-    SuiImageModule
+    SuiImageModule,
+    SuiInputModule
   ]
 })
 export class NgxSemanticModule {
