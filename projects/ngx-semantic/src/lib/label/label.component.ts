@@ -19,30 +19,33 @@ export class SuiLabelComponent {
   @Input() suiPointing: SuiLabelPointing = null;
   @Input() suiCorner: SuiLabelHorizontalPosition = null;
   @Input() suiRibbon: SuiLabelHorizontalPosition = null;
+  @Input() suiAttached: SuiLocation = null;
   @Input() suiSize: SuiSize = null;
   @Input() suiImage = false;
   @Input() suiBasic = false;
   @Input() suiTag = false;
-  @Input() suiTransparent = false;
-  @Input() suiInverted = false;
-  @Input() suiFluid = false;
-
-  // states
-  @Input() suiLoading = false;
-  @Input() suiDisabled = false;
-  @Input() suiError = false;
+  @Input() suiHorizontal = false;
+  @Input() suiFloating = false;
+  @Input() suiCircular = false;
+  @Input() suiEmpty = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
+      this.getFloating(),
       'ui',
       this.getPointing(),
-      this.getColour(),
+      this.suiColour,
+      this.suiSize,
       this.getCorner(),
       this.getImage(),
       this.getBasic(),
       this.getTag(),
       this.getRibbon(),
+      this.getAttached(),
+      this.getHorizontal(),
+      this.getEmpty(),
+      this.getCircular(),
       'label']
       .join((' '));
   }
@@ -53,14 +56,6 @@ export class SuiLabelComponent {
     }
 
     return 'image';
-  }
-
-  getColour(): string {
-    if (!this.suiColour) {
-      return '';
-    }
-
-    return this.suiColour;
   }
 
   getBasic(): string {
@@ -117,5 +112,47 @@ export class SuiLabelComponent {
     }
 
     return '';
+  }
+
+  getAttached(): string {
+    const classKey = 'attached';
+
+    if (!this.suiPointing) {
+      return '';
+    }
+
+    return this.suiAttached + ' ' + classKey;
+  }
+
+  getHorizontal(): string {
+    if (!this.suiHorizontal) {
+      return '';
+    }
+
+    return 'horizontal';
+  }
+
+  getFloating(): string {
+    if (!this.suiFloating) {
+      return '';
+    }
+
+    return 'floating';
+  }
+
+  getCircular(): string {
+    if (!this.suiCircular) {
+      return '';
+    }
+
+    return 'circular';
+  }
+
+  getEmpty(): string {
+    if (!this.suiEmpty) {
+      return '';
+    }
+
+    return 'empty';
   }
 }
