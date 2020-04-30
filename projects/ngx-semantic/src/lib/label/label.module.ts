@@ -1,15 +1,15 @@
 /**
- * Created by bolor on 4/28/2020
+ * Created by bolor on 4/30/2020
  */
 
 import {NgModule} from '@angular/core';
-import {SuiInputComponent} from './label.component';
+import {SuiLabelComponent} from './label.component';
 import {CommonModule} from '@angular/common';
 
 @NgModule({
-  declarations: [SuiInputComponent],
+  declarations: [SuiLabelComponent],
   imports: [CommonModule],
-  exports: [SuiInputComponent]
+  exports: [SuiLabelComponent]
 })
-export class SuiInputModule {
+export class SuiLabelModule {
 }

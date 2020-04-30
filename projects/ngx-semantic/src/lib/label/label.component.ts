@@ -1,12 +1,12 @@
 /**
- * Created by bolor on 4/28/2020
+ * Created by bolor on 4/30/2020
  */
 
 import {Component, Input} from '@angular/core';
 import {SuiLocation, SuiSize} from '../common';
 
 @Component({
-  selector: '[sui-input]',
+  selector: '[sui-label]',
   template: `
     <ng-content></ng-content>
   `,
@@ -42,7 +42,7 @@ import {SuiLocation, SuiSize} from '../common';
     '[class.massive]': `suiSize == 'massive'`
   }
 })
-export class SuiInputComponent {
+export class SuiLabelComponent {
   @Input() suiLocation: SuiLocation = null;
   @Input() suiSize: SuiSize = null;
   @Input() suiFocus = false;
