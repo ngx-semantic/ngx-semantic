@@ -2,68 +2,27 @@
  * Created by bolor on 4/30/2020
  */
 
-import {Component, Input} from '@angular/core';
+import {Component, HostBinding, Input} from '@angular/core';
 import {SuiColour, SuiLocation, SuiSize} from '../common';
+
+export type SuiLabelPointing = 'above' | 'below' | 'left' | 'right' | null;
+export type SuiLabelHorizontalPosition = 'left' | 'right' | null;
 
 @Component({
   selector: '[sui-label]',
   template: `
     <ng-content></ng-content>
-  `,
-  host: {
-    '[class.ui]': `true`,
-    '[class.label]': `true`,
-    '[class.image]': `suiImage`,
-    '[class.focus]': `suiFocus`,
-    '[class.labeled]': `suiLabeled`,
-    '[class.corner]': `suiCorner`,
-    '[class.action]': `suiAction`,
-    '[class.transparent]': `suiTransparent`,
-    '[class.inverted]': `suiInverted`,
-    '[class.fluid]': `suiFluid`,
-
-    // states
-    '[class.loading]': `suiLoading`,
-    '[class.disabled]': `suiDisabled`,
-    '[class.error]': `suiError`,
-
-    // location
-    '[class.left]': `suiLocation === 'left'`,
-    '[class.right]': `suiLocation === 'right'`,
-
-    // sizes
-    '[class.mini]': `suiSize == 'mini'`,
-    '[class.tiny]': `suiSize == 'tiny'`,
-    '[class.small]': `suiSize == 'small'`,
-    '[class.medium]': `suiSize == 'medium'`,
-    '[class.large]': `suiSize == 'large'`,
-    '[class.big]': `suiSize == 'big'`,
-    '[class.huge]': `suiSize == 'huge'`,
-    '[class.massive]': `suiSize == 'massive'`,
-
-    // colours
-    '[class.red]': `suiColour == 'red'`,
-    '[class.orange]': `suiColour == 'orange'`,
-    '[class.yellow]': `suiColour == 'yellow'`,
-    '[class.olive]': `suiColour == 'olive'`,
-    '[class.green]': `suiColour == 'green'`,
-    '[class.teal]': `suiColour == 'teal'`,
-    '[class.blue]': `suiColour == 'blue'`,
-    '[class.pink]': `suiColour == 'pink'`,
-    '[class.brown]': `suiColour == 'brown'`,
-    '[class.grey]': `suiColour == 'grey'`,
-    '[class.black]': `suiColour == 'black'`
-  }
+  `
 })
 export class SuiLabelComponent {
-  @Input() suiLocation: SuiLocation = null;
-  @Input() suiSize: SuiSize = null;
   @Input() suiColour: SuiColour = null;
-  @Input() suiFocus = false;
+  @Input() suiPointing: SuiLabelPointing = null;
+  @Input() suiCorner: SuiLabelHorizontalPosition = null;
+  @Input() suiRibbon: SuiLabelHorizontalPosition = null;
+  @Input() suiSize: SuiSize = null;
   @Input() suiImage = false;
-  @Input() suiLabeled = false;
-  @Input() suiCorner = false;
-  @Input() suiAction = false;
+  @Input() suiBasic = false;
+  @Input() suiTag = false;
   @Input() suiTransparent = false;
   @Input() suiInverted = false;
   @Input() suiFluid = false;
@@ -72,4 +31,91 @@ export class SuiLabelComponent {
   @Input() suiLoading = false;
   @Input() suiDisabled = false;
   @Input() suiError = false;
+
+  @HostBinding('class')
+  get classes(): string {
+    return [
+      'ui',
+      this.getPointing(),
+      this.getColour(),
+      this.getCorner(),
+      this.getImage(),
+      this.getBasic(),
+      this.getTag(),
+      this.getRibbon(),
+      'label']
+      .join((' '));
+  }
+
+  getImage(): string {
+    if (!this.suiImage) {
+      return '';
+    }
+
+    return 'image';
+  }
+
+  getColour(): string {
+    if (!this.suiColour) {
+      return '';
+    }
+
+    return this.suiColour;
+  }
+
+  getBasic(): string {
+    if (!this.suiBasic) {
+      return '';
+    }
+
+    return 'basic';
+  }
+
+  getPointing(): string {
+    const classKey = 'pointing';
+
+    if (!this.suiPointing) {
+      return '';
+    }
+
+    if (this.suiPointing === 'above') {
+      return classKey;
+    }
+
+    if (this.suiPointing === 'below') {
+      return classKey + ' ' + this.suiPointing;
+    }
+
+    return this.suiPointing + ' ' + classKey;
+  }
+
+  getCorner(): string {
+    if (this.suiCorner === 'left' || this.suiCorner === 'right') {
+      return this.suiCorner + ' corner';
+    }
+
+    return '';
+  }
+
+  getTag(): string {
+    if (!this.suiTag) {
+      return '';
+    }
+
+    return 'tag';
+  }
+
+  getRibbon(): string {
+    const classKey = 'ribbon';
+
+    if (this.suiRibbon === 'left') {
+      return classKey;
+    }
+
+    if (this.suiRibbon === 'right') {
+      return this.suiRibbon + ' ' + classKey;
+    }
+
+    return '';
+  }
 }
