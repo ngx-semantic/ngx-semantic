@@ -7,6 +7,8 @@ import {DividerComponent} from './pages/elements/divider/divider.component';
 import {FlagsComponent} from './pages/elements/flags/flags.component';
 import {HeadersComponent} from './pages/elements/headers/headers.component';
 import {IconsComponent} from './pages/elements/icons/icons.component';
+import {InputsComponent} from './pages/elements/inputs/inputs.component';
+import {LabelsComponent} from './pages/elements/labels/labels.component';
 
 const routes: Routes = [
   {
@@ -37,6 +39,14 @@ const routes: Routes = [
       {
         path: 'icons',
         component: IconsComponent
+      },
+      {
+        path: 'inputs',
+        component: InputsComponent
+      },
+      {
+        path: 'labels',
+        component: LabelsComponent
       }
     ]
   },
