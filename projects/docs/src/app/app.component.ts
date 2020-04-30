@@ -25,6 +25,12 @@ import {Component} from '@angular/core';
           <a class="item" routerLink="elements/icons" routerLinkActive="active">
             Icons
           </a>
+          <a class="item" routerLink="elements/inputs" routerLinkActive="active">
+            Inputs
+          </a>
+          <a class="item" routerLink="elements/labels" routerLinkActive="active">
+            Labels
+          </a>
         </div>
       </div>
     </div>
