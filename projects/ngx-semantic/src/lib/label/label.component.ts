@@ -3,7 +3,7 @@
  */
 
 import {Component, Input} from '@angular/core';
-import {SuiLocation, SuiSize} from '../common';
+import {SuiColour, SuiLocation, SuiSize} from '../common';
 
 @Component({
   selector: '[sui-label]',
@@ -12,9 +12,9 @@ import {SuiLocation, SuiSize} from '../common';
   `,
   host: {
     '[class.ui]': `true`,
-    '[class.input]': `true`,
+    '[class.label]': `true`,
+    '[class.image]': `suiImage`,
     '[class.focus]': `suiFocus`,
-    '[class.icon]': `suiIcon`,
     '[class.labeled]': `suiLabeled`,
     '[class.corner]': `suiCorner`,
     '[class.action]': `suiAction`,
@@ -39,14 +39,28 @@ import {SuiLocation, SuiSize} from '../common';
     '[class.large]': `suiSize == 'large'`,
     '[class.big]': `suiSize == 'big'`,
     '[class.huge]': `suiSize == 'huge'`,
-    '[class.massive]': `suiSize == 'massive'`
+    '[class.massive]': `suiSize == 'massive'`,
+
+    // colours
+    '[class.red]': `suiColour == 'red'`,
+    '[class.orange]': `suiColour == 'orange'`,
+    '[class.yellow]': `suiColour == 'yellow'`,
+    '[class.olive]': `suiColour == 'olive'`,
+    '[class.green]': `suiColour == 'green'`,
+    '[class.teal]': `suiColour == 'teal'`,
+    '[class.blue]': `suiColour == 'blue'`,
+    '[class.pink]': `suiColour == 'pink'`,
+    '[class.brown]': `suiColour == 'brown'`,
+    '[class.grey]': `suiColour == 'grey'`,
+    '[class.black]': `suiColour == 'black'`
   }
 })
 export class SuiLabelComponent {
   @Input() suiLocation: SuiLocation = null;
   @Input() suiSize: SuiSize = null;
+  @Input() suiColour: SuiColour = null;
   @Input() suiFocus = false;
-  @Input() suiIcon = false;
+  @Input() suiImage = false;
   @Input() suiLabeled = false;
   @Input() suiCorner = false;
   @Input() suiAction = false;
