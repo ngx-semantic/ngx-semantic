@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiSize} from '../common';
+import {SuiSize, SuiVerticalAlignment} from '../common';
 
 export type SuiListRelaxation = 'very' | 'normal' | null;
 
@@ -16,6 +16,7 @@ export type SuiListRelaxation = 'very' | 'normal' | null;
 export class SuiListComponent {
   @Input() suiRelaxed: SuiListRelaxation = null;
   @Input() suiSize: SuiSize = null;
+  @Input() suiAlignment: SuiVerticalAlignment = null;
   @Input() suiDivided = false;
   @Input() suiBulleted = false;
   @Input() suiOrdered = false;
@@ -39,6 +40,7 @@ export class SuiListComponent {
       this.getLink(),
       this.getHorizontal(),
       this.getSelection(),
+      this.getAlignment(),
       this.getAnimated(),
       this.getCelled(),
       'list'
@@ -129,5 +131,15 @@ export class SuiListComponent {
     }
 
     return 'celled';
+  }
+
+  getAlignment(): string {
+    const classKey = 'aligned';
+
+    if (!this.suiAlignment) {
+      return '';
+    }
+
+    return this.suiAlignment + ' ' + classKey;
   }
 }
