@@ -3,6 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
+import {SuiSize} from '../common';
 
 export type SuiListRelaxation = 'very' | 'normal' | null;
 
@@ -13,7 +14,8 @@ export type SuiListRelaxation = 'very' | 'normal' | null;
   `
 })
 export class SuiListComponent {
-  @Input() suiRelaxed : SuiListRelaxation = null;
+  @Input() suiRelaxed: SuiListRelaxation = null;
+  @Input() suiSize: SuiSize = null;
   @Input() suiDivided = false;
   @Input() suiBulleted = false;
   @Input() suiOrdered = false;
@@ -22,11 +24,13 @@ export class SuiListComponent {
   @Input() suiHorizontal = false;
   @Input() suiSelection = false;
   @Input() suiAnimated = false;
+  @Input() suiCelled = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
       'ui',
+      this.suiSize,
       this.getInverted(),
       this.getRelaxed(),
       this.getDivided(),
@@ -36,6 +40,7 @@ export class SuiListComponent {
       this.getHorizontal(),
       this.getSelection(),
       this.getAnimated(),
+      this.getCelled(),
       'list'
     ].join(' ');
   }
@@ -116,5 +121,13 @@ export class SuiListComponent {
     }
 
     return 'animated';
+  }
+
+  getCelled(): string {
+    if (!this.suiCelled) {
+      return '';
+    }
+
+    return 'celled';
   }
 }
