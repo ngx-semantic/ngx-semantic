@@ -1,7 +1,30 @@
 {
   "name": "ngx-semantic",
-  "version": "1.0.0-alpha.5",
+  "description": "This package is intended to bring the latest Angular support for Semantic UI",
+  "version": "1.0.0-alpha.6",
   "license": "MIT",
+  "keywords": [
+    "ngx",
+    "semantic",
+    "angular semantic",
+    "ngx-semantic"
+  ],
+  "homepage": "https://ngx-semantic.github.io",
+  "bugs": {
+    "url": "https://github.com/ngx-semantic/ngx-semantic/issues"
+  },
+  "contributors": [
+    {
+      "name": "Winner-Timothy  Bolorunduro"
+    },
+    {
+      "name": "Adetola Olutola"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ngx-semantic/ngx-semantic"
+  },
   "peerDependencies": {
     "@angular/common": "^9.1.1",
     "@angular/core": "^9.1.1",

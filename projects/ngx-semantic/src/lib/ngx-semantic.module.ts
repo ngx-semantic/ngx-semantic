@@ -7,6 +7,7 @@ import {SuiIconModule} from './icon';
 import {SuiImageModule} from './image';
 import {SuiInputModule} from './input';
 import {SuiLabelModule} from './label';
+import {SuiListModule} from './list';
 
 @NgModule({
   declarations: [],
@@ -19,7 +20,8 @@ import {SuiLabelModule} from './label';
     SuiIconModule,
     SuiImageModule,
     SuiInputModule,
-    SuiLabelModule
+    SuiLabelModule,
+    SuiListModule
   ]
 })
 export class NgxSemanticModule {

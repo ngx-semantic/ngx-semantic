@@ -3,10 +3,9 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiColour, SuiLocation, SuiSize} from '../common';
+import {SuiColour, SuiHorizontalAlignment, SuiLocation, SuiSize} from '../common';
 
 export type SuiLabelPointing = 'above' | 'below' | 'left' | 'right' | null;
-export type SuiLabelHorizontalPosition = 'left' | 'right' | null;
 
 @Component({
   selector: '[sui-label]',
@@ -17,8 +16,8 @@ export type SuiLabelHorizontalPosition = 'left' | 'right' | null;
 export class SuiLabelComponent {
   @Input() suiColour: SuiColour = null;
   @Input() suiPointing: SuiLabelPointing = null;
-  @Input() suiCorner: SuiLabelHorizontalPosition = null;
-  @Input() suiRibbon: SuiLabelHorizontalPosition = null;
+  @Input() suiCorner: SuiHorizontalAlignment = null;
+  @Input() suiRibbon: SuiHorizontalAlignment = null;
   @Input() suiAttached: SuiLocation = null;
   @Input() suiSize: SuiSize = null;
   @Input() suiImage = false;

@@ -10,3 +10,9 @@ export type SuiColour = 'red' | 'orange' | 'yellow' | 'olive' | 'green' | 'teal'
   | 'black' | null;
 
 export type SuiSize = 'mini' | 'tiny' | 'small' | 'medium' | 'large' | 'big' | 'huge' | 'massive' | null;
+
+export type SuiVerticalAlignment = 'top' | 'middle' | 'bottom' | null;
+
+export type SuiHorizontalAlignment = 'left' | 'center' | 'right' | null;
+
+export type SuiHorizontalPosition = 'left' | 'right' | null;
