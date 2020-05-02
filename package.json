@@ -7,11 +7,9 @@
     "build": "ng build",
     "test": "ng test ngx-semantic --no-watch",
     "lint": "ng lint",
-    "e2e": "ng e2e",
     "build:lib": "ng build ngx-semantic",
-    "build:docs": "ng build docs",
-    "build:lib:prod": "ng build ngx-semantic --prod",
-    "build:docs:prod": "ng build docs --prod"
+    "build:docs": "ng build docs --prod --base-href \"ngx-semantic\"",
+    "build:lib:prod": "ng build ngx-semantic --prod"
   },
   "private": true,
   "dependencies": {
