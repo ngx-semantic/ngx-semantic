@@ -8,7 +8,7 @@
     "test": "ng test ngx-semantic --no-watch",
     "lint": "ng lint",
     "build:lib": "ng build ngx-semantic",
-    "build:docs": "ng build docs --prod --base-href \"ngx-semantic\"",
+    "build:docs": "ng build docs --prod --base-href \"https://ngx-semantic.github.io/\"",
     "build:lib:prod": "ng build ngx-semantic --prod"
   },
   "private": true,
