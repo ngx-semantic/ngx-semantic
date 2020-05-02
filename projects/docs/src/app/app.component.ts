@@ -31,6 +31,9 @@ import {Component} from '@angular/core';
           <a class="item" routerLink="elements/labels" routerLinkActive="active">
             Labels
           </a>
+          <a class="item" routerLink="elements/lists" routerLinkActive="active">
+            Lists
+          </a>
         </div>
       </div>
     </div>
