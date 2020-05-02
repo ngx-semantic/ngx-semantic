@@ -14,3 +14,5 @@ export type SuiSize = 'mini' | 'tiny' | 'small' | 'medium' | 'large' | 'big' | '
 export type SuiVerticalAlignment = 'top' | 'middle' | 'bottom' | null;
 
 export type SuiHorizontalAlignment = 'left' | 'center' | 'right' | null;
+
+export type SuiHorizontalPosition = 'left' | 'right' | null;
