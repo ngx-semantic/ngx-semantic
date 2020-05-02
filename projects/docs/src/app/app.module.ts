@@ -12,6 +12,7 @@ import {HeadersComponent} from './pages/elements/headers/headers.component';
 import { IconsComponent } from './pages/elements/icons/icons.component';
 import { InputsComponent } from './pages/elements/inputs/inputs.component';
 import { LabelsComponent } from './pages/elements/labels/labels.component';
+import { ListsComponent } from './pages/elements/lists/lists.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { LabelsComponent } from './pages/elements/labels/labels.component';
     IconsComponent,
     InputsComponent,
     LabelsComponent,
+    ListsComponent,
   ],
   imports: [
     BrowserModule,
