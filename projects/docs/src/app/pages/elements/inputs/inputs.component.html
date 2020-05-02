@@ -2,12 +2,22 @@
   <h2 sui-header suiDividing="true">Types</h2>
 
   <div class="example">
-    <div sui-input suiLocation="left" suiAction="true">
-      <button sui-button suiColour="teal" suiLabeled suiIcon>
+    <div sui-input suiAction="left">
+      <button sui-button suiColour="teal" suiLabeled="true" suiIcon="true">
         <i sui-icon suiIconType="cart"></i>
         Checkout
       </button>
       <input type="text" value="$52.03">
+    </div>
+  </div>
+
+  <div class="example">
+    <div sui-input suiAction="right">
+      <input type="text" value="http://ww.short.url/c0opq">
+      <button sui-button suiColour="teal" suiLocation="right" suiLabeled="true" suiIcon="true">
+        <i sui-icon suiIconType="copy"></i>
+        Copy
+      </button>
     </div>
   </div>
 </div>
