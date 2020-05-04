@@ -13,6 +13,7 @@ import { IconsComponent } from './pages/elements/icons/icons.component';
 import { InputsComponent } from './pages/elements/inputs/inputs.component';
 import { LabelsComponent } from './pages/elements/labels/labels.component';
 import { ListsComponent } from './pages/elements/lists/lists.component';
+import { LoadersComponent } from './pages/elements/loaders/loaders.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ListsComponent } from './pages/elements/lists/lists.component';
     InputsComponent,
     LabelsComponent,
     ListsComponent,
+    LoadersComponent,
   ],
   imports: [
     BrowserModule,
