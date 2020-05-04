@@ -34,6 +34,9 @@ import {Component} from '@angular/core';
           <a class="item" routerLink="elements/lists" routerLinkActive="active">
             Lists
           </a>
+          <a class="item" routerLink="elements/loaders" routerLinkActive="active">
+            Loaders
+          </a>
         </div>
       </div>
     </div>

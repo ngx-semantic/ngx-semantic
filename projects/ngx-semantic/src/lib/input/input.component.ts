@@ -55,7 +55,7 @@ export class SuiInputComponent {
     }
 
     if (this.suiAction === 'left') {
-      return 'left' + ' ' + classKey;
+      return 'left ' + classKey;
     }
 
     return classKey;

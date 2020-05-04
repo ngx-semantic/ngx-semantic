@@ -10,6 +10,7 @@ import {IconsComponent} from './pages/elements/icons/icons.component';
 import {InputsComponent} from './pages/elements/inputs/inputs.component';
 import {LabelsComponent} from './pages/elements/labels/labels.component';
 import {ListsComponent} from './pages/elements/lists/lists.component';
+import {LoadersComponent} from './pages/elements/loaders/loaders.component';
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
       {
         path: 'lists',
         component: ListsComponent
+      },
+      {
+        path: 'loaders',
+        component: LoadersComponent
       }
     ]
   },
