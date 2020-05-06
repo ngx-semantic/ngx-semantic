@@ -13,4 +13,5 @@ export * from './lib/input';
 export * from './lib/label';
 export * from './lib/list';
 export * from './lib/loader';
+export * from './lib/placeholder';
 export * from './lib/ngx-semantic.module';

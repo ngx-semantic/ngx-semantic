@@ -11,6 +11,7 @@ import {InputsComponent} from './pages/elements/inputs/inputs.component';
 import {LabelsComponent} from './pages/elements/labels/labels.component';
 import {ListsComponent} from './pages/elements/lists/lists.component';
 import {LoadersComponent} from './pages/elements/loaders/loaders.component';
+import {PlaceholdersComponent} from './pages/elements/placeholders/placeholders.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,10 @@ const routes: Routes = [
       {
         path: 'loaders',
         component: LoadersComponent
+      },
+      {
+        path: 'placeholders',
+        component: PlaceholdersComponent
       }
     ]
   },

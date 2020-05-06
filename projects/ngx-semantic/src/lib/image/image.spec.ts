@@ -125,4 +125,3 @@ export class TestImageComponent {
   @Input() suiSpaced = false;
   @Input() suiFloated = false;
 }
-

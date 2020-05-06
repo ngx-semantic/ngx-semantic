@@ -9,11 +9,12 @@ import {ElementsComponent} from './pages/elements/elements.component';
 import {FlagsComponent} from './pages/elements/flags/flags.component';
 import {DividerComponent} from './pages/elements/divider/divider.component';
 import {HeadersComponent} from './pages/elements/headers/headers.component';
-import { IconsComponent } from './pages/elements/icons/icons.component';
-import { InputsComponent } from './pages/elements/inputs/inputs.component';
-import { LabelsComponent } from './pages/elements/labels/labels.component';
-import { ListsComponent } from './pages/elements/lists/lists.component';
-import { LoadersComponent } from './pages/elements/loaders/loaders.component';
+import {IconsComponent} from './pages/elements/icons/icons.component';
+import {InputsComponent} from './pages/elements/inputs/inputs.component';
+import {LabelsComponent} from './pages/elements/labels/labels.component';
+import {ListsComponent} from './pages/elements/lists/lists.component';
+import {LoadersComponent} from './pages/elements/loaders/loaders.component';
+import {PlaceholdersComponent} from './pages/elements/placeholders/placeholders.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { LoadersComponent } from './pages/elements/loaders/loaders.component';
     LabelsComponent,
     ListsComponent,
     LoadersComponent,
+    PlaceholdersComponent,
   ],
   imports: [
     BrowserModule,

@@ -37,6 +37,9 @@ import {Component} from '@angular/core';
           <a class="item" routerLink="elements/loaders" routerLinkActive="active">
             Loaders
           </a>
+          <a class="item" routerLink="elements/placeholders" routerLinkActive="active">
+            Placeholders
+          </a>
         </div>
       </div>
     </div>
