@@ -14,6 +14,7 @@ import { InputsComponent } from './pages/elements/inputs/inputs.component';
 import { LabelsComponent } from './pages/elements/labels/labels.component';
 import { ListsComponent } from './pages/elements/lists/lists.component';
 import { LoadersComponent } from './pages/elements/loaders/loaders.component';
+import { PlaceholdersComponent } from './pages/placeholders/placeholders.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { LoadersComponent } from './pages/elements/loaders/loaders.component';
     LabelsComponent,
     ListsComponent,
     LoadersComponent,
+    PlaceholdersComponent,
   ],
   imports: [
     BrowserModule,
