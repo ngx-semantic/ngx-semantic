@@ -2,4 +2,4 @@
  * Created by bolor on 5/6/2020
  */
 
-e
+export * from './public-api';
