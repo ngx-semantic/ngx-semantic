@@ -39,13 +39,14 @@ describe('SuiPlaceholderLineComponent', () => {
   it('should apply class name by length', () => {
     component.suiLength = 'medium';
     fixture.detectChanges();
-    expect(lineElement.className).toBe('medium line');
+    expect(lineElement.className).toContain('medium');
     component.suiLength = 'full';
     fixture.detectChanges();
-    expect(lineElement.className).toBe('full line');
+    expect(lineElement.className).toContain('full');
     component.suiLength = 'very long';
     fixture.detectChanges();
-    expect(lineElement.className).toBe('very long line');
+    expect(lineElement.className).toContain('very');
+    expect(lineElement.className).toContain('long');
   });
 });
 
