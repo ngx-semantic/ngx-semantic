@@ -10,6 +10,7 @@ import {SuiLabelModule} from './label';
 import {SuiListModule} from './list';
 import {SuiLoaderModule} from './loader';
 import {SuiPlaceholderModule} from './placeholder';
+import {SuiRailModule} from './rail';
 
 @NgModule({
   declarations: [],
@@ -25,7 +26,8 @@ import {SuiPlaceholderModule} from './placeholder';
     SuiLabelModule,
     SuiListModule,
     SuiLoaderModule,
-    SuiPlaceholderModule
+    SuiPlaceholderModule,
+    SuiRailModule
   ]
 })
 export class NgxSemanticModule {
