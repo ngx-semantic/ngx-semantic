@@ -5,8 +5,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
-import {Component, Input} from '@angular/core';
-import {SuiPlaceholderComponent} from './placeholder.component';
+import {Component} from '@angular/core';
 import {SuiPlaceholderParagraphComponent} from './paragraph.component';
 
 describe('SuiPlaceholderParagraphComponent', () => {
