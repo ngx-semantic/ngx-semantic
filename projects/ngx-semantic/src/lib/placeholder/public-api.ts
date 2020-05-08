@@ -3,5 +3,7 @@
  */
 
 export * from './paragraph.component';
+export * from './line.component';
+export * from './image.component';
 export * from './placeholder.component';
 export * from './placeholder.module';

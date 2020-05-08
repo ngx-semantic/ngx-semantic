@@ -5,7 +5,7 @@
 import {Component, Input} from '@angular/core';
 
 @Component({
-  selector: '[sui-placeholder-line]',
+  selector: '[sui-placeholder-image]',
   template: `
     <ng-content></ng-content>
   `,

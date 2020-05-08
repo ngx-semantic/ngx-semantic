@@ -7,11 +7,12 @@ import {SuiPlaceholderComponent} from './placeholder.component';
 import {CommonModule} from '@angular/common';
 import {SuiPlaceholderParagraphComponent} from './paragraph.component';
 import {SuiPlaceholderLineComponent} from './line.component';
+import {SuiPlaceholderImageComponent} from './image.component';
 
 @NgModule({
-  declarations: [SuiPlaceholderComponent, SuiPlaceholderParagraphComponent, SuiPlaceholderLineComponent],
+  declarations: [SuiPlaceholderComponent, SuiPlaceholderParagraphComponent, SuiPlaceholderLineComponent, SuiPlaceholderImageComponent],
   imports: [CommonModule],
-  exports: [SuiPlaceholderComponent, SuiPlaceholderParagraphComponent, SuiPlaceholderLineComponent]
+  exports: [SuiPlaceholderComponent, SuiPlaceholderParagraphComponent, SuiPlaceholderLineComponent, SuiPlaceholderImageComponent]
 })
 export class SuiPlaceholderModule {
 }
