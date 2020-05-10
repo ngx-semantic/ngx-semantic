@@ -40,6 +40,9 @@ import {Component} from '@angular/core';
           <a class="item" routerLink="elements/placeholders" routerLinkActive="active">
             Placeholders
           </a>
+          <a class="item" routerLink="elements/rails" routerLinkActive="active">
+            Rails
+          </a>
         </div>
       </div>
     </div>
