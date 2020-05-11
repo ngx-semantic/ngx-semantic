@@ -12,7 +12,6 @@ import {SuiSize} from '../common';
   `,
   host: {
     '[class.ui]': `true`,
-    '[class.images]': `true`,
 
     // sizes
     '[class.mini]': `suiSize == 'mini'`,
@@ -23,6 +22,8 @@ import {SuiSize} from '../common';
     '[class.big]': `suiSize == 'big'`,
     '[class.huge]': `suiSize == 'huge'`,
     '[class.massive]': `suiSize == 'massive'`,
+
+    '[class.images]': `true`,
   }
 })
 export class SuiImageGroupComponent {
