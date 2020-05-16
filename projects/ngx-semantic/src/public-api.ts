@@ -15,4 +15,5 @@ export * from './lib/list';
 export * from './lib/loader';
 export * from './lib/placeholder';
 export * from './lib/rail';
+export * from './lib/steps';
 export * from './lib/ngx-semantic.module';

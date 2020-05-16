@@ -43,6 +43,9 @@ import {Component} from '@angular/core';
           <a class="item" routerLink="elements/rails" routerLinkActive="active">
             Rails
           </a>
+          <a class="item" routerLink="elements/steps" routerLinkActive="active">
+            Steps
+          </a>
         </div>
       </div>
     </div>

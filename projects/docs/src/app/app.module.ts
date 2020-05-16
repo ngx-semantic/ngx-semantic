@@ -16,6 +16,7 @@ import {ListsComponent} from './pages/elements/lists/lists.component';
 import {LoadersComponent} from './pages/elements/loaders/loaders.component';
 import {PlaceholdersComponent} from './pages/elements/placeholders/placeholders.component';
 import { RailsComponent } from './pages/elements/rails/rails.component';
+import { StepsComponent } from './pages/elements/steps/steps.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { RailsComponent } from './pages/elements/rails/rails.component';
     LoadersComponent,
     PlaceholdersComponent,
     RailsComponent,
+    StepsComponent,
   ],
   imports: [
     BrowserModule,
