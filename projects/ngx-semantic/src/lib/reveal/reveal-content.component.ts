@@ -16,5 +16,5 @@ import {Component, Input} from '@angular/core';
   }
 })
 export class SuiRevealContentComponent {
-  @Input() suiVisible = false;
+  @Input() suiVisible = true;
 }

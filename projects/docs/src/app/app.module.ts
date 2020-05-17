@@ -39,6 +39,7 @@ import { RevealsComponent } from './pages/elements/reveals/reveals.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgxSemanticModule,
     NgxSemanticModule
   ],
   providers: [],

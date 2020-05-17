@@ -1,1 +1,17 @@
-<p>reveals works!</p>
+<div class="main ui container">
+  <h2 sui-header suiDividing="true">Types</h2>
+
+  <div class="example">
+    <div sui-reveal
+         suiSize="small"
+         suiMove="right"
+         suiImage="true">
+      <img sui-reveal-content
+           [suiVisible]="true"
+           src="https://semantic-ui.com/images/avatar/large/ade.jpg">
+      <img sui-reveal-content
+           [suiVisible]="false"
+           src="https://semantic-ui.com/images/wireframe/square-image.png">
+    </div>
+  </div>
+</div>
