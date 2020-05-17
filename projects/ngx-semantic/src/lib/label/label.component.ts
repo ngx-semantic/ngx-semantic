@@ -45,7 +45,8 @@ export class SuiLabelComponent {
       Utils.getPropClass(this.suiHorizontal, 'horizontal'),
       Utils.getPropClass(this.suiEmpty, 'empty'),
       Utils.getPropClass(this.suiCircular, 'circular'),
-      'label'].join((' '));
+      'label'
+    ].join((' '));
   }
 
   getPointing(): string {

@@ -2,16 +2,17 @@
  * Created by bolor on 5/8/2020
  */
 
-import {Component} from '@angular/core';
+import {Component, HostBinding} from '@angular/core';
 
 @Component({
   selector: '[sui-placeholder-paragraph]',
   template: `
     <ng-content></ng-content>
-  `,
-  host: {
-    '[class.paragraph]': `true`
-  }
+  `
 })
 export class SuiPlaceholderParagraphComponent {
+  @HostBinding('class')
+  get classes(): string {
+    return 'paragraph';
+  }
 }

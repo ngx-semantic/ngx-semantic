@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiSize} from '../common';
+import {SuiSize, Utils} from '../common';
 
 export type SuiLoaderInlineAlignment = 'centered' | 'normal' | null;
 
@@ -27,12 +27,12 @@ export class SuiLoaderComponent {
     return [
       'ui',
       this.suiSize,
-      this.getPropClass(this.suiIndeterminate, 'indeterminate'),
-      this.getPropClass(this.suiText, 'text'),
-      this.getPropClass(this.suiActive, 'active'),
-      this.getPropClass(this.suiDisabled, 'disabled'),
+      Utils.getPropClass(this.suiIndeterminate, 'indeterminate'),
+      Utils.getPropClass(this.suiText, 'text'),
+      Utils.getPropClass(this.suiActive, 'active'),
+      Utils.getPropClass(this.suiDisabled, 'disabled'),
       this.getInline(),
-      this.getPropClass(this.suiInverted, 'inverted'),
+      Utils.getPropClass(this.suiInverted, 'inverted'),
       'loader'
     ].join(' ');
   }
@@ -49,13 +49,5 @@ export class SuiLoaderComponent {
     }
 
     return classKey;
-  }
-
-  getPropClass(state: boolean, className: string): string {
-    if (!state) {
-      return '';
-    }
-
-    return className;
   }
 }
