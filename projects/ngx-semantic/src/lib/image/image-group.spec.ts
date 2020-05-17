@@ -34,7 +34,8 @@ describe('SuiImageGroupComponent', () => {
   });
 
   it('should apply class name', () => {
-    expect(groupElement.className).toBe('ui images');
+    expect(groupElement.classList).toContain('ui');
+    expect(groupElement.classList).toContain('images');
   });
 
   it('should apply class name by size', () => {
