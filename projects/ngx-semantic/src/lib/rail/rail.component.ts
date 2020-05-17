@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiHorizontalPosition, SuiSize} from '../common';
+import {SuiHorizontalPosition, SuiSize, Utils} from '../common';
 
 export type SuiRailCloseness = 'close' | 'very close' | null;
 
@@ -26,20 +26,12 @@ export class SuiRailComponent {
     return [
       'ui',
       this.suiLocation,
-      this.getPropClass(this.suiInternal, 'internal'),
-      this.getPropClass(this.suiDividing, 'dividing'),
-      this.getPropClass(this.suiAttached, 'attached'),
+      Utils.getPropClass(this.suiInternal, 'internal'),
+      Utils.getPropClass(this.suiDividing, 'dividing'),
+      Utils.getPropClass(this.suiAttached, 'attached'),
       this.suiCloseness,
       this.suiSize,
       'rail'
     ].join(' ');
-  }
-
-  getPropClass(state: boolean, className: string): string {
-    if (!state) {
-      return '';
-    }
-
-    return className;
   }
 }
