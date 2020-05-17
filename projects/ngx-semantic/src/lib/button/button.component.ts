@@ -11,7 +11,6 @@ export type SuiSocialButtonStyle = 'facebook' | 'twitter' | 'google' | 'plus' | 
   `,
   host: {
     '[class.ui]': `true`,
-    '[class.button]': `true`,
     '[class.basic]': `suiBasic`,
     '[class.labeled]': `suiLabeled`,
     '[class.inverted]': `suiInverted`,
@@ -71,6 +70,9 @@ export type SuiSocialButtonStyle = 'facebook' | 'twitter' | 'google' | 'plus' | 
     '[class.linkedin]': `suiSocial == 'linkedin'`,
     '[class.instagram]': `suiSocial == 'instagram'`,
     '[class.youtube]': `suiSocial == 'youtube'`,
+
+    // close this out
+    '[class.button]': `true`
   }
 })
 export class SuiButtonComponent {
