@@ -11,9 +11,6 @@ export class SuiFlagComponent {
 
   @HostBinding('class')
   get classes(): string {
-    return [this.suiCountry, 'flag'].join((' '));
-  }
-
-  constructor() {
+    return [this.suiCountry, 'flag'].join(' ');
   }
 }

@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiHorizontalPosition, SuiLocation, SuiSize} from '../common';
+import {SuiHorizontalPosition, SuiSize} from '../common';
 
 @Component({
   selector: '[sui-input]',
@@ -12,7 +12,6 @@ import {SuiHorizontalPosition, SuiLocation, SuiSize} from '../common';
   `
 })
 export class SuiInputComponent {
-  @Input() suiLocation: SuiLocation = null;
   @Input() suiSize: SuiSize = null;
   @Input() suiAction: SuiHorizontalPosition = null;
   @Input() suiLabeled: SuiHorizontalPosition = null;
