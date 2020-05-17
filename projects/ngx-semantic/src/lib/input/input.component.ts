@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiHorizontalPosition, SuiSize} from '../common';
+import {SuiHorizontalPosition, SuiSize, Utils} from '../common';
 
 @Component({
   selector: '[sui-input]',
@@ -34,14 +34,14 @@ export class SuiInputComponent {
       this.getAction(),
       this.getLabeled(),
       this.suiSize,
-      this.getPropClass(this.suiInverted, 'inverted'),
-      this.getPropClass(this.suiFluid, 'fluid'),
-      this.getPropClass(this.suiFocus, 'focus'),
-      this.getPropClass(this.suiIcon, 'icon'),
-      this.getPropClass(this.suiTransparent, 'transparent'),
-      this.getPropClass(this.suiLoading, 'loading'),
-      this.getPropClass(this.suiDisabled, 'disabled'),
-      this.getPropClass(this.suiError, 'error'),
+      Utils.getPropClass(this.suiInverted, 'inverted'),
+      Utils.getPropClass(this.suiFluid, 'fluid'),
+      Utils.getPropClass(this.suiFocus, 'focus'),
+      Utils.getPropClass(this.suiIcon, 'icon'),
+      Utils.getPropClass(this.suiTransparent, 'transparent'),
+      Utils.getPropClass(this.suiLoading, 'loading'),
+      Utils.getPropClass(this.suiDisabled, 'disabled'),
+      Utils.getPropClass(this.suiError, 'error'),
       'input'
     ].join(' ');
   }
@@ -78,13 +78,5 @@ export class SuiInputComponent {
 
       return classKey;
     }
-  }
-
-  getPropClass(state: boolean, className: string): string {
-    if (!state) {
-      return '';
-    }
-
-    return className;
   }
 }
