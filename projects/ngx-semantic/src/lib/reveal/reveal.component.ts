@@ -2,7 +2,7 @@
  * Created by bolor on 5/17/2020
  */
 
-import {Component, Input, TemplateRef} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {SuiSize} from '../common';
 
 export type SuiMoveDirection = 'left' | 'right' | 'up' | 'down' | null;
@@ -11,12 +11,7 @@ export type SuiRotateDirection = 'left' | 'right' | null;
 @Component({
   selector: '[sui-reveal]',
   template: `
-    <div *ngIf="suiVisibleContent" class="visible content">
-      <ng-container>{{suiVisibleContent}}</ng-container>
-    </div>
-    <div *ngIf="suiHiddenContent" class="hidden content">
-      <ng-container>{{suiHiddenContent}}</ng-container>
-    </div>
+    <ng-content></ng-content>
   `,
   host: {
     '[class.ui]': `true`,
@@ -53,8 +48,6 @@ export type SuiRotateDirection = 'left' | 'right' | null;
   }
 })
 export class SuiRevealComponent {
-  @Input() suiVisibleContent?: string | TemplateRef<void>;
-  @Input() suiHiddenContent?: string | TemplateRef<void>;
   @Input() suiMove: SuiMoveDirection = null;
   @Input() suiRotate: SuiRotateDirection = null;
   @Input() suiSize: SuiSize = null;
