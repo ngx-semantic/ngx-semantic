@@ -3,4 +3,5 @@
  */
 
 export * from './reveal.component';
+export * from './reveal-content.component';
 export * from './reveal.module';
