@@ -8,7 +8,8 @@ import {SuiDirection} from '../common';
   `,
   host: {
     '[class.ui]': `true`,
-    '[class.divider]': `true`,
+
+    // various states
     '[class.header]': `suiHeader`,
     '[class.inverted]': `suiInverted`,
     '[class.fitted]': `suiFitted`,
@@ -18,7 +19,10 @@ import {SuiDirection} from '../common';
 
     // direction
     '[class.vertical]': `suiDirection === 'vertical'`,
-    '[class.horizontal]': `suiDirection === 'horizontal'`
+    '[class.horizontal]': `suiDirection === 'horizontal'`,
+
+    // close this out
+    '[class.divider]': `true`,
   }
 })
 export class SuiDividerComponent {
