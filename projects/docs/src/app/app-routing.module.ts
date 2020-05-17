@@ -13,6 +13,7 @@ import {ListsComponent} from './pages/elements/lists/lists.component';
 import {LoadersComponent} from './pages/elements/loaders/loaders.component';
 import {PlaceholdersComponent} from './pages/elements/placeholders/placeholders.component';
 import {RailsComponent} from './pages/elements/rails/rails.component';
+import {RevealsComponent} from './pages/elements/reveals/reveals.component';
 
 const routes: Routes = [
   {
@@ -67,6 +68,10 @@ const routes: Routes = [
       {
         path: 'rails',
         component: RailsComponent
+      },
+      {
+        path: 'reveals',
+        component: RevealsComponent
       }
     ]
   },
