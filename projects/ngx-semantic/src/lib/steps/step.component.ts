@@ -1,22 +1,23 @@
 import {Component, HostBinding, Input} from '@angular/core';
 
 @Component({
-  selector: 'div[sui-steps]',
+  selector: '[sui-step]',
   template: `
     <ng-content></ng-content>
   `
 })
-export class SuiStepsComponent {
-  @Input() suiOrdered = false;
-  @Input() suiVertical = false;
+export class SuiStepComponent {
+  @Input() suiActive = false;
+  @Input() suiCompleted = false;
+  @Input() suiDisabled = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
-      'ui',
-      this.getPropClass(this.suiOrdered, 'ordered'),
-      this.getPropClass(this.suiVertical, 'vertical'),
-      'steps',
+      'step',
+      this.getPropClass(this.suiActive, 'active'),
+      this.getPropClass(this.suiCompleted, 'completed'),
+      this.getPropClass(this.suiDisabled, 'disabled'),
     ].join(' ');
   }
 
