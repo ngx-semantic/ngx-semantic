@@ -3,12 +3,14 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiColour,  Utils} from '../common';
+import {SuiColour, Utils} from '../common';
 
 export type SuiSegmentStacking = 'stacked' | 'tall stacked' | null;
 export type SuiSegmentPadding = 'padded' | 'very padded' | null;
 export type SuiSegmentAttachment = 'top attached' | 'attached' | 'bottom attached' | null;
 export type SuiSegmentEmphasis = 'secondary' | 'tertiary' | null;
+export type SuiSegmentTextAlignment = 'left aligned' | 'center aligned' | 'right aligned' | null;
+export type SuiSegmentFloat = 'left floated' | 'right floated' | null;
 
 @Component({
   selector: '[sui-segment]',
@@ -22,6 +24,8 @@ export class SuiSegmentComponent {
   @Input() suiStacked: SuiSegmentStacking = null;
   @Input() suiPadding: SuiSegmentPadding = null;
   @Input() suiEmphasis: SuiSegmentEmphasis = null;
+  @Input() suiTextAlignment: SuiSegmentTextAlignment = null;
+  @Input() suiFloated: SuiSegmentFloat = null;
   @Input() suiPlaceholder = false;
   @Input() suiRaised = false;
   @Input() suiPiled = false;
@@ -32,6 +36,7 @@ export class SuiSegmentComponent {
   @Input() suiCompact = false;
   @Input() suiCircular = false;
   @Input() suiBasic = false;
+  @Input() suiClearing = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -41,6 +46,8 @@ export class SuiSegmentComponent {
       this.suiStacked,
       this.suiAttached,
       this.suiEmphasis,
+      this.suiTextAlignment,
+      this.suiFloated,
       Utils.getPropClass(this.suiPlaceholder, 'placeholder'),
       Utils.getPropClass(this.suiRaised, 'raised'),
       Utils.getPropClass(this.suiPiled, 'piled'),
@@ -50,6 +57,7 @@ export class SuiSegmentComponent {
       Utils.getPropClass(this.suiCompact, 'compact'),
       Utils.getPropClass(this.suiCircular, 'circular'),
       Utils.getPropClass(this.suiBasic, 'basic'),
+      Utils.getPropClass(this.suiClearing, 'clearing'),
       Utils.getPropClass(this.suiVertical, 'vertical'),
       'segment'
     ].join(' ');
