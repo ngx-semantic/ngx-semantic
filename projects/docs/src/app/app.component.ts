@@ -46,6 +46,9 @@ import {Component} from '@angular/core';
           <a class="item" routerLink="elements/reveals" routerLinkActive="active">
             Reveals
           </a>
+          <a class="item" routerLink="elements/segments" routerLinkActive="active">
+            Segments
+          </a>
         </div>
       </div>
     </div>
