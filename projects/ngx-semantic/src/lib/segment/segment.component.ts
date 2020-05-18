@@ -45,6 +45,7 @@ export class SuiSegmentComponent {
       this.suiPadding,
       this.suiStacked,
       this.suiAttached,
+      this.suiColour,
       this.suiEmphasis,
       this.suiTextAlignment,
       this.suiFloated,
