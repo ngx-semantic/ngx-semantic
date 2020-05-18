@@ -12,7 +12,6 @@ import {SuiColour, SuiLocation, SuiDirection} from '../common';
   `,
   host: {
     '[class.ui]': `true`,
-    '[class.buttons]': `true`,
     '[class.icon]': `suiIcon`,
     '[class.labeled]': `suiLabeled`,
     '[class.basic]': `suiBasic`,
@@ -37,6 +36,9 @@ import {SuiColour, SuiLocation, SuiDirection} from '../common';
     '[class.brown]': `suiColour == 'brown'`,
     '[class.grey]': `suiColour == 'grey'`,
     '[class.black]': `suiColour == 'black'`,
+
+    // close it out
+    '[class.buttons]': `true`
   }
 })
 export class SuiButtonGroupComponent {

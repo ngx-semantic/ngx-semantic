@@ -10,7 +10,6 @@ export type SuiHeaderAlignment = 'left' | 'right' | 'center' | 'justified' | nul
   `,
   host: {
     '[class.ui]': `true`,
-    '[class.header]': `true`,
     '[class.icon]': `suiIcon`,
     '[class.sub]': `suiSubHeader`,
     '[class.dividing]': `suiDividing`,
@@ -54,7 +53,10 @@ export type SuiHeaderAlignment = 'left' | 'right' | 'center' | 'justified' | nul
     '[class.pink]': `suiColour == 'pink'`,
     '[class.brown]': `suiColour == 'brown'`,
     '[class.grey]': `suiColour == 'grey'`,
-    '[class.black]': `suiColour == 'black'`
+    '[class.black]': `suiColour == 'black'`,
+
+    // close this out
+    '[class.header]': `true`
   }
 })
 export class SuiHeaderComponent {

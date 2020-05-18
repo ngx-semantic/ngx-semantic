@@ -33,7 +33,8 @@ describe('SuiPlaceholderComponent', () => {
   });
 
   it('should apply class name', () => {
-    expect(placeholderElement.className).toBe('ui placeholder');
+    expect(placeholderElement.classList).toContain('ui');
+    expect(placeholderElement.classList).toContain('placeholder');
   });
 
   it('should apply class name by fluid', () => {

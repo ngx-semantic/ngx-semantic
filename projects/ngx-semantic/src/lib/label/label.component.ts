@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiColour, SuiHorizontalAlignment, SuiLocation, SuiSize} from '../common';
+import {SuiColour, SuiHorizontalAlignment, SuiLocation, SuiSize, Utils} from '../common';
 
 export type SuiLabelPointing = 'above' | 'below' | 'left' | 'right' | null;
 
@@ -37,32 +37,16 @@ export class SuiLabelComponent {
       this.suiColour,
       this.suiSize,
       this.getCorner(),
-      this.getImage(),
-      this.getBasic(),
-      this.getTag(),
+      Utils.getPropClass(this.suiImage, 'image'),
+      Utils.getPropClass(this.suiBasic, 'basic'),
+      Utils.getPropClass(this.suiTag, 'tag'),
       this.getRibbon(),
       this.getAttached(),
-      this.getHorizontal(),
-      this.getEmpty(),
-      this.getCircular(),
-      'label']
-      .join((' '));
-  }
-
-  getImage(): string {
-    if (!this.suiImage) {
-      return '';
-    }
-
-    return 'image';
-  }
-
-  getBasic(): string {
-    if (!this.suiBasic) {
-      return '';
-    }
-
-    return 'basic';
+      Utils.getPropClass(this.suiHorizontal, 'horizontal'),
+      Utils.getPropClass(this.suiEmpty, 'empty'),
+      Utils.getPropClass(this.suiCircular, 'circular'),
+      'label'
+    ].join((' '));
   }
 
   getPointing(): string {
@@ -91,14 +75,6 @@ export class SuiLabelComponent {
     return '';
   }
 
-  getTag(): string {
-    if (!this.suiTag) {
-      return '';
-    }
-
-    return 'tag';
-  }
-
   getRibbon(): string {
     const classKey = 'ribbon';
 
@@ -123,35 +99,11 @@ export class SuiLabelComponent {
     return this.suiAttached + ' ' + classKey;
   }
 
-  getHorizontal(): string {
-    if (!this.suiHorizontal) {
-      return '';
-    }
-
-    return 'horizontal';
-  }
-
   getFloating(): string {
     if (!this.suiFloating) {
       return '';
     }
 
     return 'floating';
-  }
-
-  getCircular(): string {
-    if (!this.suiCircular) {
-      return '';
-    }
-
-    return 'circular';
-  }
-
-  getEmpty(): string {
-    if (!this.suiEmpty) {
-      return '';
-    }
-
-    return 'empty';
   }
 }

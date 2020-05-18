@@ -6,8 +6,6 @@ import {Component, Input} from '@angular/core';
 import {SuiLocation, SuiSize} from '../common';
 
 export type SuiImageAlignment = 'top' | 'bottom' | 'middle' | null;
-export type SuiImageSpacing = 'left' | 'right' | 'both' | null;
-export type SuiImageFloat = 'left' | 'right' | null;
 
 @Component({
   selector: '[sui-image]',

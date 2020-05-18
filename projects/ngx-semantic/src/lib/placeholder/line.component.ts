@@ -17,9 +17,6 @@ export class SuiPlaceholderLineComponent {
 
   @HostBinding('class')
   get classes(): string {
-    return [
-      this.suiLength,
-      'line'
-    ].join(' ');
+    return [this.suiLength, 'line'].join(' ');
   }
 }
