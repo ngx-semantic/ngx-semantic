@@ -2,17 +2,14 @@
  * Created by bolor on 5/17/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 
 export type SuiRevealContentVisibility = 'visible' | 'hidden';
 
-@Component({
-  selector: '[sui-reveal-content]',
-  template: `
-    <ng-content></ng-content>
-  `
+@Directive({
+  selector: '[sui-reveal-content]'
 })
-export class SuiRevealContentComponent {
+export class SuiRevealContentDirective {
   @Input() suiVisible: SuiRevealContentVisibility = 'visible';
 
   @HostBinding('class')
