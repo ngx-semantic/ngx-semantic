@@ -1,10 +1,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, Input} from '@angular/core';
-import {SuiDirection} from '../common';
 import {CommonModule} from '@angular/common';
-import {SuiDividerComponent} from './divider.component';
+import {SuiDividerComponent, SuiDividerDirection} from './divider.component';
 import {By} from '@angular/platform-browser';
-import {SuiButtonComponent} from '../button';
 
 describe('SuiDividerComponent', () => {
   let component: TestDividerComponent;
@@ -31,7 +29,8 @@ describe('SuiDividerComponent', () => {
   });
 
   it('should apply class name', () => {
-    expect(dividerElement.className).toBe('ui divider');
+    expect(dividerElement.className).toContain('ui');
+    expect(dividerElement.className).toContain('divider');
   });
 
   it('should apply class name by direction', () => {
@@ -88,7 +87,7 @@ describe('SuiDividerComponent', () => {
   `
 })
 export class TestDividerComponent {
-  @Input() suiDirection: SuiDirection = null;
+  @Input() suiDirection: SuiDividerDirection = null;
   @Input() suiHeader = false;
   @Input() suiInverted = false;
   @Input() suiFitted = false;

@@ -1,8 +1,16 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {SuiButtonComponent} from './button.component';
+import {
+  SuiButtonAnimation, SuiButtonAttachment,
+  SuiButtonComponent,
+  SuiButtonEmphasis,
+  SuiButtonFloating,
+  SuiButtonLabeling,
+  SuiSocialButtonStyle
+} from './button.component';
 import {Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
+import {SuiColour, SuiSize} from '../common';
 
 describe('SuiButtonComponent', () => {
   let component: TestButtonComponent;
@@ -29,20 +37,21 @@ describe('SuiButtonComponent', () => {
   });
 
   it('should apply class name', () => {
-    expect(buttonElement.className).toBe('ui button');
+    expect(buttonElement.className).toContain('ui');
+    expect(buttonElement.className).toContain('button');
   });
 
-  it('should apply class name by style', () => {
-    component.suiStyle = 'primary';
+  it('should apply class name by emphasis', () => {
+    component.suiEmphasis = 'primary';
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('primary');
-    component.suiStyle = 'secondary';
+    component.suiEmphasis = 'secondary';
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('secondary');
-    component.suiStyle = 'positive';
+    component.suiEmphasis = 'positive';
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('positive');
-    component.suiStyle = 'negative';
+    component.suiEmphasis = 'negative';
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('negative');
   });
@@ -74,19 +83,37 @@ describe('SuiButtonComponent', () => {
     expect(buttonElement.classList).toContain('massive');
   });
 
-  it('should apply class name by location', () => {
-    component.suiLocation = 'left';
+  it('should apply class name by labeling', () => {
+    component.suiLabeled = 'left labeled';
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('left');
-    component.suiLocation = 'right';
+    expect(buttonElement.classList).toContain('labeled');
+    component.suiLabeled = 'right labeled';
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('right');
-    component.suiLocation = 'top';
+    expect(buttonElement.classList).toContain('labeled');
+    component.suiLabeled = 'labeled';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('labeled');
+  });
+
+  it('should apply class name by attachment', () => {
+    component.suiAttached = 'left attached';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('left');
+    expect(buttonElement.classList).toContain('attached');
+    component.suiAttached = 'right attached';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('right');
+    expect(buttonElement.classList).toContain('attached');
+    component.suiAttached = 'top attached';
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('top');
-    component.suiLocation = 'bottom';
+    expect(buttonElement.classList).toContain('attached');
+    component.suiAttached = 'bottom attached';
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('bottom');
+    expect(buttonElement.classList).toContain('attached');
   });
 
   it('should apply class name by state', () => {
@@ -117,9 +144,6 @@ describe('SuiButtonComponent', () => {
     component.suiCircular = true;
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('circular');
-    component.suiAttached = true;
-    fixture.detectChanges();
-    expect(buttonElement.classList).toContain('attached');
   });
 
   it('should apply class name by social style', () => {
@@ -188,8 +212,7 @@ describe('SuiButtonComponent', () => {
     <button
       sui-button
       [suiSize]="suiSize"
-      [suiStyle]="suiStyle"
-      [suiLocation]="suiLocation"
+      [suiEmphasis]="suiEmphasis"
       [suiSocial]="suiSocial"
       [suiColour]="suiColour"
       [suiIcon]="suiIcon"
@@ -210,22 +233,22 @@ describe('SuiButtonComponent', () => {
   `
 })
 export class TestButtonComponent {
-  @Input() suiStyle: any = null;
-  @Input() suiSize: any = null;
-  @Input() suiLocation: any = null;
-  @Input() suiSocial: any = null;
-  @Input() suiColour: any = null;
+  @Input() suiEmphasis: SuiButtonEmphasis = null;
+  @Input() suiAnimated: SuiButtonAnimation = null;
+  @Input() suiSize: SuiSize = null;
+  @Input() suiLabeled: SuiButtonLabeling = null;
+  @Input() suiColour: SuiColour = null;
+  @Input() suiSocial: SuiSocialButtonStyle = null;
+  @Input() suiFloated: SuiButtonFloating = null;
+  @Input() suiAttached: SuiButtonAttachment = null;
   @Input() suiIcon = false;
   @Input() suiBasic = false;
   @Input() suiInverted = false;
-  @Input() suiAnimated = false;
-  @Input() suiLabeled = false;
-  @Input() suiActive = false;
-  @Input() suiDisabled = false;
-  @Input() suiLoading = false;
   @Input() suiCompact = false;
   @Input() suiToggle = false;
   @Input() suiFluid = false;
   @Input() suiCircular = false;
-  @Input() suiAttached = false;
+  @Input() suiActive = false;
+  @Input() suiDisabled = false;
+  @Input() suiLoading = false;
 }

@@ -1,32 +1,16 @@
-import {Component, Input} from '@angular/core';
-import {SuiDirection} from '../common';
+import {Component, HostBinding, Input} from '@angular/core';
+import {Utils} from '../common';
+
+export type SuiDividerDirection = 'vertical' | 'horizontal' | null;
 
 @Component({
   selector: '[sui-divider]',
   template: `
     <ng-content></ng-content>
-  `,
-  host: {
-    '[class.ui]': `true`,
-
-    // various states
-    '[class.header]': `suiHeader`,
-    '[class.inverted]': `suiInverted`,
-    '[class.fitted]': `suiFitted`,
-    '[class.hidden]': `suiHidden`,
-    '[class.section]': `suiSection`,
-    '[class.clearing]': `suiClearing`,
-
-    // direction
-    '[class.vertical]': `suiDirection === 'vertical'`,
-    '[class.horizontal]': `suiDirection === 'horizontal'`,
-
-    // close this out
-    '[class.divider]': `true`,
-  }
+  `
 })
 export class SuiDividerComponent {
-  @Input() suiDirection: SuiDirection = null;
+  @Input() suiDirection: SuiDividerDirection = null;
   @Input() suiHeader = false;
   @Input() suiInverted = false;
   @Input() suiFitted = false;
@@ -34,6 +18,18 @@ export class SuiDividerComponent {
   @Input() suiSection = false;
   @Input() suiClearing = false;
 
-  constructor() {
+  @HostBinding('class')
+  get classes(): string {
+    return [
+      'ui',
+      Utils.getPropClass(this.suiInverted, 'inverted'),
+      Utils.getPropClass(this.suiHeader, 'header'),
+      Utils.getPropClass(this.suiFitted, 'fitted'),
+      Utils.getPropClass(this.suiHidden, 'hidden'),
+      Utils.getPropClass(this.suiSection, 'section'),
+      Utils.getPropClass(this.suiClearing, 'clearing'),
+      this.suiDirection,
+      'divider'
+    ].join(' ');
   }
 }

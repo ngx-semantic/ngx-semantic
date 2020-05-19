@@ -1,11 +1,11 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, Input} from '@angular/core';
-import {SuiColour, SuiLocation, SuiSize} from '../common';
+import {SuiColour, SuiSize} from '../common';
 import {CommonModule} from '@angular/common';
-import {SuiHeaderAlignment, SuiHeaderComponent} from './header.component';
+import {SuiHeaderAlignment, SuiHeaderAttachment, SuiHeaderComponent, SuiHeaderFloating} from './header.component';
 import {By} from '@angular/platform-browser';
 
-describe('SuiDividerComponent', () => {
+describe('SuiHeaderComponent', () => {
   let component: TestHeaderComponent;
   let fixture: ComponentFixture<TestHeaderComponent>;
   let headerElement: HTMLDivElement;
@@ -30,7 +30,8 @@ describe('SuiDividerComponent', () => {
   });
 
   it('should apply class name', () => {
-    expect(headerElement.className).toBe('ui header');
+    expect(headerElement.className).toContain('ui');
+    expect(headerElement.className).toContain('header');
   });
 
   it('should apply class name if icon', () => {
@@ -64,17 +65,25 @@ describe('SuiDividerComponent', () => {
   });
 
   it('should apply class name if floated', () => {
-    component.suiFloated = true;
+    component.suiFloated = 'left floated';
     fixture.detectChanges();
+    expect(headerElement.classList).toContain('left');
+    expect(headerElement.classList).toContain('floated');
+    component.suiFloated = 'right floated';
+    fixture.detectChanges();
+    expect(headerElement.classList).toContain('right');
     expect(headerElement.classList).toContain('floated');
   });
 
   it('should apply class name if attached', () => {
-    component.suiAttached = true;
-    component.suiLocation = 'top';
+    component.suiAttached = 'top attached';
     fixture.detectChanges();
     expect(headerElement.classList).toContain('attached');
     expect(headerElement.classList).toContain('top');
+    component.suiAttached = 'bottom attached';
+    fixture.detectChanges();
+    expect(headerElement.classList).toContain('attached');
+    expect(headerElement.classList).toContain('bottom');
   });
 
   it('should apply class name if inverted', () => {
@@ -84,15 +93,15 @@ describe('SuiDividerComponent', () => {
   });
 
   it('should apply class name by alignment', () => {
-    component.suiAlignment = 'center';
+    component.suiAlignment = 'center aligned';
     fixture.detectChanges();
     expect(headerElement.classList).toContain('center');
     expect(headerElement.classList).toContain('aligned');
-    component.suiAlignment = 'left';
+    component.suiAlignment = 'left aligned';
     fixture.detectChanges();
     expect(headerElement.classList).toContain('left');
     expect(headerElement.classList).toContain('aligned');
-    component.suiAlignment = 'right';
+    component.suiAlignment = 'right aligned';
     fixture.detectChanges();
     expect(headerElement.classList).toContain('right');
     expect(headerElement.classList).toContain('aligned');
@@ -171,7 +180,6 @@ describe('SuiDividerComponent', () => {
     <div
       sui-header
       [suiSize]="suiSize"
-      [suiLocation]="suiLocation"
       [suiAlignment]="suiAlignment"
       [suiColour]="suiColour"
       [suiIcon]="suiIcon"
@@ -187,16 +195,15 @@ describe('SuiDividerComponent', () => {
 })
 export class TestHeaderComponent {
   @Input() suiSize: SuiSize = null;
-  @Input() suiLocation: SuiLocation = null;
   @Input() suiAlignment: SuiHeaderAlignment = null;
   @Input() suiColour: SuiColour = null;
+  @Input() suiFloated: SuiHeaderFloating = null;
+  @Input() suiAttached: SuiHeaderAttachment = null;
   @Input() suiIcon = false;
   @Input() suiSubHeader = false;
   @Input() suiDisabled = false;
   @Input() suiDividing = false;
   @Input() suiBlock = false;
-  @Input() suiAttached = false;
-  @Input() suiFloated = false;
   @Input() suiInverted = false;
 }
 
