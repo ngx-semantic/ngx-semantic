@@ -3,7 +3,10 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiHorizontalPosition, SuiSize, Utils} from '../common';
+import {SuiSize, Utils} from '../common';
+
+export type SuiInputLabeling = 'labeled' | 'right labeled' | 'left corner labeled' | 'corner labeled' | null;
+export type SuiInputActions = 'action' | 'left action' | 'right action' | null;
 
 @Component({
   selector: '[sui-input]',
@@ -13,11 +16,10 @@ import {SuiHorizontalPosition, SuiSize, Utils} from '../common';
 })
 export class SuiInputComponent {
   @Input() suiSize: SuiSize = null;
-  @Input() suiAction: SuiHorizontalPosition = null;
-  @Input() suiLabeled: SuiHorizontalPosition = null;
+  @Input() suiAction: SuiInputActions = null;
+  @Input() suiLabeled: SuiInputLabeling = null;
   @Input() suiFocus = false;
   @Input() suiIcon = false;
-  @Input() suiCorner = false;
   @Input() suiTransparent = false;
   @Input() suiInverted = false;
   @Input() suiFluid = false;
@@ -31,8 +33,8 @@ export class SuiInputComponent {
   get classes(): string {
     return [
       'ui',
-      this.getAction(),
-      this.getLabeled(),
+      this.suiAction,
+      this.suiLabeled,
       this.suiSize,
       Utils.getPropClass(this.suiInverted, 'inverted'),
       Utils.getPropClass(this.suiFluid, 'fluid'),
@@ -44,39 +46,5 @@ export class SuiInputComponent {
       Utils.getPropClass(this.suiError, 'error'),
       'input'
     ].join(' ');
-  }
-
-  getAction(): string {
-    const classKey = 'action';
-
-    if (!this.suiAction) {
-      return '';
-    }
-
-    if (this.suiAction === 'left') {
-      return 'left ' + classKey;
-    }
-
-    return classKey;
-  }
-
-  getLabeled(): string {
-    let classKey = 'labeled';
-
-    if (this.suiCorner) {
-      classKey = 'corner ' + classKey;
-
-      if (this.suiLabeled === 'left') {
-        return 'left ' + classKey;
-      }
-
-      return classKey;
-    } else {
-      if (this.suiAction === 'right') {
-        return 'right ' + classKey;
-      }
-
-      return classKey;
-    }
   }
 }
