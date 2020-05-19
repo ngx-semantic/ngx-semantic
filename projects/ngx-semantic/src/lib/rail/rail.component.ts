@@ -32,6 +32,6 @@ export class SuiRailComponent {
       this.suiCloseness,
       this.suiSize,
       'rail'
-    ].join(' ');
+    ].joinWithWhitespaceCleanup();
   }
 }

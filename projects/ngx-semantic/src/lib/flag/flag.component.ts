@@ -11,6 +11,6 @@ export class SuiFlagComponent {
 
   @HostBinding('class')
   get classes(): string {
-    return [this.suiCountry, 'flag'].join(' ');
+    return [this.suiCountry, 'flag'].joinWithWhitespaceCleanup();
   }
 }

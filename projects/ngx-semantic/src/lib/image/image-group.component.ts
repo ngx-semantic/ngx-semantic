@@ -20,6 +20,6 @@ export class SuiImageGroupComponent {
       'ui',
       this.suiSize,
       'images'
-    ].join(' ');
+    ].joinWithWhitespaceCleanup();
   }
 }

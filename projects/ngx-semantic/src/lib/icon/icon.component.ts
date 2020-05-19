@@ -11,6 +11,6 @@ export class SuiIconComponent {
 
   @HostBinding('class')
   get classes(): string {
-    return [this.suiIconType, 'icon'].join(' ');
+    return [this.suiIconType, 'icon'].joinWithWhitespaceCleanup();
   }
 }

@@ -39,7 +39,7 @@ export class SuiRevealComponent {
       this.getMove(),
       'reveal',
       Utils.getPropClass(this.suiImage, 'image')
-    ].join(' ');
+    ].joinWithWhitespaceCleanup();
   }
 
   getRotate(): string {

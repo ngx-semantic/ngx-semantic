@@ -44,7 +44,7 @@ export class SuiListComponent {
       this.getAnimated(),
       this.getCelled(),
       'list'
-    ].join(' ');
+    ].joinWithWhitespaceCleanup();
   }
 
   getDivided(): string {

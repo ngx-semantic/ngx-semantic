@@ -17,6 +17,6 @@ export class SuiRevealContentComponent {
 
   @HostBinding('class')
   get classes(): string {
-    return [this.suiVisible, 'content'].join(' ');
+    return [this.suiVisible, 'content'].joinWithWhitespaceCleanup();
   }
 }
