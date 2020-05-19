@@ -92,7 +92,7 @@ export class SuiLabelComponent {
   getAttached(): string {
     const classKey = 'attached';
 
-    if (!this.suiPointing) {
+    if (!this.suiAttached) {
       return '';
     }
 
