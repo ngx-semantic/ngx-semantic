@@ -24,6 +24,6 @@ export class SuiPlaceholderComponent {
       Utils.getPropClass(this.suiActive, 'active'),
       Utils.getPropClass(this.suiInverted, 'inverted'),
       'placeholder'
-    ].join(' ');
+    ].joinWithWhitespaceCleanup();
   }
 }
