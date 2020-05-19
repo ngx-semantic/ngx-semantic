@@ -2,51 +2,37 @@
  * Created by bolor on 4/20/2020
  */
 
-import {Component, Input} from '@angular/core';
-import {SuiColour, SuiLocation, SuiDirection} from '../common';
+import {Component, HostBinding, Input} from '@angular/core';
+import {SuiColour, Utils, SuiSize} from '../common';
+
+export type SuiButtonsAttachment = 'top attached' | 'bottom attached' | null;
+export type SuiButtonsIconType = 'icon' | 'labeled icon' | null;
 
 @Component({
   selector: '[sui-button-group]',
   template: `
     <ng-content></ng-content>
-  `,
-  host: {
-    '[class.ui]': `true`,
-    '[class.icon]': `suiIcon`,
-    '[class.labeled]': `suiLabeled`,
-    '[class.basic]': `suiBasic`,
-    '[class.attached]': `suiAttached`,
-
-    // locations
-    '[class.top]': `suiLocation === 'top'`,
-    '[class.bottom]': `suiLocation === 'bottom'`,
-
-    // directions
-    '[class.vertical]': `suiDirection === 'vertical'`,
-
-    // colours
-    '[class.red]': `suiColour == 'red'`,
-    '[class.orange]': `suiColour == 'orange'`,
-    '[class.yellow]': `suiColour == 'yellow'`,
-    '[class.olive]': `suiColour == 'olive'`,
-    '[class.green]': `suiColour == 'green'`,
-    '[class.teal]': `suiColour == 'teal'`,
-    '[class.blue]': `suiColour == 'blue'`,
-    '[class.pink]': `suiColour == 'pink'`,
-    '[class.brown]': `suiColour == 'brown'`,
-    '[class.grey]': `suiColour == 'grey'`,
-    '[class.black]': `suiColour == 'black'`,
-
-    // close it out
-    '[class.buttons]': `true`
-  }
+  `
 })
 export class SuiButtonGroupComponent {
-  @Input() suiLocation: SuiLocation = null;
-  @Input() suiDirection: SuiDirection = null;
+  @Input() suiAttached: SuiButtonsAttachment = null;
+  @Input() suiIcon: SuiButtonsIconType = null;
   @Input() suiColour: SuiColour = null;
-  @Input() suiIcon = false;
-  @Input() suiAttached = false;
-  @Input() suiLabeled = false;
+  @Input() suiSize: SuiSize = null;
   @Input() suiBasic = false;
+  @Input() suiVertical = false;
+
+  @HostBinding('class')
+  get classes(): string {
+    return [
+      'ui',
+      Utils.getPropClass(this.suiBasic, 'basic'),
+      Utils.getPropClass(this.suiVertical, 'vertical'),
+      this.suiColour,
+      this.suiAttached,
+      this.suiIcon,
+      this.suiSize,
+      'buttons'
+    ].join(' ');
+  }
 }

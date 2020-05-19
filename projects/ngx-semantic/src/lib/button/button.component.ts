@@ -1,5 +1,5 @@
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiColour, SuiLocation, SuiSize, Utils} from '../common';
+import {SuiColour, SuiSize, Utils} from '../common';
 
 export type SuiButtonEmphasis = 'primary' | 'secondary' | 'positive' | 'negative' | null;
 export type SuiButtonAnimation = 'animated' | 'animated fade' | 'vertical animated' | null;
@@ -19,7 +19,6 @@ export class SuiButtonComponent {
   @Input() suiAnimated: SuiButtonAnimation = null;
   @Input() suiSize: SuiSize = null;
   @Input() suiLabeled: SuiButtonLabeling = null;
-  @Input() suiLocation: SuiLocation = null;
   @Input() suiColour: SuiColour = null;
   @Input() suiSocial: SuiSocialButtonStyle = null;
   @Input() suiFloated: SuiButtonFloating = null;
