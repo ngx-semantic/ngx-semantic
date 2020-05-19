@@ -1,11 +1,11 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, Input} from '@angular/core';
-import {SuiColour, SuiLocation, SuiSize} from '../common';
+import {SuiColour, SuiSize} from '../common';
 import {CommonModule} from '@angular/common';
 import {SuiHeaderAlignment, SuiHeaderAttachment, SuiHeaderComponent, SuiHeaderFloating} from './header.component';
 import {By} from '@angular/platform-browser';
 
-describe('SuiDividerComponent', () => {
+describe('SuiHeaderComponent', () => {
   let component: TestHeaderComponent;
   let fixture: ComponentFixture<TestHeaderComponent>;
   let headerElement: HTMLDivElement;
@@ -30,7 +30,8 @@ describe('SuiDividerComponent', () => {
   });
 
   it('should apply class name', () => {
-    expect(headerElement.className).toBe('ui header');
+    expect(headerElement.className).toContain('ui');
+    expect(headerElement.className).toContain('header');
   });
 
   it('should apply class name if icon', () => {
@@ -179,7 +180,6 @@ describe('SuiDividerComponent', () => {
     <div
       sui-header
       [suiSize]="suiSize"
-      [suiLocation]="suiLocation"
       [suiAlignment]="suiAlignment"
       [suiColour]="suiColour"
       [suiIcon]="suiIcon"
@@ -195,7 +195,6 @@ describe('SuiDividerComponent', () => {
 })
 export class TestHeaderComponent {
   @Input() suiSize: SuiSize = null;
-  @Input() suiLocation: SuiLocation = null;
   @Input() suiAlignment: SuiHeaderAlignment = null;
   @Input() suiColour: SuiColour = null;
   @Input() suiFloated: SuiHeaderFloating = null;
