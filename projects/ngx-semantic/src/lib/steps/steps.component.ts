@@ -1,4 +1,5 @@
 import {Component, HostBinding, Input} from '@angular/core';
+import {SuiSize} from '../common';
 
 @Component({
   selector: 'div[sui-steps]',
@@ -9,6 +10,7 @@ import {Component, HostBinding, Input} from '@angular/core';
 export class SuiStepsComponent {
   @Input() suiOrdered = false;
   @Input() suiVertical = false;
+  @Input() suiSize: SuiSize = null;
 
   @HostBinding('class')
   get classes(): string {
@@ -16,6 +18,7 @@ export class SuiStepsComponent {
       'ui',
       this.getPropClass(this.suiOrdered, 'ordered'),
       this.getPropClass(this.suiVertical, 'vertical'),
+      this.suiSize,
       'steps',
     ].join(' ');
   }
