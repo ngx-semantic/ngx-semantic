@@ -34,7 +34,7 @@ export class SuiLoaderComponent {
       this.getInline(),
       Utils.getPropClass(this.suiInverted, 'inverted'),
       'loader'
-    ].join(' ');
+    ].joinWithWhitespaceCleanup();
   }
 
   getInline(): string {

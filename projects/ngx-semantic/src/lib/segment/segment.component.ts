@@ -61,6 +61,6 @@ export class SuiSegmentComponent {
       Utils.getPropClass(this.suiClearing, 'clearing'),
       Utils.getPropClass(this.suiVertical, 'vertical'),
       'segment'
-    ].join(' ');
+    ].joinWithWhitespaceCleanup();
   }
 }

@@ -58,6 +58,6 @@ export class SuiButtonComponent {
       this.suiAnimated,
       this.suiEmphasis,
       'button'
-    ].join(' ');
+    ].joinWithWhitespaceCleanup();
   }
 }

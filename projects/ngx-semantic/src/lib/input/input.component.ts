@@ -45,6 +45,6 @@ export class SuiInputComponent {
       Utils.getPropClass(this.suiDisabled, 'disabled'),
       Utils.getPropClass(this.suiError, 'error'),
       'input'
-    ].join(' ');
+    ].joinWithWhitespaceCleanup();
   }
 }

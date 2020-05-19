@@ -40,6 +40,6 @@ export class SuiHeaderComponent {
       Utils.getPropClass(this.suiSubHeader, 'sub'),
       Utils.getPropClass(this.suiIcon, 'icon'),
       'header'
-    ].join(' ');
+    ].joinWithWhitespaceCleanup();
   }
 }

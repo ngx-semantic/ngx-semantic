@@ -30,6 +30,6 @@ export class SuiDividerComponent {
       Utils.getPropClass(this.suiClearing, 'clearing'),
       this.suiDirection,
       'divider'
-    ].join(' ');
+    ].joinWithWhitespaceCleanup();
   }
 }

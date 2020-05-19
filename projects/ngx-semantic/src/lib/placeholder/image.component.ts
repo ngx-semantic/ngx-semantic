@@ -23,6 +23,6 @@ export class SuiPlaceholderImageComponent {
       Utils.getPropClass(this.suiRectangular, 'rectangular'),
       'image',
       Utils.getPropClass(this.suiHeader, 'header')
-    ].join(' ');
+    ].joinWithWhitespaceCleanup();
   }
 }
