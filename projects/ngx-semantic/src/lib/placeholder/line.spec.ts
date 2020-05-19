@@ -6,7 +6,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {Component, Input} from '@angular/core';
-import {SuiPlaceholderLineComponent} from './line.component';
+import {SuiPlaceholderLineDirective} from './line.directive';
 
 describe('SuiPlaceholderLineComponent', () => {
   let component: TestPlaceholderLineComponent;
@@ -16,7 +16,7 @@ describe('SuiPlaceholderLineComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [CommonModule],
-        declarations: [TestPlaceholderLineComponent, SuiPlaceholderLineComponent]
+        declarations: [TestPlaceholderLineComponent, SuiPlaceholderLineDirective]
       })
       .compileComponents();
   }));
@@ -25,7 +25,7 @@ describe('SuiPlaceholderLineComponent', () => {
     fixture = TestBed.createComponent(TestPlaceholderLineComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    lineElement = fixture.debugElement.query(By.directive(SuiPlaceholderLineComponent)).nativeElement;
+    lineElement = fixture.debugElement.query(By.directive(SuiPlaceholderLineDirective)).nativeElement;
   });
 
   it('should create component', () => {

@@ -3,7 +3,7 @@
  */
 
 export * from './paragraph.directive';
-export * from './line.component';
-export * from './image.component';
+export * from './line.directive';
+export * from './image.directive';
 export * from './placeholder.component';
 export * from './placeholder.module';

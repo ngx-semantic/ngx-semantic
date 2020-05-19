@@ -2,16 +2,13 @@
  * Created by bolor on 5/8/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import {Utils} from '../common';
 
-@Component({
-  selector: '[sui-placeholder-image]',
-  template: `
-    <ng-content></ng-content>
-  `
+@Directive({
+  selector: '[sui-placeholder-image]'
 })
-export class SuiPlaceholderImageComponent {
+export class SuiPlaceholderImageDirective {
   @Input() suiSquare = false;
   @Input() suiRectangular = false;
   @Input() suiHeader = false;
