@@ -33,6 +33,6 @@ export class SuiButtonGroupComponent {
       this.suiIcon,
       this.suiSize,
       'buttons'
-    ].join(' ');
+    ].joinWithWhitespaceCleanup();
   }
 }
