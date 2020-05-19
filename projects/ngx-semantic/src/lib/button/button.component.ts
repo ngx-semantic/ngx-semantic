@@ -48,6 +48,7 @@ export class SuiButtonComponent {
       Utils.getPropClass(this.suiToggle, 'toggle'),
       Utils.getPropClass(this.suiFluid, 'fluid'),
       Utils.getPropClass(this.suiCircular, 'circular'),
+      this.suiSize,
       this.suiColour,
       this.suiSocial,
       this.suiAttached,
