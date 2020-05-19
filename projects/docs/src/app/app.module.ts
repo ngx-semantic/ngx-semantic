@@ -41,7 +41,6 @@ import { SegmentsComponent } from './pages/elements/segments/segments.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxSemanticModule,
     NgxSemanticModule
   ],
   providers: [],

@@ -6,7 +6,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {Component, Input} from '@angular/core';
-import {SuiPlaceholderImageComponent} from './image.component';
+import {SuiPlaceholderImageDirective} from './image.directive';
 
 describe('SuiPlaceholderImageComponent', () => {
   let component: TestPlaceholderImageComponent;
@@ -16,7 +16,7 @@ describe('SuiPlaceholderImageComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [CommonModule],
-        declarations: [TestPlaceholderImageComponent, SuiPlaceholderImageComponent]
+        declarations: [TestPlaceholderImageComponent, SuiPlaceholderImageDirective]
       })
       .compileComponents();
   }));
@@ -25,7 +25,7 @@ describe('SuiPlaceholderImageComponent', () => {
     fixture = TestBed.createComponent(TestPlaceholderImageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    imageElement = fixture.debugElement.query(By.directive(SuiPlaceholderImageComponent)).nativeElement;
+    imageElement = fixture.debugElement.query(By.directive(SuiPlaceholderImageDirective)).nativeElement;
   });
 
   it('should create component', () => {

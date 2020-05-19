@@ -1,25 +1,29 @@
 <div class="main ui container">
   <h2 class="ui dividing header">Types</h2>
   <div class="example">
-    <h4 class="ui header">Divider</h4>
+    <h4 class="ui header">Dividers</h4>
     <p>A standard divider</p>
     <div sui-divider></div>
   </div>
 
   <div class="example">
-    <div class="ui segment">
+    <div sui-segment>
       <div class="ui two column very relaxed grid">
         <div class="column">
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <div sui-placeholder>
+            <p sui-placeholder-line></p>
+            <p sui-placeholder-line></p>
+            <p sui-placeholder-line></p>
+            <p sui-placeholder-line></p>
+          </div>
         </div>
         <div class="column">
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <div sui-placeholder>
+            <p sui-placeholder-line></p>
+            <p sui-placeholder-line></p>
+            <p sui-placeholder-line></p>
+            <p sui-placeholder-line></p>
+          </div>
         </div>
       </div>
       <div sui-divider
@@ -30,11 +34,11 @@
   </div>
 
   <div class="example">
-    <div class="ui center aligned basic segment">
-      <div class="ui left icon action input">
-        <i class="search icon"></i>
+    <div sui-segment suiTextAlignment="center aligned" suiBasic="true">
+      <div sui-input suiAction="left action" suiIcon="true">
+        <i sui-icon suiIconType="search"></i>
         <input type="text" placeholder="Order #">
-        <div class="ui blue submit button">Search</div>
+        <div sui-button suiColour="blue">Search</div>
       </div>
       <div sui-divider
            suiDirection="horizontal">

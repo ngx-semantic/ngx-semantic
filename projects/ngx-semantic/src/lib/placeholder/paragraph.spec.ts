@@ -6,7 +6,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {Component} from '@angular/core';
-import {SuiPlaceholderParagraphComponent} from './paragraph.component';
+import {SuiPlaceholderParagraphDirective} from './paragraph.directive';
 
 describe('SuiPlaceholderParagraphComponent', () => {
   let component: TestPlaceholderParagraphComponent;
@@ -16,7 +16,7 @@ describe('SuiPlaceholderParagraphComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [CommonModule],
-        declarations: [TestPlaceholderParagraphComponent, SuiPlaceholderParagraphComponent]
+        declarations: [TestPlaceholderParagraphComponent, SuiPlaceholderParagraphDirective]
       })
       .compileComponents();
   }));
@@ -25,7 +25,7 @@ describe('SuiPlaceholderParagraphComponent', () => {
     fixture = TestBed.createComponent(TestPlaceholderParagraphComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    paragraphElement = fixture.debugElement.query(By.directive(SuiPlaceholderParagraphComponent)).nativeElement;
+    paragraphElement = fixture.debugElement.query(By.directive(SuiPlaceholderParagraphDirective)).nativeElement;
   });
 
   it('should create component', () => {

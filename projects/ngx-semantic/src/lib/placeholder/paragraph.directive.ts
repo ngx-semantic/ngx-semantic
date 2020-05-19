@@ -2,15 +2,13 @@
  * Created by bolor on 5/8/2020
  */
 
-import {Component, HostBinding} from '@angular/core';
+import {Directive, HostBinding} from '@angular/core';
 
-@Component({
+@Directive({
   selector: '[sui-placeholder-paragraph]',
-  template: `
-    <ng-content></ng-content>
-  `
+  exportAs: 'suiPlaceholderParagraph'
 })
-export class SuiPlaceholderParagraphComponent {
+export class SuiPlaceholderParagraphDirective {
   @HostBinding('class')
   get classes(): string {
     return 'paragraph';

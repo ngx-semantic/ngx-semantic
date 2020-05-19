@@ -5,14 +5,14 @@
 import {NgModule} from '@angular/core';
 import {SuiPlaceholderComponent} from './placeholder.component';
 import {CommonModule} from '@angular/common';
-import {SuiPlaceholderParagraphComponent} from './paragraph.component';
-import {SuiPlaceholderLineComponent} from './line.component';
-import {SuiPlaceholderImageComponent} from './image.component';
+import {SuiPlaceholderParagraphDirective} from './paragraph.directive';
+import {SuiPlaceholderLineDirective} from './line.directive';
+import {SuiPlaceholderImageDirective} from './image.directive';
 
 @NgModule({
-  declarations: [SuiPlaceholderComponent, SuiPlaceholderParagraphComponent, SuiPlaceholderLineComponent, SuiPlaceholderImageComponent],
+  declarations: [SuiPlaceholderComponent, SuiPlaceholderParagraphDirective, SuiPlaceholderLineDirective, SuiPlaceholderImageDirective],
   imports: [CommonModule],
-  exports: [SuiPlaceholderComponent, SuiPlaceholderParagraphComponent, SuiPlaceholderLineComponent, SuiPlaceholderImageComponent]
+  exports: [SuiPlaceholderComponent, SuiPlaceholderParagraphDirective, SuiPlaceholderLineDirective, SuiPlaceholderImageDirective]
 })
 export class SuiPlaceholderModule {
 }
