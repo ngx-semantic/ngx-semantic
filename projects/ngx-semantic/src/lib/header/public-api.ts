@@ -3,4 +3,5 @@
  */
 
 export * from './header.component';
+export * from './sub-header.component';
 export * from './header.module';
