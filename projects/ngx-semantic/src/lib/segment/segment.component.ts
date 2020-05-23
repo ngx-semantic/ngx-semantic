@@ -37,6 +37,7 @@ export class SuiSegmentComponent {
   @Input() suiCircular = false;
   @Input() suiBasic = false;
   @Input() suiClearing = false;
+  @Input() suiSecondary = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -59,6 +60,7 @@ export class SuiSegmentComponent {
       Utils.getPropClass(this.suiCircular, 'circular'),
       Utils.getPropClass(this.suiBasic, 'basic'),
       Utils.getPropClass(this.suiClearing, 'clearing'),
+      Utils.getPropClass(this.suiSecondary, 'secondary'),
       Utils.getPropClass(this.suiVertical, 'vertical'),
       'segment'
     ].joinWithWhitespaceCleanup();
