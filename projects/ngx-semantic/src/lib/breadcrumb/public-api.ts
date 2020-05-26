@@ -3,3 +3,4 @@
  */
 
 export * from './breadcrumb-divider.directive';
+export * from './breadcrumb.module';
