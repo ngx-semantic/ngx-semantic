@@ -5,11 +5,12 @@
 import {NgModule} from '@angular/core';
 import {SuiBreadcrumbDividerDirective} from './breadcrumb-divider.directive';
 import {CommonModule} from '@angular/common';
+import {SuiBreadcrumbSectionDirective} from './breadcrumb-section.directive';
 
 @NgModule({
-  declarations: [SuiBreadcrumbDividerDirective],
+  declarations: [SuiBreadcrumbDividerDirective, SuiBreadcrumbSectionDirective],
   imports: [CommonModule],
-  exports: [SuiBreadcrumbDividerDirective]
+  exports: [SuiBreadcrumbDividerDirective, SuiBreadcrumbSectionDirective]
 })
 export class SuiBreadcrumbModule {
 }
