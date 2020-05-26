@@ -4,4 +4,5 @@
 
 export * from './breadcrumb-divider.directive';
 export * from './breadcrumb-section.directive';
+export * from './breadcrumb.component';
 export * from './breadcrumb.module';
