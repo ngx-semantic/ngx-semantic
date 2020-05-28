@@ -13,6 +13,7 @@ import {SuiPlaceholderModule} from './placeholder';
 import {SuiRailModule} from './rail';
 import {SuiRevealModule} from './reveal';
 import {SuiSegmentModule} from './segment';
+import {SuiBreadcrumbModule} from './breadcrumb';
 
 @NgModule({
   declarations: [],
@@ -31,7 +32,8 @@ import {SuiSegmentModule} from './segment';
     SuiPlaceholderModule,
     SuiRailModule,
     SuiRevealModule,
-    SuiSegmentModule
+    SuiSegmentModule,
+    SuiBreadcrumbModule
   ]
 })
 export class NgxSemanticModule {
