@@ -22,16 +22,6 @@ export type SuiImageAlignment = 'top' | 'bottom' | 'middle' | null;
     '[class.fluid]': `suiFluid`,
     '[class.avatar]': `suiAvatar`,
 
-    // sizes
-    '[class.mini]': `suiSize == 'mini'`,
-    '[class.tiny]': `suiSize == 'tiny'`,
-    '[class.small]': `suiSize == 'small'`,
-    '[class.medium]': `suiSize == 'medium'`,
-    '[class.large]': `suiSize == 'large'`,
-    '[class.big]': `suiSize == 'big'`,
-    '[class.huge]': `suiSize == 'huge'`,
-    '[class.massive]': `suiSize == 'massive'`,
-
     // alignments
     '[class.aligned]': `!!suiAlignment`,
     '[class.top]': `suiAlignment === 'top'`,
