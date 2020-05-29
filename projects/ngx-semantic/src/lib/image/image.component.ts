@@ -2,8 +2,8 @@
  * Created by bolor on 4/26/2020
  */
 
-import {Component, Input} from '@angular/core';
-import {SuiLocation, SuiSize} from '../common';
+import {Component, HostBinding, Input} from '@angular/core';
+import {SuiLocation, SuiSize, Utils} from '../common';
 
 export type SuiImageAlignment = 'top' | 'bottom' | 'middle' | null;
 
@@ -13,14 +13,8 @@ export type SuiImageAlignment = 'top' | 'bottom' | 'middle' | null;
     <ng-content></ng-content>
   `,
   host: {
-    '[class.ui]': `true`,
-    '[class.image]': `true`,
     '[class.spaced]': `suiSpaced`,
     '[class.floated]': `suiFloated`,
-
-    // states
-    '[class.disabled]': `suiDisabled`,
-    '[class.hidden]': `suiHidden`,
 
     // finishes
     '[class.circular]': `suiCircular`,
@@ -64,4 +58,15 @@ export class SuiImageComponent {
   @Input() suiCentered = false;
   @Input() suiSpaced = false;
   @Input() suiFloated = false;
+
+  @HostBinding('class')
+  get classes(): string {
+    return [
+      'ui',
+      this.suiSize,
+      Utils.getPropClass(this.suiHidden, 'hidden'),
+      Utils.getPropClass(this.suiDisabled, 'disabled'),
+      'image'
+    ].joinWithWhitespaceCleanup();
+  }
 }
