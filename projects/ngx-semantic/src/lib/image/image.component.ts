@@ -56,6 +56,10 @@ export class SuiImageComponent {
       this.suiSize,
       Utils.getPropClass(this.suiHidden, 'hidden'),
       Utils.getPropClass(this.suiDisabled, 'disabled'),
+      Utils.getPropClass(this.suiAvatar, 'avatar'),
+      Utils.getPropClass(this.suiFluid, 'fluid'),
+      Utils.getPropClass(this.suiRounded, 'rounded'),
+      Utils.getPropClass(this.suiCircular, 'circular'),
       'image'
     ].joinWithWhitespaceCleanup();
   }
