@@ -16,12 +16,6 @@ export type SuiImageAlignment = 'top' | 'bottom' | 'middle' | null;
     '[class.spaced]': `suiSpaced`,
     '[class.floated]': `suiFloated`,
 
-    // finishes
-    '[class.circular]': `suiCircular`,
-    '[class.rounded]': `suiRounded`,
-    '[class.fluid]': `suiFluid`,
-    '[class.avatar]': `suiAvatar`,
-
     // alignments
     '[class.aligned]': `!!suiAlignment`,
     '[class.top]': `suiAlignment === 'top'`,
