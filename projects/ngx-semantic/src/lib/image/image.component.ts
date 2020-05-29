@@ -3,9 +3,10 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiLocation, SuiSize, Utils} from '../common';
+import {SuiSize, Utils} from '../common';
 
-export type SuiImageAlignment = 'top' | 'bottom' | 'middle' | null;
+export type SuiImageAlignment = 'top aligned' | 'bottom aligned' | 'middle aligned' | null;
+export type SuiImageFloat = 'left floated' | 'right floated' | null;
 
 @Component({
   selector: '[sui-image]',
@@ -13,8 +14,6 @@ export type SuiImageAlignment = 'top' | 'bottom' | 'middle' | null;
     <ng-content></ng-content>
   `,
   host: {
-    '[class.spaced]': `suiSpaced`,
-    '[class.floated]': `suiFloated`,
 
     // alignments
     '[class.aligned]': `!!suiAlignment`,
@@ -22,16 +21,12 @@ export type SuiImageAlignment = 'top' | 'bottom' | 'middle' | null;
     '[class.bottom]': `suiAlignment === 'bottom'`,
     '[class.middle]': `suiAlignment === 'middle'`,
     '[class.centered]': `suiCentered`,
-
-    // locations
-    '[class.left]': `suiLocation == 'left'`,
-    '[class.right]': `suiLocation == 'right'`,
   }
 })
 export class SuiImageComponent {
   @Input() suiSize: SuiSize = null;
   @Input() suiAlignment: SuiImageAlignment = null;
-  @Input() suiLocation: SuiLocation = null;
+  @Input() suiFloated: SuiImageFloat = null;
   @Input() suiHidden = false;
   @Input() suiDisabled = false;
   @Input() suiAvatar = false;
@@ -41,19 +36,21 @@ export class SuiImageComponent {
   @Input() suiCircular = false;
   @Input() suiCentered = false;
   @Input() suiSpaced = false;
-  @Input() suiFloated = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
       'ui',
       this.suiSize,
+      this.suiFloated,
+      this.suiAlignment,
       Utils.getPropClass(this.suiHidden, 'hidden'),
       Utils.getPropClass(this.suiDisabled, 'disabled'),
       Utils.getPropClass(this.suiAvatar, 'avatar'),
       Utils.getPropClass(this.suiFluid, 'fluid'),
       Utils.getPropClass(this.suiRounded, 'rounded'),
       Utils.getPropClass(this.suiCircular, 'circular'),
+      Utils.getPropClass(this.suiSpaced, 'spaced'),
       'image'
     ].joinWithWhitespaceCleanup();
   }
