@@ -12,16 +12,7 @@ export type SuiImageFloat = 'left floated' | 'right floated' | null;
   selector: '[sui-image]',
   template: `
     <ng-content></ng-content>
-  `,
-  host: {
-
-    // alignments
-    '[class.aligned]': `!!suiAlignment`,
-    '[class.top]': `suiAlignment === 'top'`,
-    '[class.bottom]': `suiAlignment === 'bottom'`,
-    '[class.middle]': `suiAlignment === 'middle'`,
-    '[class.centered]': `suiCentered`,
-  }
+  `
 })
 export class SuiImageComponent {
   @Input() suiSize: SuiSize = null;
