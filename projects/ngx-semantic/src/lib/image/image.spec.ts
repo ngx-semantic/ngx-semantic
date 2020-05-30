@@ -33,7 +33,8 @@ describe('SuiImageComponent', () => {
   });
 
   it('should apply class name', () => {
-    expect(buttonElement.className).toBe('ui image');
+    expect(buttonElement.className).toContain('ui');
+    expect(buttonElement.className).toContain('image');
   });
 
   it('should apply class name by size', () => {
@@ -63,15 +64,6 @@ describe('SuiImageComponent', () => {
     expect(buttonElement.classList).toContain('massive');
   });
 
-  it('should apply class name by location', () => {
-    component.suiLocation = 'left';
-    fixture.detectChanges();
-    expect(buttonElement.classList).toContain('left');
-    component.suiLocation = 'right';
-    fixture.detectChanges();
-    expect(buttonElement.classList).toContain('right');
-  });
-
   it('should apply class name by state', () => {
     component.suiDisabled = true;
     fixture.detectChanges();
@@ -92,6 +84,21 @@ describe('SuiImageComponent', () => {
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('rounded');
   });
+
+  it('should apply class name by alignment', () => {
+    component.suiAlignment = 'left aligned';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('left');
+    expect(buttonElement.classList).toContain('aligned');
+    component.suiAlignment = 'right aligned';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('right');
+    expect(buttonElement.classList).toContain('aligned');
+    component.suiAlignment = 'middle aligned';
+    fixture.detectChanges();
+    expect(buttonElement.classList).toContain('middle');
+    expect(buttonElement.classList).toContain('aligned');
+  });
 });
 
 @Component({
@@ -99,7 +106,6 @@ describe('SuiImageComponent', () => {
     <div
       sui-image
       [suiSize]="suiSize"
-      [suiLocation]="suiLocation"
       [suiDisabled]="suiDisabled"
       [suiFluid]="suiFluid"
       [suiRounded]="suiRounded"
@@ -113,7 +119,6 @@ describe('SuiImageComponent', () => {
 export class TestImageComponent {
   @Input() suiSize: any = null;
   @Input() suiAlignment: any = null;
-  @Input() suiLocation: any = null;
   @Input() suiHidden = false;
   @Input() suiDisabled = false;
   @Input() suiAvatar = false;
