@@ -6,17 +6,16 @@ import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiWidth} from '../common';
 
 @Directive({
-  selector: '[sui-form-field]'
+  selector: '[sui-form-fields]'
 })
-export class SuiFormFieldDirective {
+export class SuiFormFieldsDirective {
   @Input() suiWidth: SuiWidth = null;
 
   @HostBinding('class')
   get classes(): string {
     return [
       this.suiWidth,
-      this.suiWidth ? 'wide' : '',
-      'field'
+      'fields'
     ].joinWithWhitespaceCleanup();
   }
 }
