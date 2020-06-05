@@ -17,12 +17,16 @@ export class SuiFormComponent {
   @Input() suiState: SuiFormState = null;
   @Input() suiSize: SuiSize = null;
   @Input() suiLoading = false;
+  @Input() suiEqualWidth = false;
+  @Input() suiInverted = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
       'ui',
       Utils.getPropClass(this.suiLoading, 'loading'),
+      Utils.getPropClass(this.suiEqualWidth, 'equal width'),
+      Utils.getPropClass(this.suiInverted, 'inverted'),
       this.suiSize,
       'form',
       this.suiState

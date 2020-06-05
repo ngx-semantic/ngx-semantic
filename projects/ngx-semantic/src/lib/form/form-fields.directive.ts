@@ -11,12 +11,14 @@ import {SuiWidth, Utils} from '../common';
 export class SuiFormFieldsDirective {
   @Input() suiWidth: SuiWidth = null;
   @Input() suiInline = false;
+  @Input() suiGrouped = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
       this.suiWidth,
       Utils.getPropClass(this.suiInline, 'inline'),
+      Utils.getPropClass(this.suiGrouped, 'grouped'),
       'fields'
     ].joinWithWhitespaceCleanup();
   }
