@@ -3,20 +3,26 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiWidth} from '../common';
+import {SuiWidth, Utils} from '../common';
 
 @Directive({
   selector: '[sui-form-field]'
 })
 export class SuiFormFieldDirective {
   @Input() suiWidth: SuiWidth = null;
+  @Input() suiError = false;
+  @Input() suiInline = false;
+  @Input() suiDisabled = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
+      Utils.getPropClass(this.suiInline, 'inline'),
       this.suiWidth,
       this.suiWidth ? 'wide' : '',
-      'field'
+      Utils.getPropClass(this.suiDisabled, 'disabled'),
+      'field',
+      Utils.getPropClass(this.suiError, 'error'),
     ].joinWithWhitespaceCleanup();
   }
 }
