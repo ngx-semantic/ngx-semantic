@@ -15,6 +15,7 @@ import {SuiSegmentModule} from './elements/segment';
 import {SuiBreadcrumbModule} from './elements/breadcrumb';
 import {SuiFormModule} from './collections/form';
 import {SuiFlagModule} from './elements/flag';
+import {SuiGridModule} from './collections/grid';
 
 @NgModule({
   declarations: [],
@@ -35,7 +36,9 @@ import {SuiFlagModule} from './elements/flag';
     SuiRevealModule,
     SuiSegmentModule,
     SuiBreadcrumbModule,
-    SuiFormModule
+
+    SuiFormModule,
+    SuiGridModule
   ]
 })
 export class NgxSemanticModule {
