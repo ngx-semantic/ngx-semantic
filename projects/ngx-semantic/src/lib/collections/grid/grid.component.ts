@@ -27,6 +27,7 @@ export class SuiGridComponent {
   @Input() suiCentered = false;
   @Input() suiContainer = false;
   @Input() suiStackable = false;
+  @Input() suiDoubling = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -42,6 +43,7 @@ export class SuiGridComponent {
       Utils.getPropClass(this.suiEqual, 'equal width'),
       Utils.getPropClass(this.suiRelaxed, 'relaxed'),
       Utils.getPropClass(this.suiCentered, 'centered'),
+      Utils.getPropClass(this.suiDoubling, 'doubling'),
       'grid',
       Utils.getPropClass(this.suiContainer, 'container'),
     ].joinWithWhitespaceCleanup();
