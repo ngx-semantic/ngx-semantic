@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiSize, Utils} from '../common';
+import {SuiSize, Utils} from '../../common';
 
 export type SuiImageAlignment = 'top aligned' | 'bottom aligned' | 'middle aligned' | null;
 export type SuiImageFloat = 'left floated' | 'right floated' | null;
