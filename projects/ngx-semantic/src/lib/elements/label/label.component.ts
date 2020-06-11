@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiColour, SuiHorizontalAlignment, SuiLocation, SuiSize, Utils} from '../common';
+import {SuiColour, SuiHorizontalAlignment, SuiLocation, SuiSize, Utils} from '../../common';
 
 export type SuiLabelPointing = 'above' | 'below' | 'left' | 'right' | null;
 

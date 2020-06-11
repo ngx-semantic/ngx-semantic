@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiSize} from '../common';
+import {SuiSize} from '../../common';
 
 @Component({
   selector: '[sui-breadcrumb]',

@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiSize, SuiVerticalAlignment} from '../common';
+import {SuiSize, SuiVerticalAlignment} from '../../common';
 
 export type SuiListRelaxation = 'very' | 'normal' | null;
 

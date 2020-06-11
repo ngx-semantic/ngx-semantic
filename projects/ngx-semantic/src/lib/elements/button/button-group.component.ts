@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiColour, Utils, SuiSize} from '../common';
+import {SuiColour, Utils, SuiSize} from '../../common';
 
 export type SuiButtonsAttachment = 'top attached' | 'bottom attached' | null;
 export type SuiButtonsIconType = 'icon' | 'labeled icon' | null;

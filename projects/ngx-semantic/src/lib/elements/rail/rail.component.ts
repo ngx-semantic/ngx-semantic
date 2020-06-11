@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiHorizontalPosition, SuiSize, Utils} from '../common';
+import {SuiHorizontalPosition, SuiSize, Utils} from '../../common';
 
 export type SuiRailCloseness = 'close' | 'very close' | null;
 

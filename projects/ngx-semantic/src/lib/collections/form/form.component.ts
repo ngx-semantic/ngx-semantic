@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiSize, Utils} from '../common';
+import {SuiSize, Utils} from '../../common';
 
 export type SuiFormState = 'success' | 'warning' | 'error' | null;
 

@@ -1,5 +1,5 @@
 import {Component, HostBinding, Input} from '@angular/core';
-import {Utils} from '../common';
+import {Utils} from '../../common';
 
 export type SuiDividerDirection = 'vertical' | 'horizontal' | null;
 

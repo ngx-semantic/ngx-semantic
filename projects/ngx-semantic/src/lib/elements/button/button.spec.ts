@@ -10,7 +10,7 @@ import {
 import {Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
-import {SuiColour, SuiSize} from '../common';
+import {SuiColour, SuiSize} from '../../common';
 
 describe('SuiButtonComponent', () => {
   let component: TestButtonComponent;

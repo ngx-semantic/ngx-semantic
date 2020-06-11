@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiSize, Utils} from '../common';
+import {SuiSize, Utils} from '../../common';
 
 export type SuiInputLabeling = 'labeled' | 'right labeled' | 'left corner labeled' | 'corner labeled' | null;
 export type SuiInputActions = 'action' | 'left action' | 'right action' | null;

@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, Input} from '@angular/core';
-import {SuiColour, SuiSize} from '../common';
+import {SuiColour, SuiSize} from '../../common';
 import {CommonModule} from '@angular/common';
 import {SuiHeaderAlignment, SuiHeaderAttachment, SuiHeaderComponent, SuiHeaderFloating} from './header.component';
 import {By} from '@angular/platform-browser';

@@ -1,5 +1,5 @@
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiColour, SuiSize, Utils} from '../common';
+import {SuiColour, SuiSize, Utils} from '../../common';
 
 export type SuiHeaderAlignment = 'left aligned' | 'right aligned' | 'center aligned' | 'justified' | null;
 export type SuiHeaderAttachment = 'attached' | 'top attached' | 'bottom attached' | null;

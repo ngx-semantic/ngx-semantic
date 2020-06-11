@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiColour, SuiSize} from '../common';
+import {SuiColour, SuiSize} from '../../common';
 
 @Component({
   selector: '[sui-label-group]',

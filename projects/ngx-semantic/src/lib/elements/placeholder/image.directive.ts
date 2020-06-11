@@ -3,7 +3,7 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {Utils} from '../common';
+import {Utils} from '../../common';
 
 @Directive({
   selector: '[sui-placeholder-image]'

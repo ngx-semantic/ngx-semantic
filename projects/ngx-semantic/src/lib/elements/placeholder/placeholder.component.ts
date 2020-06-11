@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {Utils} from '../common';
+import {Utils} from '../../common';
 
 @Component({
   selector: '[sui-placeholder]',

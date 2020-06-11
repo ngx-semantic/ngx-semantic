@@ -3,7 +3,7 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiWidth, Utils} from '../common';
+import {SuiWidth, Utils} from '../../common';
 
 @Directive({
   selector: '[sui-form-field]'
