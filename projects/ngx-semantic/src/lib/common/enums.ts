@@ -33,3 +33,5 @@ export type SuiWidth =
   | 'fifteen'
   | 'sixteen'
   | null;
+
+export type SuiDeviceVisibility = 'large screen only' | 'mobile only' | 'computer only' | 'tablet mobile only' | 'tablet only' | null;
