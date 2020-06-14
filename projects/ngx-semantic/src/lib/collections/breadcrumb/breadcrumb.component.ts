@@ -16,6 +16,10 @@ export class SuiBreadcrumbComponent {
 
   @HostBinding('class')
   get classes(): string {
-    return ['ui', this.suiSize, 'breadcrumb'].joinWithWhitespaceCleanup();
+    return [
+      'ui',
+      this.suiSize,
+      'breadcrumb'
+    ].joinWithWhitespaceCleanup();
   }
 }
