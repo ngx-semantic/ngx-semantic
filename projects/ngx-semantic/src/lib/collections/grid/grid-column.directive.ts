@@ -16,6 +16,7 @@ export class SuiGridColumnDirective {
   @Input() suiFloated: SuiColumnFloat = null;
   @Input() suiColour: SuiColour = null;
   @Input() suiAlignment: SuiColumnAlignment = null;
+  @Input() suiDeviceVisibility: string = null;
 
   @HostBinding('class')
   get classes(): string {
@@ -25,6 +26,7 @@ export class SuiGridColumnDirective {
       this.suiWidth,
       this.suiWidth ? 'wide' : '',
       this.suiColour,
+      this.suiDeviceVisibility,
       'column'
     ].joinWithWhitespaceCleanup();
   }
