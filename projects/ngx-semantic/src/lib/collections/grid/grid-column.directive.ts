@@ -3,9 +3,10 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiWidth} from '../../common';
+import {SuiColour, SuiWidth} from '../../common';
 
 export type SuiColumnFloat = 'left floated' | 'right floated' | null;
+export type SuiColumnAlignment = 'left aligned' | 'center aligned' | 'right aligned' | null;
 
 @Directive({
   selector: '[sui-grid-column]'
@@ -13,13 +14,17 @@ export type SuiColumnFloat = 'left floated' | 'right floated' | null;
 export class SuiGridColumnDirective {
   @Input() suiWidth: SuiWidth = null;
   @Input() suiFloated: SuiColumnFloat = null;
+  @Input() suiColour: SuiColour = null;
+  @Input() suiAlignment: SuiColumnAlignment = null;
 
   @HostBinding('class')
   get classes(): string {
     return [
       this.suiFloated,
+      this.suiAlignment,
       this.suiWidth,
       this.suiWidth ? 'wide' : '',
+      this.suiColour,
       'column'
     ].joinWithWhitespaceCleanup();
   }
