@@ -17,7 +17,7 @@ export * from './lib/elements/placeholder';
 export * from './lib/elements/rail';
 export * from './lib/elements/reveal';
 export * from './lib/elements/segment';
-export * from './lib/elements/breadcrumb';
+export * from './lib/collections/breadcrumb';
 export * from './lib/collections/form';
 export * from './lib/collections/grid';
 export * from './lib/ngx-semantic.module';

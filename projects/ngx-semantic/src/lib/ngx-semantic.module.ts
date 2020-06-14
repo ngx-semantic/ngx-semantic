@@ -12,9 +12,9 @@ import {SuiPlaceholderModule} from './elements/placeholder';
 import {SuiRailModule} from './elements/rail';
 import {SuiRevealModule} from './elements/reveal';
 import {SuiSegmentModule} from './elements/segment';
-import {SuiBreadcrumbModule} from './elements/breadcrumb';
-import {SuiFormModule} from './collections/form';
 import {SuiFlagModule} from './elements/flag';
+import {SuiBreadcrumbModule} from './collections/breadcrumb';
+import {SuiFormModule} from './collections/form';
 import {SuiGridModule} from './collections/grid';
 
 @NgModule({
@@ -36,7 +36,6 @@ import {SuiGridModule} from './collections/grid';
     SuiRevealModule,
     SuiSegmentModule,
     SuiBreadcrumbModule,
-
     SuiFormModule,
     SuiGridModule
   ]
