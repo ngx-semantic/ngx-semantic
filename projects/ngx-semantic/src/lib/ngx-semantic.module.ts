@@ -1,20 +1,21 @@
 import {NgModule} from '@angular/core';
-import {SuiButtonModule} from './button';
-import {SuiDividerModule} from './divider';
-import {SuiFlagModule} from './flag';
-import {SuiHeaderModule} from './header';
-import {SuiIconModule} from './icon';
-import {SuiImageModule} from './image';
-import {SuiInputModule} from './input';
-import {SuiLabelModule} from './label';
-import {SuiListModule} from './list';
-import {SuiLoaderModule} from './loader';
-import {SuiPlaceholderModule} from './placeholder';
-import {SuiRailModule} from './rail';
-import {SuiRevealModule} from './reveal';
-import {SuiSegmentModule} from './segment';
-import {SuiBreadcrumbModule} from './breadcrumb';
-import {SuiFormModule} from './form';
+import {SuiButtonModule} from './elements/button';
+import {SuiDividerModule} from './elements/divider';
+import {SuiIconModule} from './elements/icon';
+import {SuiHeaderModule} from './elements/header';
+import {SuiImageModule} from './elements/image';
+import {SuiInputModule} from './elements/input';
+import {SuiLabelModule} from './elements/label';
+import {SuiListModule} from './elements/list';
+import {SuiLoaderModule} from './elements/loader';
+import {SuiPlaceholderModule} from './elements/placeholder';
+import {SuiRailModule} from './elements/rail';
+import {SuiRevealModule} from './elements/reveal';
+import {SuiSegmentModule} from './elements/segment';
+import {SuiBreadcrumbModule} from './elements/breadcrumb';
+import {SuiFormModule} from './collections/form';
+import {SuiFlagModule} from './elements/flag';
+import {SuiGridModule} from './collections/grid';
 
 @NgModule({
   declarations: [],
@@ -35,7 +36,9 @@ import {SuiFormModule} from './form';
     SuiRevealModule,
     SuiSegmentModule,
     SuiBreadcrumbModule,
-    SuiFormModule
+
+    SuiFormModule,
+    SuiGridModule
   ]
 })
 export class NgxSemanticModule {
