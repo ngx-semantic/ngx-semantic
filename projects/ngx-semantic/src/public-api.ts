@@ -20,4 +20,5 @@ export * from './lib/elements/segment';
 export * from './lib/collections/breadcrumb';
 export * from './lib/collections/form';
 export * from './lib/collections/grid';
+export * from './lib/collections/menu';
 export * from './lib/ngx-semantic.module';
