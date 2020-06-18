@@ -2,7 +2,8 @@
  * Created by bolor on 6/17/2020
  */
 
-import {Component} from '@angular/core';
+import {Component, HostBinding, Input} from '@angular/core';
+import {Utils} from '../../common';
 
 @Component({
   selector: '[sui-menu]',
@@ -11,4 +12,14 @@ import {Component} from '@angular/core';
   `
 })
 export class SuiMenuComponent {
+  @Input() suiText = false;
+
+  @HostBinding('class')
+  get classes(): string {
+    return [
+      'ui',
+      Utils.getPropClass(this.suiText, 'text'),
+      'menu'
+    ].joinWithWhitespaceCleanup();
+  }
 }
