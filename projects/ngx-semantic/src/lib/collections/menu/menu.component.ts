@@ -19,6 +19,7 @@ export class SuiMenuComponent {
   @Input() suiText = false;
   @Input() suiSecondary = false;
   @Input() suiPointing = false;
+  @Input() suiTabular = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -30,6 +31,7 @@ export class SuiMenuComponent {
       Utils.getPropClass(this.suiText, 'text'),
       Utils.getPropClass(this.suiSecondary, 'secondary'),
       Utils.getPropClass(this.suiPointing, 'pointing'),
+      Utils.getPropClass(this.suiTabular, 'tabular'),
       'menu'
     ].joinWithWhitespaceCleanup();
   }
