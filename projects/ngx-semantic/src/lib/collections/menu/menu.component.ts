@@ -17,6 +17,8 @@ export class SuiMenuComponent {
   @Input() suiWidth: SuiWidth = null;
   @Input() suiAttached: SuiMenuAttachment = null;
   @Input() suiText = false;
+  @Input() suiSecondary = false;
+  @Input() suiPointing = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -26,6 +28,8 @@ export class SuiMenuComponent {
       this.suiWidth,
       this.suiWidth ? 'item' : '',
       Utils.getPropClass(this.suiText, 'text'),
+      Utils.getPropClass(this.suiSecondary, 'secondary'),
+      Utils.getPropClass(this.suiPointing, 'pointing'),
       'menu'
     ].joinWithWhitespaceCleanup();
   }
