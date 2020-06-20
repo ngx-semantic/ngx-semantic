@@ -30,6 +30,7 @@ export class SuiMenuComponent {
   @Input() suiCompact = false;
   @Input() suiStackable = false;
   @Input() suiInverted = false;
+  @Input() suiIcon = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -51,6 +52,7 @@ export class SuiMenuComponent {
       Utils.getPropClass(this.suiTabular, 'tabular'),
       Utils.getPropClass(this.suiPagination, 'pagination'),
       Utils.getPropClass(this.suiCompact, 'compact'),
+      Utils.getPropClass(this.suiIcon, 'icon'),
       Utils.getPropClass(this.suiStackable, 'stackable'),
       'menu'
     ].joinWithWhitespaceCleanup();
