@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {Utils} from '../../common';
+import {SuiWidth, Utils} from '../../common';
 
 @Component({
   selector: '[sui-menu]',
@@ -12,12 +12,15 @@ import {Utils} from '../../common';
   `
 })
 export class SuiMenuComponent {
+  @Input() suiWidth: SuiWidth = null;
   @Input() suiText = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
       'ui',
+      this.suiWidth,
+      this.suiWidth ? 'item' : '',
       Utils.getPropClass(this.suiText, 'text'),
       'menu'
     ].joinWithWhitespaceCleanup();
