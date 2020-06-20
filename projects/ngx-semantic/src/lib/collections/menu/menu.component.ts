@@ -20,6 +20,8 @@ export class SuiMenuComponent {
   @Input() suiSecondary = false;
   @Input() suiPointing = false;
   @Input() suiTabular = false;
+  @Input() suiVertical = false;
+  @Input() suiFluid = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -28,6 +30,8 @@ export class SuiMenuComponent {
       this.suiAttached,
       this.suiWidth,
       this.suiWidth ? 'item' : '',
+      Utils.getPropClass(this.suiVertical, 'vertical'),
+      Utils.getPropClass(this.suiFluid, 'fluid'),
       Utils.getPropClass(this.suiText, 'text'),
       Utils.getPropClass(this.suiSecondary, 'secondary'),
       Utils.getPropClass(this.suiPointing, 'pointing'),
