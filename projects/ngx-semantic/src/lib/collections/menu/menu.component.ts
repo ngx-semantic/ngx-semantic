@@ -6,7 +6,7 @@ import {Component, HostBinding, Input} from '@angular/core';
 import {SuiWidth, Utils} from '../../common';
 
 export type SuiMenuAttachment = 'top attached' | 'attached' | 'bottom attached' | null;
-export type SuiMenuFixation = 'top fixed' | 'bottom fixed' | null;
+export type SuiMenuFixation = 'top' | 'bottom' | 'left' | 'right' | null;
 
 @Component({
   selector: '[sui-menu]',
@@ -34,6 +34,7 @@ export class SuiMenuComponent {
       'ui',
       this.suiAttached,
       this.suiFixed,
+      this.suiFixed ? 'fixed' : '',
       this.suiWidth,
       this.suiWidth ? 'item' : '',
       Utils.getPropClass(this.suiVertical, 'vertical'),
