@@ -5,6 +5,8 @@
 import {Component, HostBinding, Input} from '@angular/core';
 import {SuiWidth, Utils} from '../../common';
 
+export type SuiMenuAttachment = 'top attached' | 'attached' | 'bottom attached' | null;
+
 @Component({
   selector: '[sui-menu]',
   template: `
@@ -13,12 +15,14 @@ import {SuiWidth, Utils} from '../../common';
 })
 export class SuiMenuComponent {
   @Input() suiWidth: SuiWidth = null;
+  @Input() suiAttached: SuiMenuAttachment = null;
   @Input() suiText = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
       'ui',
+      this.suiAttached,
       this.suiWidth,
       this.suiWidth ? 'item' : '',
       Utils.getPropClass(this.suiText, 'text'),
