@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiWidth, Utils} from '../../common';
+import {SuiColour, SuiWidth, Utils} from '../../common';
 
 export type SuiMenuAttachment = 'top attached' | 'attached' | 'bottom attached' | null;
 export type SuiMenuFixation = 'top' | 'bottom' | 'left' | 'right' | null;
@@ -18,6 +18,7 @@ export class SuiMenuComponent {
   @Input() suiWidth: SuiWidth = null;
   @Input() suiAttached: SuiMenuAttachment = null;
   @Input() suiFixed: SuiMenuFixation = null;
+  @Input() suiColour: SuiColour = null;
   @Input() suiText = false;
   @Input() suiSecondary = false;
   @Input() suiPointing = false;
@@ -34,6 +35,7 @@ export class SuiMenuComponent {
   get classes(): string {
     return [
       'ui',
+      this.suiColour,
       this.suiAttached,
       this.suiFixed,
       this.suiFixed ? 'fixed' : '',
