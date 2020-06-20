@@ -24,6 +24,7 @@ export class SuiMenuComponent {
   @Input() suiFluid = false;
   @Input() suiRight = false;
   @Input() suiPagination = false;
+  @Input() suiCompact = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -40,6 +41,7 @@ export class SuiMenuComponent {
       Utils.getPropClass(this.suiRight, 'right'),
       Utils.getPropClass(this.suiTabular, 'tabular'),
       Utils.getPropClass(this.suiPagination, 'pagination'),
+      Utils.getPropClass(this.suiCompact, 'compact'),
       'menu'
     ].joinWithWhitespaceCleanup();
   }
