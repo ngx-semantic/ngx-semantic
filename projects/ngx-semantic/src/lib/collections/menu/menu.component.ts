@@ -28,6 +28,7 @@ export class SuiMenuComponent {
   @Input() suiPagination = false;
   @Input() suiCompact = false;
   @Input() suiStackable = false;
+  @Input() suiInverted = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -38,6 +39,7 @@ export class SuiMenuComponent {
       this.suiFixed ? 'fixed' : '',
       this.suiWidth,
       this.suiWidth ? 'item' : '',
+      Utils.getPropClass(this.suiInverted, 'inverted'),
       Utils.getPropClass(this.suiVertical, 'vertical'),
       Utils.getPropClass(this.suiFluid, 'fluid'),
       Utils.getPropClass(this.suiText, 'text'),
