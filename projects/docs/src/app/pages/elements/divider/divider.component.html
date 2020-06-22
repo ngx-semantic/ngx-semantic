@@ -1,12 +1,60 @@
+<div class="ui masthead vertical segment">
+  <div class="ui container">
+    <div class="introduction">
+
+      <h1 class="ui header">
+        Divider
+        <div class="sub header">
+          A divider visually segments content into groups
+        </div>
+      </h1>
+
+      <div class="ui hidden divider"></div>
+
+      <div class="ui right floated main menu">
+
+        <a class="bug popup icon item" data-content="Submit Bug Report" href="https://github.com/ngx-semantic/ngx-semantic/issues">
+          <i class="bug icon"></i>
+        </a>
+
+        <a class="github popup icon item" data-content="View project on GitHub" href="https://github.com/ngx-semantic/ngx-semantic">
+          <i class="alternate github icon"></i>
+        </a>
+      </div>
+
+      <div sui-button suiEmphasis="primary">
+        Download
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
 <div class="main ui container">
   <h2 class="ui dividing header">Types</h2>
+  <br>
   <div class="example">
     <h4 class="ui header">Dividers</h4>
-    <p>A standard divider</p>
+    <p>A standard divider <i class="fitted icon code right floated" (click)="toggleLabel()"></i></p>
+    <div sui-placeholder>
+      <p sui-placeholder-line></p>
+      <p sui-placeholder-line></p>
+      <p sui-placeholder-line></p>
+      <p sui-placeholder-line></p>
+    </div>
     <div sui-divider></div>
+    <div sui-placeholder>
+      <p sui-placeholder-line></p>
+      <p sui-placeholder-line></p>
+      <p sui-placeholder-line></p>
+      <p sui-placeholder-line></p>
+    </div>
   </div>
+  <br>
 
   <div class="example">
+    <h4 class="ui header">Vertical Divider</h4>
+    <p>A divider can segment content vertically <i class="fitted icon code right floated" (click)="toggleLabel()"></i></p>
     <div sui-segment>
       <div class="ui two column very relaxed grid">
         <div class="column">
@@ -16,8 +64,20 @@
             <p sui-placeholder-line></p>
             <p sui-placeholder-line></p>
           </div>
+          <div sui-placeholder>
+            <p sui-placeholder-line></p>
+            <p sui-placeholder-line></p>
+            <p sui-placeholder-line></p>
+            <p sui-placeholder-line></p>
+          </div>
         </div>
         <div class="column">
+          <div sui-placeholder>
+            <p sui-placeholder-line></p>
+            <p sui-placeholder-line></p>
+            <p sui-placeholder-line></p>
+            <p sui-placeholder-line></p>
+          </div>
           <div sui-placeholder>
             <p sui-placeholder-line></p>
             <p sui-placeholder-line></p>
@@ -32,11 +92,14 @@
       </div>
     </div>
   </div>
+  <br>
 
   <div class="example">
+    <h4 class="ui header">Horizontal Divider</h4>
+    <p>A divider can segment content horizontally <i class="fitted icon code right floated" (click)="toggleLabel()"></i></p>
     <div sui-segment suiTextAlignment="center aligned" suiBasic="true">
       <div sui-input suiAction="left action" suiIcon="true">
-        <i sui-icon suiIconType="search"></i>
+        <!-- <i sui-icon suiIconType="search"></i> -->
         <input type="text" placeholder="Order #">
         <div sui-button suiColour="blue">Search</div>
       </div>

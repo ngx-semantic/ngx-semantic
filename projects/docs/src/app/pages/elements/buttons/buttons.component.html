@@ -1,16 +1,59 @@
+<div class="ui masthead vertical segment">
+  <div class="ui container">
+    <div class="introduction">
+
+      <h1 class="ui header">
+        Buttons
+        <div class="sub header">
+          A button indicates a possible user action
+        </div>
+      </h1>
+
+      <div class="ui hidden divider"></div>
+
+      <div class="ui right floated main menu">
+
+        <a class="bug popup icon item" data-content="Submit Bug Report" href="https://github.com/ngx-semantic/ngx-semantic/issues">
+          <i class="bug icon"></i>
+        </a>
+
+        <a class="github popup icon item" data-content="View project on GitHub" href="https://github.com/ngx-semantic/ngx-semantic">
+          <i class="alternate github icon"></i>
+        </a>
+      </div>
+
+      <div sui-button suiEmphasis="primary">
+        Download
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="main ui container">
+
   <h2 class="ui dividing header">Types</h2>
   <div class="follow example">
     <h4 class="ui header">Button</h4>
-    <p>A standard button</p>
-    <button sui-button>
+    <p>A standard button <i class="fitted icon code right floated" (click)="toggleLabel()"></i></p>
+    <div *ngIf="show == true" class="ui label" id="1" style="width: 80%;"> Example <hr>
+      <button sui-button style="padding: 15px;">
+        Follow
+      </button> <hr>
+      <![CDATA[
+          <button sui-button>
+            Follow
+          </button>]]>
+    </div>
+    <button *ngIf="show == false" sui-button>
       Follow
     </button>
   </div>
 
+  <br>
+
   <div class="example" data-class="primary, secondary">
     <h4 class="ui header">Emphasis</h4>
-    <p>A button can be formatted to show different levels of emphasis</p>
+    <p>A button can be formatted to show different levels of emphasis <i class="fitted icon code right floated" (click)="toggleLabel()"></i></p>
     <button sui-button
             suiEmphasis="primary">
       Save
@@ -29,8 +72,26 @@
       Cancel
     </button>
   </div>
+  <br>
 
   <div class="example">
+    <h4 class="ui header">Basic</h4>
+    <p>A basic button is less pronounced <i class="fitted icon code right floated" (click)="toggleLabel()"></i></p>
+    <button sui-button suiBasic="true" suiColour="red" suiSize="medium">Red</button>
+    <button sui-button suiBasic="true" suiColour="blue" suiSize="medium">Blue</button>
+    <button sui-button suiBasic="true" suiColour="green" suiSize="medium">Green</button>
+    <button sui-button suiBasic="true" suiColour="yellow" suiSize="medium">Yellow</button>
+    <button sui-button suiBasic="true" suiColour="grey" suiSize="medium">Grey</button>
+    <button sui-button suiBasic="true" suiColour="black" suiSize="medium">Black</button>
+  </div>
+  <br>
+
+  <h2 class="ui dividing header">Groups</h2>
+  <br>
+
+  <div class="example">
+    <h4 class="ui header">Horizontally Attached</h4>
+    <p>A button can be attached to the left or right of other content <i class="fitted icon code right floated" (click)="toggleLabel()"></i></p>
     <div
       sui-button-group>
       <button sui-button
@@ -43,6 +104,8 @@
   </div>
 
   <div class="example">
+    <h4 class="ui header">Vertically Attached</h4>
+    <p>A button can be attached to the left or right of other content <i class="fitted icon code right floated" (click)="toggleLabel()"></i></p>
     <div
       sui-button-group
       suiVertical="true">
@@ -54,12 +117,14 @@
       </button>
     </div>
   </div>
+  <br>
+
+  <h2 class="ui dividing header">Variations</h2>
+  <br>
 
   <div class="example">
-    <button sui-button suiBasic="true" suiColour="red" suiSize="medium">Red</button>
-  </div>
-
-  <div class="example">
+    <h4 class="ui header">Social</h4>
+    <p> A button can be formatted to link to a social website <i class="fitted icon code right floated" (click)="toggleLabel()"></i></p>
     <div sui-button
          suiSocial="facebook">
       <i class="facebook icon"></i>
