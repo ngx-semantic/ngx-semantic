@@ -10,4 +10,4 @@ export class SuiMessageContentDirective {
       'content'
     ].joinWithWhitespaceCleanup();
   }
-}s
+}
