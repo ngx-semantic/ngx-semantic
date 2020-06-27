@@ -18,6 +18,7 @@ import {PlaceholdersComponent} from './pages/elements/placeholders/placeholders.
 import { RailsComponent } from './pages/elements/rails/rails.component';
 import { RevealsComponent } from './pages/elements/reveals/reveals.component';
 import { SegmentsComponent } from './pages/elements/segments/segments.component';
+import { MessagesComponent } from './pages/collections/messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { SegmentsComponent } from './pages/elements/segments/segments.component'
     RailsComponent,
     RevealsComponent,
     SegmentsComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
