@@ -6,6 +6,7 @@ export type SuiMessageAttachment = 'attached' | 'bottom attached' | null;
 @Component({
   selector: '[sui-message]',
   template: `
+    <i class="close icon" *ngIf="suiDismissable"></i>
     <ng-content></ng-content>
   `
 })
@@ -14,6 +15,7 @@ export class SuiMessageComponent {
   @Input() suiState: SuiResultState = null;
   @Input() suiSize: SuiSize = null;
   @Input() suiColour: SuiColour = null;
+  @Input() suiDismissable = false;
   @Input() suiIcon = false;
   @Input() suiHidden = false;
   @Input() suiVisible = false;
