@@ -6,7 +6,7 @@ import {Component, HostBinding} from "@angular/core";
     <ng-content></ng-content>
   `
 })
-export class SuiMessage {
+export class SuiMessageComponent {
   @HostBinding('class')
   get classes(): string {
     return [
