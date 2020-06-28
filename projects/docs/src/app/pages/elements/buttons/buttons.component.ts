@@ -7,11 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ButtonsComponent implements OnInit {
   show: boolean = false;
-
-  toggleLabel() {
-    this.show = !this.show;
-  }
+  toggleStateMap: any = {};
   constructor() {}
 
   ngOnInit(): void {}
+
+  toggleLabel(key: string) {
+    this.toggleStateMap[key] = !this.toggleStateMap[key];
+  }
 }

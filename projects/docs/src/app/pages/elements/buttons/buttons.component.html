@@ -34,8 +34,8 @@
   <h2 class="ui dividing header">Types</h2>
   <div class="follow example">
     <h4 class="ui header">Button</h4>
-    <p>A standard button <i class="fitted icon code right floated" (click)="toggleLabel()"></i></p>
-    <div *ngIf="show == true" class="ui label" id="1" style="width: 80%;"> Example <hr>
+    <p>A standard button <i class="fitted icon code right floated" (click)="toggleLabel('standard')"></i></p>
+    <div *ngIf="toggleStateMap['standard']" class="ui label" style="width: 80%;"> Example <hr>
       <button sui-button style="padding: 15px;">
         Follow
       </button> <hr>
@@ -44,7 +44,7 @@
             Follow
           </button>]]>
     </div>
-    <button *ngIf="show == false" sui-button>
+    <button *ngIf="!toggleStateMap['standard']" sui-button>
       Follow
     </button>
   </div>
@@ -53,12 +53,24 @@
 
   <div class="example" data-class="primary, secondary">
     <h4 class="ui header">Emphasis</h4>
-    <p>A button can be formatted to show different levels of emphasis <i class="fitted icon code right floated" (click)="toggleLabel()"></i></p>
-    <button sui-button
-            suiEmphasis="primary">
+    <p>A button can be formatted to show different levels of emphasis <i class="fitted icon code right floated" (click)="toggleLabel('emphasis')"></i></p>
+    <div *ngIf="toggleStateMap['emphasis']" class="ui label" style="width: 80%;"> Example <hr>
+      <button sui-button style="padding: 15px;">
+        Follow
+      </button> <hr>
+      <![CDATA[
+      <button sui-button
+      suiEmphasis="primary">
+      Save
+      </button>
+      <button sui-button>
+      Discard
+      </button>]]>
+    </div>
+    <button *ngIf="!toggleStateMap['emphasis']" sui-button suiEmphasis="primary">
       Save
     </button>
-    <button sui-button>
+    <button *ngIf="!toggleStateMap['emphasis']" sui-button>
       Discard
     </button>
   </div>
@@ -76,7 +88,7 @@
 
   <div class="example">
     <h4 class="ui header">Basic</h4>
-    <p>A basic button is less pronounced <i class="fitted icon code right floated" (click)="toggleLabel()"></i></p>
+    <p>A basic button is less pronounced <i class="fitted icon code right floated" (click)="toggleLabel('basic')"></i></p>
     <button sui-button suiBasic="true" suiColour="red" suiSize="medium">Red</button>
     <button sui-button suiBasic="true" suiColour="blue" suiSize="medium">Blue</button>
     <button sui-button suiBasic="true" suiColour="green" suiSize="medium">Green</button>
@@ -91,7 +103,7 @@
 
   <div class="example">
     <h4 class="ui header">Horizontally Attached</h4>
-    <p>A button can be attached to the left or right of other content <i class="fitted icon code right floated" (click)="toggleLabel()"></i></p>
+    <p>A button can be attached to the left or right of other content <i class="fitted icon code right floated" (click)="toggleLabel('horizontal')"></i></p>
     <div
       sui-button-group>
       <button sui-button
@@ -105,7 +117,7 @@
 
   <div class="example">
     <h4 class="ui header">Vertically Attached</h4>
-    <p>A button can be attached to the left or right of other content <i class="fitted icon code right floated" (click)="toggleLabel()"></i></p>
+    <p>A button can be attached to the left or right of other content <i class="fitted icon code right floated" (click)="toggleLabel('vertical')"></i></p>
     <div
       sui-button-group
       suiVertical="true">
@@ -124,7 +136,7 @@
 
   <div class="example">
     <h4 class="ui header">Social</h4>
-    <p> A button can be formatted to link to a social website <i class="fitted icon code right floated" (click)="toggleLabel()"></i></p>
+    <p> A button can be formatted to link to a social website <i class="fitted icon code right floated" (click)="toggleLabel('social')"></i></p>
     <div sui-button
          suiSocial="facebook">
       <i class="facebook icon"></i>
