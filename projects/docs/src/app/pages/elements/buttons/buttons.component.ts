@@ -6,8 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./buttons.component.scss'],
 })
 export class ButtonsComponent implements OnInit {
-  show: boolean = false;
+  show = false;
   toggleStateMap: any = {};
+
   constructor() {}
 
   ngOnInit(): void {}
