@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./divider.component.scss']
 })
 export class DividerComponent implements OnInit {
-  show: boolean = false;
+  show = false;
 
   toggleLabel() {
     this.show = !this.show;
