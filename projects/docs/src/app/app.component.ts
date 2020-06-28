@@ -51,6 +51,14 @@ import {Component} from '@angular/core';
           </a>
         </div>
       </div>
+      <div class="item">
+        <div class="header">Collections</div>
+        <div class="menu">
+          <a class="item" routerLink="collections/messages" routerLinkActive="active">
+            Messages
+          </a>
+        </div>
+      </div>
     </div>
     <div class="pusher">
       <div class="page">

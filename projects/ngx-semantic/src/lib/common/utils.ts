@@ -10,7 +10,12 @@ declare global {
 
 if (!Array.prototype.joinWithWhitespaceCleanup) {
   Array.prototype.joinWithWhitespaceCleanup = function <T>(this: Array<T>): string {
-    return this.join(' ').replace(/  +/g, ' ');
+    const validClasses = this.filter(x => {
+      return !!x;
+    });
+    return validClasses
+      .join(' ')
+      .replace(/  +/g, ' ');
   };
 }
 

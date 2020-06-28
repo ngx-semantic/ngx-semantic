@@ -5,11 +5,11 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 ## Installation
 
 ```bash
-npm install ngx-semantic@alpha
+npm install ngx-semantic
 ```
 or
 ```bash
-yarn add ngx-semantic@alpha
+yarn add ngx-semantic
 ```
 
 ## Usage
