@@ -64,10 +64,6 @@
       true,
       "as-needed"
     ],
-    "quotemark": [
-      true,
-      "single"
-    ],
     "semicolon": {
       "options": [
         "always"
@@ -117,6 +113,12 @@
         "check-typecast"
       ]
     },
+    "quotemark": [
+      true,
+      "single",
+      "avoid-escape",
+      "avoid-template"
+    ],
     "component-class-suffix": true,
     "contextual-lifecycle": true,
     "directive-class-suffix": true,
