@@ -19,6 +19,7 @@ import { RailsComponent } from './pages/elements/rails/rails.component';
 import { RevealsComponent } from './pages/elements/reveals/reveals.component';
 import { SegmentsComponent } from './pages/elements/segments/segments.component';
 import { MessagesComponent } from './pages/collections/messages/messages.component';
+import {CollectionsComponent} from './pages/collections/collections.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { MessagesComponent } from './pages/collections/messages/messages.compone
     RevealsComponent,
     SegmentsComponent,
     MessagesComponent,
+    CollectionsComponent
   ],
   imports: [
     BrowserModule,
