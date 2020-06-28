@@ -15,6 +15,12 @@
       ],
       "sui",
       "kebab-case"
+    ],
+    "quotemark": [
+      true,
+      "single",
+      "avoid-escape",
+      "avoid-template"
     ]
   }
 }

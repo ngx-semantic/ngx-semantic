@@ -4,8 +4,7 @@
 
 export type SuiLocation = 'left' | 'right' | 'top' | 'bottom' | 'center' | null;
 
-export type SuiColour = 'red' | 'orange' | 'yellow' | 'olive' | 'green' | 'teal' | 'blue' | 'pink' | 'brown' | 'grey'
-  | 'black' | null;
+export type SuiColour = 'red' | 'orange' | 'yellow' | 'olive' | 'green' | 'teal' | 'blue' | 'pink' | 'brown' | 'grey'  | 'black' | null;
 
 export type SuiSize = 'mini' | 'tiny' | 'small' | 'medium' | 'large' | 'big' | 'huge' | 'massive' | null;
 
@@ -35,3 +34,5 @@ export type SuiWidth =
   | null;
 
 export type SuiDeviceVisibility = 'large screen only' | 'mobile only' | 'computer only' | 'tablet mobile only' | 'tablet only' | null;
+
+export type SuiResultState = 'success' | 'positive' | 'warning' | 'negative' | 'error' | 'info' | null;

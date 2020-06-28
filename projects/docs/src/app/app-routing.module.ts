@@ -15,6 +15,8 @@ import {PlaceholdersComponent} from './pages/elements/placeholders/placeholders.
 import {RailsComponent} from './pages/elements/rails/rails.component';
 import {RevealsComponent} from './pages/elements/reveals/reveals.component';
 import {SegmentsComponent} from './pages/elements/segments/segments.component';
+import {CollectionsComponent} from './pages/collections/collections.component';
+import {MessagesComponent} from './pages/collections/messages/messages.component';
 
 const routes: Routes = [
   {
@@ -77,6 +79,16 @@ const routes: Routes = [
       {
         path: 'segments',
         component: SegmentsComponent
+      }
+    ]
+  },
+  {
+    path: 'collections',
+    component: CollectionsComponent,
+    children: [
+      {
+        path: 'messages',
+        component: MessagesComponent
       }
     ]
   },
