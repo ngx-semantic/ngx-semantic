@@ -3,7 +3,18 @@
 
   <div class="example">
     <div sui-message
-    [suiDismissable]="true">
+         suiColour="blue"
+         suiSize="large">
+      <div sui-message-header>
+        Welcome back!
+      </div>
+      <p>This is a special notification which you can dismiss if you're bored with it.</p>
+    </div>
+  </div>
+
+  <div class="example">
+    <div sui-message
+         [suiDismissable]="true">
       <div sui-message-header>
         Welcome back!
       </div>

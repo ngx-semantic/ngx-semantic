@@ -1,4 +1,4 @@
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, ElementRef, HostBinding, Input} from '@angular/core';
 import {SuiColour, SuiResultState, SuiSize, Utils} from '../../common';
 
 export type SuiMessageAttachment = 'attached' | 'bottom attached' | null;
@@ -6,7 +6,8 @@ export type SuiMessageAttachment = 'attached' | 'bottom attached' | null;
 @Component({
   selector: '[sui-message]',
   template: `
-    <i class="close icon" *ngIf="suiDismissable"></i>
+    <i class="close icon" *ngIf="suiDismissable"
+       (click)="dismiss()"></i>
     <ng-content></ng-content>
   `
 })
@@ -21,6 +22,9 @@ export class SuiMessageComponent {
   @Input() suiVisible = false;
   @Input() suiFloating = false;
   @Input() suiCompact = false;
+
+  constructor(private el: ElementRef) {
+  }
 
   @HostBinding('class')
   get classes(): string {
@@ -37,5 +41,11 @@ export class SuiMessageComponent {
       Utils.getPropClass(this.suiCompact, 'compact'),
       'message'
     ].joinWithWhitespaceCleanup();
+  }
+
+  dismiss(): void {
+    const nativeElement: HTMLElement = this.el.nativeElement;
+    const parentElement: HTMLElement = nativeElement.parentElement;
+    parentElement.removeChild(nativeElement);
   }
 }
