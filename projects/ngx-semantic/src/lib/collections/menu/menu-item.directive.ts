@@ -2,11 +2,20 @@
  * Created by bolor on 7/3/2020
  */
 
-import {Directive} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
+import {Utils} from '../../common';
 
 @Directive({
   selector: '[sui-menu-item]'
 })
 export class SuiMenuItemDirective {
+  @Input() suiActive = false;
 
+  @HostBinding('class')
+  get classes(): string {
+    return [
+      Utils.getPropClass(this.suiActive, 'active'),
+      'item'
+    ].joinWithWhitespaceCleanup();
+  }
 }
