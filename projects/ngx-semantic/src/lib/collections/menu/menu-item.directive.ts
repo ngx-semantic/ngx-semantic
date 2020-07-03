@@ -11,12 +11,14 @@ import {Utils} from '../../common';
 export class SuiMenuItemDirective {
   @Input() suiActive = false;
   @Input() suiBrowser = false;
+  @Input() suiDisabled = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
       Utils.getPropClass(this.suiActive, 'active'),
       Utils.getPropClass(this.suiBrowser, 'browser'),
+      Utils.getPropClass(this.suiDisabled, 'disabled'),
       'item'
     ].joinWithWhitespaceCleanup();
   }
