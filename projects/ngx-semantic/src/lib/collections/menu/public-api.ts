@@ -4,4 +4,5 @@
 
 export * from './menu.component';
 export * from './menu-item.directive';
+export * from './sub-menu.directive';
 export * from './menu.module';
