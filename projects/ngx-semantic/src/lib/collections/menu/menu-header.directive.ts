@@ -7,7 +7,7 @@ import {Directive, HostBinding} from '@angular/core';
 @Directive({
   selector: '[sui-menu-header]'
 })
-export class SuiMenuHeader {
+export class SuiMenuHeaderDirective {
   @HostBinding('class')
   get classes(): string {
     return ['header'].joinWithWhitespaceCleanup();
