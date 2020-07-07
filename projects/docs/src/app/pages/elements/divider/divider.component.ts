@@ -7,14 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DividerComponent implements OnInit {
   show = false;
-
-  toggleLabel() {
-    this.show = !this.show;
-  }
+  toggleStateMap: any = {};
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  toggleLabel(key: string) {
+    this.toggleStateMap[key] = !this.toggleStateMap[key];
   }
 
 }

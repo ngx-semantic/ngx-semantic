@@ -1,7 +1,69 @@
+<div class="ui masthead vertical segment">
+  <div class="ui container">
+    <div class="introduction">
+
+      <h1 class="ui header">
+        Loader
+        <div class="sub header">
+          A loader alerts a user to wait for an activity to complete
+        </div>
+      </h1>
+
+      <div class="ui hidden divider"></div>
+
+      <div class="ui right floated main menu">
+
+        <a class="bug popup icon item" data-content="Submit Bug Report" href="https://github.com/ngx-semantic/ngx-semantic/issues">
+          <i class="bug icon"></i>
+        </a>
+
+        <a class="github popup icon item" data-content="View project on GitHub" href="https://github.com/ngx-semantic/ngx-semantic">
+          <i class="alternate github icon"></i>
+        </a>
+      </div>
+
+      <div sui-button suiEmphasis="primary">
+        Download
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
 <div class="main ui container">
   <h2 sui-header suiDividing="true">Types</h2>
+  <br>
 
   <div class="example">
+    <h4 class="ui header">Loader</h4>
+    <p>A loader <i class="fitted icon code right floated"></i></p>
+
+    <div class="ui segment">
+      <div class="ui active dimmer">
+        <div sui-loader suiSize="medium" suiText="false"></div>
+      </div>
+      <p style="height: 50px"></p>
+    </div>
+  </div>
+  <br>
+
+  <div class="example">
+    <h4 class="ui header">Text Loader</h4>
+    <p>A loader can contain text <i class="fitted icon code right floated"></i></p>
+
+    <div class="ui segment">
+      <div class="ui active dimmer">
+        <div sui-loader suiSize="medium" suiText="true">Loading</div>
+      </div>
+      <p style="height: 50px"></p>
+    </div>
+  </div>
+  <br>
+
+  <div class="example">
+    <h4 class="ui header">Size</h4>
+    <p>Loaders can have different sizes <i class="fitted icon code right floated"></i></p>
+
     <div class="ui segment">
       <div class="ui active dimmer">
         <div sui-loader suiSize="mini" suiText="true">Loading</div>
