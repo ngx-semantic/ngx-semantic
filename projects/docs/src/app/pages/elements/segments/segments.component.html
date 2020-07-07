@@ -1,7 +1,44 @@
+<div class="ui masthead vertical segment">
+  <div class="ui container">
+    <div class="introduction">
+
+      <h1 class="ui header">
+        Segment
+        <div class="sub header">
+          A segment is used to create a grouping of related content
+        </div>
+      </h1>
+
+      <div class="ui hidden divider"></div>
+
+      <div class="ui right floated main menu">
+
+        <a class="bug popup icon item" data-content="Submit Bug Report" href="https://github.com/ngx-semantic/ngx-semantic/issues">
+          <i class="bug icon"></i>
+        </a>
+
+        <a class="github popup icon item" data-content="View project on GitHub" href="https://github.com/ngx-semantic/ngx-semantic">
+          <i class="alternate github icon"></i>
+        </a>
+      </div>
+
+      <div sui-button suiEmphasis="primary">
+        Download
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+
 <div class="main ui container">
   <h2 sui-header suiDividing="true">Types</h2>
+  <br>
 
   <div class="example">
+    <h4 class="ui header">Colored</h4>
+    <p>A segment can be colored<i class="fitted icon code right floated"></i></p>
+
     <div sui-segment suiColour="red" [suiInverted]="true">Red</div>
     <div sui-segment suiColour="orange" [suiInverted]="true">Orange</div>
     <div sui-segment suiColour="yellow" [suiInverted]="true">Yellow</div>

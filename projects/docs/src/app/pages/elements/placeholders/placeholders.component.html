@@ -1,7 +1,43 @@
+<div class="ui masthead vertical segment">
+  <div class="ui container">
+    <div class="introduction">
+
+      <h1 class="ui header">
+        Placeholder
+        <div class="sub header">
+          A placeholder is used to reserve splace for content that soon will appear in a layout
+        </div>
+      </h1>
+
+      <div class="ui hidden divider"></div>
+
+      <div class="ui right floated main menu">
+
+        <a class="bug popup icon item" data-content="Submit Bug Report" href="https://github.com/ngx-semantic/ngx-semantic/issues">
+          <i class="bug icon"></i>
+        </a>
+
+        <a class="github popup icon item" data-content="View project on GitHub" href="https://github.com/ngx-semantic/ngx-semantic">
+          <i class="alternate github icon"></i>
+        </a>
+      </div>
+
+      <div sui-button suiEmphasis="primary">
+        Download
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
 <div class="main ui container">
   <h2 sui-header suiDividing="true">Types</h2>
+  <br>
 
   <div class="example">
+    <h4 class="ui header">Placeholder</h4>
+    <p>A placeholder is used to reserve space for content that soon will appear in a layout. <i class="fitted icon code right floated"></i></p>
+
     <div class="ui three column stackable grid">
       <div class="column">
         <div class="ui raised segment">
@@ -47,6 +83,7 @@
       </div>
     </div>
   </div>
+  <br>
 
   <div class="example">
     <div class="ui three doubling stackable cards">
@@ -75,7 +112,32 @@
     </div>
   </div>
 
+  <h2 sui-header suiDividing="true">Content</h2>
+  <br>
+
   <div class="example">
+    <h4 class="ui header">Headers</h4>
+    <p>A placeholder can contain a header <i class="fitted icon code right floated"></i></p>
+
+    <div class="ui segment">
+      <div class="ui active placeholder">
+        <div sui-placeholder-image suiHeader="true">
+          <div sui-placeholder-line></div>
+          <div sui-placeholder-line></div>
+        </div>
+        <div sui-placeholder-paragraph>
+          <div sui-placeholder-line></div>
+          <div sui-placeholder-line></div>
+          <div sui-placeholder-line></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="example">
+    <h4 class="ui header">Inverted</h4>
+    <p>A placeholder can have their colors inverted. <i class="fitted icon code right floated"></i></p>
+
     <div class="ui inverted segment">
       <div class="ui active inverted placeholder">
         <div sui-placeholder-image suiHeader="true">
