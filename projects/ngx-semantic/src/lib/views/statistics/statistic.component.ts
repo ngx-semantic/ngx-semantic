@@ -2,7 +2,8 @@
  * Created by bolor on 7/16/2020
  */
 
-import {Component, HostBinding} from '@angular/core';
+import {Component, Host, HostBinding, Optional} from '@angular/core';
+import {SuiStatisticGroupComponent} from './statistic-group.component';
 
 @Component({
   selector: '[sui-statistic]',
@@ -11,11 +12,17 @@ import {Component, HostBinding} from '@angular/core';
   `
 })
 export class SuiStatisticComponent {
+  private isChildComponent: boolean;
+
   @HostBinding('class')
   get classes(): string {
     return [
-      'ui',
+      this.isChildComponent ? '' : 'ui',
       'statistic'
     ].joinWithWhitespaceCleanup();
+  }
+
+  constructor(@Optional() @Host() private parent: SuiStatisticGroupComponent) {
+    this.isChildComponent = !!parent;
   }
 }
