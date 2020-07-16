@@ -1,7 +1,7 @@
 import {Directive, HostBinding} from '@angular/core';
 
 @Directive({
-  selector: '[sui-message-header]'
+  selector: '[suiMessageHeader]'
 })
 export class SuiMessageHeaderDirective {
   @HostBinding('class')

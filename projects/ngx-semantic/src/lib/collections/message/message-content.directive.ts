@@ -1,7 +1,7 @@
 import {Directive, HostBinding} from '@angular/core';
 
 @Directive({
-  selector: '[sui-message-content]'
+  selector: '[suiMessageContent]'
 })
 export class SuiMessageContentDirective {
   @HostBinding('class')
