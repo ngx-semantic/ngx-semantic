@@ -6,7 +6,7 @@ import {Directive, HostBinding, Input} from '@angular/core';
 import {Utils} from '../../common';
 
 @Directive({
-  selector: '[sui-menu-item]'
+  selector: '[suiMenuItem]'
 })
 export class SuiMenuItemDirective {
   @Input() suiActive = false;

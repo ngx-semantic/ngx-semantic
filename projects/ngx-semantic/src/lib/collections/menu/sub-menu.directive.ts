@@ -6,7 +6,7 @@ import {Directive, HostBinding, Input} from '@angular/core';
 import {Utils} from '../../common';
 
 @Directive({
-  selector: '[sui-sub-menu]'
+  selector: '[suiSubMenu]'
 })
 export class SuiSubMenuDirective {
   @Input() suiRight = false;
