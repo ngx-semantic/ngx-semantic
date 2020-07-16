@@ -4,7 +4,9 @@
 
 import {Component, Host, HostBinding, Input, Optional} from '@angular/core';
 import {SuiStatisticGroupComponent} from './statistic-group.component';
-import {SuiColour, Utils} from '../../common';
+import {SuiColour, SuiSize, Utils} from '../../common';
+
+export type SuiFloat = 'right' | 'left';
 
 @Component({
   selector: '[sui-statistic]',
@@ -14,6 +16,8 @@ import {SuiColour, Utils} from '../../common';
 })
 export class SuiStatisticComponent {
   @Input() suiColour: SuiColour = null;
+  @Input() suiFloated: SuiFloat = null;
+  @Input() suiSize: SuiSize = null;
   @Input() suiHorizontal = false;
   @Input() suiInverted = false;
   private isChildComponent: boolean;
@@ -22,7 +26,9 @@ export class SuiStatisticComponent {
   get classes(): string {
     return [
       this.isChildComponent ? '' : 'ui',
+      this.suiSize,
       this.suiColour,
+      this.suiFloated ? `${this.suiFloated} floated` : '',
       Utils.getPropClass(this.suiHorizontal, 'horizontal'),
       Utils.getPropClass(this.suiInverted, 'inverted'),
       'statistic'
