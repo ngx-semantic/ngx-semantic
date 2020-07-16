@@ -5,14 +5,17 @@
 import {Directive, HostBinding, Input} from '@angular/core';
 
 @Directive({
-  selector: '[sui-breadcrumb-divider]'
+  selector: '[suiBreadcrumbDivider]'
 })
 export class SuiBreadcrumbDividerDirective {
   @Input() suiIcon = '';
 
   @HostBinding('class')
   get classes(): string {
-    return [this.getIcon(), 'divider'].joinWithWhitespaceCleanup();
+    return [
+      this.getIcon(),
+      'divider']
+      .joinWithWhitespaceCleanup();
   }
 
   getIcon(): string {
