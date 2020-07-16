@@ -2,8 +2,9 @@
  * Created by bolor on 7/16/2020
  */
 
-import {Component, Host, HostBinding, Optional} from '@angular/core';
+import {Component, Host, HostBinding, Input, Optional} from '@angular/core';
 import {SuiStatisticGroupComponent} from './statistic-group.component';
+import {SuiColour, Utils} from '../../common';
 
 @Component({
   selector: '[sui-statistic]',
@@ -12,12 +13,18 @@ import {SuiStatisticGroupComponent} from './statistic-group.component';
   `
 })
 export class SuiStatisticComponent {
+  @Input() suiColour: SuiColour = null;
+  @Input() suiHorizontal = false;
+  @Input() suiInverted = false;
   private isChildComponent: boolean;
 
   @HostBinding('class')
   get classes(): string {
     return [
       this.isChildComponent ? '' : 'ui',
+      this.suiColour,
+      Utils.getPropClass(this.suiHorizontal, 'horizontal'),
+      Utils.getPropClass(this.suiInverted, 'inverted'),
       'statistic'
     ].joinWithWhitespaceCleanup();
   }
