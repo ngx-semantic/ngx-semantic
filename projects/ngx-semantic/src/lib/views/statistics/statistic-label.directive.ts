@@ -5,7 +5,7 @@
 import {Directive, HostBinding} from '@angular/core';
 
 @Directive({
-  selector: '[sui-statistic-label]'
+  selector: '[suiStatLabel]'
 })
 export class SuiStatisticLabelDirective {
   @HostBinding('class')
