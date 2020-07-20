@@ -12,5 +12,5 @@ import {SuiCommentsComponent} from './comments.component';
   imports: [CommonModule],
   exports: [SuiCommentComponent, SuiCommentComponent]
 })
-export class CommentModule {
+export class SuiCommentModule {
 }
