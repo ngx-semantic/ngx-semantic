@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {Utils} from '../../common';
+import {SuiSize, Utils} from '../../common';
 
 @Component({
   selector: '[sui-comments]',
@@ -12,12 +12,16 @@ import {Utils} from '../../common';
   `
 })
 export class SuiCommentsComponent {
+  @Input() suiSize: SuiSize = null;
   @Input() suiThreaded = false;
+  @Input() suiMinimal = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
       'ui',
+      this.suiSize,
+      Utils.getPropClass(this.suiMinimal, 'minimal'),
       Utils.getPropClass(this.suiThreaded, 'threaded'),
       'comments'
     ].joinWithWhitespaceCleanup();
