@@ -15,6 +15,7 @@ export class SuiCommentsComponent {
   @Input() suiSize: SuiSize = null;
   @Input() suiThreaded = false;
   @Input() suiMinimal = false;
+  @Input() suiCollapsed = false;
 
   private isChildComponent: boolean;
 
@@ -25,6 +26,7 @@ export class SuiCommentsComponent {
       this.suiSize,
       Utils.getPropClass(this.suiMinimal, 'minimal'),
       Utils.getPropClass(this.suiThreaded, 'threaded'),
+      Utils.getPropClass(this.suiCollapsed, 'collapsed'),
       'comments'
     ].joinWithWhitespaceCleanup();
   }
