@@ -2,7 +2,7 @@
  * Created by bolor on 7/20/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, Host, HostBinding, Input, Optional} from '@angular/core';
 import {SuiSize, Utils} from '../../common';
 
 @Component({
@@ -16,14 +16,20 @@ export class SuiCommentsComponent {
   @Input() suiThreaded = false;
   @Input() suiMinimal = false;
 
+  private isChildComponent: boolean;
+
   @HostBinding('class')
   get classes(): string {
     return [
-      'ui',
+      this.isChildComponent ? '' : 'ui',
       this.suiSize,
       Utils.getPropClass(this.suiMinimal, 'minimal'),
       Utils.getPropClass(this.suiThreaded, 'threaded'),
       'comments'
     ].joinWithWhitespaceCleanup();
+  }
+
+  constructor(@Optional() @Host() private parent: SuiCommentsComponent) {
+    this.isChildComponent = !!parent;
   }
 }

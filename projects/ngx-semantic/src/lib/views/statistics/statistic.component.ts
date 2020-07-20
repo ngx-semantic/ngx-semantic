@@ -20,6 +20,7 @@ export class SuiStatisticComponent {
   @Input() suiSize: SuiSize = null;
   @Input() suiHorizontal = false;
   @Input() suiInverted = false;
+
   private isChildComponent: boolean;
 
   @HostBinding('class')

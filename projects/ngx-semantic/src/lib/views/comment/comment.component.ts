@@ -2,7 +2,7 @@
  * Created by bolor on 7/20/2020
  */
 
-import {Component} from '@angular/core';
+import {Component, HostBinding} from '@angular/core';
 
 @Component({
   selector: '[sui-comment]',
@@ -11,4 +11,10 @@ import {Component} from '@angular/core';
   `
 })
 export class SuiCommentComponent {
+  @HostBinding('class')
+  get classes(): string {
+    return [
+      'comment'
+    ].joinWithWhitespaceCleanup();
+  }
 }
