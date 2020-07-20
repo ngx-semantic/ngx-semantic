@@ -2,7 +2,8 @@
  * Created by bolor on 7/20/2020
  */
 
-import {Component} from '@angular/core';
+import {Component, HostBinding, Input} from '@angular/core';
+import {Utils} from '../../common';
 
 @Component({
   selector: '[sui-comments]',
@@ -11,4 +12,14 @@ import {Component} from '@angular/core';
   `
 })
 export class SuiCommentsComponent {
+  @Input() suiThreaded = false;
+
+  @HostBinding('class')
+  get classes(): string {
+    return [
+      'ui',
+      Utils.getPropClass(this.suiThreaded, 'threaded'),
+      'comments'
+    ].joinWithWhitespaceCleanup();
+  }
 }
