@@ -2,7 +2,7 @@
  * Created by bolor on 7/28/2020
  */
 
-import {Component} from '@angular/core';
+import {Component, HostBinding} from '@angular/core';
 
 @Component({
   selector: '[sui-feed]',
@@ -11,4 +11,11 @@ import {Component} from '@angular/core';
   `
 })
 export class SuiFeedComponent {
+  @HostBinding('class')
+  get classes(): string {
+    return [
+      'ui',
+      'feed'
+    ].joinWithWhitespaceCleanup();
+  }
 }
