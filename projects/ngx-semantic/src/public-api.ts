@@ -28,5 +28,6 @@ export * from './lib/collections/message';
 export * from './lib/views/advertisement';
 export * from './lib/views/statistics';
 export * from './lib/views/comment';
+export * from './lib/views/items';
 
 export * from './lib/ngx-semantic.module';
