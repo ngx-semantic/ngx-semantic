@@ -3,15 +3,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'doc-segments',
   templateUrl: './segments.component.html',
-  styleUrls: ['./segments.component.scss']
+  styleUrls: ['./segments.component.scss'],
 })
 export class SegmentsComponent implements OnInit {
   toggleStateMap: any = {};
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   toggleLabel(key: string) {
     this.toggleStateMap[key] = !this.toggleStateMap[key];
@@ -23,5 +22,4 @@ export class SegmentsComponent implements OnInit {
   <div sui-segment suiColour="yellow" [suiInverted]="true">Yellow</div>
   <div sui-segment suiColour="olive" [suiInverted]="true">Olive</div>
   <div sui-segment suiColour="green" [suiInverted]="true">Green</div>`;
-
 }
