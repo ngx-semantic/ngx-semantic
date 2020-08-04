@@ -37,9 +37,10 @@
 
   <div class="example">
     <h4 class="ui header">Colored</h4>
-    <p>A segment can be colored<i class="fitted icon code right floated"></i></p>
-
-    <div sui-segment suiColour="red" [suiInverted]="true">Red</div>
+    <p>A segment can be colored<i class="fitted icon code right floated" (click)="toggleLabel('stdSegment')"></i></p>
+    <div *ngIf="toggleStateMap['stdSegment']" class="ui label" style="width: 80%;"> Example
+      <hr>
+      <div sui-segment suiColour="red" [suiInverted]="true">Red</div>
     <div sui-segment suiColour="orange" [suiInverted]="true">Orange</div>
     <div sui-segment suiColour="yellow" [suiInverted]="true">Yellow</div>
     <div sui-segment suiColour="olive" [suiInverted]="true">Olive</div>
@@ -51,5 +52,25 @@
     <div sui-segment suiColour="pink" [suiInverted]="true">Pink</div>
     <div sui-segment suiColour="brown" [suiInverted]="true">Brown</div>
     <div sui-segment suiColour="grey" [suiInverted]="true">Grey</div>
+      <hr>
+      <pre>
+        <code>
+          {{snippetSegment}}
+        </code>
+      </pre>
+    </div>
+
+    <div *ngIf="!toggleStateMap['stdSegment']" sui-segment suiColour="red" [suiInverted]="true">Red</div>
+    <div *ngIf="!toggleStateMap['stdSegment']" sui-segment suiColour="orange" [suiInverted]="true">Orange</div>
+    <div *ngIf="!toggleStateMap['stdSegment']" sui-segment suiColour="yellow" [suiInverted]="true">Yellow</div>
+    <div *ngIf="!toggleStateMap['stdSegment']" sui-segment suiColour="olive" [suiInverted]="true">Olive</div>
+    <div *ngIf="!toggleStateMap['stdSegment']" sui-segment suiColour="green" [suiInverted]="true">Green</div>
+    <div *ngIf="!toggleStateMap['stdSegment']" sui-segment suiColour="teal" [suiInverted]="true">Teal</div>
+    <div *ngIf="!toggleStateMap['stdSegment']" sui-segment suiColour="blue" [suiInverted]="true">Blue</div>
+    <div *ngIf="!toggleStateMap['stdSegment']" sui-segment suiColour="violet" [suiInverted]="true">Violet</div>
+    <div *ngIf="!toggleStateMap['stdSegment']" sui-segment suiColour="purple" [suiInverted]="true">Purple</div>
+    <div *ngIf="!toggleStateMap['stdSegment']" sui-segment suiColour="pink" [suiInverted]="true">Pink</div>
+    <div *ngIf="!toggleStateMap['stdSegment']" sui-segment suiColour="brown" [suiInverted]="true">Brown</div>
+    <div *ngIf="!toggleStateMap['stdSegment']" sui-segment suiColour="grey" [suiInverted]="true">Grey</div>
   </div>
 </div>
