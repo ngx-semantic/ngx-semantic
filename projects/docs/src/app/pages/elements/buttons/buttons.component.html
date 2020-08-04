@@ -40,10 +40,11 @@
       <button sui-button style="padding: 15px;">
         Follow
       </button> <hr>
-      <![CDATA[
-          <button sui-button>
-            Follow
-          </button>]]>
+      <pre>
+        <code>
+          {{snippetBtn}}
+        </code>
+      </pre>
     </div>
     <button *ngIf="!toggleStateMap['standard']" sui-button>
       Follow
@@ -56,17 +57,19 @@
     <h4 class="ui header">Emphasis</h4>
     <p>A button can be formatted to show different levels of emphasis <i class="fitted icon code right floated" (click)="toggleLabel('emphasis')"></i></p>
     <div *ngIf="toggleStateMap['emphasis']" class="ui label" style="width: 80%;"> Example <hr>
-      <button sui-button style="padding: 15px;">
-        Follow
-      </button> <hr>
-      <![CDATA[
-      <button sui-button
-      suiEmphasis="primary">
-      Save
-      </button>
-      <button sui-button>
-      Discard
-      </button>]]>
+      <div class="example">
+        <button sui-button suiEmphasis="primary"> Save </button>
+        <button sui-button> Discard </button>
+      </div>
+      <div class="another example">
+        <button sui-button suiEmphasis="secondary"> Okay</button>
+        <button sui-button> Cancel </button>
+      </div> <hr>
+      <pre>
+        <code>
+          {{snippetBtnEmphasis}}
+        </code>
+      </pre>
     </div>
     <button *ngIf="!toggleStateMap['emphasis']" sui-button suiEmphasis="primary">
       Save
@@ -77,11 +80,11 @@
   </div>
 
   <div class="another example">
-    <button sui-button
+    <button *ngIf="!toggleStateMap['emphasis']" sui-button
             suiEmphasis="secondary">
       Okay
     </button>
-    <button sui-button>
+    <button *ngIf="!toggleStateMap['emphasis']" sui-button>
       Cancel
     </button>
   </div>
@@ -90,12 +93,25 @@
   <div class="example">
     <h4 class="ui header">Basic</h4>
     <p>A basic button is less pronounced <i class="fitted icon code right floated" (click)="toggleLabel('basic')"></i></p>
-    <button sui-button suiBasic="true" suiColour="red" suiSize="medium">Red</button>
-    <button sui-button suiBasic="true" suiColour="blue" suiSize="medium">Blue</button>
-    <button sui-button suiBasic="true" suiColour="green" suiSize="medium">Green</button>
-    <button sui-button suiBasic="true" suiColour="yellow" suiSize="medium">Yellow</button>
-    <button sui-button suiBasic="true" suiColour="grey" suiSize="medium">Grey</button>
-    <button sui-button suiBasic="true" suiColour="black" suiSize="medium">Black</button>
+    <div *ngIf="toggleStateMap['basic']" class="ui label" style="width: 80%;"> Example <hr>
+      <button sui-button suiBasic="true" suiColour="red" suiSize="medium">Red</button>
+      <button sui-button suiBasic="true" suiColour="blue" suiSize="medium">Blue</button>
+      <button sui-button suiBasic="true" suiColour="green" suiSize="medium">Green</button>
+      <button sui-button suiBasic="true" suiColour="yellow" suiSize="medium">Yellow</button>
+      <button sui-button suiBasic="true" suiColour="grey" suiSize="medium">Grey</button>
+      <button sui-button suiBasic="true" suiColour="black" suiSize="medium">Black</button> <hr>
+      <pre>
+        <code>
+          {{snippetBtnBasic}}
+        </code>
+      </pre>
+    </div>
+    <button *ngIf="!toggleStateMap['basic']" sui-button suiBasic="true" suiColour="red" suiSize="medium">Red</button>
+    <button *ngIf="!toggleStateMap['basic']" sui-button suiBasic="true" suiColour="blue" suiSize="medium">Blue</button>
+    <button *ngIf="!toggleStateMap['basic']" sui-button suiBasic="true" suiColour="green" suiSize="medium">Green</button>
+    <button *ngIf="!toggleStateMap['basic']" sui-button suiBasic="true" suiColour="yellow" suiSize="medium">Yellow</button>
+    <button *ngIf="!toggleStateMap['basic']" sui-button suiBasic="true" suiColour="grey" suiSize="medium">Grey</button>
+    <button *ngIf="!toggleStateMap['basic']" sui-button suiBasic="true" suiColour="black" suiSize="medium">Black</button>
   </div>
   <br>
 
@@ -105,8 +121,22 @@
   <div class="example">
     <h4 class="ui header">Horizontally Attached</h4>
     <p>A button can be attached to the left or right of other content <i class="fitted icon code right floated" (click)="toggleLabel('horizontal')"></i></p>
-    <div
-      sui-button-group>
+    <div *ngIf="toggleStateMap['horizontal']" class="ui label" style="width: 80%;"> Example <hr>
+      <div sui-button-group>
+        <button sui-button
+                suiEmphasis="primary">Left
+        </button>
+        <button sui-button
+                suiEmphasis="secondary">Right
+        </button>
+      </div> <hr>
+      <pre>
+        <code>
+          {{snippetBtnHorizontal}}
+        </code>
+      </pre>
+    </div>
+    <div *ngIf="!toggleStateMap['horizontal']" sui-button-group>
       <button sui-button
               suiEmphasis="primary">Left
       </button>
@@ -119,7 +149,24 @@
   <div class="example">
     <h4 class="ui header">Vertically Attached</h4>
     <p>A button can be attached to the left or right of other content <i class="fitted icon code right floated" (click)="toggleLabel('vertical')"></i></p>
-    <div
+    <div *ngIf="toggleStateMap['vertical']" class="ui label" style="width: 80%;"> Example <hr>
+      <div
+      sui-button-group
+      suiVertical="true">
+      <button sui-button
+              suiEmphasis="positive">Top
+      </button>
+      <button sui-button
+              suiEmphasis="negative">Bottom
+      </button>
+    </div> <hr>
+      <pre>
+        <code>
+          {{snippetBtnVertical}}
+        </code>
+      </pre>
+    </div>
+    <div  *ngIf="!toggleStateMap['vertical']"
       sui-button-group
       suiVertical="true">
       <button sui-button
@@ -138,7 +185,9 @@
   <div class="example">
     <h4 class="ui header">Social</h4>
     <p> A button can be formatted to link to a social website <i class="fitted icon code right floated" (click)="toggleLabel('social')"></i></p>
-    <div sui-button
+    <div *ngIf="toggleStateMap['social']" class="ui label" style="width: 80%;"> Example
+      <hr>
+      <div sui-button
          suiSocial="facebook">
       <i class="facebook icon"></i>
       Facebook
@@ -169,6 +218,48 @@
       Instagram
     </div>
     <div sui-button
+         suiSocial="youtube">
+      <i class="youtube icon"></i>
+      YouTube
+    </div>
+      <hr>
+      <pre>
+        <code>
+          {{snippetBtnSocial}}
+        </code>
+      </pre>
+    </div>
+    <div sui-button *ngIf="!toggleStateMap['social']"
+         suiSocial="facebook">
+      <i class="facebook icon"></i>
+      Facebook
+    </div>
+    <div sui-button *ngIf="!toggleStateMap['social']"
+         suiSocial="twitter">
+      <i class="twitter icon"></i>
+      Twitter
+    </div>
+    <div sui-button *ngIf="!toggleStateMap['social']"
+         suiSocial="google plus">
+      <i class="google plus icon"></i>
+      Google Plus
+    </div>
+    <div sui-button *ngIf="!toggleStateMap['social']"
+         suiSocial="vk">
+      <i class="vk icon"></i>
+      VK
+    </div>
+    <div sui-button *ngIf="!toggleStateMap['social']"
+         suiSocial="linkedin">
+      <i class="linkedin icon"></i>
+      LinkedIn
+    </div>
+    <div sui-button *ngIf="!toggleStateMap['social']"
+         suiSocial="instagram">
+      <i class="instagram icon"></i>
+      Instagram
+    </div>
+    <div sui-button *ngIf="!toggleStateMap['social']"
          suiSocial="youtube">
       <i class="youtube icon"></i>
       YouTube
