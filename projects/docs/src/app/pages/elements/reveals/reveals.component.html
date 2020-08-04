@@ -37,9 +37,44 @@
 
   <div class="example">
     <h4 class="ui header">Move</h4>
-    <p>An element can move in a direction to reveal content <i class="fitted icon code right floated"></i></p>
+    <p>An element can move in a direction to reveal content <i class="fitted icon code right floated" (click)="toggleLabel('moveReveal')"></i></p>
+    <div *ngIf="toggleStateMap['moveReveal']" class="ui label" style="width: 80%;"> Example
+      <hr>
+      <div class="example">
+        <div sui-reveal
+         suiSize="small"
+         suiMove="right"
+         suiImage="true">
+      <img sui-reveal-content
+           suiVisible="visible"
+           src="https://semantic-ui.com/images/avatar/large/ade.jpg">
+      <img sui-reveal-content
+           suiVisible="hidden"
+           src="https://semantic-ui.com/images/wireframe/square-image.png">
+    </div>
+      </div>
+      <div class="example">
+        <div sui-reveal
+             suiSize="medium"
+             suiRotate="right"
+             suiImage="true">
+          <img sui-reveal-content
+               suiVisible="visible"
+               src="https://semantic-ui.com/images/avatar/large/ade.jpg">
+          <img sui-reveal-content
+               suiVisible="hidden"
+               src="https://semantic-ui.com/images/wireframe/square-image.png">
+        </div>
+      </div>
+      <hr>
+      <pre>
+        <code>
+          {{snippetMoveReveal}}
+        </code>
+      </pre>
+    </div>
 
-    <div sui-reveal
+    <div *ngIf="!toggleStateMap['moveReveal']" sui-reveal
          suiSize="small"
          suiMove="right"
          suiImage="true">
@@ -52,7 +87,7 @@
     </div>
   </div>
 
-  <div class="example">
+  <div *ngIf="!toggleStateMap['moveReveal']" class="example">
     <div sui-reveal
          suiSize="medium"
          suiRotate="right"
