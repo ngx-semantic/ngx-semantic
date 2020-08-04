@@ -16,7 +16,6 @@
 
 show = false;
 toggleStateMap: any = {};
-
 toggleLabel(key: string) {
   this.toggleStateMap[key] = !this.toggleStateMap[key];
 }
