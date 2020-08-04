@@ -13,3 +13,12 @@
     </code>
   </pre>
 </div>
+
+show = false;
+toggleStateMap: any = {};
+
+toggleLabel(key: string) {
+  this.toggleStateMap[key] = !this.toggleStateMap[key];
+}
+
+(click)="toggleLabel('horizontalDivider')"
