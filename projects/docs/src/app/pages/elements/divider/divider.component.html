@@ -50,8 +50,11 @@
         <p sui-placeholder-line></p>
         <p sui-placeholder-line></p>
       </div> <hr>
-      <![CDATA[
-      <div sui-divider></div>]]>
+      <pre>
+        <code>
+          {{stdDivider}}
+        </code>
+      </pre>
     </div>
     <div sui-placeholder *ngIf="!toggleStateMap['stdDivider']">
       <p sui-placeholder-line></p>
@@ -73,6 +76,51 @@
   <div class="example">
     <h4 class="ui header">Vertical Divider</h4>
     <p>A divider can segment content vertically <i class="fitted icon code right floated" (click)="toggleLabel('verticalDivider')"></i></p>
+    <div *ngIf="toggleStateMap['verticalDivider']" class="ui label" style="width: 80%;"> Example
+      <hr>
+      <div sui-segment>
+        <div class="ui two column very relaxed grid">
+          <div class="column">
+            <div sui-placeholder>
+              <p sui-placeholder-line></p>
+              <p sui-placeholder-line></p>
+              <p sui-placeholder-line></p>
+              <p sui-placeholder-line></p>
+            </div>
+            <div sui-placeholder>
+              <p sui-placeholder-line></p>
+              <p sui-placeholder-line></p>
+              <p sui-placeholder-line></p>
+              <p sui-placeholder-line></p>
+            </div>
+          </div>
+          <div class="column">
+            <div sui-placeholder>
+              <p sui-placeholder-line></p>
+              <p sui-placeholder-line></p>
+              <p sui-placeholder-line></p>
+              <p sui-placeholder-line></p>
+            </div>
+            <div sui-placeholder>
+              <p sui-placeholder-line></p>
+              <p sui-placeholder-line></p>
+              <p sui-placeholder-line></p>
+              <p sui-placeholder-line></p>
+            </div>
+          </div>
+        </div>
+        <div sui-divider
+             suiDirection="vertical">
+          and
+        </div>
+      </div>
+      <hr>
+      <pre>
+        <code>
+          {{verticalDivider}}
+        </code>
+      </pre>
+    </div>
     <div sui-segment *ngIf="!toggleStateMap['verticalDivider']">
       <div class="ui two column very relaxed grid">
         <div class="column">
@@ -115,6 +163,32 @@
   <div class="example">
     <h4 class="ui header">Horizontal Divider</h4>
     <p>A divider can segment content horizontally <i class="fitted icon code right floated" (click)="toggleLabel('horizontalDivider')"></i></p>
+    <div *ngIf="toggleStateMap['horizontalDivider']" class="ui label" style="width: 80%;"> Example
+      <hr>
+      <div sui-segment suiTextAlignment="center aligned" suiBasic="true">
+        <div sui-input suiAction="left action" suiIcon="true">
+          <input type="text" placeholder="Order #">
+          <div sui-button suiColour="blue">
+            Search
+          </div>
+        </div>
+
+        <div sui-divider suiDirection="horizontal">
+            Or
+        </div>
+
+        <div class="ui teal labeled icon button">
+          Create New Order
+          <i class="add icon"></i>
+        </div>
+      </div>
+      <hr>
+      <pre>
+        <code>
+          {{horizontalDivider}}
+        </code>
+      </pre>
+    </div>
     <div sui-segment suiTextAlignment="center aligned" suiBasic="true" *ngIf="!toggleStateMap['horizontalDivider']">
       <div sui-input suiAction="left action" suiIcon="true">
         <!-- <i sui-icon suiIconType="search"></i> -->
