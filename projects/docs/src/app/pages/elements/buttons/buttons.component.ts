@@ -6,16 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./buttons.component.scss'],
 })
 export class ButtonsComponent implements OnInit {
-  show = false;
-  toggleStateMap: any = {};
 
   constructor() {}
-
-  ngOnInit(): void {}
-
-  toggleLabel(key: string) {
-    this.toggleStateMap[key] = !this.toggleStateMap[key];
-  }
+  show = false;
+  toggleStateMap: any = {};
 
   snippetBtn = `
   <button sui-button>
@@ -72,5 +66,11 @@ export class ButtonsComponent implements OnInit {
     <i class="twitter icon"></i>
     Twitter
   </div>`;
+
+  ngOnInit(): void {}
+
+  toggleLabel(key: string) {
+    this.toggleStateMap[key] = !this.toggleStateMap[key];
+  }
 
 }

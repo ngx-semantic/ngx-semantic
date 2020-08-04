@@ -6,15 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./segments.component.scss'],
 })
 export class SegmentsComponent implements OnInit {
-  toggleStateMap: any = {};
 
   constructor() {}
-
-  ngOnInit(): void {}
-
-  toggleLabel(key: string) {
-    this.toggleStateMap[key] = !this.toggleStateMap[key];
-  }
+  toggleStateMap: any = {};
 
   snippetSegment = `
   <div sui-segment suiColour="red" [suiInverted]="true">Red</div>
@@ -22,4 +16,10 @@ export class SegmentsComponent implements OnInit {
   <div sui-segment suiColour="yellow" [suiInverted]="true">Yellow</div>
   <div sui-segment suiColour="olive" [suiInverted]="true">Olive</div>
   <div sui-segment suiColour="green" [suiInverted]="true">Green</div>`;
+
+  ngOnInit(): void {}
+
+  toggleLabel(key: string) {
+    this.toggleStateMap[key] = !this.toggleStateMap[key];
+  }
 }

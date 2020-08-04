@@ -6,17 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./headers.component.scss']
 })
 export class HeadersComponent implements OnInit {
-  show = false;
-  toggleStateMap: any = {};
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  toggleLabel(key: string) {
-    this.toggleStateMap[key] = !this.toggleStateMap[key];
-  }
+  toggleStateMap: any = {};
 
   snippetColored = `
   <div class="ui segment">
@@ -34,4 +26,11 @@ export class HeadersComponent implements OnInit {
     <h4 sui-header suiColour="violet" suiInverted="true">Violet</h4>
   </div>
   `;
+
+  ngOnInit(): void {
+  }
+
+  toggleLabel(key: string) {
+    this.toggleStateMap[key] = !this.toggleStateMap[key];
+  }
 }

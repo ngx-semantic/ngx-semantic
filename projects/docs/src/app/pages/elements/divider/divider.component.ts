@@ -6,17 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./divider.component.scss']
 })
 export class DividerComponent implements OnInit {
-  show = false;
-  toggleStateMap: any = {};
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  toggleLabel(key: string) {
-    this.toggleStateMap[key] = !this.toggleStateMap[key];
-  }
+  show = false;
+  toggleStateMap: any = {};
 
   stdDivider = `
   <div>
@@ -75,5 +68,12 @@ export class DividerComponent implements OnInit {
     </div>
   </div>
   `;
+
+  ngOnInit(): void {
+  }
+
+  toggleLabel(key: string) {
+    this.toggleStateMap[key] = !this.toggleStateMap[key];
+  }
 
 }

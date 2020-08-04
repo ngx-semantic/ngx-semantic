@@ -9,13 +9,13 @@ export class FlagsComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
   snippetFlag = `
     <i class="uae" sui-flag></i>
     <i class="burkina faso" sui-flag></i>
     <i class="czech republic" sui-flag></i>
   `;
+
+  ngOnInit(): void {
+  }
 
 }

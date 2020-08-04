@@ -6,16 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./placeholders.component.scss']
 })
 export class PlaceholdersComponent implements OnInit {
-  toggleStateMap: any = {};
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  toggleLabel(key: string) {
-    this.toggleStateMap[key] = !this.toggleStateMap[key];
-  }
+  toggleStateMap: any = {};
 
   snippetStdPlaceholder = `
   <div sui-placeholder>
@@ -57,5 +50,12 @@ export class PlaceholdersComponent implements OnInit {
     </div>
   </div>
   `;
+
+  ngOnInit(): void {
+  }
+
+  toggleLabel(key: string) {
+    this.toggleStateMap[key] = !this.toggleStateMap[key];
+  }
 
 }

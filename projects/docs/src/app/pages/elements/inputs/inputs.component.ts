@@ -6,17 +6,10 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./inputs.component.scss']
 })
 export class InputsComponent implements OnInit {
-  toggleStateMap: any = {};
 
   constructor() {
   }
-
-  ngOnInit(): void {
-  }
-
-  toggleLabel(key: string) {
-    this.toggleStateMap[key] = !this.toggleStateMap[key];
-  }
+  toggleStateMap: any = {};
 
   snippetInput = `
   <div sui-input>
@@ -32,7 +25,7 @@ export class InputsComponent implements OnInit {
      </button>
      <input type="text" value="$52.03">
    </div>
-   
+
    <div sui-input suiAction="right action">
      <input type="text" value="http://www.short.url/c0opq">
      <button sui-button suiColour="teal" suiLocation="right" suiLabeled="true" suiIcon="true">
@@ -41,4 +34,11 @@ export class InputsComponent implements OnInit {
      </button>
    </div>
   `;
+
+  ngOnInit(): void {
+  }
+
+  toggleLabel(key: string) {
+    this.toggleStateMap[key] = !this.toggleStateMap[key];
+  }
 }
