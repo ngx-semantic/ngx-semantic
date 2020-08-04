@@ -36,9 +36,24 @@
 
   <div class="example">
     <h4 class="ui header">Loader</h4>
-    <p>A loader <i class="fitted icon code right floated"></i></p>
+    <p>A loader <i class="fitted icon code right floated" (click)="toggleLabel('stdLoader')"></i></p>
+    <div *ngIf="toggleStateMap['stdLoader']" class="ui label" style="width: 80%;"> Example
+      <hr>
+      <div class="ui segment">
+        <div class="ui active dimmer">
+          <div sui-loader suiSize="medium" suiText="false"></div>
+        </div>
+        <p style="height: 50px"></p>
+      </div>
+      <hr>
+      <pre>
+        <code>
+          {{snippetStdLoader}}
+        </code>
+      </pre>
+    </div>
 
-    <div class="ui segment">
+    <div class="ui segment" *ngIf="!toggleStateMap['stdLoader']">
       <div class="ui active dimmer">
         <div sui-loader suiSize="medium" suiText="false"></div>
       </div>
@@ -49,9 +64,24 @@
 
   <div class="example">
     <h4 class="ui header">Text Loader</h4>
-    <p>A loader can contain text <i class="fitted icon code right floated"></i></p>
+    <p>A loader can contain text <i class="fitted icon code right floated" (click)="toggleLabel('txtLoader')"></i></p>
+    <div *ngIf="toggleStateMap['txtLoader']" class="ui label" style="width: 80%;"> Example
+      <hr>
+      <div class="ui segment">
+        <div class="ui active dimmer">
+          <div sui-loader suiSize="medium" suiText="true">Loading</div>
+        </div>
+        <p style="height: 50px"></p>
+      </div>
+      <hr>
+      <pre>
+        <code>
+          {{snippetTextLoader}}
+        </code>
+      </pre>
+    </div>
 
-    <div class="ui segment">
+    <div class="ui segment" *ngIf="!toggleStateMap['txtLoader']">
       <div class="ui active dimmer">
         <div sui-loader suiSize="medium" suiText="true">Loading</div>
       </div>
@@ -62,51 +92,108 @@
 
   <div class="example">
     <h4 class="ui header">Size</h4>
-    <p>Loaders can have different sizes <i class="fitted icon code right floated"></i></p>
+    <p>Loaders can have different sizes <i class="fitted icon code right floated" (click)="toggleLabel('sizedLoaders')"></i></p>
+    <div *ngIf="toggleStateMap['sizedLoaders']" class="ui label" style="width: 80%;"> Example
+      <hr>
+      <div class="ui segment">
+        <div class="ui active dimmer">
+          <div sui-loader suiSize="mini" suiText="true">Loading</div>
+        </div>
+        <p style="height: 50px"></p>
+      </div>
+      <div class="ui segment">
+        <div class="ui active dimmer">
+          <div sui-loader suiSize="tiny" suiText="true">Loading</div>
+        </div>
+        <p style="height: 55px"></p>
+      </div>
+      <div class="ui segment">
+        <div class="ui active dimmer">
+          <div sui-loader suiSize="small" suiText="true">Loading</div>
+        </div>
+        <p style="height: 60px"></p>
+      </div>
+      <div class="ui segment">
+        <div class="ui active dimmer">
+          <div sui-loader suiSize="medium" suiText="true">Loading</div>
+        </div>
+        <p style="height: 65px"></p>
+      </div>
+      <div class="ui segment">
+        <div class="ui active dimmer">
+          <div sui-loader suiSize="large" suiText="true">Loading</div>
+        </div>
+        <p style="height: 70px"></p>
+      </div>
+      <div class="ui segment">
+        <div class="ui active dimmer">
+          <div sui-loader suiSize="big" suiText="true">Loading</div>
+        </div>
+        <p style="height: 80px"></p>
+      </div>
+      <div class="ui segment">
+        <div class="ui active dimmer">
+          <div sui-loader suiSize="huge" suiText="true">Loading</div>
+        </div>
+        <p style="height: 90px"></p>
+      </div>
+      <div class="ui segment">
+        <div class="ui active dimmer">
+          <div sui-loader suiSize="massive" suiText="true">Loading</div>
+        </div>
+        <p style="height: 100px"></p>
+      </div>
+      <hr>
+      <pre>
+        <code>
+          {{snippetSizedLoaders}}
+        </code>
+      </pre>
+    </div>
 
-    <div class="ui segment">
+    <div class="ui segment " *ngIf="!toggleStateMap['sizedLoaders']">
       <div class="ui active dimmer">
         <div sui-loader suiSize="mini" suiText="true">Loading</div>
       </div>
       <p style="height: 50px"></p>
     </div>
-    <div class="ui segment">
+    <div class="ui segment " *ngIf="!toggleStateMap['sizedLoaders']">
       <div class="ui active dimmer">
         <div sui-loader suiSize="tiny" suiText="true">Loading</div>
       </div>
       <p style="height: 55px"></p>
     </div>
-    <div class="ui segment">
+    <div class="ui segment " *ngIf="!toggleStateMap['sizedLoaders']">
       <div class="ui active dimmer">
         <div sui-loader suiSize="small" suiText="true">Loading</div>
       </div>
       <p style="height: 60px"></p>
     </div>
-    <div class="ui segment">
+    <div class="ui segment " *ngIf="!toggleStateMap['sizedLoaders']">
       <div class="ui active dimmer">
         <div sui-loader suiSize="medium" suiText="true">Loading</div>
       </div>
       <p style="height: 65px"></p>
     </div>
-    <div class="ui segment">
+    <div class="ui segment " *ngIf="!toggleStateMap['sizedLoaders']">
       <div class="ui active dimmer">
         <div sui-loader suiSize="large" suiText="true">Loading</div>
       </div>
       <p style="height: 70px"></p>
     </div>
-    <div class="ui segment">
+    <div class="ui segment " *ngIf="!toggleStateMap['sizedLoaders']">
       <div class="ui active dimmer">
         <div sui-loader suiSize="big" suiText="true">Loading</div>
       </div>
       <p style="height: 80px"></p>
     </div>
-    <div class="ui segment">
+    <div class="ui segment " *ngIf="!toggleStateMap['sizedLoaders']">
       <div class="ui active dimmer">
         <div sui-loader suiSize="huge" suiText="true">Loading</div>
       </div>
       <p style="height: 90px"></p>
     </div>
-    <div class="ui segment">
+    <div class="ui segment " *ngIf="!toggleStateMap['sizedLoaders']">
       <div class="ui active dimmer">
         <div sui-loader suiSize="massive" suiText="true">Loading</div>
       </div>
