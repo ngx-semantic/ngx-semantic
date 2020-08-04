@@ -36,9 +36,62 @@
 
   <div class="example">
     <h4 class="ui header">Placeholder</h4>
-    <p>A placeholder is used to reserve space for content that soon will appear in a layout. <i class="fitted icon code right floated"></i></p>
+    <p>A placeholder is used to reserve space for content that soon will appear in a layout. <i class="fitted icon code right floated" (click)="toggleLabel('stdPlaceholder')"></i></p>
+    <div *ngIf="toggleStateMap['stdPlaceholder']" class="ui label" style="width: 80%;"> Example
+      <hr>
+      <div class="ui three column stackable grid">
+        <div class="column">
+          <div class="ui raised segment">
+            <div sui-placeholder>
+              <div sui-placeholder-image suiHeader="true">
+                <div sui-placeholder-line></div>
+                <div sui-placeholder-line></div>
+              </div>
+              <div sui-placeholder-paragraph>
+                <div sui-placeholder-line suiLength="medium"></div>
+                <div sui-placeholder-line suiLength="short"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="ui raised segment">
+            <div sui-placeholder>
+              <div sui-placeholder-image suiHeader="true">
+                <div sui-placeholder-line></div>
+                <div sui-placeholder-line></div>
+              </div>
+              <div sui-placeholder-paragraph>
+                <div sui-placeholder-line suiLength="medium"></div>
+                <div sui-placeholder-line suiLength="short"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="ui raised segment">
+            <div sui-placeholder>
+              <div sui-placeholder-image suiHeader="true">
+                <div sui-placeholder-line></div>
+                <div sui-placeholder-line></div>
+              </div>
+              <div sui-placeholder-paragraph>
+                <div sui-placeholder-line suiLength="medium"></div>
+                <div sui-placeholder-line suiLength="short"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <pre>
+        <code>
+          {{snippetStdPlaceholder}}
+        </code>
+      </pre>
+    </div>
 
-    <div class="ui three column stackable grid">
+    <div class="ui three column stackable grid" *ngIf="!toggleStateMap['stdPlaceholder']">
       <div class="column">
         <div class="ui raised segment">
           <div sui-placeholder>
@@ -85,7 +138,7 @@
   </div>
   <br>
 
-  <div class="example">
+  <div class="example" *ngIf="!toggleStateMap['stdPlaceholder']">
     <div class="ui three doubling stackable cards">
       <div class="ui card">
         <div class="image">
@@ -117,9 +170,29 @@
 
   <div class="example">
     <h4 class="ui header">Headers</h4>
-    <p>A placeholder can contain a header <i class="fitted icon code right floated"></i></p>
+    <p>A placeholder can contain a header <i class="fitted icon code right floated" (click)="toggleLabel('headerPlaceholder')"></i></p>
+    <div *ngIf="toggleStateMap['headerPlaceholder']" class="ui label" style="width: 80%;"> Example
+      <hr>
+      <div class="ui active placeholder">
+        <div sui-placeholder-image suiHeader="true">
+          <div sui-placeholder-line></div>
+          <div sui-placeholder-line></div>
+        </div>
+        <div sui-placeholder-paragraph>
+          <div sui-placeholder-line></div>
+          <div sui-placeholder-line></div>
+          <div sui-placeholder-line></div>
+        </div>
+      </div>
+      <hr>
+      <pre>
+        <code>
+          {{snippetHeaderPlaceholder}}
+        </code>
+      </pre>
+    </div>
 
-    <div class="ui segment">
+    <div class="ui segment" *ngIf="!toggleStateMap['headerPlaceholder']">
       <div class="ui active placeholder">
         <div sui-placeholder-image suiHeader="true">
           <div sui-placeholder-line></div>
@@ -136,9 +209,29 @@
 
   <div class="example">
     <h4 class="ui header">Inverted</h4>
-    <p>A placeholder can have their colors inverted. <i class="fitted icon code right floated"></i></p>
+    <p>A placeholder can have their colors inverted. <i class="fitted icon code right floated" (click)="toggleLabel('invertedPlaceholder')"></i></p>
+    <div *ngIf="toggleStateMap['invertedPlaceholder']" class="ui label" style="width: 80%;"> Example
+      <hr>
+      <div class="ui active inverted placeholder">
+        <div sui-placeholder-image suiHeader="true">
+          <div sui-placeholder-line></div>
+          <div sui-placeholder-line></div>
+        </div>
+        <div sui-placeholder-paragraph>
+          <div sui-placeholder-line></div>
+          <div sui-placeholder-line></div>
+          <div sui-placeholder-line></div>
+        </div>
+      </div>
+      <hr>
+      <pre>
+        <code>
+          {{snippetInvertedPlaceholder}}
+        </code>
+      </pre>
+    </div>
 
-    <div class="ui inverted segment">
+    <div class="ui inverted segment" *ngIf="!toggleStateMap['invertedPlaceholder']">
       <div class="ui active inverted placeholder">
         <div sui-placeholder-image suiHeader="true">
           <div sui-placeholder-line></div>
