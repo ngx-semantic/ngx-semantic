@@ -6,10 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loaders.component.scss']
 })
 export class LoadersComponent implements OnInit {
-
-  constructor() { }
-  toggleStateMap: any = {};
-
   snippetStdLoader = ' <div sui-loader suiSize="medium" suiText="false"></div>';
 
   snippetTextLoader = ' <div sui-loader suiSize="medium" suiText="true">Loading</div>';
@@ -22,6 +18,9 @@ export class LoadersComponent implements OnInit {
   <div sui-loader suiSize="large" suiText="true">Loading</div>
   <div sui-loader suiSize="big" suiText="true">Loading</div>
   <div sui-loader suiSize="huge" suiText="true">Loading</div>`;
+
+  constructor() { }
+  toggleStateMap: any = {};
 
   ngOnInit(): void {
   }

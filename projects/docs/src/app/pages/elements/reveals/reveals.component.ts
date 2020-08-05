@@ -6,10 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reveals.component.scss']
 })
 export class RevealsComponent implements OnInit {
-
-  constructor() { }
-  toggleStateMap: any = {};
-
   snippetMoveReveal = `
   <div sui-reveal suiSize="small" suiMove="right" suiImage="true">
     <img sui-reveal-content suiVisible="visible" src="https://semantic-ui.com/images/avatar/large/ade.jpg">
@@ -21,6 +17,9 @@ export class RevealsComponent implements OnInit {
     <img sui-reveal-content suiVisible="hidden" src="https://semantic-ui.com/images/wireframe/square-image.png">
   </div>
   `;
+
+  constructor() { }
+  toggleStateMap: any = {};
 
   ngOnInit(): void {
   }

@@ -6,11 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./buttons.component.scss'],
 })
 export class ButtonsComponent implements OnInit {
-
-  constructor() {}
-  show = false;
-  toggleStateMap: any = {};
-
   snippetBtn = `
   <button sui-button>
     Follow
@@ -66,6 +61,10 @@ export class ButtonsComponent implements OnInit {
     <i class="twitter icon"></i>
     Twitter
   </div>`;
+
+  constructor() {}
+
+  toggleStateMap: any = {};
 
   ngOnInit(): void {}
 

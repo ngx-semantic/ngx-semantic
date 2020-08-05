@@ -6,11 +6,6 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./inputs.component.scss']
 })
 export class InputsComponent implements OnInit {
-
-  constructor() {
-  }
-  toggleStateMap: any = {};
-
   snippetInput = `
   <div sui-input>
     <input type="text" placeholder="Search...">
@@ -34,6 +29,10 @@ export class InputsComponent implements OnInit {
      </button>
    </div>
   `;
+
+  constructor() {
+  }
+  toggleStateMap: any = {};
 
   ngOnInit(): void {
   }

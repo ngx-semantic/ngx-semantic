@@ -6,10 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lists.component.scss']
 })
 export class ListsComponent implements OnInit {
-
-  constructor() { }
-  toggleStateMap: any = {};
-
   snippetList = `
     <div  sui-list>
       <div class="item">
@@ -38,6 +34,9 @@ export class ListsComponent implements OnInit {
       </div>
     </div>
   `;
+
+  constructor() { }
+  toggleStateMap: any = {};
 
   ngOnInit(): void {
   }

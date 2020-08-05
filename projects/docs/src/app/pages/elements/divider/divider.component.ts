@@ -6,11 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./divider.component.scss']
 })
 export class DividerComponent implements OnInit {
-
-  constructor() { }
-  show = false;
-  toggleStateMap: any = {};
-
   stdDivider = `
   <div>
     <p> Some content here ...</p>
@@ -68,6 +63,10 @@ export class DividerComponent implements OnInit {
     </div>
   </div>
   `;
+
+  constructor() { }
+
+  toggleStateMap: any = {};
 
   ngOnInit(): void {
   }

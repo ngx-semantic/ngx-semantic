@@ -6,10 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rails.component.scss']
 })
 export class RailsComponent implements OnInit {
-
-  constructor() { }
-  toggleStateMap: any = {};
-
   snippetStdRail = `
   <div sui-rail suiLocation="left" suiDividing="true">
     <div class="ui segment">
@@ -22,6 +18,9 @@ export class RailsComponent implements OnInit {
     </div>
   </div>
   `;
+
+  constructor() { }
+  toggleStateMap: any = {};
 
   ngOnInit(): void {
   }

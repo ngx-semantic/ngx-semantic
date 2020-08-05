@@ -6,11 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./labels.component.scss']
 })
 export class LabelsComponent implements OnInit {
-
-  constructor() { }
-  toggleStateMap: any = {};
-
-
   snippetColored = `
   <a sui-label suiColour="red">Red</a>
   <a sui-label suiColour="orange">Orange</a>
@@ -24,6 +19,9 @@ export class LabelsComponent implements OnInit {
   <a sui-label suiColour="yellow" suiCircular="true">2</a>
   <a sui-label suiColour="olive" suiCircular="true">2</a>
   `;
+
+  constructor() { }
+  toggleStateMap: any = {};
 
   ngOnInit(): void {
   }
