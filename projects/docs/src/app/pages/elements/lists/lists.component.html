@@ -36,9 +36,44 @@
 
   <div class="example">
     <h4 class="ui header">List</h4>
-    <p>A list groups related content <i class="fitted icon code right floated"></i></p>
+    <p>A list groups related content <i class="fitted icon code right floated" (click)="toggleLabel('stdList')"></i></p>
+    <div *ngIf="toggleStateMap['stdList']" class="ui label" style="width: 80%;"> Example
+      <hr>
+      <div  sui-list>
+        <div class="item">
+          <i sui-icon suiIconType="users"></i>
+          <div class="content">
+            Semantic UI
+          </div>
+        </div>
+        <div class="item">
+          <i sui-icon suiIconType="marker"></i>
+          <div class="content">
+            New York, NY
+          </div>
+        </div>
+        <div class="item">
+          <i sui-icon suiIconType="mail"></i>
+          <div class="content">
+            <a href="mailto:jack@semantic-ui.com">jack@semantic-ui.com</a>
+          </div>
+        </div>
+        <div class="item">
+          <i sui-icon suiIconType="linkify"></i>
+          <div class="content">
+            <a href="http://www.semantic-ui.com">semantic-ui.com</a>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <pre>
+        <code>
+          {{snippetList}}
+        </code>
+      </pre>
+    </div>
 
-    <div  sui-list>
+    <div  sui-list *ngIf="!toggleStateMap['stdList']">
       <div class="item">
         <i sui-icon suiIconType="users"></i>
         <div class="content">

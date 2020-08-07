@@ -34,13 +34,40 @@
   <h2 class="ui dividing header">Types</h2>
 
   <h4 class="ui header">Page Headers</h4>
-    <p>Headers may be oriented to give the hierarchy of a section in the context of the page <i class="fitted icon code right floated"></i></p>
+    <p>Headers may be oriented to give the hierarchy of a section in the context of the page
+      <!-- <i class="fitted icon code right floated"></i> -->
+    </p>
 
   <h4 class="ui header">Colored</h4>
 
-  <p>A header can be formatted with different colors <i class="fitted icon code right floated"></i></p>
+  <p>A header can be formatted with different colors <i class="fitted icon code right floated" (click)="toggleLabel('coloredHeader')"></i></p>
+  <div *ngIf="toggleStateMap['coloredHeader']" class="ui label" style="width: 80%;"> Example
+    <hr>
+    <div class="example">
+      <div class="ui segment">
+        <h4 sui-header suiColour="red" suiInverted="true">Red</h4>
+        <h4 sui-header suiColour="orange" suiInverted="true">Orange</h4>
+        <h4 sui-header suiColour="yellow" suiInverted="true">Yellow</h4>
+        <h4 sui-header suiColour="olive" suiInverted="true">Olive</h4>
+        <h4 sui-header suiColour="green" suiInverted="true">Green</h4>
+        <h4 sui-header suiColour="teal" suiInverted="true">Teal</h4>
+        <h4 sui-header suiColour="blue" suiInverted="true">Blue</h4>
+        <h4 sui-header suiColour="purple" suiInverted="true">Purple</h4>
+        <h4 sui-header suiColour="violet" suiInverted="true">Violet</h4>
+        <h4 sui-header suiColour="pink" suiInverted="true">Pink</h4>
+        <h4 sui-header suiColour="brown" suiInverted="true">Brown</h4>
+        <h4 sui-header suiColour="grey" suiInverted="true">Grey</h4>
+      </div>
+    </div>
+    <hr>
+    <pre>
+      <code>
+        {{snippetColored}}
+      </code>
+    </pre>
+  </div>
 
-  <div class="example">
+  <div class="example" *ngIf="!toggleStateMap['coloredHeader']">
     <div class="ui segment">
       <h4 sui-header suiColour="red" suiInverted="true">Red</h4>
       <h4 sui-header suiColour="orange" suiInverted="true">Orange</h4>
@@ -59,13 +86,39 @@
 
   <h4 class="ui header">Inverted</h4>
 
-  <p>A header can have its colors inverted for contrast <i class="fitted icon code right floated"></i></p>
+  <p>A header can have its colors inverted for contrast <i class="fitted icon code right floated" (click)="toggleLabel('invertedHeader')"></i></p>
 
   <div class="ui info message">
     <p>Inverted headers use modified light versions of your site's color scheme that are adapted to have more contrast on dark background</p>
   </div>
 
-  <div class="example">
+  <div *ngIf="toggleStateMap['invertedHeader']" class="ui label" style="width: 80%;"> Example
+    <hr>
+    <div class="example">
+      <div class="ui inverted segment">
+        <h4 sui-header suiColour="red" suiInverted="true">Red</h4>
+        <h4 sui-header suiColour="orange" suiInverted="true">Orange</h4>
+        <h4 sui-header suiColour="yellow" suiInverted="true">Yellow</h4>
+        <h4 sui-header suiColour="olive" suiInverted="true">Olive</h4>
+        <h4 sui-header suiColour="green" suiInverted="true">Green</h4>
+        <h4 sui-header suiColour="teal" suiInverted="true">Teal</h4>
+        <h4 sui-header suiColour="blue" suiInverted="true">Blue</h4>
+        <h4 sui-header suiColour="purple" suiInverted="true">Purple</h4>
+        <h4 sui-header suiColour="violet" suiInverted="true">Violet</h4>
+        <h4 sui-header suiColour="pink" suiInverted="true">Pink</h4>
+        <h4 sui-header suiColour="brown" suiInverted="true">Brown</h4>
+        <h4 sui-header suiColour="grey" suiInverted="true">Grey</h4>
+      </div>
+    </div>
+    <hr>
+    <pre>
+      <code>
+        {{snippetInverted}}
+      </code>
+    </pre>
+  </div>
+
+  <div class="example" *ngIf="!toggleStateMap['invertedHeader']">
     <div class="ui inverted segment">
       <h4 sui-header suiColour="red" suiInverted="true">Red</h4>
       <h4 sui-header suiColour="orange" suiInverted="true">Orange</h4>
