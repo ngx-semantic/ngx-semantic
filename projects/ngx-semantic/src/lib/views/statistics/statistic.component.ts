@@ -3,7 +3,7 @@
  */
 
 import {Component, Host, HostBinding, Input, Optional} from '@angular/core';
-import {SuiStatisticGroupComponent} from './statistic-group.component';
+import {SuiStatisticsComponent} from './statistics.component';
 import {SuiColour, SuiSize, Utils} from '../../common';
 
 export type SuiFloat = 'right' | 'left';
@@ -36,7 +36,7 @@ export class SuiStatisticComponent {
     ].joinWithWhitespaceCleanup();
   }
 
-  constructor(@Optional() @Host() private parent: SuiStatisticGroupComponent) {
+  constructor(@Optional() @Host() private parent: SuiStatisticsComponent) {
     this.isChildComponent = !!parent;
   }
 }

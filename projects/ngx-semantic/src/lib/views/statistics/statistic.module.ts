@@ -7,21 +7,21 @@ import {SuiStatisticLabelDirective} from './statistic-label.directive';
 import {SuiStatisticValueDirective} from './statistic-value.directive';
 import {CommonModule} from '@angular/common';
 import {SuiStatisticComponent} from './statistic.component';
-import {SuiStatisticGroupComponent} from './statistic-group.component';
+import {SuiStatisticsComponent} from './statistics.component';
 
 @NgModule({
   declarations: [
     SuiStatisticLabelDirective,
     SuiStatisticValueDirective,
     SuiStatisticComponent,
-    SuiStatisticGroupComponent
+    SuiStatisticsComponent
   ],
   imports: [CommonModule],
   exports: [
     SuiStatisticValueDirective,
     SuiStatisticLabelDirective,
     SuiStatisticComponent,
-    SuiStatisticGroupComponent
+    SuiStatisticsComponent
   ]
 })
 export class SuiStatisticModule {
