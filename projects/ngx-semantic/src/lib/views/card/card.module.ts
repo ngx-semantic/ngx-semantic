@@ -5,11 +5,12 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {SuiCardComponent} from './card.component';
+import {SuiCardsComponent} from './cards.component';
 
 @NgModule({
-  declarations: [SuiCardComponent],
+  declarations: [SuiCardComponent, SuiCardsComponent],
   imports: [CommonModule],
-  exports: [SuiCardComponent]
+  exports: [SuiCardComponent, SuiCardsComponent]
 })
 export class SuiCardModule {
 }
