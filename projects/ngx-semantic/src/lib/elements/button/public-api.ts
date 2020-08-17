@@ -3,5 +3,5 @@
  */
 
 export * from './button.component';
-export * from './button-group.component';
+export * from './buttons.component';
 export * from './button.module';

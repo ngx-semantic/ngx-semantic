@@ -7,7 +7,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {SuiButtonComponent} from './button.component';
 import {By} from '@angular/platform-browser';
-import {SuiButtonGroupComponent} from './button-group.component';
+import {SuiButtonsComponent} from './buttons.component';
 
 describe('SuiButtonGroupComponent', () => {
   let component: TestButtonGroupComponent;
@@ -17,7 +17,7 @@ describe('SuiButtonGroupComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [CommonModule],
-        declarations: [TestButtonGroupComponent, SuiButtonGroupComponent, SuiButtonComponent]
+        declarations: [TestButtonGroupComponent, SuiButtonsComponent, SuiButtonComponent]
       })
       .compileComponents();
   }));
@@ -26,7 +26,7 @@ describe('SuiButtonGroupComponent', () => {
     fixture = TestBed.createComponent(TestButtonGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    groupElement = fixture.debugElement.query(By.directive(SuiButtonGroupComponent)).nativeElement;
+    groupElement = fixture.debugElement.query(By.directive(SuiButtonsComponent)).nativeElement;
   });
 
   it('should create component', () => {

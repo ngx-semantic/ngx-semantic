@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {SuiButtonComponent} from './button.component';
-import {SuiButtonGroupComponent} from './button-group.component';
+import {SuiButtonsComponent} from './buttons.component';
 
 @NgModule({
-  declarations: [SuiButtonComponent, SuiButtonGroupComponent],
+  declarations: [SuiButtonComponent, SuiButtonsComponent],
   imports: [CommonModule],
-  exports: [SuiButtonComponent, SuiButtonGroupComponent]
+  exports: [SuiButtonComponent, SuiButtonsComponent]
 })
 export class SuiButtonModule {
 }
