@@ -2,17 +2,31 @@
  * Created by bolor on 8/17/2020
  */
 
-import {Component, Host, HostBinding, Input, Optional} from '@angular/core';
+import {Component, Host, HostBinding, Input, Optional, TemplateRef} from '@angular/core';
 import {SuiColour, Utils} from '../../common';
 import {SuiCardsComponent} from './cards.component';
 
 @Component({
   selector: '[sui-card]',
   template: `
+    <div *ngIf="suiContent" class="content">
+      <ng-container>{{suiContent}}</ng-container>
+    </div>
+    <ng-container *ngFor="let content of suiContents">
+      <div class="content">
+        <ng-container>{{content}}</ng-container>
+      </div>
+    </ng-container>
+    <div *ngIf="suiExtra" class="extra content">
+      <ng-container>{{suiExtra}}</ng-container>
+    </div>
     <ng-content></ng-content>
   `
 })
 export class SuiCardComponent {
+  @Input() suiContent?: string | TemplateRef<any>;
+  @Input() suiExtra?: string | TemplateRef<any>;
+  @Input() suiContents?: Array<TemplateRef<any>> = [];
   @Input() suiColour: SuiColour = null;
   @Input() suiLink = false;
   @Input() suiCentered = false;
