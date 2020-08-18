@@ -22,6 +22,7 @@ import {SuiAdvertisementModule} from './views/advertisement';
 import {SuiStatisticModule} from './views/statistics';
 import {SuiCommentModule} from './views/comment';
 import {SuiItemsModule} from './views/items';
+import {SuiCardModule} from './views/card';
 
 @NgModule({
   declarations: [],
@@ -49,7 +50,8 @@ import {SuiItemsModule} from './views/items';
     SuiAdvertisementModule,
     SuiStatisticModule,
     SuiCommentModule,
-    SuiItemsModule
+    SuiItemsModule,
+    SuiCardModule
   ]
 })
 export class NgxSemanticModule {

@@ -9,12 +9,12 @@ export type SuiButtonsAttachment = 'top attached' | 'bottom attached' | null;
 export type SuiButtonsIconType = 'icon' | 'labeled icon' | null;
 
 @Component({
-  selector: '[sui-button-group]',
+  selector: '[sui-buttons]',
   template: `
     <ng-content></ng-content>
   `
 })
-export class SuiButtonGroupComponent {
+export class SuiButtonsComponent {
   @Input() suiAttached: SuiButtonsAttachment = null;
   @Input() suiIcon: SuiButtonsIconType = null;
   @Input() suiColour: SuiColour = null;

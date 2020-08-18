@@ -6,12 +6,12 @@ import {Component, HostBinding, Input} from '@angular/core';
 import {SuiWidth, Utils} from '../../common';
 
 @Component({
-  selector: '[sui-statistic-group]',
+  selector: '[sui-statistics]',
   template: `
     <ng-content></ng-content>
   `
 })
-export class SuiStatisticGroupComponent {
+export class SuiStatisticsComponent {
   @Input() suiWidth: SuiWidth = null;
   @Input() suiHorizontal = false;
 

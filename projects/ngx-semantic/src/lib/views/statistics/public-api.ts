@@ -5,5 +5,5 @@
 export * from './statistic-label.directive';
 export * from './statistic-value.directive';
 export * from './statistic.component';
-export * from './statistic-group.component';
+export * from './statistics.component';
 export * from './statistic.module';
