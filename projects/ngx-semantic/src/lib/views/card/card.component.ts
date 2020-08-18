@@ -9,10 +9,7 @@ import {SuiCardsComponent} from './cards.component';
 @Component({
   selector: '[sui-card]',
   template: `
-    <div *ngIf="suiContent" class="content">
-      <ng-container>{{suiContent}}</ng-container>
-    </div>
-    <ng-container *ngFor="let content of suiContents">
+    <ng-container *ngFor="let content of suiContent">
       <div class="content">
         <ng-container>{{content}}</ng-container>
       </div>
@@ -24,9 +21,8 @@ import {SuiCardsComponent} from './cards.component';
   `
 })
 export class SuiCardComponent {
-  @Input() suiContent?: string | TemplateRef<any>;
   @Input() suiExtra?: string | TemplateRef<any>;
-  @Input() suiContents?: Array<TemplateRef<any>> = [];
+  @Input() suiContent?: Array<TemplateRef<any>> = [];
   @Input() suiColour: SuiColour = null;
   @Input() suiLink = false;
   @Input() suiCentered = false;
