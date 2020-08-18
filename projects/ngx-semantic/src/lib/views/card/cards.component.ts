@@ -15,12 +15,14 @@ export class SuiCardsComponent {
   @Input() suiWidth: SuiWidth = null;
   @Input() suiStackable = false;
   @Input() suiDoubling = false;
+  @Input() suiLink = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
       'ui',
       this.suiWidth,
+      Utils.getPropClass(this.suiLink, 'link'),
       Utils.getPropClass(this.suiStackable, 'stackable'),
       Utils.getPropClass(this.suiDoubling, 'doubling'),
       'cards'
