@@ -27,6 +27,7 @@ export class SuiCardComponent {
   @Input() suiLink = false;
   @Input() suiCentered = false;
   @Input() suiFluid = false;
+  @Input() suiRaised = false;
 
   private isChildComponent: boolean;
 
@@ -38,6 +39,7 @@ export class SuiCardComponent {
       Utils.getPropClass(this.suiLink, 'link'),
       Utils.getPropClass(this.suiCentered, 'centered'),
       Utils.getPropClass(this.suiFluid, 'fluid'),
+      Utils.getPropClass(this.suiRaised, 'raised'),
       'card'
     ].joinWithWhitespaceCleanup();
   }
