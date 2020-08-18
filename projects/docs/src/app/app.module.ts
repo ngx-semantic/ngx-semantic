@@ -21,6 +21,7 @@ import { SegmentsComponent } from './pages/elements/segments/segments.component'
 import { MessagesComponent } from './pages/collections/messages/messages.component';
 import {CollectionsComponent} from './pages/collections/collections.component';
 import {ViewsComponent} from './pages/views/views.component';
+import { CardsComponent } from './pages/views/cards/cards.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {ViewsComponent} from './pages/views/views.component';
     SegmentsComponent,
     MessagesComponent,
     CollectionsComponent,
-    ViewsComponent
+    ViewsComponent,
+    CardsComponent
   ],
   imports: [
     BrowserModule,

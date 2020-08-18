@@ -17,6 +17,8 @@ import {RevealsComponent} from './pages/elements/reveals/reveals.component';
 import {SegmentsComponent} from './pages/elements/segments/segments.component';
 import {CollectionsComponent} from './pages/collections/collections.component';
 import {MessagesComponent} from './pages/collections/messages/messages.component';
+import {ViewsComponent} from './pages/views/views.component';
+import {CardsComponent} from './pages/views/cards/cards.component';
 
 const routes: Routes = [
   {
@@ -89,6 +91,16 @@ const routes: Routes = [
       {
         path: 'messages',
         component: MessagesComponent
+      }
+    ]
+  },
+  {
+    path: 'views',
+    component: ViewsComponent,
+    children: [
+      {
+        path: 'cards',
+        component: CardsComponent
       }
     ]
   },
