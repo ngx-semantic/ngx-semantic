@@ -9,7 +9,7 @@ import {SuiButtonComponent} from './button.component';
 import {By} from '@angular/platform-browser';
 import {SuiButtonsComponent} from './buttons.component';
 
-describe('SuiButtonGroupComponent', () => {
+describe('SuiButtonsComponent', () => {
   let component: TestButtonGroupComponent;
   let fixture: ComponentFixture<TestButtonGroupComponent>;
   let groupElement: HTMLDivElement;
@@ -132,7 +132,7 @@ describe('SuiButtonGroupComponent', () => {
 @Component({
   template: `
     <div
-      sui-button-group
+      sui-buttons
       [suiIcon]="suiIcon"
       [suiColour]="suiColour"
       [suiSize]="suiSize"
