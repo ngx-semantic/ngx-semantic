@@ -36,10 +36,10 @@ export class SuiCardComponent {
     return [
       this.isChildComponent ? '' : 'ui',
       this.suiColour,
+      Utils.getPropClass(this.suiRaised, 'raised'),
       Utils.getPropClass(this.suiLink, 'link'),
       Utils.getPropClass(this.suiCentered, 'centered'),
       Utils.getPropClass(this.suiFluid, 'fluid'),
-      Utils.getPropClass(this.suiRaised, 'raised'),
       'card'
     ].joinWithWhitespaceCleanup();
   }
