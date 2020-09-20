@@ -5,16 +5,19 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {SuiStepsComponent} from './steps.component';
+import {SuiStepComponent} from './step.component';
 
 @NgModule({
   declarations: [
-    SuiStepsComponent
+    SuiStepsComponent,
+    SuiStepComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    SuiStepsComponent
+    SuiStepsComponent,
+    SuiStepComponent
   ]
 })
 export class SuiStepsModule {
