@@ -18,6 +18,7 @@ export * from './lib/elements/placeholder';
 export * from './lib/elements/rail';
 export * from './lib/elements/reveal';
 export * from './lib/elements/segment';
+export * from './lib/elements/steps';
 
 export * from './lib/collections/breadcrumb';
 export * from './lib/collections/form';
