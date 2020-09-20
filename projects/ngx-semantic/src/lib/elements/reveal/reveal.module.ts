@@ -3,14 +3,22 @@
  */
 
 import {NgModule} from '@angular/core';
-import {SuiRevealComponent} from './reveal.component';
 import {CommonModule} from '@angular/common';
+import {SuiRevealComponent} from './reveal.component';
 import {SuiRevealContentDirective} from './reveal-content.directive';
 
 @NgModule({
-  declarations: [SuiRevealComponent, SuiRevealContentDirective],
-  imports: [CommonModule],
-  exports: [SuiRevealComponent, SuiRevealContentDirective]
+  declarations: [
+    SuiRevealComponent,
+    SuiRevealContentDirective
+  ],
+  imports: [
+    CommonModule
+  ],
+  exports: [
+    SuiRevealComponent,
+    SuiRevealContentDirective
+  ]
 })
 export class SuiRevealModule {
 }

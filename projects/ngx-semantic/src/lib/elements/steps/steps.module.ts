@@ -3,8 +3,8 @@
  */
 
 import {NgModule} from '@angular/core';
-import {SuiStepsComponent} from './steps.component';
 import {CommonModule} from '@angular/common';
+import {SuiStepsComponent} from './steps.component';
 
 @NgModule({
   declarations: [
