@@ -1,19 +1,53 @@
 <div class="main ui container">
   <h2 sui-header suiDividing="true">Types</h2>
+  <br>
 
   <div class="example">
-    <div sui-message
+    <h4 class="ui header">Message</h4>
+    <p>A basic message <i class="fitted icon code right floated" (click)="toggleLabel('stdMessage')"></i></p>
+    <div *ngIf="toggleStateMap['stdMessage']" class="ui label" style="width: 80%;"> Example <hr>
+      <div sui-message
          suiColour="blue"
          suiSize="large">
       <div sui-message-header>
         Welcome back!
       </div>
-      <p>This is a special notification which you can dismiss if you're bored with it.</p>
+      <p>A basic message.</p>
+    </div> <hr>
+      <pre>
+        <code>
+          {{snippetBasic}}
+        </code>
+      </pre>
+    </div>
+    <div *ngIf="!toggleStateMap['stdMessage']" sui-message
+         suiColour="blue"
+         suiSize="large">
+      <div sui-message-header>
+        Welcome back!
+      </div>
+      <p>A basic message.</p>
     </div>
   </div>
 
   <div class="example">
-    <div sui-message
+    <h4 class="ui header">Dismissable Block</h4>
+    <p>A message that the user can choose to hide <i class="fitted icon code right floated" (click)="toggleLabel('dismissableMessage')"></i></p>
+    <div *ngIf="toggleStateMap['dismissableMessage']" class="ui label" style="width: 80%;"> Example <hr>
+      <div sui-message
+         [suiDismissable]="true">
+      <div sui-message-header>
+        Welcome back!
+      </div>
+      <p>This is a special notification which you can dismiss if you're bored with it.</p>
+    </div> <hr>
+      <pre>
+        <code>
+          {{snippetDismissable}}
+        </code>
+      </pre>
+    </div>
+    <div *ngIf="!toggleStateMap['dismissableMessage']" sui-message
          [suiDismissable]="true">
       <div sui-message-header>
         Welcome back!
