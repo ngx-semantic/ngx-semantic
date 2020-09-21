@@ -21,6 +21,7 @@ export class SuiStepsComponent {
   @Input() suiVertical = false;
   @Input() suiFluid = false;
   @Input() suiUnstackable = false;
+  @Input() suiTabletStackable = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -33,6 +34,7 @@ export class SuiStepsComponent {
       Utils.getPropClass(this.suiFluid, 'fluid'),
       Utils.getPropClass(this.suiVertical, 'vertical'),
       Utils.getPropClass(this.suiUnstackable, 'unstackable'),
+      Utils.getPropClass(this.suiTabletStackable, 'tablet stackable'),
       'steps'
     ].joinWithWhitespaceCleanup();
   }
