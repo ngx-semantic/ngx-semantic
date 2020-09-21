@@ -14,12 +14,14 @@ import {Utils} from '../../common';
 export class SuiStepsComponent {
   @Input() suiOrdered = false;
   @Input() suiVertical = false;
+  @Input() suiFluid = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
       'ui',
       Utils.getPropClass(this.suiOrdered, 'ordered'),
+      Utils.getPropClass(this.suiFluid, 'fluid'),
       Utils.getPropClass(this.suiVertical, 'vertical'),
       'steps'
     ].joinWithWhitespaceCleanup();
