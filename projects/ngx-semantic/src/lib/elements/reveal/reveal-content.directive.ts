@@ -14,6 +14,9 @@ export class SuiRevealContentDirective {
 
   @HostBinding('class')
   get classes(): string {
-    return [this.suiVisible, 'content'].joinWithWhitespaceCleanup();
+    return [
+      this.suiVisible,
+      'content'
+    ].joinWithWhitespaceCleanup();
   }
 }
