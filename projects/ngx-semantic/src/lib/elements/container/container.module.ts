@@ -4,13 +4,18 @@
 
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {SuiContainerComponent} from './container.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    SuiContainerComponent
+  ],
   imports: [
     CommonModule
   ],
-  exports: []
+  exports: [
+    SuiContainerComponent
+  ]
 })
 export class SuiContainerModule {
 }
