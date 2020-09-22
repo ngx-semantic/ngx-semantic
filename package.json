@@ -10,7 +10,7 @@
     "build:lib": "ng build ngx-semantic",
     "build:docs": "ng build docs --prod --base-href \"https://ngx-semantic.github.io/\"",
     "build:lib:prod": "ng build ngx-semantic --prod",
-    "build:publish": "npm publish ./dist/ngx-semantic"
+    "build:publish": "yarn run build:lib:prod && npm publish ./dist/ngx-semantic"
   },
   "private": true,
   "dependencies": {
