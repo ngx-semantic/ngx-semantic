@@ -24,36 +24,38 @@ import {SuiCommentModule} from './views/comment';
 import {SuiItemsModule} from './views/items';
 import {SuiCardModule} from './views/card';
 import {SuiStepsModule} from './elements/steps';
+import {SuiContainerModule} from './elements/container';
 
 @NgModule({
   declarations: [],
   imports: [],
   exports: [
-    SuiButtonModule,
-    SuiDividerModule,
     SuiFlagModule,
-    SuiHeaderModule,
     SuiIconModule,
+    SuiListModule,
+    SuiRailModule,
+    SuiGridModule,
+    SuiFormModule,
+    SuiMenuModule,
+    SuiCardModule,
     SuiImageModule,
     SuiInputModule,
-    SuiLabelModule,
-    SuiListModule,
-    SuiLoaderModule,
-    SuiPlaceholderModule,
-    SuiRailModule,
-    SuiRevealModule,
-    SuiSegmentModule,
-    SuiBreadcrumbModule,
-    SuiFormModule,
-    SuiGridModule,
-    SuiMenuModule,
-    SuiMessageModule,
-    SuiAdvertisementModule,
-    SuiStatisticModule,
-    SuiCommentModule,
     SuiItemsModule,
-    SuiCardModule,
-    SuiStepsModule
+    SuiLabelModule,
+    SuiStepsModule,
+    SuiLoaderModule,
+    SuiHeaderModule,
+    SuiButtonModule,
+    SuiRevealModule,
+    SuiMessageModule,
+    SuiDividerModule,
+    SuiCommentModule,
+    SuiSegmentModule,
+    SuiStatisticModule,
+    SuiContainerModule,
+    SuiBreadcrumbModule,
+    SuiPlaceholderModule,
+    SuiAdvertisementModule
   ]
 })
 export class NgxSemanticModule {

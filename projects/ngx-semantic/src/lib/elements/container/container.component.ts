@@ -17,6 +17,5 @@ export class SuiContainerComponent {
       'ui',
       'container'
     ].joinWithWhitespaceCleanup();
-    '';
   }
 }
