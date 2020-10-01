@@ -22,6 +22,7 @@ import { MessagesComponent } from './pages/collections/messages/messages.compone
 import {CollectionsComponent} from './pages/collections/collections.component';
 import {ViewsComponent} from './pages/views/views.component';
 import { CardsComponent } from './pages/views/cards/cards.component';
+import {CodeSampleComponent} from './components/code-sample.component';
 
 @NgModule({
   declarations: [
@@ -38,13 +39,14 @@ import { CardsComponent } from './pages/views/cards/cards.component';
     ListsComponent,
     LoadersComponent,
     PlaceholdersComponent,
+    ViewsComponent,
     RailsComponent,
+    CardsComponent,
     RevealsComponent,
     SegmentsComponent,
     MessagesComponent,
-    CollectionsComponent,
-    ViewsComponent,
-    CardsComponent
+    CodeSampleComponent,
+    CollectionsComponent
   ],
   imports: [
     BrowserModule,

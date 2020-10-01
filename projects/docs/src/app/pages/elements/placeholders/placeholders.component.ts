@@ -1,5 +1,3 @@
-import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'doc-placeholders',
   templateUrl: './placeholders.component.html',
