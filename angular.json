@@ -26,7 +26,8 @@
           "options": {
             "main": "projects/ngx-semantic/src/test.ts",
             "tsConfig": "projects/ngx-semantic/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-semantic/karma.conf.js"
+            "karmaConfig": "projects/ngx-semantic/karma.conf.js",
+            "codeCoverage": true
           }
         },
         "lint": {
