@@ -22,6 +22,7 @@ import { MessagesComponent } from './pages/collections/messages/messages.compone
 import {CollectionsComponent} from './pages/collections/collections.component';
 import {ViewsComponent} from './pages/views/views.component';
 import { CardsComponent } from './pages/views/cards/cards.component';
+import { StepsComponent } from './pages/elements/steps/steps.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CardsComponent } from './pages/views/cards/cards.component';
     MessagesComponent,
     CollectionsComponent,
     ViewsComponent,
-    CardsComponent
+    CardsComponent,
+    StepsComponent
   ],
   imports: [
     BrowserModule,
