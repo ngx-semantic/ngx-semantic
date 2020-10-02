@@ -1,3 +1,5 @@
+import { Component, OnInit } from '@angular/core';
+
 @Component({
   selector: 'doc-placeholders',
   templateUrl: './placeholders.component.html',
@@ -54,5 +56,4 @@ export class PlaceholdersComponent implements OnInit {
   toggleLabel(key: string) {
     this.toggleStateMap[key] = !this.toggleStateMap[key];
   }
-
 }
