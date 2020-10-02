@@ -31,7 +31,10 @@ import {AfterViewInit, Component, Input, TemplateRef} from '@angular/core';
          [class.visible]="codeShown">
       <div sui-segment
            suiAttached="bottom attached">
-        <div>code content</div>
+        <ngx-prism
+          language="html">
+          {{code}}
+        </ngx-prism>
       </div>
     </div>
   `,
@@ -61,6 +64,7 @@ import {AfterViewInit, Component, Input, TemplateRef} from '@angular/core';
 })
 export class CodeSampleComponent {
   @Input() content: TemplateRef<any>;
+  @Input() code: string;
 
   codeShown = false;
 

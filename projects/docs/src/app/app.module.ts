@@ -23,6 +23,7 @@ import {CollectionsComponent} from './pages/collections/collections.component';
 import {ViewsComponent} from './pages/views/views.component';
 import {CardsComponent} from './pages/views/cards/cards.component';
 import {CodeSampleComponent} from './components/code-sample.component';
+import {ApPrismModule} from '@angular-package/prism';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {CodeSampleComponent} from './components/code-sample.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxSemanticModule
+    NgxSemanticModule,
+    ApPrismModule
   ],
   providers: [],
   bootstrap: [AppComponent]
