@@ -1,37 +1,41 @@
 <div class="main ui container">
   <h2 sui-header suiDividing="true">Types</h2>
 
-  <doc-code-sample></doc-code-sample>
+  <doc-code-sample
+    [content]="example">
+    <h4 sui-header>Card</h4>
+    <p>A single card</p>
 
-  <div class="example">
-    <div sui-card
-         suiColour="green">
-      <div class="image">
-        <img src="https://semantic-ui.com/images/avatar2/large/kristy.png">
-      </div>
-      <div class="content">
-        <a class="header">Kristy</a>
-        <div class="meta">
-          <span class="date">Joined in 2013</span>
+    <ng-template #example>
+      <div sui-card
+           suiColour="green">
+        <div class="image">
+          <img src="https://semantic-ui.com/images/avatar2/large/kristy.png">
         </div>
-        <div class="description">
-          Kristy is an art director living in New York.
+        <div class="content">
+          <a class="header">Kristy</a>
+          <div class="meta">
+            <span class="date">Joined in 2013</span>
+          </div>
+          <div class="description">
+            Kristy is an art director living in New York.
+          </div>
         </div>
-      </div>
-      <div class="extra content">
-        <a>
-          <i class="user icon"></i>
-          22 Friends
-        </a>
-      </div>
-      <ng-template #extra>
         <div class="extra content">
           <a>
             <i class="user icon"></i>
             22 Friends
           </a>
         </div>
-      </ng-template>
-    </div>
-  </div>
+        <ng-template #extra>
+          <div class="extra content">
+            <a>
+              <i class="user icon"></i>
+              22 Friends
+            </a>
+          </div>
+        </ng-template>
+      </div>
+    </ng-template>
+  </doc-code-sample>
 </div>
