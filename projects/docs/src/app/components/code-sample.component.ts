@@ -1,4 +1,5 @@
-import {AfterViewInit, Component, Input, TemplateRef} from '@angular/core';
+import {Component, Input, TemplateRef} from '@angular/core';
+import {ClipboardService} from 'ngx-clipboard';
 
 @Component({
   selector: 'doc-code-sample',
@@ -20,10 +21,11 @@ import {AfterViewInit, Component, Input, TemplateRef} from '@angular/core';
       <div sui-label
            suiAttached="top">
         Example
-        <i sui-icon
+        <i *ngIf="codeShown" sui-icon
            suiIconType="copy"
            title="Copy Code"
-           style="cursor: pointer; float: right;"></i>
+           style="cursor: pointer; float: right;"
+           (click)="copyCode()"></i>
       </div>
     </div>
     <div class="code-container"
@@ -31,10 +33,11 @@ import {AfterViewInit, Component, Input, TemplateRef} from '@angular/core';
          [class.visible]="codeShown">
       <div sui-segment
            suiAttached="bottom attached">
-        <ngx-prism
-          language="html">
-          {{code}}
-        </ngx-prism>
+        <pre style="background-color: white;">
+          <code class="language-markup">
+            {{code}}
+          </code>
+        </pre>
       </div>
     </div>
   `,
@@ -67,6 +70,13 @@ export class CodeSampleComponent {
   @Input() code: string;
 
   codeShown = false;
+
+  constructor(private clipService: ClipboardService) {
+  }
+
+  copyCode(): void {
+    this.clipService.copy(this.code);
+  }
 
   toggleCodeDisplay(): void {
     this.codeShown = !this.codeShown;
