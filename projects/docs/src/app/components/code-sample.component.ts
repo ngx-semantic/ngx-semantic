@@ -1,4 +1,4 @@
-import {Component, Input, TemplateRef} from '@angular/core';
+import {AfterViewInit, Component, Input, TemplateRef} from '@angular/core';
 
 @Component({
   selector: 'doc-code-sample',
@@ -7,7 +7,8 @@ import {Component, Input, TemplateRef} from '@angular/core';
       <i sui-icon
          suiIconType="code"
          title="Toggle Code"
-         style="cursor: pointer"></i>
+         style="cursor: pointer"
+         (click)="toggleCodeDisplay()"></i>
     </div>
 
     <ng-content></ng-content>
@@ -25,9 +26,13 @@ import {Component, Input, TemplateRef} from '@angular/core';
            style="cursor: pointer; float: right;"></i>
       </div>
     </div>
-    <div sui-segment
-         suiAttached="bottom attached">
-      <div>code content</div>
+    <div class="code-container"
+         [class.hidden]="!codeShown"
+         [class.visible]="codeShown">
+      <div sui-segment
+           suiAttached="bottom attached">
+        <div>code content</div>
+      </div>
     </div>
   `,
   styles: [`
@@ -36,8 +41,30 @@ import {Component, Input, TemplateRef} from '@angular/core';
       flex-direction: row-reverse;
       margin-bottom: 1rem;
     }
+
+    .code-container {
+      margin-top: -1px;
+    }
+
+    .code-container.hidden {
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .code-container.visible {
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 0.6s ease-in-out;
+    }
   `]
 })
 export class CodeSampleComponent {
   @Input() content: TemplateRef<any>;
+
+  codeShown = false;
+
+  toggleCodeDisplay(): void {
+    this.codeShown = !this.codeShown;
+  }
 }
