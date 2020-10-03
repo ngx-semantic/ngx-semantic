@@ -144,6 +144,22 @@ export class ButtonsComponent implements OnInit {
        suiIconType="cloud"></i>
   </button>`;
 
+  snippetBtnLabeledIcon = `
+ <button sui-button
+          suiIcon="true"
+          suiLabeled="labeled">
+    <i sui-icon
+       suiIconType="pause"></i>
+    Pause
+  </button>
+  <button sui-button
+          suiIcon="true"
+          suiLabeled="right labeled">
+    <i sui-icon
+       suiIconType="right arrow"></i>
+    Next
+  </button>`;
+
   snippetBtnBasic = `
   <button sui-button suiBasic="true" suiColour="red" suiSize="medium">
     Red

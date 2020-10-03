@@ -247,6 +247,30 @@
     </ng-template>
   </doc-code-sample>
 
+  <doc-code-sample
+    [content]="btnLabeledIcon"
+    [code]="snippetBtnLabeledIcon">
+    <h3 sui-header>Labeled Icon</h3>
+    <p>A button can use an icon as a label</p>
+
+    <ng-template #btnLabeledIcon>
+      <button sui-button
+              suiIcon="true"
+              suiLabeled="labeled">
+        <i sui-icon
+           suiIconType="pause"></i>
+        Pause
+      </button>
+      <button sui-button
+              suiIcon="true"
+              suiLabeled="right labeled">
+        <i sui-icon
+           suiIconType="right arrow"></i>
+        Next
+      </button>
+    </ng-template>
+  </doc-code-sample>
+
 
   <br>
 
