@@ -19,6 +19,7 @@ import {CollectionsComponent} from './pages/collections/collections.component';
 import {MessagesComponent} from './pages/collections/messages/messages.component';
 import {ViewsComponent} from './pages/views/views.component';
 import {CardsComponent} from './pages/views/cards/cards.component';
+import {StepsComponent} from './pages/elements/steps/steps.component';
 
 const routes: Routes = [
   {
@@ -81,6 +82,10 @@ const routes: Routes = [
       {
         path: 'segments',
         component: SegmentsComponent
+      },
+      {
+        path: 'steps',
+        component: StepsComponent
       }
     ]
   },

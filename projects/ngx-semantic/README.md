@@ -1,5 +1,7 @@
 # Ngx Semantic
 
+[![codecov](https://codecov.io/gh/ngx-semantic/ngx-semantic/branch/master/graph/badge.svg)](https://codecov.io/gh/ngx-semantic/ngx-semantic)
+
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
 
 ## Installation

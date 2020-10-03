@@ -1,0 +1,45 @@
+<div class="main ui container">
+  <h2 sui-header suiDividing="true">Types</h2>
+
+  <div class="example">
+    <div>A single step</div>
+
+    <div sui-steps>
+      <div sui-step>
+        Shipping
+      </div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div>A multiple steps</div>
+
+    <div sui-steps>
+      <div sui-step
+           suiIcon="truck"
+           [suiContent]="truckContent">
+        <ng-template #truckContent>
+          <div class="title">Shipping</div>
+          <div class="description">Choose your shipping options</div>
+        </ng-template>
+      </div>
+      <div sui-step
+           suiIcon="payment"
+           [suiActive]="true"
+           [suiContent]="paymentContent">
+        <ng-template #paymentContent>
+          <div class="title">Billing</div>
+          <div class="description">Enter billing information</div>
+        </ng-template>
+      </div>
+      <div sui-step
+           suiIcon="info"
+           [suiDisabled]="true"
+           [suiContent]="orderContent">
+        <ng-template #orderContent>
+          <div class="title">Confirm Order</div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
