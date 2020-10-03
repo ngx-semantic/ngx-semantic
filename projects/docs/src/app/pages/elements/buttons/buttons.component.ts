@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 
 @Component({
@@ -137,6 +137,13 @@ export class ButtonsComponent implements OnInit {
     </a>
   </div>`;
 
+  snippetBtnIcon = `
+   <button sui-button
+          suiIcon="true">
+    <i sui-icon
+       suiIconType="cloud"></i>
+  </button>`;
+
   snippetBtnBasic = `
   <button sui-button suiBasic="true" suiColour="red" suiSize="medium">
     Red
@@ -185,7 +192,8 @@ export class ButtonsComponent implements OnInit {
 
   toggleStateMap: any = {};
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   toggleLabel(key: string) {
     this.toggleStateMap[key] = !this.toggleStateMap[key];
