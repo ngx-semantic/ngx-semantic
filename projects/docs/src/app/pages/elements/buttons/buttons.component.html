@@ -59,9 +59,6 @@
   <doc-code-sample
     [content]="btnFocusable"
     [code]="snippetBtnFocusable">
-    <h3 sui-header>Button</h3>
-    <p>A standard button</p>
-
     <ng-template #btnFocusable>
       <button sui-button>
         Button
@@ -72,25 +69,30 @@
       </button>
     </ng-template>
   </doc-code-sample>
-  <div class="example">
-    <h4 class="ui header">Button</h4>
-    <p>A standard button <i class="fitted icon code right floated" (click)="toggleLabel('standard')"></i></p>
-    <div *ngIf="toggleStateMap['standard']" class="ui label" style="width: 80%;"> Example
-      <hr>
-      <button sui-button style="padding: 15px;">
-        Follow
-      </button>
-      <hr>
-      <pre>
-        <code>
-          {{snippetBtn}}
-        </code>
-      </pre>
-    </div>
-    <button *ngIf="!toggleStateMap['standard']" sui-button>
-      Follow
-    </button>
+
+  <div sui-message
+       suiState="info">
+    Setting your brand colors to primary and secondary color variables in <code>site.variables</code> will allow you to use your
+    color theming for UI elements
   </div>
+
+  <doc-code-sample
+    [content]="btnEmphasis"
+    [code]="snippetBtnEmphasis">
+    <h3 sui-header>Emphasis</h3>
+    <p>A button can be formatted to show different levels of emphasis</p>
+
+    <ng-template #btnEmphasis>
+      <button sui-button
+      suiEmphasis="primary">
+        Save
+      </button>
+      <button sui-button>
+        Discard
+      </button>
+    </ng-template>
+  </doc-code-sample>
+
 
   <br>
 
