@@ -49,7 +49,8 @@ import {ClipboardService} from 'ngx-clipboard';
   `,
   styles: [`
     .example {
-      margin-bottom: 2.0rem;
+      margin-bottom: 1.5rem;
+      margin-top: 1.0rem;
     }
 
     .toggle-row {

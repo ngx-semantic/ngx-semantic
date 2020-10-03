@@ -12,6 +12,15 @@ export class ButtonsComponent implements OnInit {
     Follow
   </button>`;
 
+  snippetBtnFocusable = `
+  <button sui-button>
+    Button
+  </button>
+  <button sui-button
+    tabindex="0">
+    Focusable
+  </button>`;
+
   snippetBtnEmphasis = `
   <button sui-button suiEmphasis="primary">
     Save
