@@ -1,31 +1,52 @@
 <div class="ui masthead vertical segment">
-  <div class="ui container">
-    <div class="introduction">
-      <h1 class="ui header">
-        Buttons
-        <div class="sub header">
-          A button indicates a possible user action
+  <div sui-container>
+    <div sui-grid>
+      <div suiGridColumn
+           suiWidth="eight">
+        <h1 sui-header>
+          Buttons
+          <div sui-sub-header>
+            A button indicates a possible user action
+          </div>
+        </h1>
+      </div>
+      <div suiGridColumn
+           suiWidth="eight">
+        <div class="ui right floated main menu">
+          <a class="bug popup icon item" title="Submit Bug Report"
+             href="https://github.com/ngx-semantic/ngx-semantic/issues">
+            <i sui-icon
+               suiIconType="bug"></i>
+          </a>
+
+          <a class="github popup icon item" title="View project on GitHub"
+             href="https://github.com/ngx-semantic/ngx-semantic">
+            <i sui-icon
+               suiIconType="alternate github"></i>
+          </a>
+
+          <a class="github popup icon item" title="View on Semantic UI"
+             href="https://github.com/ngx-semantic/ngx-semantic">
+            <i sui-icon
+               suiIconType="book"></i>
+          </a>
         </div>
-      </h1>
-
-      <div class="ui hidden divider"></div>
-
-      <div class="ui right floated main menu">
-
-        <a class="bug popup icon item" data-content="Submit Bug Report"
-           href="https://github.com/ngx-semantic/ngx-semantic/issues">
-          <i class="bug icon"></i>
-        </a>
-
-        <a class="github popup icon item" data-content="View project on GitHub"
-           href="https://github.com/ngx-semantic/ngx-semantic">
-          <i class="alternate github icon"></i>
-        </a>
       </div>
+    </div>
 
-      <div sui-button suiEmphasis="primary">
-        Download
-      </div>
+    <div sui-divider
+         suiHidden="true"></div>
+
+    <div sui-menu
+         suiWidth="two"
+         style="margin-top: 2rem; margin-bottom: 1.3rem;">
+      <a suiMenuItem
+      suiActive="true">
+        Definitions
+      </a>
+      <a suiMenuItem>
+        API
+      </a>
     </div>
   </div>
 </div>
