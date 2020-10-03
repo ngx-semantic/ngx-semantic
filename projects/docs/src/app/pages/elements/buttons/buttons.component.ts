@@ -168,6 +168,28 @@ export class ButtonsComponent implements OnInit {
     Add Friend
   </button>`;
 
+  snippetBtnBasicEmphasis = `
+   <button sui-button
+          suiBasic="true"
+          suiEmphasis="primary">
+    Primary
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiEmphasis="secondary">
+    Secondary
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiEmphasis="positive">
+    Positive
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiEmphasis="negative">
+    Negative
+  </button>`;
+
   snippetBtnHorizontal = `
   <div sui-button-group>
     <button sui-button suiEmphasis="primary">
