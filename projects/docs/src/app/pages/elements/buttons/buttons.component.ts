@@ -161,12 +161,11 @@ export class ButtonsComponent implements OnInit {
   </button>`;
 
   snippetBtnBasic = `
-  <button sui-button suiBasic="true" suiColour="red" suiSize="medium">
-    Red
-  </button>
-
-  <button sui-button suiBasic="true" suiColour="blue" suiSize="medium">
-    Blue
+   <button sui-button
+          suiBasic="true">
+    <i sui-icon
+       suiIconType="user"></i>
+    Add Friend
   </button>`;
 
   snippetBtnHorizontal = `
