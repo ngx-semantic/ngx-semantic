@@ -1,268 +1,607 @@
 <div class="ui masthead vertical segment">
-  <div class="ui container">
-    <div class="introduction">
+  <div sui-container>
+    <div sui-grid>
+      <div suiGridColumn
+           suiWidth="eight">
+        <h1 sui-header>
+          Buttons
+          <div sui-sub-header>
+            A button indicates a possible user action
+          </div>
+        </h1>
+      </div>
+      <div suiGridColumn
+           suiWidth="eight">
+        <div class="ui right floated main menu">
+          <a class="bug popup icon item" title="Submit Bug Report"
+             href="https://github.com/ngx-semantic/ngx-semantic/issues">
+            <i sui-icon
+               suiIconType="bug"></i>
+          </a>
 
-      <h1 class="ui header">
-        Buttons
-        <div class="sub header">
-          A button indicates a possible user action
+          <a class="github popup icon item" title="View project on GitHub"
+             href="https://github.com/ngx-semantic/ngx-semantic">
+            <i sui-icon
+               suiIconType="alternate github"></i>
+          </a>
+
+          <a class="github popup icon item" title="View on Semantic UI"
+             href="https://github.com/ngx-semantic/ngx-semantic">
+            <i sui-icon
+               suiIconType="book"></i>
+          </a>
         </div>
-      </h1>
-
-      <div class="ui hidden divider"></div>
-
-      <div class="ui right floated main menu">
-
-        <a class="bug popup icon item" data-content="Submit Bug Report" href="https://github.com/ngx-semantic/ngx-semantic/issues">
-          <i class="bug icon"></i>
-        </a>
-
-        <a class="github popup icon item" data-content="View project on GitHub" href="https://github.com/ngx-semantic/ngx-semantic">
-          <i class="alternate github icon"></i>
-        </a>
       </div>
+    </div>
 
-      <div sui-button suiEmphasis="primary">
-        Download
-      </div>
+    <div sui-divider
+         suiHidden="true"></div>
+
+    <div sui-menu
+         suiWidth="two"
+         style="margin-top: 2rem; margin-bottom: 1.3rem;">
+      <a suiMenuItem
+      suiActive="true">
+        Definitions
+      </a>
+      <a suiMenuItem>
+        API
+      </a>
     </div>
   </div>
 </div>
-<br>
 
 <div class="main ui container">
-  <h2 class="ui dividing header">Types</h2>
-  <br>
-  <div class="example">
-    <h4 class="ui header">Button</h4>
-    <p>A standard button <i class="fitted icon code right floated" (click)="toggleLabel('standard')"></i></p>
-    <div *ngIf="toggleStateMap['standard']" class="ui label" style="width: 80%;"> Example <hr>
-      <button sui-button style="padding: 15px;">
+  <h2 sui-header
+      suiDividing="true">Types</h2>
+
+  <doc-code-sample
+    [content]="btnStandard"
+    [code]="snippetBtn">
+    <h3 sui-header>Button</h3>
+    <p>A standard button</p>
+
+    <ng-template #btnStandard>
+      <button sui-button>
         Follow
-      </button> <hr>
-      <pre>
-        <code>
-          {{snippetBtn}}
-        </code>
-      </pre>
-    </div>
-    <button *ngIf="!toggleStateMap['standard']" sui-button>
-      Follow
-    </button>
+      </button>
+    </ng-template>
+  </doc-code-sample>
+
+  <div sui-message
+       suiState="warning">
+    Although any tag can be used for a button, it will only be <a href="http://webaim.org/techniques/keyboard/tabindex">
+    keyboard focusable</a> if you use a <code>&lt;button&gt;</code> tag or you add the property
+    <code>tabindex="0"</code>.
+    Keyboard accessible buttons will preserve focus styles after click, which may be visually jarring.
   </div>
 
-  <br>
+  <doc-code-sample
+    [content]="btnFocusable"
+    [code]="snippetBtnFocusable">
+    <ng-template #btnFocusable>
+      <button sui-button>
+        Button
+      </button>
+      <button sui-button
+              tabindex="0">
+        Focusable
+      </button>
+    </ng-template>
+  </doc-code-sample>
 
-  <div class="example" data-class="primary, secondary">
-    <h4 class="ui header">Emphasis</h4>
-    <p>A button can be formatted to show different levels of emphasis <i class="fitted icon code right floated" (click)="toggleLabel('emphasis')"></i></p>
-    <div *ngIf="toggleStateMap['emphasis']" class="ui label" style="width: 80%;"> Example <hr>
-      <div class="example">
-        <button sui-button suiEmphasis="primary"> Save </button>
-        <button sui-button> Discard </button>
-      </div>
-      <div class="another example">
-        <button sui-button suiEmphasis="secondary"> Okay</button>
-        <button sui-button> Cancel </button>
-      </div> <hr>
-      <pre>
-        <code>
-          {{snippetBtnEmphasis}}
-        </code>
-      </pre>
-    </div>
-    <button *ngIf="!toggleStateMap['emphasis']" sui-button suiEmphasis="primary">
-      Save
-    </button>
-    <button *ngIf="!toggleStateMap['emphasis']" sui-button>
-      Discard
-    </button>
+  <div sui-message
+       suiState="info">
+    Setting your brand colors to primary and secondary color variables in <code>site.variables</code> will allow you to
+    use your
+    color theming for UI elements
   </div>
 
-  <div class="another example">
-    <button *ngIf="!toggleStateMap['emphasis']" sui-button
-            suiEmphasis="secondary">
-      Okay
-    </button>
-    <button *ngIf="!toggleStateMap['emphasis']" sui-button>
-      Cancel
-    </button>
-  </div>
-  <br>
+  <doc-code-sample
+    [content]="btnEmphasis"
+    [code]="snippetBtnEmphasis">
+    <h3 sui-header>Emphasis</h3>
+    <p>A button can be formatted to show different levels of emphasis</p>
 
-  <div class="example">
-    <h4 class="ui header">Basic</h4>
-    <p>A basic button is less pronounced <i class="fitted icon code right floated" (click)="toggleLabel('basic')"></i></p>
-    <div *ngIf="toggleStateMap['basic']" class="ui label" style="width: 80%;"> Example <hr>
-      <button sui-button suiBasic="true" suiColour="red" suiSize="medium">Red</button>
-      <button sui-button suiBasic="true" suiColour="blue" suiSize="medium">Blue</button>
-      <button sui-button suiBasic="true" suiColour="green" suiSize="medium">Green</button>
-      <button sui-button suiBasic="true" suiColour="yellow" suiSize="medium">Yellow</button>
-      <button sui-button suiBasic="true" suiColour="grey" suiSize="medium">Grey</button>
-      <button sui-button suiBasic="true" suiColour="black" suiSize="medium">Black</button> <hr>
-      <pre>
-        <code>
-          {{snippetBtnBasic}}
-        </code>
-      </pre>
+    <ng-template #btnEmphasis>
+      <button sui-button
+              suiEmphasis="primary">
+        Save
+      </button>
+      <button sui-button>
+        Discard
+      </button>
+    </ng-template>
+  </doc-code-sample>
+
+  <doc-code-sample
+    [content]="btnSecondaryEmphasis"
+    [code]="snippetBtnSecondaryEmphasis">
+    <ng-template #btnSecondaryEmphasis>
+      <button sui-button
+              suiEmphasis="secondary">
+        Okay
+      </button>
+      <button sui-button>
+        Discard
+      </button>
+    </ng-template>
+  </doc-code-sample>
+
+  <doc-code-sample
+    [content]="btnAnimated"
+    [code]="snippetBtnAnimated">
+    <h3 sui-header>Animated</h3>
+    <p>A button can animate to show hidden content</p>
+
+    <div sui-message>
+      The button will be automatically sized according to the visible content size. Make sure there is enough room for
+      the hidden content to show
     </div>
-    <button *ngIf="!toggleStateMap['basic']" sui-button suiBasic="true" suiColour="red" suiSize="medium">Red</button>
-    <button *ngIf="!toggleStateMap['basic']" sui-button suiBasic="true" suiColour="blue" suiSize="medium">Blue</button>
-    <button *ngIf="!toggleStateMap['basic']" sui-button suiBasic="true" suiColour="green" suiSize="medium">Green</button>
-    <button *ngIf="!toggleStateMap['basic']" sui-button suiBasic="true" suiColour="yellow" suiSize="medium">Yellow</button>
-    <button *ngIf="!toggleStateMap['basic']" sui-button suiBasic="true" suiColour="grey" suiSize="medium">Grey</button>
-    <button *ngIf="!toggleStateMap['basic']" sui-button suiBasic="true" suiColour="black" suiSize="medium">Black</button>
-  </div>
-  <br>
 
-  <h2 class="ui dividing header">Groups</h2>
-  <br>
-
-  <div class="example">
-    <h4 class="ui header">Horizontally Attached</h4>
-    <p>A button can be attached to the left or right of other content <i class="fitted icon code right floated" (click)="toggleLabel('horizontal')"></i></p>
-    <div *ngIf="toggleStateMap['horizontal']" class="ui label" style="width: 80%;"> Example <hr>
-      <div sui-button-group>
-        <button sui-button
-                suiEmphasis="primary">Left
-        </button>
-        <button sui-button
-                suiEmphasis="secondary">Right
-        </button>
-      </div> <hr>
-      <pre>
-        <code>
-          {{snippetBtnHorizontal}}
-        </code>
-      </pre>
-    </div>
-    <div *ngIf="!toggleStateMap['horizontal']" sui-button-group>
-      <button sui-button
-              suiEmphasis="primary">Left
-      </button>
-      <button sui-button
-              suiEmphasis="secondary">Right
-      </button>
-    </div>
-  </div>
-
-  <div class="example">
-    <h4 class="ui header">Vertically Attached</h4>
-    <p>A button can be attached to the left or right of other content <i class="fitted icon code right floated" (click)="toggleLabel('vertical')"></i></p>
-    <div *ngIf="toggleStateMap['vertical']" class="ui label" style="width: 80%;"> Example <hr>
-      <div
-      sui-button-group
-      suiVertical="true">
-      <button sui-button
-              suiEmphasis="positive">Top
-      </button>
-      <button sui-button
-              suiEmphasis="negative">Bottom
-      </button>
-    </div> <hr>
-      <pre>
-        <code>
-          {{snippetBtnVertical}}
-        </code>
-      </pre>
-    </div>
-    <div  *ngIf="!toggleStateMap['vertical']"
-      sui-button-group
-      suiVertical="true">
-      <button sui-button
-              suiEmphasis="positive">Top
-      </button>
-      <button sui-button
-              suiEmphasis="negative">Bottom
-      </button>
-    </div>
-  </div>
-  <br>
-
-  <h2 class="ui dividing header">Variations</h2>
-  <br>
-
-  <div class="example">
-    <h4 class="ui header">Social</h4>
-    <p> A button can be formatted to link to a social website <i class="fitted icon code right floated" (click)="toggleLabel('social')"></i></p>
-    <div *ngIf="toggleStateMap['social']" class="ui label" style="width: 80%;"> Example
-      <hr>
+    <ng-template #btnAnimated>
       <div sui-button
-         suiSocial="facebook">
-      <i class="facebook icon"></i>
-      Facebook
-    </div>
-    <div sui-button
-         suiSocial="twitter">
-      <i class="twitter icon"></i>
-      Twitter
-    </div>
-    <div sui-button
-         suiSocial="google plus">
-      <i class="google plus icon"></i>
-      Google Plus
-    </div>
-    <div sui-button
-         suiSocial="vk">
-      <i class="vk icon"></i>
-      VK
-    </div>
-    <div sui-button
-         suiSocial="linkedin">
-      <i class="linkedin icon"></i>
-      LinkedIn
-    </div>
-    <div sui-button
-         suiSocial="instagram">
-      <i class="instagram icon"></i>
-      Instagram
-    </div>
-    <div sui-button
-         suiSocial="youtube">
-      <i class="youtube icon"></i>
-      YouTube
-    </div>
-      <hr>
-      <pre>
-        <code>
-          {{snippetBtnSocial}}
-        </code>
-      </pre>
-    </div>
-    <div sui-button *ngIf="!toggleStateMap['social']"
-         suiSocial="facebook">
-      <i class="facebook icon"></i>
-      Facebook
-    </div>
-    <div sui-button *ngIf="!toggleStateMap['social']"
-         suiSocial="twitter">
-      <i class="twitter icon"></i>
-      Twitter
-    </div>
-    <div sui-button *ngIf="!toggleStateMap['social']"
-         suiSocial="google plus">
-      <i class="google plus icon"></i>
-      Google Plus
-    </div>
-    <div sui-button *ngIf="!toggleStateMap['social']"
-         suiSocial="vk">
-      <i class="vk icon"></i>
-      VK
-    </div>
-    <div sui-button *ngIf="!toggleStateMap['social']"
-         suiSocial="linkedin">
-      <i class="linkedin icon"></i>
-      LinkedIn
-    </div>
-    <div sui-button *ngIf="!toggleStateMap['social']"
-         suiSocial="instagram">
-      <i class="instagram icon"></i>
-      Instagram
-    </div>
-    <div sui-button *ngIf="!toggleStateMap['social']"
-         suiSocial="youtube">
-      <i class="youtube icon"></i>
-      YouTube
-    </div>
-  </div>
+           tabindex="0"
+           suiAnimated="animated">
+        <div class="visible content">Next</div>
+        <div class="hidden content">
+          <i sui-icon
+             suiIconType="right arrow"></i>
+        </div>
+      </div>
+      <div sui-button
+           tabindex="0"
+           suiAnimated="vertical animated">
+        <div class="hidden content">Shop</div>
+        <div class="visible content">
+          <i class="shop icon"></i>
+        </div>
+      </div>
+      <div sui-button
+           tabindex="0"
+           suiAnimated="animated fade">
+        <div class="visible content">Sign-up for a Pro account</div>
+        <div class="hidden content">
+          $12.99 a month
+        </div>
+      </div>
+    </ng-template>
+  </doc-code-sample>
+
+  <doc-code-sample
+    [content]="btnLabeled"
+    [code]="snippetBtnLabeled">
+    <h3 sui-header>Labeled</h3>
+    <p>A button can appear alongside a label</p>
+
+    <ng-template #btnLabeled>
+      <div sui-button
+           tabindex="0"
+           suiLabeled="labeled">
+        <div sui-button>
+          <i sui-icon
+             suiIconType="heart"></i> Like
+        </div>
+        <a sui-label
+           suiBasic="true">
+          2,048
+        </a>
+      </div>
+      <div sui-button
+           suiLabeled="left labeled"
+           tabindex="0">
+        <a sui-label
+           suiBasic="true"
+           suiPointing="right">
+          2,048
+        </a>
+        <div sui-button>
+          <i sui-icon
+             suiIconType="heart"></i> Like
+        </div>
+      </div>
+      <div class="ui left labeled button" tabindex="0">
+        <a sui-label
+           suiBasic="true">
+          1,048
+        </a>
+        <div sui-button
+             suiIcon="true">
+          <i sui-icon
+             suiIconType="fork"></i>
+        </div>
+      </div>
+    </ng-template>
+  </doc-code-sample>
+
+  <doc-code-sample
+    [content]="btnColorLabeled"
+    [code]="snippetBtnColorLabeled">
+    <ng-template #btnColorLabeled>
+      <div sui-button
+           suiLabeled="labeled"
+           tabindex="0">
+        <div sui-button
+             suiColour="red">
+          <i sui-icon
+             suiIconType="heart"></i> Like
+        </div>
+        <a sui-label
+           suiColour="red"
+           suiBasic="true"
+           suiPointing="left">
+          1,048
+        </a>
+      </div>
+      <div sui-button
+           suiLabeled="labeled"
+           tabindex="0">
+        <div sui-button
+             suiBasic="true"
+             suiColour="blue">
+          <i sui-icon
+             suiIconType="fork"></i> Fork
+        </div>
+        <a sui-label
+           suiColour="blue"
+           suiBasic="true"
+           suiPointing="left">
+          1,048
+        </a>
+      </div>
+    </ng-template>
+  </doc-code-sample>
+
+  <doc-code-sample
+    [content]="btnIcon"
+    [code]="snippetBtnIcon">
+    <h3 sui-header>Icon</h3>
+    <p>A button can have only an icon</p>
+
+    <ng-template #btnIcon>
+      <button sui-button
+              suiIcon="true">
+        <i sui-icon
+           suiIconType="cloud"></i>
+      </button>
+    </ng-template>
+  </doc-code-sample>
+
+  <doc-code-sample
+    [content]="btnLabeledIcon"
+    [code]="snippetBtnLabeledIcon">
+    <h3 sui-header>Labeled Icon</h3>
+    <p>A button can use an icon as a label</p>
+
+    <ng-template #btnLabeledIcon>
+      <button sui-button
+              suiIcon="true"
+              suiLabeled="labeled">
+        <i sui-icon
+           suiIconType="pause"></i>
+        Pause
+      </button>
+      <button sui-button
+              suiIcon="true"
+              suiLabeled="right labeled">
+        <i sui-icon
+           suiIconType="right arrow"></i>
+        Next
+      </button>
+    </ng-template>
+  </doc-code-sample>
+
+  <doc-code-sample
+    [content]="btnBasic"
+    [code]="snippetBtnBasic">
+    <h3 sui-header>Basic</h3>
+    <p>A basic button is less pronounced</p>
+
+    <ng-template #btnBasic>
+      <button sui-button
+              suiBasic="true">
+        <i sui-icon
+           suiIconType="user"></i>
+        Add Friend
+      </button>
+    </ng-template>
+  </doc-code-sample>
+
+  <doc-code-sample
+    [content]="btnBasicEmphasis"
+    [code]="snippetBtnBasicEmphasis">
+    <ng-template #btnBasicEmphasis>
+      <button sui-button
+              suiBasic="true"
+              suiEmphasis="primary">
+        Primary
+      </button>
+      <button sui-button
+              suiBasic="true"
+              suiEmphasis="secondary">
+        Secondary
+      </button>
+      <button sui-button
+              suiBasic="true"
+              suiEmphasis="positive">
+        Positive
+      </button>
+      <button sui-button
+              suiBasic="true"
+              suiEmphasis="negative">
+        Negative
+      </button>
+    </ng-template>
+  </doc-code-sample>
+
+  <doc-code-sample
+    [content]="btnBasicColours"
+    [code]="snippetBtnBasicColours">
+    <ng-template #btnBasicColours>
+      <button sui-button
+              suiBasic="true"
+              suiColour="red">
+        Red
+      </button>
+      <button sui-button
+              suiBasic="true"
+              suiColour="orange">
+        Orange
+      </button>
+      <button sui-button
+              suiBasic="true"
+              suiColour="yellow">
+        Yellow
+      </button>
+      <button sui-button
+              suiBasic="true"
+              suiColour="olive">
+        Olive
+      </button>
+      <button sui-button
+              suiBasic="true"
+              suiColour="green">
+        Green
+      </button>
+      <button sui-button
+              suiBasic="true"
+              suiColour="teal">
+        Teal
+      </button>
+      <button sui-button
+              suiBasic="true"
+              suiColour="blue">
+        Blue
+      </button>
+      <button sui-button
+              suiBasic="true"
+              suiColour="violet">
+        Violet
+      </button>
+      <button sui-button
+              suiBasic="true"
+              suiColour="purple">
+        Purple
+      </button>
+      <button sui-button
+              suiBasic="true"
+              suiColour="pink">
+        Pink
+      </button>
+      <button sui-button
+              suiBasic="true"
+              suiColour="brown">
+        Brown
+      </button>
+      <button sui-button
+              suiBasic="true"
+              suiColour="grey">
+        Grey
+      </button>
+      <button sui-button
+              suiBasic="true"
+              suiColour="black">
+        Black
+      </button>
+    </ng-template>
+  </doc-code-sample>
+
+  <doc-code-sample
+    [content]="btnInverted"
+    [code]="snippetBtnInverted">
+    <h3 sui-header>Inverted</h3>
+    <p>
+      A button can be formatted to appear on dark backgrounds
+    </p>
+
+    <ng-template #btnInverted>
+      <div sui-segment
+           suiInverted="true">
+        <button sui-button
+                suiInverted="true">
+          Standard
+        </button>
+        <button sui-button
+                suiInverted="true"
+                suiEmphasis="primary">
+          Primary
+        </button>
+        <button sui-button
+                suiInverted="true"
+                suiEmphasis="secondary">
+          Secondary
+        </button>
+        <button sui-button
+                suiInverted="true"
+                suiColour="red">
+          Red
+        </button>
+        <button sui-button
+                suiInverted="true"
+                suiColour="orange">
+          Orange
+        </button>
+        <button sui-button
+                suiInverted="true"
+                suiColour="yellow">
+          Yellow
+        </button>
+        <button sui-button
+                suiInverted="true"
+                suiColour="olive">
+          Olive
+        </button>
+        <button sui-button
+                suiInverted="true"
+                suiColour="green">
+          Green
+        </button>
+        <button sui-button
+                suiInverted="true"
+                suiColour="teal">
+          Teal
+        </button>
+        <button sui-button
+                suiInverted="true"
+                suiColour="blue">
+          Blue
+        </button>
+        <button sui-button
+                suiInverted="true"
+                suiColour="violet">
+          Violet
+        </button>
+        <button sui-button
+                suiInverted="true"
+                suiColour="purple">
+          Purple
+        </button>
+        <button sui-button
+                suiInverted="true"
+                suiColour="pink">
+          Pink
+        </button>
+        <button sui-button
+                suiInverted="true"
+                suiColour="brown">
+          Brown
+        </button>
+        <button sui-button
+                suiInverted="true"
+                suiColour="grey">
+          Grey
+        </button>
+        <button sui-button
+                suiInverted="true"
+                suiColour="black">
+          Black
+        </button>
+      </div>
+    </ng-template>
+  </doc-code-sample>
+
+  <doc-code-sample
+    [content]="btnInvertedBasic"
+    [code]="snippetBtnInvertedBasic">
+    <ng-template #btnInvertedBasic>
+      <div sui-segment
+           suiInverted="true">
+        <button sui-button
+                suiBasic="true"
+                suiInverted="true">
+          Basic
+        </button>
+        <button sui-button
+                suiBasic="true"
+                suiInverted="true"
+                suiEmphasis="primary">
+          Primary
+        </button>
+        <button sui-button
+                suiBasic="true"
+                suiInverted="true"
+                suiEmphasis="secondary">
+          Secondary
+        </button>
+        <button sui-button
+                suiBasic="true"
+                suiInverted="true"
+                suiColour="red">
+          Basic Red
+        </button>
+        <button sui-button
+                suiBasic="true"
+                suiInverted="true"
+                suiColour="orange">
+          Basic Orange
+        </button>
+        <button sui-button
+                suiBasic="true"
+                suiInverted="true"
+                suiColour="yellow">
+          Basic Yellow
+        </button>
+        <button sui-button
+                suiBasic="true"
+                suiInverted="true"
+                suiColour="olive">
+          Basic Olive
+        </button>
+        <button sui-button
+                suiBasic="true"
+                suiInverted="true"
+                suiColour="green">
+          Basic Green
+        </button>
+        <button sui-button
+                suiBasic="true"
+                suiInverted="true"
+                suiColour="teal">
+          Basic Teal
+        </button>
+        <button sui-button
+                suiBasic="true"
+                suiInverted="true"
+                suiColour="blue">
+          Basic Blue
+        </button>
+        <button sui-button
+                suiBasic="true"
+                suiInverted="true"
+                suiColour="violet">
+          Basic Violet
+        </button>
+        <button sui-button
+                suiBasic="true"
+                suiInverted="true"
+                suiColour="purple">
+          Basic Purple
+        </button>
+        <button sui-button
+                suiBasic="true"
+                suiInverted="true"
+                suiColour="pink">
+          Basic Pink
+        </button>
+        <button sui-button
+                suiBasic="true"
+                suiInverted="true"
+                suiColour="brown">
+          Basic Brown
+        </button>
+        <button sui-button
+                suiBasic="true"
+                suiInverted="true"
+                suiColour="grey">
+          Basic Grey
+        </button>
+        <button sui-button
+                suiBasic="true"
+                suiInverted="true"
+                suiColour="black">
+          Basic Black
+        </button>
+      </div>
+    </ng-template>
+  </doc-code-sample>
 </div>
