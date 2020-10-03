@@ -9,7 +9,7 @@ import {ClipboardService} from 'ngx-clipboard';
         <i sui-icon
            suiIconType="code"
            title="Toggle Code"
-           style="cursor: pointer"
+           class="show-code"
            (click)="toggleCodeDisplay()"></i>
       </div>
 
@@ -55,7 +55,17 @@ import {ClipboardService} from 'ngx-clipboard';
     .toggle-row {
       display: flex;
       flex-direction: row-reverse;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .show-code {
+      cursor: pointer;
+      color: gray;
+      font-size: 1.1rem;
+    }
+
+    .show-code:hover {
+      color: rgba(0, 0, 0, .6);
     }
 
     .code-container {
