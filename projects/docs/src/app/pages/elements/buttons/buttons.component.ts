@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'doc-buttons',
@@ -62,7 +63,9 @@ export class ButtonsComponent implements OnInit {
     Twitter
   </div>`;
 
-  constructor() {}
+  constructor(title: Title) {
+    title.setTitle('Buttons | NgxSemantic');
+  }
 
   toggleStateMap: any = {};
 

@@ -31,8 +31,21 @@
 <br>
 
 <div class="main ui container">
-  <h2 class="ui dividing header">Types</h2>
+  <h2 sui-header
+      suiDividing="true">Types</h2>
   <br>
+  <doc-code-sample
+    [content]="btnStandard"
+    [code]="snippetBtn">
+    <h3 sui-header>Button</h3>
+    <p>A standard button</p>
+
+    <ng-template #btnStandard>
+      <button sui-button style="padding: 15px;">
+        Follow
+      </button>
+    </ng-template>
+  </doc-code-sample>
   <div class="example">
     <h4 class="ui header">Button</h4>
     <p>A standard button <i class="fitted icon code right floated" (click)="toggleLabel('standard')"></i></p>
