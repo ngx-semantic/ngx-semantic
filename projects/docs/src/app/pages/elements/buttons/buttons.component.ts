@@ -190,6 +190,73 @@ export class ButtonsComponent implements OnInit {
     Negative
   </button>`;
 
+  snippetBtnBasicColours = `
+   <button sui-button
+          suiBasic="true"
+          suiColour="red">
+    Red
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="orange">
+    Orange
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="yellow">
+    Yellow
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="olive">
+    Olive
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="green">
+    Green
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="teal">
+    Teal
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="blue">
+    Blue
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="violet">
+    Violet
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="purple">
+    Purple
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="pink">
+    Pink
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="brown">
+    Brown
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="grey">
+    Grey
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="black">
+    Black
+  </button>`;
+
   snippetBtnHorizontal = `
   <div sui-button-group>
     <button sui-button suiEmphasis="primary">

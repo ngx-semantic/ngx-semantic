@@ -4,7 +4,7 @@
 
 export type SuiLocation = 'left' | 'right' | 'top' | 'bottom' | 'center' | null;
 
-export type SuiColour = 'red' | 'orange' | 'yellow' | 'olive' | 'green' | 'teal' | 'blue' | 'pink' | 'brown' | 'grey'  | 'black' | null;
+export type SuiColour = 'red' | 'orange' | 'yellow' | 'olive' | 'green' | 'teal' | 'blue' | 'violet' | 'purple' | 'pink' | 'brown' | 'grey'  | 'black' | null;
 
 export type SuiSize = 'mini' | 'tiny' | 'small' | 'medium' | 'large' | 'big' | 'huge' | 'massive' | null;
 
