@@ -13,6 +13,7 @@ install:
   - ps: Install-Product node $env:nodejs_version
   - npm install -g yarn
   - yarn global add @angular/cli@latest
+  - yarn global add codecov
   - node --version
   - yarn --version
 
@@ -21,4 +22,5 @@ build: off
 test_script:
   - yarn install
   - yarn test
+  - codecov
   - yarn lint

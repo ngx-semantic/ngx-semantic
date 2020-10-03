@@ -23,6 +23,7 @@ import {CollectionsComponent} from './pages/collections/collections.component';
 import {ViewsComponent} from './pages/views/views.component';
 import {CardsComponent} from './pages/views/cards/cards.component';
 import {CodeSampleComponent} from './components/code-sample.component';
+import {StepsComponent} from './pages/elements/steps/steps.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,10 @@ import {CodeSampleComponent} from './components/code-sample.component';
     SegmentsComponent,
     MessagesComponent,
     CodeSampleComponent,
-    CollectionsComponent
+    CollectionsComponent,
+    ViewsComponent,
+    CardsComponent,
+    StepsComponent
   ],
   imports: [
     BrowserModule,

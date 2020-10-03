@@ -13,7 +13,7 @@ import {Utils} from '../../common';
     </ng-container>
     <ng-container *ngIf="suiContent">
       <div class="content">
-        {{suiContent}}
+        <ng-container *ngTemplateOutlet="suiContent"></ng-container>
       </div>
     </ng-container>
     <ng-content></ng-content>
