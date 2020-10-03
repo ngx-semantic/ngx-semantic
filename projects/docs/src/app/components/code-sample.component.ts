@@ -4,48 +4,54 @@ import {ClipboardService} from 'ngx-clipboard';
 @Component({
   selector: 'doc-code-sample',
   template: `
-    <div class="toggle-row">
-      <i sui-icon
-         suiIconType="code"
-         title="Toggle Code"
-         style="cursor: pointer"
-         (click)="toggleCodeDisplay()"></i>
-    </div>
-
-    <ng-content></ng-content>
-
-    <ng-container *ngIf="!codeShown">
-      <ng-container *ngTemplateOutlet="content"></ng-container>
-    </ng-container>
-
-    <div *ngIf="codeShown" sui-segment
-         suiAttached="top attached"
-         style="padding-top: 3rem;">
-      <ng-container *ngTemplateOutlet="content"></ng-container>
-      <div sui-label
-           suiAttached="top">
-        Example
+    <div class="example">
+      <div class="toggle-row">
         <i sui-icon
-           suiIconType="copy"
-           title="Copy Code"
-           style="cursor: pointer; float: right;"
-           (click)="copyCode()"></i>
+           suiIconType="code"
+           title="Toggle Code"
+           style="cursor: pointer"
+           (click)="toggleCodeDisplay()"></i>
       </div>
-    </div>
-    <div class="code-container"
-         [class.hidden]="!codeShown"
-         [class.visible]="codeShown">
-      <div sui-segment
-           suiAttached="bottom attached">
+
+      <ng-content></ng-content>
+
+      <ng-container *ngIf="!codeShown">
+        <ng-container *ngTemplateOutlet="content"></ng-container>
+      </ng-container>
+
+      <div *ngIf="codeShown" sui-segment
+           suiAttached="top attached"
+           style="padding-top: 3rem;">
+        <ng-container *ngTemplateOutlet="content"></ng-container>
+        <div sui-label
+             suiAttached="top">
+          Example
+          <i sui-icon
+             suiIconType="copy"
+             title="Copy Code"
+             style="cursor: pointer; float: right;"
+             (click)="copyCode()"></i>
+        </div>
+      </div>
+      <div class="code-container"
+           [class.hidden]="!codeShown"
+           [class.visible]="codeShown">
+        <div sui-segment
+             suiAttached="bottom attached">
         <pre style="background-color: white;">
           <code class="language-markup">
             {{code}}
           </code>
         </pre>
+        </div>
       </div>
     </div>
   `,
   styles: [`
+    .example {
+      margin-bottom: 2.0rem;
+    }
+
     .toggle-row {
       display: flex;
       flex-direction: row-reverse;
@@ -57,12 +63,14 @@ import {ClipboardService} from 'ngx-clipboard';
     }
 
     .code-container.hidden {
+      display: none;
       visibility: hidden;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
     }
 
     .code-container.visible {
+      display: block;
       visibility: visible;
       opacity: 1;
       transition: opacity 0.6s ease-in-out;
