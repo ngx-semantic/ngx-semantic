@@ -5,28 +5,28 @@
   "projects": {
     "ngx-semantic": {
       "projectType": "library",
-      "root": "projects/ngx-semantic",
-      "sourceRoot": "projects/ngx-semantic/src",
+      "root": "lib",
+      "sourceRoot": "lib/src",
       "prefix": "sui",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/ngx-semantic/tsconfig.lib.json",
-            "project": "projects/ngx-semantic/ng-package.json"
+            "tsConfig": "lib/tsconfig.lib.json",
+            "project": "lib/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ngx-semantic/tsconfig.lib.prod.json"
+              "tsConfig": "lib/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-semantic/src/test.ts",
-            "tsConfig": "projects/ngx-semantic/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-semantic/karma.conf.js",
+            "main": "lib/src/test.ts",
+            "tsConfig": "lib/tsconfig.spec.json",
+            "karmaConfig": "lib/karma.conf.js",
             "codeCoverage": true
           }
         },
@@ -34,8 +34,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/ngx-semantic/tsconfig.lib.json",
-              "projects/ngx-semantic/tsconfig.spec.json"
+              "lib/tsconfig.lib.json",
+              "lib/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
