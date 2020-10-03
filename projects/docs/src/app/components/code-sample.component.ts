@@ -14,14 +14,18 @@ import {ClipboardService} from 'ngx-clipboard';
 
     <ng-content></ng-content>
 
-    <div sui-segment
+    <ng-container *ngIf="!codeShown">
+      <ng-container *ngTemplateOutlet="content"></ng-container>
+    </ng-container>
+
+    <div *ngIf="codeShown" sui-segment
          suiAttached="top attached"
          style="padding-top: 3rem;">
       <ng-container *ngTemplateOutlet="content"></ng-container>
       <div sui-label
            suiAttached="top">
         Example
-        <i *ngIf="codeShown" sui-icon
+        <i sui-icon
            suiIconType="copy"
            title="Copy Code"
            style="cursor: pointer; float: right;"
