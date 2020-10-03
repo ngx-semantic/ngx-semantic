@@ -104,6 +104,39 @@ export class ButtonsComponent implements OnInit {
     </div>
   </div>`;
 
+  snippetBtnColorLabeled = `
+  <div sui-button
+       suiLabeled="labeled"
+       tabindex="0">
+    <div sui-button
+         suiColour="red">
+      <i sui-icon
+         suiIconType="heart"></i> Like
+    </div>
+    <a sui-label
+       suiColour="red"
+       suiBasic="true"
+       suiPointing="left">
+      1,048
+    </a>
+  </div>
+  <div sui-button
+       suiLabeled="labeled"
+       tabindex="0">
+    <div sui-button
+         suiBasic="true"
+         suiColour="blue">
+      <i sui-icon
+         suiIconType="fork"></i> Fork
+    </div>
+    <a sui-label
+       suiColour="blue"
+       suiBasic="true"
+       suiPointing="left">
+      1,048
+    </a>
+  </div>`;
+
   snippetBtnBasic = `
   <button sui-button suiBasic="true" suiColour="red" suiSize="medium">
     Red
