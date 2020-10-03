@@ -257,6 +257,173 @@ export class ButtonsComponent implements OnInit {
     Black
   </button>`;
 
+  snippetBtnInverted = `
+   <button sui-button
+          suiBasic="true"
+          suiColour="red">
+    Red
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="orange">
+    Orange
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="yellow">
+    Yellow
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="olive">
+    Olive
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="green">
+    Green
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="teal">
+    Teal
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="blue">
+    Blue
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="violet">
+    Violet
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="purple">
+    Purple
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="pink">
+    Pink
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="brown">
+    Brown
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="grey">
+    Grey
+  </button>
+  <button sui-button
+          suiBasic="true"
+          suiColour="black">
+    Black
+  </button>`;
+
+  snippetBtnInvertedBasic = `
+  <div sui-segment
+       suiInverted="true">
+    <button sui-button
+            suiBasic="true"
+            suiInverted="true">
+      Basic
+    </button>
+    <button sui-button
+            suiBasic="true"
+            suiInverted="true"
+            suiEmphasis="primary">
+      Primary
+    </button>
+    <button sui-button
+            suiBasic="true"
+            suiInverted="true"
+            suiEmphasis="secondary">
+      Secondary
+    </button>
+    <button sui-button
+            suiBasic="true"
+            suiInverted="true"
+            suiColour="red">
+      Basic Red
+    </button>
+    <button sui-button
+            suiBasic="true"
+            suiInverted="true"
+            suiColour="orange">
+      Basic Orange
+    </button>
+    <button sui-button
+            suiBasic="true"
+            suiInverted="true"
+            suiColour="yellow">
+      Basic Yellow
+    </button>
+    <button sui-button
+            suiBasic="true"
+            suiInverted="true"
+            suiColour="olive">
+      Basic Olive
+    </button>
+    <button sui-button
+            suiBasic="true"
+            suiInverted="true"
+            suiColour="green">
+      Basic Green
+    </button>
+    <button sui-button
+            suiBasic="true"
+            suiInverted="true"
+            suiColour="teal">
+      Basic Teal
+    </button>
+    <button sui-button
+            suiBasic="true"
+            suiInverted="true"
+            suiColour="blue">
+      Basic Blue
+    </button>
+    <button sui-button
+            suiBasic="true"
+            suiInverted="true"
+            suiColour="violet">
+      Basic Violet
+    </button>
+    <button sui-button
+            suiBasic="true"
+            suiInverted="true"
+            suiColour="purple">
+      Basic Purple
+    </button>
+    <button sui-button
+            suiBasic="true"
+            suiInverted="true"
+            suiColour="pink">
+      Basic Pink
+    </button>
+    <button sui-button
+            suiBasic="true"
+            suiInverted="true"
+            suiColour="brown">
+      Basic Brown
+    </button>
+    <button sui-button
+            suiBasic="true"
+            suiInverted="true"
+            suiColour="grey">
+      Basic Grey
+    </button>
+    <button sui-button
+            suiBasic="true"
+            suiInverted="true"
+            suiColour="black">
+      Basic Black
+    </button>
+  </div>`;
+
   snippetBtnHorizontal = `
   <div sui-button-group>
     <button sui-button suiEmphasis="primary">
