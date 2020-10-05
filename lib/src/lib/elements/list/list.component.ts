@@ -5,7 +5,7 @@
 import {Component, HostBinding, Input} from '@angular/core';
 import {SuiSize, SuiVerticalAlignment} from '../../common';
 
-export type SuiListRelaxation = 'very' | 'normal' | null;
+export type SuiListRelaxation = 'relaxed' | 'very relaxed' | null;
 
 @Component({
   selector: '[sui-list]',
@@ -14,7 +14,7 @@ export type SuiListRelaxation = 'very' | 'normal' | null;
   `
 })
 export class SuiListComponent {
-  @Input() suiRelaxed: SuiListRelaxation = null;
+  @Input() suiRelaxation: SuiListRelaxation = null;
   @Input() suiSize: SuiSize = null;
   @Input() suiAlignment: SuiVerticalAlignment = null;
   @Input() suiDivided = false;
@@ -32,8 +32,8 @@ export class SuiListComponent {
     return [
       'ui',
       this.suiSize,
+      this.suiRelaxation,
       this.getInverted(),
-      this.getRelaxed(),
       this.getDivided(),
       this.getBulleted(),
       this.getOrdered(),
@@ -53,20 +53,6 @@ export class SuiListComponent {
     }
 
     return 'divided';
-  }
-
-  getRelaxed(): string {
-    const classKey = 'relaxed';
-
-    if (!this.suiRelaxed) {
-      return '';
-    }
-
-    if (this.suiRelaxed === 'very') {
-      return 'very' + ' ' + classKey;
-    }
-
-    return classKey;
   }
 
   getBulleted(): string {
