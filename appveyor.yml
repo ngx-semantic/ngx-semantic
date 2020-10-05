@@ -23,4 +23,3 @@ test_script:
   - yarn install
   - yarn test
   - codecov --disable=gcov
-  - yarn lint
