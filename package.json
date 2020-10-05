@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "test": "ng test ngx-semantic --no-watch --code-coverage",
+    "test": "ng test --no-watch --code-coverage",
     "lint": "ng lint",
     "build": "ng build ngx-semantic",
     "build:prod": "ng build ngx-semantic --prod",
