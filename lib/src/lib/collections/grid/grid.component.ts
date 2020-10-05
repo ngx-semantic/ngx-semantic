@@ -36,7 +36,7 @@ export class SuiGridComponent {
     return [
       'ui',
       this.suiWidth,
-      this.suiWidth ? 'wide' : '',
+      this.suiWidth ? 'column' : '',
       this.suiAlignment,
       this.suiDivided,
       this.suiCelled,
