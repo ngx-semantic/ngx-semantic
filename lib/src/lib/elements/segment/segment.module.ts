@@ -5,7 +5,7 @@
 import {NgModule} from '@angular/core';
 import {SuiSegmentComponent} from './segment.component';
 import {CommonModule} from '@angular/common';
-import {SuiSegmentsComponent} from './segment-group.component';
+import {SuiSegmentsComponent} from './segments.component';
 
 @NgModule({
   declarations: [SuiSegmentComponent, SuiSegmentsComponent],

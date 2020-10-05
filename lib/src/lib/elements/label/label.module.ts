@@ -5,12 +5,12 @@
 import {NgModule} from '@angular/core';
 import {SuiLabelComponent} from './label.component';
 import {CommonModule} from '@angular/common';
-import {SuiLabelGroupComponent} from './label-group.component';
+import {SuiLabelsComponent} from './labels.component';
 
 @NgModule({
-  declarations: [SuiLabelComponent, SuiLabelGroupComponent],
+  declarations: [SuiLabelComponent, SuiLabelsComponent],
   imports: [CommonModule],
-  exports: [SuiLabelComponent, SuiLabelGroupComponent]
+  exports: [SuiLabelComponent, SuiLabelsComponent]
 })
 export class SuiLabelModule {
 }
