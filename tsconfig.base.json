@@ -17,8 +17,7 @@
     ],
     "paths": {
       "ngx-semantic": [
-        "dist/ngx-semantic/ngx-semantic",
-        "dist/ngx-semantic"
+        "dist"
       ]
     }
   },
