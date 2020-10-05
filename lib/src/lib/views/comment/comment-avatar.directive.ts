@@ -5,8 +5,8 @@
 import {Directive, HostBinding} from '@angular/core';
 
 @Directive({
-  selector: '[suiCommentAvatar]',
-  exportAs: 'suiCommentAvatar'
+  exportAs: 'suiCommentAvatar',
+  selector: '[suiCommentAvatar]'
 })
 export class SuiCommentAvatarDirective {
   @HostBinding('class')

@@ -9,8 +9,8 @@ export type SuiColumnFloat = 'left floated' | 'right floated' | null;
 export type SuiColumnAlignment = 'left aligned' | 'center aligned' | 'right aligned' | null;
 
 @Directive({
-  selector: '[suiGridColumn]',
-  exportAs: 'suiGridColumn'
+  exportAs: 'suiGridColumn',
+  selector: '[suiGridColumn]'
 })
 export class SuiGridColumnDirective {
   @Input() suiWidth: SuiWidth = null;

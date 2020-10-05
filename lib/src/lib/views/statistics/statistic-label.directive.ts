@@ -5,8 +5,8 @@
 import {Directive, HostBinding} from '@angular/core';
 
 @Directive({
-  selector: '[suiStatLabel]',
-  exportAs: 'suiStatLabel'
+  exportAs: 'suiStatLabel',
+  selector: '[suiStatLabel]'
 })
 export class SuiStatisticLabelDirective {
   @HostBinding('class')

@@ -7,8 +7,8 @@ import {Directive, HostBinding, Input} from '@angular/core';
 export type SuiPlaceholderLineLength = 'full' | 'very long' | 'long' | 'medium' | 'short' | 'very short' | null;
 
 @Directive({
-  selector: '[suiPlaceholderLine]',
-  exportAs: 'suiPlaceholderLine'
+  exportAs: 'suiPlaceholderLine',
+  selector: '[suiPlaceholderLine]'
 })
 export class SuiPlaceholderLineDirective {
   @Input() suiLength: SuiPlaceholderLineLength = null;
