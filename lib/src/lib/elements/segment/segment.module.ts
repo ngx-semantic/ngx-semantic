@@ -5,12 +5,12 @@
 import {NgModule} from '@angular/core';
 import {SuiSegmentComponent} from './segment.component';
 import {CommonModule} from '@angular/common';
-import {SuiSegmentGroupComponent} from './segment-group.component';
+import {SuiSegmentsComponent} from './segment-group.component';
 
 @NgModule({
-  declarations: [SuiSegmentComponent, SuiSegmentGroupComponent],
+  declarations: [SuiSegmentComponent, SuiSegmentsComponent],
   imports: [CommonModule],
-  exports: [SuiSegmentComponent, SuiSegmentGroupComponent]
+  exports: [SuiSegmentComponent, SuiSegmentsComponent]
 })
 export class SuiSegmentModule {
 }
