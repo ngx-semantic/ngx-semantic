@@ -7,6 +7,7 @@ import {SuiSize, Utils} from '../../common';
 
 export type SuiInputLabeling = 'labeled' | 'right labeled' | 'left corner labeled' | 'corner labeled' | null;
 export type SuiInputActions = 'action' | 'left action' | 'right action' | null;
+export type SuiInputIconPosition = 'left' | 'right' | null;
 
 @Component({
   selector: '[sui-input]',
@@ -18,6 +19,7 @@ export class SuiInputComponent {
   @Input() suiSize: SuiSize = null;
   @Input() suiAction: SuiInputActions = null;
   @Input() suiLabeled: SuiInputLabeling = null;
+  @Input() suiIconPosition: SuiInputIconPosition = null;
   @Input() suiFocus = false;
   @Input() suiIcon = false;
   @Input() suiTransparent = false;
@@ -39,6 +41,7 @@ export class SuiInputComponent {
       Utils.getPropClass(this.suiInverted, 'inverted'),
       Utils.getPropClass(this.suiFluid, 'fluid'),
       Utils.getPropClass(this.suiFocus, 'focus'),
+      this.suiIconPosition === 'left' ? 'left' : '',
       Utils.getPropClass(this.suiIcon, 'icon'),
       Utils.getPropClass(this.suiTransparent, 'transparent'),
       Utils.getPropClass(this.suiLoading, 'loading'),

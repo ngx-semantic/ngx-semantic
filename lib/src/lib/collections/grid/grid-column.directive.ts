@@ -6,7 +6,7 @@ import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiColour, SuiWidth} from '../../common';
 
 export type SuiColumnFloat = 'left floated' | 'right floated' | null;
-export type SuiColumnAlignment = 'left aligned' | 'center aligned' | 'right aligned' | null;
+export type SuiColumnAlignment = 'left aligned' | 'middle aligned' | 'right aligned' | null;
 
 @Directive({
   exportAs: 'suiGridColumn',
