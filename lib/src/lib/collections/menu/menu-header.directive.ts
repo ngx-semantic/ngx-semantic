@@ -5,7 +5,8 @@
 import {Directive, HostBinding} from '@angular/core';
 
 @Directive({
-  selector: '[suiMenuHeader]'
+  selector: '[suiMenuHeader]',
+  exportAs: 'suiMenuHeader'
 })
 export class SuiMenuHeaderDirective {
   @HostBinding('class')

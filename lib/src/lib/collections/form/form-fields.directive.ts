@@ -6,7 +6,8 @@ import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiWidth, Utils} from '../../common';
 
 @Directive({
-  selector: '[suiFormFields]'
+  selector: '[suiFormFields]',
+  exportAs: 'suiFormFields'
 })
 export class SuiFormFieldsDirective {
   @Input() suiWidth: SuiWidth = null;
