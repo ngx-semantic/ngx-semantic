@@ -6,12 +6,12 @@ import {Component, HostBinding, Input} from '@angular/core';
 import {SuiSize} from '../../common';
 
 @Component({
-  selector: '[sui-image-group]',
+  selector: '[sui-images]',
   template: `
     <ng-content></ng-content>
   `
 })
-export class SuiImageGroupComponent {
+export class SuiImagesComponent {
   @Input() suiSize: SuiSize = null;
 
   @HostBinding('class')

@@ -5,7 +5,7 @@
 import {Component, Input} from '@angular/core';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
-import {SuiImageGroupComponent} from './image-group.component';
+import {SuiImagesComponent} from './images.component';
 import {By} from '@angular/platform-browser';
 import {SuiImageComponent} from './image.component';
 
@@ -17,7 +17,7 @@ describe('SuiImageGroupComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [CommonModule],
-        declarations: [TestImageGroupComponent, SuiImageGroupComponent, SuiImageComponent]
+        declarations: [TestImageGroupComponent, SuiImagesComponent, SuiImageComponent]
       })
       .compileComponents();
   }));
@@ -26,7 +26,7 @@ describe('SuiImageGroupComponent', () => {
     fixture = TestBed.createComponent(TestImageGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    groupElement = fixture.debugElement.query(By.directive(SuiImageGroupComponent)).nativeElement;
+    groupElement = fixture.debugElement.query(By.directive(SuiImagesComponent)).nativeElement;
   });
 
   it('should create component', () => {
