@@ -10,6 +10,7 @@ export type SuiGridDivision = 'divided' | 'vertically divided' | null;
 export type SuiGridCellType = 'celled' | 'internally celled' | null;
 export type SuiGridPadding = 'padding' | 'vertically padding' | null;
 export type SuiGridReverse = 'computer reversed' | 'tablet reversed' | 'mobile reversed' | null;
+export type SuiGridRelaxation = 'relaxed' | 'very relaxed' | null;
 
 @Component({
   selector: '[sui-grid]',
@@ -24,7 +25,7 @@ export class SuiGridComponent {
   @Input() suiCelled: SuiGridCellType = null;
   @Input() suiPadded: SuiGridPadding = null;
   @Input() suiReversed: SuiGridReverse = null;
-  @Input() suiRelaxed = false;
+  @Input() suiRelaxation: SuiGridRelaxation = null;
   @Input() suiEqual = false;
   @Input() suiCentered = false;
   @Input() suiContainer = false;
@@ -42,9 +43,9 @@ export class SuiGridComponent {
       this.suiCelled,
       this.suiPadded,
       this.suiReversed,
+      this.suiRelaxation,
       Utils.getPropClass(this.suiStackable, 'stackable'),
       Utils.getPropClass(this.suiEqual, 'equal width'),
-      Utils.getPropClass(this.suiRelaxed, 'relaxed'),
       Utils.getPropClass(this.suiCentered, 'centered'),
       Utils.getPropClass(this.suiDoubling, 'doubling'),
       'grid',
