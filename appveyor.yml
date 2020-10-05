@@ -1,7 +1,7 @@
 version: "{build}"
 
 environment:
-  nodejs_version: "13.7.0"
+  nodejs_version: "14.11.0"
 
 platform:
   - x64
@@ -22,5 +22,5 @@ build: off
 test_script:
   - yarn install
   - yarn test
-  - codecov
+  - codecov --disable=gcov
   - yarn lint
