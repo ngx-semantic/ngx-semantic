@@ -8,10 +8,10 @@
   "files": [],
   "references": [
     {
-      "path": "./projects/ngx-semantic/tsconfig.lib.json"
+      "path": "./lib/tsconfig.lib.json"
     },
     {
-      "path": "./projects/ngx-semantic/tsconfig.spec.json"
+      "path": "./lib/tsconfig.spec.json"
     },
     {
       "path": "./projects/docs/tsconfig.app.json"
