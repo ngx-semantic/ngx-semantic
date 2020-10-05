@@ -11,7 +11,7 @@ import {SuiColour, SuiSize} from '../../common';
     <ng-content></ng-content>
   `
 })
-export class SuiLabelGroupComponent {
+export class SuiLabelsComponent {
   @Input() suiSize: SuiSize = null;
   @Input() suiColour: SuiColour = null;
   @Input() suiTag = false;
