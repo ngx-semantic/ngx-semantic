@@ -3,5 +3,5 @@
  */
 
 export * from './segment.component';
-export * from './segment-group.component';
+export * from './segments.component';
 export * from './segment.module';

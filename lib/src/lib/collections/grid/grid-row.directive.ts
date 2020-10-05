@@ -8,6 +8,7 @@ import {SuiDeviceVisibility, SuiWidth, Utils} from '../../common';
 export type SuiRowAlignment = 'left aligned' | 'center aligned' | 'right aligned' | null;
 
 @Directive({
+  exportAs: 'suiGridRow',
   selector: '[suiGridRow]'
 })
 export class SuiGridRowDirective {

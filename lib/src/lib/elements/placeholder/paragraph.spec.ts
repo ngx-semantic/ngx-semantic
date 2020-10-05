@@ -15,9 +15,9 @@ describe('SuiPlaceholderParagraphComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [CommonModule],
-        declarations: [TestPlaceholderParagraphComponent, SuiPlaceholderParagraphDirective]
-      })
+      imports: [CommonModule],
+      declarations: [TestPlaceholderParagraphComponent, SuiPlaceholderParagraphDirective]
+    })
       .compileComponents();
   }));
 
@@ -39,9 +39,7 @@ describe('SuiPlaceholderParagraphComponent', () => {
 
 @Component({
   template: `
-    <div
-      sui-placeholder-paragraph>
-    </div>
+    <div suiPlaceholderParagraph></div>
   `
 })
 export class TestPlaceholderParagraphComponent {

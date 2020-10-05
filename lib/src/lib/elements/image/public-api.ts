@@ -3,5 +3,5 @@
  */
 
 export * from './image.component';
-export * from './image-group.component';
+export * from './images.component';
 export * from './image.module';

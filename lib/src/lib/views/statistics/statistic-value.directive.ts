@@ -5,6 +5,7 @@
 import {Directive, HostBinding} from '@angular/core';
 
 @Directive({
+  exportAs: 'suiStatValue',
   selector: '[suiStatValue]'
 })
 export class SuiStatisticValueDirective {

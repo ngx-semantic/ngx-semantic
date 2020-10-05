@@ -6,12 +6,12 @@ import {Component, HostBinding, Input} from '@angular/core';
 import {Utils} from '../../common';
 
 @Component({
-  selector: '[sui-segment-group]',
+  selector: '[sui-segments]',
   template: `
     <ng-content></ng-content>
   `
 })
-export class SuiSegmentGroupComponent {
+export class SuiSegmentsComponent {
   @Input() suiHorizontal = false;
   @Input() suiRaised = false;
   @Input() suiStacked = false;

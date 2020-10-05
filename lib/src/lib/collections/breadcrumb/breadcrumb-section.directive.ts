@@ -5,6 +5,7 @@
 import {Directive, HostBinding, Input} from '@angular/core';
 
 @Directive({
+  exportAs: 'suiBreadcrumbDivider',
   selector: '[suiBreadcrumbDivider]'
 })
 export class SuiBreadcrumbSectionDirective {

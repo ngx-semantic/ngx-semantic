@@ -6,12 +6,12 @@ import {Component, HostBinding, Input} from '@angular/core';
 import {SuiColour, SuiSize} from '../../common';
 
 @Component({
-  selector: '[sui-label-group]',
+  selector: '[sui-labels]',
   template: `
     <ng-content></ng-content>
   `
 })
-export class SuiLabelGroupComponent {
+export class SuiLabelsComponent {
   @Input() suiSize: SuiSize = null;
   @Input() suiColour: SuiColour = null;
   @Input() suiTag = false;

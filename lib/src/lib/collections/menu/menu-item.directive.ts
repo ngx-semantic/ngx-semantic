@@ -6,6 +6,7 @@ import {Directive, HostBinding, Input} from '@angular/core';
 import {Utils} from '../../common';
 
 @Directive({
+  exportAs: 'suiMenuItem',
   selector: '[suiMenuItem]'
 })
 export class SuiMenuItemDirective {

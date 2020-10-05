@@ -3,5 +3,5 @@
  */
 
 export * from './label.component';
-export * from './label-group.component';
+export * from './labels.component';
 export * from './label.module';

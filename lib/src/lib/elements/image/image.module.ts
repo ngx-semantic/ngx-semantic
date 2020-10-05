@@ -4,13 +4,13 @@
 
 import {NgModule} from '@angular/core';
 import {SuiImageComponent} from './image.component';
-import {SuiImageGroupComponent} from './image-group.component';
+import {SuiImagesComponent} from './images.component';
 import {CommonModule} from '@angular/common';
 
 @NgModule({
-  declarations: [SuiImageComponent, SuiImageGroupComponent],
+  declarations: [SuiImageComponent, SuiImagesComponent],
   imports: [CommonModule],
-  exports: [SuiImageComponent, SuiImageGroupComponent]
+  exports: [SuiImageComponent, SuiImagesComponent]
 })
 export class SuiImageModule {
 }
