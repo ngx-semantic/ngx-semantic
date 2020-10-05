@@ -6,9 +6,9 @@
     "start": "ng serve",
     "test": "ng test --no-watch --code-coverage",
     "lint": "ng lint",
-    "build": "ng build ngx-semantic",
-    "build:prod": "ng build ngx-semantic --prod",
-    "build:publish": "yarn run build:lib:prod && npm publish ./dist/ngx-semantic"
+    "build": "ng build",
+    "build:prod": "ng build --prod",
+    "build:publish": "yarn run build:prod && npm publish ./dist"
   },
   "private": true,
   "dependencies": {
