@@ -15,9 +15,9 @@ describe('SuiPlaceholderLineComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [CommonModule],
-        declarations: [TestPlaceholderLineComponent, SuiPlaceholderLineDirective]
-      })
+      imports: [CommonModule],
+      declarations: [TestPlaceholderLineComponent, SuiPlaceholderLineDirective]
+    })
       .compileComponents();
   }));
 
@@ -53,7 +53,7 @@ describe('SuiPlaceholderLineComponent', () => {
 @Component({
   template: `
     <div
-      sui-placeholder-line
+      suiPlaceholderLine
       [suiLength]="suiLength">
     </div>
   `

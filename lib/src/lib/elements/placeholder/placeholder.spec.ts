@@ -15,9 +15,9 @@ describe('SuiPlaceholderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [CommonModule],
-        declarations: [TestPlaceholderComponent, SuiPlaceholderComponent]
-      })
+      imports: [CommonModule],
+      declarations: [TestPlaceholderComponent, SuiPlaceholderComponent]
+    })
       .compileComponents();
   }));
 
@@ -58,11 +58,10 @@ describe('SuiPlaceholderComponent', () => {
 
 @Component({
   template: `
-    <div
-      sui-placeholder
-      [suiActive]="suiActive"
-      [suiFluid]="suiFluid"
-      [suiInverted]="suiInverted">
+    <div sui-placeholder
+         [suiActive]="suiActive"
+         [suiFluid]="suiFluid"
+         [suiInverted]="suiInverted">
     </div>
   `
 })

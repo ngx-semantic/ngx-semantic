@@ -15,9 +15,9 @@ describe('SuiPlaceholderImageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [CommonModule],
-        declarations: [TestPlaceholderImageComponent, SuiPlaceholderImageDirective]
-      })
+      imports: [CommonModule],
+      declarations: [TestPlaceholderImageComponent, SuiPlaceholderImageDirective]
+    })
       .compileComponents();
   }));
 
@@ -58,7 +58,7 @@ describe('SuiPlaceholderImageComponent', () => {
 @Component({
   template: `
     <div
-      sui-placeholder-image
+      suiPlaceholderImage
       [suiHeader]="suiHeader"
       [suiRectangular]="suiRectangular"
       [suiSquare]="suiSquare">

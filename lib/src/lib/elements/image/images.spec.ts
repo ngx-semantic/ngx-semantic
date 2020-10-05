@@ -16,9 +16,9 @@ describe('SuiImageGroupComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports: [CommonModule],
-        declarations: [TestImageGroupComponent, SuiImagesComponent, SuiImageComponent]
-      })
+      imports: [CommonModule],
+      declarations: [TestImageGroupComponent, SuiImagesComponent, SuiImageComponent]
+    })
       .compileComponents();
   }));
 
@@ -69,7 +69,7 @@ describe('SuiImageGroupComponent', () => {
 @Component({
   template: `
     <div
-      sui-image-group
+      sui-images
       [suiSize]="suiSize">
       <div sui-image></div>
       <div sui-image></div>
