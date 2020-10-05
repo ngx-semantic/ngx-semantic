@@ -6,7 +6,8 @@ import {Directive, HostBinding, Input} from '@angular/core';
 import {Utils} from '../../common';
 
 @Directive({
-  selector: 'suiPlaceholderImage'
+  selector: '[suiPlaceholderImage]',
+  exportAs: 'suiPlaceholderImage'
 })
 export class SuiPlaceholderImageDirective {
   @Input() suiSquare = false;

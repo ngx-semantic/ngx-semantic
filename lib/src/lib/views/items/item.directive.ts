@@ -5,7 +5,8 @@
 import {Directive, HostBinding} from '@angular/core';
 
 @Directive({
-  selector: 'suiItem'
+  selector: '[suiItem]',
+  exportAs: 'suiItem'
 })
 export class SuiItemDirective {
   @HostBinding('class')

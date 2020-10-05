@@ -5,7 +5,8 @@
 import {Directive, HostBinding} from '@angular/core';
 
 @Directive({
-  selector: 'suiFeedEvent'
+  selector: '[suiFeedEvent]',
+  exportAs: 'suiFeedEvent'
 })
 export class SuiFeedEventDirective {
   @HostBinding('class')

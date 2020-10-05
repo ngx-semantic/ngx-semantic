@@ -5,7 +5,7 @@
 import {Directive, HostBinding} from '@angular/core';
 
 @Directive({
-  selector: 'suiPlaceholderParagraph',
+  selector: '[suiPlaceholderParagraph]',
   exportAs: 'suiPlaceholderParagraph'
 })
 export class SuiPlaceholderParagraphDirective {
