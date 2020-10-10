@@ -26,6 +26,7 @@ export * from './lib/collections/form';
 export * from './lib/collections/grid';
 export * from './lib/collections/menu';
 export * from './lib/collections/message';
+export * from './lib/collections/table';
 
 export * from './lib/views/advertisement';
 export * from './lib/views/statistics';

@@ -1,5 +1,12 @@
 import {NgModule} from '@angular/core';
+import {SuiBreadcrumbModule} from './collections/breadcrumb';
+import {SuiFormModule} from './collections/form';
+import {SuiGridModule} from './collections/grid';
+import {SuiMenuModule} from './collections/menu';
+import {SuiMessageModule} from './collections/message';
+import {SuiTableModule} from './collections/table';
 import {SuiButtonModule} from './elements/button';
+import {SuiContainerModule} from './elements/container';
 import {SuiDividerModule} from './elements/divider';
 import {SuiFlagModule} from './elements/flag';
 import {SuiHeaderModule} from './elements/header';
@@ -13,22 +20,15 @@ import {SuiPlaceholderModule} from './elements/placeholder';
 import {SuiRailModule} from './elements/rail';
 import {SuiRevealModule} from './elements/reveal';
 import {SuiSegmentModule} from './elements/segment';
-import {SuiBreadcrumbModule} from './collections/breadcrumb';
-import {SuiFormModule} from './collections/form';
-import {SuiGridModule} from './collections/grid';
-import {SuiMenuModule} from './collections/menu';
-import {SuiMessageModule} from './collections/message';
+import {SuiStepsModule} from './elements/steps';
 import {SuiAdvertisementModule} from './views/advertisement';
-import {SuiStatisticModule} from './views/statistics';
+import {SuiCardModule} from './views/card';
 import {SuiCommentModule} from './views/comment';
 import {SuiItemsModule} from './views/items';
-import {SuiCardModule} from './views/card';
-import {SuiStepsModule} from './elements/steps';
-import {SuiContainerModule} from './elements/container';
+import {SuiStatisticModule} from './views/statistics';
 
 @NgModule({
   declarations: [],
-  imports: [],
   exports: [
     SuiFlagModule,
     SuiIconModule,
@@ -47,6 +47,7 @@ import {SuiContainerModule} from './elements/container';
     SuiHeaderModule,
     SuiButtonModule,
     SuiRevealModule,
+    SuiTableModule,
     SuiMessageModule,
     SuiDividerModule,
     SuiCommentModule,
@@ -55,8 +56,9 @@ import {SuiContainerModule} from './elements/container';
     SuiContainerModule,
     SuiBreadcrumbModule,
     SuiPlaceholderModule,
-    SuiAdvertisementModule
-  ]
+    SuiAdvertisementModule,
+  ],
+  imports: [],
 })
 export class NgxSemanticModule {
 }
