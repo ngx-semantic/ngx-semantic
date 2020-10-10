@@ -17,6 +17,7 @@ export class SuiTableCellDirective {
   @Input() public suiActive = false;
   @Input() public suiDisabled = false;
   @Input() public suiCollapsing = false;
+  @Input() public suiSelectable = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -26,6 +27,7 @@ export class SuiTableCellDirective {
       Utils.getPropClass(this.suiActive, 'active'),
       Utils.getPropClass(this.suiDisabled, 'disabled'),
       Utils.getPropClass(this.suiCollapsing, 'collapsing'),
+      Utils.getPropClass(this.suiSelectable, 'selectable'),
     ].joinWithWhitespaceCleanup();
   }
 }
