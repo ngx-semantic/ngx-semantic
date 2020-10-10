@@ -3,9 +3,7 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiTableState, Utils} from '../../common';
-
-export type SuiTableDataCellAlignment = 'left' | 'right' | null;
+import {SuiTableState, SuiTableTextAlignment, SuiTableVerticalAlignment, Utils} from '../../common';
 
 @Directive({
   exportAs: 'suiTableCell',
@@ -13,7 +11,8 @@ export type SuiTableDataCellAlignment = 'left' | 'right' | null;
 })
 export class SuiTableCellDirective {
   @Input() public suiState: SuiTableState = null;
-  @Input() public suiAlignment: SuiTableDataCellAlignment = null;
+  @Input() public suiTextAlignment: SuiTableTextAlignment = null;
+  @Input() public suiVerticalAlignment: SuiTableVerticalAlignment = null;
   @Input() public suiActive = false;
   @Input() public suiDisabled = false;
   @Input() public suiCollapsing = false;
@@ -23,7 +22,8 @@ export class SuiTableCellDirective {
   get classes(): string {
     return [
       this.suiState,
-      this.suiAlignment === 'right' ? 'right aligned' : '',
+      this.suiTextAlignment ? `${this.suiTextAlignment} aligned` : '',
+      this.suiVerticalAlignment ? `${this.suiVerticalAlignment} aligned` : '',
       Utils.getPropClass(this.suiActive, 'active'),
       Utils.getPropClass(this.suiDisabled, 'disabled'),
       Utils.getPropClass(this.suiCollapsing, 'collapsing'),

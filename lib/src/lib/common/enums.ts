@@ -51,4 +51,10 @@ export type SuiDeviceVisibility = 'large screen only' | 'mobile only' | 'compute
 
 export type SuiResultState = 'success' | 'positive' | 'warning' | 'negative' | 'error' | 'info' | null;
 
+// table shared enums
+
 export type SuiTableState = 'positive' | 'negative' | 'warning' | 'error' | null;
+
+export type SuiTableTextAlignment = 'center' | 'right' | null;
+
+export type SuiTableVerticalAlignment = 'top' | 'bottom' | null;

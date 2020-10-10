@@ -5,6 +5,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {SuiTableCellDirective} from './table-data-cell.directive';
+import {SuiTableHeaderCellDirective} from './table-header-cell.directive';
 import {SuiTableRowDirective} from './table-row.directive';
 import {SuiTableComponent} from './table.component';
 
@@ -13,11 +14,13 @@ import {SuiTableComponent} from './table.component';
     SuiTableComponent,
     SuiTableRowDirective,
     SuiTableCellDirective,
+    SuiTableHeaderCellDirective,
   ],
   exports: [
     SuiTableComponent,
     SuiTableRowDirective,
     SuiTableCellDirective,
+    SuiTableHeaderCellDirective,
   ],
   imports: [
     CommonModule,
