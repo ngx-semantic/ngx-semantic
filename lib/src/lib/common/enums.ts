@@ -49,6 +49,9 @@ export type SuiWidth =
 
 export type SuiDeviceVisibility = 'large screen only' | 'mobile only' | 'computer only' | 'tablet mobile only' | 'tablet only' | null;
 
+export type SuiStacking = 'large screen stackable' | 'mobile stackable' | 'computer stackable' | 'tablet mobile stackable'
+  | 'tablet stackable' | 'unstackable' | null;
+
 export type SuiResultState = 'success' | 'positive' | 'warning' | 'negative' | 'error' | 'info' | null;
 
 // table shared enums

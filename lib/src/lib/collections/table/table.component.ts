@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiColour, SuiWidth, Utils} from '../../common';
+import {SuiColour, SuiStacking, SuiWidth, Utils} from '../../common';
 
 export type SuiTableBasicType = 'basic' | 'very basic' | null;
 export type SuiTablePadding = 'padded' | 'very padded' | null;
@@ -23,6 +23,7 @@ export class SuiTableComponent {
   @Input() public suiPadded: SuiTablePadding = null;
   @Input() public suiCompact: SuiTableCompactness = null;
   @Input() public suiSize: SuiTableSize = null;
+  @Input() public suiStacking: SuiStacking = null;
   @Input() public suiCelled = false;
   @Input() public suiStriped = false;
   @Input() public suiDefinition = false;
@@ -41,6 +42,7 @@ export class SuiTableComponent {
       this.suiPadded,
       this.suiCompact,
       this.suiSize,
+      this.suiStacking,
       this.suiWidth ? 'column' : '',
       Utils.getPropClass(this.suiSelectable, 'selectable'),
       Utils.getPropClass(this.suiInverted, 'inverted'),
