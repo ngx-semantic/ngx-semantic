@@ -1,7 +1,7 @@
 {
   "name": "ngx-semantic",
   "description": "This package is intended to bring the latest Angular support for Semantic UI",
-  "version": "1.0.0-alpha.35",
+  "version": "1.0.0-alpha.36",
   "license": "MIT",
   "keywords": [
     "ngx",
@@ -38,9 +38,9 @@
     "@angular/core": "^9.0.0",
     "@angular/platform-browser": "^9.0.0",
     "@angular/router": "^9.0.0",
-    "rxjs": "~6.5.4"
+    "rxjs": "~6.5.4",
+    "tslib": "^1.10.0"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
   }
 }
