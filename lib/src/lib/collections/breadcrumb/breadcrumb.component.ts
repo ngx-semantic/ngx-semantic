@@ -9,17 +9,17 @@ import {SuiSize} from '../../common';
   selector: '[sui-breadcrumb]',
   template: `
     <ng-content></ng-content>
-  `
+  `,
 })
 export class SuiBreadcrumbComponent {
-  @Input() suiSize: SuiSize = null;
+  @Input() public suiSize: SuiSize = null;
 
   @HostBinding('class')
   get classes(): string {
     return [
       'ui',
       this.suiSize,
-      'breadcrumb'
+      'breadcrumb',
     ].joinWithWhitespaceCleanup();
   }
 }

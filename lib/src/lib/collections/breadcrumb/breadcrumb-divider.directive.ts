@@ -6,10 +6,10 @@ import {Directive, HostBinding, Input} from '@angular/core';
 
 @Directive({
   exportAs: 'suiBreadcrumbDivider',
-  selector: '[suiBreadcrumbDivider]'
+  selector: '[suiBreadcrumbDivider]',
 })
 export class SuiBreadcrumbDividerDirective {
-  @Input() suiIcon = '';
+  @Input() public suiIcon = '';
 
   @HostBinding('class')
   get classes(): string {
@@ -19,7 +19,7 @@ export class SuiBreadcrumbDividerDirective {
       .joinWithWhitespaceCleanup();
   }
 
-  getIcon(): string {
+  public getIcon(): string {
     if (this.suiIcon) {
       return `${this.suiIcon} icon`;
     }

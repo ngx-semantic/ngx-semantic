@@ -7,12 +7,12 @@ import {Utils} from '../../common';
 
 @Directive({
   exportAs: 'suiMenuItem',
-  selector: '[suiMenuItem]'
+  selector: '[suiMenuItem]',
 })
 export class SuiMenuItemDirective {
-  @Input() suiActive = false;
-  @Input() suiBrowser = false;
-  @Input() suiDisabled = false;
+  @Input() public suiActive = false;
+  @Input() public suiBrowser = false;
+  @Input() public suiDisabled = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -20,7 +20,7 @@ export class SuiMenuItemDirective {
       Utils.getPropClass(this.suiActive, 'active'),
       Utils.getPropClass(this.suiBrowser, 'browser'),
       Utils.getPropClass(this.suiDisabled, 'disabled'),
-      'item'
+      'item',
     ].joinWithWhitespaceCleanup();
   }
 }

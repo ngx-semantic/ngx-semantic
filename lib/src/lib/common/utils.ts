@@ -10,7 +10,7 @@ declare global {
 
 if (!Array.prototype.joinWithWhitespaceCleanup) {
   Array.prototype.joinWithWhitespaceCleanup = function <T>(this: Array<T>): string {
-    const validClasses = this.filter(x => {
+    const validClasses = this.filter((x) => {
       return !!x;
     });
     return validClasses
@@ -20,7 +20,7 @@ if (!Array.prototype.joinWithWhitespaceCleanup) {
 }
 
 export class Utils {
-  static getPropClass(state: boolean, className: string): string {
+  public static getPropClass(state: boolean, className: string): string {
     if (!state) {
       return '';
     }

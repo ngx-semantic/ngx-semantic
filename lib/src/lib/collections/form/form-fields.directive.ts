@@ -7,12 +7,12 @@ import {SuiWidth, Utils} from '../../common';
 
 @Directive({
   exportAs: 'suiFormFields',
-  selector: '[suiFormFields]'
+  selector: '[suiFormFields]',
 })
 export class SuiFormFieldsDirective {
-  @Input() suiWidth: SuiWidth = null;
-  @Input() suiInline = false;
-  @Input() suiGrouped = false;
+  @Input() public suiWidth: SuiWidth = null;
+  @Input() public suiInline = false;
+  @Input() public suiGrouped = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -20,7 +20,7 @@ export class SuiFormFieldsDirective {
       this.suiWidth,
       Utils.getPropClass(this.suiInline, 'inline'),
       Utils.getPropClass(this.suiGrouped, 'grouped'),
-      'fields'
+      'fields',
     ].joinWithWhitespaceCleanup();
   }
 }

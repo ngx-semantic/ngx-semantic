@@ -7,16 +7,16 @@ export type SuiDividerDirection = 'vertical' | 'horizontal' | null;
   selector: '[sui-divider]',
   template: `
     <ng-content></ng-content>
-  `
+  `,
 })
 export class SuiDividerComponent {
-  @Input() suiDirection: SuiDividerDirection = null;
-  @Input() suiHeader = false;
-  @Input() suiInverted = false;
-  @Input() suiFitted = false;
-  @Input() suiHidden = false;
-  @Input() suiSection = false;
-  @Input() suiClearing = false;
+  @Input() public suiDirection: SuiDividerDirection = null;
+  @Input() public suiHeader = false;
+  @Input() public suiInverted = false;
+  @Input() public suiFitted = false;
+  @Input() public suiHidden = false;
+  @Input() public suiSection = false;
+  @Input() public suiClearing = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -29,7 +29,7 @@ export class SuiDividerComponent {
       Utils.getPropClass(this.suiSection, 'section'),
       Utils.getPropClass(this.suiClearing, 'clearing'),
       this.suiDirection,
-      'divider'
+      'divider',
     ].joinWithWhitespaceCleanup();
   }
 }

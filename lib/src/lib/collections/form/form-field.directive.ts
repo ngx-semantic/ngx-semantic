@@ -7,13 +7,13 @@ import {SuiWidth, Utils} from '../../common';
 
 @Directive({
   exportAs: 'suiFormField',
-  selector: '[suiFormField]'
+  selector: '[suiFormField]',
 })
 export class SuiFormFieldDirective {
-  @Input() suiWidth: SuiWidth = null;
-  @Input() suiError = false;
-  @Input() suiInline = false;
-  @Input() suiDisabled = false;
+  @Input() public suiWidth: SuiWidth = null;
+  @Input() public suiError = false;
+  @Input() public suiInline = false;
+  @Input() public suiDisabled = false;
 
   @HostBinding('class')
   get classes(): string {

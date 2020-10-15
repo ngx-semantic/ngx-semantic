@@ -13,27 +13,27 @@ export type SuiMenuIconType = 'icon' | 'labeled icon' | null;
   selector: '[sui-menu]',
   template: `
     <ng-content></ng-content>
-  `
+  `,
 })
 export class SuiMenuComponent {
-  @Input() suiWidth: SuiWidth = null;
-  @Input() suiAttached: SuiMenuAttachment = null;
-  @Input() suiFixed: SuiMenuFixation = null;
-  @Input() suiColour: SuiColour = null;
-  @Input() suiIcon: SuiMenuIconType = null;
-  @Input() suiSize: SuiSize = null;
-  @Input() suiText = false;
-  @Input() suiSecondary = false;
-  @Input() suiPointing = false;
-  @Input() suiTabular = false;
-  @Input() suiVertical = false;
-  @Input() suiFluid = false;
-  @Input() suiRight = false;
-  @Input() suiPagination = false;
-  @Input() suiCompact = false;
-  @Input() suiStackable = false;
-  @Input() suiInverted = false;
-  @Input() suiBorderless = false;
+  @Input() public suiWidth: SuiWidth = null;
+  @Input() public suiAttached: SuiMenuAttachment = null;
+  @Input() public suiFixed: SuiMenuFixation = null;
+  @Input() public suiColour: SuiColour = null;
+  @Input() public suiIcon: SuiMenuIconType = null;
+  @Input() public suiSize: SuiSize = null;
+  @Input() public suiText = false;
+  @Input() public suiSecondary = false;
+  @Input() public suiPointing = false;
+  @Input() public suiTabular = false;
+  @Input() public suiVertical = false;
+  @Input() public suiFluid = false;
+  @Input() public suiRight = false;
+  @Input() public suiPagination = false;
+  @Input() public suiCompact = false;
+  @Input() public suiStackable = false;
+  @Input() public suiInverted = false;
+  @Input() public suiBorderless = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -60,7 +60,7 @@ export class SuiMenuComponent {
       Utils.getPropClass(this.suiPagination, 'pagination'),
       Utils.getPropClass(this.suiStackable, 'stackable'),
       Utils.getPropClass(this.suiBorderless, 'borderless'),
-      'menu'
+      'menu',
     ].joinWithWhitespaceCleanup();
   }
 }

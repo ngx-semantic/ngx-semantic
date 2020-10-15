@@ -2,20 +2,20 @@
  * Created by bolor on 9/22/2020
  */
 
-import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
 import {SuiContainerComponent} from './container.component';
 
 @NgModule({
   declarations: [
-    SuiContainerComponent
+    SuiContainerComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
-    SuiContainerComponent
-  ]
+    SuiContainerComponent,
+  ],
 })
 export class SuiContainerModule {
 }

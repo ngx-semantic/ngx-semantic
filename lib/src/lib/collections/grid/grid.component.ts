@@ -16,21 +16,21 @@ export type SuiGridRelaxation = 'relaxed' | 'very relaxed' | null;
   selector: '[sui-grid]',
   template: `
     <ng-content></ng-content>
-  `
+  `,
 })
 export class SuiGridComponent {
-  @Input() suiWidth: SuiWidth = null;
-  @Input() suiAlignment: SuiGridAlignment = null;
-  @Input() suiDivided: SuiGridDivision = null;
-  @Input() suiCelled: SuiGridCellType = null;
-  @Input() suiPadded: SuiGridPadding = null;
-  @Input() suiReversed: SuiGridReverse = null;
-  @Input() suiRelaxation: SuiGridRelaxation = null;
-  @Input() suiEqual = false;
-  @Input() suiCentered = false;
-  @Input() suiContainer = false;
-  @Input() suiStackable = false;
-  @Input() suiDoubling = false;
+  @Input() public suiWidth: SuiWidth = null;
+  @Input() public suiAlignment: SuiGridAlignment = null;
+  @Input() public suiDivided: SuiGridDivision = null;
+  @Input() public suiCelled: SuiGridCellType = null;
+  @Input() public suiPadded: SuiGridPadding = null;
+  @Input() public suiReversed: SuiGridReverse = null;
+  @Input() public suiRelaxation: SuiGridRelaxation = null;
+  @Input() public suiEqual = false;
+  @Input() public suiCentered = false;
+  @Input() public suiContainer = false;
+  @Input() public suiStackable = false;
+  @Input() public suiDoubling = false;
 
   @HostBinding('class')
   get classes(): string {

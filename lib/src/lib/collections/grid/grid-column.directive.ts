@@ -10,14 +10,14 @@ export type SuiColumnAlignment = 'left aligned' | 'middle aligned' | 'right alig
 
 @Directive({
   exportAs: 'suiGridColumn',
-  selector: '[suiGridColumn]'
+  selector: '[suiGridColumn]',
 })
 export class SuiGridColumnDirective {
-  @Input() suiWidth: SuiWidth = null;
-  @Input() suiFloated: SuiColumnFloat = null;
-  @Input() suiColour: SuiColour = null;
-  @Input() suiAlignment: SuiColumnAlignment = null;
-  @Input() suiDeviceVisibility: string = null;
+  @Input() public suiWidth: SuiWidth = null;
+  @Input() public suiFloated: SuiColumnFloat = null;
+  @Input() public suiColour: SuiColour = null;
+  @Input() public suiAlignment: SuiColumnAlignment = null;
+  @Input() public suiDeviceVisibility: string = null;
 
   @HostBinding('class')
   get classes(): string {
@@ -28,7 +28,7 @@ export class SuiGridColumnDirective {
       this.suiWidth ? 'wide' : '',
       this.suiColour,
       this.suiDeviceVisibility,
-      'column'
+      'column',
     ].joinWithWhitespaceCleanup();
   }
 }

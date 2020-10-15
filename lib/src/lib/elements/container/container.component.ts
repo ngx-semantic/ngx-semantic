@@ -11,12 +11,12 @@ export type SuiContainerAlignment = 'left aligned' | 'right aligned' | 'center a
   selector: '[sui-container]',
   template: `
     <ng-content></ng-content>
-  `
+  `,
 })
 export class SuiContainerComponent {
-  @Input() suiAlignment: SuiContainerAlignment = null;
-  @Input() suiText = false;
-  @Input() suiFluid = false;
+  @Input() public suiAlignment: SuiContainerAlignment = null;
+  @Input() public suiText = false;
+  @Input() public suiFluid = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -25,7 +25,7 @@ export class SuiContainerComponent {
       this.suiAlignment,
       Utils.getPropClass(this.suiText, 'text'),
       Utils.getPropClass(this.suiFluid, 'fluid'),
-      'container'
+      'container',
     ].joinWithWhitespaceCleanup();
   }
 }

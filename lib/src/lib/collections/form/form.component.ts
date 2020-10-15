@@ -11,14 +11,14 @@ export type SuiFormState = 'success' | 'warning' | 'error' | null;
   selector: '[sui-form]',
   template: `
     <ng-content></ng-content>
-  `
+  `,
 })
 export class SuiFormComponent {
-  @Input() suiState: SuiFormState = null;
-  @Input() suiSize: SuiSize = null;
-  @Input() suiLoading = false;
-  @Input() suiEqualWidth = false;
-  @Input() suiInverted = false;
+  @Input() public suiState: SuiFormState = null;
+  @Input() public suiSize: SuiSize = null;
+  @Input() public suiLoading = false;
+  @Input() public suiEqualWidth = false;
+  @Input() public suiInverted = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -29,7 +29,7 @@ export class SuiFormComponent {
       Utils.getPropClass(this.suiInverted, 'inverted'),
       this.suiSize,
       'form',
-      this.suiState
+      this.suiState,
     ].joinWithWhitespaceCleanup();
   }
 }

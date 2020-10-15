@@ -9,14 +9,14 @@ export type SuiRowAlignment = 'left aligned' | 'center aligned' | 'right aligned
 
 @Directive({
   exportAs: 'suiGridRow',
-  selector: '[suiGridRow]'
+  selector: '[suiGridRow]',
 })
 export class SuiGridRowDirective {
-  @Input() suiWidth: SuiWidth = null;
-  @Input() suiAlignment: SuiRowAlignment = null;
-  @Input() suiDeviceVisibility: SuiDeviceVisibility = null;
-  @Input() suiEqual = false;
-  @Input() suiCentered = false;
+  @Input() public suiWidth: SuiWidth = null;
+  @Input() public suiAlignment: SuiRowAlignment = null;
+  @Input() public suiDeviceVisibility: SuiDeviceVisibility = null;
+  @Input() public suiEqual = false;
+  @Input() public suiCentered = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -27,7 +27,7 @@ export class SuiGridRowDirective {
       this.suiDeviceVisibility,
       Utils.getPropClass(this.suiEqual, 'equal width'),
       Utils.getPropClass(this.suiCentered, 'centered'),
-      'row'
+      'row',
     ].joinWithWhitespaceCleanup();
   }
 }
