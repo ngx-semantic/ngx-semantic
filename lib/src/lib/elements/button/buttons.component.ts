@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiColour, Utils, SuiSize} from '../../common';
+import {SuiColour, SuiSize, SuiWidth, Utils} from '../../common';
 
 export type SuiButtonsAttachment = 'top attached' | 'bottom attached' | null;
 export type SuiButtonsIconType = 'icon' | 'labeled icon' | null;
@@ -12,27 +12,29 @@ export type SuiButtonsIconType = 'icon' | 'labeled icon' | null;
   selector: '[sui-buttons]',
   template: `
     <ng-content></ng-content>
-  `
+  `,
 })
 export class SuiButtonsComponent {
-  @Input() suiAttached: SuiButtonsAttachment = null;
-  @Input() suiIcon: SuiButtonsIconType = null;
-  @Input() suiColour: SuiColour = null;
-  @Input() suiSize: SuiSize = null;
-  @Input() suiBasic = false;
-  @Input() suiVertical = false;
+  @Input() public suiAttached: SuiButtonsAttachment = null;
+  @Input() public suiIcon: SuiButtonsIconType = null;
+  @Input() public suiColour: SuiColour = null;
+  @Input() public suiSize: SuiSize = null;
+  @Input() public suiWidth: SuiWidth = null;
+  @Input() public suiBasic = false;
+  @Input() public suiVertical = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
       'ui',
+      this.suiWidth,
       Utils.getPropClass(this.suiBasic, 'basic'),
       Utils.getPropClass(this.suiVertical, 'vertical'),
       this.suiColour,
       this.suiAttached,
       this.suiIcon,
       this.suiSize,
-      'buttons'
+      'buttons',
     ].joinWithWhitespaceCleanup();
   }
 }

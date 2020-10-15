@@ -1,5 +1,5 @@
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiColour, SuiSize, Utils} from '../../common';
+import {SuiColour, SuiSize, SuiWidth, Utils} from '../../common';
 
 export type SuiButtonEmphasis = 'primary' | 'secondary' | 'positive' | 'negative' | null;
 export type SuiButtonAnimation = 'animated' | 'animated fade' | 'vertical animated' | null;
@@ -12,32 +12,34 @@ export type SuiButtonAttachment = 'top attached' | 'bottom attached' | 'left att
   selector: 'button[sui-button], a[sui-button], div[sui-button]',
   template: `
     <ng-content></ng-content>
-  `
+  `,
 })
 export class SuiButtonComponent {
-  @Input() suiEmphasis: SuiButtonEmphasis = null;
-  @Input() suiAnimated: SuiButtonAnimation = null;
-  @Input() suiSize: SuiSize = null;
-  @Input() suiLabeled: SuiButtonLabeling = null;
-  @Input() suiColour: SuiColour = null;
-  @Input() suiSocial: SuiSocialButtonStyle = null;
-  @Input() suiFloated: SuiButtonFloating = null;
-  @Input() suiAttached: SuiButtonAttachment = null;
-  @Input() suiIcon = false;
-  @Input() suiBasic = false;
-  @Input() suiInverted = false;
-  @Input() suiCompact = false;
-  @Input() suiToggle = false;
-  @Input() suiFluid = false;
-  @Input() suiCircular = false;
-  @Input() suiActive = false;
-  @Input() suiDisabled = false;
-  @Input() suiLoading = false;
+  @Input() public suiEmphasis: SuiButtonEmphasis = null;
+  @Input() public suiAnimated: SuiButtonAnimation = null;
+  @Input() public suiSize: SuiSize = null;
+  @Input() public suiLabeled: SuiButtonLabeling = null;
+  @Input() public suiColour: SuiColour = null;
+  @Input() public suiSocial: SuiSocialButtonStyle = null;
+  @Input() public suiFloated: SuiButtonFloating = null;
+  @Input() public suiAttached: SuiButtonAttachment = null;
+  @Input() public suiWidth: SuiWidth = null;
+  @Input() public suiIcon = false;
+  @Input() public suiBasic = false;
+  @Input() public suiInverted = false;
+  @Input() public suiCompact = false;
+  @Input() public suiToggle = false;
+  @Input() public suiFluid = false;
+  @Input() public suiCircular = false;
+  @Input() public suiActive = false;
+  @Input() public suiDisabled = false;
+  @Input() public suiLoading = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
       'ui',
+      this.suiWidth,
       Utils.getPropClass(this.suiIcon, 'icon'),
       Utils.getPropClass(this.suiBasic, 'basic'),
       Utils.getPropClass(this.suiActive, 'active'),
@@ -57,7 +59,7 @@ export class SuiButtonComponent {
       this.suiLabeled,
       this.suiAnimated,
       this.suiEmphasis,
-      'button'
+      'button',
     ].joinWithWhitespaceCleanup();
   }
 }
