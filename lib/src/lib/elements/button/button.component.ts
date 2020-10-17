@@ -1,5 +1,5 @@
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiColour, SuiSize, SuiWidth, Utils} from '../../common';
+import {SuiColour, SuiSize, Utils} from '../../common';
 
 export type SuiButtonEmphasis = 'primary' | 'secondary' | 'positive' | 'negative' | null;
 export type SuiButtonAnimation = 'animated' | 'animated fade' | 'vertical animated' | null;
@@ -23,7 +23,6 @@ export class SuiButtonComponent {
   @Input() public suiSocial: SuiSocialButtonStyle = null;
   @Input() public suiFloated: SuiButtonFloating = null;
   @Input() public suiAttached: SuiButtonAttachment = null;
-  @Input() public suiWidth: SuiWidth = null;
   @Input() public suiIcon = false;
   @Input() public suiBasic = false;
   @Input() public suiInverted = false;
@@ -39,7 +38,6 @@ export class SuiButtonComponent {
   get classes(): string {
     return [
       'ui',
-      this.suiWidth,
       Utils.getPropClass(this.suiIcon, 'icon'),
       Utils.getPropClass(this.suiBasic, 'basic'),
       Utils.getPropClass(this.suiActive, 'active'),
