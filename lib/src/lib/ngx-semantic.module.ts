@@ -21,6 +21,7 @@ import {SuiRailModule} from './elements/rail';
 import {SuiRevealModule} from './elements/reveal';
 import {SuiSegmentModule} from './elements/segment';
 import {SuiStepsModule} from './elements/steps';
+import {SuiProgressModule} from './modules/progress';
 import {SuiAdvertisementModule} from './views/advertisement';
 import {SuiCardModule} from './views/card';
 import {SuiCommentModule} from './views/comment';
@@ -52,6 +53,7 @@ import {SuiStatisticModule} from './views/statistics';
     SuiDividerModule,
     SuiCommentModule,
     SuiSegmentModule,
+    SuiProgressModule,
     SuiStatisticModule,
     SuiContainerModule,
     SuiBreadcrumbModule,
