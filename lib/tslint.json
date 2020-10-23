@@ -15,6 +15,9 @@
       "single",
       "avoid-escape",
       "avoid-template"
+    ],
+    "object-literal-sort-keys": [
+      false
     ]
   }
 }
