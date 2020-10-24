@@ -38,6 +38,9 @@ export class SuiProgressComponent {
   @Input() public suiShowProgress = true;
 
   private value = 0;
+  private maxValue = 100;
+  public progressPercentage: number;
+  public isActive: boolean;
 
   @Input()
   set suiValue(value: number) {
@@ -49,8 +52,6 @@ export class SuiProgressComponent {
     return this.value;
   }
 
-  private maxValue = 1000;
-
   @Input()
   set suiMaxValue(maxValue: number) {
     this.maxValue = +maxValue;
@@ -60,9 +61,6 @@ export class SuiProgressComponent {
   get suiMaxValue(): number {
     return this.maxValue;
   }
-
-  public progressPercentage: number;
-  public isActive: boolean;
 
   @HostBinding('class')
   get classes(): string {
