@@ -32,6 +32,7 @@
     "url": "https://github.com/ngx-semantic/ngx-semantic"
   },
   "peerDependencies": {
+    "@angular/forms": "^9.0.0"
   },
   "dependencies": {
     "tslib": "^1.10.0"
