@@ -2,7 +2,8 @@
  * Created by bolor on 10/24/2020
  */
 
-import {Component, EventEmitter, HostBinding, Input, Output} from '@angular/core';
+import {Component, EventEmitter, forwardRef, HostBinding, Input, Output} from '@angular/core';
+import {NG_VALUE_ACCESSOR} from '@angular/forms';
 import {SuiSize, Utils} from '../../common';
 
 export type SuiRatingType = 'star' | 'heart' | null;
@@ -24,6 +25,11 @@ export type SuiRatingType = 'star' | 'heart' | null;
       cursor: auto
     }
   `],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => SuiRatingComponent),
+    multi: true
+  }]
 })
 export class SuiRatingComponent {
   @Output() public valueChanged = new EventEmitter<number>();
@@ -64,7 +70,7 @@ export class SuiRatingComponent {
       this.suiType,
       Utils.getPropClass(this.suiReadOnly, 'read-only'),
       'rating',
-      Utils.getPropClass(this.hoverValue > 0, 'selected'),
+      Utils.getPropClass(this.hoverValue > 0, 'selected')
     ].joinWithWhitespaceCleanup();
   }
 
