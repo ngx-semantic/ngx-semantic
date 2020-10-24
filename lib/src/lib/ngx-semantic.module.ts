@@ -22,6 +22,7 @@ import {SuiRevealModule} from './elements/reveal';
 import {SuiSegmentModule} from './elements/segment';
 import {SuiStepsModule} from './elements/steps';
 import {SuiProgressModule} from './modules/progress';
+import {SuiRatingModule} from './modules/rating';
 import {SuiAdvertisementModule} from './views/advertisement';
 import {SuiCardModule} from './views/card';
 import {SuiCommentModule} from './views/comment';
@@ -44,11 +45,12 @@ import {SuiStatisticModule} from './views/statistics';
     SuiItemsModule,
     SuiLabelModule,
     SuiStepsModule,
+    SuiTableModule,
     SuiLoaderModule,
     SuiHeaderModule,
     SuiButtonModule,
     SuiRevealModule,
-    SuiTableModule,
+    SuiRatingModule,
     SuiMessageModule,
     SuiDividerModule,
     SuiCommentModule,

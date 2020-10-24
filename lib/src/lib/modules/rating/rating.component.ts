@@ -14,6 +14,11 @@ export type SuiRatingType = 'star' | 'heart' | null;
       <i class="icon"></i>
     </ng-container>
   `,
+  styles: [`
+    :host.read-only .icon {
+      cursor: auto
+    }
+  `],
 })
 export class SuiRatingComponent {
   @Input() public suiSize: SuiSize = null;
