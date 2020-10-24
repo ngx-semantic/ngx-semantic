@@ -2,7 +2,7 @@
  * Created by bolor on 10/24/2020
  */
 
-import {Component, EventEmitter, HostBinding, HostListener, Input, Output} from '@angular/core';
+import {Component, EventEmitter, HostBinding, Input, Output} from '@angular/core';
 import {SuiSize, Utils} from '../../common';
 
 export type SuiRatingType = 'star' | 'heart' | null;
@@ -13,9 +13,9 @@ export type SuiRatingType = 'star' | 'heart' | null;
     <ng-container *ngFor="let i of ratingsArray">
       <i class="icon"
          [class.active]="i <= suiValue"
-         [class.selected]="isHovered"
+         [class.selected]="i <= hoverValue"
          (click)="onClick(i)"
-         (mouseover)="onHover()"
+         (mouseover)="onHover(i)"
          (mouseout)="onUnhover()"></i>
     </ng-container>
   `,
@@ -35,7 +35,7 @@ export class SuiRatingComponent {
   private value = 0;
   private maxValue = 5;
   public ratingsArray = [];
-  public isHovered = false;
+  public hoverValue: number;
 
   @Input()
   set suiValue(value: number) {
@@ -64,38 +64,40 @@ export class SuiRatingComponent {
       this.suiType,
       Utils.getPropClass(this.suiReadOnly, 'read-only'),
       'rating',
-      Utils.getPropClass(this.isHovered, 'selected'),
+      Utils.getPropClass(this.hoverValue > 0, 'selected'),
     ].joinWithWhitespaceCleanup();
   }
 
-  @HostListener('mouseover')
-  public hostMouseOver() {
-    this.onHover();
-  }
-
-  @HostListener('mouseout')
-  public hostMouseOut() {
-    this.onUnhover();
-  }
-
   public onClick(value): void {
-    if (this.suiValue !== value) {
-      if (this.suiClearable) {
-        value = 0;
-      }
+    if (this.suiReadOnly) {
+      return;
+    }
 
+    if (this.suiClearable && this.suiValue === value) {
+      value = 0;
+    }
+
+    if (this.suiValue !== value) {
       this.valueChanged.emit(value);
     }
 
     this.suiValue = value;
   }
 
-  public onHover(): void {
-    this.isHovered = !this.suiReadOnly && true;
+  public onHover(value): void {
+    if (this.suiReadOnly) {
+      this.hoverValue = 0;
+    } else {
+      this.hoverValue = value;
+    }
   }
 
   public onUnhover(): void {
-    this.isHovered = !this.suiReadOnly && false;
+    if (this.suiReadOnly) {
+      return;
+    }
+
+    this.hoverValue = 0;
   }
 
   private generateRatingsArray(): void {
