@@ -35,6 +35,7 @@ export * from './lib/views/feed';
 export * from './lib/views/items';
 export * from './lib/views/statistics';
 
+export * from './lib/modules/checkbox';
 export * from './lib/modules/progress';
 export * from './lib/modules/rating';
 

@@ -28,6 +28,7 @@ import {SuiCardModule} from './views/card';
 import {SuiCommentModule} from './views/comment';
 import {SuiItemsModule} from './views/items';
 import {SuiStatisticModule} from './views/statistics';
+import {SuiCheckboxModule} from './modules/checkbox';
 
 @NgModule({
   declarations: [],
@@ -56,13 +57,14 @@ import {SuiStatisticModule} from './views/statistics';
     SuiCommentModule,
     SuiSegmentModule,
     SuiProgressModule,
+    SuiCheckboxModule,
     SuiStatisticModule,
     SuiContainerModule,
     SuiBreadcrumbModule,
     SuiPlaceholderModule,
-    SuiAdvertisementModule,
+    SuiAdvertisementModule
   ],
-  imports: [],
+  imports: []
 })
 export class NgxSemanticModule {
 }
