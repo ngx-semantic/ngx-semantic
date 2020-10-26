@@ -4,13 +4,16 @@ import {Component, HostBinding, Input} from '@angular/core';
   selector: '[sui-flag]',
   template: `
     <ng-content></ng-content>
-  `
+  `,
 })
 export class SuiFlagComponent {
-  @Input() suiCountry = '';
+  @Input() public suiCountry = '';
 
   @HostBinding('class')
   get classes(): string {
-    return [this.suiCountry, 'flag'].joinWithWhitespaceCleanup();
+    return [
+      this.suiCountry,
+      'flag',
+    ].joinWithWhitespaceCleanup();
   }
 }

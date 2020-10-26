@@ -2,7 +2,8 @@
  * Created by bolor on 10/24/2020
  */
 
-import {Component, EventEmitter, HostBinding, Input, Output} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Input, Output} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {SuiSize, Utils} from '../../common';
 
 export type SuiRatingType = 'star' | 'heart' | null;
@@ -24,22 +25,31 @@ export type SuiRatingType = 'star' | 'heart' | null;
       cursor: auto
     }
   `],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => SuiRatingComponent),
+    multi: true
+  }]
 })
-export class SuiRatingComponent {
+export class SuiRatingComponent implements ControlValueAccessor {
   @Output() public valueChanged = new EventEmitter<number>();
   @Input() public suiSize: SuiSize = null;
   @Input() public suiType: SuiRatingType = null;
   @Input() public suiReadOnly = false;
   @Input() public suiClearable = false;
 
-  private value = 0;
-  private maxValue = 5;
   public ratingsArray = [];
   public hoverValue: number;
+  private value = 0;
+  private maxValue = 5;
+  private controlValueChangeFn: (value: any) => void = () => {
+  }
 
   @Input()
   set suiValue(value: number) {
-    this.value = +value;
+    if (this.value !== value) {
+      this.value = +value;
+    }
   }
 
   get suiValue(): number {
@@ -64,8 +74,11 @@ export class SuiRatingComponent {
       this.suiType,
       Utils.getPropClass(this.suiReadOnly, 'read-only'),
       'rating',
-      Utils.getPropClass(this.hoverValue > 0, 'selected'),
+      Utils.getPropClass(this.hoverValue > 0, 'selected')
     ].joinWithWhitespaceCleanup();
+  }
+
+  constructor(private changeDetectorRef: ChangeDetectorRef) {
   }
 
   public onClick(value): void {
@@ -78,6 +91,7 @@ export class SuiRatingComponent {
     }
 
     if (this.suiValue !== value) {
+      this.controlValueChangeFn(value);
       this.valueChanged.emit(value);
     }
 
@@ -98,6 +112,21 @@ export class SuiRatingComponent {
     }
 
     this.hoverValue = 0;
+  }
+
+  public writeValue(value: any): void {
+    this.suiValue = value;
+    this.changeDetectorRef.markForCheck();
+  }
+
+  public registerOnChange(fn: any): void {
+    this.controlValueChangeFn = fn;
+  }
+
+  public registerOnTouched(fn: any): void {
+  }
+
+  public setDisabledState?(isDisabled: boolean): void {
   }
 
   private generateRatingsArray(): void {

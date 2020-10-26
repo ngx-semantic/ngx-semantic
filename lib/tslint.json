@@ -16,8 +16,13 @@
       "avoid-escape",
       "avoid-template"
     ],
-    "object-literal-sort-keys": [
-      false
-    ]
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "never",
+        "singleline": "never"
+      }
+    ],
+    "object-literal-sort-keys": false
   }
 }

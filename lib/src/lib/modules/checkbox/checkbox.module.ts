@@ -5,19 +5,19 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {SuiRatingComponent} from './rating.component';
+import {SuiCheckboxComponent} from './checkbox.component';
 
 @NgModule({
   declarations: [
-    SuiRatingComponent
+    SuiCheckboxComponent
   ],
   imports: [
     CommonModule,
     FormsModule
   ],
   exports: [
-    SuiRatingComponent
+    SuiCheckboxComponent
   ]
 })
-export class SuiRatingModule {
+export class SuiCheckboxModule {
 }
