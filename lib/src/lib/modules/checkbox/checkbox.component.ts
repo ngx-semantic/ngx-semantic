@@ -2,7 +2,8 @@
  * Created by bolor on 10/24/2020
  */
 
-import {Component, EventEmitter, HostBinding, HostListener, Input, Output} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, HostListener, Input, Output} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {Utils} from '../../common';
 
 export type SuiCheckboxType = 'radio' | 'slider' | 'toggle' | null;
@@ -12,6 +13,7 @@ export type SuiCheckboxType = 'radio' | 'slider' | 'toggle' | null;
   template: `
     <input
       class="hidden"
+      tabindex="0"
       [attr.type]="inputType"
       [attr.name]="suiName"
       [attr.disabled]="disabled"
@@ -20,9 +22,14 @@ export type SuiCheckboxType = 'radio' | 'slider' | 'toggle' | null;
     <label>
       <ng-content></ng-content>
     </label>
-  `
+  `,
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => SuiCheckboxComponent),
+    multi: true
+  }]
 })
-export class SuiCheckboxComponent {
+export class SuiCheckboxComponent implements ControlValueAccessor {
   @Output() public valueChanged = new EventEmitter<any>();
   @Output() public checkChanged = new EventEmitter<boolean>();
   @Input() public suiType: SuiCheckboxType = null;
@@ -32,20 +39,9 @@ export class SuiCheckboxComponent {
   @Input() public suiDisabled = false;
 
   public isChecked = false;
-
-  @Input()
-  set suiChecked(isChecked: boolean) {
-    if (!this.suiReadOnly) {
-      if (this.isChecked !== isChecked) {
-        this.isChecked = isChecked;
-        this.checkChanged.emit(isChecked);
-      }
-    }
-  }
-
-  get suiChecked(): boolean {
-    return this.isChecked;
-  }
+  public currentValue: any;
+  private controlValueChangeFn: (value: any) => void = () => {
+  };
 
   @HostBinding('class')
   get classes(): string {
@@ -58,6 +54,26 @@ export class SuiCheckboxComponent {
     ].joinWithWhitespaceCleanup();
   }
 
+  @HostListener('click')
+  public onClick(): void {
+    if (this.suiDisabled || this.suiReadOnly) {
+      return;
+    }
+
+    if (this.inputType === 'radio') {
+      this.currentValue = this.suiValue;
+      this.isChecked = this.currentValue === this.suiValue;
+      this.valueChanged.emit(this.currentValue);
+      this.controlValueChangeFn(this.currentValue);
+    } else {
+      this.isChecked = !this.isChecked;
+      this.controlValueChangeFn(this.isChecked);
+    }
+  }
+
+  constructor(private changeDetectorRef: ChangeDetectorRef) {
+  }
+
   get inputType(): string {
     if (this.suiType === 'radio') {
       return 'radio';
@@ -66,21 +82,42 @@ export class SuiCheckboxComponent {
     return 'checkbox';
   }
 
-  @HostListener('click')
-  public onClick(): void {
-    if (this.suiDisabled || this.suiReadOnly) {
-      return;
-    }
-
-    this.isChecked = !this.isChecked;
-    this.checkChanged.emit(this.isChecked);
-  }
-
   public get checked(): string | undefined {
     return this.isChecked ? '' : undefined;
   }
 
   public get disabled(): string | undefined {
     return this.suiDisabled ? 'disabled' : undefined;
+  }
+
+  public writeValue(value: any): void {
+    if (this.inputType === 'radio') {
+      const isChecked = this.suiValue === value;
+
+      if (this.currentValue !== value) {
+        this.valueChanged.emit(value);
+      }
+
+      if (this.isChecked !== isChecked) {
+        this.checkChanged.emit(isChecked);
+      }
+
+      this.currentValue = value;
+      this.isChecked = isChecked;
+    } else {
+      this.isChecked = !this.isChecked;
+    }
+
+    this.changeDetectorRef.markForCheck();
+  }
+
+  public registerOnChange(fn: any): void {
+    this.controlValueChangeFn = fn;
+  }
+
+  public registerOnTouched(fn: any): void {
+  }
+
+  public setDisabledState?(isDisabled: boolean): void {
   }
 }

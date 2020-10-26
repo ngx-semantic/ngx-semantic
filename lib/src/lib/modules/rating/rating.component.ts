@@ -91,8 +91,8 @@ export class SuiRatingComponent implements ControlValueAccessor {
     }
 
     if (this.suiValue !== value) {
-      this.valueChanged.emit(value);
       this.controlValueChangeFn(value);
+      this.valueChanged.emit(value);
     }
 
     this.suiValue = value;
