@@ -41,7 +41,7 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
   public isChecked = false;
   public currentValue: any;
   private controlValueChangeFn: (value: any) => void = () => {
-  };
+  }
 
   @HostBinding('class')
   get classes(): string {
