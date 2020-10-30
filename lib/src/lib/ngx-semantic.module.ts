@@ -21,6 +21,8 @@ import {SuiRailModule} from './elements/rail';
 import {SuiRevealModule} from './elements/reveal';
 import {SuiSegmentModule} from './elements/segment';
 import {SuiStepsModule} from './elements/steps';
+import {SuiCheckboxModule} from './modules/checkbox';
+import {SuiDropdownModule} from './modules/dropdown';
 import {SuiProgressModule} from './modules/progress';
 import {SuiRatingModule} from './modules/rating';
 import {SuiAdvertisementModule} from './views/advertisement';
@@ -28,7 +30,6 @@ import {SuiCardModule} from './views/card';
 import {SuiCommentModule} from './views/comment';
 import {SuiItemsModule} from './views/items';
 import {SuiStatisticModule} from './views/statistics';
-import {SuiCheckboxModule} from './modules/checkbox';
 
 @NgModule({
   declarations: [],
@@ -57,6 +58,7 @@ import {SuiCheckboxModule} from './modules/checkbox';
     SuiCommentModule,
     SuiSegmentModule,
     SuiProgressModule,
+    SuiDropdownModule,
     SuiCheckboxModule,
     SuiStatisticModule,
     SuiContainerModule,

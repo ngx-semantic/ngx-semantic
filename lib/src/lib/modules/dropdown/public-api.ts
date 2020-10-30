@@ -5,3 +5,4 @@
 export * from './dropdown-menu-item.directive';
 export * from './dropdown-menu.directive';
 export * from './dropdown.component';
+export * from './dropdown.module';
