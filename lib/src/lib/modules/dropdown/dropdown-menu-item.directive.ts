@@ -2,13 +2,13 @@
  * Created by bolor on 10/30/2020
  */
 
-import {AfterViewInit, ContentChild, Directive, HostBinding} from '@angular/core';
+import {ContentChild, Directive, HostBinding, HostListener} from '@angular/core';
 import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 
 @Directive({
   selector: '[suiDropdownMenuItem]'
 })
-export class SuiDropdownMenuItemDirective implements AfterViewInit {
+export class SuiDropdownMenuItemDirective {
   @ContentChild(SuiDropdownMenuDirective) public menu: SuiDropdownMenuDirective;
 
   @HostBinding('class')
@@ -18,21 +18,19 @@ export class SuiDropdownMenuItemDirective implements AfterViewInit {
     ].joinWithWhitespaceCleanup();
   }
 
-  @HostBinding('mouseenter')
+  @HostListener('mouseenter')
   public onHover(): void {
-    if (this.menu) {
-      this.menu.suiIsOpen = true;
-    }
+    this.toggleMenuVisibility();
   }
 
-  @HostBinding('mouseleave')
+  @HostListener('mouseleave')
   public onUnhover(): void {
-    if (this.menu) {
-      this.menu.suiIsOpen = false;
-    }
+    this.toggleMenuVisibility();
   }
 
-  ngAfterViewInit() {
-    console.log(this.menu);
+  private toggleMenuVisibility(): void {
+    if (this.menu) {
+      this.menu.suiIsOpen = !this.menu.suiIsOpen;
+    }
   }
 }
