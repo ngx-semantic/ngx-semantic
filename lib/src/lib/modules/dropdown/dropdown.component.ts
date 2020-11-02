@@ -27,6 +27,11 @@ export class SuiDropdownComponent {
   @Input() public suiFluid = false;
   @Input() public suiMultiple = false;
   @Input() public suiInline = false;
+  @Input() public suiLoading = false;
+  @Input() public suiError = false;
+  @Input() public suiDisabled = false;
+  @Input() public suiScrolling = false;
+  @Input() public suiCompact = false;
 
   private isOpen = false;
 
@@ -40,12 +45,17 @@ export class SuiDropdownComponent {
     return [
       'ui',
       Utils.getPropClass(this.suiFluid, 'fluid'),
+      Utils.getPropClass(this.suiCompact, 'compact'),
       Utils.getPropClass(this.suiSearch, 'search'),
+      Utils.getPropClass(this.suiLoading, 'loading'),
       Utils.getPropClass(this.suiSelection, 'selection'),
       Utils.getPropClass(this.suiInline, 'inline'),
+      Utils.getPropClass(this.suiDisabled, 'disabled'),
+      Utils.getPropClass(this.suiScrolling, 'scrolling'),
       'dropdown',
       Utils.getPropClass(this.isOpen, 'active'),
-      Utils.getPropClass(this.isOpen, 'visible')
+      Utils.getPropClass(this.isOpen, 'visible'),
+      Utils.getPropClass(this.suiError, 'error')
     ].joinWithWhitespaceCleanup();
   }
 
@@ -55,6 +65,10 @@ export class SuiDropdownComponent {
 
   @HostListener('click')
   public onClick(): void {
+    if (this.suiDisabled) {
+      return;
+    }
+
     this.isOpen = !this.isOpen;
 
     if (this.menus) {
