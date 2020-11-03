@@ -5,33 +5,57 @@
 import {Component, ContentChildren, HostBinding, HostListener, Input, QueryList} from '@angular/core';
 import {Utils} from '../../common';
 import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
+import {IDropdownOption} from './interfaces/IDropdownOption';
 
 @Component({
   selector: 'sui-dropdown',
   template: `
     <ng-container *ngIf="suiSelection">
-      <select
-        [name]="suiName"
-        [multiple]="multiple"></select>
+      <input
+        type="hidden"
+        [name]="suiName">
+      <i sui-icon
+         suiIconType="dropdown"></i>
+      <div class="default text">
+        {{suiPlaceholder}}
+      </div>
+      <div suiDropdownMenu>
+        <ng-container *ngFor="let option of suiOptions">
+          <div suiDropdownMenuItem
+               suiValue="option.value">
+            {{option.text}}
+          </div>
+        </ng-container>
+        <div class="item" data-value="1">Male</div>
+        <div class="item" data-value="0">Female</div>
+      </div>
     </ng-container>
 
-    <ng-content></ng-content>
+    <ng-container *ngIf="!suiSelection">
+      <ng-content></ng-content>
+    </ng-container>
   `
 })
 export class SuiDropdownComponent {
   @ContentChildren(SuiDropdownMenuDirective) public menus: QueryList<SuiDropdownMenuDirective>;
 
-  @Input() public suiName: string = null;
-  @Input() public suiSelection = false;
   @Input() public suiSearch = false;
   @Input() public suiFluid = false;
-  @Input() public suiMultiple = false;
   @Input() public suiInline = false;
   @Input() public suiLoading = false;
   @Input() public suiError = false;
   @Input() public suiDisabled = false;
   @Input() public suiScrolling = false;
   @Input() public suiCompact = false;
+
+  // selection specific fields
+  @Input() public suiOptions: Array<IDropdownOption> = [];
+  @Input() public suiPlaceholder: string = null;
+  @Input() public suiName: string = null;
+  @Input() public suiSelection = false;
+  @Input() public suiMultiple = false;
+
+  private selectedOptions: Array<IDropdownOption> = [];
 
   private isOpen = false;
 

@@ -2,7 +2,7 @@
  * Created by bolor on 10/30/2020
  */
 
-import {ContentChild, Directive, HostBinding, HostListener} from '@angular/core';
+import {ContentChild, Directive, HostBinding, HostListener, Input} from '@angular/core';
 import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 
 @Directive({
@@ -10,6 +10,8 @@ import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 })
 export class SuiDropdownMenuItemDirective {
   @ContentChild(SuiDropdownMenuDirective) public menu: SuiDropdownMenuDirective;
+
+  @Input() public suiValue: any = null;
 
   @HostBinding('class')
   get classes(): string {
