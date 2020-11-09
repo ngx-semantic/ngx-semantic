@@ -7,7 +7,7 @@ import {Component, HostBinding, Input} from '@angular/core';
   `
 })
 export class SuiIconComponent {
-  @Input() suiIconType = '';
+  @Input() public suiIconType = '';
 
   @HostBinding('class')
   get classes(): string {
