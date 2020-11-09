@@ -2,7 +2,7 @@
  * Created by bolor on 10/30/2020
  */
 
-import {Component, ContentChildren, HostBinding, HostListener, Input, QueryList} from '@angular/core';
+import {Component, ContentChild, ContentChildren, HostBinding, HostListener, Input, QueryList, ViewChild} from '@angular/core';
 import {Utils} from '../../common';
 import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 import {IDropdownOption} from './interfaces/IDropdownOption';
@@ -19,15 +19,14 @@ import {IDropdownOption} from './interfaces/IDropdownOption';
       <div class="default text">
         {{suiPlaceholder}}
       </div>
-      <div suiDropdownMenu>
+      <div #optionsMenu
+           suiDropdownMenu>
         <ng-container *ngFor="let option of suiOptions">
           <div suiDropdownMenuItem
                suiValue="option.value">
             {{option.text}}
           </div>
         </ng-container>
-        <div class="item" data-value="1">Male</div>
-        <div class="item" data-value="0">Female</div>
       </div>
     </ng-container>
 
@@ -37,7 +36,8 @@ import {IDropdownOption} from './interfaces/IDropdownOption';
   `
 })
 export class SuiDropdownComponent {
-  @ContentChildren(SuiDropdownMenuDirective) public menus: QueryList<SuiDropdownMenuDirective>;
+  @ContentChild(SuiDropdownMenuDirective) public contentMenu: SuiDropdownMenuDirective;
+  @ViewChild(SuiDropdownMenuDirective) public optionsMenu: SuiDropdownMenuDirective;
 
   @Input() public suiSearch = false;
   @Input() public suiFluid = false;
@@ -95,10 +95,14 @@ export class SuiDropdownComponent {
 
     this.isOpen = !this.isOpen;
 
-    if (this.menus) {
-      for (const menu of this.menus) {
-        menu.suiIsOpen = this.isOpen;
-      }
+    // handle regular dropdown
+    if (this.contentMenu) {
+      this.contentMenu.suiIsOpen = this.isOpen;
+    }
+
+    // handle selection dropdown
+    if (this.optionsMenu) {
+      this.optionsMenu.suiIsOpen = this.isOpen;
     }
   }
 }

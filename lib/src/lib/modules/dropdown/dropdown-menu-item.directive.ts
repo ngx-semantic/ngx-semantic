@@ -9,7 +9,7 @@ import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
   selector: '[suiDropdownMenuItem]'
 })
 export class SuiDropdownMenuItemDirective {
-  @ContentChild(SuiDropdownMenuDirective) public menu: SuiDropdownMenuDirective;
+  @ContentChild(SuiDropdownMenuDirective) public contentMenu: SuiDropdownMenuDirective;
 
   @Input() public suiValue: any = null;
 
@@ -31,8 +31,8 @@ export class SuiDropdownMenuItemDirective {
   }
 
   private toggleMenuVisibility(): void {
-    if (this.menu) {
-      this.menu.suiIsOpen = !this.menu.suiIsOpen;
+    if (this.contentMenu) {
+      this.contentMenu.suiIsOpen = !this.contentMenu.suiIsOpen;
     }
   }
 }
