@@ -19,11 +19,10 @@ import {IDropdownOption} from './interfaces/IDropdownOption';
       <div class="default text">
         {{suiPlaceholder}}
       </div>
-      <div #optionsMenu
-           suiDropdownMenu>
+      <div suiDropdownMenu>
         <ng-container *ngFor="let option of suiOptions">
           <div suiDropdownMenuItem
-               suiValue="option.value">
+               [suiValue]="option.value">
             {{option.text}}
           </div>
         </ng-container>

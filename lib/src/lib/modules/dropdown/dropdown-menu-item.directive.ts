@@ -12,6 +12,7 @@ export class SuiDropdownMenuItemDirective {
   @ContentChild(SuiDropdownMenuDirective) public contentMenu: SuiDropdownMenuDirective;
 
   @Input() public suiValue: any = null;
+  @Input() public suiSelected = false;
 
   @HostBinding('class')
   get classes(): string {
