@@ -15,18 +15,18 @@ export type SuiImageFloat = 'left floated' | 'right floated' | null;
   `
 })
 export class SuiImageComponent {
-  @Input() suiSize: SuiSize = null;
-  @Input() suiAlignment: SuiImageAlignment = null;
-  @Input() suiFloated: SuiImageFloat = null;
-  @Input() suiHidden = false;
-  @Input() suiDisabled = false;
-  @Input() suiAvatar = false;
-  @Input() suiBordered = false;
-  @Input() suiFluid = false;
-  @Input() suiRounded = false;
-  @Input() suiCircular = false;
-  @Input() suiCentered = false;
-  @Input() suiSpaced = false;
+  @Input() public suiSize: SuiSize = null;
+  @Input() public suiAlignment: SuiImageAlignment = null;
+  @Input() public suiFloated: SuiImageFloat = null;
+  @Input() public suiHidden = false;
+  @Input() public suiDisabled = false;
+  @Input() public suiAvatar = false;
+  @Input() public suiBordered = false;
+  @Input() public suiFluid = false;
+  @Input() public suiRounded = false;
+  @Input() public suiCircular = false;
+  @Input() public suiCentered = false;
+  @Input() public suiSpaced = false;
 
   @HostBinding('class')
   get classes(): string {
