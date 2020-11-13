@@ -38,6 +38,11 @@ import {IDropdownOption} from './interfaces/IDropdownOption';
                [suiValue]="option.value"
                [suiSelected]="isActive(option)"
                (click)="onItemClick(option)">
+            <ng-container *ngIf="option.image">
+              <img class="ui mini image"
+                   [class.avatar]="option.image.avatar"
+                   [src]="option.image.src">
+            </ng-container>
             {{option.text}}
           </div>
         </ng-container>
