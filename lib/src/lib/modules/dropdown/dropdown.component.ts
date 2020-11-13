@@ -108,7 +108,7 @@ export class SuiDropdownComponent {
   }
 
   public get defaultText(): boolean {
-    return !!this.selectedOption;
+    return !this.selectedOption;
   }
 
   @HostListener('click')

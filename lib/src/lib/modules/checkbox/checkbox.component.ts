@@ -15,7 +15,7 @@ export type SuiCheckboxType = 'radio' | 'slider' | 'toggle' | null;
       class="hidden"
       tabindex="0"
       [attr.type]="inputType"
-      [attr.name]="suiName"
+      [attr.name]="name"
       [attr.disabled]="disabled"
       [attr.checked]="checked"
       [attr.value]="suiValue"/>
@@ -33,8 +33,8 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
   @Output() public valueChanged = new EventEmitter<any>();
   @Output() public checkChanged = new EventEmitter<boolean>();
   @Input() public suiType: SuiCheckboxType = null;
+  @Input() public name: string = null;
   @Input() public suiValue: any = null;
-  @Input() public suiName: string = null;
   @Input() public suiReadOnly = false;
   @Input() public suiDisabled = false;
 
