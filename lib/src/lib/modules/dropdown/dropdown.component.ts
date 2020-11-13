@@ -2,7 +2,18 @@
  * Created by bolor on 10/30/2020
  */
 
-import {Component, ContentChild, ContentChildren, HostBinding, HostListener, Input, QueryList, ViewChild} from '@angular/core';
+import {
+  Component,
+  ContentChild,
+  ContentChildren,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  Input,
+  Output,
+  QueryList,
+  ViewChild
+} from '@angular/core';
 import {Utils} from '../../common';
 import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 import {IDropdownOption} from './interfaces/IDropdownOption';
@@ -13,16 +24,19 @@ import {IDropdownOption} from './interfaces/IDropdownOption';
     <ng-container *ngIf="suiSelection">
       <input
         type="hidden"
-        [name]="suiName">
+        [name]="name">
       <i sui-icon
          suiIconType="dropdown"></i>
-      <div class="default text">
-        {{suiPlaceholder}}
+      <div
+        [class.default]="defaultText"
+        [class.text]="true">
+        {{displayText}}
       </div>
       <div suiDropdownMenu>
         <ng-container *ngFor="let option of suiOptions">
           <div suiDropdownMenuItem
-               [suiValue]="option.value">
+               [suiValue]="option.value"
+               (click)="onItemClick(option)">
             {{option.text}}
           </div>
         </ng-container>
@@ -50,10 +64,12 @@ export class SuiDropdownComponent {
   // selection specific fields
   @Input() public suiOptions: Array<IDropdownOption> = [];
   @Input() public suiPlaceholder: string = null;
-  @Input() public suiName: string = null;
+  @Input() public name: string = null;
   @Input() public suiSelection = false;
   @Input() public suiMultiple = false;
+  @Output() public suiSelectionChanged = new EventEmitter<any | Array<any>>();
 
+  private selectedOption: IDropdownOption;
   private selectedOptions: Array<IDropdownOption> = [];
 
   private isOpen = false;
@@ -86,6 +102,14 @@ export class SuiDropdownComponent {
     return this.suiMultiple ? '' : undefined;
   }
 
+  public get displayText(): string {
+    return this.selectedOption?.text || this.suiPlaceholder;
+  }
+
+  public get defaultText(): boolean {
+    return !!this.selectedOption;
+  }
+
   @HostListener('click')
   public onClick(): void {
     if (this.suiDisabled) {
@@ -102,6 +126,15 @@ export class SuiDropdownComponent {
     // handle selection dropdown
     if (this.optionsMenu) {
       this.optionsMenu.suiIsOpen = this.isOpen;
+    }
+  }
+
+  public onItemClick(option: IDropdownOption): void {
+    const valueChanged = this.selectedOption !== option;
+    this.selectedOption = option;
+
+    if (valueChanged) {
+      this.suiSelectionChanged.emit(option.value);
     }
   }
 }

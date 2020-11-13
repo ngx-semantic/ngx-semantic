@@ -13,7 +13,6 @@ export class SuiDropdownMenuItemDirective {
 
   @Input() public suiValue: any = null;
   @Input() public suiSelected = false;
-  @Output() public suiClicked = new EventEmitter();
 
   @HostBinding('class')
   get classes(): string {
@@ -30,11 +29,6 @@ export class SuiDropdownMenuItemDirective {
   @HostListener('mouseleave')
   public onUnhover(): void {
     this.toggleMenuVisibility();
-  }
-
-  @HostListener('click')
-  public onClick(): void {
-    this.suiClicked.emit(this.suiValue);
   }
 
   private toggleMenuVisibility(): void {
