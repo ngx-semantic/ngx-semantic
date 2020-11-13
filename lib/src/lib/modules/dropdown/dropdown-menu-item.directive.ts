@@ -2,7 +2,7 @@
  * Created by bolor on 10/30/2020
  */
 
-import {ContentChild, Directive, HostBinding, HostListener, Input} from '@angular/core';
+import {ContentChild, Directive, EventEmitter, HostBinding, HostListener, Input, Output} from '@angular/core';
 import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 
 @Directive({
@@ -13,6 +13,7 @@ export class SuiDropdownMenuItemDirective {
 
   @Input() public suiValue: any = null;
   @Input() public suiSelected = false;
+  @Output() public suiClicked = new EventEmitter();
 
   @HostBinding('class')
   get classes(): string {
@@ -29,6 +30,11 @@ export class SuiDropdownMenuItemDirective {
   @HostListener('mouseleave')
   public onUnhover(): void {
     this.toggleMenuVisibility();
+  }
+
+  @HostListener('click')
+  public onClick(): void {
+    this.suiClicked.emit(this.suiValue);
   }
 
   private toggleMenuVisibility(): void {
