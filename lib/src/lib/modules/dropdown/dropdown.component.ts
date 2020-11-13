@@ -30,6 +30,18 @@ import {IDropdownOption} from './interfaces/IDropdownOption';
       <div
         [class.default]="defaultText"
         [class.text]="true">
+        <ng-container *ngIf="selectedOption">
+          <ng-container *ngIf="selectedOption.image">
+            <img sui-image
+                 suiSize="mini"
+                 [suiAvatar]="selectedOption.image.avatar"
+                 [src]="selectedOption.image.src" />
+          </ng-container>
+          <ng-container *ngIf="selectedOption.flag">
+            <i sui-icon
+               [suiIconType]="selectedOption.flag"></i>
+          </ng-container>
+        </ng-container>
         {{displayText}}
       </div>
       <div suiDropdownMenu>
@@ -42,7 +54,7 @@ import {IDropdownOption} from './interfaces/IDropdownOption';
               <img sui-image
                    suiSize="mini"
                    [suiAvatar]="option.image.avatar"
-                   [src]="option.image.src">
+                   [src]="option.image.src" />
             </ng-container>
             <ng-container *ngIf="option.flag">
               <i sui-icon
@@ -80,7 +92,7 @@ export class SuiDropdownComponent {
   @Input() public suiMultiple = false;
   @Output() public suiSelectionChanged = new EventEmitter<any | Array<any>>();
 
-  private selectedOption: IDropdownOption;
+  public selectedOption: IDropdownOption;
   private selectedOptions: Array<IDropdownOption> = [];
 
   private isOpen = false;
