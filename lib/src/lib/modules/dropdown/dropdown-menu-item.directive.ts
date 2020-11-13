@@ -2,7 +2,8 @@
  * Created by bolor on 10/30/2020
  */
 
-import {ContentChild, Directive, EventEmitter, HostBinding, HostListener, Input, Output} from '@angular/core';
+import {ContentChild, Directive, HostBinding, HostListener, Input} from '@angular/core';
+import {Utils} from '../../common';
 import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 
 @Directive({
@@ -17,7 +18,8 @@ export class SuiDropdownMenuItemDirective {
   @HostBinding('class')
   get classes(): string {
     return [
-      'item'
+      'item',
+      Utils.getPropClass(this.suiSelected, 'active selected')
     ].joinWithWhitespaceCleanup();
   }
 

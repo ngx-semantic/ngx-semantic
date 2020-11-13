@@ -36,6 +36,7 @@ import {IDropdownOption} from './interfaces/IDropdownOption';
         <ng-container *ngFor="let option of suiOptions">
           <div suiDropdownMenuItem
                [suiValue]="option.value"
+               [suiSelected]="isActive(option)"
                (click)="onItemClick(option)">
             {{option.text}}
           </div>
@@ -127,6 +128,10 @@ export class SuiDropdownComponent {
     if (this.optionsMenu) {
       this.optionsMenu.suiIsOpen = this.isOpen;
     }
+  }
+
+  public isActive(option: IDropdownOption): boolean {
+    return this.selectedOption === option;
   }
 
   public onItemClick(option: IDropdownOption): void {
