@@ -10,6 +10,7 @@ import {SuiDropdownMenuItemDirective} from './dropdown-menu-item.directive';
 import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 import {SuiDropdownComponent} from './dropdown.component';
 import {SuiIconModule} from '../../elements/icon';
+import {SuiImageModule} from '../../elements/image';
 
 @NgModule({
   declarations: [
@@ -18,11 +19,12 @@ import {SuiIconModule} from '../../elements/icon';
     SuiDropdownMenuItemDirective,
     SuiDropdownMenuDividerDirective
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    SuiIconModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        SuiIconModule,
+        SuiImageModule
+    ],
   exports: [
     SuiDropdownComponent,
     SuiDropdownMenuDirective,

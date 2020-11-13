@@ -39,9 +39,14 @@ import {IDropdownOption} from './interfaces/IDropdownOption';
                [suiSelected]="isActive(option)"
                (click)="onItemClick(option)">
             <ng-container *ngIf="option.image">
-              <img class="ui mini image"
-                   [class.avatar]="option.image.avatar"
+              <img sui-image
+                   suiSize="mini"
+                   [suiAvatar]="option.image.avatar"
                    [src]="option.image.src">
+            </ng-container>
+            <ng-container *ngIf="option.flag">
+              <i sui-icon
+                 [suiIconType]="option.flag"></i>
             </ng-container>
             {{option.text}}
           </div>

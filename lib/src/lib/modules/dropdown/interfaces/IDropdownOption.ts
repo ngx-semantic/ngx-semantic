@@ -7,4 +7,5 @@ export interface IDropdownOption {
   text: string;
   value: any;
   image?: IDropdownOptionImage;
+  flag?: string;
 }
