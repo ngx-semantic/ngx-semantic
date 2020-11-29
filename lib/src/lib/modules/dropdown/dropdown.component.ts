@@ -27,15 +27,26 @@ import {IDropdownOption} from './interfaces/IDropdownOption';
         [name]="name">
       <i sui-icon
          suiIconType="dropdown"></i>
+
+      <!--      Search Section-->
+      <ng-container *ngIf="suiSearch">
+        <input class="search"
+               autocomplete="off"
+               tabindex="0"
+               (focus)="onClick()"
+               (keyup)="onSearch($event.target.value)">
+      </ng-container>
+
+      <!--      Display Section -->
       <div
-        [class.default]="defaultText"
+        [class.default]="isDefaultText"
         [class.text]="true">
         <ng-container *ngIf="selectedOption">
           <ng-container *ngIf="selectedOption.image">
             <img sui-image
                  suiSize="mini"
                  [suiAvatar]="selectedOption.image.avatar"
-                 [src]="selectedOption.image.src" />
+                 [src]="selectedOption.image.src"/>
           </ng-container>
           <ng-container *ngIf="selectedOption.flag">
             <i sui-icon
@@ -44,8 +55,10 @@ import {IDropdownOption} from './interfaces/IDropdownOption';
         </ng-container>
         {{displayText}}
       </div>
+
+      <!--      Drop Down Menu Section -->
       <div suiDropdownMenu>
-        <ng-container *ngFor="let option of suiOptions">
+        <ng-container *ngFor="let option of filteredOptions">
           <div suiDropdownMenuItem
                [suiValue]="option.value"
                [suiSelected]="isActive(option)"
@@ -54,13 +67,19 @@ import {IDropdownOption} from './interfaces/IDropdownOption';
               <img sui-image
                    suiSize="mini"
                    [suiAvatar]="option.image.avatar"
-                   [src]="option.image.src" />
+                   [src]="option.image.src"/>
             </ng-container>
             <ng-container *ngIf="option.flag">
               <i sui-icon
                  [suiIconType]="option.flag"></i>
             </ng-container>
             {{option.text}}
+          </div>
+        </ng-container>
+        <ng-container *ngIf="hasNoSearchResults()">
+          <div class="message"
+               (click)="$event.preventDefault()">
+            No results found.
           </div>
         </ng-container>
       </div>
@@ -85,17 +104,28 @@ export class SuiDropdownComponent {
   @Input() public suiCompact = false;
 
   // selection specific fields
-  @Input() public suiOptions: Array<IDropdownOption> = [];
   @Input() public suiPlaceholder: string = null;
   @Input() public name: string = null;
   @Input() public suiSelection = false;
   @Input() public suiMultiple = false;
   @Output() public suiSelectionChanged = new EventEmitter<any | Array<any>>();
 
+  private isSearching = false;
+  private allOptions: Array<IDropdownOption> = [];
+  public filteredOptions: Array<IDropdownOption> = [];
   public selectedOption: IDropdownOption;
   private selectedOptions: Array<IDropdownOption> = [];
 
   private isOpen = false;
+
+  @Input()
+  set suiOptions(options: Array<IDropdownOption>) {
+    this.allOptions = this.filteredOptions = options;
+  }
+
+  get suiOptions(): Array<IDropdownOption> {
+    return this.allOptions;
+  }
 
   @HostBinding('tabindex')
   get tabIndex(): number {
@@ -126,10 +156,34 @@ export class SuiDropdownComponent {
   }
 
   public get displayText(): string {
+    if (this.suiSearch && this.isSearching) {
+      return '';
+    }
+
     return this.selectedOption?.text || this.suiPlaceholder;
   }
 
-  public get defaultText(): boolean {
+  public get isDefaultText(): boolean {
+    if (!this.selectedOption) {
+      return true;
+    }
+
+    if (this.suiSearch) {
+      return false;
+    }
+
+    return !this.selectedOption;
+  }
+
+  public get isFilteredText(): boolean {
+    if (!this.selectedOption) {
+      return true;
+    }
+
+    if (this.suiSearch) {
+      return false;
+    }
+
     return !this.selectedOption;
   }
 
@@ -152,8 +206,24 @@ export class SuiDropdownComponent {
     }
   }
 
+  public onSearch(searchTerm): void {
+    this.isSearching = !!searchTerm;
+
+    // limit the options displayed
+    this.filteredOptions = this.allOptions
+      .filter((x) => x.text.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()));
+  }
+
   public isActive(option: IDropdownOption): boolean {
     return this.selectedOption === option;
+  }
+
+  public hasNoSearchResults(): boolean {
+    if (!this.suiSearch) {
+      return false;
+    }
+
+    return this.filteredOptions.length === 0;
   }
 
   public onItemClick(option: IDropdownOption): void {
