@@ -12,7 +12,7 @@ import {SuiSize} from '../../common';
   `
 })
 export class SuiImagesComponent {
-  @Input() suiSize: SuiSize = null;
+  @Input() public suiSize: SuiSize = null;
 
   @HostBinding('class')
   get classes(): string {

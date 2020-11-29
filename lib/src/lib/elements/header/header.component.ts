@@ -12,17 +12,17 @@ export type SuiHeaderFloating = 'left floated' | 'right floated' | null;
   `
 })
 export class SuiHeaderComponent {
-  @Input() suiSize: SuiSize = null;
-  @Input() suiAlignment: SuiHeaderAlignment = null;
-  @Input() suiColour: SuiColour = null;
-  @Input() suiAttached: SuiHeaderAttachment = null;
-  @Input() suiFloated: SuiHeaderFloating = null;
-  @Input() suiSubHeader = false;
-  @Input() suiDisabled = false;
-  @Input() suiDividing = false;
-  @Input() suiBlock = false;
-  @Input() suiInverted = false;
-  @Input() suiIcon = false;
+  @Input() public suiSize: SuiSize = null;
+  @Input() public suiAlignment: SuiHeaderAlignment = null;
+  @Input() public suiColour: SuiColour = null;
+  @Input() public suiAttached: SuiHeaderAttachment = null;
+  @Input() public suiFloated: SuiHeaderFloating = null;
+  @Input() public suiSubHeader = false;
+  @Input() public suiDisabled = false;
+  @Input() public suiDividing = false;
+  @Input() public suiBlock = false;
+  @Input() public suiInverted = false;
+  @Input() public suiIcon = false;
 
   @HostBinding('class')
   get classes(): string {

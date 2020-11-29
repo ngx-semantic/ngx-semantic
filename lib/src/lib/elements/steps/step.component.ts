@@ -20,11 +20,11 @@ import {Utils} from '../../common';
   `
 })
 export class SuiStepComponent {
-  @Input() suiContent?: TemplateRef<any>;
-  @Input() suiIcon: string = null;
-  @Input() suiActive = false;
-  @Input() suiDisabled = false;
-  @Input() suiCompleted = false;
+  @Input() public suiContent?: TemplateRef<any>;
+  @Input() public suiIcon: string = null;
+  @Input() public suiActive = false;
+  @Input() public suiDisabled = false;
+  @Input() public suiCompleted = false;
 
   @HostBinding('class')
   get classes(): string {

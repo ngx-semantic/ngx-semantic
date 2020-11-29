@@ -16,20 +16,20 @@ export type SuiInputIconPosition = 'left' | 'right' | null;
   `
 })
 export class SuiInputComponent {
-  @Input() suiSize: SuiSize = null;
-  @Input() suiAction: SuiInputActions = null;
-  @Input() suiLabeled: SuiInputLabeling = null;
-  @Input() suiIconPosition: SuiInputIconPosition = null;
-  @Input() suiFocus = false;
-  @Input() suiIcon = false;
-  @Input() suiTransparent = false;
-  @Input() suiInverted = false;
-  @Input() suiFluid = false;
+  @Input() public suiSize: SuiSize = null;
+  @Input() public suiAction: SuiInputActions = null;
+  @Input() public suiLabeled: SuiInputLabeling = null;
+  @Input() public suiIconPosition: SuiInputIconPosition = null;
+  @Input() public suiFocus = false;
+  @Input() public suiIcon = false;
+  @Input() public suiTransparent = false;
+  @Input() public suiInverted = false;
+  @Input() public suiFluid = false;
 
   // states
-  @Input() suiLoading = false;
-  @Input() suiDisabled = false;
-  @Input() suiError = false;
+  @Input() public suiLoading = false;
+  @Input() public suiDisabled = false;
+  @Input() public suiError = false;
 
   @HostBinding('class')
   get classes(): string {

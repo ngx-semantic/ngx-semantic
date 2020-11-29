@@ -25,7 +25,7 @@ export type SuiProgressState = 'success' | 'warning' | 'error' | null;
     :host {
       width: 100%;
     }
-  `],
+  `]
 })
 export class SuiProgressComponent {
   @Input() public suiAttached: SuiProgressAttachment = null;
