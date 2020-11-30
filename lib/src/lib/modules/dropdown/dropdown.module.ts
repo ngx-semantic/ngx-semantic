@@ -20,10 +20,7 @@ import {SuiDropdownComponent} from './dropdown.component';
     SuiDropdownMenuDividerDirective
   ],
   imports: [
-    CommonModule,
-    FormsModule,
-    SuiIconModule,
-    SuiImageModule
+    CommonModule
   ],
   exports: [
     SuiDropdownComponent,
