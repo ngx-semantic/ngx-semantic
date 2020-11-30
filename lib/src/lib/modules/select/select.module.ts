@@ -1,18 +1,21 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {SuiSelectComponent} from './select.component';
 import {SuiIconModule} from '../../elements/icon';
+import {SuiSelectMenuDirective} from './select-menu.directive';
+import {SuiSelectComponent} from './select.component';
 
 @NgModule({
   exports: [
-    SuiSelectComponent
+    SuiSelectComponent,
+    SuiSelectMenuDirective
   ],
   imports: [
     CommonModule,
     SuiIconModule
   ],
   declarations: [
-    SuiSelectComponent
+    SuiSelectComponent,
+    SuiSelectMenuDirective
   ]
 })
 export class SuiSelectModule {

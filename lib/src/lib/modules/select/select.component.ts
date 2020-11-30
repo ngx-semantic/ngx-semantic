@@ -40,7 +40,7 @@ import {Utils} from '../../common';
     </div>
 
     <!--      Drop Down Menu Section -->
-    <div suiDropdownMenu>
+    <div suiSelectMenu>
       <ng-container *ngFor="let option of filteredOptions">
         <div suiDropdownMenuItem
              [suiValue]="option.value"

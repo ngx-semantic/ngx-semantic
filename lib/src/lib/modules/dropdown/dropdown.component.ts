@@ -13,7 +13,7 @@ import {Utils} from '../../common';
 import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 
 @Component({
-  selector: 'sui-dropdown',
+  selector: 'sui-dropdown, [sui-dropdown]',
   template: `
     <ng-content></ng-content>
   `

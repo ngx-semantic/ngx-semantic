@@ -12,7 +12,7 @@ export type SuiButtonAttachment = 'top attached' | 'bottom attached' | 'left att
   selector: 'button[sui-button], a[sui-button], div[sui-button]',
   template: `
     <ng-content></ng-content>
-  `,
+  `
 })
 export class SuiButtonComponent {
   @Input() public suiEmphasis: SuiButtonEmphasis = null;
