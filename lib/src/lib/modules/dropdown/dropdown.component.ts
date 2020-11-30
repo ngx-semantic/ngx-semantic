@@ -16,78 +16,12 @@ import {
 } from '@angular/core';
 import {Utils} from '../../common';
 import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
-import {IDropdownOption} from './interfaces/IDropdownOption';
+import {IDropdownOption} from '../select/interfaces/IDropdownOption';
 
 @Component({
   selector: 'sui-dropdown',
   template: `
-    <ng-container *ngIf="suiSelection">
-      <input
-        type="hidden"
-        [name]="name">
-      <i sui-icon
-         suiIconType="dropdown"></i>
-
-      <!--      Search Section-->
-      <ng-container *ngIf="suiSearch">
-        <input class="search"
-               autocomplete="off"
-               tabindex="0"
-               (focus)="onClick()"
-               (keyup)="onSearch($event.target.value)">
-      </ng-container>
-
-      <!--      Display Section -->
-      <div
-        [class.default]="isDefaultText"
-        [class.text]="true">
-        <ng-container *ngIf="selectedOption">
-          <ng-container *ngIf="selectedOption.image">
-            <img sui-image
-                 suiSize="mini"
-                 [suiAvatar]="selectedOption.image.avatar"
-                 [src]="selectedOption.image.src"/>
-          </ng-container>
-          <ng-container *ngIf="selectedOption.flag">
-            <i sui-icon
-               [suiIconType]="selectedOption.flag"></i>
-          </ng-container>
-        </ng-container>
-        {{displayText}}
-      </div>
-
-      <!--      Drop Down Menu Section -->
-      <div suiDropdownMenu>
-        <ng-container *ngFor="let option of filteredOptions">
-          <div suiDropdownMenuItem
-               [suiValue]="option.value"
-               [suiSelected]="isActive(option)"
-               (click)="onItemClick(option)">
-            <ng-container *ngIf="option.image">
-              <img sui-image
-                   suiSize="mini"
-                   [suiAvatar]="option.image.avatar"
-                   [src]="option.image.src"/>
-            </ng-container>
-            <ng-container *ngIf="option.flag">
-              <i sui-icon
-                 [suiIconType]="option.flag"></i>
-            </ng-container>
-            {{option.text}}
-          </div>
-        </ng-container>
-        <ng-container *ngIf="hasNoSearchResults()">
-          <div class="message"
-               (click)="$event.preventDefault()">
-            No results found.
-          </div>
-        </ng-container>
-      </div>
-    </ng-container>
-
-    <ng-container *ngIf="!suiSelection">
-      <ng-content></ng-content>
-    </ng-container>
+    <ng-content></ng-content>
   `
 })
 export class SuiDropdownComponent {
