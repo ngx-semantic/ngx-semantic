@@ -1,4 +1,5 @@
-import {Component, EventEmitter, HostBinding, HostListener, Input, Output, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, HostListener, Input, Output, ViewChild} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {Utils} from '../../common';
 import {ISelectOption} from './interfaces/ISelectOption';
 import {SuiSelectMenuDirective} from './select-menu.directive';
@@ -17,8 +18,9 @@ import {SuiSelectMenuDirective} from './select-menu.directive';
       <input class="search"
              autocomplete="off"
              tabindex="0"
+             [(ngModel)]="searchTerm"
              (focus)="onClick()"
-             (keyup)="onSearch($event.target.value)">
+             (keyup)="onSearch()">
     </ng-container>
 
     <!-- Display Section -->
@@ -73,11 +75,17 @@ import {SuiSelectMenuDirective} from './select-menu.directive';
         </div>
       </ng-container>
     </div>
-  `
+  `,
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => SuiSelectComponent),
+    multi: true
+  }]
 })
-export class SuiSelectComponent {
+export class SuiSelectComponent implements ControlValueAccessor {
   @ViewChild(SuiSelectMenuDirective) public optionsMenu: SuiSelectMenuDirective;
 
+  @Output() public suiSelectionChanged = new EventEmitter<any | Array<any>>();
   @Input() public suiSearch = false;
   @Input() public suiFluid = false;
   @Input() public suiInline = false;
@@ -86,15 +94,13 @@ export class SuiSelectComponent {
   @Input() public suiDisabled = false;
   @Input() public suiScrolling = false;
   @Input() public suiCompact = false;
-
-  // selection specific fields
   @Input() public suiPlaceholder: string = null;
   @Input() public name: string = null;
-  @Input() public suiSelection = false;
   @Input() public suiMultiple = false;
-  @Output() public suiSelectionChanged = new EventEmitter<any | Array<any>>();
 
   private isOpen = false;
+  private isSearching = false;
+  public searchTerm: string;
   private allOptions: Array<ISelectOption> = [];
   public filteredOptions: Array<ISelectOption> = [];
   public selectedOption: ISelectOption;
@@ -125,7 +131,7 @@ export class SuiSelectComponent {
       Utils.getPropClass(this.suiCompact, 'compact'),
       Utils.getPropClass(this.suiSearch, 'search'),
       Utils.getPropClass(this.suiLoading, 'loading'),
-      Utils.getPropClass(this.suiSelection, 'selection'),
+      'selection',
       Utils.getPropClass(this.suiInline, 'inline'),
       Utils.getPropClass(this.suiDisabled, 'disabled'),
       Utils.getPropClass(this.suiScrolling, 'scrolling'),
@@ -134,6 +140,9 @@ export class SuiSelectComponent {
       Utils.getPropClass(this.isOpen, 'visible'),
       Utils.getPropClass(this.suiError, 'error')
     ].joinWithWhitespaceCleanup();
+  }
+
+  constructor(private changeDetectorRef: ChangeDetectorRef) {
   }
 
   public get multiple(): string | undefined {
@@ -153,7 +162,11 @@ export class SuiSelectComponent {
   }
 
   public get isFilteredText(): boolean {
-    return !!(this.suiSearch && this.selectedOption);
+    if (!this.suiSearch) {
+      return false;
+    }
+
+    return this.isSearching;
   }
 
   @HostListener('click')
@@ -170,11 +183,13 @@ export class SuiSelectComponent {
     }
   }
 
-  public onSearch(searchTerm): void {
+  public onSearch(): void {
+    this.isSearching = !!this.searchTerm;
+
     // limit the options displayed
     this.filteredOptions = this.allOptions
       .filter((x) => x.text.toLocaleLowerCase()
-        .includes(searchTerm.toLocaleLowerCase()));
+        .includes(this.searchTerm.toLocaleLowerCase()));
   }
 
   public isActive(option: ISelectOption): boolean {
@@ -190,11 +205,39 @@ export class SuiSelectComponent {
   }
 
   public onItemClick(option: ISelectOption): void {
-    const valueChanged = this.selectedOption !== option;
+    const valueChanged = this.selectedOption?.value !== option.value;
     this.selectedOption = option;
 
     if (valueChanged) {
+      this.controlValueChangeFn(option.value);
       this.suiSelectionChanged.emit(option.value);
     }
+
+    // clear search
+    this.isSearching = false;
+    this.searchTerm = '';
+  }
+
+  public writeValue(value: any | Array<any>): void {
+    const valueChanged = value !== this.selectedOption?.value;
+
+    if (valueChanged) {
+      this.suiSelectionChanged.emit(value);
+    }
+
+    const matchedOptions = this.allOptions
+      .filter((x) => x.value === value);
+    this.selectedOption = matchedOptions[0];
+    this.changeDetectorRef.markForCheck();
+  }
+
+  public registerOnChange(fn: any): void {
+    this.controlValueChangeFn = fn;
+  }
+
+  public registerOnTouched(fn: any): void {
+  }
+
+  public setDisabledState?(isDisabled: boolean): void {
   }
 }
