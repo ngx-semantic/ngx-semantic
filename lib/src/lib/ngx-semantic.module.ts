@@ -25,6 +25,7 @@ import {SuiCheckboxModule} from './modules/checkbox';
 import {SuiDropdownModule} from './modules/dropdown';
 import {SuiProgressModule} from './modules/progress';
 import {SuiRatingModule} from './modules/rating';
+import {SuiSelectModule} from './modules/select';
 import {SuiAdvertisementModule} from './views/advertisement';
 import {SuiCardModule} from './views/card';
 import {SuiCommentModule} from './views/comment';
@@ -53,6 +54,7 @@ import {SuiStatisticModule} from './views/statistics';
     SuiButtonModule,
     SuiRevealModule,
     SuiRatingModule,
+    SuiSelectModule,
     SuiMessageModule,
     SuiDividerModule,
     SuiCommentModule,
