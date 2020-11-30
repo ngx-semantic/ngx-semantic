@@ -12,7 +12,8 @@ export class SuiSelectMenuItemDirective {
   get classes(): string {
     return [
       'item',
-      Utils.getPropClass(this.suiSelected, 'active selected')
+      Utils.getPropClass(this.suiSelected, 'active'),
+      Utils.getPropClass(this.suiSelected, 'selected')
     ].joinWithWhitespaceCleanup();
   }
 }

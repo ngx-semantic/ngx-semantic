@@ -2,13 +2,7 @@
  * Created by bolor on 10/30/2020
  */
 
-import {
-  Component,
-  ContentChild,
-  HostBinding,
-  HostListener,
-  Input
-} from '@angular/core';
+import {Component, ContentChild, HostBinding, HostListener, Input} from '@angular/core';
 import {Utils} from '../../common';
 import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 
