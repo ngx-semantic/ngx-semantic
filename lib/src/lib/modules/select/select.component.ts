@@ -1,4 +1,4 @@
-import {Component, ContentChild, EventEmitter, HostBinding, HostListener, Input, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, HostBinding, HostListener, Input, Output, ViewChild} from '@angular/core';
 import {Utils} from '../../common';
 import {ISelectOption} from './interfaces/ISelectOption';
 import {SuiSelectMenuDirective} from './select-menu.directive';
@@ -12,7 +12,7 @@ import {SuiSelectMenuDirective} from './select-menu.directive';
     <i sui-icon
        suiIconType="dropdown"></i>
 
-    <!--      Search Section-->
+    <!-- Search Section -->
     <ng-container *ngIf="suiSearch">
       <input class="search"
              autocomplete="off"
@@ -21,9 +21,10 @@ import {SuiSelectMenuDirective} from './select-menu.directive';
              (keyup)="onSearch($event.target.value)">
     </ng-container>
 
-    <!--      Display Section -->
+    <!-- Display Section -->
     <div
       [class.default]="isDefaultText"
+      [class.filtered]="isFilteredText"
       [class.text]="true">
       <ng-container *ngIf="selectedOption">
         <ng-container *ngIf="selectedOption.image">
@@ -36,11 +37,16 @@ import {SuiSelectMenuDirective} from './select-menu.directive';
           <i sui-icon
              [suiIconType]="selectedOption.flag"></i>
         </ng-container>
+
+        {{selectedOption.text}}
       </ng-container>
-      {{displayText}}
+
+      <ng-container *ngIf="!selectedOption">
+        {{suiPlaceholder}}
+      </ng-container>
     </div>
 
-    <!--      Drop Down Menu Section -->
+    <!-- Drop Down Menu Section -->
     <div suiSelectMenu>
       <ng-container *ngFor="let option of filteredOptions">
         <div suiSelectMenuItem
@@ -62,7 +68,7 @@ import {SuiSelectMenuDirective} from './select-menu.directive';
       </ng-container>
       <ng-container *ngIf="hasNoSearchResults()">
         <div class="message"
-             (click)="$event.preventDefault()">
+             (click)="$event.stopPropagation()">
           No results found.
         </div>
       </ng-container>
@@ -70,7 +76,6 @@ import {SuiSelectMenuDirective} from './select-menu.directive';
   `
 })
 export class SuiSelectComponent {
-  @ContentChild(SuiSelectMenuDirective) public contentMenu: SuiSelectMenuDirective;
   @ViewChild(SuiSelectMenuDirective) public optionsMenu: SuiSelectMenuDirective;
 
   @Input() public suiSearch = false;
@@ -89,13 +94,14 @@ export class SuiSelectComponent {
   @Input() public suiMultiple = false;
   @Output() public suiSelectionChanged = new EventEmitter<any | Array<any>>();
 
-  private isSearching = false;
+  private isOpen = false;
   private allOptions: Array<ISelectOption> = [];
   public filteredOptions: Array<ISelectOption> = [];
   public selectedOption: ISelectOption;
   private selectedOptions: Array<ISelectOption> = [];
 
-  private isOpen = false;
+  private controlValueChangeFn: (value: any | Array<any>) => void = () => {
+  }
 
   @Input()
   set suiOptions(options: Array<ISelectOption>) {
@@ -134,14 +140,6 @@ export class SuiSelectComponent {
     return this.suiMultiple ? '' : undefined;
   }
 
-  public get displayText(): string {
-    if (this.suiSearch && this.isSearching) {
-      return '';
-    }
-
-    return this.selectedOption?.text || this.suiPlaceholder;
-  }
-
   public get isDefaultText(): boolean {
     if (!this.selectedOption) {
       return true;
@@ -155,15 +153,7 @@ export class SuiSelectComponent {
   }
 
   public get isFilteredText(): boolean {
-    if (!this.selectedOption) {
-      return true;
-    }
-
-    if (this.suiSearch) {
-      return false;
-    }
-
-    return !this.selectedOption;
+    return !!(this.suiSearch && this.selectedOption);
   }
 
   @HostListener('click')
@@ -174,11 +164,6 @@ export class SuiSelectComponent {
 
     this.isOpen = !this.isOpen;
 
-    // handle regular dropdown
-    if (this.contentMenu) {
-      this.contentMenu.suiIsOpen = this.isOpen;
-    }
-
     // handle selection dropdown
     if (this.optionsMenu) {
       this.optionsMenu.suiIsOpen = this.isOpen;
@@ -186,8 +171,6 @@ export class SuiSelectComponent {
   }
 
   public onSearch(searchTerm): void {
-    this.isSearching = !!searchTerm;
-
     // limit the options displayed
     this.filteredOptions = this.allOptions
       .filter((x) => x.text.toLocaleLowerCase()

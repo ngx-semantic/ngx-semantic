@@ -24,5 +24,4 @@ import {SuiSelectComponent} from './select.component';
   ]
 })
 export class SuiSelectModule {
-
 }

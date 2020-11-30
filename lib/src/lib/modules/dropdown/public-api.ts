@@ -4,7 +4,6 @@
 
 export * from './dropdown-menu-divider.directive';
 export * from './dropdown-menu-item.directive';
-export * from '../select/interfaces/ISelectOption';
 export * from './dropdown-menu.directive';
 export * from './dropdown.component';
 export * from './dropdown.module';
