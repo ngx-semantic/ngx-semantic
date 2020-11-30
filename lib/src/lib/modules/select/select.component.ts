@@ -1,6 +1,7 @@
 import {Component, ContentChild, EventEmitter, HostBinding, HostListener, Input, Output, ViewChild} from '@angular/core';
-import {IDropdownOption, SuiDropdownMenuDirective} from '../dropdown';
 import {Utils} from '../../common';
+import {ISelectOption} from './interfaces/ISelectOption';
+import {SuiSelectMenuDirective} from './select-menu.directive';
 
 @Component({
   selector: 'sui-select',
@@ -42,7 +43,7 @@ import {Utils} from '../../common';
     <!--      Drop Down Menu Section -->
     <div suiSelectMenu>
       <ng-container *ngFor="let option of filteredOptions">
-        <div suiDropdownMenuItem
+        <div suiSelectMenuItem
              [suiValue]="option.value"
              [suiSelected]="isActive(option)"
              (click)="onItemClick(option)">
@@ -69,8 +70,8 @@ import {Utils} from '../../common';
   `
 })
 export class SuiSelectComponent {
-  @ContentChild(SuiDropdownMenuDirective) public contentMenu: SuiDropdownMenuDirective;
-  @ViewChild(SuiDropdownMenuDirective) public optionsMenu: SuiDropdownMenuDirective;
+  @ContentChild(SuiSelectMenuDirective) public contentMenu: SuiSelectMenuDirective;
+  @ViewChild(SuiSelectMenuDirective) public optionsMenu: SuiSelectMenuDirective;
 
   @Input() public suiSearch = false;
   @Input() public suiFluid = false;
@@ -89,19 +90,19 @@ export class SuiSelectComponent {
   @Output() public suiSelectionChanged = new EventEmitter<any | Array<any>>();
 
   private isSearching = false;
-  private allOptions: Array<IDropdownOption> = [];
-  public filteredOptions: Array<IDropdownOption> = [];
-  public selectedOption: IDropdownOption;
-  private selectedOptions: Array<IDropdownOption> = [];
+  private allOptions: Array<ISelectOption> = [];
+  public filteredOptions: Array<ISelectOption> = [];
+  public selectedOption: ISelectOption;
+  private selectedOptions: Array<ISelectOption> = [];
 
   private isOpen = false;
 
   @Input()
-  set suiOptions(options: Array<IDropdownOption>) {
+  set suiOptions(options: Array<ISelectOption>) {
     this.allOptions = this.filteredOptions = options;
   }
 
-  get suiOptions(): Array<IDropdownOption> {
+  get suiOptions(): Array<ISelectOption> {
     return this.allOptions;
   }
 
@@ -193,7 +194,7 @@ export class SuiSelectComponent {
         .includes(searchTerm.toLocaleLowerCase()));
   }
 
-  public isActive(option: IDropdownOption): boolean {
+  public isActive(option: ISelectOption): boolean {
     return this.selectedOption === option;
   }
 
@@ -205,7 +206,7 @@ export class SuiSelectComponent {
     return this.filteredOptions.length === 0;
   }
 
-  public onItemClick(option: IDropdownOption): void {
+  public onItemClick(option: ISelectOption): void {
     const valueChanged = this.selectedOption !== option;
     this.selectedOption = option;
 
