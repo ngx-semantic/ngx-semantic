@@ -19,6 +19,27 @@ import {SuiSelectMenuDirective} from './select-menu.directive';
   template: `
     <i class="dropdown icon"></i>
 
+    <!-- Multiple Select Display -->
+    <ng-container *ngIf="suiMultiple">
+      <ng-container *ngFor="let option in selectedOptions">
+        <a class="ui label transition visible"
+           style="display: inline-block !important;">
+          <ng-container *ngIf="option.image">
+            <img class="ui mini image"
+                 [class.avatar]="option.image.avatar"
+                 [src]="option.image.src"/>
+          </ng-container>
+          <ng-container *ngIf="option.flag">
+            <i [className]="'flag ' + option.flag"></i>
+          </ng-container>
+
+          {{option.text}}
+        </a>
+      </ng-container>
+
+      <div class="default text">{{suiPlaceholder}}</div>
+    </ng-container>
+
     <!-- Search Section -->
     <ng-container *ngIf="suiSearch">
       <input class="search"
@@ -30,27 +51,29 @@ import {SuiSelectMenuDirective} from './select-menu.directive';
     </ng-container>
 
     <!-- Display Section -->
-    <div
-      [class.default]="isDefaultText"
-      [class.filtered]="isFilteredText"
-      [class.text]="true">
-      <ng-container *ngIf="selectedOption">
-        <ng-container *ngIf="selectedOption.image">
-          <img class="ui mini image"
-               [class.avatar]="selectedOption.image.avatar"
-               [src]="selectedOption.image.src"/>
-        </ng-container>
-        <ng-container *ngIf="selectedOption.flag">
-          <i [className]="'flag ' + selectedOption.flag"></i>
+    <ng-container *ngIf="!suiMultiple">
+      <div
+        [class.default]="isDefaultText"
+        [class.filtered]="isFilteredText"
+        [class.text]="true">
+        <ng-container *ngIf="selectedOption">
+          <ng-container *ngIf="selectedOption.image">
+            <img class="ui mini image"
+                 [class.avatar]="selectedOption.image.avatar"
+                 [src]="selectedOption.image.src"/>
+          </ng-container>
+          <ng-container *ngIf="selectedOption.flag">
+            <i [className]="'flag ' + selectedOption.flag"></i>
+          </ng-container>
+
+          {{selectedOption.text}}
         </ng-container>
 
-        {{selectedOption.text}}
-      </ng-container>
-
-      <ng-container *ngIf="!selectedOption">
-        {{suiPlaceholder}}
-      </ng-container>
-    </div>
+        <ng-container *ngIf="!selectedOption">
+          {{suiPlaceholder}}
+        </ng-container>
+      </div>
+    </ng-container>
 
     <!-- Drop Down Menu Section -->
     <div suiSelectMenu>
@@ -62,11 +85,11 @@ import {SuiSelectMenuDirective} from './select-menu.directive';
              (click)="onItemClick(option)">
           <ng-container *ngIf="option.image">
             <img class="ui mini image"
-                 [class.avatar]="selectedOption.image.avatar"
-                 [src]="selectedOption.image.src"/>
+                 [class.avatar]="option.image.avatar"
+                 [src]="option.image.src"/>
           </ng-container>
           <ng-container *ngIf="option.flag">
-            <i [className]="'flag ' + selectedOption.flag"></i>
+            <i [className]="'flag ' + option.flag"></i>
           </ng-container>
           {{option.text}}
         </div>
@@ -107,7 +130,7 @@ export class SuiSelectComponent implements ControlValueAccessor {
   private allOptions: Array<ISelectOption> = [];
   public filteredOptions: Array<ISelectOption> = [];
   public selectedOption: ISelectOption;
-  private selectedOptions: Array<ISelectOption> = [];
+  public selectedOptions: Array<ISelectOption> = [];
 
   private controlValueChangeFn: (value: any | Array<any>) => void = () => {
   }
