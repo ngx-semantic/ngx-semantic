@@ -1,4 +1,14 @@
-import {ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, HostListener, Input, Output, ViewChild} from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  forwardRef,
+  HostBinding,
+  HostListener,
+  Input,
+  Output,
+  ViewChild
+} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {Utils} from '../../common';
 import {ISelectOption} from './interfaces/ISelectOption';
@@ -7,11 +17,7 @@ import {SuiSelectMenuDirective} from './select-menu.directive';
 @Component({
   selector: 'sui-select',
   template: `
-    <input
-      type="hidden"
-      [name]="name">
-    <i sui-icon
-       suiIconType="dropdown"></i>
+    <i class="dropdown icon"></i>
 
     <!-- Search Section -->
     <ng-container *ngIf="suiSearch">
@@ -30,14 +36,12 @@ import {SuiSelectMenuDirective} from './select-menu.directive';
       [class.text]="true">
       <ng-container *ngIf="selectedOption">
         <ng-container *ngIf="selectedOption.image">
-          <img sui-image
-               suiSize="mini"
-               [suiAvatar]="selectedOption.image.avatar"
+          <img class="ui mini image"
+               [class.avatar]="selectedOption.image.avatar"
                [src]="selectedOption.image.src"/>
         </ng-container>
         <ng-container *ngIf="selectedOption.flag">
-          <i sui-icon
-             [suiIconType]="selectedOption.flag"></i>
+          <i [className]="'flag ' + selectedOption.flag"></i>
         </ng-container>
 
         {{selectedOption.text}}
@@ -54,16 +58,15 @@ import {SuiSelectMenuDirective} from './select-menu.directive';
         <div suiSelectMenuItem
              [suiValue]="option.value"
              [suiSelected]="isActive(option)"
+             [suiMultiple]="suiMultiple"
              (click)="onItemClick(option)">
           <ng-container *ngIf="option.image">
-            <img sui-image
-                 suiSize="mini"
-                 [suiAvatar]="option.image.avatar"
-                 [src]="option.image.src"/>
+            <img class="ui mini image"
+                 [class.avatar]="selectedOption.image.avatar"
+                 [src]="selectedOption.image.src"/>
           </ng-container>
           <ng-container *ngIf="option.flag">
-            <i sui-icon
-               [suiIconType]="option.flag"></i>
+            <i [className]="'flag ' + selectedOption.flag"></i>
           </ng-container>
           {{option.text}}
         </div>
@@ -136,6 +139,7 @@ export class SuiSelectComponent implements ControlValueAccessor {
       Utils.getPropClass(this.suiDisabled, 'disabled'),
       Utils.getPropClass(this.suiScrolling, 'scrolling'),
       'dropdown',
+      Utils.getPropClass(this.suiMultiple, 'multiple'),
       Utils.getPropClass(this.isOpen, 'active'),
       Utils.getPropClass(this.isOpen, 'visible'),
       Utils.getPropClass(this.suiError, 'error')
@@ -185,6 +189,12 @@ export class SuiSelectComponent implements ControlValueAccessor {
 
   public onSearch(): void {
     this.isSearching = !!this.searchTerm;
+
+    // if the user is searching, then keep the dropdown open
+    if (this.optionsMenu) {
+      this.isOpen = true;
+      this.optionsMenu.suiIsOpen = true;
+    }
 
     // limit the options displayed
     this.filteredOptions = this.allOptions
