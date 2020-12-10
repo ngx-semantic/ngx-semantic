@@ -21,7 +21,7 @@ import {SuiSelectMenuDirective} from './select-menu.directive';
 
     <!-- Multiple Select Display -->
     <ng-container *ngIf="suiMultiple">
-      <ng-container *ngFor="let option in selectedOptions">
+      <ng-container *ngFor="let option of selectedOptions">
         <a class="ui label transition visible"
            style="display: inline-block !important;">
           <ng-container *ngIf="option.image">
@@ -128,6 +128,7 @@ export class SuiSelectComponent implements ControlValueAccessor {
 
   private isOpen = false;
   private isSearching = false;
+  private selectedValues: Array<any> = [];
   public searchTerm: string;
   private allOptions: Array<ISelectOption> = [];
   public filteredOptions: Array<ISelectOption> = [];
@@ -228,7 +229,11 @@ export class SuiSelectComponent implements ControlValueAccessor {
   }
 
   public isActive(option: ISelectOption): boolean {
-    return this.selectedOption === option;
+    if (this.suiMultiple) {
+      return this.selectedValues.includes(option.value);
+    } else {
+      return this.selectedOption === option;
+    }
   }
 
   public hasNoSearchResults(): boolean {
@@ -240,12 +245,28 @@ export class SuiSelectComponent implements ControlValueAccessor {
   }
 
   public onItemClick(option: ISelectOption): void {
-    const valueChanged = this.selectedOption?.value !== option.value;
-    this.selectedOption = option;
+    // handle single select
+    if (!this.suiMultiple) {
+      const valueChanged = this.selectedOption?.value !== option.value;
+      this.selectedOption = option;
 
-    if (valueChanged) {
-      this.controlValueChangeFn(option.value);
-      this.suiSelectionChanged.emit(option.value);
+      if (valueChanged) {
+        this.controlValueChangeFn(option.value);
+        this.suiSelectionChanged.emit(option.value);
+      }
+    }
+
+    // handle multiple  select
+    if (this.suiMultiple) {
+      const valueChanged = !this.selectedValues.includes(option.value);
+
+      if (valueChanged) {
+        this.selectedValues.push(option.value);
+        this.selectedOptions.push(option);
+
+        this.controlValueChangeFn(this.selectedValues);
+        this.suiSelectionChanged.emit(this.selectedValues);
+      }
     }
 
     // clear search
