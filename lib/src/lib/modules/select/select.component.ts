@@ -34,6 +34,8 @@ import {SuiSelectMenuDirective} from './select-menu.directive';
           </ng-container>
 
           {{option.text}}
+
+          <i class="delete icon"></i>
         </a>
       </ng-container>
 
