@@ -35,7 +35,8 @@ import {SuiSelectMenuDirective} from './select-menu.directive';
 
           {{option.text}}
 
-          <i class="delete icon"></i>
+          <i class="delete icon"
+             (click)="removeSelection(option, $event)"></i>
         </a>
       </ng-container>
 
@@ -84,7 +85,7 @@ import {SuiSelectMenuDirective} from './select-menu.directive';
              [suiValue]="option.value"
              [suiSelected]="isActive(option)"
              [suiMultiple]="suiMultiple"
-             (click)="onItemClick(option)">
+             (click)="onItemClick(option, $event)">
           <ng-container *ngIf="option.image">
             <img class="ui mini image"
                  [class.avatar]="option.image.avatar"
@@ -244,7 +245,7 @@ export class SuiSelectComponent implements ControlValueAccessor {
     return this.filteredOptions.length === 0;
   }
 
-  public onItemClick(option: ISelectOption): void {
+  public onItemClick(option: ISelectOption, event: Event): void {
     // handle single select
     if (!this.suiMultiple) {
       const valueChanged = this.selectedOption?.value !== option.value;
@@ -267,11 +268,31 @@ export class SuiSelectComponent implements ControlValueAccessor {
         this.controlValueChangeFn(this.selectedValues);
         this.suiSelectionChanged.emit(this.selectedValues);
       }
+
+      event.stopPropagation();
     }
 
     // clear search
     this.isSearching = false;
     this.searchTerm = '';
+  }
+
+  public removeSelection(option: ISelectOption, event: Event): void {
+    if (!this.suiMultiple) {
+      return;
+    }
+
+    if (!this.selectedValues.includes(option.value)) {
+      return;
+    }
+
+    this.selectedValues = this.selectedValues.filter((x) => x !== option.value);
+    this.selectedOptions = this.selectedOptions.filter((x) => x !== option);
+
+    this.controlValueChangeFn(this.selectedValues);
+    this.suiSelectionChanged.emit(this.selectedValues);
+
+    event.stopPropagation();
   }
 
   public writeValue(value: any | Array<any>): void {
