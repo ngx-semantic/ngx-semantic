@@ -7,13 +7,15 @@ import {Utils} from '../../common';
 export class SuiSelectMenuItemDirective {
   @Input() public suiValue: any = null;
   @Input() public suiSelected = false;
+  @Input() public suiMultiple = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
       'item',
       Utils.getPropClass(this.suiSelected, 'active'),
-      Utils.getPropClass(this.suiSelected, 'selected')
+      Utils.getPropClass(!this.suiMultiple && this.suiSelected, 'selected'),
+      Utils.getPropClass(this.suiMultiple && this.suiSelected, 'filtered')
     ].joinWithWhitespaceCleanup();
   }
 }
