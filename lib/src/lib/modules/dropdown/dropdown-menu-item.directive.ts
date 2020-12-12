@@ -2,8 +2,11 @@
  * Created by bolor on 10/30/2020
  */
 
-import {ContentChild, Directive, HostBinding, HostListener} from '@angular/core';
+import {ContentChild, Directive, HostBinding, HostListener, Input} from '@angular/core';
+import {Utils} from '../../common';
 import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
+
+export type SuiMenuDirection = 'left' | 'right' | null;
 
 @Directive({
   selector: '[suiDropdownMenuItem]'
@@ -11,9 +14,14 @@ import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 export class SuiDropdownMenuItemDirective {
   @ContentChild(SuiDropdownMenuDirective) public contentMenu: SuiDropdownMenuDirective;
 
+  @Input() public suiDirection: SuiMenuDirection = null;
+  @Input() public suiDisabled = false;
+
   @HostBinding('class')
   get classes(): string {
     return [
+      Utils.getPropClass(this.suiDisabled, 'disabled'),
+      this.suiDirection,
       'item'
     ].joinWithWhitespaceCleanup();
   }

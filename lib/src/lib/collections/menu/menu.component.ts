@@ -13,7 +13,7 @@ export type SuiMenuIconType = 'icon' | 'labeled icon' | null;
   selector: '[sui-menu]',
   template: `
     <ng-content></ng-content>
-  `,
+  `
 })
 export class SuiMenuComponent {
   @Input() public suiWidth: SuiWidth = null;
@@ -60,7 +60,7 @@ export class SuiMenuComponent {
       Utils.getPropClass(this.suiPagination, 'pagination'),
       Utils.getPropClass(this.suiStackable, 'stackable'),
       Utils.getPropClass(this.suiBorderless, 'borderless'),
-      'menu',
+      'menu'
     ].joinWithWhitespaceCleanup();
   }
 }

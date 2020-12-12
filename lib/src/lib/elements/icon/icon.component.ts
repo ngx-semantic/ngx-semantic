@@ -1,16 +1,20 @@
-import {Component, HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 
-@Component({
-  selector: '[sui-icon]',
-  template: `
-    <ng-content></ng-content>
-  `
+export type SuiIconFloatDirection = 'right floated' | null;
+
+@Directive({
+  selector: '[sui-icon]'
 })
-export class SuiIconComponent {
-  @Input() public suiIconType = '';
+export class SuiIconDirective {
+  @Input() public suiFloat: SuiIconFloatDirection = null;
+  @Input() public suiIconType: string = null;
 
   @HostBinding('class')
   get classes(): string {
-    return [this.suiIconType, 'icon'].joinWithWhitespaceCleanup();
+    return [
+      this.suiIconType,
+      this.suiFloat,
+      'icon'
+    ].joinWithWhitespaceCleanup();
   }
 }

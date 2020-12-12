@@ -1,16 +1,16 @@
+import {CommonModule} from '@angular/common';
+import {Component, Input} from '@angular/core';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {SuiColour, SuiSize} from '../../common';
 import {
   SuiButtonAnimation, SuiButtonAttachment,
-  SuiButtonComponent,
+  SuiButtonDirective,
   SuiButtonEmphasis,
   SuiButtonFloating,
   SuiButtonLabeling,
   SuiSocialButtonStyle
-} from './button.component';
-import {Component, Input} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {By} from '@angular/platform-browser';
-import {SuiColour, SuiSize} from '../../common';
+} from './button.directive';
 
 describe('SuiButtonComponent', () => {
   let component: TestButtonComponent;
@@ -20,7 +20,7 @@ describe('SuiButtonComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [CommonModule],
-        declarations: [TestButtonComponent, SuiButtonComponent]
+        declarations: [TestButtonComponent, SuiButtonDirective]
       })
       .compileComponents();
   }));
@@ -29,7 +29,7 @@ describe('SuiButtonComponent', () => {
     fixture = TestBed.createComponent(TestButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    buttonElement = fixture.debugElement.query(By.directive(SuiButtonComponent)).nativeElement;
+    buttonElement = fixture.debugElement.query(By.directive(SuiButtonDirective)).nativeElement;
   });
 
   it('should create component', () => {
@@ -233,22 +233,22 @@ describe('SuiButtonComponent', () => {
   `
 })
 export class TestButtonComponent {
-  @Input() suiEmphasis: SuiButtonEmphasis = null;
-  @Input() suiAnimated: SuiButtonAnimation = null;
-  @Input() suiSize: SuiSize = null;
-  @Input() suiLabeled: SuiButtonLabeling = null;
-  @Input() suiColour: SuiColour = null;
-  @Input() suiSocial: SuiSocialButtonStyle = null;
-  @Input() suiFloated: SuiButtonFloating = null;
-  @Input() suiAttached: SuiButtonAttachment = null;
-  @Input() suiIcon = false;
-  @Input() suiBasic = false;
-  @Input() suiInverted = false;
-  @Input() suiCompact = false;
-  @Input() suiToggle = false;
-  @Input() suiFluid = false;
-  @Input() suiCircular = false;
-  @Input() suiActive = false;
-  @Input() suiDisabled = false;
-  @Input() suiLoading = false;
+  @Input() public suiEmphasis: SuiButtonEmphasis = null;
+  @Input() public suiAnimated: SuiButtonAnimation = null;
+  @Input() public suiSize: SuiSize = null;
+  @Input() public suiLabeled: SuiButtonLabeling = null;
+  @Input() public suiColour: SuiColour = null;
+  @Input() public suiSocial: SuiSocialButtonStyle = null;
+  @Input() public suiFloated: SuiButtonFloating = null;
+  @Input() public suiAttached: SuiButtonAttachment = null;
+  @Input() public suiIcon = false;
+  @Input() public suiBasic = false;
+  @Input() public suiInverted = false;
+  @Input() public suiCompact = false;
+  @Input() public suiToggle = false;
+  @Input() public suiFluid = false;
+  @Input() public suiCircular = false;
+  @Input() public suiActive = false;
+  @Input() public suiDisabled = false;
+  @Input() public suiLoading = false;
 }
