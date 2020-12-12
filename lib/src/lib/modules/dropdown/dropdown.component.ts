@@ -6,6 +6,8 @@ import {Component, ContentChild, HostBinding, HostListener, Input} from '@angula
 import {Utils} from '../../common';
 import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 
+export type SuiDropdownPointingDirection = 'top left' | 'top right' | 'left' | 'right' | 'bottom left' | 'bottom right' | null;
+
 @Component({
   selector: 'sui-dropdown, [sui-dropdown]',
   template: `
@@ -15,6 +17,7 @@ import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 export class SuiDropdownComponent {
   @ContentChild(SuiDropdownMenuDirective) public contentMenu: SuiDropdownMenuDirective;
 
+  @Input() public suiPointing: SuiDropdownPointingDirection = null;
   @Input() public suiFluid = false;
   @Input() public suiInline = false;
   @Input() public suiLoading = false;
@@ -22,6 +25,8 @@ export class SuiDropdownComponent {
   @Input() public suiDisabled = false;
   @Input() public suiScrolling = false;
   @Input() public suiCompact = false;
+  @Input() public suiFloating = false;
+  @Input() public suiSimple = false;
 
   private isOpen = false;
 
@@ -40,6 +45,9 @@ export class SuiDropdownComponent {
       Utils.getPropClass(this.suiInline, 'inline'),
       Utils.getPropClass(this.suiDisabled, 'disabled'),
       Utils.getPropClass(this.suiScrolling, 'scrolling'),
+      this.suiPointing ? `${this.suiPointing} pointing` : '',
+      Utils.getPropClass(this.suiFloating, 'floating'),
+      Utils.getPropClass(this.suiSimple, 'simple'),
       'dropdown',
       Utils.getPropClass(this.isOpen, 'active'),
       Utils.getPropClass(this.isOpen, 'visible'),
