@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
-import {SuiIconComponent} from './icon.component';
+import {SuiIconDirective} from './icon.component';
 import {By} from '@angular/platform-browser';
 
 describe('SuiIconComponent', () => {
@@ -10,7 +10,7 @@ describe('SuiIconComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        declarations: [TestIconComponent, SuiIconComponent]
+        declarations: [TestIconComponent, SuiIconDirective]
       })
       .compileComponents();
   }));
@@ -19,7 +19,7 @@ describe('SuiIconComponent', () => {
     fixture = TestBed.createComponent(TestIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    iconElement = fixture.debugElement.query(By.directive(SuiIconComponent)).nativeElement;
+    iconElement = fixture.debugElement.query(By.directive(SuiIconDirective)).nativeElement;
   });
 
   it('should create component', () => {

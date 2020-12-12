@@ -4,10 +4,8 @@
 
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {SuiIconModule} from '../../elements/icon';
-import {SuiImageModule} from '../../elements/image';
 import {SuiDropdownMenuDividerDirective} from './dropdown-menu-divider.directive';
+import {SuiDropdownMenuHeaderDirective} from './dropdown-menu-header.directive';
 import {SuiDropdownMenuItemDirective} from './dropdown-menu-item.directive';
 import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 import {SuiDropdownComponent} from './dropdown.component';
@@ -17,6 +15,7 @@ import {SuiDropdownComponent} from './dropdown.component';
     SuiDropdownComponent,
     SuiDropdownMenuDirective,
     SuiDropdownMenuItemDirective,
+    SuiDropdownMenuHeaderDirective,
     SuiDropdownMenuDividerDirective
   ],
   imports: [
@@ -26,6 +25,7 @@ import {SuiDropdownComponent} from './dropdown.component';
     SuiDropdownComponent,
     SuiDropdownMenuDirective,
     SuiDropdownMenuItemDirective,
+    SuiDropdownMenuHeaderDirective,
     SuiDropdownMenuDividerDirective
   ]
 })

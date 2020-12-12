@@ -4,12 +4,12 @@
 
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {SuiIconComponent} from './icon.component';
+import {SuiIconDirective} from './icon.component';
 
 @NgModule({
-  declarations: [SuiIconComponent],
+  declarations: [SuiIconDirective],
   imports: [CommonModule],
-  exports: [SuiIconComponent]
+  exports: [SuiIconDirective]
 })
 export class SuiIconModule {
 }

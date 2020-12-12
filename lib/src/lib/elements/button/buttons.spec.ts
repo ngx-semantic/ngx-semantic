@@ -2,12 +2,11 @@
  * Created by bolor on 4/20/2020
  */
 
+import {CommonModule} from '@angular/common';
 import {Component, Input} from '@angular/core';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {CommonModule} from '@angular/common';
-import {SuiButtonComponent} from './button.component';
 import {By} from '@angular/platform-browser';
-import {SuiButtonsComponent} from './buttons.component';
+import {SuiButtonsDirective} from './buttons.directive';
 
 describe('SuiButtonsComponent', () => {
   let component: TestButtonGroupComponent;
@@ -17,7 +16,7 @@ describe('SuiButtonsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [CommonModule],
-        declarations: [TestButtonGroupComponent, SuiButtonsComponent, SuiButtonComponent]
+        declarations: [TestButtonGroupComponent, SuiButtonsDirective, SuiButtonsDirective]
       })
       .compileComponents();
   }));
@@ -26,7 +25,7 @@ describe('SuiButtonsComponent', () => {
     fixture = TestBed.createComponent(TestButtonGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    groupElement = fixture.debugElement.query(By.directive(SuiButtonsComponent)).nativeElement;
+    groupElement = fixture.debugElement.query(By.directive(SuiButtonsDirective)).nativeElement;
   });
 
   it('should create component', () => {
@@ -145,10 +144,10 @@ describe('SuiButtonsComponent', () => {
   `
 })
 export class TestButtonGroupComponent {
-  @Input() suiSize: any = null;
-  @Input() suiColour: any = null;
-  @Input() suiAttached: any = null;
-  @Input() suiIcon: any = null;
-  @Input() suiBasic = false;
-  @Input() suiVertical = false;
+  @Input() public suiSize: any = null;
+  @Input() public suiColour: any = null;
+  @Input() public suiAttached: any = null;
+  @Input() public suiIcon: any = null;
+  @Input() public suiBasic = false;
+  @Input() public suiVertical = false;
 }

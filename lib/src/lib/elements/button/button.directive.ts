@@ -1,4 +1,4 @@
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, Directive, HostBinding, Input} from '@angular/core';
 import {SuiColour, SuiSize, Utils} from '../../common';
 
 export type SuiButtonEmphasis = 'primary' | 'secondary' | 'positive' | 'negative' | null;
@@ -8,13 +8,10 @@ export type SuiButtonFloating = 'right floated' | 'left floated' | null;
 export type SuiSocialButtonStyle = 'facebook' | 'twitter' | 'google' | 'plus' | 'vk' | 'linkedin' | 'instagram' | 'youtube' | null;
 export type SuiButtonAttachment = 'top attached' | 'bottom attached' | 'left attached' | 'right attached' | null;
 
-@Component({
-  selector: 'button[sui-button], a[sui-button], div[sui-button]',
-  template: `
-    <ng-content></ng-content>
-  `
+@Directive({
+  selector: '[sui-button]'
 })
-export class SuiButtonComponent {
+export class SuiButtonDirective {
   @Input() public suiEmphasis: SuiButtonEmphasis = null;
   @Input() public suiAnimated: SuiButtonAnimation = null;
   @Input() public suiSize: SuiSize = null;
@@ -57,7 +54,7 @@ export class SuiButtonComponent {
       this.suiLabeled,
       this.suiAnimated,
       this.suiEmphasis,
-      'button',
+      'button'
     ].joinWithWhitespaceCleanup();
   }
 }

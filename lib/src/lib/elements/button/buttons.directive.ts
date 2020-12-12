@@ -2,19 +2,16 @@
  * Created by bolor on 4/20/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, Directive, HostBinding, Input} from '@angular/core';
 import {SuiColour, SuiSize, SuiWidth, Utils} from '../../common';
 
 export type SuiButtonsAttachment = 'top attached' | 'bottom attached' | null;
 export type SuiButtonsIconType = 'icon' | 'labeled icon' | null;
 
-@Component({
-  selector: '[sui-buttons]',
-  template: `
-    <ng-content></ng-content>
-  `,
+@Directive({
+  selector: '[sui-buttons]'
 })
-export class SuiButtonsComponent {
+export class SuiButtonsDirective {
   @Input() public suiAttached: SuiButtonsAttachment = null;
   @Input() public suiIcon: SuiButtonsIconType = null;
   @Input() public suiColour: SuiColour = null;
@@ -34,7 +31,7 @@ export class SuiButtonsComponent {
       this.suiAttached,
       this.suiIcon,
       this.suiSize,
-      'buttons',
+      'buttons'
     ].joinWithWhitespaceCleanup();
   }
 }

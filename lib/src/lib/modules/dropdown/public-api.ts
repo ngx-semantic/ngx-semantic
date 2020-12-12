@@ -3,6 +3,7 @@
  */
 
 export * from './dropdown-menu-divider.directive';
+export * from './dropdown-menu-header.directive';
 export * from './dropdown-menu-item.directive';
 export * from './dropdown-menu.directive';
 export * from './dropdown.component';
