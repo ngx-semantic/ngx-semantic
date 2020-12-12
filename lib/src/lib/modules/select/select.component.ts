@@ -115,6 +115,7 @@ export class SuiSelectComponent implements ControlValueAccessor {
   @ViewChild(SuiSelectMenuDirective) public optionsMenu: SuiSelectMenuDirective;
 
   @Output() public suiSelectionChanged = new EventEmitter<any | Array<any>>();
+  @Input() public suiPlaceholder: string = null;
   @Input() public suiSearch = false;
   @Input() public suiFluid = false;
   @Input() public suiInline = false;
@@ -123,7 +124,6 @@ export class SuiSelectComponent implements ControlValueAccessor {
   @Input() public suiDisabled = false;
   @Input() public suiScrolling = false;
   @Input() public suiCompact = false;
-  @Input() public suiPlaceholder: string = null;
   @Input() public name: string = null;
   @Input() public suiMultiple = false;
 

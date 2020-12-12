@@ -6,7 +6,7 @@ import {
   SuiButtonFloating,
   SuiButtonLabeling,
   SuiSocialButtonStyle
-} from './button.component';
+} from './button.directive';
 import {Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
