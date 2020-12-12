@@ -27,6 +27,7 @@ export class SuiDropdownComponent {
   @Input() public suiCompact = false;
   @Input() public suiFloating = false;
   @Input() public suiSimple = false;
+  @Input() public suiLabeled = false;
 
   private isOpen = false;
 
