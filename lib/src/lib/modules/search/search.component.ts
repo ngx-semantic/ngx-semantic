@@ -1,4 +1,8 @@
 import {Component, HostBinding, Input} from '@angular/core';
+import {Utils} from '../../common';
+import {ISearchOption} from './interfaces/ISearchOption';
+
+export type SuiSearchAlignment = 'right' | null;
 
 @Component({
   selector: 'sui-search',
@@ -26,13 +30,22 @@ import {Component, HostBinding, Input} from '@angular/core';
   `
 })
 export class SuiSearchComponent {
+  @Input() public suiAlignment: SuiSearchAlignment = null;
   @Input() public suiPlaceholder: string = null;
   @Input() public suiShowIcon = false;
+  @Input() public suiLoading = false;
+  @Input() public suiDisabled = false;
+  @Input() public suiFluid = false;
+  @Input() public suiOptions: Array<ISearchOption>[];
 
   @HostBinding('class')
   get classes(): string {
     return [
       'ui',
+      this.suiAlignment,
+      Utils.getPropClass(this.suiFluid, 'fluid'),
+      Utils.getPropClass(this.suiLoading, 'loading'),
+      Utils.getPropClass(this.suiDisabled, 'disabled'),
       'search'
     ].joinWithWhitespaceCleanup();
   }
