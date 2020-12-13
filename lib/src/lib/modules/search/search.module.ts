@@ -1,5 +1,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {SuiIconModule} from '../../elements/icon';
+import {SuiInputModule} from '../../elements/input';
 import {SuiSearchComponent} from './search.component';
 
 @NgModule({
@@ -7,7 +9,9 @@ import {SuiSearchComponent} from './search.component';
     SuiSearchComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SuiIconModule,
+    SuiInputModule
   ],
   exports: [
     SuiSearchComponent
