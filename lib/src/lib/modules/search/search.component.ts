@@ -1,4 +1,4 @@
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, EventEmitter, HostBinding, HostListener, Input, Output} from '@angular/core';
 import {Utils} from '../../common';
 import {ISearchOption} from './interfaces/ISearchOption';
 
@@ -10,7 +10,10 @@ export type SuiSearchAlignment = 'right' | null;
     <ng-container *ngIf="!suiShowIcon">
       <input class="prompt"
              type="text"
-             [placeholder]="suiPlaceholder"/>
+             autocomplete="off"
+             [placeholder]="suiPlaceholder"
+             (focus)="onFocus()"
+             (keyup)="onSearch()"/>
     </ng-container>
 
     <ng-container *ngIf="suiShowIcon">
@@ -24,14 +27,23 @@ export type SuiSearchAlignment = 'right' | null;
       </div>
     </ng-container>
 
-    <div class="results">
+    <div class="results transition"
+         [class.visible]="isOpen"
+         [class.hidden]="isOpen">
       <ng-container *ngIf="!hasCategories">
         <ng-container *ngFor="let option of filteredOptions">
-          <a class="result">
+          <a class="result"
+             (click)="optionClicked(option)">
             <div class="content">
               <div class="title">
                 {{option.title}}
               </div>
+
+              <ng-container *ngIf="option.description">
+                <div class="description">
+                  {{option.description}}
+                </div>
+              </ng-container>
             </div>
           </a>
         </ng-container>
@@ -45,11 +57,18 @@ export type SuiSearchAlignment = 'right' | null;
             </div>
             <ng-container *ngFor="let option of (category | keyvalue).value">
               <div class="results">
-                <a class="result">
+                <a class="result"
+                   (click)="optionClicked(option)">
                   <div class="content">
                     <div class="title">
                       {{option.title}}
                     </div>
+
+                    <ng-container *ngIf="option.description">
+                      <div class="description">
+                        {{option.description}}
+                      </div>
+                    </ng-container>
                   </div>
                 </a>
               </div>
@@ -61,20 +80,25 @@ export type SuiSearchAlignment = 'right' | null;
   `
 })
 export class SuiSearchComponent {
+  @Output() public suiResultSelected = new EventEmitter<string>();
   @Input() public suiAlignment: SuiSearchAlignment = null;
   @Input() public suiPlaceholder: string = null;
+  @Input() public suiSearchDelay = 200;
   @Input() public suiShowIcon = false;
   @Input() public suiDisabled = false;
   @Input() public suiFluid = false;
 
   private isLoading = false;
+  private isFocused = false;
+  public isOpen: boolean;
+  public searchTerm: string;
   private allOptions: Array<ISearchOption> = [];
   public filteredOptions: Array<ISearchOption> = [];
   public selectedOption: ISearchOption;
 
   @Input()
   set suiOptions(options: Array<ISearchOption>) {
-    this.allOptions = this.filteredOptions = options;
+    this.allOptions = options;
   }
 
   get suiOptions(): Array<ISearchOption> {
@@ -90,7 +114,8 @@ export class SuiSearchComponent {
       Utils.getPropClass(this.isLoading, 'loading'),
       Utils.getPropClass(this.suiDisabled, 'disabled'),
       'search',
-      Utils.getPropClass(this.hasCategories, 'category')
+      Utils.getPropClass(this.hasCategories, 'category'),
+      Utils.getPropClass(this.isFocused, 'focus')
     ].joinWithWhitespaceCleanup();
   }
 
@@ -105,5 +130,45 @@ export class SuiSearchComponent {
         option[a.category].push(a);
         return option;
       }, Object.create(null));
+  }
+
+  @HostListener('click')
+  public onClick(): void {
+    if (this.suiDisabled) {
+      return;
+    }
+
+    this.isOpen = !this.isOpen;
+  }
+
+  public onSearch(): void {
+    this.isLoading = true;
+
+    setTimeout(() => {
+      this.isOpen = !!this.searchTerm;
+
+      // limit the options displayed
+      this.filteredOptions = this.allOptions
+        .filter((x) => x.title.toLocaleLowerCase()
+          .includes(this.searchTerm.toLocaleLowerCase()));
+
+      // indicate search is complete
+      this.isLoading = false;
+    }, this.suiSearchDelay);
+  }
+
+  public onFocus(): void {
+    this.isFocused = true;
+  }
+
+  @HostListener('onfocusout')
+  public onUnfocus(): void {
+    this.isOpen = false;
+    this.isFocused = false;
+  }
+
+  public optionClicked(option): void {
+    this.selectedOption = option;
+    this.suiResultSelected.emit(option);
   }
 }
