@@ -26,7 +26,7 @@ export type SuiSearchAlignment = 'right' | null;
 
     <div class="results">
       <ng-container *ngIf="!hasCategories">
-        <ng-container *ngFor="let option of suiOptions">
+        <ng-container *ngFor="let option of filteredOptions">
           <a class="result">
             <div class="content">
               <div class="title">
@@ -38,12 +38,12 @@ export type SuiSearchAlignment = 'right' | null;
       </ng-container>
 
       <ng-container *ngIf="hasCategories">
-        <ng-container *ngFor="let category of optionsByCategory | keyvalue">
+        <ng-container *ngFor="let category of optionsByCategory">
           <div class="category">
             <div class="name">
-              {{category.key}}
+              {{(category | keyvalue).key}}
             </div>
-            <ng-container *ngFor="let option of category.value">
+            <ng-container *ngFor="let option of (category | keyvalue).value">
               <div class="results">
                 <a class="result">
                   <div class="content">
@@ -66,9 +66,20 @@ export class SuiSearchComponent {
   @Input() public suiShowIcon = false;
   @Input() public suiDisabled = false;
   @Input() public suiFluid = false;
-  @Input() public suiOptions: Array<ISearchOption> = [];
 
   private isLoading = false;
+  private allOptions: Array<ISearchOption> = [];
+  public filteredOptions: Array<ISearchOption> = [];
+  public selectedOption: ISearchOption;
+
+  @Input()
+  set suiOptions(options: Array<ISearchOption>) {
+    this.allOptions = this.filteredOptions = options;
+  }
+
+  get suiOptions(): Array<ISearchOption> {
+    return this.allOptions;
+  }
 
   @HostBinding('class')
   get classes(): string {
@@ -88,10 +99,11 @@ export class SuiSearchComponent {
   }
 
   get optionsByCategory(): Array<any> {
-    return this.suiOptions.reduce((option, a) => {
-      option[a.category] = option[a.category] || [];
-      option[a.category].push(a);
-      return option;
-    }, Object.create(null));
+    return this.filteredOptions
+      .reduce((option, a) => {
+        option[a.category] = option[a.category] || [];
+        option[a.category].push(a);
+        return option;
+      }, Object.create(null));
   }
 }
