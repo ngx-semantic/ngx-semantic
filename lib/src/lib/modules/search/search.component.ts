@@ -25,7 +25,38 @@ export type SuiSearchAlignment = 'right' | null;
     </ng-container>
 
     <div class="results">
+      <ng-container *ngIf="!hasCategories">
+        <ng-container *ngFor="let option of suiOptions">
+          <a class="result">
+            <div class="content">
+              <div class="title">
+                {{option.title}}
+              </div>
+            </div>
+          </a>
+        </ng-container>
+      </ng-container>
 
+      <ng-container *ngIf="hasCategories">
+        <ng-container *ngFor="let category of optionsByCategory | keyvalue">
+          <div class="category">
+            <div class="name">
+              {{category.key}}
+            </div>
+            <ng-container *ngFor="let option of category.value">
+              <div class="results">
+                <a class="result">
+                  <div class="content">
+                    <div class="title">
+                      {{option.title}}
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </ng-container>
+          </div>
+        </ng-container>
+      </ng-container>
     </div>
   `
 })
@@ -33,10 +64,11 @@ export class SuiSearchComponent {
   @Input() public suiAlignment: SuiSearchAlignment = null;
   @Input() public suiPlaceholder: string = null;
   @Input() public suiShowIcon = false;
-  @Input() public suiLoading = false;
   @Input() public suiDisabled = false;
   @Input() public suiFluid = false;
-  @Input() public suiOptions: Array<ISearchOption>[];
+  @Input() public suiOptions: Array<ISearchOption> = [];
+
+  private isLoading = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -44,9 +76,22 @@ export class SuiSearchComponent {
       'ui',
       this.suiAlignment,
       Utils.getPropClass(this.suiFluid, 'fluid'),
-      Utils.getPropClass(this.suiLoading, 'loading'),
+      Utils.getPropClass(this.isLoading, 'loading'),
       Utils.getPropClass(this.suiDisabled, 'disabled'),
-      'search'
+      'search',
+      Utils.getPropClass(this.hasCategories, 'category')
     ].joinWithWhitespaceCleanup();
+  }
+
+  get hasCategories(): boolean {
+    return this.suiOptions.some((x) => !!x.category);
+  }
+
+  get optionsByCategory(): Array<any> {
+    return this.suiOptions.reduce((option, a) => {
+      option[a.category] = option[a.category] || [];
+      option[a.category].push(a);
+      return option;
+    }, Object.create(null));
   }
 }
