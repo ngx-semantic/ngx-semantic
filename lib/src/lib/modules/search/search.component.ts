@@ -53,10 +53,12 @@ export type SuiSearchAlignment = 'right' | null;
         <ng-container *ngFor="let category of optionsByCategory">
           <div class="category">
             <div class="name">
-              {{(category | keyvalue).key}}
+              {{(category | keyvalue)?.key}}
             </div>
-            <ng-container *ngFor="let option of (category | keyvalue).value">
-              <div class="results">
+            <ng-container *ngFor="let option of (category | keyvalue)?.value">
+              <div class="results transition"
+                   [class.visible]="isOpen"
+                   [class.hidden]="isOpen">
                 <a class="result"
                    (click)="optionClicked(option)">
                   <div class="content">
@@ -80,7 +82,7 @@ export type SuiSearchAlignment = 'right' | null;
   `
 })
 export class SuiSearchComponent {
-  @Output() public suiResultSelected = new EventEmitter<string>();
+  @Output() public suiResultSelected = new EventEmitter<ISearchOption>();
   @Input() public suiAlignment: SuiSearchAlignment = null;
   @Input() public suiPlaceholder: string = null;
   @Input() public suiSearchDelay = 200;
@@ -167,7 +169,8 @@ export class SuiSearchComponent {
     this.isFocused = false;
   }
 
-  public optionClicked(option): void {
+  public optionClicked(option: ISearchOption): void {
+    this.searchTerm = option.title;
     this.selectedOption = option;
     this.suiResultSelected.emit(option);
   }

@@ -12,9 +12,6 @@
     },
     {
       "path": "./lib/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/docs/tsconfig.app.json"
     }
   ]
 }
