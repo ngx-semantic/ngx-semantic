@@ -86,7 +86,7 @@ export type SuiSearchAlignment = 'right' | null;
 })
 export class SuiSearchComponent {
   @Output() public suiResultSelected = new EventEmitter<ISearchOption>();
-  @Input() public suiOptionsLookup: (query: string) => Promise<ISearchOption[]>;
+  @Input() public suiOptionsLookup: (query: string) => Promise<Array<ISearchOption>>;
   @Input() public suiOptions: Array<ISearchOption> = [];
   @Input() public suiAlignment: SuiSearchAlignment = null;
   @Input() public suiPlaceholder: string = null;
@@ -159,22 +159,28 @@ export class SuiSearchComponent {
         this.suiOptionsLookup(this.searchTerm)
           .then((results) => {
             this.filteredOptions = results;
+
+            // indicate search is complete
+            this.isLoading = false;
           })
           .catch((err) => {
             console.log(err);
             this.filteredOptions = [];
+
+            // indicate search is complete
+            this.isLoading = false;
           });
       } else {
         // limit the options displayed
         this.filteredOptions = this.suiOptions
           .filter((x) => x.title.toLocaleLowerCase()
             .includes(this.searchTerm.toLocaleLowerCase()));
+
+        // indicate search is complete
+        this.isLoading = false;
       }
 
       this.isOpen = this.filteredOptions.length > 0;
-
-      // indicate search is complete
-      this.isLoading = false;
     }, this.suiSearchDelay);
   }
 
