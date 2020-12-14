@@ -33,7 +33,8 @@ export type SuiSearchAlignment = 'right' | null;
 
     <div class="results transition"
          [class.visible]="isOpen"
-         [class.hidden]="!isOpen">
+         [class.hidden]="!isOpen"
+         style="display: block !important;">
       <ng-container *ngIf="!hasCategories">
         <ng-container *ngFor="let option of filteredOptions">
           <a class="result"
@@ -54,15 +55,13 @@ export type SuiSearchAlignment = 'right' | null;
       </ng-container>
 
       <ng-container *ngIf="hasCategories">
-        <ng-container *ngFor="let category of optionsByCategory">
+        <ng-container *ngFor="let category of optionsByCategory | keyvalue">
           <div class="category">
             <div class="name">
-              {{(category | keyvalue)?.key}}
+              {{category.key}}
             </div>
-            <ng-container *ngFor="let option of (category | keyvalue)?.value">
-              <div class="results transition"
-                   [class.visible]="isOpen"
-                   [class.hidden]="isOpen">
+            <div class="results">
+              <ng-container *ngFor="let option of category.value">
                 <a class="result"
                    (click)="optionClicked(option)">
                   <div class="content">
@@ -77,8 +76,8 @@ export type SuiSearchAlignment = 'right' | null;
                     </ng-container>
                   </div>
                 </a>
-              </div>
-            </ng-container>
+              </ng-container>
+            </div>
           </div>
         </ng-container>
       </ng-container>
@@ -87,6 +86,8 @@ export type SuiSearchAlignment = 'right' | null;
 })
 export class SuiSearchComponent {
   @Output() public suiResultSelected = new EventEmitter<ISearchOption>();
+  @Input() public suiOptionsLookup: (query: string) => Promise<ISearchOption[]>;
+  @Input() public suiOptions: Array<ISearchOption> = [];
   @Input() public suiAlignment: SuiSearchAlignment = null;
   @Input() public suiPlaceholder: string = null;
   @Input() public suiSearchDelay = 200;
@@ -100,18 +101,8 @@ export class SuiSearchComponent {
   private isFocused = false;
   public isOpen: boolean;
   public searchTerm: string;
-  private allOptions: Array<ISearchOption> = [];
   public filteredOptions: Array<ISearchOption> = [];
   public selectedOption: ISearchOption;
-
-  @Input()
-  set suiOptions(options: Array<ISearchOption>) {
-    this.allOptions = options;
-  }
-
-  get suiOptions(): Array<ISearchOption> {
-    return this.allOptions;
-  }
 
   @HostBinding('class')
   get classes(): string {
@@ -131,7 +122,7 @@ export class SuiSearchComponent {
     return this.suiOptions.some((x) => !!x.category);
   }
 
-  get optionsByCategory(): Array<any> {
+  get optionsByCategory(): any {
     return this.filteredOptions
       .reduce((option, a) => {
         const category = a.category || '(None)';
@@ -163,12 +154,22 @@ export class SuiSearchComponent {
     this.isLoading = true;
 
     setTimeout(() => {
-      // this.isOpen = !!this.searchTerm;
-
-      // limit the options displayed
-      this.filteredOptions = this.allOptions
-        .filter((x) => x.title.toLocaleLowerCase()
-          .includes(this.searchTerm.toLocaleLowerCase()));
+      // if there is a lookup function, then use that
+      if (this.suiOptionsLookup) {
+        this.suiOptionsLookup(this.searchTerm)
+          .then((results) => {
+            this.filteredOptions = results;
+          })
+          .catch((err) => {
+            console.log(err);
+            this.filteredOptions = [];
+          });
+      } else {
+        // limit the options displayed
+        this.filteredOptions = this.suiOptions
+          .filter((x) => x.title.toLocaleLowerCase()
+            .includes(this.searchTerm.toLocaleLowerCase()));
+      }
 
       this.isOpen = this.filteredOptions.length > 0;
 
