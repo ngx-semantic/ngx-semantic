@@ -12,6 +12,7 @@ export type SuiSearchAlignment = 'right' | null;
              type="text"
              autocomplete="off"
              [placeholder]="suiPlaceholder"
+             [(ngModel)]="searchTerm"
              (focus)="onFocus()"
              (keyup)="onSearch()"/>
     </ng-container>
@@ -21,7 +22,10 @@ export type SuiSearchAlignment = 'right' | null;
            suiIcon="true">
         <input class="prompt"
                type="text"
-               [placeholder]="suiPlaceholder"/>
+               [placeholder]="suiPlaceholder"
+               [(ngModel)]="searchTerm"
+               (focus)="onFocus()"
+               (keyup)="onSearch()"/>
         <i sui-icon
            suiIconType="search"></i>
       </div>
@@ -29,7 +33,7 @@ export type SuiSearchAlignment = 'right' | null;
 
     <div class="results transition"
          [class.visible]="isOpen"
-         [class.hidden]="isOpen">
+         [class.hidden]="!isOpen">
       <ng-container *ngIf="!hasCategories">
         <ng-container *ngFor="let option of filteredOptions">
           <a class="result"
@@ -90,6 +94,8 @@ export class SuiSearchComponent {
   @Input() public suiDisabled = false;
   @Input() public suiFluid = false;
 
+  // field to track whether there has been an outside click
+  private isInsideClick: boolean;
   private isLoading = false;
   private isFocused = false;
   public isOpen: boolean;
@@ -128,8 +134,9 @@ export class SuiSearchComponent {
   get optionsByCategory(): Array<any> {
     return this.filteredOptions
       .reduce((option, a) => {
-        option[a.category] = option[a.category] || [];
-        option[a.category].push(a);
+        const category = a.category || '(None)';
+        option[category] = option[a.category] || [];
+        option[category].push(a);
         return option;
       }, Object.create(null));
   }
@@ -140,19 +147,30 @@ export class SuiSearchComponent {
       return;
     }
 
-    this.isOpen = !this.isOpen;
+    this.isInsideClick = true;
+  }
+
+  @HostListener('document:click')
+  public onPageClick(): void {
+    if (!this.isInsideClick) {
+      this.isOpen = false;
+    }
+
+    this.isInsideClick = false;
   }
 
   public onSearch(): void {
     this.isLoading = true;
 
     setTimeout(() => {
-      this.isOpen = !!this.searchTerm;
+      // this.isOpen = !!this.searchTerm;
 
       // limit the options displayed
       this.filteredOptions = this.allOptions
         .filter((x) => x.title.toLocaleLowerCase()
           .includes(this.searchTerm.toLocaleLowerCase()));
+
+      this.isOpen = this.filteredOptions.length > 0;
 
       // indicate search is complete
       this.isLoading = false;
@@ -173,5 +191,6 @@ export class SuiSearchComponent {
     this.searchTerm = option.title;
     this.selectedOption = option;
     this.suiResultSelected.emit(option);
+    this.isOpen = false;
   }
 }
