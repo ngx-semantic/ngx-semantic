@@ -2,7 +2,7 @@
  * Created by bolorundurowb on 12/22/2020
  */
 
-import {Component, ContentChildren, QueryList} from '@angular/core';
+import {AfterViewInit, Component, ContentChildren, QueryList} from '@angular/core';
 import {SuiTabComponent} from './tab.component';
 
 @Component({
@@ -24,9 +24,17 @@ import {SuiTabComponent} from './tab.component';
           </div>
         </ng-container>
       </div>
+      <div sui-segment
+           suiAttached="bottom attached">
+        Hello
+      </div>
     </ng-container>
   `
 })
-export class SuiTabsComponent {
+export class SuiTabsComponent implements AfterViewInit {
   @ContentChildren(SuiTabComponent) public tabs: QueryList<SuiTabComponent> = new QueryList<SuiTabComponent>();
+
+  ngAfterViewInit(): void {
+    console.log(this.tabs);
+  }
 }

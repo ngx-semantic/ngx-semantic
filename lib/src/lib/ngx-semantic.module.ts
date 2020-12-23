@@ -26,6 +26,7 @@ import {SuiDropdownModule} from './modules/dropdown';
 import {SuiProgressModule} from './modules/progress';
 import {SuiRatingModule} from './modules/rating';
 import {SuiSelectModule} from './modules/select';
+import {SuiTabModule} from './modules/tabs';
 import {SuiAdvertisementModule} from './views/advertisement';
 import {SuiCardModule} from './views/card';
 import {SuiCommentModule} from './views/comment';
@@ -35,6 +36,7 @@ import {SuiStatisticModule} from './views/statistics';
 @NgModule({
   declarations: [],
   exports: [
+    SuiTabModule,
     SuiFlagModule,
     SuiIconModule,
     SuiListModule,
