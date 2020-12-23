@@ -4,20 +4,26 @@
 
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {SuiTabPaneComponent} from './tab-pane.component';
+import {SuiMenuModule} from '../../collections/menu';
+import {SuiIconModule} from '../../elements/icon';
+import {SuiSegmentModule} from '../../elements/segment';
 import {SuiTabComponent} from './tab.component';
+import {SuiTabsComponent} from './tabs.component';
 
 @NgModule({
   declarations: [
-    SuiTabComponent,
-    SuiTabPaneComponent
+    SuiTabsComponent,
+    SuiTabComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SuiIconModule,
+    SuiMenuModule,
+    SuiSegmentModule
   ],
   exports: [
-    SuiTabComponent,
-    SuiTabPaneComponent
+    SuiTabsComponent,
+    SuiTabComponent
   ]
 })
 export class SuiTabModule {

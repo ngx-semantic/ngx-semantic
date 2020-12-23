@@ -2,7 +2,7 @@
  * Created by bolorundurowb on 12/22/2020
  */
 
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'sui-tab',
@@ -11,4 +11,6 @@ import {Component} from '@angular/core';
   `
 })
 export class SuiTabComponent {
+  @Input() public suiTitle: string = null;
+  @Input() public suiIcon: string = null;
 }
