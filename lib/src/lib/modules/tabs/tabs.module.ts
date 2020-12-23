@@ -12,8 +12,8 @@ import {SuiTabsComponent} from './tabs.component';
 
 @NgModule({
   declarations: [
-    SuiTabsComponent,
-    SuiTabComponent
+    SuiTabComponent,
+    SuiTabsComponent
   ],
   imports: [
     CommonModule,
@@ -22,9 +22,9 @@ import {SuiTabsComponent} from './tabs.component';
     SuiSegmentModule
   ],
   exports: [
-    SuiTabsComponent,
-    SuiTabComponent
+    SuiTabComponent,
+    SuiTabsComponent
   ]
 })
-export class SuiTabModule {
+export class SuiTabsModule {
 }

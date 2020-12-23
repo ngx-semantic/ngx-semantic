@@ -4,4 +4,4 @@
 
 export * from './tabs.component';
 export * from './tab.component';
-export * from './tab.module';
+export * from './tabs.module';
