@@ -17,15 +17,15 @@ export class SuiTabComponent {
   @Input() public suiTitle: string = null;
   @Input() public suiIcon: string = null;
   @Input() public suiLoading = false;
-  @Input() public disabled = false;
+  @Input() public suiDisabled = false;
 
-  @ViewChild('contentTemplate', { static: true }) public contentTemplate!: TemplateRef<any>;
+  @ViewChild('contentTemplate', { static: false }) public contentTemplate!: TemplateRef<any>;
 
   @HostBinding('class')
   get classes(): string {
     return [
       Utils.getPropClass(this.suiLoading, 'loading'),
-      Utils.getPropClass(this.disabled, 'disabled')
+      Utils.getPropClass(this.suiDisabled, 'disabled')
     ].joinWithWhitespaceCleanup();
   }
 }

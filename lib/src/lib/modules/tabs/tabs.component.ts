@@ -16,37 +16,66 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
   preserveWhitespaces: false,
   template: `
     <ng-container *ngIf="tabs.length > 0">
-      <div sui-menu
-           [suiColour]="suiColour"
-           [suiAttached]="menuAttachment"
-           [suiTabular]="isBasic"
-           [suiSecondary]="isSecondary"
-           [suiPointing]="isPointing"
-           [suiText]="isText">
-        <ng-container *ngFor="let tab of tabs; let i = index;">
-          <div suiMenuItem
-               [suiActive]="isTabSelected(tab, i)"
-               (click)="changeTab(i)">
-            <ng-container *ngIf="tab.suiIcon">
-              <i sui-icon
-                 [suiIconType]="tab.suiIcon"></i>
-            </ng-container>
+      <ng-container *ngIf="isTop">
+        <div sui-menu
+             [suiColour]="suiColour"
+             [suiAttached]="menuAttachment"
+             [suiTabular]="isBasic"
+             [suiSecondary]="isSecondary"
+             [suiPointing]="isPointing"
+             [suiText]="isText">
+          <ng-container *ngFor="let tab of tabs; let i = index;">
+            <div suiMenuItem
+                 [suiDisabled]="tab.suiDisabled"
+                 [suiActive]="isTabSelected(tab, i)"
+                 (click)="changeTab(i)">
+              <ng-container *ngIf="tab.suiIcon">
+                <i sui-icon
+                   [suiIconType]="tab.suiIcon"></i>
+              </ng-container>
 
-            {{tab.suiTitle}}
-          </div>
-        </ng-container>
-      </div>
+              {{tab.suiTitle}}
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+
       <div class="active tab"
            sui-segment
            [suiAttached]="segmentAttachment">
         <ng-container *ngTemplateOutlet="currentTab"></ng-container>
       </div>
+
+      <ng-container *ngIf="!isTop">
+        <div sui-menu
+             [suiColour]="suiColour"
+             [suiAttached]="menuAttachment"
+             [suiTabular]="isBasic"
+             [suiSecondary]="isSecondary"
+             [suiPointing]="isPointing"
+             [suiText]="isText">
+          <ng-container *ngFor="let tab of tabs; let i = index;">
+            <div suiMenuItem
+                 [suiDisabled]="tab.suiDisabled"
+                 [suiActive]="isTabSelected(tab, i)"
+                 (click)="changeTab(i)">
+              <ng-container *ngIf="tab.suiIcon">
+                <i sui-icon
+                   [suiIconType]="tab.suiIcon"></i>
+              </ng-container>
+
+              {{tab.suiTitle}}
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
     </ng-container>
   `
 })
 export class SuiTabsComponent {
   @ContentChildren(SuiTabComponent) public tabs: QueryList<SuiTabComponent> = new QueryList<SuiTabComponent>();
 
+  @Input() public suiTabMenuPosition: SuiTabMenuPosition = 'top';
   @Input() public suiTabType: SuiTabType = 'basic';
   @Input() public suiColour: SuiColour = null;
 
@@ -68,9 +97,17 @@ export class SuiTabsComponent {
     return this.suiTabType === 'text';
   }
 
+  get isTop(): boolean {
+    return this.suiTabMenuPosition === 'top';
+  }
+
   get menuAttachment(): SuiMenuAttachment {
     if (this.suiTabType === 'basic') {
-      return 'top';
+      if (this.isTop) {
+        return 'top';
+      } else {
+        return 'bottom';
+      }
     }
 
     return null;
@@ -93,9 +130,11 @@ export class SuiTabsComponent {
   }
 
   public isTabSelected(tab: SuiTabComponent, index: number): boolean {
-    if (tab.disabled) {
+    if (tab.suiDisabled) {
       return;
     }
+
+    console.log(tab);
 
     return this.selectedTabIndex === index;
   }
