@@ -19,25 +19,25 @@ export type SuiSegmentFloat = 'left floated' | 'right floated' | null;
   `
 })
 export class SuiSegmentComponent {
-  @Input() suiColour: SuiColour = null;
-  @Input() suiAttached: SuiSegmentAttachment = null;
-  @Input() suiStacked: SuiSegmentStacking = null;
-  @Input() suiPadding: SuiSegmentPadding = null;
-  @Input() suiEmphasis: SuiSegmentEmphasis = null;
-  @Input() suiTextAlignment: SuiSegmentTextAlignment = null;
-  @Input() suiFloated: SuiSegmentFloat = null;
-  @Input() suiPlaceholder = false;
-  @Input() suiRaised = false;
-  @Input() suiPiled = false;
-  @Input() suiVertical = false;
-  @Input() suiInverted = false;
-  @Input() suiDisabled = false;
-  @Input() suiLoading = false;
-  @Input() suiCompact = false;
-  @Input() suiCircular = false;
-  @Input() suiBasic = false;
-  @Input() suiClearing = false;
-  @Input() suiSecondary = false;
+  @Input() public suiColour: SuiColour = null;
+  @Input() public suiAttached: SuiSegmentAttachment = null;
+  @Input() public suiStacked: SuiSegmentStacking = null;
+  @Input() public suiPadding: SuiSegmentPadding = null;
+  @Input() public suiEmphasis: SuiSegmentEmphasis = null;
+  @Input() public suiTextAlignment: SuiSegmentTextAlignment = null;
+  @Input() public suiFloated: SuiSegmentFloat = null;
+  @Input() public suiPlaceholder = false;
+  @Input() public suiRaised = false;
+  @Input() public suiPiled = false;
+  @Input() public suiVertical = false;
+  @Input() public suiInverted = false;
+  @Input() public suiDisabled = false;
+  @Input() public suiLoading = false;
+  @Input() public suiCompact = false;
+  @Input() public suiCircular = false;
+  @Input() public suiBasic = false;
+  @Input() public suiClearing = false;
+  @Input() public suiSecondary = false;
 
   @HostBinding('class')
   get classes(): string {
