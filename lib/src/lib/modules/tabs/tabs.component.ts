@@ -4,12 +4,10 @@
 
 import {
   AfterContentChecked,
-  AfterContentInit,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
-  ContentChildren,
-  Input,
+  ContentChildren, EventEmitter,
+  Input, Output,
   QueryList
 } from '@angular/core';
 import {SuiMenuAttachment} from '../../collections/menu';
@@ -86,12 +84,14 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
     </ng-container>
   `
 })
-export class SuiTabsComponent implements AfterContentInit, AfterContentChecked {
+export class SuiTabsComponent implements AfterContentChecked {
   @ContentChildren(SuiTabComponent) public tabs: QueryList<SuiTabComponent> = new QueryList<SuiTabComponent>();
 
   @Input() public suiTabMenuPosition: SuiTabMenuPosition = 'top';
   @Input() public suiTabType: SuiTabType = 'basic';
   @Input() public suiColour: SuiColour = null;
+
+  @Output() public readonly suiSelectedIndexChanged = new EventEmitter<number>();
 
   private selectedTabIndex = 0;
   public hasTabs = false;
@@ -146,18 +146,18 @@ export class SuiTabsComponent implements AfterContentInit, AfterContentChecked {
       return;
     }
 
+    const tabChanged = this.selectedTabIndex !== index;
+
     this.selectedTabIndex = index;
     this.setCurrentTab();
+
+    if (tabChanged) {
+      this.suiSelectedIndexChanged.emit(this.selectedTabIndex);
+    }
   }
 
   public isTabSelected(index: number): boolean {
     return this.selectedTabIndex === index;
-  }
-
-  constructor(public cdr: ChangeDetectorRef) {
-  }
-
-  public ngAfterContentInit(): void {
   }
 
   public ngAfterContentChecked(): void {
@@ -168,7 +168,5 @@ export class SuiTabsComponent implements AfterContentInit, AfterContentChecked {
     const tabs = this.tabs.toArray();
     this.hasTabs = tabs.length > 0;
     this.currentTab = tabs[this.selectedTabIndex];
-    // this.cdr.markForCheck();
-    // this.cdr.detectChanges();
   }
 }
