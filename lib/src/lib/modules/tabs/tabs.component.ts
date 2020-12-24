@@ -4,6 +4,8 @@
 
 import {Component, ContentChildren, Input, QueryList, TemplateRef} from '@angular/core';
 import {SuiMenuAttachment} from '../../collections/menu';
+import {SuiColour} from '../../common';
+import {SuiSegmentAttachment} from '../../elements/segment';
 import {SuiTabComponent} from './tab.component';
 
 export type SuiTabType = 'basic' | 'pointing' | 'secondary' | 'text' | null;
@@ -14,7 +16,8 @@ export type SuiTabType = 'basic' | 'pointing' | 'secondary' | 'text' | null;
   template: `
     <ng-container *ngIf="tabs.length > 0">
       <div sui-menu
-           [suiAttached]="suiAttached"
+           [suiColour]="suiColour"
+           [suiAttached]="menuAttachment"
            [suiTabular]="isBasic"
            [suiSecondary]="isSecondary"
            [suiPointing]="isPointing"
@@ -32,8 +35,9 @@ export type SuiTabType = 'basic' | 'pointing' | 'secondary' | 'text' | null;
           </div>
         </ng-container>
       </div>
-      <div sui-segment
-           suiAttached="bottom attached">
+      <div class="active tab"
+           sui-segment
+           [suiAttached]="segmentAttachment">
         <ng-container *ngTemplateOutlet="currentTab"></ng-container>
       </div>
     </ng-container>
@@ -43,7 +47,7 @@ export class SuiTabsComponent {
   @ContentChildren(SuiTabComponent) public tabs: QueryList<SuiTabComponent> = new QueryList<SuiTabComponent>();
 
   @Input() public suiTabType: SuiTabType = 'basic';
-  @Input() public suiAttached: SuiMenuAttachment = 'top';
+  @Input() public suiColour: SuiColour = null;
 
   private selectedTabIndex = 0;
 
@@ -63,15 +67,31 @@ export class SuiTabsComponent {
     return this.suiTabType === 'text';
   }
 
-  get currentTab(): TemplateRef<any> {
-    return this.tabs[this.selectedTabIndex].contentTemplate;
+  get menuAttachment(): SuiMenuAttachment {
+    if (this.suiTabType === 'basic') {
+      return 'top';
+    }
+
+    return null;
   }
 
-  changeTab(index: number): void {
+  get segmentAttachment(): SuiSegmentAttachment {
+    if (this.suiTabType === 'basic') {
+      return 'bottom attached';
+    }
+
+    return null;
+  }
+
+  get currentTab(): TemplateRef<any> {
+    return this.tabs[this.selectedTabIndex]?.contentTemplate;
+  }
+
+  public changeTab(index: number): void {
     this.selectedTabIndex = index;
   }
 
-  isTabSelected(index: number): boolean {
+  public isTabSelected(index: number): boolean {
     return this.selectedTabIndex === index;
   }
 }
