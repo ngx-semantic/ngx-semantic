@@ -9,6 +9,7 @@ import {SuiSegmentAttachment} from '../../elements/segment';
 import {SuiTabComponent} from './tab.component';
 
 export type SuiTabType = 'basic' | 'pointing' | 'secondary' | 'text' | null;
+export type SuiTabMenuPosition = 'top' | 'bottom';
 
 @Component({
   selector: 'sui-tabs',
@@ -24,7 +25,7 @@ export type SuiTabType = 'basic' | 'pointing' | 'secondary' | 'text' | null;
            [suiText]="isText">
         <ng-container *ngFor="let tab of tabs; let i = index;">
           <div suiMenuItem
-               [suiActive]="isTabSelected(i)"
+               [suiActive]="isTabSelected(tab, i)"
                (click)="changeTab(i)">
             <ng-container *ngIf="tab.suiIcon">
               <i sui-icon
@@ -91,7 +92,11 @@ export class SuiTabsComponent {
     this.selectedTabIndex = index;
   }
 
-  public isTabSelected(index: number): boolean {
+  public isTabSelected(tab: SuiTabComponent, index: number): boolean {
+    if (tab.disabled) {
+      return;
+    }
+
     return this.selectedTabIndex === index;
   }
 }
