@@ -2,7 +2,16 @@
  * Created by bolorundurowb on 12/22/2020
  */
 
-import {Component, ContentChildren, Input, QueryList, TemplateRef} from '@angular/core';
+import {
+  AfterContentChecked,
+  AfterContentInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ContentChildren,
+  Input,
+  QueryList
+} from '@angular/core';
 import {SuiMenuAttachment} from '../../collections/menu';
 import {SuiColour} from '../../common';
 import {SuiSegmentAttachment} from '../../elements/segment';
@@ -14,8 +23,9 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
 @Component({
   selector: 'sui-tabs',
   preserveWhitespaces: false,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <ng-container *ngIf="tabs.length > 0">
+    <ng-container *ngIf="hasTabs">
       <ng-container *ngIf="isTop">
         <div sui-menu
              [suiColour]="suiColour"
@@ -27,8 +37,8 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
           <ng-container *ngFor="let tab of tabs; let i = index;">
             <div suiMenuItem
                  [suiDisabled]="tab.suiDisabled"
-                 [suiActive]="isTabSelected(tab, i)"
-                 (click)="changeTab(i)">
+                 [suiActive]="isTabSelected(i)"
+                 (click)="changeTab(tab, i)">
               <ng-container *ngIf="tab.suiIcon">
                 <i sui-icon
                    [suiIconType]="tab.suiIcon"></i>
@@ -43,7 +53,11 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
       <div class="active tab"
            sui-segment
            [suiAttached]="segmentAttachment">
-        <ng-container *ngTemplateOutlet="currentTab"></ng-container>
+        <ng-container *ngIf="currentTab">
+          <ng-container
+            *ngTemplateOutlet="currentTab.contentTemplate">
+          </ng-container>
+        </ng-container>
       </div>
 
       <ng-container *ngIf="!isTop">
@@ -57,8 +71,8 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
           <ng-container *ngFor="let tab of tabs; let i = index;">
             <div suiMenuItem
                  [suiDisabled]="tab.suiDisabled"
-                 [suiActive]="isTabSelected(tab, i)"
-                 (click)="changeTab(i)">
+                 [suiActive]="isTabSelected(i)"
+                 (click)="changeTab(tab, i)">
               <ng-container *ngIf="tab.suiIcon">
                 <i sui-icon
                    [suiIconType]="tab.suiIcon"></i>
@@ -72,7 +86,7 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
     </ng-container>
   `
 })
-export class SuiTabsComponent {
+export class SuiTabsComponent implements AfterContentInit, AfterContentChecked {
   @ContentChildren(SuiTabComponent) public tabs: QueryList<SuiTabComponent> = new QueryList<SuiTabComponent>();
 
   @Input() public suiTabMenuPosition: SuiTabMenuPosition = 'top';
@@ -80,6 +94,8 @@ export class SuiTabsComponent {
   @Input() public suiColour: SuiColour = null;
 
   private selectedTabIndex = 0;
+  public hasTabs = false;
+  public currentTab: SuiTabComponent = null;
 
   get isSecondary(): boolean {
     return this.suiTabType === 'secondary';
@@ -115,27 +131,44 @@ export class SuiTabsComponent {
 
   get segmentAttachment(): SuiSegmentAttachment {
     if (this.suiTabType === 'basic') {
-      return 'bottom attached';
+      if (this.isTop) {
+        return 'bottom attached';
+      } else {
+        return 'top attached';
+      }
     }
 
     return null;
   }
 
-  get currentTab(): TemplateRef<any> {
-    return this.tabs[this.selectedTabIndex]?.contentTemplate;
-  }
-
-  public changeTab(index: number): void {
-    this.selectedTabIndex = index;
-  }
-
-  public isTabSelected(tab: SuiTabComponent, index: number): boolean {
+  public changeTab(tab: SuiTabComponent, index: number): void {
     if (tab.suiDisabled) {
       return;
     }
 
-    console.log(tab);
+    this.selectedTabIndex = index;
+    this.setCurrentTab();
+  }
 
+  public isTabSelected(index: number): boolean {
     return this.selectedTabIndex === index;
+  }
+
+  constructor(public cdr: ChangeDetectorRef) {
+  }
+
+  public ngAfterContentInit(): void {
+  }
+
+  public ngAfterContentChecked(): void {
+    this.setCurrentTab();
+  }
+
+  private setCurrentTab(): void {
+    const tabs = this.tabs.toArray();
+    this.hasTabs = tabs.length > 0;
+    this.currentTab = tabs[this.selectedTabIndex];
+    // this.cdr.markForCheck();
+    // this.cdr.detectChanges();
   }
 }

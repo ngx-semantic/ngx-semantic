@@ -7,6 +7,8 @@ import {Utils} from '../../common';
 
 @Component({
   selector: 'sui-tab',
+  exportAs: 'suiTab',
+  preserveWhitespaces: false,
   template: `
     <ng-template #contentTemplate>
       <ng-content></ng-content>
@@ -14,12 +16,13 @@ import {Utils} from '../../common';
   `
 })
 export class SuiTabComponent {
+  @Input() public suiContent: TemplateRef<any>;
   @Input() public suiTitle: string = null;
   @Input() public suiIcon: string = null;
   @Input() public suiLoading = false;
   @Input() public suiDisabled = false;
 
-  @ViewChild('contentTemplate', { static: false }) public contentTemplate!: TemplateRef<any>;
+  @ViewChild('contentTemplate', { static: true }) public contentTemplate!: TemplateRef<any>;
 
   @HostBinding('class')
   get classes(): string {
