@@ -1,6 +1,6 @@
 # NgxSemantic
 
-[![Build status](https://ci.appveyor.com/api/projects/status/gd04694avya0aa2f/branch/master?svg=true)](https://ci.appveyor.com/project/BolorunduroWinnerTimothy/ngx-semantic/branch/master) [![codecov](https://codecov.io/gh/ngx-semantic/ngx-semantic/branch/master/graph/badge.svg)](https://codecov.io/gh/ngx-semantic/ngx-semantic) ![npm (tag)](https://img.shields.io/npm/v/ngx-semantic) ![npm (tag)](https://img.shields.io/npm/v/ngx-semantic/alpha)
+[![Build status](https://ci.appveyor.com/api/projects/status/gd04694avya0aa2f/branch/master?svg=true)](https://ci.appveyor.com/project/BolorunduroWinnerTimothy/ngx-semantic/branch/master) [![codecov](https://codecov.io/gh/ngx-semantic/ngx-semantic/branch/master/graph/badge.svg)](https://codecov.io/gh/ngx-semantic/ngx-semantic) ![npm (tag)](https://img.shields.io/npm/v/ngx-semantic) ![npm (tag)](https://img.shields.io/npm/v/ngx-semantic/alpha) [![Made in Nigeria](https://img.shields.io/badge/made%20in-nigeria-008751.svg?style=flat-square)](https://github.com/acekyd/made-in-nigeria)
 
 ## Installation
 
