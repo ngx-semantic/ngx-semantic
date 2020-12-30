@@ -2,10 +2,10 @@
  * Created by bolorundurowb on 12/30/2020
  */
 
-import {NgModule} from "@angular/core";
-import {SuiSidebarComponent} from "./sidebar.component";
-import {SuiSidebarContainerComponent} from "./sidebar-container.component";
-import {CommonModule} from "@angular/common";
+import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
+import {SuiSidebarContainerComponent} from './sidebar-container.component';
+import {SuiSidebarComponent} from './sidebar.component';
 
 @NgModule({
   declarations: [
