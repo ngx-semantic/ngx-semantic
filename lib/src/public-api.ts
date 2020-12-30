@@ -41,5 +41,6 @@ export * from './lib/modules/progress';
 export * from './lib/modules/rating';
 export * from './lib/modules/select';
 export * from './lib/modules/search';
+export * from './lib/modules/tabs';
 
 export * from './lib/ngx-semantic.module';
