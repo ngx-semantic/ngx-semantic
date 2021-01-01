@@ -13,11 +13,12 @@ import {Utils} from '../../common';
 })
 export class SuiSidebarPusherComponent {
   @Input() public suiDimmable = false;
+  @Input() public isSidebarOpen = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
-      Utils.getPropClass(this.suiDimmable, 'dimmed'),
+      Utils.getPropClass(this.isSidebarOpen && this.suiDimmable, 'dimmed'),
       'pusher'
     ].joinWithWhitespaceCleanup();
   }
