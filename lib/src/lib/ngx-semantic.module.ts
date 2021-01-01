@@ -27,6 +27,7 @@ import {SuiProgressModule} from './modules/progress';
 import {SuiRatingModule} from './modules/rating';
 import {SuiSearchModule} from './modules/search';
 import {SuiSelectModule} from './modules/select';
+import {SuiSidebarModule} from './modules/sidebar';
 import {SuiTabsModule} from './modules/tabs';
 import {SuiAdvertisementModule} from './views/advertisement';
 import {SuiCardModule} from './views/card';
@@ -63,6 +64,7 @@ import {SuiStatisticModule} from './views/statistics';
     SuiDividerModule,
     SuiCommentModule,
     SuiSegmentModule,
+    SuiSidebarModule,
     SuiProgressModule,
     SuiDropdownModule,
     SuiCheckboxModule,

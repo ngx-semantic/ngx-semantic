@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectorRef,
   Component,
   EventEmitter,
@@ -111,7 +112,7 @@ import {SuiSelectMenuDirective} from './select-menu.directive';
     multi: true
   }]
 })
-export class SuiSelectComponent implements ControlValueAccessor {
+export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
   @ViewChild(SuiSelectMenuDirective) public optionsMenu: SuiSelectMenuDirective;
 
   @Output() public suiSelectionChanged = new EventEmitter<any | Array<any>>();
@@ -211,6 +212,12 @@ export class SuiSelectComponent implements ControlValueAccessor {
     // handle selection dropdown
     if (this.optionsMenu) {
       this.optionsMenu.suiIsOpen = this.isOpen;
+    }
+  }
+
+  public ngAfterViewInit(): void {
+    if (!this.optionsMenu) {
+      throw new Error('An error occurred rendering the options.');
     }
   }
 

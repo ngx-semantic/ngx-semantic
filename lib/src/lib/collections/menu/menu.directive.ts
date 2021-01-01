@@ -2,20 +2,17 @@
  * Created by bolor on 6/17/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, Directive, HostBinding, Input} from '@angular/core';
 import {SuiColour, SuiSize, SuiWidth, Utils} from '../../common';
 
 export type SuiMenuAttachment = 'top' | 'bottom' | null;
 export type SuiMenuFixation = 'top' | 'bottom' | 'left' | 'right' | null;
 export type SuiMenuIconType = 'icon' | 'labeled icon' | null;
 
-@Component({
-  selector: '[sui-menu]',
-  template: `
-    <ng-content></ng-content>
-  `
+@Directive({
+  selector: '[sui-menu]'
 })
-export class SuiMenuComponent {
+export class SuiMenuDirective {
   @Input() public suiWidth: SuiWidth = null;
   @Input() public suiAttached: SuiMenuAttachment = null;
   @Input() public suiFixed: SuiMenuFixation = null;
