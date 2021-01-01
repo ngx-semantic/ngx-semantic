@@ -10,7 +10,12 @@ import {SuiSidebarService} from './sidebar.service';
   selector: 'sui-sidebar-pusher',
   template: `
     <ng-content></ng-content>
-  `
+  `,
+  styles: [`
+    :host {
+      display: block;
+    }
+  `]
 })
 export class SuiSidebarPusherComponent implements OnInit {
   @Input() public suiDimmable = false;
@@ -30,7 +35,7 @@ export class SuiSidebarPusherComponent implements OnInit {
   public ngOnInit(): void {
     this.sidebarService.visibilityChanged
       .subscribe((isVisible) => {
-          this.isSidebarOpen = isVisible;
+        this.isSidebarOpen = isVisible;
       });
   }
 

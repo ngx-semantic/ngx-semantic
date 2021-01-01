@@ -53,6 +53,7 @@ export class SuiSidebarComponent {
   constructor(private sidebarService: SuiSidebarService) {
     sidebarService.pusherClicked
       .subscribe(() => {
+        // only close sidebar on pusher when the visibility is dynamic
         if (this.visibleChange.observers.length > 0) {
           this.visible = false;
         }
