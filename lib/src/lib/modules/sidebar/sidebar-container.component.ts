@@ -10,12 +10,7 @@ import {SuiSidebarComponent} from './sidebar.component';
   selector: 'sui-sidebar-container',
   template: `
     <ng-content></ng-content>
-  `,
-  styles: [`
-    :host {
-      display: block;
-    }
-  `]
+  `
 })
 export class SuiSidebarContainerComponent implements AfterContentInit {
   @ContentChild(SuiSidebarComponent) public suiSidebar: SuiSidebarComponent;

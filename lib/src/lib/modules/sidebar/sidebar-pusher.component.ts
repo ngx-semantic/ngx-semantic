@@ -10,12 +10,7 @@ import {SuiSidebarService} from './sidebar.service';
   selector: 'sui-sidebar-pusher',
   template: `
     <ng-content></ng-content>
-  `,
-  styles: [`
-    :host {
-      display: block;
-    }
-  `]
+  `
 })
 export class SuiSidebarPusherComponent implements OnInit {
   @Input() public suiDimmable = false;
