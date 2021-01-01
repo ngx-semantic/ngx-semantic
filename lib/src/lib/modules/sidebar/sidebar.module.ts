@@ -7,6 +7,7 @@ import {NgModule} from '@angular/core';
 import {SuiSidebarContainerComponent} from './sidebar-container.component';
 import {SuiSidebarPusherComponent} from './sidebar-pusher.component';
 import {SuiSidebarComponent} from './sidebar.component';
+import {SuiSidebarService} from './sidebar.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,9 @@ import {SuiSidebarComponent} from './sidebar.component';
     SuiSidebarComponent,
     SuiSidebarPusherComponent,
     SuiSidebarContainerComponent
+  ],
+  providers: [
+    SuiSidebarService
   ]
 })
 export class SuiSidebarModule {

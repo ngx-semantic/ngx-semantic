@@ -2,8 +2,9 @@
  * Created by bolorundurowb on 12/30/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, HostBinding, HostListener, Input, OnInit} from '@angular/core';
 import {Utils} from '../../common';
+import {SuiSidebarService} from './sidebar.service';
 
 @Component({
   selector: 'sui-sidebar-pusher',
@@ -11,9 +12,9 @@ import {Utils} from '../../common';
     <ng-content></ng-content>
   `
 })
-export class SuiSidebarPusherComponent {
+export class SuiSidebarPusherComponent implements OnInit {
   @Input() public suiDimmable = false;
-  @Input() public isSidebarOpen = false;
+  public isSidebarOpen = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -21,5 +22,22 @@ export class SuiSidebarPusherComponent {
       Utils.getPropClass(this.isSidebarOpen && this.suiDimmable, 'dimmed'),
       'pusher'
     ].joinWithWhitespaceCleanup();
+  }
+
+  constructor(private sidebarService: SuiSidebarService) {
+  }
+
+  public ngOnInit(): void {
+    this.sidebarService.visibilityChanged
+      .subscribe((isVisible) => {
+          this.isSidebarOpen = isVisible;
+      });
+  }
+
+  @HostListener('click')
+  public onClick(): void {
+    if (this.isSidebarOpen) {
+      this.sidebarService.notifyPusherClicked();
+    }
   }
 }

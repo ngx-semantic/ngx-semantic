@@ -2,9 +2,9 @@
  * Created by bolorundurowb on 12/30/2020
  */
 
-import {Component, ContentChild, EventEmitter, HostBinding, Input, Output} from '@angular/core';
+import {Component, EventEmitter, HostBinding, Input, Output} from '@angular/core';
 import {Utils} from '../../common';
-import {SuiSidebarPusherComponent} from './sidebar-pusher.component';
+import {SuiSidebarService} from './sidebar.service';
 
 export type SuiSidebarPosition = 'top' | 'bottom' | 'left' | 'right';
 export type SuiSidebarWidth = 'thin' | 'very thin' | 'wide' | 'very wide' | null;
@@ -17,8 +17,6 @@ export type SuiSidebarAnimation = 'overlay' | 'push' | 'scale down' | 'uncover' 
   `
 })
 export class SuiSidebarComponent {
-  @ContentChild(SuiSidebarPusherComponent) public pusherChild: SuiSidebarPusherComponent;
-
   @Input() public suiSidebarPosition: SuiSidebarPosition = 'left';
   @Input() public suiSidebarWidth: SuiSidebarWidth = null;
   @Input() public suiSidebarAnimation: SuiSidebarAnimation = null;
@@ -36,21 +34,28 @@ export class SuiSidebarComponent {
   set visible(isVisible) {
     this._visible = isVisible;
     this.visibleChange.emit(this._visible);
-
-    if (this.pusherChild) {
-      this.pusherChild.isSidebarOpen = this._visible;
-    }
+    this.sidebarService.changeVisibility(this._visible);
   }
 
   @HostBinding('class')
   get classes(): string {
     return [
       'ui',
+      this.suiSidebarPosition,
       this.suiSidebarWidth,
       Utils.getPropClass(this.suiInverted, 'inverted'),
       'sidebar',
       this.suiSidebarAnimation,
       Utils.getPropClass(this.visible, 'visible')
     ].joinWithWhitespaceCleanup();
+  }
+
+  constructor(private sidebarService: SuiSidebarService) {
+    sidebarService.pusherClicked
+      .subscribe(() => {
+        if (this.visibleChange.observers.length > 0) {
+          this.visible = false;
+        }
+      });
   }
 }
