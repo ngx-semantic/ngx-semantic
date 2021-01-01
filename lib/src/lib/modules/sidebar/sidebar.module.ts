@@ -4,20 +4,23 @@
 
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {SuiSidebarContainerComponent} from './sidebar-container.component';
 import {SuiSidebarPusherComponent} from './sidebar-pusher.component';
 import {SuiSidebarComponent} from './sidebar.component';
 
 @NgModule({
   declarations: [
     SuiSidebarComponent,
-    SuiSidebarPusherComponent
+    SuiSidebarPusherComponent,
+    SuiSidebarContainerComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
     SuiSidebarComponent,
-    SuiSidebarPusherComponent
+    SuiSidebarPusherComponent,
+    SuiSidebarContainerComponent
   ]
 })
 export class SuiSidebarModule {
