@@ -11,16 +11,16 @@ export type SuiRotateDirection = 'left' | 'right' | null;
 @Directive({
   selector: '[sui-reveal]'
 })
-export class SuiRevealComponent {
-  @Input() suiMove: SuiMoveDirection = null;
-  @Input() suiRotate: SuiRotateDirection = null;
-  @Input() suiSize: SuiSize = null;
-  @Input() suiFade = false;
-  @Input() suiActive = false;
-  @Input() suiInstant = false;
-  @Input() suiDisabled = false;
-  @Input() suiCircular = false;
-  @Input() suiImage = false;
+export class SuiRevealDirective {
+  @Input() public suiMove: SuiMoveDirection = null;
+  @Input() public suiRotate: SuiRotateDirection = null;
+  @Input() public suiSize: SuiSize = null;
+  @Input() public suiFade = false;
+  @Input() public suiActive = false;
+  @Input() public suiInstant = false;
+  @Input() public suiDisabled = false;
+  @Input() public suiCircular = false;
+  @Input() public suiImage = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -39,7 +39,7 @@ export class SuiRevealComponent {
     ].joinWithWhitespaceCleanup();
   }
 
-  getRotate(): string {
+  public getRotate(): string {
     const classKey = 'rotate';
 
     if (!this.suiRotate) {
@@ -53,7 +53,7 @@ export class SuiRevealComponent {
     return classKey;
   }
 
-  getMove(): string {
+  public getMove(): string {
     const classKey = 'move';
 
     if (!this.suiMove) {
