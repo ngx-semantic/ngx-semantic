@@ -2,7 +2,7 @@
  * Created by bolor on 5/23/2020
  */
 
-import {Component, Directive, HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import {Utils} from '../../common';
 
 @Directive({

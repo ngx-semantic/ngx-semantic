@@ -2,17 +2,14 @@
  * Created by bolor on 5/17/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiSize, Utils} from '../../common';
 
 export type SuiMoveDirection = 'left' | 'right' | 'up' | 'down' | null;
 export type SuiRotateDirection = 'left' | 'right' | null;
 
-@Component({
-  selector: '[sui-reveal]',
-  template: `
-    <ng-content></ng-content>
-  `
+@Directive({
+  selector: '[sui-reveal]'
 })
 export class SuiRevealComponent {
   @Input() suiMove: SuiMoveDirection = null;

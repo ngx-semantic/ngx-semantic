@@ -2,7 +2,7 @@
  * Created by bolor on 5/18/2020
  */
 
-import {Component, Directive, HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiColour, Utils} from '../../common';
 
 export type SuiSegmentStacking = 'stacked' | 'tall stacked' | null;
