@@ -2,25 +2,22 @@
  * Created by bolor on 5/4/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiSize, Utils} from '../../common';
 
 export type SuiLoaderInlineAlignment = 'centered' | 'normal' | null;
 
-@Component({
-  selector: 'div[sui-loader]',
-  template: `
-    <ng-content></ng-content>
-  `
+@Directive({
+  selector: '[sui-loader]'
 })
-export class SuiLoaderComponent {
-  @Input() suiInline: SuiLoaderInlineAlignment = null;
-  @Input() suiSize: SuiSize = null;
-  @Input() suiText = false;
-  @Input() suiIndeterminate = false;
-  @Input() suiActive = false;
-  @Input() suiDisabled = false;
-  @Input() suiInverted = false;
+export class SuiLoaderDirective {
+  @Input() public suiInline: SuiLoaderInlineAlignment = null;
+  @Input() public suiSize: SuiSize = null;
+  @Input() public suiText = false;
+  @Input() public suiIndeterminate = false;
+  @Input() public suiActive = false;
+  @Input() public suiDisabled = false;
+  @Input() public suiInverted = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -37,7 +34,7 @@ export class SuiLoaderComponent {
     ].joinWithWhitespaceCleanup();
   }
 
-  getInline(): string {
+  public getInline(): string {
     const classKey = 'inline';
 
     if (!this.suiInline) {
