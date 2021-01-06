@@ -23,7 +23,6 @@ export class SuiSidebarComponent {
   @Input() public suiInverted = false;
   @Output() public visibleChange = new EventEmitter<boolean>();
 
-  // tslint:disable-next-line:variable-name
   private _visible = true;
 
   @Input()

@@ -30,8 +30,8 @@ export class SuiDimmerDirective implements AfterContentInit {
   @Input() public suiFullPage = false;
   @Input() public disabled = false;
 
-  // tslint:disable-next-line:variable-name
   private _dimmed = false;
+  private _dimmerDomRef: any;
 
   @Input()
   public set dimmed(isDimmed: boolean) {
@@ -61,47 +61,65 @@ export class SuiDimmerDirective implements AfterContentInit {
   }
 
   public ngAfterContentInit(): void {
-    const dimmer = this.renderer.createElement('div');
-    this.renderer.addClass(dimmer, 'ui');
+    this._dimmerDomRef = this.renderer.createElement('div');
+    this.renderer.addClass(this._dimmerDomRef, 'ui');
 
     if (this.suiFullPage) {
-      this.renderer.addClass(dimmer, 'page');
+      this.renderer.addClass(this._dimmerDomRef, 'page');
     }
 
     if (this.suiSimple) {
-      this.renderer.addClass(dimmer, 'simple');
+      this.renderer.addClass(this._dimmerDomRef, 'simple');
     }
 
     if (this.suiInverted) {
-      this.renderer.addClass(dimmer, 'inverted');
+      this.renderer.addClass(this._dimmerDomRef, 'inverted');
     }
 
     if (this.suiAlignment) {
-      this.renderer.addClass(dimmer, this.suiAlignment);
-      this.renderer.addClass(dimmer, 'aligned');
+      this.renderer.addClass(this._dimmerDomRef, this.suiAlignment);
+      this.renderer.addClass(this._dimmerDomRef, 'aligned');
     }
 
-    this.renderer.addClass(dimmer, 'dimmer');
-    this.renderer.addClass(dimmer, 'transition');
-    this.renderer.addClass(dimmer, 'hidden');
-    this.renderer.setStyle(dimmer, 'display', 'flex', RendererStyleFlags2.Important);
+    this.renderer.addClass(this._dimmerDomRef, 'dimmer');
+    this.renderer.addClass(this._dimmerDomRef, 'transition');
+    this.renderer.addClass(this._dimmerDomRef, 'hidden');
+    this.renderer.setStyle(this._dimmerDomRef, 'display', 'flex', RendererStyleFlags2.Important);
 
     //  if there is embedded content, then render it
     if (this.content) {
-      const contentContainer = this.renderer.createElement('div');
-      this.renderer.addClass(contentContainer, 'content');
+      const dimmerContentDomRef = this.renderer.createElement('div');
+      this.renderer.addClass(dimmerContentDomRef, 'content');
 
       // get the directive content and append to this div
       const embeddedView = this.viewRef.createEmbeddedView(this.content);
       embeddedView.detectChanges();
       for (const node of embeddedView.rootNodes) {
-        this.renderer.appendChild(contentContainer, node);
+        this.renderer.appendChild(dimmerContentDomRef, node);
       }
 
       // add content to root div
-      this.renderer.appendChild(dimmer, contentContainer);
+      this.renderer.appendChild(this._dimmerDomRef, dimmerContentDomRef);
     }
 
-    this.renderer.appendChild(this.element.nativeElement, dimmer);
+    this.renderer.appendChild(this.element.nativeElement, this._dimmerDomRef);
+  }
+
+  private showDimmer(): void {
+    // remove the hidden attr
+    this.renderer.removeClass(this._dimmerDomRef, 'hidden');
+
+    // add the display attrs
+    this.renderer.addClass(this._dimmerDomRef, 'visible');
+    this.renderer.addClass(this._dimmerDomRef, 'active');
+  }
+
+  private hideDimmer(): void {
+    // remove the display attrs
+    this.renderer.removeClass(this._dimmerDomRef, 'visible');
+    this.renderer.removeClass(this._dimmerDomRef, 'active');
+
+    // add the hidden attr
+    this.renderer.addClass(this._dimmerDomRef, 'hidden');
   }
 }
