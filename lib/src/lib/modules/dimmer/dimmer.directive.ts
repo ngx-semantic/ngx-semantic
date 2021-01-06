@@ -23,29 +23,40 @@ export type SuiDimmerContentAlignment = 'top' | 'bottom' | null;
 export class SuiDimmerDirective implements AfterContentInit {
   @ContentChild(SuiDimmerContentDirective, {static: true, read: TemplateRef}) private content: TemplateRef<any>;
 
-  @Input() public suiAlignment: SuiDimmerContentAlignment = null;
+  @Input() public suiDimmerAlignment: SuiDimmerContentAlignment = null;
   @Input() public suiBlurring = false;
-  @Input() public suiInverted = false;
+  @Input() public suiDimmerInverted = false;
   @Input() public suiSimple = false;
   @Input() public suiFullPage = false;
+  @Input() public suiCloseOnClick = true;
   @Input() public disabled = false;
+  @Output() public dimmedChanged = new EventEmitter<boolean>();
 
   private _dimmed = false;
   private _dimmerDomRef: any;
 
-  @Input()
-  public set dimmed(isDimmed: boolean) {
-    if (isDimmed !== this._dimmed) {
-      this._dimmed = isDimmed;
-      this.dimmedChanged.emit(this._dimmed);
-    }
-  }
-
-  public get dimmed(): boolean {
+  get dimmed(): boolean {
     return this._dimmed;
   }
 
-  @Output() public dimmedChanged = new EventEmitter<boolean>();
+  @Input()
+  set dimmed(isDimmed: boolean) {
+    if (this.disabled) {
+      return;
+    }
+
+    if (isDimmed !== this._dimmed) {
+      this._dimmed = isDimmed;
+      this.dimmedChanged.emit(this._dimmed);
+
+      // implement Ui changes
+      if (this._dimmed) {
+        this.showDimmer();
+      } else {
+        this.hideDimmer();
+      }
+    }
+  }
 
   @HostBinding('class')
   get classes(): string {
@@ -72,12 +83,12 @@ export class SuiDimmerDirective implements AfterContentInit {
       this.renderer.addClass(this._dimmerDomRef, 'simple');
     }
 
-    if (this.suiInverted) {
+    if (this.suiDimmerInverted) {
       this.renderer.addClass(this._dimmerDomRef, 'inverted');
     }
 
-    if (this.suiAlignment) {
-      this.renderer.addClass(this._dimmerDomRef, this.suiAlignment);
+    if (this.suiDimmerAlignment) {
+      this.renderer.addClass(this._dimmerDomRef, this.suiDimmerAlignment);
       this.renderer.addClass(this._dimmerDomRef, 'aligned');
     }
 
