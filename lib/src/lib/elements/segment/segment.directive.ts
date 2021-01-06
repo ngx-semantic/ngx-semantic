@@ -2,7 +2,7 @@
  * Created by bolor on 5/18/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiColour, Utils} from '../../common';
 
 export type SuiSegmentStacking = 'stacked' | 'tall stacked' | null;
@@ -12,13 +12,10 @@ export type SuiSegmentEmphasis = 'secondary' | 'tertiary' | null;
 export type SuiSegmentTextAlignment = 'left aligned' | 'center aligned' | 'right aligned' | null;
 export type SuiSegmentFloat = 'left floated' | 'right floated' | null;
 
-@Component({
-  selector: '[sui-segment]',
-  template: `
-    <ng-content></ng-content>
-  `
+@Directive({
+  selector: '[sui-segment]'
 })
-export class SuiSegmentComponent {
+export class SuiSegmentDirective {
   @Input() public suiColour: SuiColour = null;
   @Input() public suiAttached: SuiSegmentAttachment = null;
   @Input() public suiStacked: SuiSegmentStacking = null;

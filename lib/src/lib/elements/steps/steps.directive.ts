@@ -2,26 +2,23 @@
  * Created by bolor on 9/20/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, Directive, HostBinding, Input} from '@angular/core';
 import {SuiSize, SuiWidth, Utils} from '../../common';
 
 export type SuiStepsAttachment = 'top attached' | 'bottom attached' | null;
 
-@Component({
-  selector: '[sui-steps]',
-  template: `
-    <ng-content></ng-content>
-  `
+@Directive({
+  selector: '[sui-steps]'
 })
-export class SuiStepsComponent {
-  @Input() suiWidth: SuiWidth = null;
-  @Input() suiAttached: SuiStepsAttachment = null;
-  @Input() suiSize: SuiSize = null;
-  @Input() suiOrdered = false;
-  @Input() suiVertical = false;
-  @Input() suiFluid = false;
-  @Input() suiUnstackable = false;
-  @Input() suiTabletStackable = false;
+export class SuiStepsDirective {
+  @Input() public suiWidth: SuiWidth = null;
+  @Input() public suiAttached: SuiStepsAttachment = null;
+  @Input() public suiSize: SuiSize = null;
+  @Input() public suiOrdered = false;
+  @Input() public suiVertical = false;
+  @Input() public suiFluid = false;
+  @Input() public suiUnstackable = false;
+  @Input() public suiTabletStackable = false;
 
   @HostBinding('class')
   get classes(): string {

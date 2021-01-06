@@ -4,19 +4,19 @@
 
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SuiRevealComponent} from './reveal.component';
+import {SuiRevealDirective} from './reveal.directive';
 import {SuiRevealContentDirective} from './reveal-content.directive';
 
 @NgModule({
   declarations: [
-    SuiRevealComponent,
+    SuiRevealDirective,
     SuiRevealContentDirective
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    SuiRevealComponent,
+    SuiRevealDirective,
     SuiRevealContentDirective
   ]
 })

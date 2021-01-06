@@ -4,19 +4,19 @@
 
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SuiStepsComponent} from './steps.component';
+import {SuiStepsDirective} from './steps.directive';
 import {SuiStepComponent} from './step.component';
 
 @NgModule({
   declarations: [
-    SuiStepsComponent,
+    SuiStepsDirective,
     SuiStepComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    SuiStepsComponent,
+    SuiStepsDirective,
     SuiStepComponent
   ]
 })

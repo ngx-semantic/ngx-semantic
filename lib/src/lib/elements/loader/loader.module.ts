@@ -3,13 +3,13 @@
  */
 
 import {NgModule} from '@angular/core';
-import {SuiLoaderComponent} from './loader.component';
+import {SuiLoaderDirective} from './loader.directive';
 import {CommonModule} from '@angular/common';
 
 @NgModule({
-  declarations: [SuiLoaderComponent],
+  declarations: [SuiLoaderDirective],
   imports: [CommonModule],
-  exports: [SuiLoaderComponent]
+  exports: [SuiLoaderDirective]
 })
 export class SuiLoaderModule {
 }
