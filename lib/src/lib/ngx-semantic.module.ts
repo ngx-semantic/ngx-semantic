@@ -32,6 +32,7 @@ import {SuiTabsModule} from './modules/tabs';
 import {SuiAdvertisementModule} from './views/advertisement';
 import {SuiCardModule} from './views/card';
 import {SuiCommentModule} from './views/comment';
+import {SuiDimmerModule} from './modules/dimmer';
 import {SuiItemsModule} from './views/items';
 import {SuiStatisticModule} from './views/statistics';
 
@@ -54,6 +55,7 @@ import {SuiStatisticModule} from './views/statistics';
     SuiStepsModule,
     SuiTableModule,
     SuiLoaderModule,
+    SuiDimmerModule,
     SuiHeaderModule,
     SuiButtonModule,
     SuiRevealModule,
