@@ -3,14 +3,14 @@
  */
 
 import {NgModule} from '@angular/core';
-import {SuiSegmentComponent} from './segment.component';
+import {SuiSegmentDirective} from './segment.directive';
 import {CommonModule} from '@angular/common';
-import {SuiSegmentsComponent} from './segments.component';
+import {SuiSegmentsDirective} from './segments.directive';
 
 @NgModule({
-  declarations: [SuiSegmentComponent, SuiSegmentsComponent],
+  declarations: [SuiSegmentDirective, SuiSegmentsDirective],
   imports: [CommonModule],
-  exports: [SuiSegmentComponent, SuiSegmentsComponent]
+  exports: [SuiSegmentDirective, SuiSegmentsDirective]
 })
 export class SuiSegmentModule {
 }

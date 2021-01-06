@@ -14,14 +14,14 @@ export type SuiStepsAttachment = 'top attached' | 'bottom attached' | null;
   `
 })
 export class SuiStepsComponent {
-  @Input() suiWidth: SuiWidth = null;
-  @Input() suiAttached: SuiStepsAttachment = null;
-  @Input() suiSize: SuiSize = null;
-  @Input() suiOrdered = false;
-  @Input() suiVertical = false;
-  @Input() suiFluid = false;
-  @Input() suiUnstackable = false;
-  @Input() suiTabletStackable = false;
+  @Input() public suiWidth: SuiWidth = null;
+  @Input() public suiAttached: SuiStepsAttachment = null;
+  @Input() public suiSize: SuiSize = null;
+  @Input() public suiOrdered = false;
+  @Input() public suiVertical = false;
+  @Input() public suiFluid = false;
+  @Input() public suiUnstackable = false;
+  @Input() public suiTabletStackable = false;
 
   @HostBinding('class')
   get classes(): string {

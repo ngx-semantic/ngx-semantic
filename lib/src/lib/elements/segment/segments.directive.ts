@@ -2,20 +2,17 @@
  * Created by bolor on 5/23/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, Directive, HostBinding, Input} from '@angular/core';
 import {Utils} from '../../common';
 
-@Component({
-  selector: '[sui-segments]',
-  template: `
-    <ng-content></ng-content>
-  `
+@Directive({
+  selector: '[sui-segments]'
 })
-export class SuiSegmentsComponent {
-  @Input() suiHorizontal = false;
-  @Input() suiRaised = false;
-  @Input() suiStacked = false;
-  @Input() suiPiled = false;
+export class SuiSegmentsDirective {
+  @Input() public suiHorizontal = false;
+  @Input() public suiRaised = false;
+  @Input() public suiStacked = false;
+  @Input() public suiPiled = false;
 
   @HostBinding('class')
   get classes(): string {
