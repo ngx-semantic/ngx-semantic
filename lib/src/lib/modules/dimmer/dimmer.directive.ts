@@ -8,7 +8,7 @@ import {
   Directive, ElementRef,
   EventEmitter,
   HostBinding,
-  Input,
+  Input, OnDestroy,
   Output, Renderer2, RendererStyleFlags2,
   TemplateRef, ViewContainerRef
 } from '@angular/core';
@@ -20,7 +20,7 @@ export type SuiDimmerContentAlignment = 'top' | 'bottom' | null;
 @Directive({
   selector: '[sui-dimmer]'
 })
-export class SuiDimmerDirective implements AfterContentInit {
+export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
   @ContentChild(SuiDimmerContentDirective, {static: true, read: TemplateRef}) private content: TemplateRef<any>;
 
   @Input() public suiDimmerAlignment: SuiDimmerContentAlignment = null;
@@ -34,6 +34,7 @@ export class SuiDimmerDirective implements AfterContentInit {
 
   private _dimmed = false;
   private _dimmerDomRef: any;
+  private unlistener: () => void;
 
   get dimmed(): boolean {
     return this._dimmed;
@@ -114,6 +115,17 @@ export class SuiDimmerDirective implements AfterContentInit {
     }
 
     this.renderer.appendChild(this.element.nativeElement, this._dimmerDomRef);
+    this.unlistener = this.renderer.listen(this._dimmerDomRef, 'click', (event) => {
+      const classes = event.target.className;
+      // verify that the dimmer is shown and is the item clicked
+      if (classes.includes('ui') && classes.includes('dimmer') && classes.includes('visible')) {
+        this.onClick();
+      }
+    });
+  }
+
+  public ngOnDestroy(): void {
+    this.unlistener();
   }
 
   private showDimmer(): void {
@@ -132,5 +144,11 @@ export class SuiDimmerDirective implements AfterContentInit {
 
     // add the hidden attr
     this.renderer.addClass(this._dimmerDomRef, 'hidden');
+  }
+
+  private onClick(): void {
+    if (this.suiCloseOnClick) {
+      this.dimmed = false;
+    }
   }
 }
