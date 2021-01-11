@@ -22,7 +22,9 @@ import {SuiRevealModule} from './elements/reveal';
 import {SuiSegmentModule} from './elements/segment';
 import {SuiStepsModule} from './elements/steps';
 import {SuiCheckboxModule} from './modules/checkbox';
+import {SuiDimmerModule} from './modules/dimmer';
 import {SuiDropdownModule} from './modules/dropdown';
+import {SuiPopupModule} from './modules/popup';
 import {SuiProgressModule} from './modules/progress';
 import {SuiRatingModule} from './modules/rating';
 import {SuiSearchModule} from './modules/search';
@@ -32,7 +34,6 @@ import {SuiTabsModule} from './modules/tabs';
 import {SuiAdvertisementModule} from './views/advertisement';
 import {SuiCardModule} from './views/card';
 import {SuiCommentModule} from './views/comment';
-import {SuiDimmerModule} from './modules/dimmer';
 import {SuiItemsModule} from './views/items';
 import {SuiStatisticModule} from './views/statistics';
 
@@ -54,6 +55,7 @@ import {SuiStatisticModule} from './views/statistics';
     SuiLabelModule,
     SuiStepsModule,
     SuiTableModule,
+    SuiPopupModule,
     SuiLoaderModule,
     SuiDimmerModule,
     SuiHeaderModule,
