@@ -67,5 +67,35 @@ export class SuiPopupDirective implements OnInit {
 
     this.renderer.addClass(this._popupDomRef, 'transition');
     this.renderer.addClass(this._popupDomRef, 'hidden');
+
+    // handle the title
+    if (this.suiPopupTitle) {
+      const titleDomRef = this.renderer.createElement('div');
+      this.renderer.addClass(titleDomRef, 'header');
+      this.renderer.appendChild(this._popupDomRef, titleDomRef);
+    }
+
+    // handle the content
+    if (this.suiPopupContent) {
+      const contentDomRef = this.renderer.createElement('div');
+      this.renderer.addClass(contentDomRef, 'content');
+
+      // if the content is a string then just render
+      if (typeof this.suiPopupContent === 'string') {
+        this.renderer.appendChild(contentDomRef, this.suiPopupContent);
+      }
+
+      // if the content is a template ref, render it and embed
+      if (this.suiPopupContent instanceof TemplateRef) {
+        const view = this.viewRef.createEmbeddedView(this.suiPopupContent);
+        view.detectChanges();
+
+        for (const node of view.rootNodes) {
+          this.renderer.appendChild(contentDomRef, node);
+        }
+      }
+
+      this.renderer.appendChild(this._popupDomRef, contentDomRef);
+    }
   }
 }
