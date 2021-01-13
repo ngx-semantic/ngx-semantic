@@ -24,4 +24,5 @@ export class SuiPopupDirective {
   @Input() public suiPopupInverted = false;
   @Input() public suiPopupFluid = false;
   @Input() public suiPopupFlowing = false;
+
 }

@@ -126,6 +126,11 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this.unlistener();
+
+    // remove the dom element if it exists
+    if (this._dimmerDomRef) {
+      this.renderer.removeChild(this.element.nativeElement, this._dimmerDomRef);
+    }
   }
 
   private showDimmer(): void {
