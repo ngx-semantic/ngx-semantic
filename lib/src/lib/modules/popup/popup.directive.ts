@@ -1,4 +1,14 @@
-import {Directive, ElementRef, Input, OnInit, Renderer2, TemplateRef, ViewContainerRef} from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  HostListener,
+  Input,
+  OnDestroy,
+  Renderer2,
+  RendererStyleFlags2,
+  TemplateRef,
+  ViewContainerRef
+} from '@angular/core';
 import {SuiSize} from '../../common';
 
 export type SuiPopupPlacement =
@@ -15,7 +25,7 @@ export type SuiPopupWidth = 'wide' | 'very wide' | null;
 @Directive({
   selector: '[sui-popup]'
 })
-export class SuiPopupDirective implements OnInit {
+export class SuiPopupDirective implements OnDestroy {
   @Input() public suiPopupPlacement: SuiPopupPlacement = 'top center';
   @Input() public suiPopupWidth: SuiPopupWidth = null;
   @Input() public suiPopupSize: SuiSize = null;
@@ -31,7 +41,27 @@ export class SuiPopupDirective implements OnInit {
               private viewRef: ViewContainerRef) {
   }
 
-  public ngOnInit(): void {
+  @HostListener('mouseover', ['$event'])
+  public onHover(event: MouseEvent): void {
+    if (!this._popupDomRef) {
+      this.initializePopup();
+    }
+
+    this.showPopup();
+  }
+
+  @HostListener('mouseout')
+  public onUnhover(): void {
+    this.hidePopup();
+  }
+
+  public ngOnDestroy(): void {
+    if (this._popupDomRef) {
+      this.renderer.removeChild(this.element.nativeElement.parentNode, this._popupDomRef);
+    }
+  }
+
+  private initializePopup(): void {
     this._popupDomRef = this.renderer.createElement('div');
     this.renderer.addClass(this._popupDomRef, 'ui');
 
@@ -66,12 +96,12 @@ export class SuiPopupDirective implements OnInit {
     placementParts.forEach((part) => this.renderer.addClass(this._popupDomRef, part));
 
     this.renderer.addClass(this._popupDomRef, 'transition');
-    this.renderer.addClass(this._popupDomRef, 'hidden');
 
     // handle the title
     if (this.suiPopupTitle) {
       const titleDomRef = this.renderer.createElement('div');
       this.renderer.addClass(titleDomRef, 'header');
+      this.renderer.appendChild(titleDomRef, this.renderer.createText(this.suiPopupTitle));
       this.renderer.appendChild(this._popupDomRef, titleDomRef);
     }
 
@@ -82,7 +112,7 @@ export class SuiPopupDirective implements OnInit {
 
       // if the content is a string then just render
       if (typeof this.suiPopupContent === 'string') {
-        this.renderer.appendChild(contentDomRef, this.suiPopupContent);
+        this.renderer.appendChild(contentDomRef, this.renderer.createText(this.suiPopupContent));
       }
 
       // if the content is a template ref, render it and embed
@@ -97,5 +127,27 @@ export class SuiPopupDirective implements OnInit {
 
       this.renderer.appendChild(this._popupDomRef, contentDomRef);
     }
+
+    // show the popup
+    this.renderer.appendChild(this.element.nativeElement.parentNode, this._popupDomRef);
+    this.showPopup();
+  }
+
+  private showPopup(): void {
+    // remove the hidden attr
+    this.renderer.removeClass(this._popupDomRef, 'hidden');
+
+    // add the display attrs
+    this.renderer.addClass(this._popupDomRef, 'visible');
+    this.renderer.setStyle(this._popupDomRef, 'display', 'block', RendererStyleFlags2.Important);
+  }
+
+  private hidePopup(): void {
+    // remove the hidden attr
+    this.renderer.removeClass(this._popupDomRef, 'visible');
+
+    // add the display attrs
+    this.renderer.addClass(this._popupDomRef, 'hidden');
+    this.renderer.removeStyle(this._popupDomRef, 'display', RendererStyleFlags2.Important);
   }
 }
