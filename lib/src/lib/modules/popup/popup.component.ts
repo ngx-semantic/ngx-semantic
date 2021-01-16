@@ -2,7 +2,7 @@
  * Created by bolorundurowb on 1/16/2021
  */
 
-import {Component, Input, TemplateRef, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, Input, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {SuiSize, Utils} from '../../common';
 import {SuiPopupPlacement, SuiPopupWidth} from './popup.directive';
 
@@ -10,32 +10,24 @@ import {SuiPopupPlacement, SuiPopupWidth} from './popup.directive';
   selector: 'sui-popup',
   encapsulation: ViewEncapsulation.None,
   template: `
-    <ng-template
-      #overlay="cdkConnectedOverlay"
-      cdkConnectedOverlay
-      [cdkConnectedOverlayOrigin]="origin"
-      [cdkConnectedOverlayPositions]="_positions"
-      [cdkConnectedOverlayOpen]="_visible"
-      [cdkConnectedOverlayPush]="true">
-      <div style="display: block !important;"
-           [ngClass]="classes">
-        <ng-container *ngIf="suiTitle">
-          <div class="header">
-            {{suiTitle}}
-          </div>
+    <div style="display: block !important;"
+         [ngClass]="classes">
+      <ng-container *ngIf="suiTitle">
+        <div class="header">
+          {{suiTitle}}
+        </div>
+      </ng-container>
+
+      <div class="content">
+        <ng-container *ngIf="isString">
+          {{suiContent}}
         </ng-container>
 
-        <div class="content">
-          <ng-container *ngIf="isString">
-            {{suiContent}}
-          </ng-container>
-
-          <ng-container *ngIf="isTemplate">
-            <ng-container *ngTemplateOutlet="suiContent"></ng-container>
-          </ng-container>
-        </div>
+        <ng-container *ngIf="isTemplate">
+          <ng-container *ngTemplateOutlet="suiContent"></ng-container>
+        </ng-container>
       </div>
-    </ng-template>
+    </div>
   `
 })
 export class SuiPopupComponent {
@@ -47,8 +39,6 @@ export class SuiPopupComponent {
   @Input() public suiInverted = false;
   @Input() public suiFluid = false;
   @Input() public suiFlowing = false;
-
-  // origin?: ElementRef<HTMLElement>;
 
   get classes(): Array<string> {
     return [
