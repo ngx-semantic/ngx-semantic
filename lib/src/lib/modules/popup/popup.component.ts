@@ -10,23 +10,32 @@ import {SuiPopupPlacement, SuiPopupWidth} from './popup.directive';
   selector: 'sui-popup',
   encapsulation: ViewEncapsulation.None,
   template: `
-    <div [ngClass]="classes">
-      <ng-container *ngIf="suiTitle">
-        <div class="header">
-          {{suiTitle}}
+    <ng-template
+      #overlay="cdkConnectedOverlay"
+      cdkConnectedOverlay
+      [cdkConnectedOverlayOrigin]="origin"
+      [cdkConnectedOverlayPositions]="_positions"
+      [cdkConnectedOverlayOpen]="_visible"
+      [cdkConnectedOverlayPush]="true">
+      <div style="display: block !important;"
+           [ngClass]="classes">
+        <ng-container *ngIf="suiTitle">
+          <div class="header">
+            {{suiTitle}}
+          </div>
+        </ng-container>
+
+        <div class="content">
+          <ng-container *ngIf="isString">
+            {{suiContent}}
+          </ng-container>
+
+          <ng-container *ngIf="isTemplate">
+            <ng-container *ngTemplateOutlet="suiContent"></ng-container>
+          </ng-container>
         </div>
-      </ng-container>
-
-      <div class="content">
-        <ng-container *ngIf="isString">
-          {{suiContent}}
-        </ng-container>
-
-        <ng-container *ngIf="isTemplate">
-          <ng-container *ngTemplateOutlet="suiContent"></ng-container>
-        </ng-container>
       </div>
-    </div>
+    </ng-template>
   `
 })
 export class SuiPopupComponent {
@@ -38,6 +47,8 @@ export class SuiPopupComponent {
   @Input() public suiInverted = false;
   @Input() public suiFluid = false;
   @Input() public suiFlowing = false;
+
+  // origin?: ElementRef<HTMLElement>;
 
   get classes(): Array<string> {
     return [

@@ -1,5 +1,7 @@
-import {Overlay} from '@angular/cdk/overlay';
+import {ConnectionPositionPair, Overlay, OverlayRef} from '@angular/cdk/overlay';
+import {ComponentPortal, TemplatePortal} from '@angular/cdk/portal';
 import {
+  ComponentFactoryResolver, ComponentRef,
   Directive,
   ElementRef, Host,
   HostListener,
@@ -10,7 +12,10 @@ import {
   TemplateRef,
   ViewContainerRef
 } from '@angular/core';
+import {Subject} from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import {SuiSize} from '../../common';
+import {SuiPopupComponent} from './popup.component';
 
 export type SuiPopupPlacement =
   'top left'
@@ -37,16 +42,17 @@ export class SuiPopupDirective implements OnDestroy {
   @Input() public suiPopupFluid = false;
   @Input() public suiPopupFlowing = false;
 
-  private _popupDomRef;
+  private unsubscribe = new Subject();
+  private overlayRef?: OverlayRef;
+  private _componentRef: ComponentRef<SuiPopupComponent>;
 
-  constructor(private renderer: Renderer2, private element: ElementRef,
-              private viewRef: ViewContainerRef, @Host() private host: SuiPopupDirective,
-              private overlay: Overlay) {
+  constructor(private elementRef: ElementRef,              private overlay: Overlay,
+               private resolver: ComponentFactoryResolver, private vcr: ViewContainerRef) {
   }
 
   @HostListener('mouseover', ['$event'])
   public onHover(event: MouseEvent): void {
-    if (!this._popupDomRef) {
+    if (!this.overlayRef) {
       this.initializePopup();
     }
 
@@ -59,98 +65,49 @@ export class SuiPopupDirective implements OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    if (this._popupDomRef) {
-      this.renderer.removeChild(this.element.nativeElement.parentNode, this._popupDomRef);
-    }
+    this.hidePopup();
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 
   private initializePopup(): void {
-    this._popupDomRef = this.renderer.createElement('div');
-    this.renderer.addClass(this._popupDomRef, 'ui');
+    const scrollStrategy = this.overlay
+      .scrollStrategies
+      .reposition();
+    const positionStrategy = this.overlay
+      .position()
+      .flexibleConnectedTo(this.elementRef.nativeElement)
+      .withPositions([
+        new ConnectionPositionPair({ originX: 'start', originY: 'bottom' }, { overlayX: 'start', overlayY: 'top' }),
+        new ConnectionPositionPair({ originX: 'start', originY: 'top' }, { overlayX: 'start', overlayY: 'bottom' })
+      ])
+      .withPush(false);
 
-    if (this.suiPopupWidth) {
-      if (this.suiPopupWidth === 'very wide') {
-        this.renderer.addClass(this._popupDomRef, 'very');
-      }
+    this.overlayRef = this.overlay.create({
+      positionStrategy,
+      scrollStrategy,
+      hasBackdrop: true
+    });
 
-      this.renderer.addClass(this._popupDomRef, 'wide');
-    }
-
-    if (this.suiPopupSize) {
-      this.renderer.addClass(this._popupDomRef, this.suiPopupSize);
-    }
-
-    if (this.suiPopupInverted) {
-      this.renderer.addClass(this._popupDomRef, 'inverted');
-    }
-
-    if (this.suiPopupFluid) {
-      this.renderer.addClass(this._popupDomRef, 'fluid');
-    }
-
-    if (this.suiPopupFlowing) {
-      this.renderer.addClass(this._popupDomRef, 'flowing');
-    }
-
-    this.renderer.addClass(this._popupDomRef, 'popup');
-
-    // handle position of popup
-    const placementParts = this.suiPopupPlacement.split(' ');
-    placementParts.forEach((part) => this.renderer.addClass(this._popupDomRef, part));
-
-    this.renderer.addClass(this._popupDomRef, 'transition');
-
-    // handle the title
-    if (this.suiPopupTitle) {
-      const titleDomRef = this.renderer.createElement('div');
-      this.renderer.addClass(titleDomRef, 'header');
-      this.renderer.appendChild(titleDomRef, this.renderer.createText(this.suiPopupTitle));
-      this.renderer.appendChild(this._popupDomRef, titleDomRef);
-    }
-
-    // handle the content
-    if (this.suiPopupContent) {
-      const contentDomRef = this.renderer.createElement('div');
-      this.renderer.addClass(contentDomRef, 'content');
-
-      // if the content is a string then just render
-      if (typeof this.suiPopupContent === 'string') {
-        this.renderer.appendChild(contentDomRef, this.renderer.createText(this.suiPopupContent));
-      }
-
-      // if the content is a template ref, render it and embed
-      if (this.suiPopupContent instanceof TemplateRef) {
-        const view = this.viewRef.createEmbeddedView(this.suiPopupContent);
-        view.detectChanges();
-
-        for (const node of view.rootNodes) {
-          this.renderer.appendChild(contentDomRef, node);
-        }
-      }
-
-      this.renderer.appendChild(this._popupDomRef, contentDomRef);
-    }
-
-    // show the popup
-    this.renderer.appendChild(this.element.nativeElement.parentNode, this._popupDomRef);
-    this.showPopup();
+    this.overlayRef
+      .backdropClick()
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe(() => {
+        this.hidePopup();
+      });
   }
 
   private showPopup(): void {
-    // remove the hidden attr
-    this.renderer.removeClass(this._popupDomRef, 'hidden');
+    if (!this.overlayRef.hasAttached()) {
+      const periodSelectorPortal = new ComponentPortal(SuiPopupComponent, this.vcr, null, this.resolver);
 
-    // add the display attrs
-    this.renderer.addClass(this._popupDomRef, 'visible');
-    this.renderer.setStyle(this._popupDomRef, 'display', 'block', RendererStyleFlags2.Important);
+      this.overlayRef.attach(periodSelectorPortal);
+    }
   }
 
   private hidePopup(): void {
-    // remove the hidden attr
-    this.renderer.removeClass(this._popupDomRef, 'visible');
-
-    // add the display attrs
-    this.renderer.addClass(this._popupDomRef, 'hidden');
-    this.renderer.removeStyle(this._popupDomRef, 'display', RendererStyleFlags2.Important);
+    if (this.overlayRef.hasAttached()) {
+      this.overlayRef.detach();
+    }
   }
 }
