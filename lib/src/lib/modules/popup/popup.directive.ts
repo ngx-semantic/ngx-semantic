@@ -1,6 +1,7 @@
+import {Overlay} from '@angular/cdk/overlay';
 import {
   Directive,
-  ElementRef,
+  ElementRef, Host,
   HostListener,
   Input,
   OnDestroy,
@@ -23,7 +24,8 @@ export type SuiPopupPlacement =
 export type SuiPopupWidth = 'wide' | 'very wide' | null;
 
 @Directive({
-  selector: '[sui-popup]'
+  selector: '[sui-popup]',
+  exportAs: 'suiPopup'
 })
 export class SuiPopupDirective implements OnDestroy {
   @Input() public suiPopupPlacement: SuiPopupPlacement = 'top center';
@@ -38,7 +40,8 @@ export class SuiPopupDirective implements OnDestroy {
   private _popupDomRef;
 
   constructor(private renderer: Renderer2, private element: ElementRef,
-              private viewRef: ViewContainerRef) {
+              private viewRef: ViewContainerRef, @Host() private host: SuiPopupDirective,
+              private overlay: Overlay) {
   }
 
   @HostListener('mouseover', ['$event'])

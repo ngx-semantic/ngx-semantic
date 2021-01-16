@@ -1,3 +1,4 @@
+import {OverlayModule} from '@angular/cdk/overlay';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {SuiPopupDirective} from './popup.directive';
@@ -7,7 +8,8 @@ import {SuiPopupDirective} from './popup.directive';
     SuiPopupDirective
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    OverlayModule
   ],
   exports: [
     SuiPopupDirective

@@ -18,7 +18,8 @@ import {SuiDimmerContentDirective} from './dimmer-content.directive';
 export type SuiDimmerContentAlignment = 'top' | 'bottom' | null;
 
 @Directive({
-  selector: '[sui-dimmer]'
+  selector: '[sui-dimmer]',
+  exportAs: 'suiDimmer'
 })
 export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
   @ContentChild(SuiDimmerContentDirective, {static: true, read: TemplateRef}) private content: TemplateRef<any>;
