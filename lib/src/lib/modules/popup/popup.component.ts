@@ -2,7 +2,7 @@
  * Created by bolorundurowb on 1/16/2021
  */
 
-import {Component, ElementRef, Input, TemplateRef, ViewEncapsulation} from '@angular/core';
+import {Component, Input, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {SuiSize, Utils} from '../../common';
 import {SuiPopupPlacement, SuiPopupWidth} from './popup.directive';
 
