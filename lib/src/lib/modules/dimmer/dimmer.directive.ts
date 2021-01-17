@@ -18,16 +18,17 @@ import {SuiDimmerContentDirective} from './dimmer-content.directive';
 export type SuiDimmerContentAlignment = 'top' | 'bottom' | null;
 
 @Directive({
-  selector: '[sui-dimmer]'
+  selector: '[sui-dimmer]',
+  exportAs: 'suiDimmer'
 })
 export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
   @ContentChild(SuiDimmerContentDirective, {static: true, read: TemplateRef}) private content: TemplateRef<any>;
 
   @Input() public suiDimmerAlignment: SuiDimmerContentAlignment = null;
-  @Input() public suiBlurring = false;
+  @Input() public suiDimmerBlurring = false;
   @Input() public suiDimmerInverted = false;
-  @Input() public suiSimple = false;
-  @Input() public suiFullPage = false;
+  @Input() public suiDimmerSimple = false;
+  @Input() public suiDimmerFullPage = false;
   @Input() public suiCloseOnClick = true;
   @Input() public disabled = false;
   @Output() public dimmedChanged = new EventEmitter<boolean>();
@@ -62,7 +63,7 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
   @HostBinding('class')
   get classes(): string {
     return [
-      Utils.getPropClass(this.suiBlurring, 'blurring'),
+      Utils.getPropClass(this.suiDimmerBlurring, 'blurring'),
       'dimmable',
       Utils.getPropClass(this.dimmed, 'dimmed')
     ].joinWithWhitespaceCleanup();
@@ -76,11 +77,11 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
     this._dimmerDomRef = this.renderer.createElement('div');
     this.renderer.addClass(this._dimmerDomRef, 'ui');
 
-    if (this.suiFullPage) {
+    if (this.suiDimmerFullPage) {
       this.renderer.addClass(this._dimmerDomRef, 'page');
     }
 
-    if (this.suiSimple) {
+    if (this.suiDimmerSimple) {
       this.renderer.addClass(this._dimmerDomRef, 'simple');
     }
 
@@ -126,6 +127,11 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this.unlistener();
+
+    // remove the dom element if it exists
+    if (this._dimmerDomRef) {
+      this.renderer.removeChild(this.element.nativeElement, this._dimmerDomRef);
+    }
   }
 
   private showDimmer(): void {
