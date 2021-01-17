@@ -16,7 +16,7 @@ export type SuiGridRelaxation = 'relaxed' | 'very relaxed' | null;
   selector: '[sui-grid]',
   template: `
     <ng-content></ng-content>
-  `,
+  `
 })
 export class SuiGridComponent {
   @Input() public suiWidth: SuiWidth = null;
@@ -49,7 +49,7 @@ export class SuiGridComponent {
       Utils.getPropClass(this.suiCentered, 'centered'),
       Utils.getPropClass(this.suiDoubling, 'doubling'),
       'grid',
-      Utils.getPropClass(this.suiContainer, 'container'),
+      Utils.getPropClass(this.suiContainer, 'container')
     ].joinWithWhitespaceCleanup();
   }
 }

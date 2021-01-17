@@ -10,7 +10,7 @@ import {SuiPopupPlacement, SuiPopupWidth} from './popup.directive';
   selector: 'sui-popup',
   encapsulation: ViewEncapsulation.None,
   template: `
-    <div style="display: block !important;"
+    <div style="position: unset !important;"
          [ngClass]="classes">
       <ng-container *ngIf="suiTitle">
         <div class="header">

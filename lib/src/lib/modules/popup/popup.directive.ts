@@ -1,6 +1,6 @@
 import {ConnectedPosition, Overlay, OverlayPositionBuilder, OverlayRef} from '@angular/cdk/overlay';
 import {ComponentPortal} from '@angular/cdk/portal';
-import {ComponentRef, Directive, ElementRef, HostListener, Input, OnInit, TemplateRef} from '@angular/core';
+import {ComponentRef, Directive, ElementRef, HostListener, Input, OnDestroy, OnInit, TemplateRef} from '@angular/core';
 import {SuiSize} from '../../common';
 import {SuiPopupComponent} from './popup.component';
 
@@ -20,7 +20,7 @@ export type SuiPopupTrigger = 'hover' | 'click';
   selector: '[sui-popup]',
   exportAs: 'suiPopup'
 })
-export class SuiPopupDirective implements OnInit {
+export class SuiPopupDirective implements OnInit, OnDestroy {
   @Input() public suiPopupPlacement: SuiPopupPlacement = 'top center';
   @Input() public suiPopupTrigger: SuiPopupTrigger = 'hover';
   @Input() public suiPopupWidth: SuiPopupWidth = null;
