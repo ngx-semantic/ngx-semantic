@@ -28,7 +28,10 @@ import {SuiPopupPlacement, SuiPopupWidth} from './popup.directive';
         </ng-container>
       </div>
     </div>
-  `
+  `,
+  styles: [`
+    /*@import '~@angular/cdk/overlay-prebuilt.css';*/
+  `]
 })
 export class SuiPopupComponent {
   @Input() public suiPlacement: SuiPopupPlacement = 'top center';
