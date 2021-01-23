@@ -16,7 +16,7 @@ import {
   ViewContainerRef,
   ViewEncapsulation
 } from '@angular/core';
-import {Utils} from 'ngx-semantic';
+import {Utils} from '../../common';
 
 export type SuiModalSize = 'mini' | 'tiny' | 'small' | 'large' | null;
 
