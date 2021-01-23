@@ -38,6 +38,7 @@ export * from './lib/views/statistics';
 export * from './lib/modules/checkbox';
 export * from './lib/modules/dimmer';
 export * from './lib/modules/dropdown';
+export * from './lib/modules/modal';
 export * from './lib/modules/popup';
 export * from './lib/modules/progress';
 export * from './lib/modules/rating';
