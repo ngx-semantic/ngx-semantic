@@ -24,6 +24,7 @@ import {SuiStepsModule} from './elements/steps';
 import {SuiCheckboxModule} from './modules/checkbox';
 import {SuiDimmerModule} from './modules/dimmer';
 import {SuiDropdownModule} from './modules/dropdown';
+import {SuiEmbedModule} from './modules/embed';
 import {SuiModalModule} from './modules/modal';
 import {SuiPopupModule} from './modules/popup';
 import {SuiProgressModule} from './modules/progress';
@@ -57,6 +58,7 @@ import {SuiStatisticModule} from './views/statistics';
     SuiStepsModule,
     SuiTableModule,
     SuiPopupModule,
+    SuiEmbedModule,
     SuiModalModule,
     SuiLoaderModule,
     SuiDimmerModule,
