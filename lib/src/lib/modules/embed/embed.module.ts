@@ -5,10 +5,12 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {SuiEmbedComponent} from './embed.component';
+import {SafeUrlPipe} from './pipes/safe-url.pipe';
 
 @NgModule({
   declarations: [
-    SuiEmbedComponent
+    SuiEmbedComponent,
+    SafeUrlPipe
   ],
   imports: [
     CommonModule
