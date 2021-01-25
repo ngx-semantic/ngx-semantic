@@ -8,7 +8,7 @@ import {
   HostListener,
   Input,
   Output,
-  ViewChild
+  ViewChild, ViewEncapsulation
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {Utils} from '../../common';
@@ -17,6 +17,7 @@ import {SuiSelectMenuDirective} from './select-menu.directive';
 
 @Component({
   selector: 'sui-select',
+  encapsulation: ViewEncapsulation.None,
   template: `
     <i class="dropdown icon"></i>
 

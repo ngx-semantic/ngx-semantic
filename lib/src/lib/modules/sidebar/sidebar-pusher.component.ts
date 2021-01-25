@@ -2,12 +2,13 @@
  * Created by bolorundurowb on 12/30/2020
  */
 
-import {Component, HostBinding, HostListener, Input, OnInit} from '@angular/core';
+import {Component, HostBinding, HostListener, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {Utils} from '../../common';
 import {SuiSidebarService} from './sidebar.service';
 
 @Component({
   selector: 'sui-sidebar-pusher',
+  encapsulation: ViewEncapsulation.None,
   template: `
     <ng-content></ng-content>
   `

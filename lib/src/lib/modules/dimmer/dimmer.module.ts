@@ -12,7 +12,9 @@ import {SuiDimmerDirective} from './dimmer.directive';
     SuiDimmerDirective,
     SuiDimmerContentDirective
   ],
-  imports: [CommonModule],
+  imports: [
+    CommonModule
+  ],
   exports: [
     SuiDimmerDirective,
     SuiDimmerContentDirective

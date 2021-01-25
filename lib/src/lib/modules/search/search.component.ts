@@ -1,4 +1,4 @@
-import {Component, EventEmitter, HostBinding, HostListener, Input, Output} from '@angular/core';
+import {Component, EventEmitter, HostBinding, HostListener, Input, Output, ViewEncapsulation} from '@angular/core';
 import {Utils} from '../../common';
 import {ISearchOption} from './interfaces/ISearchOption';
 
@@ -6,6 +6,7 @@ export type SuiSearchAlignment = 'right' | null;
 
 @Component({
   selector: 'sui-search',
+  encapsulation: ViewEncapsulation.None,
   template: `
     <ng-container *ngIf="!suiShowIcon">
       <input class="prompt"

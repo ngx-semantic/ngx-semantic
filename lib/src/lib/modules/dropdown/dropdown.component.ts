@@ -2,7 +2,7 @@
  * Created by bolor on 10/30/2020
  */
 
-import {Component, ContentChild, HostBinding, HostListener, Input} from '@angular/core';
+import {Component, ContentChild, HostBinding, HostListener, Input, ViewEncapsulation} from '@angular/core';
 import {Utils} from '../../common';
 import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 
@@ -10,6 +10,7 @@ export type SuiDropdownPointingDirection = 'top left' | 'top right' | 'left' | '
 
 @Component({
   selector: 'sui-dropdown, [sui-dropdown]',
+  encapsulation: ViewEncapsulation.None,
   template: `
     <ng-content></ng-content>
   `
