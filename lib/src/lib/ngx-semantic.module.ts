@@ -21,6 +21,7 @@ import {SuiRailModule} from './elements/rail';
 import {SuiRevealModule} from './elements/reveal';
 import {SuiSegmentModule} from './elements/segment';
 import {SuiStepsModule} from './elements/steps';
+import {SuiAccordionModule} from './modules/accordion';
 import {SuiCheckboxModule} from './modules/checkbox';
 import {SuiDimmerModule} from './modules/dimmer';
 import {SuiDropdownModule} from './modules/dropdown';
@@ -77,6 +78,7 @@ import {SuiStatisticModule} from './views/statistics';
     SuiDropdownModule,
     SuiCheckboxModule,
     SuiStatisticModule,
+    SuiAccordionModule,
     SuiContainerModule,
     SuiBreadcrumbModule,
     SuiPlaceholderModule,
