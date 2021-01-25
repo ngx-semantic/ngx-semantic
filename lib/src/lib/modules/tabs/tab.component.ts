@@ -2,13 +2,14 @@
  * Created by bolorundurowb on 12/22/2020
  */
 
-import {Component, HostBinding, Input, TemplateRef, ViewChild} from '@angular/core';
+import {Component, HostBinding, Input, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import {Utils} from '../../common';
 
 @Component({
   selector: 'sui-tab',
   exportAs: 'suiTab',
   preserveWhitespaces: false,
+  encapsulation: ViewEncapsulation.None,
   template: `
     <ng-template #contentTemplate>
       <ng-content></ng-content>

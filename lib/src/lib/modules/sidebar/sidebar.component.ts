@@ -2,7 +2,7 @@
  * Created by bolorundurowb on 12/30/2020
  */
 
-import {Component, EventEmitter, HostBinding, Input, Output} from '@angular/core';
+import {Component, EventEmitter, HostBinding, Input, Output, ViewEncapsulation} from '@angular/core';
 import {Utils} from '../../common';
 import {SuiSidebarService} from './sidebar.service';
 
@@ -12,6 +12,7 @@ export type SuiSidebarAnimation = 'overlay' | 'push' | 'scale down' | 'uncover' 
 
 @Component({
   selector: 'sui-sidebar, [sui-sidebar]',
+  encapsulation: ViewEncapsulation.None,
   template: `
     <ng-content></ng-content>
   `

@@ -2,7 +2,7 @@
  * Created by bolor on 10/24/2020
  */
 
-import {ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Input, Output} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Input, Output, ViewEncapsulation} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {SuiSize, Utils} from '../../common';
 
@@ -10,6 +10,7 @@ export type SuiRatingType = 'star' | 'heart' | null;
 
 @Component({
   selector: 'sui-rating',
+  encapsulation: ViewEncapsulation.None,
   template: `
     <ng-container *ngFor="let i of ratingsArray">
       <i class="icon"

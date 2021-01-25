@@ -8,7 +8,7 @@ import {
   Component,
   ContentChildren, EventEmitter,
   Input, Output,
-  QueryList
+  QueryList, ViewEncapsulation
 } from '@angular/core';
 import {SuiMenuAttachment} from '../../collections/menu';
 import {SuiColour} from '../../common';
@@ -21,6 +21,7 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
 @Component({
   selector: 'sui-tabs',
   preserveWhitespaces: false,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ng-container *ngIf="hasTabs">

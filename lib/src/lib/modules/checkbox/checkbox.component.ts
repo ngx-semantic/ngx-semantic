@@ -2,7 +2,17 @@
  * Created by bolor on 10/24/2020
  */
 
-import {ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, HostListener, Input, Output} from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  forwardRef,
+  HostBinding,
+  HostListener,
+  Input,
+  Output,
+  ViewEncapsulation
+} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {Utils} from '../../common';
 
@@ -10,6 +20,7 @@ export type SuiCheckboxType = 'radio' | 'slider' | 'toggle' | null;
 
 @Component({
   selector: 'sui-checkbox',
+  encapsulation: ViewEncapsulation.None,
   template: `
     <input
       class="hidden"

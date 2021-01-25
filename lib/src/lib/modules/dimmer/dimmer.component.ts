@@ -2,13 +2,14 @@
  * Created by bolorundurowb on 1/17/2021
  */
 
-import {Component, HostBinding, Input, TemplateRef} from '@angular/core';
+import {Component, HostBinding, Input, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {Utils} from '../../common';
 import {SuiDimmerContentAlignment} from './dimmer.directive';
 
 @Component({
   selector: 'sui-dimmer',
-  template:`
+  encapsulation: ViewEncapsulation.None,
+  template: `
   <ng-container *ngIf="suiContent">
     <div class="content">
       <ng-container *ngTemplateOutlet="suiContent"></ng-container>

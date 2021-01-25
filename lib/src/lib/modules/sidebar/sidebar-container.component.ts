@@ -2,12 +2,13 @@
  * Created by bolorundurowb on 1/1/2021
  */
 
-import {AfterContentInit, Component, ContentChild} from '@angular/core';
+import {AfterContentInit, Component, ContentChild, ViewEncapsulation} from '@angular/core';
 import {SuiSidebarPusherComponent} from './sidebar-pusher.component';
 import {SuiSidebarComponent} from './sidebar.component';
 
 @Component({
   selector: 'sui-sidebar-container',
+  encapsulation: ViewEncapsulation.None,
   template: `
     <ng-content></ng-content>
   `
