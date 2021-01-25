@@ -5,13 +5,13 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {SuiIconModule} from '../../elements/icon';
-import {SuiAccordingPanelComponent} from './accordion-panel.component';
+import {SuiAccordionPanelComponent} from './accordion-panel.component';
 import {SuiAccordionComponent} from './accordion.component';
 
 @NgModule({
   declarations: [
     SuiAccordionComponent,
-    SuiAccordingPanelComponent
+    SuiAccordionPanelComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +19,7 @@ import {SuiAccordionComponent} from './accordion.component';
   ],
   exports: [
     SuiAccordionComponent,
-    SuiAccordingPanelComponent
+    SuiAccordionPanelComponent
   ]
 })
 export class SuiAccordionModule {
