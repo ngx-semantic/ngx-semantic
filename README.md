@@ -25,6 +25,13 @@ Angular and jQuery don't go together - this is the fundamental principle of this
 
 **NOTE:** Unlike most other angular libraries that provide Semantic UI support, this library covers much more than the Semantic UI modules. It also provides Angular wrappers for the Elements, Collections, as well as Views.
 
+## Looking for help!
+
+There is a lot to do and few maintainers with little time :). If you'd like to help with this project, please let us know.
+
+NgxSemantic is the Angular integration for <a src="https://semantic-ui.com/">Semantic UI</a>. It is highly inspired by <a src="https://react.semantic-ui.com">Semantic UI React</a> and <a src="https://semantic-ui-vue.github.io">Semantic UI Vue</a>
+NgxSemantic is still **under heavy development**. Please, feel free to contribute to the [codebase](https://github.com/ngx-semantic/ngx-semantic) or to the [documentation](https://github.com/ngx-semantic/ngx-semantic-docs).
+
 ## 🚀 Installation
 
 See the [Documentation](https://ngx-semantic.github.io/) for installation instructions and extensive examples.
