@@ -32,7 +32,7 @@ See the [Documentation](https://ngx-semantic.github.io/) for installation instru
 ## Dependencies
 
 * [Angular](https://angular.io) (>=9.0.0)
-* [Semantic UI CSS](https://semantic-ui.com/) (^2.4.1) (jQuery is **not** required)
+* [Semantic UI CSS](https://semantic-ui.com/) (>=2.4.1) (jQuery is **not** required)
 
 ## Component Support
 
@@ -40,58 +40,43 @@ See the [Documentation](https://ngx-semantic.github.io/) for installation instru
 |-------------------------|-------------------------------------------------------------------------------------|
 | :white_check_mark:      | Component supported by ngx-semantic.                                                |
 | :rocket:                | Semantic UI plugin supported by ngx-semantic (not in Semantic UI Core).             |
-| :ballot_box_with_check: | Component supported natively by [Semantic UI](https://semantic-ui.com/) (CSS only). |
 | :x:                     | Component currently unavailable.                                                    |
 | :no_entry_sign:         | Component not applicable to Angular.                                                |
 
-|              Elements              |            Collections             |                   Views                  |              Modules              |              Behaviors              |
-|------------------------------------|------------------------------------|------------------------------------------|-----------------------------------|-------------------------------------|
-| :white_check_mark: Button     | :white_check_mark: Breadcrumb | :white_check_mark: Advertisement     | :white_check_mark: Accordion      | :no_entry_sign: API                 |
-| :white_check_mark: Container  | :white_check_mark: Form       | :white_check_mark: Card             | :white_check_mark: Checkbox       | :no_entry_sign: Form Validation     |
-| :white_check_mark: Divider    | :white_check_mark: Grid       | :white_check_mark: Comment          |  :white_check_mark: Dimmer                | :x: Visibility              |
-| :white_check_mark: Flag       | :white_check_mark: Menu       | :white_check_mark: Feed             |   :white_check_mark: Dropdown             |                       |
-| :white_check_mark: Header     | :white_check_mark: Message         | :white_check_mark: Item             |   :white_check_mark: Embed       |                                     |
-| :white_check_mark: Icon       | :white_check_mark: Table                | :white_check_mark: Statistic        |   :white_check_mark: Modal     |                                     |
-| :white_check_mark: Image      |      |                                          |   :white_check_mark: Popup                       |                                     |
-| :white_check_mark: Input      |                                    |                                          |  :white_check_mark: Progress         |                                     |
-| :white_check_mark: Label      |                                    |                                          |  :white_check_mark: Rating         |                                     |
-| :white_check_mark: List       |                                    |                                          |  :white_check_mark: Search      |                                     |
-| :white_check_mark: Loader     |                                    |                                          |  :rocket: Select        |                                     |
-| :white_check_mark: Rail       |                                    |                                          |  :x: Shape        |                                     |
-| :white_check_mark: Reveal     |                                    |                                          |  :white_check_mark: Sidebar                        |                                     |
-| :white_check_mark: Segment    |                                    |                                          |  :x: Sticky       |                                     |
-| :white_check_mark: Step       |                                    |                                          |   :white_check_mark: Tab                      |                                     |
-|                                    |                                    |                                          |  :x: Transition          |                                     |
+|            Elements            |         Collections          |                Views                |             Modules             |              Behaviors              |
+|--------------------------------|------------------------------|-------------------------------------|---------------------------------|-------------------------------------|
+| :white_check_mark: Button     | :white_check_mark: Breadcrumb | :white_check_mark: Advertisement    | :white_check_mark: Accordion    | :no_entry_sign: API                 |
+| :white_check_mark: Container  | :white_check_mark: Form       | :white_check_mark: Card             | :white_check_mark: Checkbox     | :no_entry_sign: Form Validation     |
+| :white_check_mark: Divider    | :white_check_mark: Grid       | :white_check_mark: Comment          | :white_check_mark: Dimmer       | :x: Visibility                      |
+| :white_check_mark: Flag       | :white_check_mark: Menu       | :white_check_mark: Feed             | :white_check_mark: Dropdown     |                                     |
+| :white_check_mark: Header     | :white_check_mark: Message    | :white_check_mark: Item             | :white_check_mark: Embed        |                                     |
+| :white_check_mark: Icon       | :white_check_mark: Table      | :white_check_mark: Statistic        | :white_check_mark: Modal        |                                     |
+| :white_check_mark: Image      |                               |                                     | :white_check_mark: Popup        |                                     |
+| :white_check_mark: Input      |                               |                                     | :white_check_mark: Progress     |                                     |
+| :white_check_mark: Label      |                               |                                     | :white_check_mark: Rating       |                                     |
+| :white_check_mark: List       |                               |                                     | :white_check_mark: Search       |                                     |
+| :white_check_mark: Loader     |                               |                                     | :rocket: Select                 |                                     |
+| :white_check_mark: Rail       |                               |                                     | :x: Shape                       |                                     |
+| :white_check_mark: Reveal     |                               |                                     | :white_check_mark: Sidebar      |                                     |
+| :white_check_mark: Segment    |                               |                                     | :x: Sticky                      |                                     |
+| :white_check_mark: Step       |                               |                                     | :white_check_mark: Tab          |                                     |
+|                               |                               |                                     | :x: Transition                  |                                     |
 
-# NgxSemantic
+## Development
 
-[![Build status](https://ci.appveyor.com/api/projects/status/gd04694avya0aa2f/branch/master?svg=true)](https://ci.appveyor.com/project/BolorunduroWinnerTimothy/ngx-semantic/branch/master) 
-[![codecov](https://codecov.io/gh/ngx-semantic/ngx-semantic/branch/master/graph/badge.svg)](https://codecov.io/gh/ngx-semantic/ngx-semantic) 
-![npm (tag)](https://img.shields.io/npm/v/ngx-semantic) 
-![npm (tag)](https://img.shields.io/npm/v/ngx-semantic/alpha) [![Made in Nigeria](https://img.shields.io/badge/made%20in-nigeria-008751.svg?style=flat-square)](https://github.com/acekyd/made-in-nigeria)
-
-## Installation
+To generate all library files:
 
 ```bash
-npm install ngx-semantic
+$ npm run build:local
 ```
-or
+
+## Testing
+
+To run the unit tests suite:
 ```bash
-yarn add ngx-semantic
+$ npm run test
 ```
 
-## Usage
+## License
 
-Check out the docs at the [wiki](http://ngx-semantic.github.io/)
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+MIT © [Ngx-Semantic Team](https://github.com/ngx-semantic)
