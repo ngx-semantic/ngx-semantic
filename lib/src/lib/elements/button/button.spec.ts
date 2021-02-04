@@ -210,24 +210,24 @@ describe('SuiButtonComponent', () => {
 @Component({
   template: `
     <button
-      sui-button
-      [suiSize]="suiSize"
-      [suiEmphasis]="suiEmphasis"
-      [suiSocial]="suiSocial"
-      [suiColour]="suiColour"
-      [suiIcon]="suiIcon"
-      [suiBasic]="suiBasic"
-      [suiInverted]="suiInverted"
-      [suiAnimated]="suiAnimated"
-      [suiLabeled]="suiLabeled"
-      [suiActive]="suiActive"
-      [suiDisabled]="suiDisabled"
-      [suiLoading]="suiLoading"
-      [suiCompact]="suiCompact"
-      [suiToggle]="suiToggle"
-      [suiFluid]="suiFluid"
-      [suiCircular]="suiCircular"
-      [suiAttached]="suiAttached">
+        sui-button
+        [suiSize]="suiSize"
+        [suiEmphasis]="suiEmphasis"
+        [suiSocial]="suiSocial"
+        [suiColour]="suiColour"
+        [suiIcon]="suiIcon"
+        [suiBasic]="suiBasic"
+        [suiInverted]="suiInverted"
+        [suiAnimated]="suiAnimated"
+        [suiLabeled]="suiLabeled"
+        [suiActive]="suiActive"
+        [disabled]="suiDisabled"
+        [suiLoading]="suiLoading"
+        [suiCompact]="suiCompact"
+        [suiToggle]="suiToggle"
+        [suiFluid]="suiFluid"
+        [suiCircular]="suiCircular"
+        [suiAttached]="suiAttached">
       Button
     </button>
   `

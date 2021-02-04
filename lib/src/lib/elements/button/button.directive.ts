@@ -30,7 +30,7 @@ export class SuiButtonDirective {
   @Input() @InputBoolean() public suiFluid = false;
   @Input() @InputBoolean() public suiCircular = false;
   @Input() @InputBoolean() public suiActive = false;
-  @Input() @InputBoolean() public suiDisabled = false;
+  @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiLoading = false;
 
   @HostBinding('class')
@@ -41,7 +41,7 @@ export class SuiButtonDirective {
       Utils.getPropClass(this.suiBasic, 'basic'),
       Utils.getPropClass(this.suiActive, 'active'),
       Utils.getPropClass(this.suiLoading, 'loading'),
-      Utils.getPropClass(this.suiDisabled, 'disabled'),
+      Utils.getPropClass(this.disabled, 'disabled'),
       Utils.getPropClass(this.suiInverted, 'inverted'),
       Utils.getPropClass(this.suiCompact, 'compact'),
       Utils.getPropClass(this.suiToggle, 'toggle'),
