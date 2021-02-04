@@ -117,22 +117,26 @@ export class SuiPopupDirective implements OnInit, OnDestroy {
   }
 
   private initializePopup(): void {
-    const portal = new ComponentPortal(SuiPopupComponent);
-    const popupRef: ComponentRef<SuiPopupComponent> = this._overlayRef?.attach(portal);
+    if (!this._overlayRef?.hasAttached()) {
+      const portal = new ComponentPortal(SuiPopupComponent);
+      const popupRef: ComponentRef<SuiPopupComponent> = this._overlayRef?.attach(portal);
 
-    // pass component info
-    const popup = popupRef.instance;
-    popup.suiPlacement = this.suiPopupPlacement;
-    popup.suiWidth = this.suiPopupWidth;
-    popup.suiSize = this.suiPopupSize;
-    popup.suiTitle = this.suiPopupTitle;
-    popup.suiContent = this.suiPopupContent;
-    popup.suiInverted = this.suiPopupInverted;
-    popup.suiFluid = this.suiPopupFluid;
-    popup.suiFlowing = this.suiPopupFlowing;
+      // pass component info
+      const popup = popupRef.instance;
+      popup.suiPlacement = this.suiPopupPlacement;
+      popup.suiWidth = this.suiPopupWidth;
+      popup.suiSize = this.suiPopupSize;
+      popup.suiTitle = this.suiPopupTitle;
+      popup.suiContent = this.suiPopupContent;
+      popup.suiInverted = this.suiPopupInverted;
+      popup.suiFluid = this.suiPopupFluid;
+      popup.suiFlowing = this.suiPopupFlowing;
+    }
   }
 
   private closePopup(): void {
-    this._overlayRef?.detach();
+    if (this._overlayRef?.hasAttached()) {
+      this._overlayRef?.detach();
+    }
   }
 }
