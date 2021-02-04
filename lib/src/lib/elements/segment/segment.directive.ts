@@ -4,6 +4,7 @@
 
 import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiColour, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 export type SuiSegmentStacking = 'stacked' | 'tall stacked' | null;
 export type SuiSegmentPadding = 'padded' | 'very padded' | null;
@@ -13,7 +14,8 @@ export type SuiSegmentTextAlignment = 'left aligned' | 'center aligned' | 'right
 export type SuiSegmentFloat = 'left floated' | 'right floated' | null;
 
 @Directive({
-  selector: '[sui-segment]'
+  selector: '[sui-segment]',
+  exportAs: 'suiSegment'
 })
 export class SuiSegmentDirective {
   @Input() public suiColour: SuiColour = null;
@@ -23,18 +25,18 @@ export class SuiSegmentDirective {
   @Input() public suiEmphasis: SuiSegmentEmphasis = null;
   @Input() public suiTextAlignment: SuiSegmentTextAlignment = null;
   @Input() public suiFloated: SuiSegmentFloat = null;
-  @Input() public suiPlaceholder = false;
-  @Input() public suiRaised = false;
-  @Input() public suiPiled = false;
-  @Input() public suiVertical = false;
-  @Input() public suiInverted = false;
-  @Input() public suiDisabled = false;
-  @Input() public suiLoading = false;
-  @Input() public suiCompact = false;
-  @Input() public suiCircular = false;
-  @Input() public suiBasic = false;
-  @Input() public suiClearing = false;
-  @Input() public suiSecondary = false;
+  @Input() @InputBoolean() public suiPlaceholder = false;
+  @Input() @InputBoolean() public suiRaised = false;
+  @Input() @InputBoolean() public suiPiled = false;
+  @Input() @InputBoolean() public suiVertical = false;
+  @Input() @InputBoolean() public suiInverted = false;
+  @Input() @InputBoolean() public suiDisabled = false;
+  @Input() @InputBoolean() public suiLoading = false;
+  @Input() @InputBoolean() public suiCompact = false;
+  @Input() @InputBoolean() public suiCircular = false;
+  @Input() @InputBoolean() public suiBasic = false;
+  @Input() @InputBoolean() public suiClearing = false;
+  @Input() @InputBoolean() public suiSecondary = false;
 
   @HostBinding('class')
   get classes(): string {
