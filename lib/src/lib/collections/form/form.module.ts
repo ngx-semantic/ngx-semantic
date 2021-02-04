@@ -9,9 +9,17 @@ import {SuiFormFieldsDirective} from './form-fields.directive';
 import {SuiFormDirective} from './form.directive';
 
 @NgModule({
-  declarations: [SuiFormFieldDirective, SuiFormDirective, SuiFormFieldsDirective],
+  declarations: [
+    SuiFormFieldDirective,
+    SuiFormDirective,
+    SuiFormFieldsDirective
+  ],
   imports: [CommonModule],
-  exports: [SuiFormFieldDirective, SuiFormDirective, SuiFormFieldsDirective],
+  exports: [
+    SuiFormFieldDirective,
+    SuiFormDirective,
+    SuiFormFieldsDirective
+  ]
 })
 export class SuiFormModule {
 }

@@ -9,9 +9,17 @@ import {SuiGridRowDirective} from './grid-row.directive';
 import {SuiGridDirective} from './grid.directive';
 
 @NgModule({
-  declarations: [SuiGridDirective, SuiGridColumnDirective, SuiGridRowDirective],
+  declarations: [
+    SuiGridDirective,
+    SuiGridColumnDirective,
+    SuiGridRowDirective
+  ],
   imports: [CommonModule],
-  exports: [SuiGridDirective, SuiGridColumnDirective, SuiGridRowDirective],
+  exports: [
+    SuiGridDirective,
+    SuiGridColumnDirective,
+    SuiGridRowDirective
+  ]
 })
 export class SuiGridModule {
 }

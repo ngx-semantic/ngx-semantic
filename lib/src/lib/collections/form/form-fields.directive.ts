@@ -8,7 +8,7 @@ import {InputBoolean} from '../../core/util';
 
 @Directive({
   exportAs: 'suiFormFields',
-  selector: '[suiFormFields]',
+  selector: '[suiFormFields]'
 })
 export class SuiFormFieldsDirective {
   @Input() public suiWidth: SuiWidth = null;

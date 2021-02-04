@@ -10,9 +10,19 @@ import {SuiMenuDirective} from './menu.directive';
 import {SuiSubMenuDirective} from './sub-menu.directive';
 
 @NgModule({
-  declarations: [SuiMenuDirective, SuiMenuItemDirective, SuiSubMenuDirective, SuiMenuHeaderDirective],
+  declarations: [
+    SuiMenuDirective,
+    SuiMenuItemDirective,
+    SuiSubMenuDirective,
+    SuiMenuHeaderDirective
+  ],
   imports: [CommonModule],
-  exports: [SuiMenuDirective, SuiMenuItemDirective, SuiSubMenuDirective, SuiMenuHeaderDirective],
+  exports: [
+    SuiMenuDirective,
+    SuiMenuItemDirective,
+    SuiSubMenuDirective,
+    SuiMenuHeaderDirective
+  ]
 })
 export class SuiMenuModule {
 }

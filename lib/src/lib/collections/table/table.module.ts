@@ -14,7 +14,7 @@ import {SuiTableDirective} from './table.directive';
     SuiTableDirective,
     SuiTableRowDirective,
     SuiTableCellDirective,
-    SuiTableHeaderCellDirective,
+    SuiTableHeaderCellDirective
   ],
   exports: [
     SuiTableDirective,
@@ -23,8 +23,8 @@ import {SuiTableDirective} from './table.directive';
     SuiTableHeaderCellDirective,
   ],
   imports: [
-    CommonModule,
-  ],
+    CommonModule
+  ]
 })
 export class SuiTableModule {
 }
