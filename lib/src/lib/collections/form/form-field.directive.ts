@@ -4,6 +4,7 @@
 
 import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiWidth, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 @Directive({
   exportAs: 'suiFormField',
@@ -11,9 +12,9 @@ import {SuiWidth, Utils} from '../../common';
 })
 export class SuiFormFieldDirective {
   @Input() public suiWidth: SuiWidth = null;
-  @Input() public suiError = false;
-  @Input() public suiInline = false;
-  @Input() public suiDisabled = false;
+  @Input() @InputBoolean() public suiError = false;
+  @Input() @InputBoolean() public suiInline = false;
+  @Input() @InputBoolean() public suiDisabled = false;
 
   @HostBinding('class')
   get classes(): string {

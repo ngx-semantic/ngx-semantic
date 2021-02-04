@@ -2,21 +2,20 @@
  * Created by bolor on 10/10/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiColour, SuiStacking, SuiWidth, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 export type SuiTableBasicType = 'basic' | 'very basic' | null;
 export type SuiTablePadding = 'padded' | 'very padded' | null;
 export type SuiTableCompactness = 'compact' | 'very compact' | null;
 export type SuiTableSize = 'small' | 'large' | null;
 
-@Component({
+@Directive({
   selector: '[sui-table]',
-  template: `
-    <ng-content></ng-content>
-  `,
+  exportAs: 'suiTable'
 })
-export class SuiTableComponent {
+export class SuiTableDirective {
   @Input() public suiBasic: SuiTableBasicType = null;
   @Input() public suiWidth: SuiWidth = null;
   @Input() public suiColour: SuiColour = null;
@@ -24,15 +23,15 @@ export class SuiTableComponent {
   @Input() public suiCompact: SuiTableCompactness = null;
   @Input() public suiSize: SuiTableSize = null;
   @Input() public suiStacking: SuiStacking = null;
-  @Input() public suiCelled = false;
-  @Input() public suiStriped = false;
-  @Input() public suiDefinition = false;
-  @Input() public suiStructured = false;
-  @Input() public suiSingleLine = false;
-  @Input() public suiFixed = false;
-  @Input() public suiSelectable = false;
-  @Input() public suiInverted = false;
-  @Input() public suiCollapsing = false;
+  @Input() @InputBoolean() public suiCelled = false;
+  @Input() @InputBoolean() public suiStriped = false;
+  @Input() @InputBoolean() public suiDefinition = false;
+  @Input() @InputBoolean() public suiStructured = false;
+  @Input() @InputBoolean() public suiSingleLine = false;
+  @Input() @InputBoolean() public suiFixed = false;
+  @Input() @InputBoolean() public suiSelectable = false;
+  @Input() @InputBoolean() public suiInverted = false;
+  @Input() @InputBoolean() public suiCollapsing = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -54,7 +53,7 @@ export class SuiTableComponent {
       Utils.getPropClass(this.suiFixed, 'fixed'),
       Utils.getPropClass(this.suiSingleLine, 'single line'),
       Utils.getPropClass(this.suiCollapsing, 'collapsing'),
-      'table',
+      'table'
     ].joinWithWhitespaceCleanup();
   }
 }

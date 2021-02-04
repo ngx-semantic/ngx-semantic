@@ -7,24 +7,24 @@ import {NgModule} from '@angular/core';
 import {SuiTableCellDirective} from './table-data-cell.directive';
 import {SuiTableHeaderCellDirective} from './table-header-cell.directive';
 import {SuiTableRowDirective} from './table-row.directive';
-import {SuiTableComponent} from './table.component';
+import {SuiTableDirective} from './table.directive';
 
 @NgModule({
   declarations: [
-    SuiTableComponent,
+    SuiTableDirective,
     SuiTableRowDirective,
     SuiTableCellDirective,
-    SuiTableHeaderCellDirective,
+    SuiTableHeaderCellDirective
   ],
   exports: [
-    SuiTableComponent,
+    SuiTableDirective,
     SuiTableRowDirective,
     SuiTableCellDirective,
     SuiTableHeaderCellDirective,
   ],
   imports: [
-    CommonModule,
-  ],
+    CommonModule
+  ]
 })
 export class SuiTableModule {
 }

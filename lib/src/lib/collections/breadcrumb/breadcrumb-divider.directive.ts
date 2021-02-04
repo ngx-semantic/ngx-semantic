@@ -6,7 +6,7 @@ import {Directive, HostBinding, Input} from '@angular/core';
 
 @Directive({
   exportAs: 'suiBreadcrumbDivider',
-  selector: '[suiBreadcrumbDivider]',
+  selector: '[suiBreadcrumbDivider]'
 })
 export class SuiBreadcrumbDividerDirective {
   @Input() public suiIcon = '';

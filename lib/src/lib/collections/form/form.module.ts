@@ -6,12 +6,20 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {SuiFormFieldDirective} from './form-field.directive';
 import {SuiFormFieldsDirective} from './form-fields.directive';
-import {SuiFormComponent} from './form.component';
+import {SuiFormDirective} from './form.directive';
 
 @NgModule({
-  declarations: [SuiFormFieldDirective, SuiFormComponent, SuiFormFieldsDirective],
+  declarations: [
+    SuiFormFieldDirective,
+    SuiFormDirective,
+    SuiFormFieldsDirective
+  ],
   imports: [CommonModule],
-  exports: [SuiFormFieldDirective, SuiFormComponent, SuiFormFieldsDirective],
+  exports: [
+    SuiFormFieldDirective,
+    SuiFormDirective,
+    SuiFormFieldsDirective
+  ]
 })
 export class SuiFormModule {
 }

@@ -4,13 +4,15 @@
 
 import {Component, Directive, HostBinding, Input} from '@angular/core';
 import {SuiColour, SuiSize, SuiWidth, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 export type SuiMenuAttachment = 'top' | 'bottom' | null;
 export type SuiMenuFixation = 'top' | 'bottom' | 'left' | 'right' | null;
 export type SuiMenuIconType = 'icon' | 'labeled icon' | null;
 
 @Directive({
-  selector: '[sui-menu]'
+  selector: '[sui-menu]',
+  exportAs: 'suiMenu'
 })
 export class SuiMenuDirective {
   @Input() public suiWidth: SuiWidth = null;
@@ -19,18 +21,18 @@ export class SuiMenuDirective {
   @Input() public suiColour: SuiColour = null;
   @Input() public suiIcon: SuiMenuIconType = null;
   @Input() public suiSize: SuiSize = null;
-  @Input() public suiText = false;
-  @Input() public suiSecondary = false;
-  @Input() public suiPointing = false;
-  @Input() public suiTabular = false;
-  @Input() public suiVertical = false;
-  @Input() public suiFluid = false;
-  @Input() public suiRight = false;
-  @Input() public suiPagination = false;
-  @Input() public suiCompact = false;
-  @Input() public suiStackable = false;
-  @Input() public suiInverted = false;
-  @Input() public suiBorderless = false;
+  @Input() @InputBoolean() public suiText = false;
+  @Input() @InputBoolean() public suiSecondary = false;
+  @Input() @InputBoolean() public suiPointing = false;
+  @Input() @InputBoolean() public suiTabular = false;
+  @Input() @InputBoolean() public suiVertical = false;
+  @Input() @InputBoolean() public suiFluid = false;
+  @Input() @InputBoolean() public suiRight = false;
+  @Input() @InputBoolean() public suiPagination = false;
+  @Input() @InputBoolean() public suiCompact = false;
+  @Input() @InputBoolean() public suiStackable = false;
+  @Input() @InputBoolean() public suiInverted = false;
+  @Input() @InputBoolean() public suiBorderless = false;
 
   @HostBinding('class')
   get classes(): string {

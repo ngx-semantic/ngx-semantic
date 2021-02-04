@@ -4,13 +4,14 @@
 
 import {Directive, HostBinding, Input} from '@angular/core';
 import {Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 @Directive({
   selector: '[suiSubMenu]',
   exportAs: 'suiSubMenu'
 })
 export class SuiSubMenuDirective {
-  @Input() suiRight = false;
+  @Input() @InputBoolean() public suiRight = false;
 
   @HostBinding('class')
   get classes(): string {

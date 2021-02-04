@@ -7,7 +7,7 @@ import {SuiTableTextAlignment, SuiTableVerticalAlignment, SuiWidth, Utils} from 
 
 @Directive({
   exportAs: 'suiTableHeaderCell',
-  selector: '[suiTableHeaderCell]',
+  selector: '[suiTableHeaderCell]'
 })
 export class SuiTableHeaderCellDirective {
   @Input() public suiTextAlignment: SuiTableTextAlignment = null;
@@ -19,7 +19,7 @@ export class SuiTableHeaderCellDirective {
     return [
       this.suiWidth ? 'wide' : '',
       this.suiTextAlignment ? `${this.suiTextAlignment} aligned` : '',
-      this.suiVerticalAlignment ? `${this.suiVerticalAlignment} aligned` : '',
+      this.suiVerticalAlignment ? `${this.suiVerticalAlignment} aligned` : ''
     ].joinWithWhitespaceCleanup();
   }
 }
