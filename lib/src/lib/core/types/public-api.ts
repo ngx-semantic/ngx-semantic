@@ -2,4 +2,4 @@
  * Created by bolorundurowb on 2/4/2021
  */
 
-export * from './public-api';
+export * from './any';
