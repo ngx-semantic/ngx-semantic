@@ -2,31 +2,30 @@
  * Created by bolor on 4/30/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiColour, SuiHorizontalAlignment, SuiLocation, SuiSize, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 export type SuiLabelPointing = 'above' | 'below' | 'left' | 'right' | null;
 
-@Component({
+@Directive({
   selector: '[sui-label]',
-  template: `
-    <ng-content></ng-content>
-  `
+  exportAs: 'suiLabel'
 })
-export class SuiLabelComponent {
-  @Input() suiColour: SuiColour = null;
-  @Input() suiPointing: SuiLabelPointing = null;
-  @Input() suiCorner: SuiHorizontalAlignment = null;
-  @Input() suiRibbon: SuiHorizontalAlignment = null;
-  @Input() suiAttached: SuiLocation = null;
-  @Input() suiSize: SuiSize = null;
-  @Input() suiImage = false;
-  @Input() suiBasic = false;
-  @Input() suiTag = false;
-  @Input() suiHorizontal = false;
-  @Input() suiFloating = false;
-  @Input() suiCircular = false;
-  @Input() suiEmpty = false;
+export class SuiLabelDirective {
+  @Input() public suiColour: SuiColour = null;
+  @Input() public suiPointing: SuiLabelPointing = null;
+  @Input() public suiCorner: SuiHorizontalAlignment = null;
+  @Input() public suiRibbon: SuiHorizontalAlignment = null;
+  @Input() public suiAttached: SuiLocation = null;
+  @Input() public suiSize: SuiSize = null;
+  @Input() @InputBoolean() public suiImage = false;
+  @Input() @InputBoolean() public suiBasic = false;
+  @Input() @InputBoolean() public suiTag = false;
+  @Input() @InputBoolean() public suiHorizontal = false;
+  @Input() @InputBoolean() public suiFloating = false;
+  @Input() @InputBoolean() public suiCircular = false;
+  @Input() @InputBoolean() public suiEmpty = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -49,7 +48,7 @@ export class SuiLabelComponent {
     ].join((' '));
   }
 
-  getPointing(): string {
+  public getPointing(): string {
     const classKey = 'pointing';
 
     if (!this.suiPointing) {
@@ -67,7 +66,7 @@ export class SuiLabelComponent {
     return this.suiPointing + ' ' + classKey;
   }
 
-  getCorner(): string {
+  public getCorner(): string {
     if (this.suiCorner === 'left' || this.suiCorner === 'right') {
       return this.suiCorner + ' corner';
     }
@@ -75,7 +74,7 @@ export class SuiLabelComponent {
     return '';
   }
 
-  getRibbon(): string {
+  public getRibbon(): string {
     const classKey = 'ribbon';
 
     if (this.suiRibbon === 'left') {
@@ -89,7 +88,7 @@ export class SuiLabelComponent {
     return '';
   }
 
-  getAttached(): string {
+  public getAttached(): string {
     const classKey = 'attached';
 
     if (!this.suiAttached) {
@@ -99,7 +98,7 @@ export class SuiLabelComponent {
     return this.suiAttached + ' ' + classKey;
   }
 
-  getFloating(): string {
+  public getFloating(): string {
     if (!this.suiFloating) {
       return '';
     }

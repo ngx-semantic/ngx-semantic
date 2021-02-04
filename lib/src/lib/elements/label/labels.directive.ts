@@ -2,20 +2,19 @@
  * Created by bolor on 4/26/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiColour, SuiSize} from '../../common';
+import {InputBoolean} from '../../core/util';
 
-@Component({
+@Directive({
   selector: '[sui-labels]',
-  template: `
-    <ng-content></ng-content>
-  `
+  exportAs: 'suiLabels'
 })
-export class SuiLabelsComponent {
-  @Input() suiSize: SuiSize = null;
-  @Input() suiColour: SuiColour = null;
-  @Input() suiTag = false;
-  @Input() suiCircular = false;
+export class SuiLabelsDirective {
+  @Input() public suiSize: SuiSize = null;
+  @Input() public suiColour: SuiColour = null;
+  @Input() @InputBoolean() public suiTag = false;
+  @Input() @InputBoolean() public suiCircular = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -29,7 +28,7 @@ export class SuiLabelsComponent {
       .join((' '));
   }
 
-  getTag(): string {
+  public getTag(): string {
     if (!this.suiTag) {
       return '';
     }
@@ -37,7 +36,7 @@ export class SuiLabelsComponent {
     return 'tag';
   }
 
-  getCircular(): string {
+  public getCircular(): string {
     if (!this.suiCircular) {
       return '';
     }
