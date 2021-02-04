@@ -2,24 +2,23 @@
  * Created by bolor on 5/8/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiHorizontalPosition, SuiSize, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 export type SuiRailCloseness = 'close' | 'very close' | null;
 
-@Component({
+@Directive({
   selector: 'div[sui-rail]',
-  template: `
-    <ng-content></ng-content>
-  `
+  exportAs: 'suiRail'
 })
-export class SuiRailComponent {
-  @Input() suiLocation: SuiHorizontalPosition = null;
-  @Input() suiSize: SuiSize = null;
-  @Input() suiCloseness: SuiRailCloseness = null;
-  @Input() suiInternal = false;
-  @Input() suiDividing = false;
-  @Input() suiAttached = false;
+export class SuiRailDirective {
+  @Input() public suiLocation: SuiHorizontalPosition = null;
+  @Input() public suiSize: SuiSize = null;
+  @Input() public suiCloseness: SuiRailCloseness = null;
+  @Input() @InputBoolean() public suiInternal = false;
+  @Input() @InputBoolean() public suiDividing = false;
+  @Input() @InputBoolean() public suiAttached = false;
 
   @HostBinding('class')
   get classes(): string {
