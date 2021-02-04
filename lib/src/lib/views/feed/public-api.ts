@@ -3,5 +3,5 @@
  */
 
 export * from './feed-event.directive';
-export * from './feed.component';
+export * from './feed.directive';
 export * from './feed.module';
