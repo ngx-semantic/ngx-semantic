@@ -2,30 +2,29 @@
  * Created by bolor on 5/2/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiSize, SuiVerticalAlignment} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 export type SuiListRelaxation = 'relaxed' | 'very relaxed' | null;
 
-@Component({
+@Directive({
   selector: '[sui-list]',
-  template: `
-    <ng-content></ng-content>
-  `
+  exportAs: 'suiList'
 })
-export class SuiListComponent {
-  @Input() suiRelaxation: SuiListRelaxation = null;
-  @Input() suiSize: SuiSize = null;
-  @Input() suiAlignment: SuiVerticalAlignment = null;
-  @Input() suiDivided = false;
-  @Input() suiBulleted = false;
-  @Input() suiOrdered = false;
-  @Input() suiLink = false;
-  @Input() suiInverted = false;
-  @Input() suiHorizontal = false;
-  @Input() suiSelection = false;
-  @Input() suiAnimated = false;
-  @Input() suiCelled = false;
+export class SuiListDirective {
+  @Input() public suiRelaxation: SuiListRelaxation = null;
+  @Input() public suiSize: SuiSize = null;
+  @Input() public suiAlignment: SuiVerticalAlignment = null;
+  @Input() @InputBoolean() public suiDivided = false;
+  @Input() @InputBoolean() public suiBulleted = false;
+  @Input() @InputBoolean() public suiOrdered = false;
+  @Input() @InputBoolean() public suiLink = false;
+  @Input() @InputBoolean() public suiInverted = false;
+  @Input() @InputBoolean() public suiHorizontal = false;
+  @Input() @InputBoolean() public suiSelection = false;
+  @Input() @InputBoolean() public suiAnimated = false;
+  @Input() @InputBoolean() public suiCelled = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -47,7 +46,7 @@ export class SuiListComponent {
     ].joinWithWhitespaceCleanup();
   }
 
-  getDivided(): string {
+  public getDivided(): string {
     if (!this.suiDivided) {
       return '';
     }
@@ -55,7 +54,7 @@ export class SuiListComponent {
     return 'divided';
   }
 
-  getBulleted(): string {
+  public getBulleted(): string {
     if (!this.suiBulleted) {
       return '';
     }
@@ -63,7 +62,7 @@ export class SuiListComponent {
     return 'bulleted';
   }
 
-  getOrdered(): string {
+  public getOrdered(): string {
     if (!this.suiOrdered) {
       return '';
     }
@@ -71,7 +70,7 @@ export class SuiListComponent {
     return 'ordered';
   }
 
-  getLink(): string {
+  public getLink(): string {
     if (!this.suiLink) {
       return '';
     }
@@ -79,7 +78,7 @@ export class SuiListComponent {
     return 'link';
   }
 
-  getInverted(): string {
+  public getInverted(): string {
     if (!this.suiInverted) {
       return '';
     }
@@ -87,7 +86,7 @@ export class SuiListComponent {
     return 'inverted';
   }
 
-  getHorizontal(): string {
+  public getHorizontal(): string {
     if (!this.suiHorizontal) {
       return '';
     }
@@ -95,7 +94,7 @@ export class SuiListComponent {
     return 'horizontal';
   }
 
-  getSelection(): string {
+  public getSelection(): string {
     if (!this.suiSelection) {
       return '';
     }
@@ -103,7 +102,7 @@ export class SuiListComponent {
     return 'selection';
   }
 
-  getAnimated(): string {
+  public getAnimated(): string {
     if (!this.suiAnimated) {
       return '';
     }
@@ -111,7 +110,7 @@ export class SuiListComponent {
     return 'animated';
   }
 
-  getCelled(): string {
+  public getCelled(): string {
     if (!this.suiCelled) {
       return '';
     }
@@ -119,7 +118,7 @@ export class SuiListComponent {
     return 'celled';
   }
 
-  getAlignment(): string {
+  public getAlignment(): string {
     const classKey = 'aligned';
 
     if (!this.suiAlignment) {
