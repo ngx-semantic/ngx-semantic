@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
-import {SuiFlagDirective} from './flag.component';
+import {SuiFlagDirective} from './flag.directive';
 import {By} from '@angular/platform-browser';
 
 describe('SuiFlagComponent', () => {

@@ -3,7 +3,7 @@
  */
 
 import {NgModule} from '@angular/core';
-import {SuiFlagDirective} from './flag.component';
+import {SuiFlagDirective} from './flag.directive';
 import {CommonModule} from '@angular/common';
 
 @NgModule({

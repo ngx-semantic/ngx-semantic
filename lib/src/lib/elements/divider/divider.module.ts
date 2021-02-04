@@ -3,7 +3,7 @@
  */
 
 import {NgModule} from '@angular/core';
-import {SuiDividerDirective} from './divider.component';
+import {SuiDividerDirective} from './divider.directive';
 import {CommonModule} from '@angular/common';
 
 @NgModule({
