@@ -2,8 +2,9 @@
  * Created by bolor on 7/9/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, Directive, HostBinding, Input} from '@angular/core';
 import {SuiSize, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 export type SuiAdType =
   'banner'
@@ -18,19 +19,17 @@ export type SuiAdType =
   | 'netboard'
   | null;
 
-@Component({
+@Directive({
   selector: '[sui-advertisement]',
-  template: `
-    <ng-content></ng-content>
-  `
+  exportAs: 'suiAdvertisement'
 })
-export class SuiAdvertisementComponent {
-  @Input() suiSize: SuiSize = null;
-  @Input() suiType: SuiAdType = null;
-  @Input() suiVertical = false;
-  @Input() suiHalf = false;
-  @Input() suiWide = false;
-  @Input() suiCentered = false;
+export class SuiAdvertisementDirective {
+  @Input() public suiSize: SuiSize = null;
+  @Input() public suiType: SuiAdType = null;
+  @Input() @InputBoolean() public suiVertical = false;
+  @Input() @InputBoolean() public suiHalf = false;
+  @Input() @InputBoolean() public suiWide = false;
+  @Input() @InputBoolean() public suiCentered = false;
 
   @HostBinding('class')
   get classes(): string {
