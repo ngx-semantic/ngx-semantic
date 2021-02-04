@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
-import {SuiIconDirective} from './icon.component';
+import {SuiIconDirective} from './icon.directive';
 import {By} from '@angular/platform-browser';
 
 describe('SuiIconComponent', () => {

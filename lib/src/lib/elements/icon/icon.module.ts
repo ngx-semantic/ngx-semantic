@@ -4,7 +4,7 @@
 
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {SuiIconDirective} from './icon.component';
+import {SuiIconDirective} from './icon.directive';
 
 @NgModule({
   declarations: [SuiIconDirective],

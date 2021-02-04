@@ -3,7 +3,8 @@ import {Directive, HostBinding, Input} from '@angular/core';
 export type SuiIconFloatDirection = 'right floated' | null;
 
 @Directive({
-  selector: '[sui-icon]'
+  selector: '[sui-icon]',
+  exportAs: 'suiIcon'
 })
 export class SuiIconDirective {
   @Input() public suiFloat: SuiIconFloatDirection = null;
