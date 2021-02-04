@@ -11,7 +11,7 @@ export type SuiPlaceholderLineLength = 'full' | 'very long' | 'long' | 'medium' 
   selector: '[suiPlaceholderLine]'
 })
 export class SuiPlaceholderLineDirective {
-  @Input() suiLength: SuiPlaceholderLineLength = null;
+  @Input() public suiLength: SuiPlaceholderLineLength = null;
 
   @HostBinding('class')
   get classes(): string {

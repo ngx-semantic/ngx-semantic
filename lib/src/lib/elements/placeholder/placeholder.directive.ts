@@ -2,19 +2,18 @@
  * Created by bolor on 5/6/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, Directive, HostBinding, Input} from '@angular/core';
 import {Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
-@Component({
+@Directive({
   selector: '[sui-placeholder]',
-  template: `
-    <ng-content></ng-content>
-  `
+  exportAs: 'suiPlaceholder'
 })
-export class SuiPlaceholderComponent {
-  @Input() suiActive = false;
-  @Input() suiInverted = false;
-  @Input() suiFluid = false;
+export class SuiPlaceholderDirective {
+  @Input() @InputBoolean() public suiActive = false;
+  @Input() @InputBoolean() public suiInverted = false;
+  @Input() @InputBoolean() public suiFluid = false;
 
   @HostBinding('class')
   get classes(): string {
