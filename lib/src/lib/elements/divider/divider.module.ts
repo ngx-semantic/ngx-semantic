@@ -3,13 +3,13 @@
  */
 
 import {NgModule} from '@angular/core';
-import {SuiDividerComponent} from './divider.component';
+import {SuiDividerDirective} from './divider.component';
 import {CommonModule} from '@angular/common';
 
 @NgModule({
-  declarations: [SuiDividerComponent],
+  declarations: [SuiDividerDirective],
   imports: [CommonModule],
-  exports: [SuiDividerComponent]
+  exports: [SuiDividerDirective]
 })
 export class SuiDividerModule {
 }

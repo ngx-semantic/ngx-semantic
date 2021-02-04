@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SuiDividerComponent, SuiDividerDirection} from './divider.component';
+import {SuiDividerDirective, SuiDividerDirection} from './divider.component';
 import {By} from '@angular/platform-browser';
 
 describe('SuiDividerComponent', () => {
@@ -12,7 +12,7 @@ describe('SuiDividerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [CommonModule],
-        declarations: [TestDividerComponent, SuiDividerComponent]
+        declarations: [TestDividerComponent, SuiDividerDirective]
       })
       .compileComponents();
   }));
@@ -21,7 +21,7 @@ describe('SuiDividerComponent', () => {
     fixture = TestBed.createComponent(TestDividerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    dividerElement = fixture.debugElement.query(By.directive(SuiDividerComponent)).nativeElement;
+    dividerElement = fixture.debugElement.query(By.directive(SuiDividerDirective)).nativeElement;
   });
 
   it('should create component', () => {

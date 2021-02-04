@@ -1,22 +1,21 @@
-import {Component, HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import {Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 export type SuiDividerDirection = 'vertical' | 'horizontal' | null;
 
-@Component({
+@Directive({
   selector: '[sui-divider]',
-  template: `
-    <ng-content></ng-content>
-  `,
+  exportAs: 'suiDivider'
 })
-export class SuiDividerComponent {
+export class SuiDividerDirective {
   @Input() public suiDirection: SuiDividerDirection = null;
-  @Input() public suiHeader = false;
-  @Input() public suiInverted = false;
-  @Input() public suiFitted = false;
-  @Input() public suiHidden = false;
-  @Input() public suiSection = false;
-  @Input() public suiClearing = false;
+  @Input() @InputBoolean() public suiHeader = false;
+  @Input() @InputBoolean() public suiInverted = false;
+  @Input() @InputBoolean() public suiFitted = false;
+  @Input() @InputBoolean() public suiHidden = false;
+  @Input() @InputBoolean() public suiSection = false;
+  @Input() @InputBoolean() public suiClearing = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -29,7 +28,7 @@ export class SuiDividerComponent {
       Utils.getPropClass(this.suiSection, 'section'),
       Utils.getPropClass(this.suiClearing, 'clearing'),
       this.suiDirection,
-      'divider',
+      'divider'
     ].joinWithWhitespaceCleanup();
   }
 }
