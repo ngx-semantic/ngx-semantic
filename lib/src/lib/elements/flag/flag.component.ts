@@ -1,19 +1,17 @@
-import {Component, HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 
-@Component({
+@Directive({
   selector: '[sui-flag]',
-  template: `
-    <ng-content></ng-content>
-  `,
+  exportAs: 'suiFlag'
 })
-export class SuiFlagComponent {
+export class SuiFlagDirective {
   @Input() public suiCountry = '';
 
   @HostBinding('class')
   get classes(): string {
     return [
       this.suiCountry,
-      'flag',
+      'flag'
     ].joinWithWhitespaceCleanup();
   }
 }
