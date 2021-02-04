@@ -6,7 +6,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {Component, Input} from '@angular/core';
-import {SuiRailComponent} from './rail.component';
+import {SuiRailDirective} from './rail.directive';
 
 describe('SuiRailComponent', () => {
   let component: TestRailComponent;
@@ -16,7 +16,7 @@ describe('SuiRailComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [CommonModule],
-        declarations: [TestRailComponent, SuiRailComponent]
+        declarations: [TestRailComponent, SuiRailDirective]
       })
       .compileComponents();
   }));
@@ -25,7 +25,7 @@ describe('SuiRailComponent', () => {
     fixture = TestBed.createComponent(TestRailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    railElement = fixture.debugElement.query(By.directive(SuiRailComponent)).nativeElement;
+    railElement = fixture.debugElement.query(By.directive(SuiRailDirective)).nativeElement;
   });
 
   it('should create component', () => {

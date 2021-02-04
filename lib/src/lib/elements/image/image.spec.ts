@@ -3,7 +3,7 @@
  */
 
 import {Component, Input} from '@angular/core';
-import {SuiImageComponent} from './image.component';
+import {SuiImageDirective} from './image.directive';
 import {By} from '@angular/platform-browser';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
@@ -16,7 +16,7 @@ describe('SuiImageComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [CommonModule],
-        declarations: [TestImageComponent, SuiImageComponent]
+        declarations: [TestImageComponent, SuiImageDirective]
       })
       .compileComponents();
   }));
@@ -25,7 +25,7 @@ describe('SuiImageComponent', () => {
     fixture = TestBed.createComponent(TestImageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    buttonElement = fixture.debugElement.query(By.directive(SuiImageComponent)).nativeElement;
+    buttonElement = fixture.debugElement.query(By.directive(SuiImageDirective)).nativeElement;
   });
 
   it('should create component', () => {

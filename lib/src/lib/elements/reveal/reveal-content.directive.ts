@@ -11,7 +11,7 @@ export type SuiRevealContentVisibility = 'visible' | 'hidden';
   selector: '[suiRevealContent]'
 })
 export class SuiRevealContentDirective {
-  @Input() suiVisible: SuiRevealContentVisibility = 'visible';
+  @Input() public suiVisible: SuiRevealContentVisibility = 'visible';
 
   @HostBinding('class')
   get classes(): string {

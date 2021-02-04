@@ -4,23 +4,25 @@
 
 import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiSize, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 export type SuiMoveDirection = 'left' | 'right' | 'up' | 'down' | null;
 export type SuiRotateDirection = 'left' | 'right' | null;
 
 @Directive({
-  selector: '[sui-reveal]'
+  selector: '[sui-reveal]',
+  exportAs: 'suiReveal'
 })
 export class SuiRevealDirective {
   @Input() public suiMove: SuiMoveDirection = null;
   @Input() public suiRotate: SuiRotateDirection = null;
   @Input() public suiSize: SuiSize = null;
-  @Input() public suiFade = false;
-  @Input() public suiActive = false;
-  @Input() public suiInstant = false;
-  @Input() public suiDisabled = false;
-  @Input() public suiCircular = false;
-  @Input() public suiImage = false;
+  @Input() @InputBoolean() public suiFade = false;
+  @Input() @InputBoolean() public suiActive = false;
+  @Input() @InputBoolean() public suiInstant = false;
+  @Input() @InputBoolean() public suiDisabled = false;
+  @Input() @InputBoolean() public suiCircular = false;
+  @Input() @InputBoolean() public suiImage = false;
 
   @HostBinding('class')
   get classes(): string {

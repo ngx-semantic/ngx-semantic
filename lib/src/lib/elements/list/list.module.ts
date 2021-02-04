@@ -3,13 +3,13 @@
  */
 
 import {NgModule} from '@angular/core';
-import {SuiListComponent} from './list.component';
+import {SuiListDirective} from './list.directive';
 import {CommonModule} from '@angular/common';
 
 @NgModule({
-  declarations: [SuiListComponent],
+  declarations: [SuiListDirective],
   imports: [CommonModule],
-  exports: [SuiListComponent]
+  exports: [SuiListDirective]
 })
 export class SuiListModule {
 }

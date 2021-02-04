@@ -3,14 +3,14 @@
  */
 
 import {NgModule} from '@angular/core';
-import {SuiLabelComponent} from './label.component';
+import {SuiLabelDirective} from './label.directive';
 import {CommonModule} from '@angular/common';
-import {SuiLabelsComponent} from './labels.component';
+import {SuiLabelsDirective} from './labels.directive';
 
 @NgModule({
-  declarations: [SuiLabelComponent, SuiLabelsComponent],
+  declarations: [SuiLabelDirective, SuiLabelsDirective],
   imports: [CommonModule],
-  exports: [SuiLabelComponent, SuiLabelsComponent]
+  exports: [SuiLabelDirective, SuiLabelsDirective]
 })
 export class SuiLabelModule {
 }

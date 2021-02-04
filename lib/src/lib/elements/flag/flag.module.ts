@@ -3,13 +3,13 @@
  */
 
 import {NgModule} from '@angular/core';
-import {SuiFlagComponent} from './flag.component';
+import {SuiFlagDirective} from './flag.directive';
 import {CommonModule} from '@angular/common';
 
 @NgModule({
-  declarations: [SuiFlagComponent],
+  declarations: [SuiFlagDirective],
   imports: [CommonModule],
-  exports: [SuiFlagComponent]
+  exports: [SuiFlagDirective]
 })
 export class SuiFlagModule {
 }

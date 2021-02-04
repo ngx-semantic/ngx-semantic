@@ -1,28 +1,27 @@
-import {Component, HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiColour, SuiSize, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 export type SuiHeaderAlignment = 'left aligned' | 'right aligned' | 'center aligned' | 'justified' | null;
 export type SuiHeaderAttachment = 'attached' | 'top attached' | 'bottom attached' | null;
 export type SuiHeaderFloating = 'left floated' | 'right floated' | null;
 
-@Component({
+@Directive({
   selector: '[sui-header]',
-  template: `
-    <ng-content></ng-content>
-  `
+  exportAs: 'suiHeader'
 })
-export class SuiHeaderComponent {
+export class SuiHeaderDirective {
   @Input() public suiSize: SuiSize = null;
   @Input() public suiAlignment: SuiHeaderAlignment = null;
   @Input() public suiColour: SuiColour = null;
   @Input() public suiAttached: SuiHeaderAttachment = null;
   @Input() public suiFloated: SuiHeaderFloating = null;
-  @Input() public suiSubHeader = false;
-  @Input() public suiDisabled = false;
-  @Input() public suiDividing = false;
-  @Input() public suiBlock = false;
-  @Input() public suiInverted = false;
-  @Input() public suiIcon = false;
+  @Input() @InputBoolean() public suiSubHeader = false;
+  @Input() @InputBoolean() public suiDisabled = false;
+  @Input() @InputBoolean() public suiDividing = false;
+  @Input() @InputBoolean() public suiBlock = false;
+  @Input() @InputBoolean() public suiInverted = false;
+  @Input() @InputBoolean() public suiIcon = false;
 
   @HostBinding('class')
   get classes(): string {

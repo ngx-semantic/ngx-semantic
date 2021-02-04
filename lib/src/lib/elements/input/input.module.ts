@@ -4,12 +4,12 @@
 
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {SuiInputComponent} from './input.component';
+import {SuiInputDirective} from './input.directive';
 
 @NgModule({
-  declarations: [SuiInputComponent],
+  declarations: [SuiInputDirective],
   imports: [CommonModule],
-  exports: [SuiInputComponent]
+  exports: [SuiInputDirective]
 })
 export class SuiInputModule {
 }

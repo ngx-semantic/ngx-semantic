@@ -4,21 +4,23 @@
 
 import {Component, Directive, HostBinding, Input} from '@angular/core';
 import {SuiSize, SuiWidth, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 export type SuiStepsAttachment = 'top attached' | 'bottom attached' | null;
 
 @Directive({
-  selector: '[sui-steps]'
+  selector: '[sui-steps]',
+  exportAs: 'suiSteps'
 })
 export class SuiStepsDirective {
   @Input() public suiWidth: SuiWidth = null;
   @Input() public suiAttached: SuiStepsAttachment = null;
   @Input() public suiSize: SuiSize = null;
-  @Input() public suiOrdered = false;
-  @Input() public suiVertical = false;
-  @Input() public suiFluid = false;
-  @Input() public suiUnstackable = false;
-  @Input() public suiTabletStackable = false;
+  @Input() @InputBoolean() public suiOrdered = false;
+  @Input() @InputBoolean() public suiVertical = false;
+  @Input() @InputBoolean() public suiFluid = false;
+  @Input() @InputBoolean() public suiUnstackable = false;
+  @Input() @InputBoolean() public suiTabletStackable = false;
 
   @HostBinding('class')
   get classes(): string {

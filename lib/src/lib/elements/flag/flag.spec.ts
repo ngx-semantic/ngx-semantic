@@ -1,6 +1,6 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
-import {SuiFlagComponent} from './flag.component';
+import {SuiFlagDirective} from './flag.directive';
 import {By} from '@angular/platform-browser';
 
 describe('SuiFlagComponent', () => {
@@ -10,7 +10,7 @@ describe('SuiFlagComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        declarations: [TestFlagComponent, SuiFlagComponent]
+        declarations: [TestFlagComponent, SuiFlagDirective]
       })
       .compileComponents();
   }));
@@ -19,7 +19,7 @@ describe('SuiFlagComponent', () => {
     fixture = TestBed.createComponent(TestFlagComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    flagElement = fixture.debugElement.query(By.directive(SuiFlagComponent)).nativeElement;
+    flagElement = fixture.debugElement.query(By.directive(SuiFlagDirective)).nativeElement;
   });
 
   it('should create component', () => {

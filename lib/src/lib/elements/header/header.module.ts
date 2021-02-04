@@ -4,13 +4,13 @@
 
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {SuiHeaderComponent} from './header.component';
-import {SuiSubHeaderComponent} from './sub-header.component';
+import {SuiHeaderDirective} from './header.directive';
+import {SuiSubHeaderDirective} from './sub-header.directive';
 
 @NgModule({
-  declarations: [SuiHeaderComponent, SuiSubHeaderComponent],
+  declarations: [SuiHeaderDirective, SuiSubHeaderDirective],
   imports: [CommonModule],
-  exports: [SuiHeaderComponent, SuiSubHeaderComponent]
+  exports: [SuiHeaderDirective, SuiSubHeaderDirective]
 })
 export class SuiHeaderModule {
 }

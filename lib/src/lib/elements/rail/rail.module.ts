@@ -4,17 +4,17 @@
 
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SuiRailComponent} from './rail.component';
+import {SuiRailDirective} from './rail.directive';
 
 @NgModule({
   declarations: [
-    SuiRailComponent
+    SuiRailDirective
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    SuiRailComponent
+    SuiRailDirective
   ]
 })
 export class SuiRailModule {

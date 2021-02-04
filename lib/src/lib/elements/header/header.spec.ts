@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, Input} from '@angular/core';
 import {SuiColour, SuiSize} from '../../common';
 import {CommonModule} from '@angular/common';
-import {SuiHeaderAlignment, SuiHeaderAttachment, SuiHeaderComponent, SuiHeaderFloating} from './header.component';
+import {SuiHeaderAlignment, SuiHeaderAttachment, SuiHeaderDirective, SuiHeaderFloating} from './header.directive';
 import {By} from '@angular/platform-browser';
 
 describe('SuiHeaderComponent', () => {
@@ -13,7 +13,7 @@ describe('SuiHeaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports: [CommonModule],
-        declarations: [TestHeaderComponent, SuiHeaderComponent]
+        declarations: [TestHeaderComponent, SuiHeaderDirective]
       })
       .compileComponents();
   }));
@@ -22,7 +22,7 @@ describe('SuiHeaderComponent', () => {
     fixture = TestBed.createComponent(TestHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    headerElement = fixture.debugElement.query(By.directive(SuiHeaderComponent)).nativeElement;
+    headerElement = fixture.debugElement.query(By.directive(SuiHeaderDirective)).nativeElement;
   });
 
   it('should create component', () => {

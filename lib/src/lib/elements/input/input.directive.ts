@@ -2,34 +2,33 @@
  * Created by bolor on 4/28/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiSize, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 export type SuiInputLabeling = 'labeled' | 'right labeled' | 'left corner labeled' | 'corner labeled' | null;
 export type SuiInputActions = 'action' | 'left action' | 'right action' | null;
 export type SuiInputIconPosition = 'left' | 'right' | null;
 
-@Component({
+@Directive({
   selector: '[sui-input]',
-  template: `
-    <ng-content></ng-content>
-  `
+  exportAs: 'suiInput'
 })
-export class SuiInputComponent {
+export class SuiInputDirective {
   @Input() public suiSize: SuiSize = null;
   @Input() public suiAction: SuiInputActions = null;
   @Input() public suiLabeled: SuiInputLabeling = null;
   @Input() public suiIconPosition: SuiInputIconPosition = null;
-  @Input() public suiFocus = false;
-  @Input() public suiIcon = false;
-  @Input() public suiTransparent = false;
-  @Input() public suiInverted = false;
-  @Input() public suiFluid = false;
+  @Input() @InputBoolean() public suiFocus = false;
+  @Input() @InputBoolean() public suiIcon = false;
+  @Input() @InputBoolean() public suiTransparent = false;
+  @Input() @InputBoolean() public suiInverted = false;
+  @Input() @InputBoolean() public suiFluid = false;
 
   // states
-  @Input() public suiLoading = false;
-  @Input() public suiDisabled = false;
-  @Input() public suiError = false;
+  @Input() @InputBoolean() public suiLoading = false;
+  @Input() @InputBoolean() public suiDisabled = false;
+  @Input() @InputBoolean() public suiError = false;
 
   @HostBinding('class')
   get classes(): string {
