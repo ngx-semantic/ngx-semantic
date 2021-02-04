@@ -6,22 +6,22 @@ import {NgModule} from '@angular/core';
 import {SuiStatisticLabelDirective} from './statistic-label.directive';
 import {SuiStatisticValueDirective} from './statistic-value.directive';
 import {CommonModule} from '@angular/common';
-import {SuiStatisticComponent} from './statistic.component';
-import {SuiStatisticsComponent} from './statistics.component';
+import {SuiStatisticDirective} from './statistic.directive';
+import {SuiStatisticsDirective} from './statistics.directive';
 
 @NgModule({
   declarations: [
     SuiStatisticLabelDirective,
     SuiStatisticValueDirective,
-    SuiStatisticComponent,
-    SuiStatisticsComponent
+    SuiStatisticDirective,
+    SuiStatisticsDirective
   ],
   imports: [CommonModule],
   exports: [
     SuiStatisticValueDirective,
     SuiStatisticLabelDirective,
-    SuiStatisticComponent,
-    SuiStatisticsComponent
+    SuiStatisticDirective,
+    SuiStatisticsDirective
   ]
 })
 export class SuiStatisticModule {

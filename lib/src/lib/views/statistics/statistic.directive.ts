@@ -2,24 +2,23 @@
  * Created by bolor on 7/16/2020
  */
 
-import {Component, Host, HostBinding, Input, Optional} from '@angular/core';
-import {SuiStatisticsComponent} from './statistics.component';
+import {Component, Directive, Host, HostBinding, Input, Optional} from '@angular/core';
 import {SuiColour, SuiSize, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
+import {SuiStatisticsDirective} from './statistics.directive';
 
 export type SuiFloat = 'right' | 'left';
 
-@Component({
+@Directive({
   selector: '[sui-statistic]',
-  template: `
-    <ng-content></ng-content>
-  `
+  exportAs: 'suiStatistic'
 })
-export class SuiStatisticComponent {
-  @Input() suiColour: SuiColour = null;
-  @Input() suiFloated: SuiFloat = null;
-  @Input() suiSize: SuiSize = null;
-  @Input() suiHorizontal = false;
-  @Input() suiInverted = false;
+export class SuiStatisticDirective {
+  @Input() public suiColour: SuiColour = null;
+  @Input() public suiFloated: SuiFloat = null;
+  @Input() public suiSize: SuiSize = null;
+  @Input() @InputBoolean() public suiHorizontal = false;
+  @Input() @InputBoolean() public suiInverted = false;
 
   private isChildComponent: boolean;
 
@@ -36,7 +35,7 @@ export class SuiStatisticComponent {
     ].joinWithWhitespaceCleanup();
   }
 
-  constructor(@Optional() @Host() private parent: SuiStatisticsComponent) {
+  constructor(@Optional() @Host() private parent: SuiStatisticsDirective) {
     this.isChildComponent = !!parent;
   }
 }
