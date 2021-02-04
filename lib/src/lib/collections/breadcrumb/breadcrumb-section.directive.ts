@@ -6,7 +6,7 @@ import {Directive, HostBinding, Input} from '@angular/core';
 
 @Directive({
   exportAs: 'suiBreadcrumbDivider',
-  selector: '[suiBreadcrumbDivider]',
+  selector: '[suiBreadcrumbDivider]'
 })
 export class SuiBreadcrumbSectionDirective {
   @Input() public suiActive = false;
@@ -15,7 +15,7 @@ export class SuiBreadcrumbSectionDirective {
   get classes(): string {
     return [
       this.getActive(),
-      'section',
+      'section'
     ].joinWithWhitespaceCleanup();
   }
 

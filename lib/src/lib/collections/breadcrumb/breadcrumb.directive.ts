@@ -2,16 +2,14 @@
  * Created by bolor on 5/26/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, Directive, HostBinding, Input} from '@angular/core';
 import {SuiSize} from '../../common';
 
-@Component({
+@Directive({
   selector: '[sui-breadcrumb]',
-  template: `
-    <ng-content></ng-content>
-  `,
+  exportAs: 'suiBreadcrumb'
 })
-export class SuiBreadcrumbComponent {
+export class SuiBreadcrumbDirective {
   @Input() public suiSize: SuiSize = null;
 
   @HostBinding('class')
@@ -19,7 +17,7 @@ export class SuiBreadcrumbComponent {
     return [
       'ui',
       this.suiSize,
-      'breadcrumb',
+      'breadcrumb'
     ].joinWithWhitespaceCleanup();
   }
 }
