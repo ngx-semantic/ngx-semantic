@@ -2,14 +2,16 @@
  * Created by bolor on 4/20/2020
  */
 
-import {Component, Directive, HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiColour, SuiSize, SuiWidth, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 export type SuiButtonsAttachment = 'top attached' | 'bottom attached' | null;
 export type SuiButtonsIconType = 'icon' | 'labeled icon' | null;
 
 @Directive({
-  selector: '[sui-buttons]'
+  selector: '[sui-buttons]',
+  exportAs: 'suiButtons'
 })
 export class SuiButtonsDirective {
   @Input() public suiAttached: SuiButtonsAttachment = null;
@@ -17,8 +19,8 @@ export class SuiButtonsDirective {
   @Input() public suiColour: SuiColour = null;
   @Input() public suiSize: SuiSize = null;
   @Input() public suiWidth: SuiWidth = null;
-  @Input() public suiBasic = false;
-  @Input() public suiVertical = false;
+  @Input() @InputBoolean() public suiBasic = false;
+  @Input() @InputBoolean() public suiVertical = false;
 
   @HostBinding('class')
   get classes(): string {

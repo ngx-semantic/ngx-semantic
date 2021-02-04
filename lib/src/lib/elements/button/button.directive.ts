@@ -10,7 +10,8 @@ export type SuiSocialButtonStyle = 'facebook' | 'twitter' | 'google' | 'plus' | 
 export type SuiButtonAttachment = 'top attached' | 'bottom attached' | 'left attached' | 'right attached' | null;
 
 @Directive({
-  selector: '[sui-button]'
+  selector: '[sui-button]',
+  exportAs: 'suiButton'
 })
 export class SuiButtonDirective {
   @Input() public suiEmphasis: SuiButtonEmphasis = null;
@@ -21,7 +22,7 @@ export class SuiButtonDirective {
   @Input() public suiSocial: SuiSocialButtonStyle = null;
   @Input() public suiFloated: SuiButtonFloating = null;
   @Input() public suiAttached: SuiButtonAttachment = null;
-  @Input() public suiIcon = false;
+  @Input() @InputBoolean() public suiIcon = false;
   @Input() @InputBoolean() public suiBasic = false;
   @Input() @InputBoolean() public suiInverted = false;
   @Input() @InputBoolean() public suiCompact = false;
