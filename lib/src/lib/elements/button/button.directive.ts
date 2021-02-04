@@ -1,5 +1,6 @@
-import {Component, Directive, HostBinding, Input} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiColour, SuiSize, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 export type SuiButtonEmphasis = 'primary' | 'secondary' | 'positive' | 'negative' | null;
 export type SuiButtonAnimation = 'animated' | 'animated fade' | 'vertical animated' | null;
@@ -21,15 +22,15 @@ export class SuiButtonDirective {
   @Input() public suiFloated: SuiButtonFloating = null;
   @Input() public suiAttached: SuiButtonAttachment = null;
   @Input() public suiIcon = false;
-  @Input() public suiBasic = false;
-  @Input() public suiInverted = false;
-  @Input() public suiCompact = false;
-  @Input() public suiToggle = false;
-  @Input() public suiFluid = false;
-  @Input() public suiCircular = false;
-  @Input() public suiActive = false;
-  @Input() public suiDisabled = false;
-  @Input() public suiLoading = false;
+  @Input() @InputBoolean() public suiBasic = false;
+  @Input() @InputBoolean() public suiInverted = false;
+  @Input() @InputBoolean() public suiCompact = false;
+  @Input() @InputBoolean() public suiToggle = false;
+  @Input() @InputBoolean() public suiFluid = false;
+  @Input() @InputBoolean() public suiCircular = false;
+  @Input() @InputBoolean() public suiActive = false;
+  @Input() @InputBoolean() public suiDisabled = false;
+  @Input() @InputBoolean() public suiLoading = false;
 
   @HostBinding('class')
   get classes(): string {
