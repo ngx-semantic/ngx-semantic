@@ -2,22 +2,21 @@
  * Created by bolor on 8/17/2020
  */
 
-import {Component, Host, HostBinding, Input, Optional} from '@angular/core';
+import {Component, Directive, Host, HostBinding, Input, Optional} from '@angular/core';
 import {SuiColour, Utils} from '../../common';
-import {SuiCardsComponent} from './cards.component';
+import {InputBoolean} from '../../core/util';
+import {SuiCardsDirective} from './cards.directive';
 
-@Component({
+@Directive({
   selector: '[sui-card]',
-  template: `
-    <ng-content></ng-content>
-  `
+  exportAs: 'suiCard'
 })
-export class SuiCardComponent {
-  @Input() suiColour: SuiColour = null;
-  @Input() suiLink = false;
-  @Input() suiCentered = false;
-  @Input() suiFluid = false;
-  @Input() suiRaised = false;
+export class SuiCardDirective {
+  @Input() public suiColour: SuiColour = null;
+  @Input() @InputBoolean() public suiLink = false;
+  @Input() @InputBoolean() public suiCentered = false;
+  @Input() @InputBoolean() public suiFluid = false;
+  @Input() @InputBoolean() public suiRaised = false;
 
   private isChildComponent: boolean;
 
@@ -34,7 +33,7 @@ export class SuiCardComponent {
     ].joinWithWhitespaceCleanup();
   }
 
-  constructor(@Optional() @Host() private parent: SuiCardsComponent) {
+  constructor(@Optional() @Host() private parent: SuiCardsDirective) {
     this.isChildComponent = !!parent;
   }
 }

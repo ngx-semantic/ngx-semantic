@@ -4,13 +4,13 @@
 
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SuiCardComponent} from './card.component';
-import {SuiCardsComponent} from './cards.component';
+import {SuiCardDirective} from './card.directive';
+import {SuiCardsDirective} from './cards.directive';
 
 @NgModule({
-  declarations: [SuiCardComponent, SuiCardsComponent],
+  declarations: [SuiCardDirective, SuiCardsDirective],
   imports: [CommonModule],
-  exports: [SuiCardComponent, SuiCardsComponent]
+  exports: [SuiCardDirective, SuiCardsDirective]
 })
 export class SuiCardModule {
 }
