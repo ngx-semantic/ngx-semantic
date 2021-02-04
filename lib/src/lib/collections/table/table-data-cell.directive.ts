@@ -4,6 +4,7 @@
 
 import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiTableState, SuiTableTextAlignment, SuiTableVerticalAlignment, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 @Directive({
   exportAs: 'suiTableCell',
@@ -13,10 +14,10 @@ export class SuiTableCellDirective {
   @Input() public suiState: SuiTableState = null;
   @Input() public suiTextAlignment: SuiTableTextAlignment = null;
   @Input() public suiVerticalAlignment: SuiTableVerticalAlignment = null;
-  @Input() public suiActive = false;
-  @Input() public suiDisabled = false;
-  @Input() public suiCollapsing = false;
-  @Input() public suiSelectable = false;
+  @Input() @InputBoolean() public suiActive = false;
+  @Input() @InputBoolean() public suiDisabled = false;
+  @Input() @InputBoolean() public suiCollapsing = false;
+  @Input() @InputBoolean() public suiSelectable = false;
 
   @HostBinding('class')
   get classes(): string {
