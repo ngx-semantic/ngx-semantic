@@ -2,20 +2,19 @@
  * Created by bolor on 7/20/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, Directive, HostBinding, Input} from '@angular/core';
 import {SuiSize, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
-@Component({
+@Directive({
   selector: '[sui-comments]',
-  template: `
-    <ng-content></ng-content>
-  `
+  exportAs: 'suiComments'
 })
-export class SuiCommentsComponent {
-  @Input() suiSize: SuiSize = null;
-  @Input() suiThreaded = false;
-  @Input() suiMinimal = false;
-  @Input() suiCollapsed = false;
+export class SuiCommentsDirective {
+  @Input() public suiSize: SuiSize = null;
+  @Input() @InputBoolean() public suiThreaded = false;
+  @Input() @InputBoolean() public suiMinimal = false;
+  @Input() @InputBoolean() public suiCollapsed = false;
 
   @HostBinding('class')
   get classes(): string {
