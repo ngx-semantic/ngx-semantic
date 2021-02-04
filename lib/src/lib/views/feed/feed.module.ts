@@ -3,14 +3,14 @@
  */
 
 import {NgModule} from '@angular/core';
-import {SuiFeedComponent} from './feed.component';
+import {SuiFeedDirective} from './feed.directive';
 import {SuiFeedEventDirective} from './feed-event.directive';
 import {CommonModule} from '@angular/common';
 
 @NgModule({
-  exports: [SuiFeedComponent, SuiFeedEventDirective],
+  exports: [SuiFeedDirective, SuiFeedEventDirective],
   imports: [CommonModule],
-  declarations: [SuiFeedComponent, SuiFeedEventDirective]
+  declarations: [SuiFeedDirective, SuiFeedEventDirective]
 })
 export class SuiFeedModule {
 }

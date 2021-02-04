@@ -2,15 +2,13 @@
  * Created by bolor on 7/20/2020
  */
 
-import {Component, HostBinding} from '@angular/core';
+import {Directive, HostBinding} from '@angular/core';
 
-@Component({
+@Directive({
   selector: '[sui-comment]',
-  template: `
-    <ng-content></ng-content>
-  `
+  exportAs: 'suiComment'
 })
-export class SuiCommentComponent {
+export class SuiCommentDirective {
   @HostBinding('class')
   get classes(): string {
     return [

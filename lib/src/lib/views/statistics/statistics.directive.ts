@@ -2,18 +2,17 @@
  * Created by bolor on 7/16/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, Directive, HostBinding, Input} from '@angular/core';
 import {SuiWidth, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
-@Component({
+@Directive({
   selector: '[sui-statistics]',
-  template: `
-    <ng-content></ng-content>
-  `
+  exportAs: 'suiStatistics'
 })
-export class SuiStatisticsComponent {
-  @Input() suiWidth: SuiWidth = null;
-  @Input() suiHorizontal = false;
+export class SuiStatisticsDirective {
+  @Input() public suiWidth: SuiWidth = null;
+  @Input() @InputBoolean() public suiHorizontal = false;
 
   @HostBinding('class')
   get classes(): string {

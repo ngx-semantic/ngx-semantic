@@ -2,20 +2,19 @@
  * Created by bolor on 8/17/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, Directive, HostBinding, Input} from '@angular/core';
 import {SuiWidth, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
-@Component({
+@Directive({
   selector: '[sui-cards]',
-  template: `
-    <ng-content></ng-content>
-  `
+  exportAs: 'suiCards'
 })
-export class SuiCardsComponent {
-  @Input() suiWidth: SuiWidth = null;
-  @Input() suiStackable = false;
-  @Input() suiDoubling = false;
-  @Input() suiLink = false;
+export class SuiCardsDirective {
+  @Input() public suiWidth: SuiWidth = null;
+  @Input() @InputBoolean() public suiStackable = false;
+  @Input() @InputBoolean() public suiDoubling = false;
+  @Input() @InputBoolean() public suiLink = false;
 
   @HostBinding('class')
   get classes(): string {

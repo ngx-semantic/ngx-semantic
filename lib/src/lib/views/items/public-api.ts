@@ -3,5 +3,5 @@
  */
 
 export * from './item.directive';
-export * from './items.component';
+export * from './items.directive';
 export * from './items.module';

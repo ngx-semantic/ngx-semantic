@@ -3,13 +3,13 @@
  */
 
 import {NgModule} from '@angular/core';
-import {SuiAdvertisementComponent} from './advertisement.component';
+import {SuiAdvertisementDirective} from './advertisement.directive';
 import {CommonModule} from '@angular/common';
 
 @NgModule({
-  exports: [SuiAdvertisementComponent],
+  exports: [SuiAdvertisementDirective],
   imports: [CommonModule],
-  declarations: [SuiAdvertisementComponent]
+  declarations: [SuiAdvertisementDirective]
 })
 export class SuiAdvertisementModule {
 }

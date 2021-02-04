@@ -2,22 +2,21 @@
  * Created by bolor on 8/2/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, Directive, HostBinding, Input} from '@angular/core';
 import {Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 export type SuiItemsRelaxation = 'relaxed' | 'very relaxed' | null;
 
-@Component({
+@Directive({
   selector: '[sui-items]',
-  template: `
-    <ng-content></ng-content>
-  `
+  exportAs: 'suiItems'
 })
-export class SuiItemsComponent {
-  @Input() suiRelaxed: SuiItemsRelaxation = null;
-  @Input() suiDivided = false;
-  @Input() suiUnstackable = false;
-  @Input() suiLink = false;
+export class SuiItemsDirective {
+  @Input() public suiRelaxed: SuiItemsRelaxation = null;
+  @Input() @InputBoolean() public suiDivided = false;
+  @Input() @InputBoolean() public suiUnstackable = false;
+  @Input() @InputBoolean() public suiLink = false;
 
   @HostBinding('class')
   get classes(): string {

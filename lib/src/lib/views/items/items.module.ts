@@ -3,14 +3,14 @@
  */
 
 import {NgModule} from '@angular/core';
-import {SuiItemsComponent} from './items.component';
+import {SuiItemsDirective} from './items.directive';
 import {SuiItemDirective} from './item.directive';
 import {CommonModule} from '@angular/common';
 
 @NgModule({
-  exports: [SuiItemsComponent, SuiItemDirective],
+  exports: [SuiItemsDirective, SuiItemDirective],
   imports: [CommonModule],
-  declarations: [SuiItemsComponent, SuiItemDirective]
+  declarations: [SuiItemsDirective, SuiItemDirective]
 })
 export class SuiItemsModule {
 }

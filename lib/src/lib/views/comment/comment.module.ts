@@ -4,8 +4,8 @@
 
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SuiCommentComponent} from './comment.component';
-import {SuiCommentsComponent} from './comments.component';
+import {SuiCommentDirective} from './comment.directive';
+import {SuiCommentsDirective} from './comments.directive';
 import {SuiCommentActionsDirective} from './comment-actions.directive';
 import {SuiCommentAvatarDirective} from './comment-avatar.directive';
 import {SuiCommentMetadataDirective} from './comment-metadata.directive';
@@ -14,8 +14,8 @@ import {SuiCommentTextDirective} from './comment-text.directive';
 
 @NgModule({
   declarations: [
-    SuiCommentComponent,
-    SuiCommentsComponent,
+    SuiCommentDirective,
+    SuiCommentsDirective,
     SuiCommentActionsDirective,
     SuiCommentAvatarDirective,
     SuiCommentMetadataDirective,
@@ -24,8 +24,8 @@ import {SuiCommentTextDirective} from './comment-text.directive';
   ],
   imports: [CommonModule],
   exports: [
-    SuiCommentComponent,
-    SuiCommentComponent,
+    SuiCommentDirective,
+    SuiCommentDirective,
     SuiCommentActionsDirective,
     SuiCommentAvatarDirective,
     SuiCommentMetadataDirective,
