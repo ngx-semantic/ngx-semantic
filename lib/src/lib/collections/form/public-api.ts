@@ -4,5 +4,5 @@
 
 export * from './form-field.directive';
 export * from './form-fields.directive';
-export * from './form.component';
+export * from './form.directive';
 export * from './form.module';
