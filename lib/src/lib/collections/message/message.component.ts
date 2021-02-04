@@ -1,27 +1,29 @@
 import {Component, ElementRef, HostBinding, Input} from '@angular/core';
 import {SuiColour, SuiResultState, SuiSize, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 export type SuiMessageAttachment = 'attached' | 'bottom attached' | null;
 
 @Component({
   selector: '[sui-message]',
   template: `
-    <i class="close icon" *ngIf="suiDismissable"
+    <i  sui-icon *ngIf="suiDismissible"
+        suiIconType="close"
        (click)="dismiss()"></i>
     <ng-content></ng-content>
-  `,
+  `
 })
 export class SuiMessageComponent {
   @Input() public suiAttached: SuiMessageAttachment = null;
   @Input() public suiState: SuiResultState = null;
   @Input() public suiSize: SuiSize = null;
   @Input() public suiColour: SuiColour = null;
-  @Input() public suiDismissable = false;
-  @Input() public suiIcon = false;
-  @Input() public suiHidden = false;
-  @Input() public suiVisible = false;
-  @Input() public suiFloating = false;
-  @Input() public suiCompact = false;
+  @Input() @InputBoolean() public suiDismissible = false;
+  @Input() @InputBoolean() public suiIcon = false;
+  @Input() @InputBoolean() public suiHidden = false;
+  @Input() @InputBoolean() public suiVisible = false;
+  @Input() @InputBoolean() public suiFloating = false;
+  @Input() @InputBoolean() public suiCompact = false;
 
   constructor(private el: ElementRef) {
   }
@@ -39,7 +41,7 @@ export class SuiMessageComponent {
       Utils.getPropClass(this.suiVisible, 'visible'),
       Utils.getPropClass(this.suiFloating, 'floating'),
       Utils.getPropClass(this.suiCompact, 'compact'),
-      'message',
+      'message'
     ].joinWithWhitespaceCleanup();
   }
 
