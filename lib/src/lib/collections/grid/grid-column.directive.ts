@@ -10,7 +10,7 @@ export type SuiColumnAlignment = 'left aligned' | 'middle aligned' | 'right alig
 
 @Directive({
   exportAs: 'suiGridColumn',
-  selector: '[suiGridColumn]',
+  selector: '[suiGridColumn]'
 })
 export class SuiGridColumnDirective {
   @Input() public suiWidth: SuiWidth = null;
@@ -28,7 +28,7 @@ export class SuiGridColumnDirective {
       this.suiWidth ? 'wide' : '',
       this.suiColour,
       this.suiDeviceVisibility,
-      'column',
+      'column'
     ].joinWithWhitespaceCleanup();
   }
 }

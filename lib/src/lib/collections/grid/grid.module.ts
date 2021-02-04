@@ -6,12 +6,12 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {SuiGridColumnDirective} from './grid-column.directive';
 import {SuiGridRowDirective} from './grid-row.directive';
-import {SuiGridComponent} from './grid.component';
+import {SuiGridDirective} from './grid.directive';
 
 @NgModule({
-  declarations: [SuiGridComponent, SuiGridColumnDirective, SuiGridRowDirective],
+  declarations: [SuiGridDirective, SuiGridColumnDirective, SuiGridRowDirective],
   imports: [CommonModule],
-  exports: [SuiGridComponent, SuiGridColumnDirective, SuiGridRowDirective],
+  exports: [SuiGridDirective, SuiGridColumnDirective, SuiGridRowDirective],
 })
 export class SuiGridModule {
 }
