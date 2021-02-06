@@ -123,7 +123,7 @@ export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
   @Input() public suiInline = false;
   @Input() public suiLoading = false;
   @Input() public suiError = false;
-  @Input() public suiDisabled = false;
+  @Input() public disabled = false;
   @Input() public suiScrolling = false;
   @Input() public suiCompact = false;
   @Input() public name: string = null;
@@ -165,7 +165,7 @@ export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
       Utils.getPropClass(this.suiLoading, 'loading'),
       'selection',
       Utils.getPropClass(this.suiInline, 'inline'),
-      Utils.getPropClass(this.suiDisabled, 'disabled'),
+      Utils.getPropClass(this.disabled, 'disabled'),
       Utils.getPropClass(this.suiScrolling, 'scrolling'),
       'dropdown',
       Utils.getPropClass(this.suiMultiple, 'multiple'),
@@ -204,7 +204,7 @@ export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
 
   @HostListener('click')
   public onClick(): void {
-    if (this.suiDisabled) {
+    if (this.disabled) {
       return;
     }
 

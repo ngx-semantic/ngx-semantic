@@ -20,7 +20,7 @@ export class SuiRevealDirective {
   @Input() @InputBoolean() public suiFade = false;
   @Input() @InputBoolean() public suiActive = false;
   @Input() @InputBoolean() public suiInstant = false;
-  @Input() @InputBoolean() public suiDisabled = false;
+  @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiCircular = false;
   @Input() @InputBoolean() public suiImage = false;
 
@@ -30,7 +30,7 @@ export class SuiRevealDirective {
       'ui',
       this.suiSize,
       Utils.getPropClass(this.suiActive, 'active'),
-      Utils.getPropClass(this.suiDisabled, 'disabled'),
+      Utils.getPropClass(this.disabled, 'disabled'),
       Utils.getPropClass(this.suiCircular, 'circular'),
       Utils.getPropClass(this.suiInstant, 'instant'),
       Utils.getPropClass(this.suiFade, 'fade'),

@@ -47,7 +47,7 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
   @Input() public name: string = null;
   @Input() public suiValue: any = null;
   @Input() public suiReadOnly = false;
-  @Input() public suiDisabled = false;
+  @Input() public disabled = false;
 
   public isChecked = false;
   public currentValue: any;
@@ -67,7 +67,7 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
 
   @HostListener('click')
   public onClick(): void {
-    if (this.suiDisabled || this.suiReadOnly) {
+    if (this.disabled || this.suiReadOnly) {
       return;
     }
 
@@ -98,7 +98,7 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
   }
 
   public get disabled(): string | undefined {
-    return this.suiDisabled ? 'disabled' : undefined;
+    return this.disabled ? 'disabled' : undefined;
   }
 
   public writeValue(value: any): void {

@@ -93,7 +93,7 @@ export class SuiSearchComponent {
   @Input() public suiPlaceholder: string = null;
   @Input() public suiSearchDelay = 200;
   @Input() public suiShowIcon = false;
-  @Input() public suiDisabled = false;
+  @Input() public disabled = false;
   @Input() public suiFluid = false;
 
   // field to track whether there has been an outside click
@@ -112,7 +112,7 @@ export class SuiSearchComponent {
       this.suiAlignment,
       Utils.getPropClass(this.suiFluid, 'fluid'),
       Utils.getPropClass(this.isLoading, 'loading'),
-      Utils.getPropClass(this.suiDisabled, 'disabled'),
+      Utils.getPropClass(this.disabled, 'disabled'),
       'search',
       Utils.getPropClass(this.hasCategories, 'category'),
       Utils.getPropClass(this.isFocused, 'focus')
@@ -135,7 +135,7 @@ export class SuiSearchComponent {
 
   @HostListener('click')
   public onClick(): void {
-    if (this.suiDisabled) {
+    if (this.disabled) {
       return;
     }
 

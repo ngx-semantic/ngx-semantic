@@ -14,7 +14,7 @@ export class SuiFormFieldDirective {
   @Input() public suiWidth: SuiWidth = null;
   @Input() @InputBoolean() public suiError = false;
   @Input() @InputBoolean() public suiInline = false;
-  @Input() @InputBoolean() public suiDisabled = false;
+  @Input() @InputBoolean() public disabled = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -22,7 +22,7 @@ export class SuiFormFieldDirective {
       Utils.getPropClass(this.suiInline, 'inline'),
       this.suiWidth,
       this.suiWidth ? 'wide' : '',
-      Utils.getPropClass(this.suiDisabled, 'disabled'),
+      Utils.getPropClass(this.disabled, 'disabled'),
       'field',
       Utils.getPropClass(this.suiError, 'error'),
     ].joinWithWhitespaceCleanup();

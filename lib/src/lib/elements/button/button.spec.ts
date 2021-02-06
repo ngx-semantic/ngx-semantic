@@ -120,7 +120,7 @@ describe('SuiButtonComponent', () => {
     component.suiActive = true;
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('active');
-    component.suiDisabled = true;
+    component.disabled = true;
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('disabled');
     component.suiLoading = true;
@@ -221,7 +221,7 @@ describe('SuiButtonComponent', () => {
         [suiAnimated]="suiAnimated"
         [suiLabeled]="suiLabeled"
         [suiActive]="suiActive"
-        [disabled]="suiDisabled"
+        [disabled]="disabled"
         [suiLoading]="suiLoading"
         [suiCompact]="suiCompact"
         [suiToggle]="suiToggle"
@@ -249,6 +249,6 @@ export class TestButtonComponent {
   @Input() public suiFluid = false;
   @Input() public suiCircular = false;
   @Input() public suiActive = false;
-  @Input() public suiDisabled = false;
+  @Input() public disabled = false;
   @Input() public suiLoading = false;
 }

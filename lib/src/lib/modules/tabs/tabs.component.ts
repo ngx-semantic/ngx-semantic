@@ -35,7 +35,7 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
              [suiText]="isText">
           <ng-container *ngFor="let tab of tabs; let i = index;">
             <div suiMenuItem
-                 [suiDisabled]="tab.suiDisabled"
+                 [disabled]="tab.disabled"
                  [suiActive]="isTabSelected(i)"
                  (click)="changeTab(tab, i)">
               <ng-container *ngIf="tab.suiIcon">
@@ -69,7 +69,7 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
              [suiText]="isText">
           <ng-container *ngFor="let tab of tabs; let i = index;">
             <div suiMenuItem
-                 [suiDisabled]="tab.suiDisabled"
+                 [disabled]="tab.disabled"
                  [suiActive]="isTabSelected(i)"
                  (click)="changeTab(tab, i)">
               <ng-container *ngIf="tab.suiIcon">
@@ -143,7 +143,7 @@ export class SuiTabsComponent implements AfterContentChecked {
   }
 
   public changeTab(tab: SuiTabComponent, index: number): void {
-    if (tab.suiDisabled) {
+    if (tab.disabled) {
       return;
     }
 

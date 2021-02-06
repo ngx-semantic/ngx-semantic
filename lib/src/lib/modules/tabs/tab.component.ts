@@ -21,7 +21,7 @@ export class SuiTabComponent {
   @Input() public suiTitle: string = null;
   @Input() public suiIcon: string = null;
   @Input() public suiLoading = false;
-  @Input() public suiDisabled = false;
+  @Input() public disabled = false;
 
   @ViewChild('contentTemplate', { static: true }) public contentTemplate!: TemplateRef<any>;
 
@@ -29,7 +29,7 @@ export class SuiTabComponent {
   get classes(): string {
     return [
       Utils.getPropClass(this.suiLoading, 'loading'),
-      Utils.getPropClass(this.suiDisabled, 'disabled')
+      Utils.getPropClass(this.disabled, 'disabled')
     ].joinWithWhitespaceCleanup();
   }
 }

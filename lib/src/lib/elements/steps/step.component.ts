@@ -23,14 +23,14 @@ export class SuiStepComponent {
   @Input() public suiContent?: TemplateRef<any>;
   @Input() public suiIcon: string = null;
   @Input() public suiActive = false;
-  @Input() public suiDisabled = false;
+  @Input() public disabled = false;
   @Input() public suiCompleted = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
       Utils.getPropClass(this.suiActive, 'active'),
-      Utils.getPropClass(this.suiDisabled, 'disabled'),
+      Utils.getPropClass(this.disabled, 'disabled'),
       Utils.getPropClass(this.suiCompleted, 'disabled'),
       'step'
     ].joinWithWhitespaceCleanup();

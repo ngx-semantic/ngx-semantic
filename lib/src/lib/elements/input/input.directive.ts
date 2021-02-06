@@ -27,7 +27,7 @@ export class SuiInputDirective {
 
   // states
   @Input() @InputBoolean() public suiLoading = false;
-  @Input() @InputBoolean() public suiDisabled = false;
+  @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiError = false;
 
   @HostBinding('class')
@@ -44,7 +44,7 @@ export class SuiInputDirective {
       Utils.getPropClass(this.suiIcon, 'icon'),
       Utils.getPropClass(this.suiTransparent, 'transparent'),
       Utils.getPropClass(this.suiLoading, 'loading'),
-      Utils.getPropClass(this.suiDisabled, 'disabled'),
+      Utils.getPropClass(this.disabled, 'disabled'),
       Utils.getPropClass(this.suiError, 'error'),
       'input'
     ].joinWithWhitespaceCleanup();

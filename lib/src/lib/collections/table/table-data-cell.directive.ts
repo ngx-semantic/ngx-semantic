@@ -15,7 +15,7 @@ export class SuiTableCellDirective {
   @Input() public suiTextAlignment: SuiTableTextAlignment = null;
   @Input() public suiVerticalAlignment: SuiTableVerticalAlignment = null;
   @Input() @InputBoolean() public suiActive = false;
-  @Input() @InputBoolean() public suiDisabled = false;
+  @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiCollapsing = false;
   @Input() @InputBoolean() public suiSelectable = false;
 
@@ -26,7 +26,7 @@ export class SuiTableCellDirective {
       this.suiTextAlignment ? `${this.suiTextAlignment} aligned` : '',
       this.suiVerticalAlignment ? `${this.suiVerticalAlignment} aligned` : '',
       Utils.getPropClass(this.suiActive, 'active'),
-      Utils.getPropClass(this.suiDisabled, 'disabled'),
+      Utils.getPropClass(this.disabled, 'disabled'),
       Utils.getPropClass(this.suiCollapsing, 'collapsing'),
       Utils.getPropClass(this.suiSelectable, 'selectable'),
     ].joinWithWhitespaceCleanup();

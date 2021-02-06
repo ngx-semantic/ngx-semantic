@@ -18,7 +18,7 @@ export class SuiImageDirective {
   @Input() public suiAlignment: SuiImageAlignment = null;
   @Input() public suiFloated: SuiImageFloat = null;
   @Input() @InputBoolean() public suiHidden = false;
-  @Input() @InputBoolean() public suiDisabled = false;
+  @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiAvatar = false;
   @Input() @InputBoolean() public suiBordered = false;
   @Input() @InputBoolean() public suiFluid = false;
@@ -35,7 +35,7 @@ export class SuiImageDirective {
       this.suiFloated,
       this.suiAlignment,
       Utils.getPropClass(this.suiHidden, 'hidden'),
-      Utils.getPropClass(this.suiDisabled, 'disabled'),
+      Utils.getPropClass(this.disabled, 'disabled'),
       Utils.getPropClass(this.suiAvatar, 'avatar'),
       Utils.getPropClass(this.suiFluid, 'fluid'),
       Utils.getPropClass(this.suiRounded, 'rounded'),

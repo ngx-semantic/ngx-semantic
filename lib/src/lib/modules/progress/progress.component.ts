@@ -33,7 +33,7 @@ export class SuiProgressComponent {
   @Input() public suiColour: SuiColour = null;
   @Input() public suiState: SuiProgressState = null;
   @Input() public suiIndicating = false;
-  @Input() public suiDisabled = false;
+  @Input() public disabled = false;
   @Input() public suiInverted = false;
   @Input() public suiShowProgress = true;
 
@@ -71,7 +71,7 @@ export class SuiProgressComponent {
       this.suiAttached ? `${this.suiAttached} attached` : '',
       Utils.getPropClass(this.isActive, 'active'),
       Utils.getPropClass(this.suiIndicating, 'indicating'),
-      Utils.getPropClass(this.suiDisabled, 'disabled'),
+      Utils.getPropClass(this.disabled, 'disabled'),
       Utils.getPropClass(this.suiInverted, 'inverted'),
       'progress',
       this.suiState,

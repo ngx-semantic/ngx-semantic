@@ -65,7 +65,7 @@ describe('SuiImageComponent', () => {
   });
 
   it('should apply class name by state', () => {
-    component.suiDisabled = true;
+    component.disabled = true;
     fixture.detectChanges();
     expect(buttonElement.classList).toContain('disabled');
     component.suiHidden = true;
@@ -106,7 +106,7 @@ describe('SuiImageComponent', () => {
     <div
       sui-image
       [suiSize]="suiSize"
-      [suiDisabled]="suiDisabled"
+      [disabled]="disabled"
       [suiFluid]="suiFluid"
       [suiRounded]="suiRounded"
       [suiHidden]="suiHidden"
@@ -120,7 +120,7 @@ export class TestImageComponent {
   @Input() suiSize: any = null;
   @Input() suiAlignment: any = null;
   @Input() suiHidden = false;
-  @Input() suiDisabled = false;
+  @Input() disabled = false;
   @Input() suiAvatar = false;
   @Input() suiBordered = false;
   @Input() suiFluid = false;

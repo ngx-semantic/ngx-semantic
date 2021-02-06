@@ -30,7 +30,7 @@ export class SuiSegmentDirective {
   @Input() @InputBoolean() public suiPiled = false;
   @Input() @InputBoolean() public suiVertical = false;
   @Input() @InputBoolean() public suiInverted = false;
-  @Input() @InputBoolean() public suiDisabled = false;
+  @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiLoading = false;
   @Input() @InputBoolean() public suiCompact = false;
   @Input() @InputBoolean() public suiCircular = false;
@@ -53,7 +53,7 @@ export class SuiSegmentDirective {
       Utils.getPropClass(this.suiRaised, 'raised'),
       Utils.getPropClass(this.suiPiled, 'piled'),
       Utils.getPropClass(this.suiInverted, 'inverted'),
-      Utils.getPropClass(this.suiDisabled, 'disabled'),
+      Utils.getPropClass(this.disabled, 'disabled'),
       Utils.getPropClass(this.suiLoading, 'loading'),
       Utils.getPropClass(this.suiCompact, 'compact'),
       Utils.getPropClass(this.suiCircular, 'circular'),

@@ -15,12 +15,12 @@ export class SuiDropdownMenuItemDirective {
   @ContentChild(SuiDropdownMenuDirective) public contentMenu: SuiDropdownMenuDirective;
 
   @Input() public suiDirection: SuiMenuDirection = null;
-  @Input() public suiDisabled = false;
+  @Input() public disabled = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
-      Utils.getPropClass(this.suiDisabled, 'disabled'),
+      Utils.getPropClass(this.disabled, 'disabled'),
       this.suiDirection,
       'item'
     ].joinWithWhitespaceCleanup();

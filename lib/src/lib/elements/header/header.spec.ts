@@ -47,7 +47,7 @@ describe('SuiHeaderComponent', () => {
   });
 
   it('should apply class name if disabled', () => {
-    component.suiDisabled = true;
+    component.disabled = true;
     fixture.detectChanges();
     expect(headerElement.classList).toContain('disabled');
   });
@@ -184,7 +184,7 @@ describe('SuiHeaderComponent', () => {
         [suiColour]="suiColour"
         [suiIcon]="suiIcon"
         [suiSubHeader]="suiSubHeader"
-        [disabled]="suiDisabled"
+        [disabled]="disabled"
         [suiDividing]="suiDividing"
         [suiBlock]="suiBlock"
         [suiAttached]="suiAttached"
@@ -201,7 +201,7 @@ export class TestHeaderComponent {
   @Input() suiAttached: SuiHeaderAttachment = null;
   @Input() suiIcon = false;
   @Input() suiSubHeader = false;
-  @Input() suiDisabled = false;
+  @Input() disabled = false;
   @Input() suiDividing = false;
   @Input() suiBlock = false;
   @Input() suiInverted = false;

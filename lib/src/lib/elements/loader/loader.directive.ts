@@ -18,7 +18,7 @@ export class SuiLoaderDirective {
   @Input() @InputBoolean() public suiText = false;
   @Input() @InputBoolean() public suiIndeterminate = false;
   @Input() @InputBoolean() public suiActive = false;
-  @Input() @InputBoolean() public suiDisabled = false;
+  @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiInverted = false;
 
   @HostBinding('class')
@@ -29,7 +29,7 @@ export class SuiLoaderDirective {
       Utils.getPropClass(this.suiIndeterminate, 'indeterminate'),
       Utils.getPropClass(this.suiText, 'text'),
       Utils.getPropClass(this.suiActive, 'active'),
-      Utils.getPropClass(this.suiDisabled, 'disabled'),
+      Utils.getPropClass(this.disabled, 'disabled'),
       this.getInline(),
       Utils.getPropClass(this.suiInverted, 'inverted'),
       'loader'
