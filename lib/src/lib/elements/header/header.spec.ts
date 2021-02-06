@@ -178,18 +178,18 @@ describe('SuiHeaderComponent', () => {
 @Component({
   template: `
     <div
-      sui-header
-      [suiSize]="suiSize"
-      [suiAlignment]="suiAlignment"
-      [suiColour]="suiColour"
-      [suiIcon]="suiIcon"
-      [suiSubHeader]="suiSubHeader"
-      [suiDisabled]="suiDisabled"
-      [suiDividing]="suiDividing"
-      [suiBlock]="suiBlock"
-      [suiAttached]="suiAttached"
-      [suiFloated]="suiFloated"
-      [suiInverted]="suiInverted">
+        sui-header
+        [suiSize]="suiSize"
+        [suiAlignment]="suiAlignment"
+        [suiColour]="suiColour"
+        [suiIcon]="suiIcon"
+        [suiSubHeader]="suiSubHeader"
+        [disabled]="suiDisabled"
+        [suiDividing]="suiDividing"
+        [suiBlock]="suiBlock"
+        [suiAttached]="suiAttached"
+        [suiFloated]="suiFloated"
+        [suiInverted]="suiInverted">
     </div>
   `
 })

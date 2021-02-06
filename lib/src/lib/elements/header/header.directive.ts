@@ -17,7 +17,7 @@ export class SuiHeaderDirective {
   @Input() public suiAttached: SuiHeaderAttachment = null;
   @Input() public suiFloated: SuiHeaderFloating = null;
   @Input() @InputBoolean() public suiSubHeader = false;
-  @Input() @InputBoolean() public suiDisabled = false;
+  @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiDividing = false;
   @Input() @InputBoolean() public suiBlock = false;
   @Input() @InputBoolean() public suiInverted = false;
@@ -33,7 +33,7 @@ export class SuiHeaderDirective {
       this.suiFloated,
       this.suiAlignment,
       Utils.getPropClass(this.suiDividing, 'dividing'),
-      Utils.getPropClass(this.suiDisabled, 'disabled'),
+      Utils.getPropClass(this.disabled, 'disabled'),
       Utils.getPropClass(this.suiInverted, 'inverted'),
       Utils.getPropClass(this.suiBlock, 'block'),
       Utils.getPropClass(this.suiSubHeader, 'sub'),
