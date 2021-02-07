@@ -27,7 +27,7 @@ export type SuiCheckboxType = 'radio' | 'slider' | 'toggle' | null;
       tabindex="0"
       [attr.type]="inputType"
       [attr.name]="name"
-      [attr.disabled]="disabled"
+      [attr.disabled]="disabledAttribute"
       [attr.checked]="checked"
       [attr.value]="suiValue"/>
     <label>
@@ -97,7 +97,7 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
     return this.isChecked ? '' : undefined;
   }
 
-  public get disabled(): string | undefined {
+  public get disabledAttribute(): string | undefined {
     return this.disabled ? 'disabled' : undefined;
   }
 
