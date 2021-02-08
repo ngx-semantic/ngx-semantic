@@ -12,6 +12,7 @@ export class SuiIconDirective {
   @Input() public suiFloat: SuiIconFloatDirection = null;
   @Input() public suiIconType: string = null;
   @Input() @InputBoolean() public disabled = false;
+  @Input() @InputBoolean() public suiLoading = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -19,6 +20,7 @@ export class SuiIconDirective {
       Utils.getPropClass(this.disabled, 'disabled'),
       this.suiIconType,
       this.suiFloat,
+      Utils.getPropClass(this.suiLoading, 'loading'),
       'icon'
     ].joinWithWhitespaceCleanup();
   }
