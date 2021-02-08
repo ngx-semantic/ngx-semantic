@@ -1,5 +1,5 @@
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiSize, Utils} from '../../common';
+import {SuiColour, SuiSize, Utils} from '../../common';
 import {InputBoolean} from '../../core/util';
 
 export type SuiIconFloatDirection = 'right floated' | null;
@@ -15,6 +15,7 @@ export class SuiIconDirective {
   @Input() public suiSize: SuiSize = null;
   @Input() public suiFlip: SuiIconFlipDirection = null;
   @Input() public suiRotation: SuiIconRotationDirection = null;
+  @Input() public suiColour: SuiColour = null;
   @Input() public suiIconType: string = null;
   @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiLoading = false;
@@ -35,6 +36,7 @@ export class SuiIconDirective {
       Utils.getPropClass(this.suiCircular, 'circular'),
       Utils.getPropClass(this.suiBordered, 'bordered'),
       Utils.getPropClass(this.suiInverted, 'inverted'),
+      this.suiColour,
       this.suiIconType,
       this.suiFloat,
       Utils.getPropClass(this.suiLoading, 'loading'),
