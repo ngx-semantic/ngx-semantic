@@ -13,10 +13,12 @@ export class SuiIconDirective {
   @Input() public suiIconType: string = null;
   @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiLoading = false;
+  @Input() @InputBoolean() public suiFitted = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
+      Utils.getPropClass(this.suiFitted, 'fitted'),
       Utils.getPropClass(this.disabled, 'disabled'),
       this.suiIconType,
       this.suiFloat,
