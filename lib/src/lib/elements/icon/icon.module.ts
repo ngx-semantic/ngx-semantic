@@ -5,11 +5,18 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {SuiIconDirective} from './icon.directive';
+import {SuiIconsDirective} from './icons.directive';
 
 @NgModule({
-  declarations: [SuiIconDirective],
+  declarations: [
+    SuiIconDirective,
+    SuiIconsDirective
+  ],
   imports: [CommonModule],
-  exports: [SuiIconDirective]
+  exports: [
+    SuiIconDirective,
+    SuiIconsDirective
+  ]
 })
 export class SuiIconModule {
 }
