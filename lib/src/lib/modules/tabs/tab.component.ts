@@ -4,6 +4,7 @@
 
 import {Component, HostBinding, Input, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import {Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 @Component({
   selector: 'sui-tab',
@@ -20,8 +21,8 @@ export class SuiTabComponent {
   @Input() public suiContent: TemplateRef<any>;
   @Input() public suiTitle: string = null;
   @Input() public suiIcon: string = null;
-  @Input() public suiLoading = false;
-  @Input() public disabled = false;
+  @Input() @InputBoolean() public suiLoading = false;
+  @Input() @InputBoolean() public disabled = false;
 
   @ViewChild('contentTemplate', { static: true }) public contentTemplate!: TemplateRef<any>;
 

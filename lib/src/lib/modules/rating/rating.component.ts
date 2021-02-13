@@ -5,6 +5,7 @@
 import {ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Input, Output, ViewEncapsulation} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {SuiSize, Utils} from '../../common';
+import {InputBoolean} from "../../core/util";
 
 export type SuiRatingType = 'star' | 'heart' | null;
 
@@ -36,8 +37,8 @@ export class SuiRatingComponent implements ControlValueAccessor {
   @Output() public valueChanged = new EventEmitter<number>();
   @Input() public suiSize: SuiSize = null;
   @Input() public suiType: SuiRatingType = null;
-  @Input() public suiReadOnly = false;
-  @Input() public suiClearable = false;
+  @Input() @InputBoolean() public suiReadOnly = false;
+  @Input() @InputBoolean() public suiClearable = false;
 
   public ratingsArray = [];
   public hoverValue: number;

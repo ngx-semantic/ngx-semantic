@@ -17,6 +17,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import {Utils} from '../../common';
+import {InputBoolean} from "../../core/util";
 
 export type SuiModalSize = 'mini' | 'tiny' | 'small' | 'large' | null;
 
@@ -44,11 +45,11 @@ export type SuiModalSize = 'mini' | 'tiny' | 'small' | 'large' | null;
 })
 export class SuiModalComponent implements OnInit, OnDestroy {
   @Input() public suiSize: SuiModalSize = null;
-  @Input() public suiBasic: boolean;
-  @Input() public suiClosable: boolean;
-  @Input() public suiScrollable: boolean;
-  @Input() public suiFullScreen: boolean;
-  @Input() public suiMaskClosable: boolean;
+  @Input() @InputBoolean() public suiBasic: boolean;
+  @Input() @InputBoolean() public suiClosable: boolean;
+  @Input() @InputBoolean() public suiScrollable: boolean;
+  @Input() @InputBoolean() public suiFullScreen: boolean;
+  @Input() @InputBoolean() public suiMaskClosable: boolean;
   @Output() public visibleChange = new EventEmitter<boolean>();
 
   @ViewChild('contentTemplate', {static: true}) public contentTemplate!: TemplateRef<any>;

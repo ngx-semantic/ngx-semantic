@@ -4,6 +4,7 @@
 
 import {ContentChild, Directive, HostBinding, HostListener, Input} from '@angular/core';
 import {Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 
 export type SuiMenuDirection = 'left' | 'right' | null;
@@ -15,7 +16,7 @@ export class SuiDropdownMenuItemDirective {
   @ContentChild(SuiDropdownMenuDirective) public contentMenu: SuiDropdownMenuDirective;
 
   @Input() public suiDirection: SuiMenuDirection = null;
-  @Input() public disabled = false;
+  @Input() @InputBoolean() public disabled = false;
 
   @HostBinding('class')
   get classes(): string {

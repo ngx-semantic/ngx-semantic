@@ -1,6 +1,7 @@
 import {Component, EventEmitter, HostBinding, HostListener, Input, Output, ViewEncapsulation} from '@angular/core';
 import {Utils} from '../../common';
 import {ISearchOption} from './interfaces/ISearchOption';
+import {InputBoolean} from "../../core/util";
 
 export type SuiSearchAlignment = 'right' | null;
 
@@ -92,9 +93,9 @@ export class SuiSearchComponent {
   @Input() public suiAlignment: SuiSearchAlignment = null;
   @Input() public suiPlaceholder: string = null;
   @Input() public suiSearchDelay = 200;
-  @Input() public suiShowIcon = false;
-  @Input() public disabled = false;
-  @Input() public suiFluid = false;
+  @Input() @InputBoolean() public suiShowIcon = false;
+  @Input() @InputBoolean() public disabled = false;
+  @Input() @InputBoolean() public suiFluid = false;
 
   // field to track whether there has been an outside click
   private isInsideClick: boolean;

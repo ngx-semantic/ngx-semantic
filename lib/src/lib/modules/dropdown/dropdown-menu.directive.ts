@@ -4,6 +4,7 @@
 
 import {Directive, HostBinding, Input} from '@angular/core';
 import {Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 export type SuiDropdownMenuDirection = 'left' | 'right' | null;
 
@@ -12,7 +13,7 @@ export type SuiDropdownMenuDirection = 'left' | 'right' | null;
 })
 export class SuiDropdownMenuDirective {
   @Input() public suiDirection: SuiDropdownMenuDirection = null;
-  @Input() public suiScrolling = false;
+  @Input() @InputBoolean() public suiScrolling = false;
 
   private isOpen;
 

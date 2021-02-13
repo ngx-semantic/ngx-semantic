@@ -4,6 +4,7 @@
 
 import {Component, ContentChild, HostBinding, HostListener, Input, ViewEncapsulation} from '@angular/core';
 import {Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 
 export type SuiDropdownPointingDirection = 'top left' | 'top right' | 'left' | 'right' | 'bottom left' | 'bottom right' | null;
@@ -19,16 +20,16 @@ export class SuiDropdownComponent {
   @ContentChild(SuiDropdownMenuDirective) public contentMenu: SuiDropdownMenuDirective;
 
   @Input() public suiPointing: SuiDropdownPointingDirection = null;
-  @Input() public suiFluid = false;
-  @Input() public suiInline = false;
-  @Input() public suiLoading = false;
-  @Input() public suiError = false;
-  @Input() public disabled = false;
-  @Input() public suiScrolling = false;
-  @Input() public suiCompact = false;
-  @Input() public suiFloating = false;
-  @Input() public suiSimple = false;
-  @Input() public suiLabeled = false;
+  @Input() @InputBoolean() public suiFluid = false;
+  @Input() @InputBoolean() public suiInline = false;
+  @Input() @InputBoolean() public suiLoading = false;
+  @Input() @InputBoolean() public suiError = false;
+  @Input() @InputBoolean() public disabled = false;
+  @Input() @InputBoolean() public suiScrolling = false;
+  @Input() @InputBoolean() public suiCompact = false;
+  @Input()  @InputBoolean()public suiFloating = false;
+  @Input() @InputBoolean() public suiSimple = false;
+  @Input() @InputBoolean() public suiLabeled = false;
 
   private isOpen = false;
 

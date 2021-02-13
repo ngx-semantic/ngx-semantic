@@ -4,13 +4,14 @@
 
 import {Directive, HostBinding, Input} from '@angular/core';
 import {Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 @Directive({
   selector: '[suiModalHeader]',
   exportAs: 'suiModalHeader'
 })
 export class SuiModalHeaderDirective {
-  @Input() public suiIcon: boolean;
+  @Input() @InputBoolean() public suiIcon: boolean;
 
   @HostBinding('class')
   get classes(): string {

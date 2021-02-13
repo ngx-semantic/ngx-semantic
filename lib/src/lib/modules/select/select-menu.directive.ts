@@ -1,5 +1,6 @@
 import {Directive, HostBinding, Input} from '@angular/core';
 import {Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 export type SuiSelectMenuDirection = 'left' | 'right' | null;
 
@@ -8,7 +9,7 @@ export type SuiSelectMenuDirection = 'left' | 'right' | null;
 })
 export class SuiSelectMenuDirective {
   @Input() public suiDirection: SuiSelectMenuDirection = null;
-  @Input() public suiScrolling = false;
+  @Input() @InputBoolean() public suiScrolling = false;
 
   private isOpen;
 

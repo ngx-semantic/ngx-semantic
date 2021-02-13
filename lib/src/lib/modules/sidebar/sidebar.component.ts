@@ -4,6 +4,7 @@
 
 import {Component, EventEmitter, HostBinding, Input, Output, ViewEncapsulation} from '@angular/core';
 import {Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 import {SuiSidebarService} from './sidebar.service';
 
 export type SuiSidebarPosition = 'top' | 'bottom' | 'left' | 'right';
@@ -21,7 +22,7 @@ export class SuiSidebarComponent {
   @Input() public suiSidebarPosition: SuiSidebarPosition = 'left';
   @Input() public suiSidebarWidth: SuiSidebarWidth = null;
   @Input() public suiSidebarAnimation: SuiSidebarAnimation = null;
-  @Input() public suiInverted = false;
+  @Input() @InputBoolean() public suiInverted = false;
   @Output() public visibleChange = new EventEmitter<boolean>();
 
   private _visible = true;

@@ -3,6 +3,7 @@ import {ComponentPortal} from '@angular/cdk/portal';
 import {ComponentRef, Directive, ElementRef, HostListener, Input, OnDestroy, OnInit, TemplateRef} from '@angular/core';
 import {SuiSize} from '../../common';
 import {SuiPopupComponent} from './popup.component';
+import {InputBoolean} from "../../core/util";
 
 export type SuiPopupPlacement =
   'top left'
@@ -27,9 +28,9 @@ export class SuiPopupDirective implements OnInit, OnDestroy {
   @Input() public suiPopupSize: SuiSize = null;
   @Input() public suiPopupTitle: string;
   @Input() public suiPopupContent: string | TemplateRef<any>;
-  @Input() public suiPopupInverted = false;
-  @Input() public suiPopupFluid = false;
-  @Input() public suiPopupFlowing = false;
+  @Input() @InputBoolean() public suiPopupInverted = false;
+  @Input() @InputBoolean() public suiPopupFluid = false;
+  @Input() @InputBoolean() public suiPopupFlowing = false;
 
   private delay = 200; // ms
   private _overlayRef?: OverlayRef;

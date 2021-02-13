@@ -15,6 +15,7 @@ import {
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 
 export type SuiCheckboxType = 'radio' | 'slider' | 'toggle' | null;
 
@@ -46,8 +47,8 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
   @Input() public suiType: SuiCheckboxType = null;
   @Input() public name: string = null;
   @Input() public suiValue: any = null;
-  @Input() public suiReadOnly = false;
-  @Input() public disabled = false;
+  @Input() @InputBoolean() public suiReadOnly = false;
+  @Input() @InputBoolean() public disabled = false;
 
   public isChecked = false;
   public currentValue: any;

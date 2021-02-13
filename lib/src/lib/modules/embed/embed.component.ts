@@ -4,6 +4,7 @@
 
 import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation} from '@angular/core';
 import {Utils} from '../../common';
+import {InputBoolean} from "../../core/util";
 
 export type SuiEmbedSource = 'youtube' | 'vimeo' | null;
 export type SuiEmbedAspectRatio = '4:3' | '16:9' | '21:9' | null;
@@ -41,7 +42,7 @@ export class SuiEmbedComponent implements AfterViewInit {
   @Input() public suiId: string | number;
   @Input() public suiPlaceHolder: string;
   @Input() public suiSourceUrl: string;
-  @Input() public suiAutoplay: boolean;
+  @Input() @InputBoolean() public suiAutoplay: boolean;
 
   public isPLaying: boolean;
   public videoUrl = '';

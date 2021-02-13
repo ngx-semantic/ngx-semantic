@@ -4,6 +4,7 @@
 
 import {Component, HostBinding, HostListener, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 import {SuiSidebarService} from './sidebar.service';
 
 @Component({
@@ -14,7 +15,7 @@ import {SuiSidebarService} from './sidebar.service';
   `
 })
 export class SuiSidebarPusherComponent implements OnInit {
-  @Input() public suiDimmable = false;
+  @Input() @InputBoolean() public suiDimmable = false;
   public isSidebarOpen = false;
 
   @HostBinding('class')

@@ -4,14 +4,15 @@
 
 import {Directive, HostBinding, Input} from '@angular/core';
 import {Utils} from '../../common';
+import {InputBoolean} from "../../core/util";
 
 @Directive({
   selector: '[suiModalContent]',
   exportAs: 'suiModalContent'
 })
 export class SuiModalContentDirective {
-  @Input() public suiImage: boolean;
-  @Input() public suiScrollable: boolean;
+  @Input() @InputBoolean() public suiImage: boolean;
+  @Input() @InputBoolean() public suiScrollable: boolean;
 
   @HostBinding('class')
   get classes(): string {

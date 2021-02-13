@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 import {ISelectOption} from './interfaces/ISelectOption';
 import {SuiSelectMenuDirective} from './select-menu.directive';
 
@@ -118,16 +119,16 @@ export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
 
   @Output() public suiSelectionChanged = new EventEmitter<any | Array<any>>();
   @Input() public suiPlaceholder: string = null;
-  @Input() public suiSearch = false;
-  @Input() public suiFluid = false;
-  @Input() public suiInline = false;
-  @Input() public suiLoading = false;
-  @Input() public suiError = false;
-  @Input() public disabled = false;
-  @Input() public suiScrolling = false;
-  @Input() public suiCompact = false;
-  @Input() public name: string = null;
-  @Input() public suiMultiple = false;
+  @Input() @InputBoolean() public suiSearch = false;
+  @Input() @InputBoolean() public suiFluid = false;
+  @Input() @InputBoolean() public suiInline = false;
+  @Input() @InputBoolean() public suiLoading = false;
+  @Input() @InputBoolean() public suiError = false;
+  @Input() @InputBoolean() public disabled = false;
+  @Input() @InputBoolean() public suiScrolling = false;
+  @Input() @InputBoolean() public suiCompact = false;
+  @Input() @InputBoolean() public name: string = null;
+  @Input() @InputBoolean() public suiMultiple = false;
 
   private isOpen = false;
   private isSearching = false;

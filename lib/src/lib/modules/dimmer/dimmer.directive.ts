@@ -13,6 +13,7 @@ import {
   TemplateRef, ViewContainerRef
 } from '@angular/core';
 import {Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 import {SuiDimmerContentDirective} from './dimmer-content.directive';
 
 export type SuiDimmerContentAlignment = 'top' | 'bottom' | null;
@@ -25,12 +26,12 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
   @ContentChild(SuiDimmerContentDirective, {static: true, read: TemplateRef}) private content: TemplateRef<any>;
 
   @Input() public suiDimmerAlignment: SuiDimmerContentAlignment = null;
-  @Input() public suiDimmerBlurring = false;
-  @Input() public suiDimmerInverted = false;
-  @Input() public suiDimmerSimple = false;
-  @Input() public suiDimmerFullPage = false;
-  @Input() public suiCloseOnClick = true;
-  @Input() public disabled = false;
+  @Input() @InputBoolean() public suiDimmerBlurring = false;
+  @Input() @InputBoolean() public suiDimmerInverted = false;
+  @Input() @InputBoolean() public suiDimmerSimple = false;
+  @Input() @InputBoolean() public suiDimmerFullPage = false;
+  @Input() @InputBoolean() public suiCloseOnClick = true;
+  @Input() @InputBoolean() public disabled = false;
   @Output() public dimmedChanged = new EventEmitter<boolean>();
 
   private _dimmed = false;

@@ -4,6 +4,7 @@
 
 import {Component, HostBinding, Input} from '@angular/core';
 import {SuiColour, SuiSize, Utils} from '../../common';
+import {InputBoolean} from "../../core/util";
 
 export type SuiProgressAttachment = 'bottom' | 'top' | null;
 export type SuiProgressState = 'success' | 'warning' | 'error' | null;
@@ -32,10 +33,10 @@ export class SuiProgressComponent {
   @Input() public suiSize: SuiSize = null;
   @Input() public suiColour: SuiColour = null;
   @Input() public suiState: SuiProgressState = null;
-  @Input() public suiIndicating = false;
-  @Input() public disabled = false;
-  @Input() public suiInverted = false;
-  @Input() public suiShowProgress = true;
+  @Input() @InputBoolean() public suiIndicating = false;
+  @Input() @InputBoolean() public disabled = false;
+  @Input() @InputBoolean() public suiInverted = false;
+  @Input() @InputBoolean() public suiShowProgress = true;
 
   private value = 0;
   private maxValue = 100;

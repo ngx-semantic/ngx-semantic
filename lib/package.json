@@ -1,7 +1,7 @@
 {
   "name": "ngx-semantic",
   "description": "This package is intended to bring the latest Angular support for Semantic UI",
-  "version": "1.0.0-beta.12",
+  "version": "1.0.0-beta.13",
   "license": "MIT",
   "keywords": [
     "ngx",

@@ -5,6 +5,7 @@
 import {Component, Input, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {SuiSize, Utils} from '../../common';
 import {SuiPopupPlacement, SuiPopupWidth} from './popup.directive';
+import {InputBoolean} from "../../core/util";
 
 @Component({
   selector: 'sui-popup',
@@ -29,9 +30,7 @@ import {SuiPopupPlacement, SuiPopupWidth} from './popup.directive';
       </div>
     </div>
   `,
-  styles: [`
-    /*@import '~@angular/cdk/overlay-prebuilt.css';*/
-  `]
+  styles: []
 })
 export class SuiPopupComponent {
   @Input() public suiPlacement: SuiPopupPlacement = 'top center';
@@ -39,9 +38,9 @@ export class SuiPopupComponent {
   @Input() public suiSize: SuiSize = null;
   @Input() public suiTitle: string;
   @Input() public suiContent: string | TemplateRef<any>;
-  @Input() public suiInverted = false;
-  @Input() public suiFluid = false;
-  @Input() public suiFlowing = false;
+  @Input() @InputBoolean() public suiInverted = false;
+  @Input() @InputBoolean() public suiFluid = false;
+  @Input() @InputBoolean() public suiFlowing = false;
 
   get classes(): Array<string> {
     return [

@@ -3,6 +3,7 @@
  */
 
 import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
+import {InputBoolean} from '../../core/util';
 
 @Component({
   selector: 'sui-accordion-panel',
@@ -23,7 +24,7 @@ import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angula
 })
 export class SuiAccordionPanelComponent {
   @Input() public suiTitle = '';
-  @Input() public disabled = false;
+  @Input() @InputBoolean() public disabled = false;
   @Output() public isOpenChange = new EventEmitter<boolean>();
 
   private _isOpen;
