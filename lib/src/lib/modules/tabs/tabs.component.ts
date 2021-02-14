@@ -51,6 +51,7 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
 
       <div class="active tab"
            sui-segment
+           [class.loading]="currentTab.suiLoading"
            [suiAttached]="segmentAttachment">
         <ng-container *ngIf="currentTab">
           <ng-container
