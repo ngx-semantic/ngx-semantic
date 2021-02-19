@@ -15,7 +15,7 @@ import {SuiColour} from '../../common';
 import {SuiSegmentAttachment} from '../../elements/segment';
 import {SuiTabComponent} from './tab.component';
 
-export type SuiTabType = 'basic' | 'pointing' | 'secondary' | 'text' | null;
+export type SuiTabType = 'basic' | 'pointing' | 'secondary' | 'text' | 'bordered' | 'borderless';
 export type SuiTabMenuPosition = 'top' | 'bottom';
 
 @Component({
@@ -32,7 +32,8 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
              [suiTabular]="isBasic"
              [suiSecondary]="isSecondary"
              [suiPointing]="isPointing"
-             [suiText]="isText">
+             [suiText]="isText"
+             [suiBorderless]="isBorderless">
           <ng-container *ngFor="let tab of tabs; let i = index;">
             <div suiMenuItem
                  [disabled]="tab.disabled"
@@ -67,7 +68,8 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
              [suiTabular]="isBasic"
              [suiSecondary]="isSecondary"
              [suiPointing]="isPointing"
-             [suiText]="isText">
+             [suiText]="isText"
+             [suiBorderless]="isBorderless">
           <ng-container *ngFor="let tab of tabs; let i = index;">
             <div suiMenuItem
                  [disabled]="tab.disabled"
@@ -113,6 +115,10 @@ export class SuiTabsComponent implements AfterContentChecked {
 
   get isText(): boolean {
     return this.suiTabType === 'text';
+  }
+
+  get isBorderless(): boolean {
+    return this.suiTabType === 'borderless';
   }
 
   get isTop(): boolean {
