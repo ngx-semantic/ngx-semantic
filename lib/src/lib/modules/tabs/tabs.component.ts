@@ -12,9 +12,9 @@ import {
 } from '@angular/core';
 import {SuiMenuAttachment} from '../../collections/menu';
 import {SuiColour} from '../../common';
+import {InputBoolean} from '../../core/util';
 import {SuiSegmentAttachment} from '../../elements/segment';
 import {SuiTabComponent} from './tab.component';
-import {InputBoolean} from "../../core/util";
 
 export type SuiTabType = 'basic' | 'pointing' | 'secondary' | 'text' | 'bordered' | 'borderless';
 export type SuiTabMenuPosition = 'top' | 'bottom';
@@ -27,35 +27,7 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
   template: `
     <ng-container *ngIf="hasTabs">
       <ng-container *ngIf="isTop">
-        <div sui-menu
-             [suiInverted]="suiInverted"
-             [suiColour]="suiColour"
-             [suiAttached]="menuAttachment"
-             [suiTabular]="isBasic"
-             [suiSecondary]="isSecondary"
-             [suiPointing]="isPointing"
-             [suiText]="isText"
-             [suiBorderless]="isBorderless">
-          <ng-container *ngFor="let tab of tabs; let i = index;">
-            <div suiMenuItem
-                 [disabled]="tab.disabled"
-                 [suiActive]="isTabSelected(i)"
-                 (click)="changeTab(tab, i)">
-              <ng-container *ngIf="tab.suiIcon">
-                <i sui-icon
-                   [suiIconType]="tab.suiIcon"></i>
-              </ng-container>
-
-              {{tab.suiTitle}}
-
-              <ng-container *ngIf="tab.suiLabel">
-                <div sui-label>
-                  {{tab.suiLabel}}
-                </div>
-              </ng-container>
-            </div>
-          </ng-container>
-        </div>
+        <ng-container *ngTemplateOutlet="tabMenu"></ng-container>
       </ng-container>
 
       <div class="active tab"
@@ -70,31 +42,41 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
       </div>
 
       <ng-container *ngIf="!isTop">
-        <div sui-menu
-             [suiInverted]="suiInverted"
-             [suiColour]="suiColour"
-             [suiAttached]="menuAttachment"
-             [suiTabular]="isBasic"
-             [suiSecondary]="isSecondary"
-             [suiPointing]="isPointing"
-             [suiText]="isText"
-             [suiBorderless]="isBorderless">
-          <ng-container *ngFor="let tab of tabs; let i = index;">
-            <div suiMenuItem
-                 [disabled]="tab.disabled"
-                 [suiActive]="isTabSelected(i)"
-                 (click)="changeTab(tab, i)">
-              <ng-container *ngIf="tab.suiIcon">
-                <i sui-icon
-                   [suiIconType]="tab.suiIcon"></i>
-              </ng-container>
-
-              {{tab.suiTitle}}
-            </div>
-          </ng-container>
-        </div>
+        <ng-container *ngTemplateOutlet="tabMenu"></ng-container>
       </ng-container>
     </ng-container>
+
+    <ng-template #tabMenu>
+      <div sui-menu
+           [suiInverted]="suiInverted"
+           [suiColour]="suiColour"
+           [suiAttached]="menuAttachment"
+           [suiTabular]="isBasic"
+           [suiSecondary]="isSecondary"
+           [suiPointing]="isPointing"
+           [suiText]="isText"
+           [suiBorderless]="isBorderless">
+        <ng-container *ngFor="let tab of tabs; let i = index;">
+          <div suiMenuItem
+               [disabled]="tab.disabled"
+               [suiActive]="isTabSelected(i)"
+               (click)="changeTab(tab, i)">
+            <ng-container *ngIf="tab.suiIcon">
+              <i sui-icon
+                 [suiIconType]="tab.suiIcon"></i>
+            </ng-container>
+
+            {{tab.suiTitle}}
+
+            <ng-container *ngIf="tab.suiLabel">
+              <div sui-label>
+                {{tab.suiLabel}}
+              </div>
+            </ng-container>
+          </div>
+        </ng-container>
+      </div>
+    </ng-template>
   `
 })
 export class SuiTabsComponent implements AfterContentChecked {
