@@ -45,6 +45,12 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
               </ng-container>
 
               {{tab.suiTitle}}
+
+              <ng-container *ngIf="tab.suiLabel">
+                <div sui-label>
+                  {{tab.suiLabel}}
+                </div>
+              </ng-container>
             </div>
           </ng-container>
         </div>

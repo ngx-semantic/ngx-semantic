@@ -21,6 +21,7 @@ export class SuiTabComponent {
   @Input() public suiContent: TemplateRef<any>;
   @Input() public suiTitle: string = null;
   @Input() public suiIcon: string = null;
+  @Input() public suiLabel: string | number = null;
   @Input() @InputBoolean() public suiLoading = false;
   @Input() @InputBoolean() public disabled = false;
 

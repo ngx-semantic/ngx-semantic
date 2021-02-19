@@ -9,6 +9,7 @@ import {SuiIconModule} from '../../elements/icon';
 import {SuiSegmentModule} from '../../elements/segment';
 import {SuiTabComponent} from './tab.component';
 import {SuiTabsComponent} from './tabs.component';
+import {SuiLabelModule} from "../../elements/label";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {SuiTabsComponent} from './tabs.component';
     CommonModule,
     SuiIconModule,
     SuiMenuModule,
-    SuiSegmentModule
+    SuiSegmentModule,
+    SuiLabelModule
   ],
   exports: [
     SuiTabComponent,
