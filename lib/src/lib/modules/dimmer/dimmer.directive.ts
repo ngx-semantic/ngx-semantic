@@ -32,7 +32,7 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
   @Input() @InputBoolean() public suiDimmerFullPage = false;
   @Input() @InputBoolean() public suiCloseOnClick = true;
   @Input() @InputBoolean() public disabled = false;
-  @Output() public dimmedChanged = new EventEmitter<boolean>();
+  @Output() public dimmedChange = new EventEmitter<boolean>();
 
   private _dimmed = false;
   private _dimmerDomRef: any;
@@ -50,7 +50,7 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
 
     if (isDimmed !== this._dimmed) {
       this._dimmed = isDimmed;
-      this.dimmedChanged.emit(this._dimmed);
+      this.dimmedChange.emit(this._dimmed);
 
       // implement Ui changes
       if (this._dimmed) {
