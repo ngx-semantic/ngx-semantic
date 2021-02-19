@@ -14,6 +14,7 @@ import {SuiMenuAttachment} from '../../collections/menu';
 import {SuiColour} from '../../common';
 import {SuiSegmentAttachment} from '../../elements/segment';
 import {SuiTabComponent} from './tab.component';
+import {InputBoolean} from "../../core/util";
 
 export type SuiTabType = 'basic' | 'pointing' | 'secondary' | 'text' | 'bordered' | 'borderless';
 export type SuiTabMenuPosition = 'top' | 'bottom';
@@ -27,6 +28,7 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
     <ng-container *ngIf="hasTabs">
       <ng-container *ngIf="isTop">
         <div sui-menu
+             [suiInverted]="suiInverted"
              [suiColour]="suiColour"
              [suiAttached]="menuAttachment"
              [suiTabular]="isBasic"
@@ -69,6 +71,7 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
 
       <ng-container *ngIf="!isTop">
         <div sui-menu
+             [suiInverted]="suiInverted"
              [suiColour]="suiColour"
              [suiAttached]="menuAttachment"
              [suiTabular]="isBasic"
@@ -100,6 +103,7 @@ export class SuiTabsComponent implements AfterContentChecked {
   @Input() public suiTabMenuPosition: SuiTabMenuPosition = 'top';
   @Input() public suiTabType: SuiTabType = 'basic';
   @Input() public suiColour: SuiColour = null;
+  @Input() @InputBoolean() public suiInverted = false;
 
   @Output() public readonly suiSelectedIndexChanged = new EventEmitter<number>();
 
