@@ -4,29 +4,30 @@
 
 import {Component, HostBinding, Input, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 import {SuiDimmerContentAlignment} from './dimmer.directive';
 
 @Component({
   selector: 'sui-dimmer',
   encapsulation: ViewEncapsulation.None,
   template: `
-  <ng-container *ngIf="suiContent">
-    <div class="content">
-      <ng-container *ngTemplateOutlet="suiContent"></ng-container>
+    <div [ngClass]="classes">
+      <ng-container *ngIf="suiContent">
+        <div class="content">
+          <ng-container *ngTemplateOutlet="suiContent"></ng-container>
+        </div>
+      </ng-container>
     </div>
-  </ng-container>
   `
 })
 export class SuiDimmerComponent {
   @Input() public suiContent: TemplateRef<any>;
   @Input() public suiAlignment: SuiDimmerContentAlignment = null;
-  @Input() public suiBlurring = false;
-  @Input() public suiInverted = false;
-  @Input() public suiSimple = false;
-  @Input() public suiFullPage = false;
+  @Input() @InputBoolean() public suiInverted = false;
+  @Input() @InputBoolean() public suiSimple = false;
+  @Input() @InputBoolean() public suiFullPage = false;
 
-  @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       Utils.getPropClass(this.suiFullPage, 'page'),
@@ -36,6 +37,6 @@ export class SuiDimmerComponent {
       this.suiAlignment ? 'aligned' : '',
       'dimmer',
       'transition'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

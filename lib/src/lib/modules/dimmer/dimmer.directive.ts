@@ -3,12 +3,10 @@
  */
 
 import {
-  AfterContentInit,
-  ContentChild,
+  AfterContentInit,  ContentChild,
   Directive, ElementRef,
-  EventEmitter,
-  HostBinding,
-  Input, OnDestroy,
+  EventEmitter,  HostBinding,
+  Input, OnDestroy, OnInit,
   Output, Renderer2, RendererStyleFlags2,
   TemplateRef, ViewContainerRef
 } from '@angular/core';
@@ -22,7 +20,7 @@ export type SuiDimmerContentAlignment = 'top' | 'bottom' | null;
   selector: '[sui-dimmer]',
   exportAs: 'suiDimmer'
 })
-export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
+export class SuiDimmerDirective implements OnInit, AfterContentInit, OnDestroy {
   @ContentChild(SuiDimmerContentDirective, {static: true, read: TemplateRef}) private content: TemplateRef<any>;
 
   @Input() public suiDimmerAlignment: SuiDimmerContentAlignment = null;
@@ -74,7 +72,7 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
               private viewRef: ViewContainerRef) {
   }
 
-  public ngAfterContentInit(): void {
+  public ngOnInit(): void {
     this._dimmerDomRef = this.renderer.createElement('div');
     this.renderer.addClass(this._dimmerDomRef, 'ui');
 
@@ -100,6 +98,24 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
     this.renderer.addClass(this._dimmerDomRef, 'hidden');
     this.renderer.setStyle(this._dimmerDomRef, 'display', 'flex', RendererStyleFlags2.Important);
 
+    // if dimmer is t be shown, then render
+    if (this.dimmed) {
+      this.showDimmer();
+    }
+
+    this.renderer.appendChild(this.element.nativeElement, this._dimmerDomRef);
+    this.unlistener = this.renderer.listen(this._dimmerDomRef, 'click', (event) => {
+      const classes = event.target.className;
+      // verify that the dimmer is shown and is the item clicked
+      if (classes.includes('ui') && classes.includes('dimmer') && classes.includes('visible')) {
+        this.onClick();
+      }
+    });
+
+    console.log(this._dimmerDomRef);
+  }
+
+  public ngAfterContentInit(): void {
     //  if there is embedded content, then render it
     if (this.content) {
       const dimmerContentDomRef = this.renderer.createElement('div');
@@ -115,15 +131,6 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
       // add content to root div
       this.renderer.appendChild(this._dimmerDomRef, dimmerContentDomRef);
     }
-
-    this.renderer.appendChild(this.element.nativeElement, this._dimmerDomRef);
-    this.unlistener = this.renderer.listen(this._dimmerDomRef, 'click', (event) => {
-      const classes = event.target.className;
-      // verify that the dimmer is shown and is the item clicked
-      if (classes.includes('ui') && classes.includes('dimmer') && classes.includes('visible')) {
-        this.onClick();
-      }
-    });
   }
 
   public ngOnDestroy(): void {
@@ -136,21 +143,25 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
   }
 
   private showDimmer(): void {
-    // remove the hidden attr
-    this.renderer.removeClass(this._dimmerDomRef, 'hidden');
+    if (this._dimmerDomRef) {
+      // remove the hidden attr
+      this.renderer.removeClass(this._dimmerDomRef, 'hidden');
 
-    // add the display attrs
-    this.renderer.addClass(this._dimmerDomRef, 'visible');
-    this.renderer.addClass(this._dimmerDomRef, 'active');
+      // add the display attrs
+      this.renderer.addClass(this._dimmerDomRef, 'visible');
+      this.renderer.addClass(this._dimmerDomRef, 'active');
+    }
   }
 
   private hideDimmer(): void {
-    // remove the display attrs
-    this.renderer.removeClass(this._dimmerDomRef, 'visible');
-    this.renderer.removeClass(this._dimmerDomRef, 'active');
+    if (this._dimmerDomRef) {
+      // remove the display attrs
+      this.renderer.removeClass(this._dimmerDomRef, 'visible');
+      this.renderer.removeClass(this._dimmerDomRef, 'active');
 
-    // add the hidden attr
-    this.renderer.addClass(this._dimmerDomRef, 'hidden');
+      // add the hidden attr
+      this.renderer.addClass(this._dimmerDomRef, 'hidden');
+    }
   }
 
   private onClick(): void {

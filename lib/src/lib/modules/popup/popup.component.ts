@@ -4,8 +4,8 @@
 
 import {Component, Input, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {SuiSize, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 import {SuiPopupPlacement, SuiPopupWidth} from './popup.directive';
-import {InputBoolean} from "../../core/util";
 
 @Component({
   selector: 'sui-popup',
