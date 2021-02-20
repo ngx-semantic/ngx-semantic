@@ -29,8 +29,7 @@ import {SuiPopupPlacement, SuiPopupWidth} from './popup.directive';
         </ng-container>
       </div>
     </div>
-  `,
-  styles: []
+  `
 })
 export class SuiPopupComponent {
   @Input() public suiPlacement: SuiPopupPlacement = 'top center';
