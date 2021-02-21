@@ -18,7 +18,12 @@ import {SuiDimmerContentAlignment} from './dimmer.directive';
         </div>
       </ng-container>
     </div>
-  `
+  `,
+  styles: [`
+    .dimmer {
+      background-color: rgba(0, 0, 0, 0.85);
+    }
+  `]
 })
 export class SuiDimmerComponent {
   @Input() public suiContent: TemplateRef<any>;

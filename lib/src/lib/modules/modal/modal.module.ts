@@ -2,7 +2,7 @@
  * Created by bolorundurowb on 1/22/2021
  */
 
-import {OverlayModule} from '@angular/cdk/overlay';
+import {FullscreenOverlayContainer, OverlayContainer, OverlayModule} from '@angular/cdk/overlay';
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {SuiIconModule} from '../../elements/icon';
@@ -28,7 +28,11 @@ import {SuiModalComponent} from './modal.component';
     SuiModalActionsDirective,
     SuiModalContentDirective,
     SuiModalHeaderDirective
-  ]
+  ],
+  providers: [{
+    provide: OverlayContainer,
+    useClass: FullscreenOverlayContainer
+  }]
 })
 export class SuiModalModule {
 }
