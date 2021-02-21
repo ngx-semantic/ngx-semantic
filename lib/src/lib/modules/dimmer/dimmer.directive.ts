@@ -136,21 +136,25 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
   }
 
   private showDimmer(): void {
-    // remove the hidden attr
-    this.renderer.removeClass(this._dimmerDomRef, 'hidden');
+    if (this._dimmerDomRef) {
+      // remove the hidden attr
+      this.renderer.removeClass(this._dimmerDomRef, 'hidden');
 
-    // add the display attrs
-    this.renderer.addClass(this._dimmerDomRef, 'visible');
-    this.renderer.addClass(this._dimmerDomRef, 'active');
+      // add the display attrs
+      this.renderer.addClass(this._dimmerDomRef, 'visible');
+      this.renderer.addClass(this._dimmerDomRef, 'active');
+    }
   }
 
   private hideDimmer(): void {
-    // remove the display attrs
-    this.renderer.removeClass(this._dimmerDomRef, 'visible');
-    this.renderer.removeClass(this._dimmerDomRef, 'active');
+    if (this._dimmerDomRef) {
+      // remove the display attrs
+      this.renderer.removeClass(this._dimmerDomRef, 'visible');
+      this.renderer.removeClass(this._dimmerDomRef, 'active');
 
-    // add the hidden attr
-    this.renderer.addClass(this._dimmerDomRef, 'hidden');
+      // add the hidden attr
+      this.renderer.addClass(this._dimmerDomRef, 'hidden');
+    }
   }
 
   private onClick(): void {
