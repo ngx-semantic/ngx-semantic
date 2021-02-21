@@ -17,6 +17,7 @@ import {Utils} from '../../common';
 import {InputBoolean} from '../../core/util';
 import {SuiDimmerContentDirective} from './dimmer-content.directive';
 import {SuiDimmerComponent} from "./dimmer.component";
+import {DynamicOverlay} from "./overlay/dynamic-overlay";
 
 export type SuiDimmerContentAlignment = 'top' | 'bottom' | null;
 
@@ -71,39 +72,16 @@ export class SuiDimmerDirective implements OnInit, OnDestroy {
     ].joinWithWhitespaceCleanup();
   }
 
-  constructor(private element: ElementRef, private renderer: Renderer2,
-              private overlay: Overlay, private vcr: ViewContainerRef) {
+  constructor(private element: ElementRef, private overlay: DynamicOverlay) {
   }
 
   public ngOnInit(): void {
-    const scrollStrategy = this.overlay
-      .scrollStrategies
-      .noop();
-    const positionStrategy = this.overlay
-      .position()
-      .flexibleConnectedTo(this.element)
-      .withPositions([
-        new ConnectionPositionPair(
-          {originX: 'start', originY: 'bottom'},
-          {overlayX: 'start', overlayY: 'top'}
-        ),
-        new ConnectionPositionPair(
-          {originX: 'start', originY: 'top'},
-          {overlayX: 'start', overlayY: 'bottom'}
-        )
-      ])
-      .withPush(false);
-
-    this._overlayRef = this.overlay.create({
-      positionStrategy,
-      scrollStrategy,
-      hasBackdrop: true,
-      backdropClass: 'dimmer'
-    });
+    this._overlayRef = this.overlay.createWithDefaultConfig(this.element.nativeElement);
 
     this._overlayRef
       .backdropClick()
       .subscribe(() => {
+        console.log('here');
         if (this.suiCloseOnClick) {
           this.dimmed = false;
         }
@@ -126,6 +104,8 @@ export class SuiDimmerDirective implements OnInit, OnDestroy {
       dimmer.suiFullPage = this.suiDimmerFullPage;
       dimmer.suiInverted = this.suiDimmerInverted;
       dimmer.suiSimple = this.suiDimmerSimple;
+
+      console.log(dimmer);
     }
   }
 

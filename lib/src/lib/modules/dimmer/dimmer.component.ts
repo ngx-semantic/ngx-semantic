@@ -20,7 +20,7 @@ import {SuiDimmerContentAlignment} from './dimmer.directive';
     </div>
   `,
   styles: [`
-    .dimmer {
+    :host-context(.dimmer) {
       background-color: rgba(0, 0, 0, 0.85);
     }
   `]
@@ -32,7 +32,7 @@ export class SuiDimmerComponent {
   @Input() @InputBoolean() public suiSimple = false;
   @Input() @InputBoolean() public suiFullPage = false;
 
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       Utils.getPropClass(this.suiFullPage, 'page'),
@@ -42,6 +42,6 @@ export class SuiDimmerComponent {
       this.suiAlignment ? 'aligned' : '',
       'dimmer',
       'transition'
-    ];
+    ].joinWithWhitespaceCleanup();
   }
 }
