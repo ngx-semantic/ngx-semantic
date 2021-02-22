@@ -19,7 +19,7 @@ export class SuiBreadcrumbDividerDirective {
       .joinWithWhitespaceCleanup();
   }
 
-  public getIcon(): string {
+  private getIcon(): string {
     if (this.suiIcon) {
       return `${this.suiIcon} icon`;
     }
