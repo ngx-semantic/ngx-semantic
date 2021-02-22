@@ -3,13 +3,14 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
+import {InputBoolean} from '../../core/util';
 
 @Directive({
-  exportAs: 'suiBreadcrumbDivider',
-  selector: '[suiBreadcrumbDivider]'
+  exportAs: 'suiBreadcrumbSection',
+  selector: '[suiBreadcrumbSection]'
 })
 export class SuiBreadcrumbSectionDirective {
-  @Input() public suiActive = false;
+  @Input() @InputBoolean() public suiActive = false;
 
   @HostBinding('class')
   get classes(): string {
