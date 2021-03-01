@@ -2,7 +2,7 @@
  * Created by bolor on 8/17/2020
  */
 
-import {Component, Directive, Host, HostBinding, Input, Optional} from '@angular/core';
+import {Directive, Host, HostBinding, Input, Optional} from '@angular/core';
 import {SuiColour, Utils} from '../../common';
 import {InputBoolean} from '../../core/util';
 import {SuiCardsDirective} from './cards.directive';
