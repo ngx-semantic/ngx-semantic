@@ -5,7 +5,9 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {SuiCardContentDirective} from './card-content.directive';
+import {SuiCardDescriptionDirective} from './card-description.directive';
 import {SuiCardExtraContentDirective} from './card-extra.directive';
+import {SuiCardHeaderDirective} from './card-header.directive';
 import {SuiCardMetaDirective} from './card-meta.directive';
 import {SuiCardDirective} from './card.directive';
 import {SuiCardsDirective} from './cards.directive';
@@ -15,7 +17,9 @@ import {SuiCardsDirective} from './cards.directive';
     SuiCardDirective,
     SuiCardsDirective,
     SuiCardMetaDirective,
+    SuiCardHeaderDirective,
     SuiCardContentDirective,
+    SuiCardDescriptionDirective,
     SuiCardExtraContentDirective
   ],
   imports: [
@@ -25,7 +29,9 @@ import {SuiCardsDirective} from './cards.directive';
     SuiCardDirective,
     SuiCardsDirective,
     SuiCardMetaDirective,
+    SuiCardHeaderDirective,
     SuiCardContentDirective,
+    SuiCardDescriptionDirective,
     SuiCardExtraContentDirective
   ]
 })
