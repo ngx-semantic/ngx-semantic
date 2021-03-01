@@ -3,6 +3,7 @@
  */
 
 export * from './card-content.directive';
+export * from './card-extra.directive';
 export * from './card-meta.directive';
 export * from './cards.directive';
 export * from './card.directive';

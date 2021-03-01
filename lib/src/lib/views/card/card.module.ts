@@ -5,6 +5,7 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {SuiCardContentDirective} from './card-content.directive';
+import {SuiCardExtraContentDirective} from './card-extra.directive';
 import {SuiCardMetaDirective} from './card-meta.directive';
 import {SuiCardDirective} from './card.directive';
 import {SuiCardsDirective} from './cards.directive';
@@ -14,7 +15,8 @@ import {SuiCardsDirective} from './cards.directive';
     SuiCardDirective,
     SuiCardsDirective,
     SuiCardMetaDirective,
-    SuiCardContentDirective
+    SuiCardContentDirective,
+    SuiCardExtraContentDirective
   ],
   imports: [
     CommonModule
@@ -23,7 +25,8 @@ import {SuiCardsDirective} from './cards.directive';
     SuiCardDirective,
     SuiCardsDirective,
     SuiCardMetaDirective,
-    SuiCardContentDirective
+    SuiCardContentDirective,
+    SuiCardExtraContentDirective
   ]
 })
 export class SuiCardModule {
