@@ -2,6 +2,7 @@
  * Created by bolor on 8/17/2020
  */
 
+export * from './card-description.directive';
 export * from './card-content.directive';
 export * from './card-header.directive';
 export * from './card-extra.directive';
