@@ -6,7 +6,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {Component} from '@angular/core';
-import {SuiPlaceholderParagraphDirective} from './paragraph.directive';
+import {SuiPlaceholderParagraphDirective} from './placeholder-paragraph.directive';
 
 describe('SuiPlaceholderParagraphComponent', () => {
   let component: TestPlaceholderParagraphComponent;

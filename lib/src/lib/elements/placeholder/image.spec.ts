@@ -2,11 +2,11 @@
  * Created by bolor on 5/6/2020
  */
 
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
-import {By} from '@angular/platform-browser';
 import {Component, Input} from '@angular/core';
-import {SuiPlaceholderImageDirective} from './image.directive';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {SuiPlaceholderImageDirective} from './placeholder-image.directive';
 
 describe('SuiPlaceholderImageComponent', () => {
   let component: TestPlaceholderImageComponent;
@@ -47,27 +47,19 @@ describe('SuiPlaceholderImageComponent', () => {
     fixture.detectChanges();
     expect(imageElement.className).toContain('rectangular');
   });
-
-  it('should apply class name if header', () => {
-    component.suiHeader = true;
-    fixture.detectChanges();
-    expect(imageElement.className).toContain('header');
-  });
 });
 
 @Component({
   template: `
     <div
       suiPlaceholderImage
-      [suiHeader]="suiHeader"
       [suiRectangular]="suiRectangular"
       [suiSquare]="suiSquare">
     </div>
   `
 })
 export class TestPlaceholderImageComponent {
-  @Input() suiSquare = false;
-  @Input() suiRectangular = false;
-  @Input() suiHeader = false;
+  @Input() public suiSquare = false;
+  @Input() public suiRectangular = false;
 }
 

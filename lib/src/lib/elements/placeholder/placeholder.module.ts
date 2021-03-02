@@ -2,19 +2,21 @@
  * Created by bolor on 5/6/2020
  */
 
-import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SuiPlaceholderLineDirective} from './line.directive';
-import {SuiPlaceholderImageDirective} from './image.directive';
+import {NgModule} from '@angular/core';
+import {SuiPlaceholderImageDirective} from './placeholder-image.directive';
+import {SuiPlaceholderLineDirective} from './placeholder-line.directive';
+import {SuiPlaceholderParagraphDirective} from './placeholder-paragraph.directive';
+import {SuiPlaceholderHeaderDirective} from './placeholder-header.directive';
 import {SuiPlaceholderDirective} from './placeholder.directive';
-import {SuiPlaceholderParagraphDirective} from './paragraph.directive';
 
 @NgModule({
   declarations: [
     SuiPlaceholderDirective,
     SuiPlaceholderParagraphDirective,
     SuiPlaceholderLineDirective,
-    SuiPlaceholderImageDirective
+    SuiPlaceholderImageDirective,
+    SuiPlaceholderHeaderDirective
   ],
   imports: [
     CommonModule
@@ -23,7 +25,8 @@ import {SuiPlaceholderParagraphDirective} from './paragraph.directive';
     SuiPlaceholderDirective,
     SuiPlaceholderParagraphDirective,
     SuiPlaceholderLineDirective,
-    SuiPlaceholderImageDirective
+    SuiPlaceholderImageDirective,
+    SuiPlaceholderHeaderDirective
   ]
 })
 export class SuiPlaceholderModule {

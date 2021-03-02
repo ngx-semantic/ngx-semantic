@@ -2,11 +2,11 @@
  * Created by bolor on 5/6/2020
  */
 
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
-import {By} from '@angular/platform-browser';
 import {Component, Input} from '@angular/core';
-import {SuiPlaceholderLineDirective} from './line.directive';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {SuiPlaceholderLineDirective} from './placeholder-line.directive';
 
 describe('SuiPlaceholderLineComponent', () => {
   let component: TestPlaceholderLineComponent;
@@ -59,6 +59,6 @@ describe('SuiPlaceholderLineComponent', () => {
   `
 })
 export class TestPlaceholderLineComponent {
-  @Input() suiLength = null;
+  @Input() public suiLength = null;
 }
-
+
