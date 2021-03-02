@@ -5,6 +5,7 @@
 export * from './card-description.directive';
 export * from './card-content.directive';
 export * from './card-header.directive';
+export * from './card-image.directive';
 export * from './card-extra.directive';
 export * from './card-meta.directive';
 export * from './cards.directive';

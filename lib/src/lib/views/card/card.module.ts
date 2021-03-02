@@ -8,6 +8,7 @@ import {SuiCardContentDirective} from './card-content.directive';
 import {SuiCardDescriptionDirective} from './card-description.directive';
 import {SuiCardExtraContentDirective} from './card-extra.directive';
 import {SuiCardHeaderDirective} from './card-header.directive';
+import {SuiCardImageDirective} from './card-image.directive';
 import {SuiCardMetaDirective} from './card-meta.directive';
 import {SuiCardDirective} from './card.directive';
 import {SuiCardsDirective} from './cards.directive';
@@ -20,7 +21,8 @@ import {SuiCardsDirective} from './cards.directive';
     SuiCardHeaderDirective,
     SuiCardContentDirective,
     SuiCardDescriptionDirective,
-    SuiCardExtraContentDirective
+    SuiCardExtraContentDirective,
+    SuiCardImageDirective
   ],
   imports: [
     CommonModule
@@ -32,7 +34,8 @@ import {SuiCardsDirective} from './cards.directive';
     SuiCardHeaderDirective,
     SuiCardContentDirective,
     SuiCardDescriptionDirective,
-    SuiCardExtraContentDirective
+    SuiCardExtraContentDirective,
+    SuiCardImageDirective
   ]
 })
 export class SuiCardModule {
