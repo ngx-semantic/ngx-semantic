@@ -11,7 +11,6 @@ export type SuiAdType =
   | 'rectangle'
   | 'leaderboard'
   | 'page'
-  | 'square button'
   | 'button'
   | 'skyscraper'
   | 'billboard'
@@ -28,7 +27,9 @@ export class SuiAdvertisementDirective {
   @Input() public suiType: SuiAdType = null;
   @Input() @InputBoolean() public suiVertical = false;
   @Input() @InputBoolean() public suiHalf = false;
+  @Input() @InputBoolean() public suiTop = false;
   @Input() @InputBoolean() public suiWide = false;
+  @Input() @InputBoolean() public suiSquare = false;
   @Input() @InputBoolean() public suiCentered = false;
 
   @HostBinding('class')
@@ -40,6 +41,8 @@ export class SuiAdvertisementDirective {
       Utils.getPropClass(this.suiHalf, 'half'),
       Utils.getPropClass(this.suiWide, 'wide'),
       Utils.getPropClass(this.suiVertical, 'vertical'),
+      Utils.getPropClass(this.suiTop, 'top'),
+      Utils.getPropClass(this.suiSquare, 'square'),
       this.suiType,
       'ad'
     ].joinWithWhitespaceCleanup();
