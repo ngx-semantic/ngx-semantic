@@ -6,7 +6,7 @@ import {
   AfterContentInit, ApplicationRef, ComponentFactoryResolver,
   ContentChild, Directive, ElementRef, EmbeddedViewRef,
   EventEmitter, HostBinding, Injector, Input, OnDestroy,
-  Output, TemplateRef
+  Output, Renderer2, TemplateRef
 } from '@angular/core';
 import {Utils} from '../../common';
 import {InputBoolean} from '../../core/util';
@@ -27,14 +27,14 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
   @Input() @InputBoolean() public suiDimmerInverted = false;
   @Input() @InputBoolean() public suiDimmerSimple = false;
   @Input() @InputBoolean() public suiDimmerFullPage = false;
-  @Input() @InputBoolean() public suiCloseOnClick = true;
+  @Input() @InputBoolean() public suiCloseOnClick = false;
   @Input() @InputBoolean() public disabled = false;
   @Output() public dimmedChange = new EventEmitter<boolean>();
 
 
   private _dimmed;
   private _dimmerDomRef: HTMLElement;
-  private unlistener: () => void;
+  private clickListener: () => void;
 
   get dimmed(): boolean {
     return this._dimmed;
@@ -68,7 +68,8 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
   }
 
   constructor(private element: ElementRef, private factoryResolver: ComponentFactoryResolver,
-              private injector: Injector, private appRef: ApplicationRef) {
+              private injector: Injector, private appRef: ApplicationRef,
+              private renderer: Renderer2) {
   }
 
   public ngAfterContentInit(): void {
@@ -82,7 +83,7 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.unlistener();
+    this.clickListener();
 
     // remove the dom element if it exists
     if (this._dimmerDomRef) {
@@ -99,13 +100,13 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
     this.appRef.attachView(component.hostView);
     this._dimmerDomRef = (component.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
 
-    // this.unlistener = this.renderer.listen(this._dimmerDomRef, 'click', (event) => {
-    //   const classes = event.target.className;
-    //   // verify that the dimmer is shown and is the item clicked
-    //   if (classes.includes('ui') && classes.includes('dimmer') && classes.includes('visible')) {
-    //     this.onClick();
-    //   }
-    // });
+    this.clickListener = this.renderer.listen(this._dimmerDomRef, 'click', (event) => {
+      const classes = event.target.className;
+      // verify that the dimmer is shown and is the item clicked
+      if (classes.includes('ui') && classes.includes('dimmer') && classes.includes('visible')) {
+        this.onClick();
+      }
+    });
   }
 
   private showDimmer(): void {
