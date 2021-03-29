@@ -3,17 +3,14 @@
  */
 
 import {
-  AfterContentInit,
-  ContentChild,
-  Directive, ElementRef,
-  EventEmitter,
-  HostBinding,
-  Input, OnDestroy,
-  Output, Renderer2, RendererStyleFlags2,
-  TemplateRef, ViewContainerRef
+  AfterContentInit, ApplicationRef, ComponentFactoryResolver,
+  ContentChild, Directive, ElementRef, EmbeddedViewRef,
+  EventEmitter, HostBinding, Injector, Input, OnDestroy,
+  Output, TemplateRef
 } from '@angular/core';
 import {Utils} from '../../common';
 import {InputBoolean} from '../../core/util';
+import {SuiDimmerComponent} from './dimmer.component';
 import {SuiDimmerContentDirective} from './dimmer-content.directive';
 
 export type SuiDimmerContentAlignment = 'top' | 'bottom' | null;
@@ -34,8 +31,9 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
   @Input() @InputBoolean() public disabled = false;
   @Output() public dimmedChange = new EventEmitter<boolean>();
 
-  private _dimmed = false;
-  private _dimmerDomRef: any;
+
+  private _dimmed;
+  private _dimmerDomRef: HTMLElement;
   private unlistener: () => void;
 
   get dimmed(): boolean {
@@ -52,8 +50,7 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
       this._dimmed = isDimmed;
       this.dimmedChange.emit(this._dimmed);
 
-      // implement Ui changes
-      if (this._dimmed) {
+      if (isDimmed) {
         this.showDimmer();
       } else {
         this.hideDimmer();
@@ -70,60 +67,18 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
     ].joinWithWhitespaceCleanup();
   }
 
-  constructor(private renderer: Renderer2, private element: ElementRef,
-              private viewRef: ViewContainerRef) {
+  constructor(private element: ElementRef, private factoryResolver: ComponentFactoryResolver,
+              private injector: Injector, private appRef: ApplicationRef) {
   }
 
   public ngAfterContentInit(): void {
-    this._dimmerDomRef = this.renderer.createElement('div');
-    this.renderer.addClass(this._dimmerDomRef, 'ui');
+    this.generateDomElement();
 
-    if (this.suiDimmerFullPage) {
-      this.renderer.addClass(this._dimmerDomRef, 'page');
+    // NOTE: when the dimmer is instantiated in a dimmed states, this method gets called after
+    // the getter and setter
+    if (this.dimmed) {
+      this.showDimmer();
     }
-
-    if (this.suiDimmerSimple) {
-      this.renderer.addClass(this._dimmerDomRef, 'simple');
-    }
-
-    if (this.suiDimmerInverted) {
-      this.renderer.addClass(this._dimmerDomRef, 'inverted');
-    }
-
-    if (this.suiDimmerAlignment) {
-      this.renderer.addClass(this._dimmerDomRef, this.suiDimmerAlignment);
-      this.renderer.addClass(this._dimmerDomRef, 'aligned');
-    }
-
-    this.renderer.addClass(this._dimmerDomRef, 'dimmer');
-    this.renderer.addClass(this._dimmerDomRef, 'transition');
-    this.renderer.addClass(this._dimmerDomRef, 'hidden');
-    this.renderer.setStyle(this._dimmerDomRef, 'display', 'flex', RendererStyleFlags2.Important);
-
-    //  if there is embedded content, then render it
-    if (this.content) {
-      const dimmerContentDomRef = this.renderer.createElement('div');
-      this.renderer.addClass(dimmerContentDomRef, 'content');
-
-      // get the directive content and append to this div
-      const embeddedView = this.viewRef.createEmbeddedView(this.content);
-      embeddedView.detectChanges();
-      for (const node of embeddedView.rootNodes) {
-        this.renderer.appendChild(dimmerContentDomRef, node);
-      }
-
-      // add content to root div
-      this.renderer.appendChild(this._dimmerDomRef, dimmerContentDomRef);
-    }
-
-    this.renderer.appendChild(this.element.nativeElement, this._dimmerDomRef);
-    this.unlistener = this.renderer.listen(this._dimmerDomRef, 'click', (event) => {
-      const classes = event.target.className;
-      // verify that the dimmer is shown and is the item clicked
-      if (classes.includes('ui') && classes.includes('dimmer') && classes.includes('visible')) {
-        this.onClick();
-      }
-    });
   }
 
   public ngOnDestroy(): void {
@@ -131,30 +86,50 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
 
     // remove the dom element if it exists
     if (this._dimmerDomRef) {
-      this.renderer.removeChild(this.element.nativeElement, this._dimmerDomRef);
+      this.hideDimmer();
     }
   }
 
-  private showDimmer(): void {
-    if (this._dimmerDomRef) {
-      // remove the hidden attr
-      this.renderer.removeClass(this._dimmerDomRef, 'hidden');
+  private generateDomElement(): void {
+    const factory = this.factoryResolver.resolveComponentFactory(SuiDimmerComponent);
+    const component = factory.create(this.injector);
+    component.instance.suiContent = this.content;
+    component.instance.suiInverted = this.suiDimmerInverted;
 
-      // add the display attrs
-      this.renderer.addClass(this._dimmerDomRef, 'visible');
-      this.renderer.addClass(this._dimmerDomRef, 'active');
+    this.appRef.attachView(component.hostView);
+    this._dimmerDomRef = (component.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
+
+    // this.unlistener = this.renderer.listen(this._dimmerDomRef, 'click', (event) => {
+    //   const classes = event.target.className;
+    //   // verify that the dimmer is shown and is the item clicked
+    //   if (classes.includes('ui') && classes.includes('dimmer') && classes.includes('visible')) {
+    //     this.onClick();
+    //   }
+    // });
+  }
+
+  private showDimmer(): void {
+    if (this._dimmerDomRef && !this.isDimmerInDom()) {
+      this.element.nativeElement.appendChild(this._dimmerDomRef);
     }
   }
 
   private hideDimmer(): void {
-    if (this._dimmerDomRef) {
-      // remove the display attrs
-      this.renderer.removeClass(this._dimmerDomRef, 'visible');
-      this.renderer.removeClass(this._dimmerDomRef, 'active');
+    const dimmer = this.getDimmerFromDom();
 
-      // add the hidden attr
-      this.renderer.addClass(this._dimmerDomRef, 'hidden');
+    if (dimmer) {
+      this.element.nativeElement.removeChild(dimmer);
     }
+  }
+
+  private isDimmerInDom(): boolean {
+    return !!this.getDimmerFromDom();
+  }
+
+  private getDimmerFromDom(): any {
+    const elements = Array.from(this.element.nativeElement.children);
+    // tslint:disable-next-line:no-string-literal
+    return elements.filter(x => x['localName'] === 'sui-dimmer')[0];
   }
 
   private onClick(): void {
