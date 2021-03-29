@@ -2,10 +2,10 @@
  * Created by bolorundurowb on 1/16/2021
  */
 
-import {Component, Input, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {SuiSize, Utils} from '../../common';
+import {InputBoolean} from '../../core/util';
 import {SuiPopupPlacement, SuiPopupWidth} from './popup.directive';
-import {InputBoolean} from "../../core/util";
+import {Component, Input, TemplateRef, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'sui-popup',

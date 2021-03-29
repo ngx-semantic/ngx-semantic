@@ -28,7 +28,7 @@ export class SuiSidebarContainerComponent implements AfterContentInit {
 
     this.suiSidebar.visibleChange
       .subscribe((isVisible) => {
-        this.suiPusher = isVisible;
+        this.suiPusher.isSidebarOpen = isVisible;
       });
   }
 }
