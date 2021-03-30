@@ -20,6 +20,9 @@ import {SuiDimmerContentDirective} from './dimmer-content.directive';
   exports: [
     SuiDimmerDirective,
     SuiDimmerContentDirective
+  ],
+  entryComponents: [
+    SuiDimmerComponent
   ]
 })
 export class SuiDimmerModule {

@@ -94,8 +94,12 @@ export class SuiDimmerDirective implements AfterContentInit, OnDestroy {
   private generateDomElement(): void {
     const factory = this.factoryResolver.resolveComponentFactory(SuiDimmerComponent);
     const component = factory.create(this.injector);
-    component.instance.suiContent = this.content;
+    component.instance.suiAlignment = this.suiDimmerAlignment;
+    component.instance.suiBlurring = this.suiDimmerBlurring;
     component.instance.suiInverted = this.suiDimmerInverted;
+    component.instance.suiSimple = this.suiDimmerSimple;
+    component.instance.suiFullPage = this.suiDimmerFullPage;
+    component.instance.suiContent = this.content;
 
     this.appRef.attachView(component.hostView);
     this._dimmerDomRef = (component.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;

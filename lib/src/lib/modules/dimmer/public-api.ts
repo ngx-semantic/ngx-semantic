@@ -3,5 +3,6 @@
  */
 
 export * from './dimmer-content.directive';
+export * from './dimmer.component';
 export * from './dimmer.directive';
 export * from './dimmer.module';
