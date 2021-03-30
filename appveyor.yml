@@ -1,7 +1,7 @@
 version: "{build}"
 
 environment:
-  nodejs_version: "13.7.0"
+  nodejs_version: "14.0.0"
 
 platform:
   - x64

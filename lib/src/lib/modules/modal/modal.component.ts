@@ -17,7 +17,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import {Utils} from '../../common';
-import {InputBoolean} from "../../core/util";
+import {InputBoolean} from '../../core/util';
 
 export type SuiModalSize = 'mini' | 'tiny' | 'small' | 'large' | null;
 
