@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+
 import {SuiBreadcrumbModule} from './collections/breadcrumb';
 import {SuiFormModule} from './collections/form';
 import {SuiGridModule} from './collections/grid';
@@ -39,6 +40,8 @@ import {SuiCardModule} from './views/card';
 import {SuiCommentModule} from './views/comment';
 import {SuiItemsModule} from './views/items';
 import {SuiStatisticModule} from './views/statistics';
+
+export * from 'ngx-semantic/breadcrumb';
 
 @NgModule({
   declarations: [],
