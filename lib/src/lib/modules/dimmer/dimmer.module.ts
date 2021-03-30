@@ -18,7 +18,6 @@ import {SuiDimmerContentDirective} from './dimmer-content.directive';
     CommonModule
   ],
   exports: [
-    SuiDimmerComponent,
     SuiDimmerDirective,
     SuiDimmerContentDirective
   ],
