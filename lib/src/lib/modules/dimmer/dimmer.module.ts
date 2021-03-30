@@ -4,20 +4,21 @@
 
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SuiDimmerDirective} from './dimmer.directive';
 import {SuiDimmerComponent} from './dimmer.component';
+import {SuiDimmerDirective} from './dimmer.directive';
 import {SuiDimmerContentDirective} from './dimmer-content.directive';
 
 @NgModule({
   declarations: [
-    SuiDimmerDirective,
     SuiDimmerComponent,
+    SuiDimmerDirective,
     SuiDimmerContentDirective
   ],
   imports: [
     CommonModule
   ],
   exports: [
+    // SuiDimmerComponent,
     SuiDimmerDirective,
     SuiDimmerContentDirective
   ],

@@ -14,9 +14,9 @@ import {SuiModalComponent} from './modal.component';
 @NgModule({
   exports: [
     SuiModalComponent,
+    SuiModalHeaderDirective,
     SuiModalActionsDirective,
-    SuiModalContentDirective,
-    SuiModalHeaderDirective
+    SuiModalContentDirective
   ],
   imports: [
     CommonModule,
@@ -25,9 +25,9 @@ import {SuiModalComponent} from './modal.component';
   ],
   declarations: [
     SuiModalComponent,
+    SuiModalHeaderDirective,
     SuiModalActionsDirective,
-    SuiModalContentDirective,
-    SuiModalHeaderDirective
+    SuiModalContentDirective
   ]
 })
 export class SuiModalModule {
