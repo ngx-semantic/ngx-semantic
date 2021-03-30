@@ -2,8 +2,6 @@
  * Created by bolorundurowb on 1/17/2021
  */
 
-import {Utils} from '../../common';
-import {SuiDimmerContentAlignment} from './dimmer.directive';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -11,6 +9,8 @@ import {
   TemplateRef,
   ViewEncapsulation
 } from '@angular/core';
+import {Utils} from '../../common';
+import {SuiDimmerContentAlignment} from './dimmer.directive';
 
 @Component({
   selector: 'sui-dimmer',
@@ -45,7 +45,7 @@ export class SuiDimmerComponent implements OnInit {
     this._content = content;
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.classes = this.genClasses();
   }
 
