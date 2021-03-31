@@ -5,19 +5,14 @@
 import {Overlay, OverlayPositionBuilder, OverlayRef} from '@angular/cdk/overlay';
 import {TemplatePortal} from '@angular/cdk/portal';
 import {
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-  TemplateRef,
-  ViewChild,
-  ViewContainerRef,
-  ViewEncapsulation
+  Component, EventEmitter, Inject, Input,
+  OnDestroy, OnInit, Output, Renderer2,
+  TemplateRef, ViewChild,
+  ViewContainerRef, ViewEncapsulation
 } from '@angular/core';
 import {Utils} from '../../common';
 import {InputBoolean} from '../../core/util';
+import {DOCUMENT} from "@angular/common";
 
 export type SuiModalSize = 'mini' | 'tiny' | 'small' | 'large' | null;
 
@@ -26,36 +21,46 @@ export type SuiModalSize = 'mini' | 'tiny' | 'small' | 'large' | null;
   encapsulation: ViewEncapsulation.None,
   template: `
     <ng-template #contentTemplate>
-      <div style="position: unset !important;"
+      <div style="display: block !important;"
            [ngClass]="classes">
         <ng-container *ngIf="suiClosable">
-          <i sui-icon
+          <i *ngIf="!suiBasic"
+             sui-icon
              suiIconType="close"
              (click)="visible = false;"></i>
+        </ng-container>
+
+        <ng-container *ngIf="suiHeaderText || suiHeaderIcon">
+          <div
+            [class.ui]="!!suiHeaderIcon"
+            [class.icon]="!!suiHeaderIcon"
+            [class.header]="true">
+            <i sui-icon
+               [suiIconType]="suiHeaderIcon"></i>
+            {{suiHeaderText}}
+          </div>
         </ng-container>
         <ng-content></ng-content>
       </div>
     </ng-template>
-  `,
-  styles: [`
-    .backdrop {
-      background-color: rgba(0, 0, 0, 0.85);
-    }
-  `]
+  `
 })
-export class SuiModalComponent implements OnInit, OnDestroy {
-  @Input() public suiSize: SuiModalSize = null;
-  @Input() @InputBoolean() public suiBasic: boolean;
-  @Input() @InputBoolean() public suiClosable: boolean;
-  @Input() @InputBoolean() public suiScrollable: boolean;
-  @Input() @InputBoolean() public suiFullScreen: boolean;
-  @Input() @InputBoolean() public suiMaskClosable: boolean;
-  @Output() public visibleChange = new EventEmitter<boolean>();
-
+export class SuiModalComponent implements OnDestroy {
   @ViewChild('contentTemplate', {static: true}) public contentTemplate!: TemplateRef<any>;
 
+  @Input() public suiSize: SuiModalSize = null;
+  @Input() public suiHeaderText: string;
+  @Input() public suiHeaderIcon: string;
+  @Input() @InputBoolean() public suiBasic = false;
+  @Input() @InputBoolean() public suiClosable: boolean;
+  @Input() @InputBoolean() public suiScrollable = true;
+  @Input() @InputBoolean() public suiFullScreen = false;
+  @Input() @InputBoolean() public suiMaskClosable = true;
+  @Output() public visibleChange = new EventEmitter<boolean>();
+
+  private readonly uniqueId: number;
   private _visible = false;
-  private _overlayRef!: OverlayRef;
+  private _modalDomRef: HTMLElement;
 
   @Input()
   get visible(): boolean {
@@ -73,47 +78,29 @@ export class SuiModalComponent implements OnInit, OnDestroy {
     this.visibleChange.emit(isVisible);
   }
 
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       this.suiSize,
       Utils.getPropClass(this.suiBasic, 'basic'),
       Utils.getPropClass(this.suiFullScreen, 'fullscreen'),
-      'active',
-      'modal'
-    ].joinWithWhitespaceCleanup();
+      'modal',
+      'transition',
+      'visible',
+      'active'
+    ];
   }
 
-  constructor(private overlay: Overlay, private positionBuilder: OverlayPositionBuilder,
-              private vcr: ViewContainerRef) {
-  }
-
-  public ngOnInit(): void {
-    const scrollStrategy = this.overlay
-      .scrollStrategies
-      .noop();
-    const positionStrategy = this.positionBuilder
-      .global()
-      .centerHorizontally()
-      .centerVertically();
-
-    this._overlayRef = this.overlay.create({
-      positionStrategy, scrollStrategy,
-      hasBackdrop: true,
-      backdropClass: 'backdrop'
-    });
-
-    this._overlayRef
-      .backdropClick()
-      .subscribe(() => {
-        if (this.suiMaskClosable) {
-          this.visible = false;
-        }
-      });
+  constructor(@Inject(DOCUMENT) private document, private renderer: Renderer2,
+              private viewRef: ViewContainerRef) {
+    this.uniqueId = Math.ceil(Math.random() * 100000000);
   }
 
   public ngOnDestroy(): void {
-    this._overlayRef?.dispose();
+    const container = this.getModalFromDom();
+    if (container) {
+      this.renderer.removeChild(this.document.body, container);
+    }
   }
 
   private showModal(): void {
