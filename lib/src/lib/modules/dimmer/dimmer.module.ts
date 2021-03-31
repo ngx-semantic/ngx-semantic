@@ -2,13 +2,15 @@
  * Created by bolorundurowb on 1/6/2021
  */
 
-import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {SuiDimmerContentDirective} from './dimmer-content.directive';
+import {CommonModule} from '@angular/common';
+import {SuiDimmerComponent} from './dimmer.component';
 import {SuiDimmerDirective} from './dimmer.directive';
+import {SuiDimmerContentDirective} from './dimmer-content.directive';
 
 @NgModule({
   declarations: [
+    SuiDimmerComponent,
     SuiDimmerDirective,
     SuiDimmerContentDirective
   ],
@@ -18,6 +20,9 @@ import {SuiDimmerDirective} from './dimmer.directive';
   exports: [
     SuiDimmerDirective,
     SuiDimmerContentDirective
+  ],
+  entryComponents: [
+    SuiDimmerComponent
   ]
 })
 export class SuiDimmerModule {
