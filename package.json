@@ -9,7 +9,7 @@
     "build": "ng build",
     "build:prod": "ng build --prod",
     "build:publish": "npm run build:prod && npm publish ./dist",
-    "build:local": "ng build --prod && cd dist && npm pack && cd .."
+    "build:local": "npm run build:prod && cd dist && npm pack && cd .."
   },
   "private": true,
   "dependencies": {
