@@ -64,6 +64,7 @@ export class SuiModalComponent implements OnDestroy {
   private readonly uniqueId: number;
   private _visible = false;
   private _modalDomRef: HTMLElement;
+  private clickListener: () => void;
 
   @Input()
   get visible(): boolean {
@@ -174,6 +175,14 @@ export class SuiModalComponent implements OnDestroy {
     // set the class properties
     this._modalDomRef = container;
 
+    // set the click listener
+    this.clickListener = this.renderer.listen(this._modalDomRef, 'click', (event) => {
+      const targetId = event.target.id;
+      if (targetId === this.uniqueId.toString()) {
+        this.onClick();
+      }
+    });
+
     // insert the generated html into the DOM
     this.renderer.appendChild(this.document.body, this._modalDomRef);
   }
@@ -184,5 +193,11 @@ export class SuiModalComponent implements OnDestroy {
 
   private getModalFromDom(): HTMLElement {
     return this.document.getElementById(this.uniqueId);
+  }
+
+  private onClick(): void {
+    if (this.suiMaskClosable) {
+      this.visible = false;
+    }
   }
 }
