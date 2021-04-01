@@ -56,6 +56,7 @@ export class SuiModalComponent implements OnDestroy {
   @Input() @InputBoolean() public suiBasic = false;
   @Input() @InputBoolean() public suiClosable = true;
   @Input() @InputBoolean() public suiCentered = true;
+  @Input() @InputBoolean() public suiBlurring = false;
   @Input() @InputBoolean() public suiFullScreen = false;
   @Input() @InputBoolean() public suiMaskClosable = true;
   @Output() public visibleChange = new EventEmitter<boolean>();
@@ -116,6 +117,11 @@ export class SuiModalComponent implements OnDestroy {
     const container = this.getModalFromDom();
     if (container) {
       this.renderer.removeChild(this.document.body, container);
+
+      // if blurring, remove classes from the body
+      if (this.suiBlurring) {
+        this.renderer.removeClass(this.document.body, 'dimmable');
+      }
     }
   }
 
@@ -128,6 +134,13 @@ export class SuiModalComponent implements OnDestroy {
     this.renderer.setProperty(this._modalDomRef, 'style', 'display: flex !important;');
     this.renderer.addClass(this._modalDomRef, 'visible');
     this.renderer.addClass(this._modalDomRef, 'active');
+
+    // if blurring, add classes to the body
+    if (this.suiBlurring) {
+      this.renderer.addClass(this.document.body, 'dimmable');
+      this.renderer.addClass(this.document.body, 'blurring');
+      this.renderer.addClass(this.document.body, 'dimmed');
+    }
   }
 
   hideModal(): void {
@@ -136,6 +149,12 @@ export class SuiModalComponent implements OnDestroy {
       this.renderer.removeAttribute(this._modalDomRef, 'style');
       this.renderer.removeClass(this._modalDomRef, 'visible');
       this.renderer.removeClass(this._modalDomRef, 'active');
+
+      // if blurring, remove classes from the body
+      if (this.suiBlurring) {
+        this.renderer.removeClass(this.document.body, 'blurring');
+        this.renderer.removeClass(this.document.body, 'dimmed');
+      }
     }
   }
 
