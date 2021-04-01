@@ -2,23 +2,24 @@
  * Created by bolorundurowb on 1/22/2021
  */
 
-import {Overlay, OverlayPositionBuilder, OverlayRef} from '@angular/cdk/overlay';
-import {TemplatePortal} from '@angular/cdk/portal';
 import {
-  Component, EventEmitter, Inject, Input,
-  OnDestroy, OnInit, Output, Renderer2,
-  TemplateRef, ViewChild,
-  ViewContainerRef, ViewEncapsulation
+  ChangeDetectionStrategy, Component,
+  EventEmitter, Inject,
+  Input, OnDestroy, Output,
+  Renderer2, TemplateRef,
+  ViewChild, ViewContainerRef,
+  ViewEncapsulation
 } from '@angular/core';
 import {Utils} from '../../common';
 import {InputBoolean} from '../../core/util';
-import {DOCUMENT} from "@angular/common";
+import {DOCUMENT} from '@angular/common';
 
 export type SuiModalSize = 'mini' | 'tiny' | 'small' | 'large' | null;
 
 @Component({
   selector: 'sui-modal',
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ng-template #contentTemplate>
       <div style="display: block !important;"
@@ -31,10 +32,9 @@ export type SuiModalSize = 'mini' | 'tiny' | 'small' | 'large' | null;
         </ng-container>
 
         <ng-container *ngIf="suiHeaderText || suiHeaderIcon">
-          <div
-            [class.ui]="!!suiHeaderIcon"
-            [class.icon]="!!suiHeaderIcon"
-            [class.header]="true">
+          <div [class.ui]="!!suiHeaderIcon"
+               [class.icon]="!!suiHeaderIcon"
+               [class.header]="true">
             <i sui-icon
                [suiIconType]="suiHeaderIcon"></i>
             {{suiHeaderText}}
@@ -52,7 +52,8 @@ export class SuiModalComponent implements OnDestroy {
   @Input() public suiHeaderText: string;
   @Input() public suiHeaderIcon: string;
   @Input() @InputBoolean() public suiBasic = false;
-  @Input() @InputBoolean() public suiClosable: boolean;
+  @Input() @InputBoolean() public suiClosable = true;
+  @Input() @InputBoolean() public suiCentered = true;
   @Input() @InputBoolean() public suiScrollable = true;
   @Input() @InputBoolean() public suiFullScreen = false;
   @Input() @InputBoolean() public suiMaskClosable = true;
@@ -103,12 +104,51 @@ export class SuiModalComponent implements OnDestroy {
     }
   }
 
-  private showModal(): void {
-    const portal = new TemplatePortal(this.contentTemplate, this.vcr);
-    this._overlayRef?.attach(portal);
+  showModal(): void {
+    if (!this.isModalInDom()) {
+      this.generateDomElement();
+    }
+
+    // insert necessary classes to show the modal
+    this.renderer.setProperty(this._modalDomRef, 'style', 'display: flex !important;');
+    this.renderer.addClass(this._modalDomRef, 'visible');
+    this.renderer.addClass(this._modalDomRef, 'active');
   }
 
-  public hideModal(): void {
-    this._overlayRef?.detach();
+  hideModal(): void {
+    if (this._modalDomRef) {
+      // remove necessary classes to hide the modal
+      this.renderer.removeAttribute(this._modalDomRef, 'style');
+      this.renderer.removeClass(this._modalDomRef, 'visible');
+      this.renderer.removeClass(this._modalDomRef, 'active');
+    }
+  }
+
+  private generateDomElement(): void {
+    const container = this.renderer.createElement('div');
+    this.renderer.setAttribute(container, 'id', this.uniqueId.toString());
+    const containerStyle = 'ui dimmer modals page' + this.suiCentered ? '' : ' top aligned' + ' transition';
+    this.renderer.setAttribute(container, 'class', containerStyle);
+
+    // render the modal contents
+    const content = this.viewRef.createEmbeddedView(this.contentTemplate);
+    content.detectChanges();
+    for (const node of content.rootNodes) {
+      this.renderer.appendChild(container, node);
+    }
+
+    // set the class properties
+    this._modalDomRef = container;
+
+    // insert the generated html into the DOM
+    this.renderer.appendChild(this.document.body, this._modalDomRef);
+  }
+
+  private isModalInDom(): boolean {
+    return !!this.getModalFromDom();
+  }
+
+  private getModalFromDom(): HTMLElement {
+    return this.document.getElementById(this.uniqueId);
   }
 }
