@@ -15,6 +15,7 @@ import {InputBoolean} from '../../core/util';
 import {DOCUMENT} from '@angular/common';
 
 export type SuiModalSize = 'mini' | 'tiny' | 'small' | 'large' | null;
+export type SuiModalScrollability = 'full' | 'medium' | 'none';
 
 @Component({
   selector: 'sui-modal',
@@ -48,13 +49,13 @@ export type SuiModalSize = 'mini' | 'tiny' | 'small' | 'large' | null;
 export class SuiModalComponent implements OnDestroy {
   @ViewChild('contentTemplate', {static: true}) public contentTemplate!: TemplateRef<any>;
 
-  @Input() public suiSize: SuiModalSize = null;
   @Input() public suiHeaderText: string;
   @Input() public suiHeaderIcon: string;
+  @Input() public suiSize: SuiModalSize = null;
+  @Input() public suiScroll: SuiModalScrollability = 'none';
   @Input() @InputBoolean() public suiBasic = false;
   @Input() @InputBoolean() public suiClosable = true;
   @Input() @InputBoolean() public suiCentered = true;
-  @Input() @InputBoolean() public suiScrollable = true;
   @Input() @InputBoolean() public suiFullScreen = false;
   @Input() @InputBoolean() public suiMaskClosable = true;
   @Output() public visibleChange = new EventEmitter<boolean>();
@@ -85,11 +86,25 @@ export class SuiModalComponent implements OnDestroy {
       this.suiSize,
       Utils.getPropClass(this.suiBasic, 'basic'),
       Utils.getPropClass(this.suiFullScreen, 'fullscreen'),
+      this.scrollClass,
       'modal',
       'transition',
       'visible',
       'active'
     ];
+  }
+
+  /**
+   * In all wisdom, semantic-ui decided that 'longer' would be shorter than 'long', go figure
+   */
+  get scrollClass(): string {
+    if (this.suiScroll === 'full') {
+      return 'long';
+    } else if (this.suiScroll === 'medium') {
+      return 'longer';
+    } else {
+      return '';
+    }
   }
 
   constructor(@Inject(DOCUMENT) private document, private renderer: Renderer2,
