@@ -25,6 +25,9 @@ export type SuiModalScrollability = 'full' | 'medium' | 'none';
     <ng-template #contentTemplate>
       <div style="display: block !important;"
            [ngClass]="classes">
+<!--      <div style="display: block !important;"-->
+<!--           [class.ui]="true"-->
+<!--           [ngClass]="classes">-->
         <ng-container *ngIf="suiClosable">
           <i *ngIf="!suiBasic"
              sui-icon
@@ -82,7 +85,7 @@ export class SuiModalComponent implements OnDestroy {
     this.visibleChange.emit(isVisible);
   }
 
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       this.suiSize,
@@ -93,7 +96,7 @@ export class SuiModalComponent implements OnDestroy {
       'transition',
       'visible',
       'active'
-    ];
+    ].joinWithWhitespaceCleanup();
   }
 
   /**
