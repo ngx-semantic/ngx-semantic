@@ -3,8 +3,8 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiColour, SuiSize, SuiWidth, Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {SuiColour, SuiSize, SuiWidth} from 'ngx-semantic/core/enums';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 export type SuiButtonsAttachment = 'top attached' | 'bottom attached' | null;
 export type SuiButtonsIconType = 'icon' | 'labeled icon' | null;

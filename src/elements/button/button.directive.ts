@@ -1,6 +1,6 @@
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiColour, SuiSize, Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 export type SuiButtonEmphasis = 'primary' | 'secondary' | 'positive' | 'negative' | null;
 export type SuiButtonAnimation = 'animated' | 'animated fade' | 'vertical animated' | null;
