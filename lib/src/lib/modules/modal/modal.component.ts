@@ -25,9 +25,6 @@ export type SuiModalScrollability = 'full' | 'medium' | 'none';
     <ng-template #contentTemplate>
       <div style="display: block !important;"
            [ngClass]="classes">
-<!--      <div style="display: block !important;"-->
-<!--           [class.ui]="true"-->
-<!--           [ngClass]="classes">-->
         <ng-container *ngIf="suiClosable">
           <i *ngIf="!suiBasic"
              sui-icon
@@ -165,7 +162,7 @@ export class SuiModalComponent implements OnDestroy {
   private generateDomElement(): void {
     const container = this.renderer.createElement('div');
     this.renderer.setAttribute(container, 'id', this.uniqueId.toString());
-    const containerStyle = 'ui dimmer modals page' + this.suiCentered ? '' : ' top aligned' + ' transition';
+    const containerStyle = 'ui dimmer modals page' + (this.suiCentered ? '' : ' top aligned') + ' transition';
     this.renderer.setAttribute(container, 'class', containerStyle);
 
     // render the modal contents
