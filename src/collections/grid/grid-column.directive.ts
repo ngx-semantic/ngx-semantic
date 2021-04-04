@@ -3,7 +3,7 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiColour, SuiWidth} from '../../common';
+import {SuiColour, SuiWidth} from 'ngx-semantic/core/enums';
 
 export type SuiColumnFloat = 'left floated' | 'right floated' | null;
 export type SuiColumnAlignment = 'left aligned' | 'middle aligned' | 'right aligned' | null;

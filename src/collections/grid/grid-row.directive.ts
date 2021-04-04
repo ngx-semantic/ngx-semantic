@@ -3,8 +3,8 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiDeviceVisibility, SuiWidth, Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {SuiDeviceVisibility, SuiWidth} from 'ngx-semantic/core/enums';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 export type SuiRowAlignment = 'left aligned' | 'center aligned' | 'right aligned' | null;
 

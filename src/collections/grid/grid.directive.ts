@@ -2,9 +2,9 @@
  * Created by bolor on 6/11/2020
  */
 
-import {Component, Directive, HostBinding, Input} from '@angular/core';
-import {SuiWidth, Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {Directive, HostBinding, Input} from '@angular/core';
+import {SuiWidth} from 'ngx-semantic/core/enums';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 export type SuiGridAlignment = 'left aligned' | 'center aligned' | 'right aligned' | null;
 export type SuiGridDivision = 'divided' | 'vertically divided' | null;
