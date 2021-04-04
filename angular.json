@@ -10,7 +10,7 @@
       "prefix": "sui",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "lib/tsconfig.lib.json",
             "project": "lib/ng-package.json"
@@ -44,5 +44,6 @@
         }
       }
     }
-  }
+  },
+  "defaultProject": "ngx-semantic"
 }
