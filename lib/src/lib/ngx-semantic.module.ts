@@ -23,7 +23,7 @@ import {SuiSegmentModule} from './elements/segment';
 import {SuiStepsModule} from './elements/steps';
 import {SuiAccordionModule} from './modules/accordion';
 import {SuiCheckboxModule} from './modules/checkbox';
-// import {SuiDimmerModule} from './modules/dimmer';
+import {SuiDimmerModule} from './modules/dimmer';
 import {SuiDropdownModule} from './modules/dropdown';
 import {SuiEmbedModule} from './modules/embed';
 import {SuiModalModule} from './modules/modal';
@@ -62,7 +62,7 @@ import {SuiStatisticModule} from './views/statistics';
     SuiEmbedModule,
     SuiModalModule,
     SuiLoaderModule,
-    // SuiDimmerModule,
+    SuiDimmerModule,
     SuiHeaderModule,
     SuiButtonModule,
     SuiRevealModule,
