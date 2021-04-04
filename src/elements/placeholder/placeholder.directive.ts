@@ -2,9 +2,8 @@
  * Created by bolor on 5/6/2020
  */
 
-import {Component, Directive, HostBinding, Input} from '@angular/core';
-import {Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {Directive, HostBinding, Input} from '@angular/core';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 @Directive({
   selector: '[sui-placeholder]',

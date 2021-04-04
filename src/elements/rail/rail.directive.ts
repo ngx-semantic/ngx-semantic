@@ -3,8 +3,8 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiHorizontalPosition, SuiSize, Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {SuiHorizontalPosition, SuiSize} from 'ngx-semantic/core/enums';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 export type SuiRailCloseness = 'close' | 'very close' | null;
 

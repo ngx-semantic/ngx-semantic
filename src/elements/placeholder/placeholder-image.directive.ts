@@ -3,8 +3,7 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 @Directive({
   exportAs: 'suiPlaceholderImage',

@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input, TemplateRef} from '@angular/core';
-import {Utils} from '../../common';
+import {ClassUtils} from 'ngx-semantic/core/util';
 
 @Component({
   selector: '[sui-step]',

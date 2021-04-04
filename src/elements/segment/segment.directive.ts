@@ -3,8 +3,8 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiColour, Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {SuiColour} from 'ngx-semantic/core/enums';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 export type SuiSegmentStacking = 'stacked' | 'tall stacked' | null;
 export type SuiSegmentPadding = 'padded' | 'very padded' | null;

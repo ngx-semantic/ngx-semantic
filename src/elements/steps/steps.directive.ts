@@ -2,9 +2,9 @@
  * Created by bolor on 9/20/2020
  */
 
-import {Component, Directive, HostBinding, Input} from '@angular/core';
-import {SuiSize, SuiWidth, Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {Directive, HostBinding, Input} from '@angular/core';
+import {SuiSize, SuiWidth} from 'ngx-semantic/core/enums';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 export type SuiStepsAttachment = 'top attached' | 'bottom attached' | null;
 
