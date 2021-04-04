@@ -17,8 +17,8 @@ export class SuiModalContentDirective {
   @HostBinding('class')
   get classes(): string {
     return [
-      Utils.getPropClass(this.suiScrollable, 'scrolling'),
-      Utils.getPropClass(this.suiImage, 'image'),
+      ClassUtils.getPropClass(this.suiScrollable, 'scrolling'),
+      ClassUtils.getPropClass(this.suiImage, 'image'),
       'content'
     ].joinWithWhitespaceCleanup();
   }

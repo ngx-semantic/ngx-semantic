@@ -32,12 +32,12 @@ export class SuiHeaderDirective {
       this.suiAttached,
       this.suiFloated,
       this.suiAlignment,
-      Utils.getPropClass(this.suiDividing, 'dividing'),
-      Utils.getPropClass(this.disabled, 'disabled'),
-      Utils.getPropClass(this.suiInverted, 'inverted'),
-      Utils.getPropClass(this.suiBlock, 'block'),
-      Utils.getPropClass(this.suiSubHeader, 'sub'),
-      Utils.getPropClass(this.suiIcon, 'icon'),
+      ClassUtils.getPropClass(this.suiDividing, 'dividing'),
+      ClassUtils.getPropClass(this.disabled, 'disabled'),
+      ClassUtils.getPropClass(this.suiInverted, 'inverted'),
+      ClassUtils.getPropClass(this.suiBlock, 'block'),
+      ClassUtils.getPropClass(this.suiSubHeader, 'sub'),
+      ClassUtils.getPropClass(this.suiIcon, 'icon'),
       'header'
     ].joinWithWhitespaceCleanup();
   }

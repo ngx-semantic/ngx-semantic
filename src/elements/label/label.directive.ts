@@ -36,14 +36,14 @@ export class SuiLabelDirective {
       this.suiColour,
       this.suiSize,
       this.getCorner(),
-      Utils.getPropClass(this.suiImage, 'image'),
-      Utils.getPropClass(this.suiBasic, 'basic'),
-      Utils.getPropClass(this.suiTag, 'tag'),
+      ClassUtils.getPropClass(this.suiImage, 'image'),
+      ClassUtils.getPropClass(this.suiBasic, 'basic'),
+      ClassUtils.getPropClass(this.suiTag, 'tag'),
       this.getRibbon(),
       this.getAttached(),
-      Utils.getPropClass(this.suiHorizontal, 'horizontal'),
-      Utils.getPropClass(this.suiEmpty, 'empty'),
-      Utils.getPropClass(this.suiCircular, 'circular'),
+      ClassUtils.getPropClass(this.suiHorizontal, 'horizontal'),
+      ClassUtils.getPropClass(this.suiEmpty, 'empty'),
+      ClassUtils.getPropClass(this.suiCircular, 'circular'),
       'label'
     ].join((' '));
   }

@@ -21,7 +21,7 @@ export class SuiSidebarPusherComponent implements OnInit {
   @HostBinding('class')
   get classes(): string {
     return [
-      Utils.getPropClass(this.isSidebarOpen && this.suiDimmable, 'dimmed'),
+      ClassUtils.getPropClass(this.isSidebarOpen && this.suiDimmable, 'dimmed'),
       'pusher'
     ].joinWithWhitespaceCleanup();
   }

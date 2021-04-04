@@ -34,13 +34,13 @@ export class SuiImageDirective {
       this.suiSize,
       this.suiFloated,
       this.suiAlignment,
-      Utils.getPropClass(this.suiHidden, 'hidden'),
-      Utils.getPropClass(this.disabled, 'disabled'),
-      Utils.getPropClass(this.suiAvatar, 'avatar'),
-      Utils.getPropClass(this.suiFluid, 'fluid'),
-      Utils.getPropClass(this.suiRounded, 'rounded'),
-      Utils.getPropClass(this.suiCircular, 'circular'),
-      Utils.getPropClass(this.suiSpaced, 'spaced'),
+      ClassUtils.getPropClass(this.suiHidden, 'hidden'),
+      ClassUtils.getPropClass(this.disabled, 'disabled'),
+      ClassUtils.getPropClass(this.suiAvatar, 'avatar'),
+      ClassUtils.getPropClass(this.suiFluid, 'fluid'),
+      ClassUtils.getPropClass(this.suiRounded, 'rounded'),
+      ClassUtils.getPropClass(this.suiCircular, 'circular'),
+      ClassUtils.getPropClass(this.suiSpaced, 'spaced'),
       'image'
     ].joinWithWhitespaceCleanup();
   }

@@ -29,11 +29,11 @@ export class SuiStepsDirective {
       this.suiSize,
       this.suiWidth,
       this.suiAttached,
-      Utils.getPropClass(this.suiOrdered, 'ordered'),
-      Utils.getPropClass(this.suiFluid, 'fluid'),
-      Utils.getPropClass(this.suiVertical, 'vertical'),
-      Utils.getPropClass(this.suiUnstackable, 'unstackable'),
-      Utils.getPropClass(this.suiTabletStackable, 'tablet stackable'),
+      ClassUtils.getPropClass(this.suiOrdered, 'ordered'),
+      ClassUtils.getPropClass(this.suiFluid, 'fluid'),
+      ClassUtils.getPropClass(this.suiVertical, 'vertical'),
+      ClassUtils.getPropClass(this.suiUnstackable, 'unstackable'),
+      ClassUtils.getPropClass(this.suiTabletStackable, 'tablet stackable'),
       'steps'
     ].joinWithWhitespaceCleanup();
   }

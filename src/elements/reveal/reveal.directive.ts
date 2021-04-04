@@ -29,15 +29,15 @@ export class SuiRevealDirective {
     return [
       'ui',
       this.suiSize,
-      Utils.getPropClass(this.suiActive, 'active'),
-      Utils.getPropClass(this.disabled, 'disabled'),
-      Utils.getPropClass(this.suiCircular, 'circular'),
-      Utils.getPropClass(this.suiInstant, 'instant'),
-      Utils.getPropClass(this.suiFade, 'fade'),
+      ClassUtils.getPropClass(this.suiActive, 'active'),
+      ClassUtils.getPropClass(this.disabled, 'disabled'),
+      ClassUtils.getPropClass(this.suiCircular, 'circular'),
+      ClassUtils.getPropClass(this.suiInstant, 'instant'),
+      ClassUtils.getPropClass(this.suiFade, 'fade'),
       this.getRotate(),
       this.getMove(),
       'reveal',
-      Utils.getPropClass(this.suiImage, 'image')
+      ClassUtils.getPropClass(this.suiImage, 'image')
     ].joinWithWhitespaceCleanup();
   }
 

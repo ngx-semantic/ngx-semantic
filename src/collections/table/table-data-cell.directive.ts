@@ -26,10 +26,10 @@ export class SuiTableCellDirective {
       this.suiState,
       this.suiTextAlignment ? `${this.suiTextAlignment} aligned` : '',
       this.suiVerticalAlignment ? `${this.suiVerticalAlignment} aligned` : '',
-      Utils.getPropClass(this.suiActive, 'active'),
-      Utils.getPropClass(this.disabled, 'disabled'),
-      Utils.getPropClass(this.suiCollapsing, 'collapsing'),
-      Utils.getPropClass(this.suiSelectable, 'selectable'),
+      ClassUtils.getPropClass(this.suiActive, 'active'),
+      ClassUtils.getPropClass(this.disabled, 'disabled'),
+      ClassUtils.getPropClass(this.suiCollapsing, 'collapsing'),
+      ClassUtils.getPropClass(this.suiSelectable, 'selectable'),
     ].joinWithWhitespaceCleanup();
   }
 }

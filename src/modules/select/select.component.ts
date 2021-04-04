@@ -160,19 +160,19 @@ export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
   get classes(): string {
     return [
       'ui',
-      Utils.getPropClass(this.suiFluid, 'fluid'),
-      Utils.getPropClass(this.suiCompact, 'compact'),
-      Utils.getPropClass(this.suiSearch, 'search'),
-      Utils.getPropClass(this.suiLoading, 'loading'),
+      ClassUtils.getPropClass(this.suiFluid, 'fluid'),
+      ClassUtils.getPropClass(this.suiCompact, 'compact'),
+      ClassUtils.getPropClass(this.suiSearch, 'search'),
+      ClassUtils.getPropClass(this.suiLoading, 'loading'),
       'selection',
-      Utils.getPropClass(this.suiInline, 'inline'),
-      Utils.getPropClass(this.disabled, 'disabled'),
-      Utils.getPropClass(this.suiScrolling, 'scrolling'),
+      ClassUtils.getPropClass(this.suiInline, 'inline'),
+      ClassUtils.getPropClass(this.disabled, 'disabled'),
+      ClassUtils.getPropClass(this.suiScrolling, 'scrolling'),
       'dropdown',
-      Utils.getPropClass(this.suiMultiple, 'multiple'),
-      Utils.getPropClass(this.isOpen, 'active'),
-      Utils.getPropClass(this.isOpen, 'visible'),
-      Utils.getPropClass(this.suiError, 'error')
+      ClassUtils.getPropClass(this.suiMultiple, 'multiple'),
+      ClassUtils.getPropClass(this.isOpen, 'active'),
+      ClassUtils.getPropClass(this.isOpen, 'visible'),
+      ClassUtils.getPropClass(this.suiError, 'error')
     ].joinWithWhitespaceCleanup();
   }
 

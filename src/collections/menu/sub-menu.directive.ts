@@ -16,7 +16,7 @@ export class SuiSubMenuDirective {
   @HostBinding('class')
   get classes(): string {
     return [
-      Utils.getPropClass(this.suiRight, 'right'),
+      ClassUtils.getPropClass(this.suiRight, 'right'),
       'menu'
     ].joinWithWhitespaceCleanup();
   }

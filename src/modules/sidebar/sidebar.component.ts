@@ -44,10 +44,10 @@ export class SuiSidebarComponent {
       'ui',
       this.suiSidebarPosition,
       this.suiSidebarWidth,
-      Utils.getPropClass(this.suiInverted, 'inverted'),
+      ClassUtils.getPropClass(this.suiInverted, 'inverted'),
       'sidebar',
       this.suiSidebarAnimation,
-      Utils.getPropClass(this.visible, 'visible')
+      ClassUtils.getPropClass(this.visible, 'visible')
     ].joinWithWhitespaceCleanup();
   }
 

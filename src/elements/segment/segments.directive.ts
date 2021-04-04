@@ -20,10 +20,10 @@ export class SuiSegmentsDirective {
   get classes(): string {
     return [
       'ui',
-      Utils.getPropClass(this.suiHorizontal, 'horizontal'),
-      Utils.getPropClass(this.suiRaised, 'raised'),
-      Utils.getPropClass(this.suiStacked, 'stacked'),
-      Utils.getPropClass(this.suiPiled, 'piled'),
+      ClassUtils.getPropClass(this.suiHorizontal, 'horizontal'),
+      ClassUtils.getPropClass(this.suiRaised, 'raised'),
+      ClassUtils.getPropClass(this.suiStacked, 'stacked'),
+      ClassUtils.getPropClass(this.suiPiled, 'piled'),
       'segments'
     ].joinWithWhitespaceCleanup();
   }

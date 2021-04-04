@@ -37,12 +37,12 @@ export class SuiAdvertisementDirective {
     return [
       'ui',
       this.suiSize,
-      Utils.getPropClass(this.suiCentered, 'centered'),
-      Utils.getPropClass(this.suiHalf, 'half'),
-      Utils.getPropClass(this.suiWide, 'wide'),
-      Utils.getPropClass(this.suiVertical, 'vertical'),
-      Utils.getPropClass(this.suiTop, 'top'),
-      Utils.getPropClass(this.suiSquare, 'square'),
+      ClassUtils.getPropClass(this.suiCentered, 'centered'),
+      ClassUtils.getPropClass(this.suiHalf, 'half'),
+      ClassUtils.getPropClass(this.suiWide, 'wide'),
+      ClassUtils.getPropClass(this.suiVertical, 'vertical'),
+      ClassUtils.getPropClass(this.suiTop, 'top'),
+      ClassUtils.getPropClass(this.suiSquare, 'square'),
       this.suiType,
       'ad'
     ].joinWithWhitespaceCleanup();

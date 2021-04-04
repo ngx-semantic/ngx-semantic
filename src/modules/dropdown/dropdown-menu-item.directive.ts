@@ -21,7 +21,7 @@ export class SuiDropdownMenuItemDirective {
   @HostBinding('class')
   get classes(): string {
     return [
-      Utils.getPropClass(this.disabled, 'disabled'),
+      ClassUtils.getPropClass(this.disabled, 'disabled'),
       this.suiDirection,
       'item'
     ].joinWithWhitespaceCleanup();

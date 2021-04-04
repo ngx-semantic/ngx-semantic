@@ -26,8 +26,8 @@ export class SuiGridRowDirective {
       this.suiWidth,
       this.suiWidth ? 'column' : '',
       this.suiDeviceVisibility,
-      Utils.getPropClass(this.suiEqual, 'equal width'),
-      Utils.getPropClass(this.suiCentered, 'centered'),
+      ClassUtils.getPropClass(this.suiEqual, 'equal width'),
+      ClassUtils.getPropClass(this.suiCentered, 'centered'),
       'row'
     ].joinWithWhitespaceCleanup();
   }

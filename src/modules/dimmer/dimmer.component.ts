@@ -50,9 +50,9 @@ export class SuiDimmerComponent implements OnInit {
   private genClasses(): string {
     return [
       'ui',
-      Utils.getPropClass(this.suiFullPage, 'page'),
-      Utils.getPropClass(this.suiSimple, 'simple'),
-      Utils.getPropClass(this.suiInverted, 'inverted'),
+      ClassUtils.getPropClass(this.suiFullPage, 'page'),
+      ClassUtils.getPropClass(this.suiSimple, 'simple'),
+      ClassUtils.getPropClass(this.suiInverted, 'inverted'),
       this.suiAlignment,
       this.suiAlignment ? 'aligned' : '',
       'dimmer',

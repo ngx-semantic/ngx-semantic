@@ -19,9 +19,9 @@ export class SuiPlaceholderDirective {
   get classes(): string {
     return [
       'ui',
-      Utils.getPropClass(this.suiFluid, 'fluid'),
-      Utils.getPropClass(this.suiActive, 'active'),
-      Utils.getPropClass(this.suiInverted, 'inverted'),
+      ClassUtils.getPropClass(this.suiFluid, 'fluid'),
+      ClassUtils.getPropClass(this.suiActive, 'active'),
+      ClassUtils.getPropClass(this.suiInverted, 'inverted'),
       'placeholder'
     ].joinWithWhitespaceCleanup();
   }

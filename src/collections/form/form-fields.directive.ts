@@ -3,8 +3,8 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiWidth, Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {SuiWidth} from 'ngx-semantic/core/enums';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 @Directive({
   exportAs: 'suiFormFields',
@@ -19,9 +19,9 @@ export class SuiFormFieldsDirective {
   get classes(): string {
     return [
       this.suiWidth,
-      Utils.getPropClass(this.suiInline, 'inline'),
-      Utils.getPropClass(this.suiGrouped, 'grouped'),
-      'fields',
+      ClassUtils.getPropClass(this.suiInline, 'inline'),
+      ClassUtils.getPropClass(this.suiGrouped, 'grouped'),
+      'fields'
     ].joinWithWhitespaceCleanup();
   }
 }

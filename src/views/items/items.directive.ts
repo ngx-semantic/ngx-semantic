@@ -23,9 +23,9 @@ export class SuiItemsDirective {
     return [
       'ui',
       this.suiRelaxed,
-      Utils.getPropClass(this.suiDivided, 'divided'),
-      Utils.getPropClass(this.suiUnstackable, 'unstackable'),
-      Utils.getPropClass(this.suiLink, 'link'),
+      ClassUtils.getPropClass(this.suiDivided, 'divided'),
+      ClassUtils.getPropClass(this.suiUnstackable, 'unstackable'),
+      ClassUtils.getPropClass(this.suiLink, 'link'),
       'items'
     ].joinWithWhitespaceCleanup();
   }

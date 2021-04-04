@@ -16,7 +16,7 @@ export class SuiPlaceholderHeaderDirective {
   @HostBinding('class')
   get classes(): string {
     return [
-      Utils.getPropClass(this.suiImage, 'image'),
+      ClassUtils.getPropClass(this.suiImage, 'image'),
       'header'
     ].joinWithWhitespaceCleanup();
   }

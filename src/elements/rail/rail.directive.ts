@@ -25,9 +25,9 @@ export class SuiRailDirective {
     return [
       'ui',
       this.suiLocation,
-      Utils.getPropClass(this.suiInternal, 'internal'),
-      Utils.getPropClass(this.suiDividing, 'dividing'),
-      Utils.getPropClass(this.suiAttached, 'attached'),
+      ClassUtils.getPropClass(this.suiInternal, 'internal'),
+      ClassUtils.getPropClass(this.suiDividing, 'dividing'),
+      ClassUtils.getPropClass(this.suiAttached, 'attached'),
       this.suiCloseness,
       this.suiSize,
       'rail'

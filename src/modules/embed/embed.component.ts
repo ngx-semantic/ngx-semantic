@@ -61,7 +61,7 @@ export class SuiEmbedComponent implements AfterViewInit {
       'ui',
       this.suiAspectRatio,
       'embed',
-      Utils.getPropClass(this.isPLaying, 'active')
+      ClassUtils.getPropClass(this.isPLaying, 'active')
     ];
   }
 

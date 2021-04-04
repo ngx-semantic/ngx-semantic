@@ -37,15 +37,15 @@ export class SuiInputDirective {
       this.suiAction,
       this.suiLabeled,
       this.suiSize,
-      Utils.getPropClass(this.suiInverted, 'inverted'),
-      Utils.getPropClass(this.suiFluid, 'fluid'),
-      Utils.getPropClass(this.suiFocus, 'focus'),
+      ClassUtils.getPropClass(this.suiInverted, 'inverted'),
+      ClassUtils.getPropClass(this.suiFluid, 'fluid'),
+      ClassUtils.getPropClass(this.suiFocus, 'focus'),
       this.suiIconPosition === 'left' ? 'left' : '',
-      Utils.getPropClass(this.suiIcon, 'icon'),
-      Utils.getPropClass(this.suiTransparent, 'transparent'),
-      Utils.getPropClass(this.suiLoading, 'loading'),
-      Utils.getPropClass(this.disabled, 'disabled'),
-      Utils.getPropClass(this.suiError, 'error'),
+      ClassUtils.getPropClass(this.suiIcon, 'icon'),
+      ClassUtils.getPropClass(this.suiTransparent, 'transparent'),
+      ClassUtils.getPropClass(this.suiLoading, 'loading'),
+      ClassUtils.getPropClass(this.disabled, 'disabled'),
+      ClassUtils.getPropClass(this.suiError, 'error'),
       'input'
     ].joinWithWhitespaceCleanup();
   }

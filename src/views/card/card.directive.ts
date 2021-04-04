@@ -25,10 +25,10 @@ export class SuiCardDirective {
     return [
       this.isChildComponent ? '' : 'ui',
       this.suiColour,
-      Utils.getPropClass(this.suiRaised, 'raised'),
-      Utils.getPropClass(this.suiLink, 'link'),
-      Utils.getPropClass(this.suiCentered, 'centered'),
-      Utils.getPropClass(this.suiFluid, 'fluid'),
+      ClassUtils.getPropClass(this.suiRaised, 'raised'),
+      ClassUtils.getPropClass(this.suiLink, 'link'),
+      ClassUtils.getPropClass(this.suiCentered, 'centered'),
+      ClassUtils.getPropClass(this.suiFluid, 'fluid'),
       'card'
     ].joinWithWhitespaceCleanup();
   }

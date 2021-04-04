@@ -111,12 +111,12 @@ export class SuiSearchComponent {
     return [
       'ui',
       this.suiAlignment,
-      Utils.getPropClass(this.suiFluid, 'fluid'),
-      Utils.getPropClass(this.isLoading, 'loading'),
-      Utils.getPropClass(this.disabled, 'disabled'),
+      ClassUtils.getPropClass(this.suiFluid, 'fluid'),
+      ClassUtils.getPropClass(this.isLoading, 'loading'),
+      ClassUtils.getPropClass(this.disabled, 'disabled'),
       'search',
-      Utils.getPropClass(this.hasCategories, 'category'),
-      Utils.getPropClass(this.isFocused, 'focus')
+      ClassUtils.getPropClass(this.hasCategories, 'category'),
+      ClassUtils.getPropClass(this.isFocused, 'focus')
     ].joinWithWhitespaceCleanup();
   }
 

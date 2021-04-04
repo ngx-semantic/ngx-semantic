@@ -3,12 +3,12 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiWidth, Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {SuiWidth} from 'ngx-semantic/core/enums';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 @Directive({
   exportAs: 'suiFormField',
-  selector: '[suiFormField]',
+  selector: '[suiFormField]'
 })
 export class SuiFormFieldDirective {
   @Input() public suiWidth: SuiWidth = null;
@@ -19,12 +19,12 @@ export class SuiFormFieldDirective {
   @HostBinding('class')
   get classes(): string {
     return [
-      Utils.getPropClass(this.suiInline, 'inline'),
+      ClassUtils.getPropClass(this.suiInline, 'inline'),
       this.suiWidth,
       this.suiWidth ? 'wide' : '',
-      Utils.getPropClass(this.disabled, 'disabled'),
+      ClassUtils.getPropClass(this.disabled, 'disabled'),
       'field',
-      Utils.getPropClass(this.suiError, 'error'),
+      ClassUtils.getPropClass(this.suiError, 'error'),
     ].joinWithWhitespaceCleanup();
   }
 }

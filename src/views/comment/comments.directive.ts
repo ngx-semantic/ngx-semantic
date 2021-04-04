@@ -21,9 +21,9 @@ export class SuiCommentsDirective {
     return [
       'ui',
       this.suiSize,
-      Utils.getPropClass(this.suiMinimal, 'minimal'),
-      Utils.getPropClass(this.suiThreaded, 'threaded'),
-      Utils.getPropClass(this.suiCollapsed, 'collapsed'),
+      ClassUtils.getPropClass(this.suiMinimal, 'minimal'),
+      ClassUtils.getPropClass(this.suiThreaded, 'threaded'),
+      ClassUtils.getPropClass(this.suiCollapsed, 'collapsed'),
       'comments'
     ].joinWithWhitespaceCleanup();
   }

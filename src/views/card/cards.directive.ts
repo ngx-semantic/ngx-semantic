@@ -21,9 +21,9 @@ export class SuiCardsDirective {
     return [
       'ui',
       this.suiWidth,
-      Utils.getPropClass(this.suiLink, 'link'),
-      Utils.getPropClass(this.suiStackable, 'stackable'),
-      Utils.getPropClass(this.suiDoubling, 'doubling'),
+      ClassUtils.getPropClass(this.suiLink, 'link'),
+      ClassUtils.getPropClass(this.suiStackable, 'stackable'),
+      ClassUtils.getPropClass(this.suiDoubling, 'doubling'),
       'cards'
     ].joinWithWhitespaceCleanup();
   }

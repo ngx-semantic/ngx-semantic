@@ -2,9 +2,9 @@
  * Created by bolor on 6/5/2020
  */
 
-import {Component, Directive, HostBinding, Input} from '@angular/core';
-import {SuiSize, Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {Directive, HostBinding, Input} from '@angular/core';
+import {SuiSize} from 'ngx-semantic/core/enums';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 export type SuiFormState = 'success' | 'warning' | 'error' | null;
 
@@ -23,9 +23,9 @@ export class SuiFormDirective {
   get classes(): string {
     return [
       'ui',
-      Utils.getPropClass(this.suiLoading, 'loading'),
-      Utils.getPropClass(this.suiEqualWidth, 'equal width'),
-      Utils.getPropClass(this.suiInverted, 'inverted'),
+      ClassUtils.getPropClass(this.suiLoading, 'loading'),
+      ClassUtils.getPropClass(this.suiEqualWidth, 'equal width'),
+      ClassUtils.getPropClass(this.suiInverted, 'inverted'),
       this.suiSize,
       'form',
       this.suiState

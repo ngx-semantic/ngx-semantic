@@ -60,9 +60,9 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
     return [
       'ui',
       this.suiType,
-      Utils.getPropClass(this.suiReadOnly, 'read-only'),
+      ClassUtils.getPropClass(this.suiReadOnly, 'read-only'),
       'checkbox',
-      Utils.getPropClass(this.isChecked, 'checked')
+      ClassUtils.getPropClass(this.isChecked, 'checked')
     ].joinWithWhitespaceCleanup();
   }
 

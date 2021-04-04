@@ -29,20 +29,20 @@ export class SuiIconDirective {
   @HostBinding('class')
   get classes(): string {
     return [
-      Utils.getPropClass(this.suiFitted, 'fitted'),
-      Utils.getPropClass(this.disabled, 'disabled'),
+      ClassUtils.getPropClass(this.suiFitted, 'fitted'),
+      ClassUtils.getPropClass(this.disabled, 'disabled'),
       this.suiSize,
       this.suiFlip ? `${this.suiFlip}ly flipped` : '',
       this.suiRotation ? `${this.suiRotation} rotated` : '',
-      Utils.getPropClass(this.suiCircular, 'circular'),
-      Utils.getPropClass(this.suiBordered, 'bordered'),
-      Utils.getPropClass(this.suiInverted, 'inverted'),
+      ClassUtils.getPropClass(this.suiCircular, 'circular'),
+      ClassUtils.getPropClass(this.suiBordered, 'bordered'),
+      ClassUtils.getPropClass(this.suiInverted, 'inverted'),
       this.suiCorner ? `${this.suiCorner} corner` : '',
       this.suiColour,
       this.suiIconType,
-      Utils.getPropClass(this.suiOutline, 'outline'),
-      Utils.getPropClass(this.suiLoading, 'loading'),
-      Utils.getPropClass(this.suiLink, 'link'),
+      ClassUtils.getPropClass(this.suiOutline, 'outline'),
+      ClassUtils.getPropClass(this.suiLoading, 'loading'),
+      ClassUtils.getPropClass(this.suiLink, 'link'),
       'icon'
     ].joinWithWhitespaceCleanup();
   }

@@ -17,8 +17,8 @@ export class SuiPlaceholderImageDirective {
   @HostBinding('class')
   get classes(): string {
     return [
-      Utils.getPropClass(this.suiSquare, 'square'),
-      Utils.getPropClass(this.suiRectangular, 'rectangular'),
+      ClassUtils.getPropClass(this.suiSquare, 'square'),
+      ClassUtils.getPropClass(this.suiRectangular, 'rectangular'),
       'image'
     ].joinWithWhitespaceCleanup();
   }

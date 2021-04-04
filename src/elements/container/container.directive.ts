@@ -22,8 +22,8 @@ export class SuiContainerDirective {
     return [
       'ui',
       this.suiAlignment,
-      Utils.getPropClass(this.suiText, 'text'),
-      Utils.getPropClass(this.suiFluid, 'fluid'),
+      ClassUtils.getPropClass(this.suiText, 'text'),
+      ClassUtils.getPropClass(this.suiFluid, 'fluid'),
       'container'
     ].joinWithWhitespaceCleanup();
   }

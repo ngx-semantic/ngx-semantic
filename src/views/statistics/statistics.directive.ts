@@ -19,7 +19,7 @@ export class SuiStatisticsDirective {
     return [
       'ui',
       this.suiWidth,
-      Utils.getPropClass(this.suiHorizontal, 'horizontal'),
+      ClassUtils.getPropClass(this.suiHorizontal, 'horizontal'),
       'statistics'
     ].joinWithWhitespaceCleanup();
   }

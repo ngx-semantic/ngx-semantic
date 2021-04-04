@@ -42,19 +42,19 @@ export class SuiDropdownComponent {
   get classes(): string {
     return [
       'ui',
-      Utils.getPropClass(this.suiFluid, 'fluid'),
-      Utils.getPropClass(this.suiCompact, 'compact'),
-      Utils.getPropClass(this.suiLoading, 'loading'),
-      Utils.getPropClass(this.suiInline, 'inline'),
-      Utils.getPropClass(this.disabled, 'disabled'),
-      Utils.getPropClass(this.suiScrolling, 'scrolling'),
+      ClassUtils.getPropClass(this.suiFluid, 'fluid'),
+      ClassUtils.getPropClass(this.suiCompact, 'compact'),
+      ClassUtils.getPropClass(this.suiLoading, 'loading'),
+      ClassUtils.getPropClass(this.suiInline, 'inline'),
+      ClassUtils.getPropClass(this.disabled, 'disabled'),
+      ClassUtils.getPropClass(this.suiScrolling, 'scrolling'),
       this.suiPointing ? `${this.suiPointing} pointing` : '',
-      Utils.getPropClass(this.suiFloating, 'floating'),
-      Utils.getPropClass(this.suiSimple, 'simple'),
+      ClassUtils.getPropClass(this.suiFloating, 'floating'),
+      ClassUtils.getPropClass(this.suiSimple, 'simple'),
       'dropdown',
-      Utils.getPropClass(this.isOpen, 'active'),
-      Utils.getPropClass(this.isOpen, 'visible'),
-      Utils.getPropClass(this.suiError, 'error')
+      ClassUtils.getPropClass(this.isOpen, 'active'),
+      ClassUtils.getPropClass(this.isOpen, 'visible'),
+      ClassUtils.getPropClass(this.suiError, 'error')
     ].joinWithWhitespaceCleanup();
   }
 

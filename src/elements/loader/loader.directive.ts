@@ -26,12 +26,12 @@ export class SuiLoaderDirective {
     return [
       'ui',
       this.suiSize,
-      Utils.getPropClass(this.suiIndeterminate, 'indeterminate'),
-      Utils.getPropClass(this.suiText, 'text'),
-      Utils.getPropClass(this.suiActive, 'active'),
-      Utils.getPropClass(this.disabled, 'disabled'),
+      ClassUtils.getPropClass(this.suiIndeterminate, 'indeterminate'),
+      ClassUtils.getPropClass(this.suiText, 'text'),
+      ClassUtils.getPropClass(this.suiActive, 'active'),
+      ClassUtils.getPropClass(this.disabled, 'disabled'),
       this.getInline(),
-      Utils.getPropClass(this.suiInverted, 'inverted'),
+      ClassUtils.getPropClass(this.suiInverted, 'inverted'),
       'loader'
     ].joinWithWhitespaceCleanup();
   }

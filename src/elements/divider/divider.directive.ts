@@ -21,12 +21,12 @@ export class SuiDividerDirective {
   get classes(): string {
     return [
       'ui',
-      Utils.getPropClass(this.suiInverted, 'inverted'),
-      Utils.getPropClass(this.suiHeader, 'header'),
-      Utils.getPropClass(this.suiFitted, 'fitted'),
-      Utils.getPropClass(this.suiHidden, 'hidden'),
-      Utils.getPropClass(this.suiSection, 'section'),
-      Utils.getPropClass(this.suiClearing, 'clearing'),
+      ClassUtils.getPropClass(this.suiInverted, 'inverted'),
+      ClassUtils.getPropClass(this.suiHeader, 'header'),
+      ClassUtils.getPropClass(this.suiFitted, 'fitted'),
+      ClassUtils.getPropClass(this.suiHidden, 'hidden'),
+      ClassUtils.getPropClass(this.suiSection, 'section'),
+      ClassUtils.getPropClass(this.suiClearing, 'clearing'),
       this.suiDirection,
       'divider'
     ].joinWithWhitespaceCleanup();

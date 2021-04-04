@@ -29,8 +29,8 @@ export class SuiStatisticDirective {
       this.suiSize,
       this.suiColour,
       this.suiFloated ? `${this.suiFloated} floated` : '',
-      Utils.getPropClass(this.suiHorizontal, 'horizontal'),
-      Utils.getPropClass(this.suiInverted, 'inverted'),
+      ClassUtils.getPropClass(this.suiHorizontal, 'horizontal'),
+      ClassUtils.getPropClass(this.suiInverted, 'inverted'),
       'statistic'
     ].joinWithWhitespaceCleanup();
   }

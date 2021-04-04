@@ -61,9 +61,9 @@ export class SuiDimmerDirective implements OnChanges, OnDestroy {
   @HostBinding('class')
   get classes(): string {
     return [
-      Utils.getPropClass(this.suiDimmerBlurring, 'blurring'),
+      ClassUtils.getPropClass(this.suiDimmerBlurring, 'blurring'),
       'dimmable',
-      Utils.getPropClass(this.dimmed, 'dimmed')
+      ClassUtils.getPropClass(this.dimmed, 'dimmed')
     ].joinWithWhitespaceCleanup();
   }
 

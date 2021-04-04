@@ -26,9 +26,9 @@ export class SuiAccordionComponent  implements AfterContentInit {
   get classes(): Array<string> {
     return [
       'ui',
-      Utils.getPropClass(this.suiFluid, 'fluid'),
-      Utils.getPropClass(this.suiStyled, 'styled'),
-      Utils.getPropClass(this.suiInverted, 'inverted'),
+      ClassUtils.getPropClass(this.suiFluid, 'fluid'),
+      ClassUtils.getPropClass(this.suiStyled, 'styled'),
+      ClassUtils.getPropClass(this.suiInverted, 'inverted'),
       'accordion'
     ].removeWhitespace();
   }

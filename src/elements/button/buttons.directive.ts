@@ -27,8 +27,8 @@ export class SuiButtonsDirective {
     return [
       'ui',
       this.suiWidth,
-      Utils.getPropClass(this.suiBasic, 'basic'),
-      Utils.getPropClass(this.suiVertical, 'vertical'),
+      ClassUtils.getPropClass(this.suiBasic, 'basic'),
+      ClassUtils.getPropClass(this.suiVertical, 'vertical'),
       this.suiColour,
       this.suiAttached,
       this.suiIcon,

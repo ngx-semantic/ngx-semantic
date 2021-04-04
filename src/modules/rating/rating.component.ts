@@ -74,9 +74,9 @@ export class SuiRatingComponent implements ControlValueAccessor {
       'ui',
       this.suiSize,
       this.suiType,
-      Utils.getPropClass(this.suiReadOnly, 'read-only'),
+      ClassUtils.getPropClass(this.suiReadOnly, 'read-only'),
       'rating',
-      Utils.getPropClass(this.hoverValue > 0, 'selected')
+      ClassUtils.getPropClass(this.hoverValue > 0, 'selected')
     ].joinWithWhitespaceCleanup();
   }
 

@@ -23,8 +23,8 @@ export class SuiTableRowDirective {
       this.suiState,
       this.suiTextAlignment ? `${this.suiTextAlignment} aligned` : '',
       this.suiVerticalAlignment ? `${this.suiVerticalAlignment} aligned` : '',
-      Utils.getPropClass(this.suiActive, 'active'),
-      Utils.getPropClass(this.disabled, 'disabled')
+      ClassUtils.getPropClass(this.suiActive, 'active'),
+      ClassUtils.getPropClass(this.disabled, 'disabled')
     ].joinWithWhitespaceCleanup();
   }
 }

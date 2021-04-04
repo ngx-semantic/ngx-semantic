@@ -29,9 +29,9 @@ export class SuiStepComponent {
   @HostBinding('class')
   get classes(): string {
     return [
-      Utils.getPropClass(this.suiActive, 'active'),
-      Utils.getPropClass(this.disabled, 'disabled'),
-      Utils.getPropClass(this.suiCompleted, 'disabled'),
+      ClassUtils.getPropClass(this.suiActive, 'active'),
+      ClassUtils.getPropClass(this.disabled, 'disabled'),
+      ClassUtils.getPropClass(this.suiCompleted, 'disabled'),
       'step'
     ].joinWithWhitespaceCleanup();
   }

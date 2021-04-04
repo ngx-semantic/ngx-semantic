@@ -86,8 +86,8 @@ export class SuiModalComponent implements OnDestroy {
     return [
       'ui',
       this.suiSize,
-      Utils.getPropClass(this.suiBasic, 'basic'),
-      Utils.getPropClass(this.suiFullScreen, 'fullscreen'),
+      ClassUtils.getPropClass(this.suiBasic, 'basic'),
+      ClassUtils.getPropClass(this.suiFullScreen, 'fullscreen'),
       this.scrollClass,
       'modal',
       'transition',

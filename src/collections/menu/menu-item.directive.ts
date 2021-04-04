@@ -18,10 +18,10 @@ export class SuiMenuItemDirective {
   @HostBinding('class')
   get classes(): string {
     return [
-      Utils.getPropClass(this.suiLink, 'link'),
-      Utils.getPropClass(this.suiActive, 'active'),
-      Utils.getPropClass(this.suiBrowser, 'browser'),
-      Utils.getPropClass(this.disabled, 'disabled'),
+      ClassUtils.getPropClass(this.suiLink, 'link'),
+      ClassUtils.getPropClass(this.suiActive, 'active'),
+      ClassUtils.getPropClass(this.suiBrowser, 'browser'),
+      ClassUtils.getPropClass(this.disabled, 'disabled'),
       'item'
     ].joinWithWhitespaceCleanup();
   }

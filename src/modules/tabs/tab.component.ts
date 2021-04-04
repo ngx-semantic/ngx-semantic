@@ -30,8 +30,8 @@ export class SuiTabComponent {
   @HostBinding('class')
   get classes(): string {
     return [
-      Utils.getPropClass(this.suiLoading, 'loading'),
-      Utils.getPropClass(this.disabled, 'disabled')
+      ClassUtils.getPropClass(this.suiLoading, 'loading'),
+      ClassUtils.getPropClass(this.disabled, 'disabled')
     ].joinWithWhitespaceCleanup();
   }
 }

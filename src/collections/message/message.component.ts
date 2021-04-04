@@ -36,11 +36,11 @@ export class SuiMessageComponent {
       this.suiState,
       this.suiSize,
       this.suiColour,
-      Utils.getPropClass(this.suiIcon, 'icon'),
-      Utils.getPropClass(this.suiHidden, 'hidden'),
-      Utils.getPropClass(this.suiVisible, 'visible'),
-      Utils.getPropClass(this.suiFloating, 'floating'),
-      Utils.getPropClass(this.suiCompact, 'compact'),
+      ClassUtils.getPropClass(this.suiIcon, 'icon'),
+      ClassUtils.getPropClass(this.suiHidden, 'hidden'),
+      ClassUtils.getPropClass(this.suiVisible, 'visible'),
+      ClassUtils.getPropClass(this.suiFloating, 'floating'),
+      ClassUtils.getPropClass(this.suiCompact, 'compact'),
       'message'
     ].joinWithWhitespaceCleanup();
   }

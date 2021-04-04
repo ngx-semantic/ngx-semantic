@@ -43,12 +43,12 @@ export class SuiGridDirective {
       this.suiPadded,
       this.suiReversed,
       this.suiRelaxation,
-      Utils.getPropClass(this.suiStackable, 'stackable'),
-      Utils.getPropClass(this.suiEqual, 'equal width'),
-      Utils.getPropClass(this.suiCentered, 'centered'),
-      Utils.getPropClass(this.suiDoubling, 'doubling'),
+      ClassUtils.getPropClass(this.suiStackable, 'stackable'),
+      ClassUtils.getPropClass(this.suiEqual, 'equal width'),
+      ClassUtils.getPropClass(this.suiCentered, 'centered'),
+      ClassUtils.getPropClass(this.suiDoubling, 'doubling'),
       'grid',
-      Utils.getPropClass(this.suiContainer, 'container')
+      ClassUtils.getPropClass(this.suiContainer, 'container')
     ].joinWithWhitespaceCleanup();
   }
 }
