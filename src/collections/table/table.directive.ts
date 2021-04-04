@@ -3,8 +3,8 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiColour, SuiStacking, SuiWidth, Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {SuiColour, SuiStacking, SuiWidth} from 'ngx-semantic/core/enums';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 export type SuiTableBasicType = 'basic' | 'very basic' | null;
 export type SuiTablePadding = 'padded' | 'very padded' | null;
