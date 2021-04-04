@@ -3,5 +3,8 @@
     "lib": {
       "entryFile": "public-api.ts"
     }
+  },
+  "dependencies": {
+    "@angular/cdk": ">=9.0.0"
   }
 }

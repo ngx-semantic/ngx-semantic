@@ -41,6 +41,10 @@ import {SuiBreadcrumbModule} from 'ngx-semantic/collections/breadcrumb';
 import {SuiPlaceholderModule} from 'ngx-semantic/elements/placeholder';
 import {SuiAdvertisementModule} from 'ngx-semantic/views/advertisement';
 
+export * from 'ngx-semantic/core/util';
+export * from 'ngx-semantic/core/enums';
+export * from 'ngx-semantic/core/types';
+
 export * from 'ngx-semantic/elements/button';
 export * from 'ngx-semantic/elements/container';
 export * from 'ngx-semantic/elements/divider';
@@ -86,7 +90,6 @@ export * from 'ngx-semantic/modules/progress';
 export * from 'ngx-semantic/modules/tabs';
 
 @NgModule({
-  declarations: [],
   exports: [
     SuiTabsModule,
     SuiFlagModule,
@@ -128,8 +131,7 @@ export * from 'ngx-semantic/modules/tabs';
     SuiBreadcrumbModule,
     SuiPlaceholderModule,
     SuiAdvertisementModule
-  ],
-  imports: []
+  ]
 })
 export class NgxSemanticModule {
 }
