@@ -2,10 +2,10 @@
  * Created by bolor on 7/16/2020
  */
 
-import {Component, Directive, Host, HostBinding, Input, Optional} from '@angular/core';
-import {SuiColour, SuiSize, Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
-import {SuiStatisticsDirective} from './statistics.directive';
+import {Directive, Host, HostBinding, Input, Optional} from '@angular/core';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
+import {SuiStatisticsDirective} from 'ngx-semantic/views/statistics/statistics.directive';
 
 export type SuiFloat = 'right' | 'left';
 

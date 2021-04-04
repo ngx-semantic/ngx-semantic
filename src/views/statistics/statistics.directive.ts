@@ -2,9 +2,9 @@
  * Created by bolor on 7/16/2020
  */
 
-import {Component, Directive, HostBinding, Input} from '@angular/core';
-import {SuiWidth, Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {Directive, HostBinding, Input} from '@angular/core';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import {SuiWidth} from 'ngx-semantic/core/enums';
 
 @Directive({
   selector: '[sui-statistics]',
