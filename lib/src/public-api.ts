@@ -37,7 +37,7 @@ export * from './lib/views/statistics';
 
 export * from './lib/modules/accordion';
 export * from './lib/modules/checkbox';
-// export * from './lib/modules/dimmer';
+export * from './lib/modules/dimmer';
 export * from './lib/modules/dropdown';
 export * from './lib/modules/embed';
 export * from './lib/modules/modal';
