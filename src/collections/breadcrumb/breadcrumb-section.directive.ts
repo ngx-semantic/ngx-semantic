@@ -3,7 +3,7 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {InputBoolean} from '../../core/util';
+import {InputBoolean} from 'ngx-semantic/core/util';
 
 @Directive({
   exportAs: 'suiBreadcrumbSection',

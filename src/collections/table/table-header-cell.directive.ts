@@ -4,6 +4,7 @@
 
 import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiTableTextAlignment, SuiTableVerticalAlignment} from 'ngx-semantic/collections/table/enums';
+import {SuiWidth} from 'ngx-semantic/core/enums';
 
 @Directive({
   exportAs: 'suiTableHeaderCell',

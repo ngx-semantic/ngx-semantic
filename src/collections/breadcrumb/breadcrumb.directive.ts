@@ -2,8 +2,8 @@
  * Created by bolor on 5/26/2020
  */
 
-import {Component, Directive, HostBinding, Input} from '@angular/core';
-import {SuiSize} from '../../common';
+import {Directive, HostBinding, Input} from '@angular/core';
+import {SuiSize} from 'ngx-semantic/core/enums';
 
 @Directive({
   selector: '[sui-breadcrumb]',
