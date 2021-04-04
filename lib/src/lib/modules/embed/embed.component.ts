@@ -2,9 +2,9 @@
  * Created by bolorundurowb on 1/24/2021
  */
 
-import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation} from '@angular/core';
 import {Utils} from '../../common';
-import {InputBoolean} from "../../core/util";
+import {InputBoolean} from '../../core/util';
+import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation} from '@angular/core';
 
 export type SuiEmbedSource = 'youtube' | 'vimeo' | null;
 export type SuiEmbedAspectRatio = '4:3' | '16:9' | '21:9' | null;
@@ -56,13 +56,13 @@ export class SuiEmbedComponent implements AfterViewInit {
     }
   }
 
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       this.suiAspectRatio,
       'embed',
       Utils.getPropClass(this.isPLaying, 'active')
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 
   public playVideo(): void {

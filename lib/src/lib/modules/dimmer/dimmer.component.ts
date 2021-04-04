@@ -3,10 +3,8 @@
  */
 
 import {
-  ChangeDetectionStrategy,
-  Component,
-  Input, OnInit,
-  TemplateRef,
+  ChangeDetectionStrategy, Component,
+  Input, OnInit, TemplateRef,
   ViewEncapsulation
 } from '@angular/core';
 import {Utils} from '../../common';
@@ -34,7 +32,7 @@ export class SuiDimmerComponent implements OnInit {
   @Input() public suiFullPage = false;
 
   private _content;
-  public classes: Array<string>;
+  public classes = '';
 
   @Input()
   get suiContent(): TemplateRef<any> {
@@ -49,7 +47,7 @@ export class SuiDimmerComponent implements OnInit {
     this.classes = this.genClasses();
   }
 
-  private genClasses(): Array<string> {
+  private genClasses(): string {
     return [
       'ui',
       Utils.getPropClass(this.suiFullPage, 'page'),
@@ -59,7 +57,8 @@ export class SuiDimmerComponent implements OnInit {
       this.suiAlignment ? 'aligned' : '',
       'dimmer',
       'transition',
+      'visible',
       'active'
-    ];
+    ].joinWithWhitespaceCleanup();
   }
 }

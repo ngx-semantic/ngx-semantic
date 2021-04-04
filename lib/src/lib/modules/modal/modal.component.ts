@@ -2,60 +2,69 @@
  * Created by bolorundurowb on 1/22/2021
  */
 
-import {Overlay, OverlayPositionBuilder, OverlayRef} from '@angular/cdk/overlay';
-import {TemplatePortal} from '@angular/cdk/portal';
 import {
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-  TemplateRef,
-  ViewChild,
-  ViewContainerRef,
+  ChangeDetectionStrategy, Component,
+  EventEmitter, Inject,
+  Input, OnDestroy, Output,
+  Renderer2, TemplateRef,
+  ViewChild, ViewContainerRef,
   ViewEncapsulation
 } from '@angular/core';
 import {Utils} from '../../common';
 import {InputBoolean} from '../../core/util';
+import {DOCUMENT} from '@angular/common';
 
 export type SuiModalSize = 'mini' | 'tiny' | 'small' | 'large' | null;
+export type SuiModalScrollability = 'full' | 'medium' | 'none';
 
 @Component({
   selector: 'sui-modal',
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ng-template #contentTemplate>
-      <div style="position: unset !important;"
+      <div style="display: block !important;"
            [ngClass]="classes">
         <ng-container *ngIf="suiClosable">
-          <i sui-icon
+          <i *ngIf="!suiBasic"
+             sui-icon
              suiIconType="close"
              (click)="visible = false;"></i>
+        </ng-container>
+
+        <ng-container *ngIf="suiHeaderText || suiHeaderIcon">
+          <div [class.ui]="!!suiHeaderIcon"
+               [class.icon]="!!suiHeaderIcon"
+               [class.header]="true">
+            <i sui-icon
+               [suiIconType]="suiHeaderIcon"></i>
+            {{suiHeaderText}}
+          </div>
         </ng-container>
         <ng-content></ng-content>
       </div>
     </ng-template>
-  `,
-  styles: [`
-    .backdrop {
-      background-color: rgba(0, 0, 0, 0.85);
-    }
-  `]
+  `
 })
-export class SuiModalComponent implements OnInit, OnDestroy {
-  @Input() public suiSize: SuiModalSize = null;
-  @Input() @InputBoolean() public suiBasic: boolean;
-  @Input() @InputBoolean() public suiClosable: boolean;
-  @Input() @InputBoolean() public suiScrollable: boolean;
-  @Input() @InputBoolean() public suiFullScreen: boolean;
-  @Input() @InputBoolean() public suiMaskClosable: boolean;
-  @Output() public visibleChange = new EventEmitter<boolean>();
-
+export class SuiModalComponent implements OnDestroy {
   @ViewChild('contentTemplate', {static: true}) public contentTemplate!: TemplateRef<any>;
 
+  @Input() public suiHeaderText: string;
+  @Input() public suiHeaderIcon: string;
+  @Input() public suiSize: SuiModalSize = null;
+  @Input() public suiScroll: SuiModalScrollability = 'none';
+  @Input() @InputBoolean() public suiBasic = false;
+  @Input() @InputBoolean() public suiClosable = true;
+  @Input() @InputBoolean() public suiCentered = true;
+  @Input() @InputBoolean() public suiBlurring = false;
+  @Input() @InputBoolean() public suiFullScreen = false;
+  @Input() @InputBoolean() public suiMaskClosable = true;
+  @Output() public visibleChange = new EventEmitter<boolean>();
+
+  private readonly uniqueId: number;
   private _visible = false;
-  private _overlayRef!: OverlayRef;
+  private _modalDomRef: HTMLElement;
+  private clickListener: () => void;
 
   @Input()
   get visible(): boolean {
@@ -79,49 +88,116 @@ export class SuiModalComponent implements OnInit, OnDestroy {
       this.suiSize,
       Utils.getPropClass(this.suiBasic, 'basic'),
       Utils.getPropClass(this.suiFullScreen, 'fullscreen'),
-      'active',
-      'modal'
+      this.scrollClass,
+      'modal',
+      'transition',
+      'visible',
+      'active'
     ].joinWithWhitespaceCleanup();
   }
 
-  constructor(private overlay: Overlay, private positionBuilder: OverlayPositionBuilder,
-              private vcr: ViewContainerRef) {
+  /**
+   * In all wisdom, semantic-ui decided that 'longer' would be shorter than 'long', go figure
+   */
+  get scrollClass(): string {
+    if (this.suiScroll === 'full') {
+      return 'long';
+    } else if (this.suiScroll === 'medium') {
+      return 'longer';
+    } else {
+      return '';
+    }
   }
 
-  public ngOnInit(): void {
-    const scrollStrategy = this.overlay
-      .scrollStrategies
-      .noop();
-    const positionStrategy = this.positionBuilder
-      .global()
-      .centerHorizontally()
-      .centerVertically();
-
-    this._overlayRef = this.overlay.create({
-      positionStrategy, scrollStrategy,
-      hasBackdrop: true,
-      backdropClass: 'backdrop'
-    });
-
-    this._overlayRef
-      .backdropClick()
-      .subscribe(() => {
-        if (this.suiMaskClosable) {
-          this.visible = false;
-        }
-      });
+  constructor(@Inject(DOCUMENT) private document, private renderer: Renderer2,
+              private viewRef: ViewContainerRef) {
+    this.uniqueId = Math.ceil(Math.random() * 100000000);
   }
 
   public ngOnDestroy(): void {
-    this._overlayRef?.dispose();
+    const container = this.getModalFromDom();
+    if (container) {
+      this.renderer.removeChild(this.document.body, container);
+
+      // if blurring, remove classes from the body
+      if (this.suiBlurring) {
+        this.renderer.removeClass(this.document.body, 'dimmable');
+      }
+    }
   }
 
-  private showModal(): void {
-    const portal = new TemplatePortal(this.contentTemplate, this.vcr);
-    this._overlayRef?.attach(portal);
+  showModal(): void {
+    if (!this.isModalInDom()) {
+      this.generateDomElement();
+    }
+
+    // insert necessary classes to show the modal
+    this.renderer.setProperty(this._modalDomRef, 'style', 'display: flex !important;');
+    this.renderer.addClass(this._modalDomRef, 'visible');
+    this.renderer.addClass(this._modalDomRef, 'active');
+
+    // if blurring, add classes to the body
+    if (this.suiBlurring) {
+      this.renderer.addClass(this.document.body, 'dimmable');
+      this.renderer.addClass(this.document.body, 'blurring');
+      this.renderer.addClass(this.document.body, 'dimmed');
+    }
   }
 
-  public hideModal(): void {
-    this._overlayRef?.detach();
+  hideModal(): void {
+    if (this._modalDomRef) {
+      // remove necessary classes to hide the modal
+      this.renderer.removeAttribute(this._modalDomRef, 'style');
+      this.renderer.removeClass(this._modalDomRef, 'visible');
+      this.renderer.removeClass(this._modalDomRef, 'active');
+
+      // if blurring, remove classes from the body
+      if (this.suiBlurring) {
+        this.renderer.removeClass(this.document.body, 'blurring');
+        this.renderer.removeClass(this.document.body, 'dimmed');
+      }
+    }
+  }
+
+  private generateDomElement(): void {
+    const container = this.renderer.createElement('div');
+    this.renderer.setAttribute(container, 'id', this.uniqueId.toString());
+    const containerStyle = 'ui dimmer modals page' + (this.suiCentered ? '' : ' top aligned') + ' transition';
+    this.renderer.setAttribute(container, 'class', containerStyle);
+
+    // render the modal contents
+    const content = this.viewRef.createEmbeddedView(this.contentTemplate);
+    content.detectChanges();
+    for (const node of content.rootNodes) {
+      this.renderer.appendChild(container, node);
+    }
+
+    // set the class properties
+    this._modalDomRef = container;
+
+    // set the click listener
+    this.clickListener = this.renderer.listen(this._modalDomRef, 'click', (event) => {
+      const targetId = event.target.id;
+      if (targetId === this.uniqueId.toString()) {
+        this.onClick();
+      }
+    });
+
+    // insert the generated html into the DOM
+    this.renderer.appendChild(this.document.body, this._modalDomRef);
+  }
+
+  private isModalInDom(): boolean {
+    return !!this.getModalFromDom();
+  }
+
+  private getModalFromDom(): HTMLElement {
+    return this.document.getElementById(this.uniqueId);
+  }
+
+  private onClick(): void {
+    if (this.suiMaskClosable) {
+      this.visible = false;
+    }
   }
 }
