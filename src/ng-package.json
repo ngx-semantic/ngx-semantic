@@ -3,7 +3,7 @@
   "dest": "../dist",
   "deleteDestPath": true,
   "lib": {
-    "entryFile": "./public-api.ts"
+    "entryFile": "./ngx-semantic.module.ts"
   },
-  "whitelistedNonPeerDependencies": ["@angular/cdk"]
+  "allowedNonPeerDependencies": ["@angular/cdk"]
 }

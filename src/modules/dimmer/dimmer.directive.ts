@@ -9,8 +9,8 @@ import {
   Output, Renderer2, SimpleChanges, TemplateRef
 } from '@angular/core';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiDimmerContentDirective} from 'ngx-semantic/modules/dimmer/dimmer-content.directive';
-import {SuiDimmerComponent} from 'ngx-semantic/modules/dimmer/dimmer.component';
+import {SuiDimmerContentDirective} from './dimmer-content.directive';
+import {SuiDimmerComponent} from './dimmer.component';
 
 export type SuiDimmerContentAlignment = 'top' | 'bottom' | null;
 

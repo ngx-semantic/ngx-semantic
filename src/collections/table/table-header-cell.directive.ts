@@ -3,7 +3,7 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiTableTextAlignment, SuiTableVerticalAlignment} from 'ngx-semantic/collections/table/enums';
+import {SuiTableTextAlignment, SuiTableVerticalAlignment} from './enums';
 import {SuiWidth} from 'ngx-semantic/core/enums';
 
 @Directive({

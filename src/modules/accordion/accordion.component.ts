@@ -4,7 +4,7 @@
 
 import {AfterContentInit, Component, ContentChildren, Input, QueryList, ViewEncapsulation} from '@angular/core';
 import {ClassUtils} from 'ngx-semantic/core/util';
-import {SuiAccordionPanelComponent} from 'ngx-semantic/modules/accordion/accordion-panel.component';
+import {SuiAccordionPanelComponent} from './accordion-panel.component';
 
 @Component({
   selector: 'sui-accordion',

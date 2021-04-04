@@ -7,8 +7,6 @@ import {Directive, HostBinding} from '@angular/core';
 export class SuiCardDescriptionDirective {
   @HostBinding('class')
   get classes(): string {
-    return [
-      'description'
-    ].joinWithWhitespaceCleanup();
+    return ['description'].joinWithWhitespaceCleanup();
   }
 }

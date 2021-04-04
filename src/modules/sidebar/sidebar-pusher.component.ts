@@ -4,7 +4,7 @@
 
 import {Component, HostBinding, HostListener, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiSidebarService} from 'ngx-semantic/modules/sidebar/sidebar.service';
+import {SuiSidebarService} from './sidebar.service';
 
 @Component({
   selector: 'sui-sidebar-pusher',

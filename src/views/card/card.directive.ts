@@ -5,7 +5,7 @@
 import {Directive, Host, HostBinding, Input, Optional} from '@angular/core';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {SuiColour} from 'ngx-semantic/core/enums';
-import {SuiCardsDirective} from 'ngx-semantic/views/card/cards.directive';
+import {SuiCardsDirective} from './cards.directive';
 
 @Directive({
   selector: '[sui-card]',

@@ -4,7 +4,7 @@
 
 import {Directive, HostBinding, Input} from '@angular/core';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiTableState, SuiTableTextAlignment, SuiTableVerticalAlignment} from 'ngx-semantic/collections/table/enums';
+import {SuiTableState, SuiTableTextAlignment, SuiTableVerticalAlignment} from './enums';
 
 @Directive({
   exportAs: 'suiTableRow',

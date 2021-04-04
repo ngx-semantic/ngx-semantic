@@ -4,7 +4,7 @@
 
 import {Component, Input, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiPopupPlacement, SuiPopupWidth} from 'ngx-semantic/modules/popup/popup.directive';
+import {SuiPopupPlacement, SuiPopupWidth} from './popup.directive';
 import {SuiSize} from 'ngx-semantic/core/enums';
 
 @Component({

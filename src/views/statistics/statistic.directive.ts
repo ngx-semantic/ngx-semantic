@@ -5,7 +5,7 @@
 import {Directive, Host, HostBinding, Input, Optional} from '@angular/core';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
-import {SuiStatisticsDirective} from 'ngx-semantic/views/statistics/statistics.directive';
+import {SuiStatisticsDirective} from './statistics.directive';
 
 export type SuiFloat = 'right' | 'left';
 

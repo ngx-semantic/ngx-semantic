@@ -12,8 +12,8 @@ import {
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiSelectMenuDirective} from 'ngx-semantic/modules/select/select-menu.directive';
-import {ISelectOption} from 'ngx-semantic/modules/select/interfaces/ISelectOption';
+import {SuiSelectMenuDirective} from './select-menu.directive';
+import {ISelectOption} from './interfaces/ISelectOption';
 
 @Component({
   selector: 'sui-select',

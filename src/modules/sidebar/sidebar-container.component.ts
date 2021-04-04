@@ -3,8 +3,8 @@
  */
 
 import {AfterContentInit, Component, ContentChild, ViewEncapsulation} from '@angular/core';
-import {SuiSidebarComponent} from 'ngx-semantic/modules/sidebar/sidebar.component';
-import {SuiSidebarPusherComponent} from 'ngx-semantic/modules/sidebar/sidebar-pusher.component';
+import {SuiSidebarComponent} from './sidebar.component';
+import {SuiSidebarPusherComponent} from './sidebar-pusher.component';
 
 @Component({
   selector: 'sui-sidebar-container',

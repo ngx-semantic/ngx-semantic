@@ -2,7 +2,7 @@
  * Created by bolor on 11/2/2020
  */
 
-import {ISelectOptionImage} from 'ngx-semantic/modules/select';
+import {ISelectOptionImage} from './ISelectOptionImage';
 
 export interface ISelectOption {
   text: string;

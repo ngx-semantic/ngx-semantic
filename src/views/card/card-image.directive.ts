@@ -7,8 +7,6 @@ import {Directive, HostBinding} from '@angular/core';
 export class SuiCardImageDirective {
   @HostBinding('class')
   get classes(): string {
-    return [
-      'image'
-    ].joinWithWhitespaceCleanup();
+    return ['image'].joinWithWhitespaceCleanup();
   }
 }

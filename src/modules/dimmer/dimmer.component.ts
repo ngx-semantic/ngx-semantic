@@ -8,7 +8,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import {ClassUtils} from 'ngx-semantic/core/util';
-import {SuiDimmerContentAlignment} from 'ngx-semantic/modules/dimmer/dimmer.directive';
+import {SuiDimmerContentAlignment} from './dimmer.directive';
 
 @Component({
   selector: 'sui-dimmer',

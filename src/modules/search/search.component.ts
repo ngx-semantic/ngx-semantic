@@ -1,6 +1,6 @@
 import {Component, EventEmitter, HostBinding, HostListener, Input, Output, ViewEncapsulation} from '@angular/core';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {ISearchOption} from 'ngx-semantic/modules/search/interfaces/ISearchOption';
+import {ISearchOption} from './interfaces/ISearchOption';
 
 export type SuiSearchAlignment = 'right' | null;
 

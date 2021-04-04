@@ -4,7 +4,7 @@
 
 import {ContentChild, Directive, HostBinding, HostListener, Input} from '@angular/core';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiDropdownMenuDirective} from 'ngx-semantic/modules/dropdown/dropdown-menu.directive';
+import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 
 export type SuiMenuDirection = 'left' | 'right' | null;
 

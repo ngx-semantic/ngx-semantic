@@ -11,7 +11,7 @@ import {
   QueryList, ViewEncapsulation
 } from '@angular/core';
 import {InputBoolean} from 'ngx-semantic/core/util';
-import {SuiTabComponent} from 'ngx-semantic/modules/tabs/tab.component';
+import {SuiTabComponent} from './tab.component';
 import {SuiColour} from 'ngx-semantic/core/enums';
 import {SuiMenuAttachment} from 'ngx-semantic/collections/menu';
 import {SuiSegmentAttachment} from 'ngx-semantic/elements/segment';
