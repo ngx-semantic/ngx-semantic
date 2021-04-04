@@ -1,7 +1,7 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../out-tsc/lib",
+    "outDir": "../release",
     "target": "es2015",
     "declaration": true,
     "declarationMap": true,
@@ -17,10 +17,6 @@
     "strictMetadataEmit": true,
     "enableResourceInlining": true
   },
-  "exclude": [
-    "test.ts",
-    "**/*.spec.ts"
-  ],
   "include": [
     "**/*.ts"
   ]

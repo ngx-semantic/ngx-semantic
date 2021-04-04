@@ -41,7 +41,7 @@ import {SuiCommentModule} from './views/comment';
 import {SuiItemsModule} from './views/items';
 import {SuiStatisticModule} from './views/statistics';
 
-export * from 'ngx-semantic/breadcrumb';
+// export * from 'ngx-semantic//elements/breadcrumb';
 
 @NgModule({
   declarations: [],
