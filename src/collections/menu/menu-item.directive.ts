@@ -3,7 +3,7 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {Utils} from '../../common';
+import {ClassUtils} from 'ngx-semantic/core/util';
 
 @Directive({
   exportAs: 'suiMenuItem',
