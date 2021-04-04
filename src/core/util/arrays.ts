@@ -1,6 +1,4 @@
-/**
- * Created by bolor on 5/17/2020
- */
+export {};
 
 declare global {
   interface Array<T> {
@@ -24,14 +22,4 @@ if (!Array.prototype.removeWhitespace) {
       return !!x;
     });
   };
-}
-
-export class Utils {
-  public static getPropClass(state: boolean, className: string): string {
-    if (!state) {
-      return '';
-    }
-
-    return className;
-  }
 }
