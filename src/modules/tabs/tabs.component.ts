@@ -10,11 +10,11 @@ import {
   Input, Output,
   QueryList, ViewEncapsulation
 } from '@angular/core';
-import {SuiMenuAttachment} from '../../collections/menu';
-import {SuiColour} from '../../common';
-import {InputBoolean} from '../../core/util';
-import {SuiSegmentAttachment} from '../../elements/segment';
-import {SuiTabComponent} from './tab.component';
+import {InputBoolean} from 'ngx-semantic/core/util';
+import {SuiTabComponent} from 'ngx-semantic/modules/tabs/tab.component';
+import {SuiColour} from 'ngx-semantic/core/enums';
+import {SuiMenuAttachment} from 'ngx-semantic/collections/menu';
+import {SuiSegmentAttachment} from 'ngx-semantic/elements/segment';
 
 export type SuiTabType = 'basic' | 'pointing' | 'secondary' | 'text' | 'bordered' | 'borderless';
 export type SuiTabMenuPosition = 'top' | 'bottom';

@@ -3,9 +3,8 @@
  */
 
 import {Component, HostBinding, HostListener, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
-import {SuiSidebarService} from './sidebar.service';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import {SuiSidebarService} from 'ngx-semantic/modules/sidebar/sidebar.service';
 
 @Component({
   selector: 'sui-sidebar-pusher',

@@ -8,10 +8,9 @@ import {
   EventEmitter, HostBinding, Injector, Input, OnChanges, OnDestroy,
   Output, Renderer2, SimpleChanges, TemplateRef
 } from '@angular/core';
-import {Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
-import {SuiDimmerComponent} from './dimmer.component';
-import {SuiDimmerContentDirective} from './dimmer-content.directive';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import {SuiDimmerContentDirective} from 'ngx-semantic/modules/dimmer/dimmer-content.directive';
+import {SuiDimmerComponent} from 'ngx-semantic/modules/dimmer/dimmer.component';
 
 export type SuiDimmerContentAlignment = 'top' | 'bottom' | null;
 

@@ -10,9 +10,8 @@ import {
   ViewChild, ViewContainerRef,
   ViewEncapsulation
 } from '@angular/core';
-import {Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
 import {DOCUMENT} from '@angular/common';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 export type SuiModalSize = 'mini' | 'tiny' | 'small' | 'large' | null;
 export type SuiModalScrollability = 'full' | 'medium' | 'none';

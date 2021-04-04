@@ -3,8 +3,8 @@
  */
 
 import {AfterContentInit, Component, ContentChildren, Input, QueryList, ViewEncapsulation} from '@angular/core';
-import {Utils} from '../../common';
-import {SuiAccordionPanelComponent} from './accordion-panel.component';
+import {ClassUtils} from 'ngx-semantic/core/util';
+import {SuiAccordionPanelComponent} from 'ngx-semantic/modules/accordion/accordion-panel.component';
 
 @Component({
   selector: 'sui-accordion',

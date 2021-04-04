@@ -3,9 +3,8 @@
  */
 
 import {Component, ContentChild, HostBinding, HostListener, Input, ViewEncapsulation} from '@angular/core';
-import {Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
-import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import {SuiDropdownMenuDirective} from 'ngx-semantic/modules/dropdown/dropdown-menu.directive';
 
 export type SuiDropdownPointingDirection = 'top left' | 'top right' | 'left' | 'right' | 'bottom left' | 'bottom right' | null;
 

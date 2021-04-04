@@ -3,7 +3,7 @@
  */
 
 import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
-import {InputBoolean} from '../../core/util';
+import {InputBoolean} from 'ngx-semantic/core/util';
 
 @Component({
   selector: 'sui-accordion-panel',

@@ -3,8 +3,8 @@
  */
 
 import {Component, HostBinding, Input} from '@angular/core';
-import {SuiColour, SuiSize, Utils} from '../../common';
-import {InputBoolean} from "../../core/util";
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
 
 export type SuiProgressAttachment = 'bottom' | 'top' | null;
 export type SuiProgressState = 'success' | 'warning' | 'error' | null;
@@ -75,7 +75,7 @@ export class SuiProgressComponent {
       ClassUtils.getPropClass(this.disabled, 'disabled'),
       ClassUtils.getPropClass(this.suiInverted, 'inverted'),
       'progress',
-      this.suiState,
+      this.suiState
     ].joinWithWhitespaceCleanup();
   }
 

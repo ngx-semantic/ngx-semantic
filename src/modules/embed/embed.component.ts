@@ -2,9 +2,8 @@
  * Created by bolorundurowb on 1/24/2021
  */
 
-import {Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
 import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation} from '@angular/core';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 export type SuiEmbedSource = 'youtube' | 'vimeo' | null;
 export type SuiEmbedAspectRatio = '4:3' | '16:9' | '21:9' | null;

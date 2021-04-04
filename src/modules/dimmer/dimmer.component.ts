@@ -7,8 +7,8 @@ import {
   Input, OnInit, TemplateRef,
   ViewEncapsulation
 } from '@angular/core';
-import {Utils} from '../../common';
-import {SuiDimmerContentAlignment} from './dimmer.directive';
+import {ClassUtils} from 'ngx-semantic/core/util';
+import {SuiDimmerContentAlignment} from 'ngx-semantic/modules/dimmer/dimmer.directive';
 
 @Component({
   selector: 'sui-dimmer',

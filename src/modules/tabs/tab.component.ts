@@ -3,8 +3,7 @@
  */
 
 import {Component, HostBinding, Input, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
-import {Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 @Component({
   selector: 'sui-tab',

@@ -2,10 +2,10 @@
  * Created by bolorundurowb on 1/16/2021
  */
 
-import {SuiSize, Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
-import {SuiPopupPlacement, SuiPopupWidth} from './popup.directive';
 import {Component, Input, TemplateRef, ViewEncapsulation} from '@angular/core';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import {SuiPopupPlacement, SuiPopupWidth} from 'ngx-semantic/modules/popup/popup.directive';
+import {SuiSize} from 'ngx-semantic/core/enums';
 
 @Component({
   selector: 'sui-popup',

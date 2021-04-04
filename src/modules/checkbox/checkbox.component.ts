@@ -14,8 +14,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 export type SuiCheckboxType = 'radio' | 'slider' | 'toggle' | null;
 
