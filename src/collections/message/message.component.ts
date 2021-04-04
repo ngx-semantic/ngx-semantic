@@ -1,14 +1,16 @@
 import {Component, ElementRef, HostBinding, Input} from '@angular/core';
-import {SuiColour, SuiResultState, SuiSize, Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import {SuiResultState} from 'ngx-semantic/collections/message/enums';
 
 export type SuiMessageAttachment = 'attached' | 'bottom attached' | null;
 
 @Component({
   selector: '[sui-message]',
   template: `
-    <i  sui-icon *ngIf="suiDismissible"
-        suiIconType="close"
+    <i *ngIf="suiDismissible"
+       sui-icon
+       suiIconType="close"
        (click)="dismiss()"></i>
     <ng-content></ng-content>
   `
