@@ -3,8 +3,8 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiSize, SuiVerticalAlignment} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {SuiSize, SuiVerticalAlignment} from 'ngx-semantic/core/enums';
+import {InputBoolean} from 'ngx-semantic/core/util';
 
 export type SuiListRelaxation = 'relaxed' | 'very relaxed' | null;
 

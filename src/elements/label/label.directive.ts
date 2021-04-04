@@ -3,8 +3,8 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiColour, SuiHorizontalAlignment, SuiLocation, SuiSize, Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {SuiColour, SuiHorizontalAlignment, SuiLocation, SuiSize, SuiWidth} from 'ngx-semantic/core/enums';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 export type SuiLabelPointing = 'above' | 'below' | 'left' | 'right' | null;
 

@@ -3,8 +3,8 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiSize, Utils} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {SuiSize} from 'ngx-semantic/core/enums';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 export type SuiImageAlignment = 'top aligned' | 'bottom aligned' | 'middle aligned' | null;
 export type SuiImageFloat = 'left floated' | 'right floated' | null;

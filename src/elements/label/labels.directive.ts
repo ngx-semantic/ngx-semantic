@@ -3,8 +3,8 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiColour, SuiSize} from '../../common';
-import {InputBoolean} from '../../core/util';
+import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
+import {InputBoolean} from 'ngx-semantic/core/util';
 
 @Directive({
   selector: '[sui-labels]',
