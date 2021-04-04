@@ -53,11 +53,3 @@ export type SuiStacking = 'large screen stackable' | 'mobile stackable' | 'compu
   | 'tablet stackable' | 'unstackable' | null;
 
 export type SuiResultState = 'success' | 'positive' | 'warning' | 'negative' | 'error' | 'info' | null;
-
-// table shared enums
-
-export type SuiTableState = 'positive' | 'negative' | 'warning' | 'error' | null;
-
-export type SuiTableTextAlignment = 'center' | 'right' | null;
-
-export type SuiTableVerticalAlignment = 'top' | 'bottom' | null;

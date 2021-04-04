@@ -3,12 +3,13 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiTableState, SuiTableTextAlignment, SuiTableVerticalAlignment, Utils} from '../../common';
+import {Utils} from '../../common';
 import {InputBoolean} from '../../core/util';
+import {SuiTableState, SuiTableTextAlignment, SuiTableVerticalAlignment} from 'ngx-semantic/collections/table/enums';
 
 @Directive({
   exportAs: 'suiTableCell',
-  selector: '[suiTableCell]',
+  selector: '[suiTableCell]'
 })
 export class SuiTableCellDirective {
   @Input() public suiState: SuiTableState = null;

@@ -3,7 +3,7 @@
  */
 
 import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiTableTextAlignment, SuiTableVerticalAlignment, SuiWidth, Utils} from '../../common';
+import {SuiTableTextAlignment, SuiTableVerticalAlignment} from 'ngx-semantic/collections/table/enums';
 
 @Directive({
   exportAs: 'suiTableHeaderCell',
