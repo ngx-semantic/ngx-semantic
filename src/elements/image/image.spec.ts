@@ -5,7 +5,7 @@
 import {Component, Input} from '@angular/core';
 import {SuiImageDirective} from './image.directive';
 import {By} from '@angular/platform-browser';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 
 describe('SuiImageComponent', () => {
@@ -13,7 +13,7 @@ describe('SuiImageComponent', () => {
   let fixture: ComponentFixture<TestImageComponent>;
   let buttonElement: HTMLButtonElement;
 
-  beforeEach(async(() => {
+  beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
         imports: [CommonModule],
         declarations: [TestImageComponent, SuiImageDirective]

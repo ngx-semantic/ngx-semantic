@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {SuiDividerDirective, SuiDividerDirection} from './divider.directive';
@@ -9,7 +9,7 @@ describe('SuiDividerComponent', () => {
   let fixture: ComponentFixture<TestDividerComponent>;
   let dividerElement: HTMLDivElement;
 
-  beforeEach(async(() => {
+  beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
         imports: [CommonModule],
         declarations: [TestDividerComponent, SuiDividerDirective]

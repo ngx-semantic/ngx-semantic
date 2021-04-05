@@ -1,18 +1,19 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, fakefakeAsync} from '@angular/core/testing';
 import {Component, Input} from '@angular/core';
-import {SuiColour, SuiSize} from '../../common';
 import {CommonModule} from '@angular/common';
 import {SuiHeaderAlignment, SuiHeaderAttachment, SuiHeaderDirective, SuiHeaderFloating} from './header.directive';
 import {By} from '@angular/platform-browser';
+import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
+import {SuiHeaderModule} from 'ngx-semantic/elements/header/header.module';
 
 describe('SuiHeaderComponent', () => {
   let component: TestHeaderComponent;
   let fixture: ComponentFixture<TestHeaderComponent>;
   let headerElement: HTMLDivElement;
 
-  beforeEach(async(() => {
+  beforeEach(fakefakeAsync(() => {
     TestBed.configureTestingModule({
-        imports: [CommonModule],
+        imports: [CommonModule, SuiHeaderModule],
         declarations: [TestHeaderComponent, SuiHeaderDirective]
       })
       .compileComponents();

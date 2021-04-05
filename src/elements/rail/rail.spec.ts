@@ -2,7 +2,7 @@
  * Created by bolor on 5/10/2020
  */
 
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {Component, Input} from '@angular/core';
@@ -13,7 +13,7 @@ describe('SuiRailComponent', () => {
   let fixture: ComponentFixture<TestRailComponent>;
   let railElement: HTMLDivElement;
 
-  beforeEach(async(() => {
+  beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
         imports: [CommonModule],
         declarations: [TestRailComponent, SuiRailDirective]

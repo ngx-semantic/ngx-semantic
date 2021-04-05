@@ -3,7 +3,7 @@
  */
 
 import {Component, Input} from '@angular/core';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {SuiImagesDirective} from './images.directive';
 import {By} from '@angular/platform-browser';
@@ -14,7 +14,7 @@ describe('SuiImageGroupComponent', () => {
   let fixture: ComponentFixture<TestImageGroupComponent>;
   let groupElement: HTMLDivElement;
 
-  beforeEach(async(() => {
+  beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
       imports: [CommonModule],
       declarations: [TestImageGroupComponent, SuiImagesDirective, SuiImageDirective]

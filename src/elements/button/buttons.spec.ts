@@ -4,18 +4,19 @@
 
 import {CommonModule} from '@angular/common';
 import {Component, Input} from '@angular/core';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {SuiButtonsDirective} from './buttons.directive';
+import {SuiButtonModule} from './button.module';
 
 describe('SuiButtonsComponent', () => {
   let component: TestButtonGroupComponent;
   let fixture: ComponentFixture<TestButtonGroupComponent>;
   let groupElement: HTMLDivElement;
 
-  beforeEach(async(() => {
+  beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-        imports: [CommonModule],
+        imports: [CommonModule, SuiButtonModule],
         declarations: [TestButtonGroupComponent, SuiButtonsDirective, SuiButtonsDirective]
       })
       .compileComponents();

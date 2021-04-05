@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
 import {SuiFlagDirective} from './flag.directive';
 import {By} from '@angular/platform-browser';
@@ -8,7 +8,7 @@ describe('SuiFlagComponent', () => {
   let fixture: ComponentFixture<TestFlagComponent>;
   let flagElement: any;
 
-  beforeEach(async(() => {
+  beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
         declarations: [TestFlagComponent, SuiFlagDirective]
       })

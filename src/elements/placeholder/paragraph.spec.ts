@@ -2,7 +2,7 @@
  * Created by bolor on 5/6/2020
  */
 
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {By} from '@angular/platform-browser';
 import {Component} from '@angular/core';
@@ -13,7 +13,7 @@ describe('SuiPlaceholderParagraphComponent', () => {
   let fixture: ComponentFixture<TestPlaceholderParagraphComponent>;
   let paragraphElement: HTMLDivElement;
 
-  beforeEach(async(() => {
+  beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
       imports: [CommonModule],
       declarations: [TestPlaceholderParagraphComponent, SuiPlaceholderParagraphDirective]
