@@ -1,4 +1,5 @@
 import {Directive, HostBinding, Input} from '@angular/core';
+import 'ngx-semantic/core/util';
 
 @Directive({
   selector: '[sui-flag]',

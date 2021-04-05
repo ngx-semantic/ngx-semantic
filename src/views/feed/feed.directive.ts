@@ -4,6 +4,7 @@
 
 import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiSize} from 'ngx-semantic/core/enums';
+import 'ngx-semantic/core/util';
 
 @Directive({
   selector: '[sui-feed]',

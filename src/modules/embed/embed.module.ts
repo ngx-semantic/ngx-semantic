@@ -4,7 +4,7 @@
 
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {SuiIconModule} from '../../elements/icon';
+import {SuiIconModule} from 'ngx-semantic/elements/icon';
 import {SuiEmbedComponent} from './embed.component';
 import {SafeUrlPipe} from './pipes/safe-url.pipe';
 

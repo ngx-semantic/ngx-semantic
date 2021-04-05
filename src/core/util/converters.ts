@@ -3,7 +3,7 @@
  */
 
 import {coerceBooleanProperty} from '@angular/cdk/coercion';
-import {SuiAny} from '../types';
+import {SuiAny} from 'ngx-semantic/core/types';
 
 export function toBoolean(value: boolean | string): boolean {
   return coerceBooleanProperty(value);

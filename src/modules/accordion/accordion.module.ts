@@ -2,11 +2,12 @@
  * Created by bolorundurowb on 1/25/2021
  */
 
-import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {SuiIconModule} from '../../elements/icon';
-import {SuiAccordionPanelComponent} from './accordion-panel.component';
+import {CommonModule} from '@angular/common';
+import {SuiIconModule} from 'ngx-semantic/elements/icon';
+
 import {SuiAccordionComponent} from './accordion.component';
+import {SuiAccordionPanelComponent} from './accordion-panel.component';
 
 @NgModule({
   declarations: [

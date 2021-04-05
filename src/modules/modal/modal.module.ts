@@ -4,7 +4,7 @@
 
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SuiIconModule} from '../../elements/icon';
+import {SuiIconModule} from 'ngx-semantic/elements/icon';
 import {SuiModalComponent} from './modal.component';
 import {SuiModalActionsDirective} from './modal-actions.directive';
 import {SuiModalContentDirective} from './modal-content.directive';
