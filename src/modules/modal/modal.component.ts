@@ -35,8 +35,10 @@ export type SuiModalScrollability = 'full' | 'medium' | 'none';
           <div [class.ui]="!!suiHeaderIcon"
                [class.icon]="!!suiHeaderIcon"
                [class.header]="true">
-            <i sui-icon
-               [suiIconType]="suiHeaderIcon"></i>
+            <ng-container *ngIf="suiHeaderIcon">
+              <i sui-icon
+                 [suiIconType]="suiHeaderIcon"></i>
+            </ng-container>
             {{suiHeaderText}}
           </div>
         </ng-container>
