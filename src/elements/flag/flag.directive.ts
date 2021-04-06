@@ -1,5 +1,4 @@
 import {Directive, HostBinding, Input} from '@angular/core';
-import 'ngx-semantic/core/util';
 
 @Directive({
   selector: '[sui-flag]',
@@ -9,10 +8,10 @@ export class SuiFlagDirective {
   @Input() public suiCountry = '';
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       this.suiCountry,
       'flag'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }
