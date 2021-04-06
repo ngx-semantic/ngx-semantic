@@ -32,7 +32,7 @@ export class SuiDimmerComponent implements OnInit {
   @Input() public suiFullPage = false;
 
   private _content;
-  public classes = '';
+  public classes = [];
 
   @Input()
   get suiContent(): TemplateRef<any> {
@@ -47,7 +47,7 @@ export class SuiDimmerComponent implements OnInit {
     this.classes = this.genClasses();
   }
 
-  private genClasses(): string {
+  private genClasses(): Array<string> {
     return [
       'ui',
       ClassUtils.getPropClass(this.suiFullPage, 'page'),

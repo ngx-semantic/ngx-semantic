@@ -54,7 +54,7 @@ export class SuiPopupComponent {
       this.suiPlacement,
       'transition',
       'visible'
-    ].removeWhitespace();
+    ];
   }
 
   get isString(): boolean {

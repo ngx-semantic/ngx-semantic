@@ -30,7 +30,7 @@ export class SuiAccordionComponent  implements AfterContentInit {
       ClassUtils.getPropClass(this.suiStyled, 'styled'),
       ClassUtils.getPropClass(this.suiInverted, 'inverted'),
       'accordion'
-    ].removeWhitespace();
+    ];
   }
 
   public ngAfterContentInit() {
