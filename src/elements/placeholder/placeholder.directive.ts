@@ -15,13 +15,13 @@ export class SuiPlaceholderDirective {
   @Input() @InputBoolean() public suiFluid = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       ClassUtils.getPropClass(this.suiFluid, 'fluid'),
       ClassUtils.getPropClass(this.suiActive, 'active'),
       ClassUtils.getPropClass(this.suiInverted, 'inverted'),
       'placeholder'
-    ];
+    ].join(' ');
   }
 }
