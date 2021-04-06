@@ -14,11 +14,11 @@ export class SuiPlaceholderImageDirective {
   @Input() @InputBoolean() public suiRectangular = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       ClassUtils.getPropClass(this.suiSquare, 'square'),
       ClassUtils.getPropClass(this.suiRectangular, 'rectangular'),
       'image'
-    ];
+    ].join(' ');
   }
 }

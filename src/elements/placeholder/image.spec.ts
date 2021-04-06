@@ -4,7 +4,7 @@
 
 import {CommonModule} from '@angular/common';
 import {Component, Input} from '@angular/core';
-import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {SuiPlaceholderImageDirective} from './placeholder-image.directive';
 
@@ -13,13 +13,12 @@ describe('SuiPlaceholderImageComponent', () => {
   let fixture: ComponentFixture<TestPlaceholderImageComponent>;
   let imageElement: HTMLDivElement;
 
-  beforeEach(fakeAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [CommonModule],
       declarations: [TestPlaceholderImageComponent, SuiPlaceholderImageDirective]
-    })
-      .compileComponents();
-  }));
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestPlaceholderImageComponent);
