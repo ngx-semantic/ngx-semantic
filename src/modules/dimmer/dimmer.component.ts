@@ -59,6 +59,6 @@ export class SuiDimmerComponent implements OnInit {
       'transition',
       'visible',
       'active'
-    ].join(' ');
+    ];
   }
 }
