@@ -27,7 +27,7 @@ export class SuiIconDirective {
   @Input() @InputBoolean() public suiOutline = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       ClassUtils.getPropClass(this.suiFitted, 'fitted'),
       ClassUtils.getPropClass(this.disabled, 'disabled'),
@@ -44,6 +44,6 @@ export class SuiIconDirective {
       ClassUtils.getPropClass(this.suiLoading, 'loading'),
       ClassUtils.getPropClass(this.suiLink, 'link'),
       'icon'
-    ];
+    ].join(' ');
   }
 }

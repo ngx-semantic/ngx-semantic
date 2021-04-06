@@ -1,4 +1,4 @@
-import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Component} from '@angular/core';
 import {SuiIconDirective} from './icon.directive';
 import {By} from '@angular/platform-browser';
@@ -8,12 +8,11 @@ describe('SuiIconComponent', () => {
   let fixture: ComponentFixture<TestIconComponent>;
   let iconElement: any;
 
-  beforeEach(fakeAsync(() => {
-    TestBed.configureTestingModule({
-        declarations: [TestIconComponent, SuiIconDirective]
-      })
-      .compileComponents();
-  }));
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [TestIconComponent, SuiIconDirective]
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestIconComponent);
@@ -33,10 +32,8 @@ describe('SuiIconComponent', () => {
 
 @Component({
   template: `
-    <i
-      sui-icon
-      suiIconType="braille">
-    </i>
+    <i sui-icon
+       suiIconType="braille"></i>
   `
 })
 export class TestIconComponent {
