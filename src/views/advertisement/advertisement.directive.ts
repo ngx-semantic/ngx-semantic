@@ -33,7 +33,7 @@ export class SuiAdvertisementDirective {
   @Input() @InputBoolean() public suiCentered = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       this.suiSize,
@@ -45,6 +45,6 @@ export class SuiAdvertisementDirective {
       ClassUtils.getPropClass(this.suiSquare, 'square'),
       this.suiType,
       'ad'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

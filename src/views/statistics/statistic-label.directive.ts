@@ -11,6 +11,6 @@ import {Directive, HostBinding} from '@angular/core';
 export class SuiStatisticLabelDirective {
   @HostBinding('class')
   get classes(): string {
-    return ['label'].joinWithWhitespaceCleanup();
+    return 'label';
   }
 }

@@ -27,7 +27,7 @@ export class SuiSelectMenuDirective {
   }
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       ClassUtils.getPropClass(this.suiScrolling, 'scrolling'),
       this.suiDirection,
@@ -35,6 +35,6 @@ export class SuiSelectMenuDirective {
       'transition',
       ClassUtils.getPropClass(!this.isOpen, 'hidden'),
       ClassUtils.getPropClass(this.isOpen, 'visible')
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

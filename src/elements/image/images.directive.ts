@@ -13,11 +13,11 @@ export class SuiImagesDirective {
   @Input() public suiSize: SuiSize = null;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       this.suiSize,
       'images'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

@@ -17,7 +17,7 @@ export class SuiFormFieldDirective {
   @Input() @InputBoolean() public disabled = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       ClassUtils.getPropClass(this.suiInline, 'inline'),
       this.suiWidth,
@@ -25,6 +25,6 @@ export class SuiFormFieldDirective {
       ClassUtils.getPropClass(this.disabled, 'disabled'),
       'field',
       ClassUtils.getPropClass(this.suiError, 'error'),
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

@@ -34,7 +34,7 @@ export class SuiButtonDirective {
   @Input() @InputBoolean() public suiLoading = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       ClassUtils.getPropClass(this.suiIcon, 'icon'),
@@ -57,6 +57,6 @@ export class SuiButtonDirective {
       this.suiAnimated,
       this.suiEmphasis,
       'button'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

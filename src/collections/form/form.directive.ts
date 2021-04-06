@@ -20,7 +20,7 @@ export class SuiFormDirective {
   @Input() @InputBoolean() public suiInverted = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       ClassUtils.getPropClass(this.suiLoading, 'loading'),
@@ -29,6 +29,6 @@ export class SuiFormDirective {
       this.suiSize,
       'form',
       this.suiState
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

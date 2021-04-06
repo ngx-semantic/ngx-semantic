@@ -14,11 +14,11 @@ export class SuiFeedDirective {
   @Input() public suiSize: SuiSize = null;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       this.suiSize,
       'feed'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

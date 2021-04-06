@@ -13,10 +13,10 @@ export class SuiPlaceholderHeaderDirective {
   @Input() @InputBoolean() public suiImage = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       ClassUtils.getPropClass(this.suiImage, 'image'),
       'header'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

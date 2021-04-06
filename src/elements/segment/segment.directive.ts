@@ -39,7 +39,7 @@ export class SuiSegmentDirective {
   @Input() @InputBoolean() public suiSecondary = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       this.suiPadding,
@@ -62,6 +62,6 @@ export class SuiSegmentDirective {
       ClassUtils.getPropClass(this.suiSecondary, 'secondary'),
       ClassUtils.getPropClass(this.suiVertical, 'vertical'),
       'segment'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

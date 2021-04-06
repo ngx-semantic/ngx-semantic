@@ -11,6 +11,6 @@ import {Directive, HostBinding} from '@angular/core';
 export class SuiItemDirective {
   @HostBinding('class')
   get classes(): string {
-    return ['item'].joinWithWhitespaceCleanup();
+    return 'item';
   }
 }

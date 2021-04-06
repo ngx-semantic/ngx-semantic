@@ -10,8 +10,6 @@ import {Directive, HostBinding} from '@angular/core';
 export class SuiDropdownMenuDividerDirective {
   @HostBinding('class')
   get classes(): string {
-    return [
-      'divider'
-    ].joinWithWhitespaceCleanup();
+    return 'divider';
   }
 }

@@ -11,6 +11,6 @@ import {Directive, HostBinding} from '@angular/core';
 export class SuiCommentMetadataDirective {
   @HostBinding('class')
   get classes(): string {
-    return ['metadata'].joinWithWhitespaceCleanup();
+    return 'metadata';
   }
 }

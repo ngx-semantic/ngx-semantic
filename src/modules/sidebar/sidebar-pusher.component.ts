@@ -18,11 +18,11 @@ export class SuiSidebarPusherComponent implements OnInit {
   public isSidebarOpen = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       ClassUtils.getPropClass(this.isSidebarOpen && this.suiDimmable, 'dimmed'),
       'pusher'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 
   constructor(private sidebarService: SuiSidebarService) {

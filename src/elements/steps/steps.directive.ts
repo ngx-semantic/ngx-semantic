@@ -23,7 +23,7 @@ export class SuiStepsDirective {
   @Input() @InputBoolean() public suiTabletStackable = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       this.suiSize,
@@ -35,6 +35,6 @@ export class SuiStepsDirective {
       ClassUtils.getPropClass(this.suiUnstackable, 'unstackable'),
       ClassUtils.getPropClass(this.suiTabletStackable, 'tablet stackable'),
       'steps'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

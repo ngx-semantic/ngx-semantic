@@ -28,7 +28,7 @@ export class SuiImageDirective {
   @Input() @InputBoolean() public suiSpaced = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       this.suiSize,
@@ -42,6 +42,6 @@ export class SuiImageDirective {
       ClassUtils.getPropClass(this.suiCircular, 'circular'),
       ClassUtils.getPropClass(this.suiSpaced, 'spaced'),
       'image'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

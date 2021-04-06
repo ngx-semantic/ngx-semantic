@@ -17,7 +17,7 @@ export class SuiCommentsDirective {
   @Input() @InputBoolean() public suiCollapsed = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       this.suiSize,
@@ -25,6 +25,6 @@ export class SuiCommentsDirective {
       ClassUtils.getPropClass(this.suiThreaded, 'threaded'),
       ClassUtils.getPropClass(this.suiCollapsed, 'collapsed'),
       'comments'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

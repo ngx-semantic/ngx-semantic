@@ -28,7 +28,7 @@ export class SuiLabelDirective {
   @Input() @InputBoolean() public suiEmpty = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       this.getFloating(),
       'ui',
@@ -45,7 +45,7 @@ export class SuiLabelDirective {
       ClassUtils.getPropClass(this.suiEmpty, 'empty'),
       ClassUtils.getPropClass(this.suiCircular, 'circular'),
       'label'
-    ].join((' '));
+    ];
   }
 
   public getPointing(): string {

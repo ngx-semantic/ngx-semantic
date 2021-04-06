@@ -31,7 +31,7 @@ export class SuiMessageComponent {
   }
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       this.suiAttached,
@@ -44,7 +44,7 @@ export class SuiMessageComponent {
       ClassUtils.getPropClass(this.suiFloating, 'floating'),
       ClassUtils.getPropClass(this.suiCompact, 'compact'),
       'message'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 
   public dismiss(): void {

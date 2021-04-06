@@ -14,10 +14,10 @@ export class SuiRevealContentDirective {
   @Input() public suiVisible: SuiRevealContentVisibility = 'visible';
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       this.suiVisible,
       'content'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

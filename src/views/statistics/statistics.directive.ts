@@ -15,12 +15,12 @@ export class SuiStatisticsDirective {
   @Input() @InputBoolean() public suiHorizontal = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       this.suiWidth,
       ClassUtils.getPropClass(this.suiHorizontal, 'horizontal'),
       'statistics'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

@@ -35,7 +35,7 @@ export class SuiMenuDirective {
   @Input() @InputBoolean() public suiBorderless = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       this.suiColour,
@@ -60,6 +60,6 @@ export class SuiMenuDirective {
       ClassUtils.getPropClass(this.suiStackable, 'stackable'),
       ClassUtils.getPropClass(this.suiBorderless, 'borderless'),
       'menu'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

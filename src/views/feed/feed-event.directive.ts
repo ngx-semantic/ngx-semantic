@@ -11,6 +11,6 @@ import {Directive, HostBinding} from '@angular/core';
 export class SuiFeedEventDirective {
   @HostBinding('class')
   get classes(): string {
-    return ['event'].joinWithWhitespaceCleanup();
+    return 'event';
   }
 }

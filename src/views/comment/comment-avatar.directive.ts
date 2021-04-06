@@ -11,6 +11,6 @@ import {Directive, HostBinding} from '@angular/core';
 export class SuiCommentAvatarDirective {
   @HostBinding('class')
   get classes(): string {
-    return ['avatar'].joinWithWhitespaceCleanup();
+    return 'avatar';
   }
 }

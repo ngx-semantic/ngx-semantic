@@ -17,15 +17,15 @@ export class SuiLabelsDirective {
   @Input() @InputBoolean() public suiCircular = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       this.suiColour,
       this.suiSize,
       this.getTag(),
       this.getCircular(),
-      'labels']
-      .join((' '));
+      'labels'
+    ];
   }
 
   public getTag(): string {

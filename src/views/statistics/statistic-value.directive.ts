@@ -11,6 +11,6 @@ import {Directive, HostBinding} from '@angular/core';
 export class SuiStatisticValueDirective {
   @HostBinding('class')
   get classes(): string {
-    return ['value'].joinWithWhitespaceCleanup();
+    return 'value';
   }
 }

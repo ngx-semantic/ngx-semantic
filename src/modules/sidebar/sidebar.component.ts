@@ -38,7 +38,7 @@ export class SuiSidebarComponent {
   }
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       this.suiSidebarPosition,
@@ -47,7 +47,7 @@ export class SuiSidebarComponent {
       'sidebar',
       this.suiSidebarAnimation,
       ClassUtils.getPropClass(this.visible, 'visible')
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 
   constructor(private sidebarService: SuiSidebarService) {

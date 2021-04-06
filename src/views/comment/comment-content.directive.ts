@@ -11,6 +11,6 @@ import {Directive, HostBinding} from '@angular/core';
 export class SuiCommentContentDirective {
   @HostBinding('class')
   get classes(): string {
-    return ['content'].joinWithWhitespaceCleanup();
+    return 'content';
   }
 }

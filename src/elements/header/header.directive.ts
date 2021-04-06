@@ -24,7 +24,7 @@ export class SuiHeaderDirective {
   @Input() @InputBoolean() public suiIcon = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       this.suiColour,
@@ -39,6 +39,6 @@ export class SuiHeaderDirective {
       ClassUtils.getPropClass(this.suiSubHeader, 'sub'),
       ClassUtils.getPropClass(this.suiIcon, 'icon'),
       'header'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

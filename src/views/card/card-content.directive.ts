@@ -7,6 +7,6 @@ import {Directive, HostBinding} from '@angular/core';
 export class SuiCardContentDirective {
   @HostBinding('class')
   get classes(): string {
-    return ['content'].joinWithWhitespaceCleanup();
+    return 'content';
   }
 }

@@ -11,8 +11,6 @@ import {Directive, HostBinding} from '@angular/core';
 export class SuiModalActionsDirective {
   @HostBinding('class')
   get classes(): string {
-    return [
-      'actions'
-    ].joinWithWhitespaceCleanup();
+    return 'actions';
   }
 }

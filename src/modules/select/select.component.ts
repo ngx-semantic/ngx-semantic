@@ -156,7 +156,7 @@ export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
   }
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       ClassUtils.getPropClass(this.suiFluid, 'fluid'),
@@ -172,7 +172,7 @@ export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
       ClassUtils.getPropClass(this.isOpen, 'active'),
       ClassUtils.getPropClass(this.isOpen, 'visible'),
       ClassUtils.getPropClass(this.suiError, 'error')
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {

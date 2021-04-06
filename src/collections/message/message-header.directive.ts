@@ -7,8 +7,6 @@ import {Directive, HostBinding} from '@angular/core';
 export class SuiMessageHeaderDirective {
   @HostBinding('class')
   get classes(): string {
-    return [
-      'header'
-    ].joinWithWhitespaceCleanup();
+    return 'header';
   }
 }

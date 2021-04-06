@@ -13,10 +13,10 @@ export class SuiIconsDirective {
   @Input() public suiSize: SuiSize = null;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       this.suiSize,
       'icons'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

@@ -34,7 +34,7 @@ export class SuiTableDirective {
   @Input() @InputBoolean() public suiCollapsing = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       this.suiBasic,
@@ -54,6 +54,6 @@ export class SuiTableDirective {
       ClassUtils.getPropClass(this.suiSingleLine, 'single line'),
       ClassUtils.getPropClass(this.suiCollapsing, 'collapsing'),
       'table'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

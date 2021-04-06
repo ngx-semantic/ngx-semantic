@@ -14,11 +14,11 @@ export class SuiModalContentDirective {
   @Input() @InputBoolean() public suiScrollable = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       ClassUtils.getPropClass(this.suiScrollable, 'scrolling'),
       ClassUtils.getPropClass(this.suiImage, 'image'),
       'content'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

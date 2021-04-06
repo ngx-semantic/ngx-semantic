@@ -38,7 +38,7 @@ export class SuiDropdownComponent {
   }
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       ClassUtils.getPropClass(this.suiFluid, 'fluid'),
@@ -54,7 +54,7 @@ export class SuiDropdownComponent {
       ClassUtils.getPropClass(this.isOpen, 'active'),
       ClassUtils.getPropClass(this.isOpen, 'visible'),
       ClassUtils.getPropClass(this.suiError, 'error')
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 
   @HostListener('click')

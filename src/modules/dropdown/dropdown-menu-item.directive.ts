@@ -18,12 +18,12 @@ export class SuiDropdownMenuItemDirective {
   @Input() @InputBoolean() public disabled = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       ClassUtils.getPropClass(this.disabled, 'disabled'),
       this.suiDirection,
       'item'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 
   @HostListener('mouseenter')

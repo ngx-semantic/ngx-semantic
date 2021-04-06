@@ -106,7 +106,7 @@ export class SuiSearchComponent {
   public selectedOption: ISearchOption;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       this.suiAlignment,
@@ -116,7 +116,7 @@ export class SuiSearchComponent {
       'search',
       ClassUtils.getPropClass(this.hasCategories, 'category'),
       ClassUtils.getPropClass(this.isFocused, 'focus')
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 
   get hasCategories(): boolean {

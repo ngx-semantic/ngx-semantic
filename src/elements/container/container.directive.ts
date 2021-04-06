@@ -17,13 +17,13 @@ export class SuiContainerDirective {
   @Input() @InputBoolean() public suiFluid = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       this.suiAlignment,
       ClassUtils.getPropClass(this.suiText, 'text'),
       ClassUtils.getPropClass(this.suiFluid, 'fluid'),
       'container'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

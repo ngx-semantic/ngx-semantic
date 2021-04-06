@@ -12,11 +12,11 @@ export class SuiBreadcrumbDividerDirective {
   @Input() public suiIcon = '';
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       this.getIcon(),
-      'divider']
-      .joinWithWhitespaceCleanup();
+      'divider'
+    ];
   }
 
   private getIcon(): string {

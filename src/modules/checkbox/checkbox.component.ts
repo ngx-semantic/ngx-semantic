@@ -55,14 +55,14 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
   }
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       this.suiType,
       ClassUtils.getPropClass(this.suiReadOnly, 'read-only'),
       'checkbox',
       ClassUtils.getPropClass(this.isChecked, 'checked')
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 
   @HostListener('click')

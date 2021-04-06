@@ -10,12 +10,12 @@ export class SuiSelectMenuItemDirective {
   @Input() @InputBoolean() public suiMultiple = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'item',
       ClassUtils.getPropClass(this.suiSelected, 'active'),
       ClassUtils.getPropClass(!this.suiMultiple && this.suiSelected, 'selected'),
       ClassUtils.getPropClass(this.suiMultiple && this.suiSelected, 'filtered')
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 }

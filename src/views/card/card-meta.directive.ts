@@ -7,6 +7,6 @@ import {Directive, HostBinding} from '@angular/core';
 export class SuiCardMetaDirective {
   @HostBinding('class')
   get classes(): string {
-    return ['meta'].joinWithWhitespaceCleanup();
+    return 'meta';
   }
 }

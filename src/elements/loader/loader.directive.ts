@@ -22,7 +22,7 @@ export class SuiLoaderDirective {
   @Input() @InputBoolean() public suiInverted = false;
 
   @HostBinding('class')
-  get classes(): string {
+  get classes(): Array<string> {
     return [
       'ui',
       this.suiSize,
@@ -33,7 +33,7 @@ export class SuiLoaderDirective {
       this.getInline(),
       ClassUtils.getPropClass(this.suiInverted, 'inverted'),
       'loader'
-    ].joinWithWhitespaceCleanup();
+    ];
   }
 
   public getInline(): string {
