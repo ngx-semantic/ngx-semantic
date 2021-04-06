@@ -17,6 +17,6 @@ export class SuiIconsDirective {
     return [
       this.suiSize,
       'icons'
-    ];
+    ].join(' ');
   }
 }
