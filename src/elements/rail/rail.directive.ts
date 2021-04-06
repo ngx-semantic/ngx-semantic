@@ -21,7 +21,7 @@ export class SuiRailDirective {
   @Input() @InputBoolean() public suiAttached = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       this.suiLocation,
@@ -31,6 +31,6 @@ export class SuiRailDirective {
       this.suiCloseness,
       this.suiSize,
       'rail'
-    ];
+    ].join(' ');
   }
 }

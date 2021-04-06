@@ -27,10 +27,10 @@ export class SuiTabComponent {
   @ViewChild('contentTemplate', { static: true }) public contentTemplate!: TemplateRef<any>;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       ClassUtils.getPropClass(this.suiLoading, 'loading'),
       ClassUtils.getPropClass(this.disabled, 'disabled')
-    ];
+    ].join(' ');
   }
 }

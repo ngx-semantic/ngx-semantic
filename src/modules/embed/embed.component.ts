@@ -55,13 +55,13 @@ export class SuiEmbedComponent implements AfterViewInit {
     }
   }
 
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       this.suiAspectRatio,
       'embed',
       ClassUtils.getPropClass(this.isPLaying, 'active')
-    ];
+    ].join(' ');
   }
 
   public playVideo(): void {

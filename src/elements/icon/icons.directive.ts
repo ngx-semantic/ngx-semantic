@@ -13,7 +13,7 @@ export class SuiIconsDirective {
   @Input() public suiSize: SuiSize = null;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       this.suiSize,
       'icons'

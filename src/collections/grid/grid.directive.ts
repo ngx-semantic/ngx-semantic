@@ -32,7 +32,7 @@ export class SuiGridDirective {
   @Input() @InputBoolean() public suiDoubling = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       this.suiWidth,
@@ -49,6 +49,6 @@ export class SuiGridDirective {
       ClassUtils.getPropClass(this.suiDoubling, 'doubling'),
       'grid',
       ClassUtils.getPropClass(this.suiContainer, 'container')
-    ];
+    ].join(' ');
   }
 }

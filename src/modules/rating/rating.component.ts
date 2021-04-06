@@ -69,7 +69,7 @@ export class SuiRatingComponent implements ControlValueAccessor {
   }
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       this.suiSize,
@@ -77,7 +77,7 @@ export class SuiRatingComponent implements ControlValueAccessor {
       ClassUtils.getPropClass(this.suiReadOnly, 'read-only'),
       'rating',
       ClassUtils.getPropClass(this.hoverValue > 0, 'selected')
-    ];
+    ].join(' ');
   }
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {

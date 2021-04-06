@@ -17,7 +17,7 @@ export class SuiLabelsDirective {
   @Input() @InputBoolean() public suiCircular = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       this.suiColour,
@@ -25,7 +25,7 @@ export class SuiLabelsDirective {
       this.getTag(),
       this.getCircular(),
       'labels'
-    ];
+    ].join(' ');
   }
 
   public getTag(): string {

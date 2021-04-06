@@ -31,7 +31,7 @@ export class SuiDropdownMenuDirective {
   }
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       ClassUtils.getPropClass(this.suiScrolling, 'scrolling'),
       this.suiDirection,
@@ -39,6 +39,6 @@ export class SuiDropdownMenuDirective {
       'transition',
       ClassUtils.getPropClass(!this.isOpen, 'hidden'),
       ClassUtils.getPropClass(this.isOpen, 'visible')
-    ];
+    ].join(' ');
   }
 }

@@ -13,11 +13,11 @@ export class SuiBreadcrumbDirective {
   @Input() public suiSize: SuiSize = null;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       this.suiSize,
       'breadcrumb'
-    ];
+    ].join(' ');
   }
 }

@@ -13,11 +13,11 @@ export class SuiBreadcrumbSectionDirective {
   @Input() @InputBoolean() public suiActive = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       this.getActive(),
       'section'
-    ];
+    ].join(' ');
   }
 
   public getActive(): string {

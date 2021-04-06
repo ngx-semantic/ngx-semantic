@@ -27,7 +27,7 @@ export class SuiListDirective {
   @Input() @InputBoolean() public suiCelled = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       this.suiSize,
@@ -43,7 +43,7 @@ export class SuiListDirective {
       this.getAnimated(),
       this.getCelled(),
       'list'
-    ];
+    ].join(' ');
   }
 
   public getDivided(): string {

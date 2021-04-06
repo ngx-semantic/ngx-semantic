@@ -18,7 +18,7 @@ export class SuiItemsDirective {
   @Input() @InputBoolean() public suiLink = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       this.suiRelaxed,
@@ -26,6 +26,6 @@ export class SuiItemsDirective {
       ClassUtils.getPropClass(this.suiUnstackable, 'unstackable'),
       ClassUtils.getPropClass(this.suiLink, 'link'),
       'items'
-    ];
+    ].join(' ');
   }
 }

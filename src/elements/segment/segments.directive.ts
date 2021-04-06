@@ -16,7 +16,7 @@ export class SuiSegmentsDirective {
   @Input() @InputBoolean() public suiPiled = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       ClassUtils.getPropClass(this.suiHorizontal, 'horizontal'),
@@ -24,6 +24,6 @@ export class SuiSegmentsDirective {
       ClassUtils.getPropClass(this.suiStacked, 'stacked'),
       ClassUtils.getPropClass(this.suiPiled, 'piled'),
       'segments'
-    ];
+    ].join(' ');
   }
 }

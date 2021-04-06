@@ -16,12 +16,12 @@ export class SuiFormFieldsDirective {
   @Input() @InputBoolean() public suiGrouped = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       this.suiWidth,
       ClassUtils.getPropClass(this.suiInline, 'inline'),
       ClassUtils.getPropClass(this.suiGrouped, 'grouped'),
       'fields'
-    ];
+    ].join(' ');
   }
 }

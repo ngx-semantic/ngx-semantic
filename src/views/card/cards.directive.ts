@@ -17,7 +17,7 @@ export class SuiCardsDirective {
   @Input() @InputBoolean() public suiLink = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       this.suiWidth,
@@ -25,6 +25,6 @@ export class SuiCardsDirective {
       ClassUtils.getPropClass(this.suiStackable, 'stackable'),
       ClassUtils.getPropClass(this.suiDoubling, 'doubling'),
       'cards'
-    ];
+    ].join(' ');
   }
 }

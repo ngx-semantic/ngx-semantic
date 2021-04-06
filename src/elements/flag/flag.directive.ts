@@ -8,10 +8,10 @@ export class SuiFlagDirective {
   @Input() public suiCountry = '';
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       this.suiCountry,
       'flag'
-    ];
+    ].join(' ');
   }
 }

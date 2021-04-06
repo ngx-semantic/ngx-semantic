@@ -18,13 +18,13 @@ export class SuiTableRowDirective {
   @Input() @InputBoolean() public disabled = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       this.suiState,
       this.suiTextAlignment ? `${this.suiTextAlignment} aligned` : '',
       this.suiVerticalAlignment ? `${this.suiVerticalAlignment} aligned` : '',
       ClassUtils.getPropClass(this.suiActive, 'active'),
       ClassUtils.getPropClass(this.disabled, 'disabled')
-    ];
+    ].join(' ');
   }
 }

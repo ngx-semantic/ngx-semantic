@@ -64,7 +64,7 @@ export class SuiProgressComponent {
   }
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       this.suiSize,
@@ -76,7 +76,7 @@ export class SuiProgressComponent {
       ClassUtils.getPropClass(this.suiInverted, 'inverted'),
       'progress',
       this.suiState
-    ];
+    ].join(' ');
   }
 
   private calculatePercentage(): void {

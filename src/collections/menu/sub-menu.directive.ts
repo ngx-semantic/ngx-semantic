@@ -13,10 +13,10 @@ export class SuiSubMenuDirective {
   @Input() @InputBoolean() public suiRight = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       ClassUtils.getPropClass(this.suiRight, 'right'),
       'menu'
-    ];
+    ].join(' ');
   }
 }

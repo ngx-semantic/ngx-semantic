@@ -23,14 +23,14 @@ export class SuiAccordionComponent  implements AfterContentInit {
   @Input() public suiInverted = false;
   @Input() public suiCloseOthers = true;
 
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       ClassUtils.getPropClass(this.suiFluid, 'fluid'),
       ClassUtils.getPropClass(this.suiStyled, 'styled'),
       ClassUtils.getPropClass(this.suiInverted, 'inverted'),
       'accordion'
-    ];
+    ].join(' ');
   }
 
   public ngAfterContentInit() {

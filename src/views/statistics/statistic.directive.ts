@@ -23,7 +23,7 @@ export class SuiStatisticDirective {
   private isChildComponent: boolean;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       this.isChildComponent ? '' : 'ui',
       this.suiSize,
@@ -32,7 +32,7 @@ export class SuiStatisticDirective {
       ClassUtils.getPropClass(this.suiHorizontal, 'horizontal'),
       ClassUtils.getPropClass(this.suiInverted, 'inverted'),
       'statistic'
-    ];
+    ].join(' ');
   }
 
   constructor(@Optional() @Host() private parent: SuiStatisticsDirective) {

@@ -83,7 +83,7 @@ export class SuiModalComponent implements OnDestroy {
     this.visibleChange.emit(isVisible);
   }
 
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       this.suiSize,
@@ -94,7 +94,7 @@ export class SuiModalComponent implements OnDestroy {
       'transition',
       'visible',
       'active'
-    ];
+    ].join(' ');
   }
 
   /**

@@ -21,7 +21,7 @@ export class SuiCardDirective {
   private isChildComponent: boolean;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       this.isChildComponent ? '' : 'ui',
       this.suiColour,
@@ -30,7 +30,7 @@ export class SuiCardDirective {
       ClassUtils.getPropClass(this.suiCentered, 'centered'),
       ClassUtils.getPropClass(this.suiFluid, 'fluid'),
       'card'
-    ];
+    ].join(' ');
   }
 
   constructor(@Optional() @Host() private parent: SuiCardsDirective) {

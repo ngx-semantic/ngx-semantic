@@ -16,13 +16,13 @@ export class SuiMenuItemDirective {
   @Input() public disabled = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       ClassUtils.getPropClass(this.suiLink, 'link'),
       ClassUtils.getPropClass(this.suiActive, 'active'),
       ClassUtils.getPropClass(this.suiBrowser, 'browser'),
       ClassUtils.getPropClass(this.disabled, 'disabled'),
       'item'
-    ];
+    ].join(' ');
   }
 }

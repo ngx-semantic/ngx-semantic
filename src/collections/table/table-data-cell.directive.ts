@@ -20,7 +20,7 @@ export class SuiTableCellDirective {
   @Input() @InputBoolean() public suiSelectable = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       this.suiState,
       this.suiTextAlignment ? `${this.suiTextAlignment} aligned` : '',
@@ -29,6 +29,6 @@ export class SuiTableCellDirective {
       ClassUtils.getPropClass(this.disabled, 'disabled'),
       ClassUtils.getPropClass(this.suiCollapsing, 'collapsing'),
       ClassUtils.getPropClass(this.suiSelectable, 'selectable'),
-    ];
+    ].join(' ');
   }
 }

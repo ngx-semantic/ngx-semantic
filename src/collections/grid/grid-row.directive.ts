@@ -20,7 +20,7 @@ export class SuiGridRowDirective {
   @Input() @InputBoolean() public suiCentered = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       this.suiAlignment,
       this.suiWidth,
@@ -29,6 +29,6 @@ export class SuiGridRowDirective {
       ClassUtils.getPropClass(this.suiEqual, 'equal width'),
       ClassUtils.getPropClass(this.suiCentered, 'centered'),
       'row'
-    ];
+    ].join(' ');
   }
 }

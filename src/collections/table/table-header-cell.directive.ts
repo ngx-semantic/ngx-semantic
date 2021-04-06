@@ -16,11 +16,11 @@ export class SuiTableHeaderCellDirective {
   @Input() public suiWidth: SuiWidth = null;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       this.suiWidth ? 'wide' : '',
       this.suiTextAlignment ? `${this.suiTextAlignment} aligned` : '',
       this.suiVerticalAlignment ? `${this.suiVerticalAlignment} aligned` : ''
-    ];
+    ].join(' ');
   }
 }

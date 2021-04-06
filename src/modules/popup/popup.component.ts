@@ -42,7 +42,7 @@ export class SuiPopupComponent {
   @Input() @InputBoolean() public suiFluid = false;
   @Input() @InputBoolean() public suiFlowing = false;
 
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       this.suiWidth,
@@ -54,7 +54,7 @@ export class SuiPopupComponent {
       this.suiPlacement,
       'transition',
       'visible'
-    ];
+    ].join(' ');
   }
 
   get isString(): boolean {

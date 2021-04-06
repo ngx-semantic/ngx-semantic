@@ -31,7 +31,7 @@ export class SuiInputDirective {
   @Input() @InputBoolean() public suiError = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       this.suiAction,
@@ -47,6 +47,6 @@ export class SuiInputDirective {
       ClassUtils.getPropClass(this.disabled, 'disabled'),
       ClassUtils.getPropClass(this.suiError, 'error'),
       'input'
-    ];
+    ].join(' ');
   }
 }

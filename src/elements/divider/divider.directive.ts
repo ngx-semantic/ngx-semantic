@@ -17,7 +17,7 @@ export class SuiDividerDirective {
   @Input() @InputBoolean() public suiClearing = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       ClassUtils.getPropClass(this.suiInverted, 'inverted'),
@@ -28,6 +28,6 @@ export class SuiDividerDirective {
       ClassUtils.getPropClass(this.suiClearing, 'clearing'),
       this.suiDirection,
       'divider'
-    ];
+    ].join(' ');
   }
 }

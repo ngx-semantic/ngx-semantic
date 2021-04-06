@@ -20,7 +20,7 @@ export class SuiGridColumnDirective {
   @Input() public suiDeviceVisibility: string = null;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       this.suiFloated,
       this.suiAlignment,
@@ -29,6 +29,6 @@ export class SuiGridColumnDirective {
       this.suiColour,
       this.suiDeviceVisibility,
       'column'
-    ];
+    ].join(' ');
   }
 }

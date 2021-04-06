@@ -23,7 +23,7 @@ export class SuiButtonsDirective {
   @Input() @InputBoolean() public suiVertical = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       this.suiWidth,
@@ -34,6 +34,6 @@ export class SuiButtonsDirective {
       this.suiIcon,
       this.suiSize,
       'buttons'
-    ];
+    ].join(' ');
   }
 }

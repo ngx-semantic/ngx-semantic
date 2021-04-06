@@ -25,7 +25,7 @@ export class SuiRevealDirective {
   @Input() @InputBoolean() public suiImage = false;
 
   @HostBinding('class')
-  get classes(): Array<string> {
+  get classes(): string {
     return [
       'ui',
       this.suiSize,
@@ -38,7 +38,7 @@ export class SuiRevealDirective {
       this.getMove(),
       'reveal',
       ClassUtils.getPropClass(this.suiImage, 'image')
-    ];
+    ].join(' ');
   }
 
   public getRotate(): string {
