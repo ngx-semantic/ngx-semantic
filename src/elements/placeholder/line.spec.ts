@@ -4,7 +4,7 @@
 
 import {CommonModule} from '@angular/common';
 import {Component, Input} from '@angular/core';
-import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {SuiPlaceholderLineDirective} from './placeholder-line.directive';
 
@@ -13,13 +13,12 @@ describe('SuiPlaceholderLineComponent', () => {
   let fixture: ComponentFixture<TestPlaceholderLineComponent>;
   let lineElement: HTMLDivElement;
 
-  beforeEach(fakeAsync(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [CommonModule],
       declarations: [TestPlaceholderLineComponent, SuiPlaceholderLineDirective]
-    })
-      .compileComponents();
-  }));
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestPlaceholderLineComponent);

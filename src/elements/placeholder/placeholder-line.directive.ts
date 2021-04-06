@@ -14,7 +14,7 @@ export class SuiPlaceholderLineDirective {
   @Input() public suiLength: SuiPlaceholderLineLength = null;
 
   @HostBinding('class')
-  get classes(): Array<string> {
-    return [this.suiLength, 'line'];
+  get classes(): string {
+    return [this.suiLength, 'line'].join(' ');
   }
 }
