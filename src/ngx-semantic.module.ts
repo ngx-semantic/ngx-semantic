@@ -41,54 +41,6 @@ import {SuiBreadcrumbModule} from 'ngx-semantic/collections/breadcrumb';
 import {SuiPlaceholderModule} from 'ngx-semantic/elements/placeholder';
 import {SuiAdvertisementModule} from 'ngx-semantic/views/advertisement';
 
-export * from 'ngx-semantic/elements/button';
-export * from 'ngx-semantic/elements/container';
-export * from 'ngx-semantic/elements/divider';
-export * from 'ngx-semantic/elements/flag';
-export * from 'ngx-semantic/elements/header';
-export * from 'ngx-semantic/elements/icon';
-export * from 'ngx-semantic/elements/input';
-export * from 'ngx-semantic/elements/label';
-export * from 'ngx-semantic/elements/list';
-export * from 'ngx-semantic/elements/loader';
-export * from 'ngx-semantic/elements/placeholder';
-export * from 'ngx-semantic/elements/rail';
-export * from 'ngx-semantic/elements/reveal';
-export * from 'ngx-semantic/elements/segment';
-export * from 'ngx-semantic/elements/steps';
-
-export * from 'ngx-semantic/collections/breadcrumb';
-export * from 'ngx-semantic/collections/form';
-export * from 'ngx-semantic/collections/grid';
-export * from 'ngx-semantic/collections/menu';
-export * from 'ngx-semantic/collections/message';
-export * from 'ngx-semantic/collections/table';
-
-export * from 'ngx-semantic/views/card';
-export * from 'ngx-semantic/views/comment';
-export * from 'ngx-semantic/views/feed';
-export * from 'ngx-semantic/views/items';
-export * from 'ngx-semantic/views/statistics';
-export * from 'ngx-semantic/views/advertisement';
-
-export * from 'ngx-semantic/modules/accordion';
-export * from 'ngx-semantic/modules/checkbox';
-export * from 'ngx-semantic/modules/dimmer';
-export * from 'ngx-semantic/modules/dropdown';
-export * from 'ngx-semantic/modules/embed';
-export * from 'ngx-semantic/modules/modal';
-export * from 'ngx-semantic/modules/rating';
-export * from 'ngx-semantic/modules/search';
-export * from 'ngx-semantic/modules/select';
-export * from 'ngx-semantic/modules/sidebar';
-export * from 'ngx-semantic/modules/popup';
-export * from 'ngx-semantic/modules/progress';
-export * from 'ngx-semantic/modules/tabs';
-
-export * from 'ngx-semantic/core/util';
-export * from 'ngx-semantic/core/enums';
-export * from 'ngx-semantic/core/types';
-
 @NgModule({
   exports: [
     SuiTabsModule,
