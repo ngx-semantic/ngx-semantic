@@ -48,12 +48,6 @@ export class SuiDimmerDirective implements OnChanges, OnDestroy {
     if (isDimmed !== this._dimmed) {
       this._dimmed = isDimmed;
       this.dimmedChange.emit(this._dimmed);
-
-      if (isDimmed) {
-        this.showDimmer();
-      } else {
-        this.hideDimmer();
-      }
     }
   }
 
@@ -73,14 +67,10 @@ export class SuiDimmerDirective implements OnChanges, OnDestroy {
 
   public ngOnChanges(changes: SimpleChanges): void {
     this.generateDomElement();
+    this.hideDimmer();
 
-    // if this change is for properties other than the dimmed value
-    const keys = Object.keys(changes);
-    if (!keys.includes('dimmed') || keys.length > 1) {
-      if (this.dimmed) {
-        this.hideDimmer();
-        this.showDimmer();
-      }
+    if (this.dimmed) {
+      this.showDimmer();
     }
   }
 
@@ -109,26 +99,32 @@ export class SuiDimmerDirective implements OnChanges, OnDestroy {
     this.appRef.attachView(component.hostView);
     this._dimmerDomRef = (component.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
 
-    this.clickListener = this.renderer.listen(this._dimmerDomRef, 'click', (event) => {
-      const classes = Array.from(event.target.classList);
-      // verify that the dimmer is shown and is the item clicked
-      if (classes.includes('ui') && classes.includes('dimmer') && classes.includes('visible')) {
-        this.onClick();
-      }
-    });
+    if (this.suiCloseOnClick) {
+      this.clickListener = this.renderer.listen(this._dimmerDomRef, 'click', (event) => {
+        const classes = Array.from(event.target.classList);
+        // verify that the dimmer is shown and is the item clicked
+        if (classes.includes('ui') && classes.includes('dimmer') && classes.includes('visible')) {
+          this.dimmed = false;
+        }
+      });
+    }
   }
 
   private showDimmer(): void {
-    if (this._dimmerDomRef && !this.isDimmerInDom()) {
-      this.element.nativeElement.appendChild(this._dimmerDomRef);
+    if (!this.disabled) {
+      if (this._dimmerDomRef && !this.isDimmerInDom()) {
+        this.element.nativeElement.appendChild(this._dimmerDomRef);
+      }
     }
   }
 
   private hideDimmer(): void {
-    const dimmer = this.getDimmerFromDom();
+    if (!this.disabled) {
+      const dimmer = this.getDimmerFromDom();
 
-    if (dimmer) {
-      this.element.nativeElement.removeChild(dimmer);
+      if (dimmer) {
+        this.element.nativeElement.removeChild(dimmer);
+      }
     }
   }
 
@@ -140,11 +136,5 @@ export class SuiDimmerDirective implements OnChanges, OnDestroy {
     const elements = Array.from(this.element.nativeElement.children);
     // tslint:disable-next-line:no-string-literal
     return elements.filter(x => x['localName'] === 'sui-dimmer')[0];
-  }
-
-  private onClick(): void {
-    if (this.suiCloseOnClick) {
-      this.dimmed = false;
-    }
   }
 }
