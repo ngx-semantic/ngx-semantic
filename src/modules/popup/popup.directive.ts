@@ -1,6 +1,4 @@
-import {ConnectedPosition, Overlay, OverlayPositionBuilder, OverlayRef} from '@angular/cdk/overlay';
-import {ComponentPortal} from '@angular/cdk/portal';
-import {ComponentRef, Directive, ElementRef, HostListener, Input, OnDestroy, OnInit, TemplateRef} from '@angular/core';
+import {Directive, ElementRef, HostListener, Input, OnDestroy, OnInit, TemplateRef} from '@angular/core';
 import {InputBoolean} from 'ngx-semantic/core/util';
 import {SuiSize} from 'ngx-semantic/core/enums';
 import {SuiPopupComponent} from './popup.component';
@@ -33,36 +31,14 @@ export class SuiPopupDirective implements OnInit, OnDestroy {
   @Input() @InputBoolean() public suiPopupFlowing = false;
 
   private delay = 200; // ms
-  private _overlayRef?: OverlayRef;
-  private _positionMap: { [type: string]: ConnectedPosition } = {
-    topCenter: {originX: 'center', originY: 'top', overlayX: 'center', overlayY: 'bottom'},
-    topLeft: {originX: 'start', originY: 'top', overlayX: 'start', overlayY: 'bottom'},
-    topRight: {originX: 'end', originY: 'top', overlayX: 'end', overlayY: 'bottom'},
-    rightCenter: {originX: 'end', originY: 'center', overlayX: 'start', overlayY: 'center'},
-    leftCenter: {originX: 'start', originY: 'center', overlayX: 'end', overlayY: 'center'},
-    bottomLeft: {originX: 'start', originY: 'bottom', overlayX: 'start', overlayY: 'top'},
-    bottomCenter: {originX: 'center', originY: 'bottom', overlayX: 'center', overlayY: 'top'},
-    bottomRight: {originX: 'end', originY: 'bottom', overlayX: 'end', overlayY: 'top'}
-  };
 
-  constructor(private elementRef: ElementRef, private overlay: Overlay,
-              private positionBuilder: OverlayPositionBuilder) {
+  constructor(private elementRef: ElementRef ) {
   }
 
   public ngOnInit(): void {
-    const scrollStrategy = this.overlay
-      .scrollStrategies
-      .close();
-    const positionStrategy = this.positionBuilder
-      .flexibleConnectedTo(this.elementRef)
-      .withPositions(this.getPositions())
-      .withPush(false);
-
-    this._overlayRef = this.overlay.create({positionStrategy, scrollStrategy});
   }
 
   public ngOnDestroy(): void {
-    this._overlayRef?.dispose();
   }
 
   @HostListener('click')
@@ -97,47 +73,22 @@ export class SuiPopupDirective implements OnInit, OnDestroy {
     }
   }
 
-  private getPositions(): Array<ConnectedPosition> {
-    if (this.suiPopupPlacement === 'top center') {
-      return [this._positionMap.topCenter];
-    } else if (this.suiPopupPlacement === 'top left') {
-      return [this._positionMap.topLeft];
-    } else if (this.suiPopupPlacement === 'top right') {
-      return [this._positionMap.topRight];
-    } else if (this.suiPopupPlacement === 'right center') {
-      return [this._positionMap.rightCenter];
-    } else if (this.suiPopupPlacement === 'left center') {
-      return [this._positionMap.leftCenter];
-    } else if (this.suiPopupPlacement === 'bottom left') {
-      return [this._positionMap.bottomLeft];
-    } else if (this.suiPopupPlacement === 'bottom center') {
-      return [this._positionMap.bottomCenter];
-    } else if (this.suiPopupPlacement === 'bottom right') {
-      return [this._positionMap.bottomRight];
-    }
-  }
-
   private initializePopup(): void {
-    if (!this._overlayRef?.hasAttached()) {
-      const portal = new ComponentPortal(SuiPopupComponent);
-      const popupRef: ComponentRef<SuiPopupComponent> = this._overlayRef?.attach(portal);
+    if (!true) {
 
       // pass component info
-      const popup = popupRef.instance;
-      popup.suiPlacement = this.suiPopupPlacement;
-      popup.suiWidth = this.suiPopupWidth;
-      popup.suiSize = this.suiPopupSize;
-      popup.suiTitle = this.suiPopupTitle;
-      popup.suiContent = this.suiPopupContent;
-      popup.suiInverted = this.suiPopupInverted;
-      popup.suiFluid = this.suiPopupFluid;
-      popup.suiFlowing = this.suiPopupFlowing;
+      // const popup = popupRef.instance;
+      // popup.suiPlacement = this.suiPopupPlacement;
+      // popup.suiWidth = this.suiPopupWidth;
+      // popup.suiSize = this.suiPopupSize;
+      // popup.suiTitle = this.suiPopupTitle;
+      // popup.suiContent = this.suiPopupContent;
+      // popup.suiInverted = this.suiPopupInverted;
+      // popup.suiFluid = this.suiPopupFluid;
+      // popup.suiFlowing = this.suiPopupFlowing;
     }
   }
 
   private closePopup(): void {
-    if (this._overlayRef?.hasAttached()) {
-      this._overlayRef?.detach();
-    }
   }
 }
