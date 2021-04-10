@@ -2,7 +2,7 @@
  * Created by bolorundurowb on 1/16/2021
  */
 
-import {Component, Input, TemplateRef, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, TemplateRef, ViewEncapsulation} from '@angular/core';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {SuiPopupPlacement, SuiPopupWidth} from './popup.directive';
 import {SuiSize} from 'ngx-semantic/core/enums';
@@ -10,6 +10,7 @@ import {SuiSize} from 'ngx-semantic/core/enums';
 @Component({
   selector: 'sui-popup',
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div style="position: unset !important;"
          [ngClass]="classes">
@@ -29,8 +30,7 @@ import {SuiSize} from 'ngx-semantic/core/enums';
         </ng-container>
       </div>
     </div>
-  `,
-  styles: []
+  `
 })
 export class SuiPopupComponent {
   @Input() public suiPlacement: SuiPopupPlacement = 'top center';
