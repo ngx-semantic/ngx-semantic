@@ -30,7 +30,7 @@ import {SuiSize} from 'ngx-semantic/core/enums';
       </div>
     </div>
   `,
-  styles: []
+  styleUrls: ['./popup.component.scss']
 })
 export class SuiPopupComponent {
   @Input() public suiPlacement: SuiPopupPlacement = 'top center';

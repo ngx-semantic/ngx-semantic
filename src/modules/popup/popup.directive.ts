@@ -88,8 +88,8 @@ export class SuiPopupDirective implements OnInit, OnDestroy {
     }
   }
 
-  @HostListener('mouseout')
-  public onUnhover(): void {
+  @HostListener('mouseleave')
+  public onLeave(): void {
     if (this.suiPopupTrigger === 'hover') {
       setTimeout(() => {
         this.closePopup();
