@@ -1,8 +1,10 @@
-import {ConnectedPosition, Overlay, OverlayPositionBuilder, OverlayRef} from '@angular/cdk/overlay';
 import {ComponentPortal} from '@angular/cdk/portal';
+import {ConnectedPosition, Overlay, OverlayPositionBuilder, OverlayRef} from '@angular/cdk/overlay';
 import {ComponentRef, Directive, ElementRef, HostListener, Input, OnDestroy, OnInit, TemplateRef} from '@angular/core';
-import {InputBoolean} from 'ngx-semantic/core/util';
+
 import {SuiSize} from 'ngx-semantic/core/enums';
+import {InputBoolean} from 'ngx-semantic/core/util';
+
 import {SuiPopupComponent} from './popup.component';
 
 export type SuiPopupPlacement =

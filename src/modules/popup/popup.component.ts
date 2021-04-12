@@ -3,9 +3,11 @@
  */
 
 import {Component, Input, TemplateRef, ViewEncapsulation} from '@angular/core';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiPopupPlacement, SuiPopupWidth} from './popup.directive';
+
 import {SuiSize} from 'ngx-semantic/core/enums';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+
+import {SuiPopupPlacement, SuiPopupWidth} from './popup.directive';
 
 @Component({
   selector: 'sui-popup',
@@ -30,7 +32,7 @@ import {SuiSize} from 'ngx-semantic/core/enums';
       </div>
     </div>
   `,
-  styleUrls: ['./popup.component.scss']
+  styleUrls: ['./styles/popup.component.scss']
 })
 export class SuiPopupComponent {
   @Input() public suiPlacement: SuiPopupPlacement = 'top center';
