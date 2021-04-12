@@ -21,8 +21,6 @@ export class SuiRevealDirective {
   @Input() @InputBoolean() public suiActive = false;
   @Input() @InputBoolean() public suiInstant = false;
   @Input() @InputBoolean() public disabled = false;
-  @Input() @InputBoolean() public suiCircular = false;
-  @Input() @InputBoolean() public suiImage = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -31,13 +29,11 @@ export class SuiRevealDirective {
       this.suiSize,
       ClassUtils.getPropClass(this.suiActive, 'active'),
       ClassUtils.getPropClass(this.disabled, 'disabled'),
-      ClassUtils.getPropClass(this.suiCircular, 'circular'),
       ClassUtils.getPropClass(this.suiInstant, 'instant'),
       ClassUtils.getPropClass(this.suiFade, 'fade'),
       this.getRotate(),
       this.getMove(),
-      'reveal',
-      ClassUtils.getPropClass(this.suiImage, 'image')
+      'reveal'
     ].join(' ');
   }
 
