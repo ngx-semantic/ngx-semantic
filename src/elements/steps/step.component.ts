@@ -3,7 +3,7 @@
  */
 
 import {Component, HostBinding, Input, TemplateRef} from '@angular/core';
-import {ClassUtils} from 'ngx-semantic/core/util';
+import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 @Component({
   selector: '[sui-step]',
@@ -11,21 +11,23 @@ import {ClassUtils} from 'ngx-semantic/core/util';
     <ng-container *ngIf="suiIcon">
       <i class="{{suiIcon}} icon"></i>
     </ng-container>
+
     <ng-container *ngIf="suiContent">
       <div class="content">
         <ng-container *ngTemplateOutlet="suiContent"></ng-container>
       </div>
     </ng-container>
+
     <ng-content></ng-content>
   `
 })
 export class SuiStepComponent {
   @Input() public suiContent?: TemplateRef<any>;
   @Input() public suiIcon: string = null;
-  @Input() public suiActive = false;
-  @Input() public disabled = false;
-  @Input() public suiCompleted = false;
-  @Input() public suiLink = false;
+  @Input() @InputBoolean() public suiActive = false;
+  @Input() @InputBoolean() public disabled = false;
+  @Input() @InputBoolean() public suiCompleted = false;
+  @Input() @InputBoolean() public suiLink = false;
 
   @HostBinding('class')
   get classes(): string {
