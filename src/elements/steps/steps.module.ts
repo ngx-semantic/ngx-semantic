@@ -4,20 +4,30 @@
 
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SuiStepsDirective} from './steps.directive';
+
 import {SuiStepComponent} from './step.component';
+import {SuiStepsDirective} from './steps.directive';
+import {SuiStepTitleDirective} from './step-title.directive';
+import {SuiStepContentDirective} from './step-content.directive';
+import {SuiStepDescriptionDirective} from './step-description.directive';
 
 @NgModule({
   declarations: [
+    SuiStepComponent,
     SuiStepsDirective,
-    SuiStepComponent
+    SuiStepTitleDirective,
+    SuiStepContentDirective,
+    SuiStepDescriptionDirective
   ],
   imports: [
     CommonModule
   ],
   exports: [
+    SuiStepComponent,
     SuiStepsDirective,
-    SuiStepComponent
+    SuiStepTitleDirective,
+    SuiStepContentDirective,
+    SuiStepDescriptionDirective
   ]
 })
 export class SuiStepsModule {
