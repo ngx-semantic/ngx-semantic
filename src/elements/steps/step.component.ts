@@ -25,13 +25,15 @@ export class SuiStepComponent {
   @Input() public suiActive = false;
   @Input() public disabled = false;
   @Input() public suiCompleted = false;
+  @Input() public suiLink = false;
 
   @HostBinding('class')
   get classes(): string {
     return [
       ClassUtils.getPropClass(this.suiActive, 'active'),
       ClassUtils.getPropClass(this.disabled, 'disabled'),
-      ClassUtils.getPropClass(this.suiCompleted, 'disabled'),
+      ClassUtils.getPropClass(this.suiCompleted, 'completed'),
+      ClassUtils.getPropClass(this.suiLink, 'link'),
       'step'
     ].join(' ');
   }
