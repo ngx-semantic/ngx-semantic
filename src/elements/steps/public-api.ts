@@ -6,5 +6,5 @@ export * from './step-description.directive';
 export * from './step-content.directive';
 export * from './step-title.directive';
 export * from './steps.directive';
-export * from './step.component';
+export * from './step.directive';
 export * from './steps.module';

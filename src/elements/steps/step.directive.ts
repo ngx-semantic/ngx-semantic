@@ -2,20 +2,14 @@
  * Created by bolor on 9/20/2020
  */
 
-import {Component, HostBinding, Input, TemplateRef} from '@angular/core';
+import {Directive, HostBinding, Input} from '@angular/core';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
-@Component({
+@Directive({
   selector: '[sui-step]',
-  template: `
-    <ng-container *ngIf="suiIcon">
-      <i class="{{suiIcon}} icon"></i>
-    </ng-container>
-
-    <ng-content></ng-content>
-  `
+  exportAs: 'suiStep'
 })
-export class SuiStepComponent {
+export class SuiStepDirective {
   @Input() public suiIcon: string = null;
   @Input() @InputBoolean() public suiActive = false;
   @Input() @InputBoolean() public disabled = false;
