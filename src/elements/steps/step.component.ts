@@ -12,17 +12,10 @@ import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
       <i class="{{suiIcon}} icon"></i>
     </ng-container>
 
-    <ng-container *ngIf="suiContent">
-      <div class="content">
-        <ng-container *ngTemplateOutlet="suiContent"></ng-container>
-      </div>
-    </ng-container>
-
     <ng-content></ng-content>
   `
 })
 export class SuiStepComponent {
-  @Input() public suiContent?: TemplateRef<any>;
   @Input() public suiIcon: string = null;
   @Input() @InputBoolean() public suiActive = false;
   @Input() @InputBoolean() public disabled = false;
