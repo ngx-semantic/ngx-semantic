@@ -10,7 +10,6 @@ import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
   exportAs: 'suiStep'
 })
 export class SuiStepDirective {
-  @Input() public suiIcon: string = null;
   @Input() @InputBoolean() public suiActive = false;
   @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiCompleted = false;
