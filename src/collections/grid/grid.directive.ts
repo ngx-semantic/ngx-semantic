@@ -2,9 +2,10 @@
  * Created by bolor on 6/11/2020
  */
 
-import {Directive, HostBinding, Input} from '@angular/core';
+import {Directive, ElementRef, Input} from '@angular/core';
 import {SuiWidth} from 'ngx-semantic/core/enums';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import {BaseDirective} from 'ngx-semantic/core/base';
 
 export type SuiGridAlignment = 'left aligned' | 'center aligned' | 'right aligned' | null;
 export type SuiGridDivision = 'divided' | 'vertically divided' | null;
@@ -17,7 +18,7 @@ export type SuiGridRelaxation = 'relaxed' | 'very relaxed' | null;
   selector: '[sui-grid]',
   exportAs: 'suiGrid'
 })
-export class SuiGridDirective {
+export class SuiGridDirective extends BaseDirective {
   @Input() public suiWidth: SuiWidth = null;
   @Input() public suiAlignment: SuiGridAlignment = null;
   @Input() public suiDivided: SuiGridDivision = null;
@@ -31,7 +32,10 @@ export class SuiGridDirective {
   @Input() @InputBoolean() public suiStackable = false;
   @Input() @InputBoolean() public suiDoubling = false;
 
-  @HostBinding('class')
+  constructor(element: ElementRef) {
+    super(element);
+  }
+
   get classes(): string {
     return [
       'ui',

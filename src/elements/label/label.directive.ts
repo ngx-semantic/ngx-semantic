@@ -2,9 +2,10 @@
  * Created by bolor on 4/30/2020
  */
 
-import {Directive, HostBinding, Input} from '@angular/core';
+import {Directive, ElementRef, Input} from '@angular/core';
 import {SuiColour, SuiHorizontalAlignment, SuiLocation, SuiSize, SuiWidth} from 'ngx-semantic/core/enums';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import {BaseDirective} from 'ngx-semantic/core/base';
 
 export type SuiLabelPointing = 'above' | 'below' | 'left' | 'right' | null;
 
@@ -12,7 +13,7 @@ export type SuiLabelPointing = 'above' | 'below' | 'left' | 'right' | null;
   selector: '[sui-label]',
   exportAs: 'suiLabel'
 })
-export class SuiLabelDirective {
+export class SuiLabelDirective extends BaseDirective {
   @Input() public suiColour: SuiColour = null;
   @Input() public suiPointing: SuiLabelPointing = null;
   @Input() public suiCorner: SuiHorizontalAlignment = null;
@@ -27,7 +28,10 @@ export class SuiLabelDirective {
   @Input() @InputBoolean() public suiCircular = false;
   @Input() @InputBoolean() public suiEmpty = false;
 
-  @HostBinding('class')
+  constructor(element: ElementRef) {
+    super(element);
+  }
+
   get classes(): string {
     return [
       this.getFloating(),

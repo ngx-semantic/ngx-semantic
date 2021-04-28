@@ -1,16 +1,17 @@
-import {Directive, HostBinding, Input} from '@angular/core';
+import {Directive, ElementRef, HostBinding, Input} from '@angular/core';
 import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import {BaseDirective} from 'ngx-semantic/core/base';
 
 export type SuiIconFlipDirection = 'horizontal' | 'vertical' | null;
 export type SuiIconRotationDirection = 'clockwise' | 'counterclockwise' | null;
 export type SuiIconCornerPosition = 'top left' | 'top right' | 'bottom left' | 'bottom right' | null;
 
 @Directive({
-  selector: '[sui-icon]',
+  selector: 'i[sui-icon]',
   exportAs: 'suiIcon'
 })
-export class SuiIconDirective {
+export class SuiIconDirective extends BaseDirective {
   @Input() public suiSize: SuiSize = null;
   @Input() public suiFlip: SuiIconFlipDirection = null;
   @Input() public suiRotation: SuiIconRotationDirection = null;
@@ -26,7 +27,10 @@ export class SuiIconDirective {
   @Input() @InputBoolean() public suiInverted = false;
   @Input() @InputBoolean() public suiOutline = false;
 
-  @HostBinding('class')
+  constructor(element: ElementRef) {
+    super(element);
+  }
+
   get classes(): string {
     return [
       ClassUtils.getPropClass(this.suiFitted, 'fitted'),
