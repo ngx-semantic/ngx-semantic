@@ -7,11 +7,11 @@ import {Directive, ElementRef, Input, OnChanges, SimpleChanges} from '@angular/c
 export class SuiFlagDirective implements OnChanges {
   @Input() public suiCountry = '';
 
-  constructor(private elementRef: ElementRef) {
+  constructor(private element: ElementRef) {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.elementRef.nativeElement.setAttribute('class', this.classes);
+    this.element?.nativeElement?.setAttribute('class', this.classes);
   }
 
   get classes(): string {

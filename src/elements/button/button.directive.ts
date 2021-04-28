@@ -1,4 +1,4 @@
-import {Directive, HostBinding, Input} from '@angular/core';
+import {Directive, ElementRef, HostBinding, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
@@ -13,7 +13,7 @@ export type SuiButtonAttachment = 'top attached' | 'bottom attached' | 'left att
   selector: '[sui-button]',
   exportAs: 'suiButton'
 })
-export class SuiButtonDirective {
+export class SuiButtonDirective implements OnChanges {
   @Input() public suiEmphasis: SuiButtonEmphasis = null;
   @Input() public suiAnimated: SuiButtonAnimation = null;
   @Input() public suiSize: SuiSize = null;
@@ -33,7 +33,13 @@ export class SuiButtonDirective {
   @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiLoading = false;
 
-  @HostBinding('class')
+  constructor(private element: ElementRef) {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.element?.nativeElement?.setAttribute('class', this.classes);
+  }
+
   get classes(): string {
     return [
       'ui',
