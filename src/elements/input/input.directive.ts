@@ -38,7 +38,6 @@ export class SuiInputDirective extends BaseDirective {
   get classes(): string {
     return [
       'ui',
-      this.suiAction,
       this.suiLabeled,
       this.suiSize,
       ClassUtils.getPropClass(this.suiInverted, 'inverted'),
@@ -50,6 +49,7 @@ export class SuiInputDirective extends BaseDirective {
       ClassUtils.getPropClass(this.suiLoading, 'loading'),
       ClassUtils.getPropClass(this.disabled, 'disabled'),
       ClassUtils.getPropClass(this.suiError, 'error'),
+      this.suiAction,
       'input'
     ].join(' ');
   }

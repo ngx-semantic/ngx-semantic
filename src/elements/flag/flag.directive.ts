@@ -2,7 +2,7 @@ import {Directive, ElementRef, Input} from '@angular/core';
 import {BaseDirective} from 'ngx-semantic/core/base';
 
 @Directive({
-  selector: '[sui-flag]',
+  selector: 'i[sui-flag]',
   exportAs: 'suiFlag'
 })
 export class SuiFlagDirective extends BaseDirective {
