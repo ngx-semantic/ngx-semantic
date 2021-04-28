@@ -1,13 +1,19 @@
-import {Directive, HostBinding, Input} from '@angular/core';
+import {Directive, ElementRef, Input, OnChanges, SimpleChanges} from '@angular/core';
 
 @Directive({
   selector: '[sui-flag]',
   exportAs: 'suiFlag'
 })
-export class SuiFlagDirective {
+export class SuiFlagDirective implements OnChanges {
   @Input() public suiCountry = '';
 
-  @HostBinding('class')
+  constructor(private elementRef: ElementRef) {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.elementRef.nativeElement.setAttribute('class', this.classes);
+  }
+
   get classes(): string {
     return [
       this.suiCountry,
