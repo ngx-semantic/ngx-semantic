@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostBinding, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Directive, ElementRef, Input} from '@angular/core';
 import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {BaseDirective} from 'ngx-semantic/core/base';
