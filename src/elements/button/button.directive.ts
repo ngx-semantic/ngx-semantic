@@ -1,6 +1,7 @@
 import {Directive, ElementRef, HostBinding, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import {BaseDirective} from 'ngx-semantic/core/base';
 
 export type SuiButtonEmphasis = 'primary' | 'secondary' | 'positive' | 'negative' | null;
 export type SuiButtonAnimation = 'animated' | 'animated fade' | 'vertical animated' | null;
@@ -13,7 +14,7 @@ export type SuiButtonAttachment = 'top attached' | 'bottom attached' | 'left att
   selector: '[sui-button]',
   exportAs: 'suiButton'
 })
-export class SuiButtonDirective implements OnChanges {
+export class SuiButtonDirective extends BaseDirective {
   @Input() public suiEmphasis: SuiButtonEmphasis = null;
   @Input() public suiAnimated: SuiButtonAnimation = null;
   @Input() public suiSize: SuiSize = null;
@@ -33,11 +34,8 @@ export class SuiButtonDirective implements OnChanges {
   @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiLoading = false;
 
-  constructor(private element: ElementRef) {
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    this.element?.nativeElement?.setAttribute('class', this.classes);
+  constructor(element: ElementRef) {
+    super(element);
   }
 
   get classes(): string {

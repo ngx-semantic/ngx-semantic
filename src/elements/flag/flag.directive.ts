@@ -1,17 +1,15 @@
-import {Directive, ElementRef, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Directive, ElementRef, Input} from '@angular/core';
+import {BaseDirective} from 'ngx-semantic/core/base';
 
 @Directive({
   selector: '[sui-flag]',
   exportAs: 'suiFlag'
 })
-export class SuiFlagDirective implements OnChanges {
+export class SuiFlagDirective extends BaseDirective {
   @Input() public suiCountry = '';
 
-  constructor(private element: ElementRef) {
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    this.element?.nativeElement?.setAttribute('class', this.classes);
+  constructor(element: ElementRef) {
+    super(element);
   }
 
   get classes(): string {
