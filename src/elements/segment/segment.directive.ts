@@ -2,8 +2,10 @@
  * Created by bolor on 5/18/2020
  */
 
-import {Directive, HostBinding, Input} from '@angular/core';
+import {Directive, ElementRef, Input} from '@angular/core';
+
 import {SuiColour} from 'ngx-semantic/core/enums';
+import {BaseDirective} from 'ngx-semantic/core/base';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 export type SuiSegmentStacking = 'stacked' | 'tall stacked' | null;
@@ -17,7 +19,7 @@ export type SuiSegmentFloat = 'left floated' | 'right floated' | null;
   selector: '[sui-segment]',
   exportAs: 'suiSegment'
 })
-export class SuiSegmentDirective {
+export class SuiSegmentDirective extends BaseDirective {
   @Input() public suiColour: SuiColour = null;
   @Input() public suiAttached: SuiSegmentAttachment = null;
   @Input() public suiStacked: SuiSegmentStacking = null;
@@ -38,7 +40,10 @@ export class SuiSegmentDirective {
   @Input() @InputBoolean() public suiClearing = false;
   @Input() @InputBoolean() public suiSecondary = false;
 
-  @HostBinding('class')
+  constructor(element: ElementRef) {
+    super(element);
+  }
+
   get classes(): string {
     return [
       'ui',
