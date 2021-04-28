@@ -2,9 +2,10 @@
  * Created by bolor on 4/28/2020
  */
 
-import {Directive, HostBinding, Input} from '@angular/core';
+import {Directive, ElementRef, Input} from '@angular/core';
 import {SuiSize} from 'ngx-semantic/core/enums';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import {BaseDirective} from 'ngx-semantic/core/base';
 
 export type SuiInputLabeling = 'labeled' | 'right labeled' | 'left corner labeled' | 'corner labeled' | null;
 export type SuiInputActions = 'action' | 'left action' | 'right action' | null;
@@ -14,7 +15,7 @@ export type SuiInputIconPosition = 'left' | 'right' | null;
   selector: '[sui-input]',
   exportAs: 'suiInput'
 })
-export class SuiInputDirective {
+export class SuiInputDirective extends BaseDirective {
   @Input() public suiSize: SuiSize = null;
   @Input() public suiAction: SuiInputActions = null;
   @Input() public suiLabeled: SuiInputLabeling = null;
@@ -30,7 +31,10 @@ export class SuiInputDirective {
   @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiError = false;
 
-  @HostBinding('class')
+  constructor(element: ElementRef) {
+    super(element);
+  }
+
   get classes(): string {
     return [
       'ui',
