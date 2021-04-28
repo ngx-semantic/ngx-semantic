@@ -151,6 +151,12 @@ export class SuiSearchComponent {
     this.isInsideClick = false;
   }
 
+  @HostListener('onfocusout')
+  public onUnfocus(): void {
+    this.isOpen = false;
+    this.isFocused = false;
+  }
+
   public onSearch(): void {
     this.isLoading = true;
 
@@ -187,12 +193,6 @@ export class SuiSearchComponent {
 
   public onFocus(): void {
     this.isFocused = true;
-  }
-
-  @HostListener('onfocusout')
-  public onUnfocus(): void {
-    this.isOpen = false;
-    this.isFocused = false;
   }
 
   public optionClicked(option: ISearchOption): void {
