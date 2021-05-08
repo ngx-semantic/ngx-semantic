@@ -41,6 +41,7 @@ export class SuiImageDirective {
       ClassUtils.getPropClass(this.suiRounded, 'rounded'),
       ClassUtils.getPropClass(this.suiCircular, 'circular'),
       ClassUtils.getPropClass(this.suiSpaced, 'spaced'),
+      ClassUtils.getPropClass(this.suiCentered, 'centered'),
       'image'
     ].join(' ');
   }
