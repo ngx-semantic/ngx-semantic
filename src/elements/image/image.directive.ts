@@ -9,6 +9,7 @@ import {BaseDirective} from 'ngx-semantic/core/base';
 
 export type SuiImageAlignment = 'top aligned' | 'bottom aligned' | 'middle aligned' | null;
 export type SuiImageFloat = 'left floated' | 'right floated' | null;
+export type SuiImageSpace = 'spaced' | 'left spaced' | 'right spcaed' | null;
 
 @Directive({
   selector: '[sui-image]',
@@ -18,6 +19,7 @@ export class SuiImageDirective extends BaseDirective {
   @Input() public suiSize: SuiSize = null;
   @Input() public suiAlignment: SuiImageAlignment = null;
   @Input() public suiFloated: SuiImageFloat = null;
+  @Input()  public suiSpaced: SuiImageSpace = null;
   @Input() @InputBoolean() public suiHidden = false;
   @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiAvatar = false;
@@ -26,7 +28,6 @@ export class SuiImageDirective extends BaseDirective {
   @Input() @InputBoolean() public suiRounded = false;
   @Input() @InputBoolean() public suiCircular = false;
   @Input() @InputBoolean() public suiCentered = false;
-  @Input() @InputBoolean() public suiSpaced = false;
 
   constructor(element: ElementRef) {
     super(element);
@@ -38,13 +39,13 @@ export class SuiImageDirective extends BaseDirective {
       this.suiSize,
       this.suiFloated,
       this.suiAlignment,
+      this.suiSpaced,
       ClassUtils.getPropClass(this.suiHidden, 'hidden'),
       ClassUtils.getPropClass(this.disabled, 'disabled'),
       ClassUtils.getPropClass(this.suiAvatar, 'avatar'),
       ClassUtils.getPropClass(this.suiFluid, 'fluid'),
       ClassUtils.getPropClass(this.suiRounded, 'rounded'),
       ClassUtils.getPropClass(this.suiCircular, 'circular'),
-      ClassUtils.getPropClass(this.suiSpaced, 'spaced'),
       ClassUtils.getPropClass(this.suiCentered, 'centered'),
       'image'
     ].join(' ');
