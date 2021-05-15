@@ -6,7 +6,7 @@ import {NgModule} from '@angular/core';
 import {SuiSegmentDirective} from './segment.directive';
 import {CommonModule} from '@angular/common';
 import {SuiSegmentsDirective} from './segments.directive';
-import {SuiSegmentInlineDirective} from 'ngx-semantic/elements/segment/segment-inline.directive';
+import {SuiSegmentInlineDirective} from './segment-inline.directive';
 
 @NgModule({
   declarations: [

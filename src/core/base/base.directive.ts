@@ -1,8 +1,9 @@
 /**
  * Created by bolorundurowb on 4/28/2021
  */
-import {ElementRef, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Directive, ElementRef, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 
+@Directive()
 export abstract class BaseDirective implements OnInit, OnChanges {
   abstract classes: string;
 

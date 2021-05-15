@@ -3,6 +3,6 @@
  */
 
 export * from './segment-inline.directive';
-export * from './segment.directive';
 export * from './segments.directive';
+export * from './segment.directive';
 export * from './segment.module';
