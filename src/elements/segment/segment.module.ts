@@ -6,11 +6,20 @@ import {NgModule} from '@angular/core';
 import {SuiSegmentDirective} from './segment.directive';
 import {CommonModule} from '@angular/common';
 import {SuiSegmentsDirective} from './segments.directive';
+import {SuiSegmentInlineDirective} from 'ngx-semantic/elements/segment/segment-inline.directive';
 
 @NgModule({
-  declarations: [SuiSegmentDirective, SuiSegmentsDirective],
+  declarations: [
+    SuiSegmentDirective,
+    SuiSegmentsDirective,
+    SuiSegmentInlineDirective
+  ],
   imports: [CommonModule],
-  exports: [SuiSegmentDirective, SuiSegmentsDirective]
+  exports: [
+    SuiSegmentDirective,
+    SuiSegmentsDirective,
+    SuiSegmentInlineDirective
+  ]
 })
 export class SuiSegmentModule {
 }
