@@ -39,6 +39,7 @@ export class SuiSegmentDirective extends BaseDirective {
   @Input() @InputBoolean() public suiBasic = false;
   @Input() @InputBoolean() public suiClearing = false;
   @Input() @InputBoolean() public suiSecondary = false;
+  @Input() @InputBoolean() public suiTertiary = false;
 
   constructor(element: ElementRef) {
     super(element);
@@ -65,6 +66,7 @@ export class SuiSegmentDirective extends BaseDirective {
       ClassUtils.getPropClass(this.suiBasic, 'basic'),
       ClassUtils.getPropClass(this.suiClearing, 'clearing'),
       ClassUtils.getPropClass(this.suiSecondary, 'secondary'),
+      ClassUtils.getPropClass(this.suiTertiary, 'tertiary'),
       ClassUtils.getPropClass(this.suiVertical, 'vertical'),
       'segment'
     ].join(' ');
