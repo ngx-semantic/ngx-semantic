@@ -11,7 +11,6 @@ import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 export type SuiSegmentStacking = 'stacked' | 'tall stacked' | null;
 export type SuiSegmentPadding = 'padded' | 'very padded' | null;
 export type SuiSegmentAttachment = 'top attached' | 'attached' | 'bottom attached' | null;
-export type SuiSegmentEmphasis = 'secondary' | 'tertiary' | null;
 export type SuiSegmentTextAlignment = 'left aligned' | 'center aligned' | 'right aligned' | null;
 export type SuiSegmentFloat = 'left floated' | 'right floated' | null;
 
@@ -24,7 +23,6 @@ export class SuiSegmentDirective extends BaseDirective {
   @Input() public suiAttached: SuiSegmentAttachment = null;
   @Input() public suiStacked: SuiSegmentStacking = null;
   @Input() public suiPadding: SuiSegmentPadding = null;
-  @Input() public suiEmphasis: SuiSegmentEmphasis = null;
   @Input() public suiTextAlignment: SuiSegmentTextAlignment = null;
   @Input() public suiFloated: SuiSegmentFloat = null;
   @Input() @InputBoolean() public suiPlaceholder = false;
@@ -52,7 +50,6 @@ export class SuiSegmentDirective extends BaseDirective {
       this.suiStacked,
       this.suiAttached,
       this.suiColour,
-      this.suiEmphasis,
       this.suiTextAlignment,
       this.suiFloated,
       ClassUtils.getPropClass(this.suiPlaceholder, 'placeholder'),
