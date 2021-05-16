@@ -20,7 +20,7 @@ export type SuiSearchAlignment = 'right' | null;
 
     <ng-container *ngIf="suiShowIcon">
       <div sui-input
-           suiIcon>
+           suiIcon="icon">
         <input class="prompt"
                type="text"
                [placeholder]="suiPlaceholder"
