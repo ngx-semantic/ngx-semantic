@@ -20,7 +20,6 @@ export abstract class BaseDirective implements OnInit, OnChanges {
 
   private setClasses(): void {
     const cleanedClasses = this.classes.replace(/\s\s+/g, ' ');
-    console.log(this.classes, cleanedClasses);
     this.element?.nativeElement?.setAttribute('class', cleanedClasses);
   }
 }
