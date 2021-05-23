@@ -95,6 +95,7 @@ export class SuiSearchComponent {
   @Input() @InputBoolean() public suiShowIcon = false;
   @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiFluid = false;
+  @Input() @InputBoolean() public suiLoading = false;
 
   // field to track whether there has been an outside click
   private isInsideClick: boolean;
@@ -111,7 +112,7 @@ export class SuiSearchComponent {
       'ui',
       this.suiAlignment,
       ClassUtils.getPropClass(this.suiFluid, 'fluid'),
-      ClassUtils.getPropClass(this.isLoading, 'loading'),
+      ClassUtils.getPropClass(this.suiLoading || this.isLoading, 'loading'),
       ClassUtils.getPropClass(this.disabled, 'disabled'),
       'search',
       ClassUtils.getPropClass(this.hasCategories, 'category'),
@@ -165,7 +166,7 @@ export class SuiSearchComponent {
             this.isLoading = false;
           })
           .catch((err) => {
-            console.log(err);
+            console.error(err);
             this.filteredOptions = [];
 
             // indicate search is complete
