@@ -33,20 +33,8 @@ export type SuiSearchAlignment = 'right' | null;
            style="display: block !important;">
         <ng-container *ngIf="!hasCategories">
           <ng-container *ngFor="let option of filteredOptions">
-            <a class="result"
-               (click)="optionClicked(option)">
-              <div class="content">
-                <div class="title">
-                  {{option.title}}
-                </div>
-
-                <ng-container *ngIf="option.description">
-                  <div class="description">
-                    {{option.description}}
-                  </div>
-                </ng-container>
-              </div>
-            </a>
+            <ng-container
+              *ngTemplateOutlet="result; context: {option:option}"></ng-container>
           </ng-container>
         </ng-container>
 
@@ -58,20 +46,8 @@ export type SuiSearchAlignment = 'right' | null;
               </div>
               <div class="results">
                 <ng-container *ngFor="let option of category.value">
-                  <a class="result"
-                     (click)="optionClicked(option)">
-                    <div class="content">
-                      <div class="title">
-                        {{option.title}}
-                      </div>
-
-                      <ng-container *ngIf="option.description">
-                        <div class="description">
-                          {{option.description}}
-                        </div>
-                      </ng-container>
-                    </div>
-                  </a>
+                  <ng-container
+                    *ngTemplateOutlet="result; context: {option:option}"></ng-container>
                 </ng-container>
               </div>
             </div>
@@ -88,6 +64,23 @@ export type SuiSearchAlignment = 'right' | null;
              [(ngModel)]="searchTerm"
              (focus)="onFocus()"
              (keyup)="onSearch()"/>
+    </ng-template>
+
+    <ng-template #result let-option='option'>
+      <a class="result"
+         (click)="optionClicked(option)">
+        <div class="content">
+          <div class="title">
+            {{option.title}}
+          </div>
+
+          <ng-container *ngIf="option.description">
+            <div class="description">
+              {{option.description}}
+            </div>
+          </ng-container>
+        </div>
+      </a>
     </ng-template>
   `
 })
