@@ -1,4 +1,4 @@
-import {Component, EventEmitter, HostBinding, HostListener, Input, Output, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, Output, ViewEncapsulation} from '@angular/core';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {ISearchOption} from './interfaces/ISearchOption';
 
@@ -8,7 +8,79 @@ export type SuiSearchAlignment = 'right' | null;
   selector: 'sui-search',
   encapsulation: ViewEncapsulation.None,
   template: `
-    <ng-container *ngIf="!suiShowIcon">
+    <div [ngClass]="classes">
+      <ng-container *ngIf="!suiShowIcon">
+        <ng-container
+          *ngTemplateOutlet="input"></ng-container>
+      </ng-container>
+
+      <ng-container *ngIf="suiLoading || suiShowIcon">
+        <div sui-input
+             suiIcon="icon">
+          <ng-container
+            *ngTemplateOutlet="input"></ng-container>
+
+          <ng-container *ngIf="suiShowIcon">
+            <i sui-icon
+               suiIconType="search"></i>
+          </ng-container>
+        </div>
+      </ng-container>
+
+      <div class="results transition"
+           [class.visible]="isOpen"
+           [class.hidden]="!isOpen"
+           style="display: block !important;">
+        <ng-container *ngIf="!hasCategories">
+          <ng-container *ngFor="let option of filteredOptions">
+            <a class="result"
+               (click)="optionClicked(option)">
+              <div class="content">
+                <div class="title">
+                  {{option.title}}
+                </div>
+
+                <ng-container *ngIf="option.description">
+                  <div class="description">
+                    {{option.description}}
+                  </div>
+                </ng-container>
+              </div>
+            </a>
+          </ng-container>
+        </ng-container>
+
+        <ng-container *ngIf="hasCategories">
+          <ng-container *ngFor="let category of optionsByCategory | keyvalue">
+            <div class="category">
+              <div class="name">
+                {{category.key}}
+              </div>
+              <div class="results">
+                <ng-container *ngFor="let option of category.value">
+                  <a class="result"
+                     (click)="optionClicked(option)">
+                    <div class="content">
+                      <div class="title">
+                        {{option.title}}
+                      </div>
+
+                      <ng-container *ngIf="option.description">
+                        <div class="description">
+                          {{option.description}}
+                        </div>
+                      </ng-container>
+                    </div>
+                  </a>
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+
+    <ng-template #input>
       <input class="prompt"
              type="text"
              autocomplete="off"
@@ -16,73 +88,7 @@ export type SuiSearchAlignment = 'right' | null;
              [(ngModel)]="searchTerm"
              (focus)="onFocus()"
              (keyup)="onSearch()"/>
-    </ng-container>
-
-    <ng-container *ngIf="suiShowIcon">
-      <div sui-input
-           suiIcon="icon">
-        <input class="prompt"
-               type="text"
-               [placeholder]="suiPlaceholder"
-               [(ngModel)]="searchTerm"
-               (focus)="onFocus()"
-               (keyup)="onSearch()"/>
-        <i sui-icon
-           suiIconType="search"></i>
-      </div>
-    </ng-container>
-
-    <div class="results transition"
-         [class.visible]="isOpen"
-         [class.hidden]="!isOpen"
-         style="display: block !important;">
-      <ng-container *ngIf="!hasCategories">
-        <ng-container *ngFor="let option of filteredOptions">
-          <a class="result"
-             (click)="optionClicked(option)">
-            <div class="content">
-              <div class="title">
-                {{option.title}}
-              </div>
-
-              <ng-container *ngIf="option.description">
-                <div class="description">
-                  {{option.description}}
-                </div>
-              </ng-container>
-            </div>
-          </a>
-        </ng-container>
-      </ng-container>
-
-      <ng-container *ngIf="hasCategories">
-        <ng-container *ngFor="let category of optionsByCategory | keyvalue">
-          <div class="category">
-            <div class="name">
-              {{category.key}}
-            </div>
-            <div class="results">
-              <ng-container *ngFor="let option of category.value">
-                <a class="result"
-                   (click)="optionClicked(option)">
-                  <div class="content">
-                    <div class="title">
-                      {{option.title}}
-                    </div>
-
-                    <ng-container *ngIf="option.description">
-                      <div class="description">
-                        {{option.description}}
-                      </div>
-                    </ng-container>
-                  </div>
-                </a>
-              </ng-container>
-            </div>
-          </div>
-        </ng-container>
-      </ng-container>
-    </div>
+    </ng-template>
   `
 })
 export class SuiSearchComponent {
@@ -106,7 +112,6 @@ export class SuiSearchComponent {
   public filteredOptions: Array<ISearchOption> = [];
   public selectedOption: ISearchOption;
 
-  @HostBinding('class')
   get classes(): string {
     return [
       'ui',
