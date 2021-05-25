@@ -19,11 +19,8 @@ export type SuiSearchAlignment = 'right' | null;
              suiIcon="icon">
           <ng-container
             *ngTemplateOutlet="input"></ng-container>
-
-          <ng-container *ngIf="suiShowIcon">
-            <i sui-icon
-               suiIconType="search"></i>
-          </ng-container>
+          <i sui-icon
+             suiIconType="search"></i>
         </div>
       </ng-container>
 
