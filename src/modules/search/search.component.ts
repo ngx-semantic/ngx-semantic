@@ -9,12 +9,12 @@ export type SuiSearchAlignment = 'right' | null;
   encapsulation: ViewEncapsulation.None,
   template: `
     <div [ngClass]="classes">
-      <ng-container *ngIf="!suiShowIcon">
+      <ng-container *ngIf="isSimple">
         <ng-container
           *ngTemplateOutlet="input"></ng-container>
       </ng-container>
 
-      <ng-container *ngIf="suiLoading || suiShowIcon">
+      <ng-container *ngIf="!isSimple">
         <div sui-input
              suiIcon="icon">
           <ng-container
@@ -130,6 +130,14 @@ export class SuiSearchComponent {
         option[category].push(a);
         return option;
       }, Object.create(null));
+  }
+
+  get isSimple(): boolean {
+    if (this.suiLoading) {
+      return false;
+    }
+
+    return !this.suiShowIcon;
   }
 
   @HostListener('click')
