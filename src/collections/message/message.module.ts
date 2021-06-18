@@ -5,20 +5,24 @@ import {SuiIconModule} from 'ngx-semantic/elements/icon';
 import {SuiMessageComponent} from './message.component';
 import {SuiMessageHeaderDirective} from './message-header.directive';
 import {SuiMessageContentDirective} from './message-content.directive';
+import {SuiMessageListDirective} from './message-list.directive';
 
 @NgModule({
   declarations: [
     SuiMessageComponent,
     SuiMessageHeaderDirective,
-    SuiMessageContentDirective
+    SuiMessageContentDirective,
+    SuiMessageListDirective
   ],
   imports: [
     CommonModule,
-    SuiIconModule],
+    SuiIconModule
+  ],
   exports: [
     SuiMessageComponent,
     SuiMessageHeaderDirective,
-    SuiMessageContentDirective
+    SuiMessageContentDirective,
+    SuiMessageListDirective
   ]
 })
 export class SuiMessageModule {
