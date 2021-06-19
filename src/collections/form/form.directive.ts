@@ -2,9 +2,10 @@
  * Created by bolor on 6/5/2020
  */
 
-import {Directive, HostBinding, Input} from '@angular/core';
+import {Directive, ElementRef, Input} from '@angular/core';
 import {SuiSize} from 'ngx-semantic/core/enums';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import {BaseDirective} from 'ngx-semantic/core/base';
 
 export type SuiFormState = 'success' | 'warning' | 'error' | null;
 
@@ -12,14 +13,17 @@ export type SuiFormState = 'success' | 'warning' | 'error' | null;
   selector: '[sui-form]',
   exportAs: 'suiForm'
 })
-export class SuiFormDirective {
+export class SuiFormDirective extends BaseDirective {
   @Input() public suiState: SuiFormState = null;
   @Input() public suiSize: SuiSize = null;
   @Input() @InputBoolean() public suiLoading = false;
   @Input() @InputBoolean() public suiEqualWidth = false;
   @Input() @InputBoolean() public suiInverted = false;
 
-  @HostBinding('class')
+  constructor(element: ElementRef) {
+    super(element);
+  }
+
   get classes(): string {
     return [
       'ui',
