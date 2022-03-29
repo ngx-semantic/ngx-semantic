@@ -18,7 +18,8 @@ export type SuiDropdownPointingDirection = 'top left' | 'top right' | 'left' | '
 export class SuiDropdownComponent {
   @ContentChild(SuiDropdownMenuDirective) public contentMenu: SuiDropdownMenuDirective;
 
-  @Input() public suiPointing: SuiDropdownPointingDirection = null;
+  @Input() public suiPointingDirection: SuiDropdownPointingDirection = null;
+  @Input() @InputBoolean() public suiPointing = false;
   @Input() @InputBoolean() public suiFluid = false;
   @Input() @InputBoolean() public suiInline = false;
   @Input() @InputBoolean() public suiLoading = false;
@@ -26,7 +27,7 @@ export class SuiDropdownComponent {
   @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiScrolling = false;
   @Input() @InputBoolean() public suiCompact = false;
-  @Input()  @InputBoolean()public suiFloating = false;
+  @Input() @InputBoolean() public suiFloating = false;
   @Input() @InputBoolean() public suiSimple = false;
   @Input() @InputBoolean() public suiLabeled = false;
 
@@ -47,7 +48,8 @@ export class SuiDropdownComponent {
       ClassUtils.getPropClass(this.suiInline, 'inline'),
       ClassUtils.getPropClass(this.disabled, 'disabled'),
       ClassUtils.getPropClass(this.suiScrolling, 'scrolling'),
-      this.suiPointing ? `${this.suiPointing} pointing` : '',
+      this.suiPointingDirection ? this.suiPointingDirection : '',
+      ClassUtils.getPropClass(this.suiPointing, 'pointing'),
       ClassUtils.getPropClass(this.suiFloating, 'floating'),
       ClassUtils.getPropClass(this.suiSimple, 'simple'),
       'dropdown',
