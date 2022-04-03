@@ -7,8 +7,17 @@ export type SuiButtonEmphasis = 'primary' | 'secondary' | 'positive' | 'negative
 export type SuiButtonAnimation = 'animated' | 'animated fade' | 'vertical animated' | null;
 export type SuiButtonLabeling = 'labeled' | 'left labeled' | 'right labeled' | null;
 export type SuiButtonFloating = 'right floated' | 'left floated' | null;
-export type SuiSocialButtonStyle = 'facebook' | 'twitter' | 'google' | 'plus' | 'vk' | 'linkedin' | 'instagram' | 'youtube' | null;
-export type SuiButtonAttachment = 'top attached' | 'bottom attached' | 'left attached' | 'right attached' | null;
+export type SuiSocialButtonStyle =
+  'facebook'
+  | 'twitter'
+  | 'google'
+  | 'plus'
+  | 'vk'
+  | 'linkedin'
+  | 'instagram'
+  | 'youtube'
+  | null;
+export type SuiButtonAttachment = 'top' | 'bottom' | 'left' | 'right' | null;
 
 @Directive({
   selector: '[sui-button]',
@@ -22,8 +31,9 @@ export class SuiButtonDirective extends BaseDirective {
   @Input() public suiColour: SuiColour = null;
   @Input() public suiSocial: SuiSocialButtonStyle = null;
   @Input() public suiFloated: SuiButtonFloating = null;
-  @Input() public suiAttached: SuiButtonAttachment = null;
+  @Input() public suiAttachedPosition: SuiButtonAttachment = null;
   @Input() @InputBoolean() public suiIcon = false;
+  @Input() @InputBoolean() public suiAttached = false;
   @Input() @InputBoolean() public suiBasic = false;
   @Input() @InputBoolean() public suiInverted = false;
   @Input() @InputBoolean() public suiCompact = false;
@@ -51,10 +61,11 @@ export class SuiButtonDirective extends BaseDirective {
       ClassUtils.getPropClass(this.suiToggle, 'toggle'),
       ClassUtils.getPropClass(this.suiFluid, 'fluid'),
       ClassUtils.getPropClass(this.suiCircular, 'circular'),
+      this.suiAttachedPosition ? this.suiAttachedPosition : '',
+      ClassUtils.getPropClass(this.suiAttached, 'attached'),
       this.suiSize,
       this.suiColour,
       this.suiSocial,
-      this.suiAttached,
       this.suiFloated,
       this.suiSocial,
       this.suiLabeled,
