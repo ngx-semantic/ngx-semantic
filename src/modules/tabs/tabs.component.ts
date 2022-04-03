@@ -69,7 +69,8 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
             {{tab.suiTitle}}
 
             <ng-container *ngIf="tab.suiLabel">
-              <div sui-label>
+              <div sui-label
+                   [suiCircular]="tab.suiLabelCircular">
                 {{tab.suiLabel}}
               </div>
             </ng-container>

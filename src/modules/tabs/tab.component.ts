@@ -23,6 +23,7 @@ export class SuiTabComponent {
   @Input() public suiLabel: string | number = null;
   @Input() @InputBoolean() public suiLoading = false;
   @Input() @InputBoolean() public disabled = false;
+  @Input() @InputBoolean() public suiLabelCircular = false;
 
   @ViewChild('contentTemplate', { static: true }) public contentTemplate!: TemplateRef<any>;
 
