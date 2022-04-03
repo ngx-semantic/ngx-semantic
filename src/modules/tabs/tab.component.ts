@@ -4,6 +4,7 @@
 
 import {Component, HostBinding, Input, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import {SuiColour} from 'ngx-semantic/core/enums';
 
 @Component({
   selector: 'sui-tab',
@@ -23,6 +24,7 @@ export class SuiTabComponent {
   @Input() public suiLabel: string | number = null;
   @Input() @InputBoolean() public suiLoading = false;
   @Input() @InputBoolean() public disabled = false;
+  @Input() public suiLabelColour: SuiColour = null;
   @Input() @InputBoolean() public suiLabelCircular = false;
 
   @ViewChild('contentTemplate', { static: true }) public contentTemplate!: TemplateRef<any>;
