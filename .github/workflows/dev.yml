@@ -24,7 +24,7 @@ jobs:
       - name: Install Dependencies
         run: yarn install
       - name: Build
-        run: yarn run build
+        run: yarn run build:prod
       - name: Publish Lib
         run: npm publish ./dist --tag=beta
         env:
