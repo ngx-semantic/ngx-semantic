@@ -2,7 +2,7 @@ name: Pull Requests
 
 on:
   pull_request:
-    branches: [ "opened", "reopened", "synchronize", "ready_for_review" ]
+    branches: [ opened, reopened, synchronize, ready_for_review ]
 
 jobs:
   ci:
