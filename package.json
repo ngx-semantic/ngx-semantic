@@ -8,8 +8,6 @@
     "test:ci": "ng test  --browsers=ChromeHeadless --watch=false --code-coverage",
     "lint": "ng lint",
     "build": "ng build",
-    "publish:dev": "npm publish ./dist --tag=beta",
-    "publish:prod": "npm publish ./dist --tag=latest",
     "build:prod": "ng build --configuration production",
     "build:local": "npm run build:prod && cd dist && npm pack && cd .."
   },
