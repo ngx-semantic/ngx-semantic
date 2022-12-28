@@ -25,7 +25,7 @@ jobs:
         run: yarn install
       - name: Tag Version
         run: cd src && npm version prerelease --preid=beta
-      - name: Push changes to GitHub
+      - name: Push Tags to GitHub
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -40,7 +40,7 @@ jobs:
       - name: Create Release
         uses: actions/github-script@v5
         with:
-          github-token: {{ secrets.GITHUB_TOKEN }}
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
           script: |
             try {
               const tags_url = context.payload.repository.tags_url + "?per_page=1"
