@@ -23,8 +23,6 @@ jobs:
         run: yarn global add @angular/cli@latest
       - name: Install Dependencies
         run: yarn install
-      - name: Build
-        run: yarn run build:prod
       - name: Tag Version
         run: cd src && npm version prerelease --preid=beta
       - name: Push changes to GitHub
@@ -33,6 +31,8 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
           tags: true
+      - name: Build
+        run: yarn run build:prod
       - name: Publish Lib
         run: npm publish ./dist --tag beta --access public
         env:
@@ -40,7 +40,7 @@ jobs:
       - name: Create Release
         uses: actions/github-script@v5
         with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          github-token: {{ secrets.GITHUB_TOKEN }}
           script: |
             try {
               const tags_url = context.payload.repository.tags_url + "?per_page=1"
