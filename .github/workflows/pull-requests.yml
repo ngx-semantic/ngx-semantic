@@ -1,8 +1,8 @@
 name: Development
 
 on:
-  push:
-    branches: [ "dev" ]
+  pull_request:
+    branches: [ "opened", "reopened", "synchronize", "ready_for_review" ]
 
 jobs:
   ci:
@@ -20,7 +20,11 @@ jobs:
         run: npm install -g yarn
       - name: Setup Angular
         run: yarn global add @angular/cli@latest
-      - name: Build
-        run: yarn run build
-      - name: Publish Lib
-        run: npm run publish:dev
+      - name: Setup Codecov
+        run: yarn global add codecov
+      - name: Install Dependencies
+        run: yarn install
+      - name: Run Tests
+        run: yarn test
+      - name: Report Code Coverage
+        run: codecov --disable=gcov
