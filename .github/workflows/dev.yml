@@ -34,11 +34,10 @@ jobs:
           branch: ${{ github.ref }}
           tags: true
       - name: Publish Lib
-        run: npm publish ./dist --tag=beta
+        run: npm publish ./dist --tag beta --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Create Release
-        if: steps.versionize.outcome == 'success'
         uses: actions/github-script@v5
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
