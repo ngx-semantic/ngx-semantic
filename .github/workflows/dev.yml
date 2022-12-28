@@ -1,0 +1,30 @@
+name: Development
+
+on:
+  push:
+    branches: [ "dev" ]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Setup Yarn
+        run: npm install -g yarn
+      - name: Setup Angular
+        run: yarn global add @angular/cli@latest
+      - name: Setup Codecov
+        run: yarn global add codecov
+      - name: Install Dependencies
+        run: yarn install
+      - name: Run Tests
+        run: yarn test
+      - name: Report Code Coverage
+        run: codecov --disable=gcov
