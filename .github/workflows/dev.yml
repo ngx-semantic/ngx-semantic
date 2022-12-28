@@ -27,6 +27,7 @@ jobs:
         run: |
           cd src
           npm version prerelease --preid=beta
+          cd ..
           git config --local user.email "indexz3ro@aol.com"
           git config --local user.name "CI"
           git commit -a -m "ci: bump versions"
