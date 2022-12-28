@@ -20,7 +20,14 @@ jobs:
         run: npm install -g yarn
       - name: Setup Angular
         run: yarn global add @angular/cli@latest
+      - name: Install Dependencies
+        run: yarn install
       - name: Build
         run: yarn run build
+      - name: Setup Npm Credentials
+        run: |
+          - echo _auth=$NPM_TOKEN >> .npmrc
+          - echo email=indexz3ro@aol.com >> .npmrc
+          - echo always-auth=true >> .npmrc
       - name: Publish Lib
         run: npm run publish:dev

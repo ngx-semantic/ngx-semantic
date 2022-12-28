@@ -7,8 +7,8 @@
     "test": "ng test --no-watch --code-coverage",
     "lint": "ng lint",
     "build": "ng build",
-    "publish:dev": "npm publish ./dist",
-    "publish:prod": "npm publish ./dist",
+    "publish:dev": "npm publish ./dist --tag=beta",
+    "publish:prod": "npm publish ./dist --tag=latest",
     "build:prod": "ng build --configuration production",
     "build:local": "npm run build:prod && cd dist && npm pack && cd .."
   },
