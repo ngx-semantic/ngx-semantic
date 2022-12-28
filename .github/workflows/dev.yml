@@ -16,6 +16,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
+          registry-url: 'https://registry.npmjs.org'
       - name: Setup Yarn
         run: npm install -g yarn
       - name: Setup Angular
@@ -24,10 +25,7 @@ jobs:
         run: yarn install
       - name: Build
         run: yarn run build
-      - name: Setup Npm Credentials
-        run: |
-          - echo _auth=$NPM_TOKEN >> .npmrc
-          - echo email=indexz3ro@aol.com >> .npmrc
-          - echo always-auth=true >> .npmrc
       - name: Publish Lib
-        run: npm run publish:dev
+        run: npm publish ./dist --tag=beta
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
