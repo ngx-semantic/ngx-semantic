@@ -17,8 +17,6 @@ install:
   - node --version
   - yarn --version
 
-build: off
-
 test_script:
   - yarn install
   - yarn test

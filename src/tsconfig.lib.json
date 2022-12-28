@@ -10,8 +10,7 @@
     "lib": ["es2018", "dom"],
     "sourceMap": true,
     "strictFunctionTypes": true,
-    "stripInternal": true,
-    "target": "es2015"
+    "stripInternal": true
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
