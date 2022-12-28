@@ -38,9 +38,9 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Create Release
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             try {
               const tags_url = context.payload.repository.tags_url + "?per_page=1"
