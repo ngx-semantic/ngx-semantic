@@ -27,14 +27,21 @@ jobs:
         run: yarn global add @angular/cli@latest
       - name: Install Dependencies
         run: yarn install
-      - name: Tag Version
-        run: |
-          cd src
-          NEW_VERSION=$(npm version prerelease --preid=beta)
-          git config --local user.email "indexz3ro@aol.com"
-          git config --local user.name "CI"
-          git commit -a -m "ci: version pre-release"
-          git tag $NEW_VERSION
+#      - name: Tag Version
+#        run: |
+#          cd src
+#          NEW_VERSION=$(npm version prerelease --preid=beta)
+#          git config --local user.email "indexz3ro@aol.com"
+#          git config --local user.name "CI"
+#          git commit -a -m "ci: version pre-release"
+#          git tag $NEW_VERSION
+      - uses: actions/node-versionize-action@v1.0
+        name: Tag Version
+        with:
+          user-name: "CI"
+          user-email: "indexz3ro@aol.com"
+          bump-type: 'patch'
+          traverse-dirs: true
       - name: Push Tags to GitHub
         uses: ad-m/github-push-action@master
         with:
