@@ -35,7 +35,7 @@ jobs:
 #          git config --local user.name "CI"
 #          git commit -a -m "ci: version pre-release"
 #          git tag $NEW_VERSION
-      - uses: actions/node-versionize-action@v1.0
+      - uses: bolorundurowb/node-versionize-action@v1.0
         name: Tag Version
         with:
           user-name: "CI"
