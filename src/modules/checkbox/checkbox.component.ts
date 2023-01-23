@@ -42,7 +42,7 @@ export type SuiCheckboxType = 'radio' | 'slider' | 'toggle' | null;
 })
 export class SuiCheckboxComponent implements ControlValueAccessor {
   @Output() public valueChanged = new EventEmitter<any>();
-  @Output() public checkedChanged = new EventEmitter<boolean>();
+  @Output() public checkedChange = new EventEmitter<boolean>();
   @Input() public suiType: SuiCheckboxType = null;
   @Input() public name: string = null;
   @Input() public suiValue: any = null;
@@ -61,7 +61,6 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
 
   set checked(isChecked: boolean) {
     this.isChecked = isChecked;
-    this.checkedChanged.emit(isChecked);
   }
 
   @HostBinding('class')
@@ -120,7 +119,7 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
       }
 
       if (this.isChecked !== isChecked) {
-        this.checkedChanged.emit(isChecked);
+        this.checkedChange.emit(isChecked);
       }
 
       this.currentValue = value;
