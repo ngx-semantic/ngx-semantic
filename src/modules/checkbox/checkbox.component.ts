@@ -28,7 +28,7 @@ export type SuiCheckboxType = 'radio' | 'slider' | 'toggle' | null;
       [attr.type]="inputType"
       [attr.name]="name"
       [attr.disabled]="disabledAttribute"
-      [attr.checked]="checked"
+      [attr.checked]="rawCheckedAttribute"
       [attr.value]="suiValue"/>
     <label>
       <ng-content></ng-content>
@@ -42,7 +42,7 @@ export type SuiCheckboxType = 'radio' | 'slider' | 'toggle' | null;
 })
 export class SuiCheckboxComponent implements ControlValueAccessor {
   @Output() public valueChanged = new EventEmitter<any>();
-  @Output() public checkChanged = new EventEmitter<boolean>();
+  @Output() public checkedChange = new EventEmitter<boolean>();
   @Input() public suiType: SuiCheckboxType = null;
   @Input() public name: string = null;
   @Input() public suiValue: any = null;
@@ -52,6 +52,15 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
   public isChecked = false;
   public currentValue: any;
   private controlValueChangeFn: (value: any) => void = () => {
+  }
+
+  @Input()
+  get checked(): boolean {
+    return this.isChecked;
+  }
+
+  set checked(isChecked: boolean) {
+    this.isChecked = isChecked;
   }
 
   @HostBinding('class')
@@ -78,6 +87,7 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
       this.controlValueChangeFn(this.currentValue);
     } else {
       this.isChecked = !this.isChecked;
+      this.checkedChange.emit(this.isChecked);
       this.controlValueChangeFn(this.isChecked);
     }
   }
@@ -93,7 +103,7 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
     return 'checkbox';
   }
 
-  public get checked(): string | undefined {
+  public get rawCheckedAttribute(): string | undefined {
     return this.isChecked ? '' : undefined;
   }
 
@@ -110,7 +120,7 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
       }
 
       if (this.isChecked !== isChecked) {
-        this.checkChanged.emit(isChecked);
+        this.checkedChange.emit(isChecked);
       }
 
       this.currentValue = value;
