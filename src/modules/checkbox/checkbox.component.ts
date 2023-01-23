@@ -87,6 +87,7 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
       this.controlValueChangeFn(this.currentValue);
     } else {
       this.isChecked = !this.isChecked;
+      this.checkedChange.emit(this.isChecked);
       this.controlValueChangeFn(this.isChecked);
     }
   }
