@@ -59,8 +59,9 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
     return this.isChecked;
   }
 
-  set visible(isChecked: boolean) {
+  set checked(isChecked: boolean) {
     this.isChecked = isChecked;
+    this.checkedChanged.emit(isChecked);
   }
 
   @HostBinding('class')
