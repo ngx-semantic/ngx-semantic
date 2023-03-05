@@ -13,10 +13,10 @@ export class SuiStatisticValueDirective {
   @Input() @InputBoolean() public suiText = false;
 
   @HostBinding('class')
-  get classes(): string[] {
+  get classes(): string {
     return [
       ClassUtils.getPropClass(this.suiText, 'text'),
       'value'
-    ];
+    ].join(' ');
   }
 }
