@@ -28,6 +28,7 @@ export class SuiImageDirective extends BaseDirective {
   @Input() @InputBoolean() public suiRounded = false;
   @Input() @InputBoolean() public suiCircular = false;
   @Input() @InputBoolean() public suiCentered = false;
+  @Input() @InputBoolean() public suiInline = false;
 
   constructor(element: ElementRef) {
     super(element);
@@ -47,6 +48,7 @@ export class SuiImageDirective extends BaseDirective {
       ClassUtils.getPropClass(this.suiRounded, 'rounded'),
       ClassUtils.getPropClass(this.suiCircular, 'circular'),
       ClassUtils.getPropClass(this.suiCentered, 'centered'),
+      ClassUtils.getPropClass(this.suiInline, 'inline'),
       'image'
     ].join(' ');
   }
