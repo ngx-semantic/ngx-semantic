@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostBinding, Input} from '@angular/core';
+import {Directive, ElementRef, Input} from '@angular/core';
 import {BaseDirective} from 'ngx-semantic/core/base';
 
 export type SuiItemContentAlignment = 'middle aligned' | 'bottom aligned' | null;
@@ -10,15 +10,14 @@ export type SuiItemContentAlignment = 'middle aligned' | 'bottom aligned' | null
 export class SuiItemContentDirective extends BaseDirective {
   @Input() public suiAlignment: SuiItemContentAlignment = null;
 
-  @HostBinding('class')
+  constructor(element: ElementRef) {
+    super(element);
+  }
+
   get classes(): string {
     return [
       this.suiAlignment,
       'content'
     ].join(' ');
-  }
-
-  constructor(element: ElementRef) {
-    super(element);
   }
 }

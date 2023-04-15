@@ -1,17 +1,12 @@
-import {Directive, ElementRef, HostBinding} from '@angular/core';
-import {BaseDirective} from 'ngx-semantic/core/base';
+import {Directive, HostBinding} from '@angular/core';
 
 @Directive({
   exportAs: 'suiItemHeader',
   selector: '[suiItemHeader]'
 })
-export class SuiItemHeaderDirective extends BaseDirective {
+export class SuiItemHeaderDirective {
   @HostBinding('class')
   get classes(): string {
     return 'header';
-  }
-
-  constructor(element: ElementRef) {
-    super(element);
   }
 }
