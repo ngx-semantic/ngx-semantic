@@ -1,18 +1,14 @@
-/**
- * Created by bolor on 8/2/2020
- */
-
 import {Directive, ElementRef, HostBinding} from '@angular/core';
 import {BaseDirective} from 'ngx-semantic/core/base';
 
 @Directive({
-  exportAs: 'suiItem',
-  selector: '[suiItem]'
+  exportAs: 'suiItemMetadata',
+  selector: '[suiItemMetadata]'
 })
-export class SuiItemDirective extends BaseDirective {
+export class SuiItemMetadataDirective extends BaseDirective {
   @HostBinding('class')
   get classes(): string {
-    return 'item';
+    return 'meta';
   }
 
   constructor(element: ElementRef) {
