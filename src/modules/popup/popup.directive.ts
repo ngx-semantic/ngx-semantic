@@ -1,11 +1,20 @@
-import {ComponentPortal} from '@angular/cdk/portal';
-import {ConnectedPosition, Overlay, OverlayPositionBuilder, OverlayRef} from '@angular/cdk/overlay';
-import {ComponentRef, Directive, ElementRef, HostListener, Input, OnDestroy, OnInit, TemplateRef} from '@angular/core';
+import { ComponentPortal } from '@angular/cdk/portal';
+import { ConnectedPosition, Overlay, OverlayPositionBuilder, OverlayRef } from '@angular/cdk/overlay';
+import {
+  ComponentRef,
+  Directive,
+  ElementRef,
+  HostListener,
+  Input,
+  OnDestroy,
+  OnInit,
+  TemplateRef
+} from '@angular/core';
 
-import {SuiSize} from 'ngx-semantic/core/enums';
-import {InputBoolean} from 'ngx-semantic/core/util';
+import { SuiSize } from 'ngx-semantic/core/enums';
+import { InputBoolean } from 'ngx-semantic/core/util';
 
-import {SuiPopupComponent} from './popup.component';
+import { SuiPopupComponent } from './popup.component';
 
 export type SuiPopupPlacement =
   'top left'
@@ -37,14 +46,14 @@ export class SuiPopupDirective implements OnInit, OnDestroy {
   private delay = 200; // ms
   private _overlayRef?: OverlayRef;
   private _positionMap: { [type: string]: ConnectedPosition } = {
-    topCenter: {originX: 'center', originY: 'top', overlayX: 'center', overlayY: 'bottom'},
-    topLeft: {originX: 'start', originY: 'top', overlayX: 'start', overlayY: 'bottom'},
-    topRight: {originX: 'end', originY: 'top', overlayX: 'end', overlayY: 'bottom'},
-    rightCenter: {originX: 'end', originY: 'center', overlayX: 'start', overlayY: 'center'},
-    leftCenter: {originX: 'start', originY: 'center', overlayX: 'end', overlayY: 'center'},
-    bottomLeft: {originX: 'start', originY: 'bottom', overlayX: 'start', overlayY: 'top'},
-    bottomCenter: {originX: 'center', originY: 'bottom', overlayX: 'center', overlayY: 'top'},
-    bottomRight: {originX: 'end', originY: 'bottom', overlayX: 'end', overlayY: 'top'}
+    topCenter: { originX: 'center', originY: 'top', overlayX: 'center', overlayY: 'bottom' },
+    topLeft: { originX: 'start', originY: 'top', overlayX: 'start', overlayY: 'bottom' },
+    topRight: { originX: 'end', originY: 'top', overlayX: 'end', overlayY: 'bottom' },
+    rightCenter: { originX: 'end', originY: 'center', overlayX: 'start', overlayY: 'center' },
+    leftCenter: { originX: 'start', originY: 'center', overlayX: 'end', overlayY: 'center' },
+    bottomLeft: { originX: 'start', originY: 'bottom', overlayX: 'start', overlayY: 'top' },
+    bottomCenter: { originX: 'center', originY: 'bottom', overlayX: 'center', overlayY: 'top' },
+    bottomRight: { originX: 'end', originY: 'bottom', overlayX: 'end', overlayY: 'top' }
   };
 
   constructor(private elementRef: ElementRef, private overlay: Overlay,
@@ -60,7 +69,7 @@ export class SuiPopupDirective implements OnInit, OnDestroy {
       .withPositions(this.getPositions())
       .withPush(false);
 
-    this._overlayRef = this.overlay.create({positionStrategy, scrollStrategy});
+    this._overlayRef = this.overlay.create({ positionStrategy, scrollStrategy });
   }
 
   public ngOnDestroy(): void {
@@ -74,7 +83,7 @@ export class SuiPopupDirective implements OnInit, OnDestroy {
     }
   }
 
-  @HostListener('document:click', ['$event'])
+  @HostListener('document:click', [ '$event' ])
   public onPageClick(event: Event): void {
     if (this.suiPopupTrigger === 'click') {
       if (!this.elementRef.nativeElement.contains(event.target)) {
@@ -101,21 +110,21 @@ export class SuiPopupDirective implements OnInit, OnDestroy {
 
   private getPositions(): Array<ConnectedPosition> {
     if (this.suiPopupPlacement === 'top center') {
-      return [this._positionMap.topCenter];
+      return [ this._positionMap.topCenter ];
     } else if (this.suiPopupPlacement === 'top left') {
-      return [this._positionMap.topLeft];
+      return [ this._positionMap.topLeft ];
     } else if (this.suiPopupPlacement === 'top right') {
-      return [this._positionMap.topRight];
+      return [ this._positionMap.topRight ];
     } else if (this.suiPopupPlacement === 'right center') {
-      return [this._positionMap.rightCenter];
+      return [ this._positionMap.rightCenter ];
     } else if (this.suiPopupPlacement === 'left center') {
-      return [this._positionMap.leftCenter];
+      return [ this._positionMap.leftCenter ];
     } else if (this.suiPopupPlacement === 'bottom left') {
-      return [this._positionMap.bottomLeft];
+      return [ this._positionMap.bottomLeft ];
     } else if (this.suiPopupPlacement === 'bottom center') {
-      return [this._positionMap.bottomCenter];
+      return [ this._positionMap.bottomCenter ];
     } else if (this.suiPopupPlacement === 'bottom right') {
-      return [this._positionMap.bottomRight];
+      return [ this._positionMap.bottomRight ];
     }
   }
 

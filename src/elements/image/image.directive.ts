@@ -9,7 +9,7 @@ import {BaseDirective} from 'ngx-semantic/core/base';
 
 export type SuiImageAlignment = 'top aligned' | 'bottom aligned' | 'middle aligned' | null;
 export type SuiImageFloat = 'left floated' | 'right floated' | null;
-export type SuiImageSpace = 'spaced' | 'left spaced' | 'right spcaed' | null;
+export type SuiImageSpace = 'spaced' | 'left spaced' | 'right spaced' | null;
 
 @Directive({
   selector: '[sui-image]',

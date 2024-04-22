@@ -2,9 +2,17 @@
  * Created by bolorundurowb on 1/25/2021
  */
 
-import {AfterContentInit, Component, ContentChildren, Input, QueryList, ViewEncapsulation} from '@angular/core';
-import {ClassUtils} from 'ngx-semantic/core/util';
-import {SuiAccordionPanelComponent} from './accordion-panel.component';
+import {
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  Input,
+  OnDestroy,
+  QueryList,
+  ViewEncapsulation
+} from '@angular/core';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { SuiAccordionPanelComponent } from './accordion-panel.component';
 
 @Component({
   selector: 'sui-accordion',
@@ -15,13 +23,13 @@ import {SuiAccordionPanelComponent} from './accordion-panel.component';
     </div>
   `
 })
-export class SuiAccordionComponent  implements AfterContentInit {
+export class SuiAccordionComponent implements AfterContentInit, OnDestroy {
   @ContentChildren(SuiAccordionPanelComponent) private panels: QueryList<SuiAccordionPanelComponent>;
 
-  @Input() public suiStyled = false;
-  @Input() public suiFluid = false;
-  @Input() public suiInverted = false;
-  @Input() public suiCloseOthers = true;
+  @Input() @InputBoolean() public suiStyled = false;
+  @Input() @InputBoolean() public suiFluid = false;
+  @Input() @InputBoolean() public suiInverted = false;
+  @Input() @InputBoolean() public suiCloseOthers = true;
 
   get classes(): string {
     return [
@@ -35,20 +43,22 @@ export class SuiAccordionComponent  implements AfterContentInit {
 
   public ngAfterContentInit() {
     if (this.suiCloseOthers) {
-      this.panels
-        .forEach((panel, index) => panel.isOpenChange
-          .subscribe((x) => {
-            // if the panel is being opened, then close others
-            if (x) {
-              this.panels
-                .forEach((y, j) => {
-                  if (index !== j) {
-                    y.isOpen = false;
-                  }
-                });
-            }
-          }));
+      this.panels.forEach((panel, index) => panel.isOpenChange
+        .subscribe((x) => {
+          // if the panel is being opened, then close others
+          if (x) {
+            this.panels.forEach((y, j) => {
+              if (index !== j) {
+                y.isOpen = false;
+              }
+            });
+          }
+        }));
     }
+  }
+
+  public ngOnDestroy() {
+    this.panels.forEach((panel) => panel.isOpenChange.unsubscribe());
   }
 }
 

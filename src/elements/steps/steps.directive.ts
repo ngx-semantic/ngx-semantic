@@ -2,9 +2,10 @@
  * Created by bolor on 9/20/2020
  */
 
-import {Directive, HostBinding, Input} from '@angular/core';
+import {Directive, ElementRef, HostBinding, Input} from '@angular/core';
 import {SuiSize, SuiWidth} from 'ngx-semantic/core/enums';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import {BaseDirective} from 'ngx-semantic/core/base';
 
 export type SuiStepsAttachment = 'top attached' | 'bottom attached' | null;
 
@@ -12,7 +13,7 @@ export type SuiStepsAttachment = 'top attached' | 'bottom attached' | null;
   selector: '[sui-steps]',
   exportAs: 'suiSteps'
 })
-export class SuiStepsDirective {
+export class SuiStepsDirective extends BaseDirective {
   @Input() public suiWidth: SuiWidth = null;
   @Input() public suiAttached: SuiStepsAttachment = null;
   @Input() public suiSize: SuiSize = null;
@@ -22,7 +23,6 @@ export class SuiStepsDirective {
   @Input() @InputBoolean() public suiUnstackable = false;
   @Input() @InputBoolean() public suiTabletStackable = false;
 
-  @HostBinding('class')
   get classes(): string {
     return [
       'ui',
@@ -36,5 +36,9 @@ export class SuiStepsDirective {
       ClassUtils.getPropClass(this.suiTabletStackable, 'tablet stackable'),
       'steps'
     ].join(' ');
+  }
+
+  constructor(element: ElementRef) {
+    super(element);
   }
 }

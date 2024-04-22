@@ -2,8 +2,9 @@
  * Created by bolor on 8/2/2020
  */
 
-import {Directive, HostBinding, Input} from '@angular/core';
+import {Directive, ElementRef, HostBinding, Input} from '@angular/core';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import {BaseDirective} from 'ngx-semantic/core/base';
 
 export type SuiItemsRelaxation = 'relaxed' | 'very relaxed' | null;
 
@@ -11,13 +12,16 @@ export type SuiItemsRelaxation = 'relaxed' | 'very relaxed' | null;
   selector: '[sui-items]',
   exportAs: 'suiItems'
 })
-export class SuiItemsDirective {
+export class SuiItemsDirective extends BaseDirective {
   @Input() public suiRelaxed: SuiItemsRelaxation = null;
   @Input() @InputBoolean() public suiDivided = false;
   @Input() @InputBoolean() public suiUnstackable = false;
   @Input() @InputBoolean() public suiLink = false;
 
-  @HostBinding('class')
+  constructor(element: ElementRef) {
+    super(element);
+  }
+
   get classes(): string {
     return [
       'ui',
