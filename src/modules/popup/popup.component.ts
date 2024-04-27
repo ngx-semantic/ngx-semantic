@@ -2,12 +2,12 @@
  * Created by bolorundurowb on 1/16/2021
  */
 
-import {Component, Input, TemplateRef, ViewEncapsulation} from '@angular/core';
+import { Component, Input, TemplateRef, ViewEncapsulation } from '@angular/core';
 
-import {SuiSize} from 'ngx-semantic/core/enums';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import { SuiSize } from 'ngx-semantic/core/enums';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 
-import {SuiPopupPlacement, SuiPopupWidth} from './popup.directive';
+import { SuiPopupPlacement, SuiPopupWidth } from './popup.directive';
 
 @Component({
   selector: 'sui-popup',
@@ -17,13 +17,13 @@ import {SuiPopupPlacement, SuiPopupWidth} from './popup.directive';
          [ngClass]="classes">
       <ng-container *ngIf="suiTitle">
         <div class="header">
-          {{suiTitle}}
+          {{ suiTitle }}
         </div>
       </ng-container>
 
       <div class="content">
         <ng-container *ngIf="isString">
-          {{suiContent}}
+          {{ suiContent }}
         </ng-container>
 
         <ng-container *ngIf="isTemplate">
@@ -32,7 +32,7 @@ import {SuiPopupPlacement, SuiPopupWidth} from './popup.directive';
       </div>
     </div>
   `,
-  styleUrls: ['./styles/popup.component.scss']
+  styleUrls: [ './styles/popup.component.scss' ]
 })
 export class SuiPopupComponent {
   @Input() public suiPlacement: SuiPopupPlacement = 'top center';

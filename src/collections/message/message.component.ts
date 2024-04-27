@@ -1,7 +1,7 @@
-import {Component, ElementRef, HostBinding, Input} from '@angular/core';
-import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiResultState} from './enums';
+import { Component, ElementRef, HostBinding, Input } from '@angular/core';
+import { SuiColour, SuiSize } from 'ngx-semantic/core/enums';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { SuiResultState } from './enums';
 
 export type SuiMessageAttachment = 'attached' | 'bottom attached' | null;
 
