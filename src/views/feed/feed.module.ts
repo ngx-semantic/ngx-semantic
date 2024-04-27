@@ -11,7 +11,7 @@ import { SuiFeedSummaryDirective } from './feed-summary.directive';
 import { SuiFeedDateDirective } from './feed-date.directive';
 import { SuiFeedExtraDirective } from './feed-extra.directive';
 import { SuiFeedLikeDirective } from './feed-like.directive';
-import { SuiFeedUserDirective } from 'ngx-semantic/views/feed/feed-user.directive';
+import { SuiFeedUserDirective } from './feed-user.directive';
 
 @NgModule({
   exports: [
