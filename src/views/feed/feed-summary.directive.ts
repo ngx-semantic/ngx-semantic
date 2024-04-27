@@ -5,12 +5,12 @@
 import { Directive, HostBinding } from '@angular/core';
 
 @Directive({
-  exportAs: 'suiFeedEvent',
-  selector: '[suiFeedEvent]'
+  exportAs: 'suiFeedSummary',
+  selector: '[suiFeedSummary]'
 })
-export class SuiFeedEventDirective {
+export class SuiFeedSummaryDirective {
   @HostBinding('class')
   get classes(): string {
-    return 'event';
+    return 'summary';
   }
 }

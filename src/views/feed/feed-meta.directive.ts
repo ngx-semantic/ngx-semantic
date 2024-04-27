@@ -5,12 +5,12 @@
 import { Directive, HostBinding } from '@angular/core';
 
 @Directive({
-  exportAs: 'suiFeedEvent',
-  selector: '[suiFeedEvent]'
+  exportAs: 'suiFeedMeta',
+  selector: '[suiFeedMeta]'
 })
-export class SuiFeedEventDirective {
+export class SuiFeedMetaDirective {
   @HostBinding('class')
   get classes(): string {
-    return 'event';
+    return 'meta';
   }
 }
