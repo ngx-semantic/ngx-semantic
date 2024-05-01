@@ -25,7 +25,7 @@ export type SuiCheckboxType = 'radio' | 'slider' | 'toggle' | null;
     <input
       class="hidden"
       tabindex="0"
-      [attr.type]="inputType"
+      [attr.type]="suiType === 'radio' ? 'radio' : 'checkbox'"
       [attr.name]="name"
       [attr.disabled]="disabledAttribute"
       [attr.checked]="rawCheckedAttribute"
@@ -47,6 +47,7 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
   @Input() public name: string = null;
   @Input() public suiValue: any = null;
   @Input() @InputBoolean() public suiReadOnly = false;
+  @Input() @InputBoolean() public suiFitted = false;
   @Input() @InputBoolean() public disabled = false;
 
   public isChecked = false;
@@ -69,6 +70,7 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
       'ui',
       this.suiType,
       ClassUtils.getPropClass(this.suiReadOnly, 'read-only'),
+      ClassUtils.getPropClass(this.suiFitted, 'fitted'),
       'checkbox',
       ClassUtils.getPropClass(this.isChecked, 'checked')
     ].join(' ');
@@ -80,7 +82,7 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
       return;
     }
 
-    if (this.inputType === 'radio') {
+    if (this.isRadioType) {
       this.currentValue = this.suiValue;
       this.isChecked = this.currentValue === this.suiValue;
       this.valueChanged.emit(this.currentValue);
@@ -95,12 +97,8 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
   constructor(private changeDetectorRef: ChangeDetectorRef) {
   }
 
-  get inputType(): string {
-    if (this.suiType === 'radio') {
-      return 'radio';
-    }
-
-    return 'checkbox';
+  get isRadioType(): boolean {
+    return ['radio', 'slider'].includes(this.suiType);
   }
 
   public get rawCheckedAttribute(): string | undefined {
@@ -112,7 +110,7 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
   }
 
   public writeValue(value: any): void {
-    if (this.inputType === 'radio') {
+    if (this.isRadioType) {
       const isChecked = this.suiValue === value;
 
       if (this.currentValue !== value) {
