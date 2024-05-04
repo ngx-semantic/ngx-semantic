@@ -2,15 +2,16 @@
  * Created by bolor on 10/10/2020
  */
 
-import {Directive, HostBinding, Input} from '@angular/core';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiTableState, SuiTableTextAlignment, SuiTableVerticalAlignment} from './enums';
+import { Directive, ElementRef, Input } from '@angular/core';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { SuiTableState, SuiTableTextAlignment, SuiTableVerticalAlignment } from './enums';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
   exportAs: 'suiTableCell',
   selector: '[suiTableCell]'
 })
-export class SuiTableCellDirective {
+export class SuiTableCellDirective extends BaseDirective {
   @Input() public suiState: SuiTableState = null;
   @Input() public suiTextAlignment: SuiTableTextAlignment = null;
   @Input() public suiVerticalAlignment: SuiTableVerticalAlignment = null;
@@ -19,7 +20,10 @@ export class SuiTableCellDirective {
   @Input() @InputBoolean() public suiCollapsing = false;
   @Input() @InputBoolean() public suiSelectable = false;
 
-  @HostBinding('class')
+  constructor(element: ElementRef) {
+    super(element);
+  }
+
   get classes(): string {
     return [
       this.suiState,
