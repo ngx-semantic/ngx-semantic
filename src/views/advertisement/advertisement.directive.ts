@@ -33,6 +33,7 @@ export class SuiAdvertisementDirective extends BaseDirective {
   @Input() @InputBoolean() public suiSquare = false;
   @Input() @InputBoolean() public suiCentered = false;
   @Input() @InputBoolean() public suiTest = false;
+  @Input() @InputBoolean() public suiMobile = false;
 
   constructor(element: ElementRef) {
     super(element);
@@ -41,6 +42,7 @@ export class SuiAdvertisementDirective extends BaseDirective {
   get classes(): string {
     return [
       'ui',
+      ClassUtils.getPropClass(this.suiMobile, 'mobile'),
       this.suiSize,
       ClassUtils.getPropClass(this.suiCentered, 'centered'),
       ClassUtils.getPropClass(this.suiHalf, 'half'),
