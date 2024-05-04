@@ -30,6 +30,7 @@ export class SuiAccordionPanelComponent {
   private _isOpen;
 
   @Input()
+  @InputBoolean()
   get isOpen(): boolean {
     return this._isOpen;
   }

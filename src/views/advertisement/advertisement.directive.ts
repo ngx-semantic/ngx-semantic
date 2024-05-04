@@ -31,6 +31,7 @@ export class SuiAdvertisementDirective {
   @Input() @InputBoolean() public suiWide = false;
   @Input() @InputBoolean() public suiSquare = false;
   @Input() @InputBoolean() public suiCentered = false;
+  @Input() @InputBoolean() public suiTest = false;
 
   @HostBinding('class')
   get classes(): string {
@@ -44,6 +45,7 @@ export class SuiAdvertisementDirective {
       ClassUtils.getPropClass(this.suiTop, 'top'),
       ClassUtils.getPropClass(this.suiSquare, 'square'),
       this.suiType,
+      ClassUtils.getPropClass(this.suiTest, 'test'),
       'ad'
     ].join(' ');
   }
