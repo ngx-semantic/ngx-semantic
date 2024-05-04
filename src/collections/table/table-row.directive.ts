@@ -2,22 +2,26 @@
  * Created by bolor on 10/10/2020
  */
 
-import {Directive, HostBinding, Input} from '@angular/core';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiTableState, SuiTableTextAlignment, SuiTableVerticalAlignment} from './enums';
+import { Directive, ElementRef, Input } from '@angular/core';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { SuiTableState, SuiTableTextAlignment, SuiTableVerticalAlignment } from './enums';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
   exportAs: 'suiTableRow',
   selector: '[suiTableRow]'
 })
-export class SuiTableRowDirective {
+export class SuiTableRowDirective extends BaseDirective {
   @Input() public suiState: SuiTableState = null;
   @Input() public suiTextAlignment: SuiTableTextAlignment = null;
   @Input() public suiVerticalAlignment: SuiTableVerticalAlignment = null;
   @Input() @InputBoolean() public suiActive = false;
   @Input() @InputBoolean() public disabled = false;
 
-  @HostBinding('class')
+  constructor(element: ElementRef) {
+    super(element);
+  }
+
   get classes(): string {
     return [
       this.suiState,
