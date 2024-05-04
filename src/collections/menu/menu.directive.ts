@@ -2,9 +2,10 @@
  * Created by bolor on 6/17/2020
  */
 
-import {Directive, HostBinding, Input} from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
 import {SuiColour, SuiSize, SuiWidth} from 'ngx-semantic/core/enums';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiMenuAttachment = 'top' | 'bottom' | null;
 export type SuiMenuFixation = 'top' | 'bottom' | 'left' | 'right' | null;
@@ -14,7 +15,7 @@ export type SuiMenuIconType = 'icon' | 'labeled icon' | null;
   selector: '[sui-menu]',
   exportAs: 'suiMenu'
 })
-export class SuiMenuDirective {
+export class SuiMenuDirective extends BaseDirective {
   @Input() public suiWidth: SuiWidth = null;
   @Input() public suiAttached: SuiMenuAttachment = null;
   @Input() public suiFixed: SuiMenuFixation = null;
@@ -34,7 +35,10 @@ export class SuiMenuDirective {
   @Input() @InputBoolean() public suiInverted = false;
   @Input() @InputBoolean() public suiBorderless = false;
 
-  @HostBinding('class')
+  constructor(element: ElementRef) {
+    super(element);
+  }
+
   get classes(): string {
     return [
       'ui',
