@@ -2,16 +2,20 @@
  * Created by bolor on 5/26/2020
  */
 
-import {Directive, HostBinding, Input} from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
   exportAs: 'suiBreadcrumbDivider',
   selector: '[suiBreadcrumbDivider]'
 })
-export class SuiBreadcrumbDividerDirective {
+export class SuiBreadcrumbDividerDirective extends BaseDirective {
   @Input() public suiIcon = '';
 
-  @HostBinding('class')
+  constructor(element: ElementRef) {
+    super(element);
+  }
+
   get classes(): string {
     return [
       this.getIcon(),
