@@ -84,9 +84,5 @@ export class SuiProgressComponent {
     }
 
     this.progressPercentage = Math.ceil(this.value * 100 / this.maxValue);
-
-    if (this.progressPercentage === 100) {
-      this.suiState = 'success';
-    }
   }
 }
