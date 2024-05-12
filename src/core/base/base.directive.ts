@@ -1,7 +1,7 @@
 /**
  * Created by bolorundurowb on 4/28/2021
  */
-import {Directive, ElementRef, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import { Directive, ElementRef, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ClassUtils } from 'ngx-semantic/core/util';
 
 @Directive()

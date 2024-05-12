@@ -12,6 +12,6 @@ export class ClassUtils {
   }
 
   public static removeExcessWhitespace(input: string): string {
-    return  input.replace(/\s\s+/g, ' ').trim();
+    return input.replace(/\s\s+/g, ' ').trim();
   }
 }
