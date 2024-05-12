@@ -7,7 +7,7 @@ import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiColour, SuiSize } from 'ngx-semantic/core/enums';
 
 export type SuiProgressAttachment = 'bottom' | 'top' | null;
-export type SuiProgressState = 'success' | 'warning' | 'error' | null;
+export type SuiProgressState = 'active' | 'success' | 'warning' | 'error' | null;
 
 @Component({
   selector: 'sui-progress',
@@ -38,12 +38,11 @@ export class SuiProgressComponent {
   @Input() @InputBoolean() public suiIndicating = false;
   @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiInverted = false;
-  @Input() @InputBoolean() public suiShowProgress = true;
+  @Input() @InputBoolean() public suiShowProgress = false;
 
   private value = 0;
   private maxValue = 100;
   public progressPercentage: number;
-  public isActive: boolean;
 
   @Input()
   set suiValue(value: number) {
@@ -71,7 +70,6 @@ export class SuiProgressComponent {
       this.suiSize,
       this.suiColour,
       this.suiAttached ? `${this.suiAttached} attached` : '',
-      ClassUtils.getPropClass(this.isActive, 'active'),
       ClassUtils.getPropClass(this.suiIndicating, 'indicating'),
       ClassUtils.getPropClass(this.disabled, 'disabled'),
       ClassUtils.getPropClass(this.suiInverted, 'inverted'),
@@ -86,7 +84,6 @@ export class SuiProgressComponent {
     }
 
     this.progressPercentage = Math.ceil(this.value * 100 / this.maxValue);
-    this.isActive = this.progressPercentage < 100;
 
     if (this.progressPercentage === 100) {
       this.suiState = 'success';
