@@ -2,10 +2,11 @@
  * Created by bolor on 7/16/2020
  */
 
-import {Directive, Host, HostBinding, Input, Optional} from '@angular/core';
+import { Directive, ElementRef, Host, HostBinding, Input, Optional } from '@angular/core';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
 import {SuiStatisticsDirective} from './statistics.directive';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiFloat = 'right' | 'left';
 
@@ -13,7 +14,7 @@ export type SuiFloat = 'right' | 'left';
   selector: '[sui-statistic]',
   exportAs: 'suiStatistic'
 })
-export class SuiStatisticDirective {
+export class SuiStatisticDirective extends BaseDirective {
   @Input() public suiColour: SuiColour = null;
   @Input() public suiFloated: SuiFloat = null;
   @Input() public suiSize: SuiSize = null;
@@ -22,7 +23,11 @@ export class SuiStatisticDirective {
 
   private isChildComponent: boolean;
 
-  @HostBinding('class')
+  constructor(@Optional() @Host() private parent: SuiStatisticsDirective, private elementRef: ElementRef) {
+    super(elementRef);
+    this.isChildComponent = !!parent;
+  }
+
   get classes(): string {
     return [
       this.isChildComponent ? '' : 'ui',
@@ -33,9 +38,5 @@ export class SuiStatisticDirective {
       ClassUtils.getPropClass(this.suiInverted, 'inverted'),
       'statistic'
     ].join(' ');
-  }
-
-  constructor(@Optional() @Host() private parent: SuiStatisticsDirective) {
-    this.isChildComponent = !!parent;
   }
 }
