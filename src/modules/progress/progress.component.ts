@@ -2,9 +2,9 @@
  * Created by bolor on 10/22/2020
  */
 
-import {Component, HostBinding, Input} from '@angular/core';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
+import { Component, Input } from '@angular/core';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { SuiColour, SuiSize } from 'ngx-semantic/core/enums';
 
 export type SuiProgressAttachment = 'bottom' | 'top' | null;
 export type SuiProgressState = 'success' | 'warning' | 'error' | null;
@@ -12,21 +12,23 @@ export type SuiProgressState = 'success' | 'warning' | 'error' | null;
 @Component({
   selector: 'sui-progress',
   template: `
-    <div class="bar"
-         [style.width.%]="progressPercentage">
-      <ng-container *ngIf="suiShowProgress">
-        <div class="progress">{{progressPercentage}}%</div>
-      </ng-container>
-    </div>
-    <div class="label">
-      <ng-content></ng-content>
+    <div [ngClass]="classes" [attr.data-percent]="progressPercentage">
+      <div class="bar"
+           [style.width.%]="progressPercentage">
+        <ng-container *ngIf="suiShowProgress">
+          <div class="progress">{{ progressPercentage }}%</div>
+        </ng-container>
+      </div>
+      <div class="label">
+        <ng-content></ng-content>
+      </div>
     </div>
   `,
-  styles: [`
+  styles: [ `
     :host {
       width: 100%;
     }
-  `]
+  ` ]
 })
 export class SuiProgressComponent {
   @Input() public suiAttached: SuiProgressAttachment = null;
@@ -63,9 +65,8 @@ export class SuiProgressComponent {
     return this.maxValue;
   }
 
-  @HostBinding('class')
   get classes(): string {
-    return [
+    return ClassUtils.combineToClass([
       'ui',
       this.suiSize,
       this.suiColour,
@@ -76,7 +77,7 @@ export class SuiProgressComponent {
       ClassUtils.getPropClass(this.suiInverted, 'inverted'),
       'progress',
       this.suiState
-    ].join(' ');
+    ]);
   }
 
   private calculatePercentage(): void {
