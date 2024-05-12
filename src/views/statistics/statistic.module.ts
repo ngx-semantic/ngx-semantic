@@ -2,12 +2,12 @@
  * Created by bolor on 7/16/2020
  */
 
-import {NgModule} from '@angular/core';
-import {SuiStatisticLabelDirective} from './statistic-label.directive';
-import {SuiStatisticValueDirective} from './statistic-value.directive';
-import {CommonModule} from '@angular/common';
-import {SuiStatisticDirective} from './statistic.directive';
-import {SuiStatisticsDirective} from './statistics.directive';
+import { NgModule } from '@angular/core';
+import { SuiStatisticLabelDirective } from './statistic-label.directive';
+import { SuiStatisticValueDirective } from './statistic-value.directive';
+import { CommonModule } from '@angular/common';
+import { SuiStatisticDirective } from './statistic.directive';
+import { SuiStatisticsDirective } from './statistics.directive';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import {SuiStatisticsDirective} from './statistics.directive';
     SuiStatisticDirective,
     SuiStatisticsDirective
   ],
-  imports: [CommonModule],
+  imports: [ CommonModule ],
   exports: [
     SuiStatisticValueDirective,
     SuiStatisticLabelDirective,

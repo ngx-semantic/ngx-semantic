@@ -2,20 +2,25 @@
  * Created by bolor on 7/16/2020
  */
 
-import {Directive, HostBinding, Input} from '@angular/core';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiWidth} from 'ngx-semantic/core/enums';
+import { Directive, ElementRef, HostBinding, Input } from '@angular/core';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { SuiWidth } from 'ngx-semantic/core/enums';
+import { BaseDirective } from 'ngx-semantic/core/base';
+import { element } from 'protractor';
 
 @Directive({
   selector: '[sui-statistics]',
   exportAs: 'suiStatistics'
 })
-export class SuiStatisticsDirective {
+export class SuiStatisticsDirective extends BaseDirective {
   @Input() public suiWidth: SuiWidth = null;
   @Input() @InputBoolean() public suiHorizontal = false;
 
-  @HostBinding('class')
-  get classes(): string {
+  constructor(elementRef: ElementRef) {
+    super(elementRef);
+  }
+
+  override get classes(): string {
     return [
       'ui',
       this.suiWidth,
