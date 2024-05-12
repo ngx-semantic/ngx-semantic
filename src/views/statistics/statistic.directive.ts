@@ -3,9 +3,9 @@
  */
 
 import { Directive, ElementRef, Host, HostBinding, Input, Optional } from '@angular/core';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
-import {SuiStatisticsDirective} from './statistics.directive';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { SuiColour, SuiSize } from 'ngx-semantic/core/enums';
+import { SuiStatisticsDirective } from './statistics.directive';
 import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiFloat = 'right' | 'left';
