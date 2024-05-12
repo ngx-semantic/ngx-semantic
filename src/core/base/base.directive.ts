@@ -1,7 +1,8 @@
 /**
  * Created by bolorundurowb on 4/28/2021
  */
-import {Directive, ElementRef, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import { Directive, ElementRef, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ClassUtils } from 'ngx-semantic/core/util';
 
 @Directive()
 export abstract class BaseDirective implements OnInit, OnChanges {
@@ -19,7 +20,7 @@ export abstract class BaseDirective implements OnInit, OnChanges {
   }
 
   private setClasses(): void {
-    const cleanedClasses = this.classes.replace(/\s\s+/g, ' ').trim();
+    const cleanedClasses = ClassUtils.removeExcessWhitespace(this.classes);
     this.element?.nativeElement?.setAttribute('class', cleanedClasses);
   }
 }

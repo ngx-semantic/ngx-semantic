@@ -8,12 +8,13 @@ import {
   HostListener,
   Input,
   Output,
-  ViewChild, ViewEncapsulation
+  ViewChild,
+  ViewEncapsulation
 } from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiSelectMenuDirective} from './select-menu.directive';
-import {ISelectOption} from './interfaces/ISelectOption';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { SuiSelectMenuDirective } from './select-menu.directive';
+import { ISelectOption } from './interfaces/ISelectOption';
 
 @Component({
   selector: 'sui-select',
@@ -35,14 +36,14 @@ import {ISelectOption} from './interfaces/ISelectOption';
             <i [className]="'flag ' + option.flag"></i>
           </ng-container>
 
-          {{option.text}}
+          {{ option.text }}
 
           <i class="delete icon"
              (click)="removeSelection(option, $event)"></i>
         </a>
       </ng-container>
 
-      <div class="default text">{{suiPlaceholder}}</div>
+      <div class="default text">{{ suiPlaceholder }}</div>
     </ng-container>
 
     <!-- Search Section -->
@@ -71,11 +72,11 @@ import {ISelectOption} from './interfaces/ISelectOption';
             <i [className]="'flag ' + selectedOption.flag"></i>
           </ng-container>
 
-          {{selectedOption.text}}
+          {{ selectedOption.text }}
         </ng-container>
 
         <ng-container *ngIf="!selectedOption">
-          {{suiPlaceholder}}
+          {{ suiPlaceholder }}
         </ng-container>
       </div>
     </ng-container>
@@ -96,7 +97,7 @@ import {ISelectOption} from './interfaces/ISelectOption';
           <ng-container *ngIf="option.flag">
             <i [className]="'flag ' + option.flag"></i>
           </ng-container>
-          {{option.text}}
+          {{ option.text }}
         </div>
       </ng-container>
       <ng-container *ngIf="hasNoSearchResults()">
@@ -107,11 +108,11 @@ import {ISelectOption} from './interfaces/ISelectOption';
       </ng-container>
     </div>
   `,
-  providers: [{
+  providers: [ {
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => SuiSelectComponent),
     multi: true
-  }]
+  } ]
 })
 export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
   @ViewChild(SuiSelectMenuDirective) public optionsMenu: SuiSelectMenuDirective;
