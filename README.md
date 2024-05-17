@@ -74,14 +74,14 @@ See the [Documentation](https://ngx-semantic.github.io/) for installation instru
 To generate all library files:
 
 ```bash
-$ npm run build:local
+$ yarn build:local
 ```
 
 ## Testing
 
 To run the unit tests suite:
 ```bash
-$ npm run test
+$ yarn test
 ```
 
 ## License
