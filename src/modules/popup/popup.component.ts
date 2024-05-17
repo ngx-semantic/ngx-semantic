@@ -35,7 +35,7 @@ import { SuiPopupPlacement, SuiPopupWidth } from './popup.directive';
   styleUrls: [ './styles/popup.component.scss' ]
 })
 export class SuiPopupComponent {
-  @Input() public suiPlacement: SuiPopupPlacement = 'top center';
+  @Input() public suiPlacement: SuiPopupPlacement = 'top left';
   @Input() public suiWidth: SuiPopupWidth = null;
   @Input() public suiSize: SuiSize = null;
   @Input() public suiTitle: string;
