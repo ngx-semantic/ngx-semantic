@@ -33,7 +33,7 @@ export type SuiPopupTrigger = 'hover' | 'click';
   exportAs: 'suiPopup'
 })
 export class SuiPopupDirective implements OnInit, OnDestroy {
-  @Input() public suiPopupPlacement: SuiPopupPlacement = 'top center';
+  @Input() public suiPopupPlacement: SuiPopupPlacement = 'top left';
   @Input() public suiPopupTrigger: SuiPopupTrigger = 'hover';
   @Input() public suiPopupWidth: SuiPopupWidth = null;
   @Input() public suiPopupSize: SuiSize = null;
