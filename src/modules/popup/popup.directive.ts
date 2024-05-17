@@ -42,6 +42,7 @@ export class SuiPopupDirective implements OnInit, OnDestroy {
   @Input() @InputBoolean() public suiPopupInverted = false;
   @Input() @InputBoolean() public suiPopupFluid = false;
   @Input() @InputBoolean() public suiPopupFlowing = false;
+  @Input() @InputBoolean() public suiPopupBasic = false;
 
   private delay = 200; // ms
   private _overlayRef?: OverlayRef;
@@ -143,6 +144,7 @@ export class SuiPopupDirective implements OnInit, OnDestroy {
       popup.suiInverted = this.suiPopupInverted;
       popup.suiFluid = this.suiPopupFluid;
       popup.suiFlowing = this.suiPopupFlowing;
+      popup.suiBasic = this.suiPopupBasic;
     }
   }
 
