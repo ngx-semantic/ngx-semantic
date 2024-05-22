@@ -7,9 +7,7 @@ import { SuiSelectComponent } from './select.component';
 
 @NgModule({
   exports: [
-    SuiSelectComponent,
-    SuiSelectMenuDirective,
-    SuiSelectMenuItemDirective
+    SuiSelectComponent
   ],
   imports: [
     FormsModule,

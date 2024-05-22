@@ -35,9 +35,7 @@ import { ISelectOption } from './interfaces/ISelectOption';
           <ng-container *ngIf="option.flag">
             <i [className]="'flag ' + option.flag"></i>
           </ng-container>
-
           {{ option.text }}
-
           <i class="delete icon"
              (click)="removeSelection(option, $event)"></i>
         </a>
@@ -71,7 +69,6 @@ import { ISelectOption } from './interfaces/ISelectOption';
           <ng-container *ngIf="selectedOption.flag">
             <i [className]="'flag ' + selectedOption.flag"></i>
           </ng-container>
-
           {{ selectedOption.text }}
         </ng-container>
 
