@@ -1,5 +1,5 @@
-import {Directive, HostBinding, Input} from '@angular/core';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import { Directive, HostBinding, Input } from '@angular/core';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 
 export type SuiSelectMenuDirection = 'left' | 'right' | null;
 

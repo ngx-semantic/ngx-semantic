@@ -140,7 +140,7 @@ export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
   public selectedOptions: Array<ISelectOption> = [];
 
   private controlValueChangeFn: (value: any | Array<any>) => void = () => {
-  }
+  };
 
   @Input()
   set suiOptions(options: Array<ISelectOption>) {
@@ -158,7 +158,7 @@ export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
 
   @HostBinding('class')
   get classes(): string {
-    return [
+    return ClassUtils.combineToClass([
       'ui',
       ClassUtils.getPropClass(this.suiFluid, 'fluid'),
       ClassUtils.getPropClass(this.suiCompact, 'compact'),
@@ -173,7 +173,7 @@ export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
       ClassUtils.getPropClass(this.isOpen, 'active'),
       ClassUtils.getPropClass(this.isOpen, 'visible'),
       ClassUtils.getPropClass(this.suiError, 'error')
-    ].join(' ');
+    ]);
   }
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {

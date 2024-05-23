@@ -33,7 +33,7 @@ export type SuiPopupTrigger = 'hover' | 'click';
   exportAs: 'suiPopup'
 })
 export class SuiPopupDirective implements OnInit, OnDestroy {
-  @Input() public suiPopupPlacement: SuiPopupPlacement = 'top center';
+  @Input() public suiPopupPlacement: SuiPopupPlacement = 'top left';
   @Input() public suiPopupTrigger: SuiPopupTrigger = 'hover';
   @Input() public suiPopupWidth: SuiPopupWidth = null;
   @Input() public suiPopupSize: SuiSize = null;
@@ -42,6 +42,7 @@ export class SuiPopupDirective implements OnInit, OnDestroy {
   @Input() @InputBoolean() public suiPopupInverted = false;
   @Input() @InputBoolean() public suiPopupFluid = false;
   @Input() @InputBoolean() public suiPopupFlowing = false;
+  @Input() @InputBoolean() public suiPopupBasic = false;
 
   private delay = 200; // ms
   private _overlayRef?: OverlayRef;
@@ -143,6 +144,7 @@ export class SuiPopupDirective implements OnInit, OnDestroy {
       popup.suiInverted = this.suiPopupInverted;
       popup.suiFluid = this.suiPopupFluid;
       popup.suiFlowing = this.suiPopupFlowing;
+      popup.suiBasic = this.suiPopupBasic;
     }
   }
 

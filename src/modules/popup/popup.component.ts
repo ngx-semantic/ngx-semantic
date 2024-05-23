@@ -35,7 +35,7 @@ import { SuiPopupPlacement, SuiPopupWidth } from './popup.directive';
   styleUrls: [ './styles/popup.component.scss' ]
 })
 export class SuiPopupComponent {
-  @Input() public suiPlacement: SuiPopupPlacement = 'top center';
+  @Input() public suiPlacement: SuiPopupPlacement = null;
   @Input() public suiWidth: SuiPopupWidth = null;
   @Input() public suiSize: SuiSize = null;
   @Input() public suiTitle: string;
@@ -43,6 +43,7 @@ export class SuiPopupComponent {
   @Input() @InputBoolean() public suiInverted = false;
   @Input() @InputBoolean() public suiFluid = false;
   @Input() @InputBoolean() public suiFlowing = false;
+  @Input() @InputBoolean() public suiBasic = false;
 
   get classes(): string {
     return [
@@ -53,6 +54,7 @@ export class SuiPopupComponent {
       ClassUtils.getPropClass(this.suiFluid, 'fluid'),
       ClassUtils.getPropClass(this.suiFlowing, 'flowing'),
       'popup',
+      ClassUtils.getPropClass(this.suiBasic, 'basic'),
       this.suiPlacement,
       'transition',
       'visible'
