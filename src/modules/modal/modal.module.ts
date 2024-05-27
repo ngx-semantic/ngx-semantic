@@ -2,18 +2,20 @@
  * Created by bolorundurowb on 1/22/2021
  */
 
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {SuiIconModule} from 'ngx-semantic/elements/icon';
-import {SuiModalComponent} from './modal.component';
-import {SuiModalActionsDirective} from './modal-actions.directive';
-import {SuiModalContentDirective} from './modal-content.directive';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SuiIconModule } from 'ngx-semantic/elements/icon';
+import { SuiModalComponent } from './modal.component';
+import { SuiModalActionsDirective } from './modal-actions.directive';
+import { SuiModalContentDirective } from './modal-content.directive';
+import { SuiModalDescriptionDirective } from 'ngx-semantic/modules/modal/modal-description.directive';
 
 @NgModule({
   exports: [
     SuiModalComponent,
     SuiModalActionsDirective,
-    SuiModalContentDirective
+    SuiModalContentDirective,
+    SuiModalDescriptionDirective
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import {SuiModalContentDirective} from './modal-content.directive';
   declarations: [
     SuiModalComponent,
     SuiModalActionsDirective,
-    SuiModalContentDirective
+    SuiModalContentDirective,
+    SuiModalDescriptionDirective
   ]
 })
 export class SuiModalModule {
