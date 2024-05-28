@@ -8,7 +8,7 @@ import { SuiIconModule } from 'ngx-semantic/elements/icon';
 import { SuiModalComponent } from './modal.component';
 import { SuiModalActionsDirective } from './modal-actions.directive';
 import { SuiModalContentDirective } from './modal-content.directive';
-import { SuiModalDescriptionDirective } from 'ngx-semantic/modules/modal/modal-description.directive';
+import { SuiModalDescriptionDirective } from './modal-description.directive';
 
 @NgModule({
   exports: [
