@@ -11,7 +11,7 @@ import { SuiItemMetadataDirective } from './item-metadata.directive';
 import { SuiItemHeaderDirective } from './item-header.directive';
 import { SuiItemDescriptionDirective } from './item-description.directive';
 import { SuiItemExtraContentDirective } from './item-extra-content.directive';
-import { SuiItemImageDirective } from 'ngx-semantic/views/items/item-image.directive';
+import { SuiItemImageDirective } from './item-image.directive';
 
 @NgModule({
   exports: [
