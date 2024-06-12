@@ -7,6 +7,7 @@ export * from './item-header.directive';
 export * from './item-metadata.directive';
 export * from './item-extra-content.directive';
 export * from './item-description.directive';
+export * from './item-image.directive';
 export * from './item.directive';
 export * from './items.directive';
 export * from './items.module';
