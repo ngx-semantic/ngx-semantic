@@ -1,5 +1,4 @@
-import {Directive, HostBinding} from '@angular/core';
-import {BaseDirective} from 'ngx-semantic/core/base';
+import { Directive, HostBinding } from '@angular/core';
 
 @Directive({
   exportAs: 'suiItemExtra',

@@ -2,9 +2,9 @@
  * Created by bolor on 8/2/2020
  */
 
-import {Directive, ElementRef, HostBinding, Input} from '@angular/core';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {BaseDirective} from 'ngx-semantic/core/base';
+import { Directive, ElementRef, HostBinding, Input } from '@angular/core';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiItemsRelaxation = 'relaxed' | 'very relaxed' | null;
 
