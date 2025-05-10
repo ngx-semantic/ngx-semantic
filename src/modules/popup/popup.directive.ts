@@ -46,7 +46,7 @@ export class SuiPopupDirective implements OnInit, OnDestroy {
 
   private delay = 200; // ms
   private _overlayRef?: OverlayRef;
-  private _positionMap: { [type: string]: ConnectedPosition } = {
+  private _positionMap: Record<string, ConnectedPosition> = {
     topCenter: { originX: 'center', originY: 'top', overlayX: 'center', overlayY: 'bottom' },
     topLeft: { originX: 'start', originY: 'top', overlayX: 'start', overlayY: 'bottom' },
     topRight: { originX: 'end', originY: 'top', overlayX: 'end', overlayY: 'bottom' },
@@ -109,7 +109,7 @@ export class SuiPopupDirective implements OnInit, OnDestroy {
     }
   }
 
-  private getPositions(): Array<ConnectedPosition> {
+  private getPositions(): ConnectedPosition[] {
     if (this.suiPopupPlacement === 'top center') {
       return [ this._positionMap.topCenter ];
     } else if (this.suiPopupPlacement === 'top left') {

@@ -2,7 +2,7 @@
  * Created by bolor on 7/28/2020
  */
 
-import { Component, HostBinding, Input, TemplateRef } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   exportAs: 'suiFeedEvent',
@@ -14,7 +14,7 @@ import { Component, HostBinding, Input, TemplateRef } from '@angular/core';
           <i class="{{suiLabelIcon}} icon"></i>
         </ng-container>
         <ng-container *ngIf="suiLabelImageUrl">
-          <img [src]="suiLabelImageUrl"/>
+          <img [src]="suiLabelImageUrl" alt="Label image" />
         </ng-container>
       </div>
     </ng-container>

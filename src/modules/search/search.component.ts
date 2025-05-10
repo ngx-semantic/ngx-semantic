@@ -83,8 +83,8 @@ export type SuiSearchAlignment = 'right' | null;
 })
 export class SuiSearchComponent {
   @Output() public suiResultSelected = new EventEmitter<ISearchOption>();
-  @Input() public suiOptionsLookup: (query: string) => Promise<Array<ISearchOption>>;
-  @Input() public suiOptions: Array<ISearchOption> = [];
+  @Input() public suiOptionsLookup: (query: string) => Promise<ISearchOption[]>;
+  @Input() public suiOptions: ISearchOption[] = [];
   @Input() public suiAlignment: SuiSearchAlignment = null;
   @Input() public suiPlaceholder: string = null;
   @Input() public suiSearchDelay = 200;
@@ -99,7 +99,7 @@ export class SuiSearchComponent {
   private isFocused = false;
   public isOpen: boolean;
   public searchTerm: string;
-  public filteredOptions: Array<ISearchOption> = [];
+  public filteredOptions: ISearchOption[] = [];
   public selectedOption: ISearchOption;
 
   get classes(): string {

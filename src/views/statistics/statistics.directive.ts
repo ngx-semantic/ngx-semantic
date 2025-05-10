@@ -2,11 +2,10 @@
  * Created by bolor on 7/16/2020
  */
 
-import { Directive, ElementRef, HostBinding, Input } from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiWidth } from 'ngx-semantic/core/enums';
 import { BaseDirective } from 'ngx-semantic/core/base';
-import { element } from 'protractor';
 
 @Directive({
   selector: '[sui-statistics]',

@@ -2,7 +2,7 @@
  * Created by bolor on 7/16/2020
  */
 
-import { Directive, ElementRef, Host, HostBinding, Input, Optional } from '@angular/core';
+import { Directive, ElementRef, Host, Input, Optional } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiColour, SuiSize } from 'ngx-semantic/core/enums';
 import { SuiStatisticsDirective } from './statistics.directive';
