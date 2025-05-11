@@ -9,9 +9,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  ci:
+  build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
         with:
@@ -27,10 +26,32 @@ jobs:
         run: yarn global add @angular/cli@latest
       - name: Install Dependencies
         run: yarn install
+      - name: Build
+        run: yarn run build:prod
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: ./dist
+          retention-days: 1
+
+  tag:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
       - name: Tag Version
+        id: tag-version
         run: |
           cd src
           NEW_VERSION=$(npm version patch)
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
           git config --local user.email "indexz3ro@aol.com"
           git config --local user.name "CI"
           git commit -a -m "ci: version release"
@@ -41,12 +62,38 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
           tags: true
-      - name: Build
-        run: yarn run build:prod
+
+  publish:
+    needs: tag
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifacts
+          path: ./dist
       - name: Publish Lib
         run: npm publish ./dist --tag latest --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  release:
+    needs: publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
       - name: Create Release
         uses: actions/github-script@v6
         with:

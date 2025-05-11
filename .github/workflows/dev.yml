@@ -9,9 +9,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  ci:
+  build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
         with:
@@ -27,10 +26,32 @@ jobs:
         run: yarn global add @angular/cli@latest
       - name: Install Dependencies
         run: yarn install
+      - name: Build
+        run: yarn run build:prod
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: ./dist
+          retention-days: 1
+
+  tag:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
       - name: Tag Version
+        id: tag-version
         run: |
           cd src
           NEW_VERSION=$(npm version prerelease --preid=beta)
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
           git config --local user.email "indexz3ro@aol.com"
           git config --local user.name "CI"
           git commit -a -m "ci: version pre-release"
@@ -41,35 +62,41 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
           tags: true
-      - name: Build
-        run: yarn run build:prod
+
+  publish:
+    needs: tag
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifacts
+          path: ./dist
       - name: Publish Lib
         run: npm publish ./dist --tag beta --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  release:
+    needs: publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
       - name: Create Release
         uses: ncipollo/release-action@v1.12.0
         with:
           prerelease: true
           makeLatest: "latest"
           generateReleaseNotes: true
-#        uses: actions/github-script@v6
-#        with:
-#          github-token: ${{ secrets.GITHUB_TOKEN }}
-#          script: |
-#            try {
-#              const tags_url = context.payload.repository.tags_url + "?per_page=1"
-#              const result = await github.request(tags_url)
-#              const current_tag = result.data[0].name
-#              await github.rest.repos.createRelease({
-#                draft: false,
-#                generate_release_notes: true,
-#                name: current_tag,
-#                owner: context.repo.owner,
-#                prerelease: true,
-#                repo: context.repo.repo,
-#                tag_name: current_tag,
-#              });
-#            } catch (error) {
-#              core.setFailed(error.message);
-#            }
