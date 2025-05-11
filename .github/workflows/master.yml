@@ -11,10 +11,22 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      src_changed: ${{ steps.check_changes.outputs.src_changed }}
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - name: Check for changes in src directory
+        id: check_changes
+        run: |
+          git fetch origin
+          CHANGED_FILES=$(git diff --name-only origin/master...HEAD)
+          if echo "$CHANGED_FILES" | grep -q "^src/"; then
+            echo "src_changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "src_changed=false" >> $GITHUB_OUTPUT
+          fi
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
@@ -37,6 +49,7 @@ jobs:
 
   tag:
     needs: build
+    if: needs.build.outputs.src_changed == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -65,6 +78,7 @@ jobs:
 
   publish:
     needs: tag
+    if: needs.build.outputs.src_changed == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -88,6 +102,7 @@ jobs:
 
   release:
     needs: publish
+    if: needs.build.outputs.src_changed == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
