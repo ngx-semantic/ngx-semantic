@@ -19,6 +19,7 @@ export class SuiFormDirective extends BaseDirective {
   @Input() @InputBoolean() public suiLoading = false;
   @Input() @InputBoolean() public suiEqualWidth = false;
   @Input() @InputBoolean() public suiInverted = false;
+  @Input() @InputBoolean() public suiReply = false;
 
   constructor(element: ElementRef) {
     super(element);
@@ -30,6 +31,7 @@ export class SuiFormDirective extends BaseDirective {
       ClassUtils.getPropClass(this.suiLoading, 'loading'),
       ClassUtils.getPropClass(this.suiEqualWidth, 'equal width'),
       ClassUtils.getPropClass(this.suiInverted, 'inverted'),
+      ClassUtils.getPropClass(this.suiReply, 'reply'),
       this.suiSize,
       'form',
       this.suiState

@@ -43,6 +43,7 @@ export class SuiButtonDirective extends BaseDirective {
   @Input() @InputBoolean() public suiActive = false;
   @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiLoading = false;
+  @Input() @InputBoolean() public suiSubmit = false;
 
   constructor(element: ElementRef) {
     super(element);
@@ -63,6 +64,7 @@ export class SuiButtonDirective extends BaseDirective {
       ClassUtils.getPropClass(this.suiCircular, 'circular'),
       this.suiAttachedPosition ? this.suiAttachedPosition : '',
       ClassUtils.getPropClass(this.suiAttached, 'attached'),
+      ClassUtils.getPropClass(this.suiSubmit, 'submit'),
       this.suiSize,
       this.suiColour,
       this.suiSocial,
