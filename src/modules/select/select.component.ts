@@ -17,6 +17,7 @@ import { SuiSelectMenuDirective } from './select-menu.directive';
 import { ISelectOption } from './interfaces/ISelectOption';
 
 @Component({
+  standalone: false,
   selector: 'sui-select',
   encapsulation: ViewEncapsulation.None,
   template: `
@@ -118,10 +119,10 @@ import { ISelectOption } from './interfaces/ISelectOption';
   } ]
 })
 export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
-  @ViewChild(SuiSelectMenuDirective) public optionsMenu: SuiSelectMenuDirective;
+  @ViewChild(SuiSelectMenuDirective) public optionsMenu!: SuiSelectMenuDirective;
 
   @Output() public suiSelectionChanged = new EventEmitter<any | any[]>();
-  @Input() public suiPlaceholder: string = null;
+  @Input() public suiPlaceholder: string | null = null;
   @Input() @InputBoolean() public suiSearch = false;
   @Input() @InputBoolean() public suiFluid = false;
   @Input() @InputBoolean() public suiInline = false;
@@ -130,16 +131,16 @@ export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
   @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiScrolling = false;
   @Input() @InputBoolean() public suiCompact = false;
-  @Input() @InputBoolean() public name: string = null;
+  @Input() @InputBoolean() public name: string | null = null;
   @Input() @InputBoolean() public suiMultiple = false;
 
   private isOpen = false;
   private isSearching = false;
   private selectedValues: any[] = [];
-  public searchTerm: string;
+  public searchTerm = '';
   private allOptions: ISelectOption[] = [];
   public filteredOptions: ISelectOption[] = [];
-  public selectedOption: ISelectOption;
+  public selectedOption: ISelectOption | undefined = undefined;
   public selectedOptions: ISelectOption[] = [];
 
   private controlValueChangeFn: (value: any | any[]) => void = () => {

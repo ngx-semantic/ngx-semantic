@@ -20,6 +20,7 @@ export type SuiAdType =
   | null;
 
 @Directive({
+  standalone: false,
   selector: '[sui-advertisement]',
   exportAs: 'suiAdvertisement'
 })

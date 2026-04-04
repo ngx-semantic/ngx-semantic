@@ -17,6 +17,7 @@ export type SuiModalSize = 'mini' | 'tiny' | 'small' | 'large' | null;
 export type SuiModalScrollability = 'full' | 'medium' | 'none';
 
 @Component({
+  standalone: false,
   selector: 'sui-modal',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -50,8 +51,8 @@ export type SuiModalScrollability = 'full' | 'medium' | 'none';
 export class SuiModalComponent implements OnDestroy {
   @ViewChild('contentTemplate', {static: true}) public contentTemplate!: TemplateRef<any>;
 
-  @Input() public suiHeaderText: string;
-  @Input() public suiHeaderIcon: string;
+  @Input() public suiHeaderText: string | null = null;
+  @Input() public suiHeaderIcon: string | null = null;
   @Input() public suiSize: SuiModalSize = null;
   @Input() public suiScroll: SuiModalScrollability = 'none';
   @Input() @InputBoolean() public suiBasic = false;
@@ -64,8 +65,8 @@ export class SuiModalComponent implements OnDestroy {
 
   private readonly uniqueId: number;
   private _visible = false;
-  private _modalDomRef: HTMLElement;
-  private clickListener: () => void;
+  private _modalDomRef: HTMLElement | null = null;
+  private clickListener: (() => void) | null = null;
 
   @Input()
   get visible(): boolean {
@@ -110,7 +111,7 @@ export class SuiModalComponent implements OnDestroy {
     }
   }
 
-  constructor(@Inject(DOCUMENT) private document, private renderer: Renderer2,
+  constructor(@Inject(DOCUMENT) private document: Document, private renderer: Renderer2,
               private viewRef: ViewContainerRef) {
     this.uniqueId = Math.ceil(Math.random() * 100000000);
   }
@@ -130,6 +131,10 @@ export class SuiModalComponent implements OnDestroy {
   showModal(): void {
     if (!this.isModalInDom()) {
       this.generateDomElement();
+    }
+
+    if (!this._modalDomRef) {
+      return;
     }
 
     // insert necessary classes to show the modal
@@ -192,8 +197,8 @@ export class SuiModalComponent implements OnDestroy {
     return !!this.getModalFromDom();
   }
 
-  private getModalFromDom(): HTMLElement {
-    return this.document.getElementById(this.uniqueId);
+  private getModalFromDom(): HTMLElement | null {
+    return this.document.getElementById(String(this.uniqueId));
   }
 
   private onClick(): void {

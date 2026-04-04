@@ -29,6 +29,7 @@ export type SuiPopupWidth = 'wide' | 'very wide' | null;
 export type SuiPopupTrigger = 'hover' | 'click';
 
 @Directive({
+  standalone: false,
   selector: '[sui-popup]',
   exportAs: 'suiPopup'
 })
@@ -37,8 +38,8 @@ export class SuiPopupDirective implements OnInit, OnDestroy {
   @Input() public suiPopupTrigger: SuiPopupTrigger = 'hover';
   @Input() public suiPopupWidth: SuiPopupWidth = null;
   @Input() public suiPopupSize: SuiSize = null;
-  @Input() public suiPopupTitle: string;
-  @Input() public suiPopupContent: string | TemplateRef<any>;
+  @Input() public suiPopupTitle: string | null = null;
+  @Input() public suiPopupContent: TemplateRef<any> | null = null;
   @Input() @InputBoolean() public suiPopupInverted = false;
   @Input() @InputBoolean() public suiPopupFluid = false;
   @Input() @InputBoolean() public suiPopupFlowing = false;
@@ -126,15 +127,21 @@ export class SuiPopupDirective implements OnInit, OnDestroy {
       return [ this._positionMap.bottomCenter ];
     } else if (this.suiPopupPlacement === 'bottom right') {
       return [ this._positionMap.bottomRight ];
+    } else {
+      return [];
     }
   }
 
   private initializePopup(): void {
     if (!this._overlayRef?.hasAttached()) {
       const portal = new ComponentPortal(SuiPopupComponent);
-      const popupRef: ComponentRef<SuiPopupComponent> = this._overlayRef?.attach(portal);
+      const popupRef: ComponentRef<SuiPopupComponent> | undefined = this._overlayRef?.attach(portal);
 
       // pass component info
+      if (!popupRef) {
+        return;
+      }
+
       const popup = popupRef.instance;
       popup.suiPlacement = this.suiPopupPlacement;
       popup.suiWidth = this.suiPopupWidth;

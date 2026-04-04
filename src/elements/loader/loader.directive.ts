@@ -9,6 +9,7 @@ import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 export type SuiLoaderInlineAlignment = 'centered' | 'normal' | null;
 
 @Directive({
+  standalone: false,
   selector: '[sui-loader]',
   exportAs: 'suiLoader'
 })

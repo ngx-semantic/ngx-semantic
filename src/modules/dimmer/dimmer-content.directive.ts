@@ -5,6 +5,7 @@
 import {Directive} from '@angular/core';
 
 @Directive({
+  standalone: false,
   selector: '[suiDimmerContent]',
   exportAs: 'suiDimmerContent'
 })

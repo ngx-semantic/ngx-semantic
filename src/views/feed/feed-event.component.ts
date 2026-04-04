@@ -5,6 +5,7 @@
 import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
+  standalone: false,
   exportAs: 'suiFeedEvent',
   selector: '[suiFeedEvent]',
   template: `
@@ -25,8 +26,8 @@ import { Component, HostBinding, Input } from '@angular/core';
   `
 })
 export class SuiFeedEventComponent {
-  @Input() public suiLabelIcon?: string = null;
-  @Input() public suiLabelImageUrl?: string = null;
+  @Input() public suiLabelIcon: string | null = null;
+  @Input() public suiLabelImageUrl: string | null = null;
 
   @HostBinding('class')
   get classes(): string {

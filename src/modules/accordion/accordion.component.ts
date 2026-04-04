@@ -15,6 +15,7 @@ import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiAccordionPanelComponent } from './accordion-panel.component';
 
 @Component({
+  standalone: false,
   selector: 'sui-accordion',
   encapsulation: ViewEncapsulation.None,
   template: `
@@ -24,7 +25,7 @@ import { SuiAccordionPanelComponent } from './accordion-panel.component';
   `
 })
 export class SuiAccordionComponent implements AfterContentInit, OnDestroy {
-  @ContentChildren(SuiAccordionPanelComponent) private panels: QueryList<SuiAccordionPanelComponent>;
+  @ContentChildren(SuiAccordionPanelComponent) private panels!: QueryList<SuiAccordionPanelComponent>;
 
   @Input() @InputBoolean() public suiStyled = false;
   @Input() @InputBoolean() public suiFluid = false;

@@ -10,6 +10,7 @@ export type SuiColumnFloat = 'left floated' | 'right floated' | null;
 export type SuiColumnAlignment = 'left aligned' | 'middle aligned' | 'right aligned' | null;
 
 @Directive({
+  standalone: false,
   exportAs: 'suiGridColumn',
   selector: '[suiGridColumn]'
 })
@@ -18,7 +19,7 @@ export class SuiGridColumnDirective extends BaseDirective{
   @Input() public suiFloated: SuiColumnFloat = null;
   @Input() public suiColour: SuiColour = null;
   @Input() public suiAlignment: SuiColumnAlignment = null;
-  @Input() public suiDeviceVisibility: string = null;
+  @Input() public suiDeviceVisibility: string | null = null;
 
   constructor(element: ElementRef) {
     super(element);

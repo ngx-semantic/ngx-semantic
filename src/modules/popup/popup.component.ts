@@ -10,6 +10,7 @@ import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiPopupPlacement, SuiPopupWidth } from './popup.directive';
 
 @Component({
+  standalone: false,
   selector: 'sui-popup',
   encapsulation: ViewEncapsulation.None,
   template: `
@@ -35,11 +36,11 @@ import { SuiPopupPlacement, SuiPopupWidth } from './popup.directive';
   styleUrls: [ './styles/popup.component.scss' ]
 })
 export class SuiPopupComponent {
-  @Input() public suiPlacement: SuiPopupPlacement = null;
-  @Input() public suiWidth: SuiPopupWidth = null;
-  @Input() public suiSize: SuiSize = null;
-  @Input() public suiTitle: string;
-  @Input() public suiContent: string | TemplateRef<any>;
+  @Input() public suiPlacement: SuiPopupPlacement | null = null;
+  @Input() public suiWidth: SuiPopupWidth | null = null;
+  @Input() public suiSize: SuiSize | null = null;
+  @Input() public suiTitle: string | null = null;
+  @Input() public suiContent: TemplateRef<any> | null = null;
   @Input() @InputBoolean() public suiInverted = false;
   @Input() @InputBoolean() public suiFluid = false;
   @Input() @InputBoolean() public suiFlowing = false;

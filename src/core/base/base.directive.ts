@@ -4,7 +4,7 @@
 import { Directive, ElementRef, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ClassUtils } from 'ngx-semantic/core/util';
 
-@Directive()
+@Directive({ standalone: false })
 export abstract class BaseDirective implements OnInit, OnChanges {
   abstract classes: string;
 

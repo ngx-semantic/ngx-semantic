@@ -13,6 +13,7 @@ export type SuiTableCompactness = 'compact' | 'very compact' | null;
 export type SuiTableSize = 'small' | 'large' | null;
 
 @Directive({
+  standalone: false,
   selector: '[sui-table]',
   exportAs: 'suiTable'
 })

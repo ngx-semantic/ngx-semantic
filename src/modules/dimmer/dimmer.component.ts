@@ -11,6 +11,7 @@ import {ClassUtils} from 'ngx-semantic/core/util';
 import {SuiDimmerContentAlignment} from './dimmer.directive';
 
 @Component({
+  standalone: false,
   selector: 'sui-dimmer',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,15 +32,15 @@ export class SuiDimmerComponent implements OnInit {
   @Input() public suiSimple = false;
   @Input() public suiFullPage = false;
 
-  private _content;
+  private _content: TemplateRef<any> | null = null;
   public classes = '';
 
   @Input()
-  get suiContent(): TemplateRef<any> {
+  get suiContent(): TemplateRef<any> | null {
     return this._content;
   }
 
-  set suiContent(content: TemplateRef<any>) {
+  set suiContent(content: TemplateRef<any> | null) {
     this._content = content;
   }
 

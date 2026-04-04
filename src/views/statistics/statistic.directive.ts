@@ -11,12 +11,13 @@ import { BaseDirective } from 'ngx-semantic/core/base';
 export type SuiFloat = 'right' | 'left';
 
 @Directive({
+  standalone: false,
   selector: '[sui-statistic]',
   exportAs: 'suiStatistic'
 })
 export class SuiStatisticDirective extends BaseDirective {
   @Input() public suiColour: SuiColour = null;
-  @Input() public suiFloated: SuiFloat = null;
+  @Input() public suiFloated: SuiFloat | null = null;
   @Input() public suiSize: SuiSize = null;
   @Input() @InputBoolean() public suiHorizontal = false;
   @Input() @InputBoolean() public suiInverted = false;

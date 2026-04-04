@@ -6,6 +6,7 @@ import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angula
 import {InputBoolean} from 'ngx-semantic/core/util';
 
 @Component({
+  standalone: false,
   selector: 'sui-accordion-panel',
   encapsulation: ViewEncapsulation.None,
   template: `
@@ -27,7 +28,7 @@ export class SuiAccordionPanelComponent {
   @Input() @InputBoolean() public disabled = false;
   @Output() public isOpenChange = new EventEmitter<boolean>();
 
-  private _isOpen;
+  private _isOpen = false;
 
   @Input()
   @InputBoolean()

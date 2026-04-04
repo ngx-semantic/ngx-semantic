@@ -7,6 +7,7 @@ import {Directive, HostBinding, Input} from '@angular/core';
 export type SuiRevealContentVisibility = 'visible' | 'hidden';
 
 @Directive({
+  standalone: false,
   exportAs: 'suiRevealContent',
   selector: '[suiRevealContent]'
 })

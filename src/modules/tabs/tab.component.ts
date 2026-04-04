@@ -7,6 +7,7 @@ import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {SuiColour} from 'ngx-semantic/core/enums';
 
 @Component({
+  standalone: false,
   selector: 'sui-tab',
   exportAs: 'suiTab',
   preserveWhitespaces: false,
@@ -18,10 +19,10 @@ import {SuiColour} from 'ngx-semantic/core/enums';
   `
 })
 export class SuiTabComponent {
-  @Input() public suiContent: TemplateRef<any>;
-  @Input() public suiTitle: string = null;
-  @Input() public suiIcon: string = null;
-  @Input() public suiLabel: string | number = null;
+  @Input() public suiContent!: TemplateRef<any>;
+  @Input() public suiTitle: string | null = null;
+  @Input() public suiIcon: string | null = null;
+  @Input() public suiLabel: string | number | null = null;
   @Input() @InputBoolean() public suiLoading = false;
   @Input() @InputBoolean() public disabled = false;
   @Input() public suiLabelColour: SuiColour = null;

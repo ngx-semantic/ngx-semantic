@@ -8,6 +8,7 @@ export type SuiIconRotationDirection = 'clockwise' | 'counterclockwise' | null;
 export type SuiIconCornerPosition = 'top left' | 'top right' | 'bottom left' | 'bottom right' | null;
 
 @Directive({
+  standalone: false,
   selector: 'i[sui-icon]',
   exportAs: 'suiIcon'
 })
@@ -17,7 +18,7 @@ export class SuiIconDirective extends BaseDirective {
   @Input() public suiRotation: SuiIconRotationDirection = null;
   @Input() public suiColour: SuiColour = null;
   @Input() public suiCorner: SuiIconCornerPosition = null;
-  @Input() public suiIconType: string = null;
+  @Input() public suiIconType: string | null = null;
   @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiLoading = false;
   @Input() @InputBoolean() public suiFitted = false;

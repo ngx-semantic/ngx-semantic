@@ -7,6 +7,7 @@ import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
+  standalone: false,
   selector: '[suiSubMenu]',
   exportAs: 'suiSubMenu'
 })
