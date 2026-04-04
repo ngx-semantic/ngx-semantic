@@ -5,11 +5,12 @@
   <h1 align=center>NgxSemantic</h1>
 </p>
 
+
 <p align="center">
+  <a href="https://github.com/ngx-semantic/ngx-semantic/actions/workflows/build-and-test.yml"><img src="https://github.com/ngx-semantic/ngx-semantic/actions/workflows/build-and-test.yml/badge.svg" alt="Build and Test"></a>
   <a href="https://www.npmjs.com/package/ngx-semantic"><img alt="npm" src="https://img.shields.io/npm/v/ngx-semantic"></a>
-  <a href="https://codecov.io/gh/ngx-semantic/ngx-semantic"><img src="https://codecov.io/gh/ngx-semantic/ngx-semantic/branch/master/graph/badge.svg" alt="codecov"/></a>
+  <a href="https://codecov.io/gh/ngx-semantic/ngx-semantic"><img src="https://codecov.io/gh/ngx-semantic/ngx-semantic/branch/master/graph/badge.svg?token=P93GI0LR8F" alt="codecov"/></a>
   <a href="https://github.com/acekyd/made-in-nigeria"><img src="https://img.shields.io/badge/made%20in-nigeria-008751.svg?style=flat-square" alt="Made in Nigeria"/></a><br />
-  <a href="https://ci.appveyor.com/project/BolorunduroWinnerTimothy/ngx-semantic/branch/master"><img src="https://ci.appveyor.com/api/projects/status/gd04694avya0aa2f/branch/master?svg=true" alt="CI Build"/></a>
 </p>
 
 <h4 align="center">
