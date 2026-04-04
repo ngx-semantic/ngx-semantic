@@ -8,7 +8,7 @@ import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 export type SuiContainerAlignment = 'left aligned' | 'right aligned' | 'center aligned' | 'justified' | null;
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: '[sui-container]',
   exportAs: 'suiContainer'
 })

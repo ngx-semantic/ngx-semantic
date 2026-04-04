@@ -9,7 +9,7 @@ import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 export type SuiRailCloseness = 'close' | 'very close' | null;
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: 'div[sui-rail]',
   exportAs: 'suiRail'
 })

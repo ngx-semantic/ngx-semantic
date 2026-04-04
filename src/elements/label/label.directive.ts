@@ -10,7 +10,7 @@ import {BaseDirective} from 'ngx-semantic/core/base';
 export type SuiLabelPointing = 'above' | 'below' | 'left' | 'right' | null;
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: '[sui-label]',
   exportAs: 'suiLabel'
 })

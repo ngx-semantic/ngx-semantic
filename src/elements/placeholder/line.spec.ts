@@ -4,7 +4,7 @@
 
 import {CommonModule} from '@angular/common';
 import {Component, Input} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {SuiPlaceholderLineDirective} from './placeholder-line.directive';
 
@@ -15,34 +15,41 @@ describe('SuiPlaceholderLineComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonModule],
-      declarations: [TestPlaceholderLineComponent, SuiPlaceholderLineDirective]
+      imports: [CommonModule, TestPlaceholderLineComponent, SuiPlaceholderLineDirective],
     }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TestPlaceholderLineComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
     lineElement = fixture.debugElement.query(By.directive(SuiPlaceholderLineDirective)).nativeElement;
   });
 
   it('should create component', () => {
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 
   it('should apply class name', () => {
+    fixture.componentRef.setInput('suiLength', null);
+    fixture.detectChanges();
     expect(lineElement.className).toBe('line');
   });
 
   it('should apply class name by length', () => {
-    component.suiLength = 'medium';
+    fixture.componentRef.setInput('suiLength', 'medium');
     fixture.detectChanges();
     expect(lineElement.className).toContain('medium');
-    component.suiLength = 'full';
+  });
+
+  it('should apply class name by full length', () => {
+    fixture.componentRef.setInput('suiLength', 'full');
     fixture.detectChanges();
     expect(lineElement.className).toContain('full');
-    component.suiLength = 'very long';
+  });
+
+  it('should apply class name by very long length', () => {
+    fixture.componentRef.setInput('suiLength', 'very long');
     fixture.detectChanges();
     expect(lineElement.className).toContain('very');
     expect(lineElement.className).toContain('long');
@@ -50,6 +57,8 @@ describe('SuiPlaceholderLineComponent', () => {
 });
 
 @Component({
+  standalone: true,
+  imports: [SuiPlaceholderLineDirective, CommonModule],
   template: `
     <div
       suiPlaceholderLine
@@ -58,6 +67,6 @@ describe('SuiPlaceholderLineComponent', () => {
   `
 })
 export class TestPlaceholderLineComponent {
-  @Input() public suiLength = null;
+  @Input() public suiLength: any = 'initial';
 }
 

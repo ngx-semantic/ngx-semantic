@@ -7,7 +7,7 @@ export type SuiHeaderAttachment = 'attached' | 'top attached' | 'bottom attached
 export type SuiHeaderFloating = 'left floated' | 'right floated' | null;
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: '[sui-header]',
   exportAs: 'suiHeader'
 })

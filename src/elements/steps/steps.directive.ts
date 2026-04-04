@@ -10,7 +10,7 @@ import {BaseDirective} from 'ngx-semantic/core/base';
 export type SuiStepsAttachment = 'top attached' | 'bottom attached' | null;
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: '[sui-steps]',
   exportAs: 'suiSteps'
 })

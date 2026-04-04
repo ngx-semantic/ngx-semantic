@@ -5,7 +5,7 @@
 import {Directive, HostBinding} from '@angular/core';
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: '[suiSubHeader]',
   exportAs: 'suiSubHeader'
 })

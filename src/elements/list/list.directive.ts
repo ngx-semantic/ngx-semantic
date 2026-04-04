@@ -9,7 +9,7 @@ import {InputBoolean} from 'ngx-semantic/core/util';
 export type SuiListRelaxation = 'relaxed' | 'very relaxed' | null;
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: '[sui-list]',
   exportAs: 'suiList'
 })

@@ -1,4 +1,4 @@
-// import {fakeAsync, ComponentFixture, TestBed} from '@angular/core/testing';
+// import {ComponentFixture, TestBed} from '@angular/core/testing';
 // import {Component} from '@angular/core';
 // import {SuiFlagDirective} from './flag.directive';
 // import {By} from '@angular/platform-browser';
@@ -8,12 +8,12 @@
 //   let fixture: ComponentFixture<TestFlagComponent>;
 //   let flagElement: any;
 //
-//   beforeEach(fakeAsync(() => {
-//     TestBed.configureTestingModule({
-//         declarations: [TestFlagComponent, SuiFlagDirective]
+//   beforeEach(async () => {
+//     await TestBed.configureTestingModule({
+//         imports: [TestFlagComponent, SuiFlagDirective]
 //       })
 //       .compileComponents();
-//   }));
+//   });
 //
 //   beforeEach(() => {
 //     fixture = TestBed.createComponent(TestFlagComponent);
@@ -27,11 +27,13 @@
 //   });
 //
 //   it('should apply class name', () => {
-//     expect(flagElement.className).toBe('flag myanmar');
+//     expect(flagElement.className).toBe('myanmar flag');
 //   });
 // });
 //
 // @Component({
+//   standalone: true,
+//   imports: [SuiFlagDirective],
 //   template: `
 //     <i
 //       sui-flag

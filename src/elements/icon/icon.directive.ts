@@ -8,7 +8,7 @@ export type SuiIconRotationDirection = 'clockwise' | 'counterclockwise' | null;
 export type SuiIconCornerPosition = 'top left' | 'top right' | 'bottom left' | 'bottom right' | null;
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: 'i[sui-icon]',
   exportAs: 'suiIcon'
 })

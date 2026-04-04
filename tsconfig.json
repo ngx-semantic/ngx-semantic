@@ -17,8 +17,10 @@
     "importHelpers": true,
     "paths": {
       "ngx-semantic": [
-        "dist/ngx-semantic/ngx-semantic",
-        "dist/ngx-semantic"
+        "./src/ngx-semantic.module.ts"
+      ],
+      "ngx-semantic/*": [
+        "./src/*"
       ]
     },
     "target": "ES2022",
