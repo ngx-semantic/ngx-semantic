@@ -4,10 +4,6 @@ on:
   push:
     branches: [dev, master]
 
-concurrency:
-  group: ${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -120,10 +116,24 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{ github.ref_name }}
+      - name: Prerelease from version tag
+        id: version_meta
+        env:
+          TAG: ${{ needs.tag.outputs.new_version }}
+        run: |
+          V="${TAG#v}"
+          L=$(printf '%s' "$V" | tr '[:upper:]' '[:lower:]')
+          PRE=false
+          if echo "$L" | grep -qE -- '-alpha([.-]|$)|-beta([.-]|$)'; then
+            PRE=true
+          elif echo "$V" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+            PRE=true
+          fi
+          echo "prerelease=$PRE" >> $GITHUB_OUTPUT
       - name: Create Release
         uses: ncipollo/release-action@v1.14.0
         with:
-          prerelease: ${{ github.ref_name == 'dev' }}
           tag: ${{ needs.tag.outputs.new_version }}
-          makeLatest: ${{ github.ref_name == 'master' && 'true' || 'false' }}
+          prerelease: ${{ steps.version_meta.outputs.prerelease == 'true' }}
+          makeLatest: ${{ steps.version_meta.outputs.prerelease != 'true' }}
           generateReleaseNotes: true
