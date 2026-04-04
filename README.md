@@ -38,7 +38,7 @@ See the [Documentation](https://ngx-semantic.github.io/) for installation instru
 
 ## Dependencies
 
-* [Angular](https://angular.io) (>=18.0.0)
+* [Angular](https://angular.io) (>=21.0.0)
 * [Semantic UI CSS](https://semantic-ui.com/) (>=2.4.1) (jQuery is **not** required)
 
 ## Component Support
