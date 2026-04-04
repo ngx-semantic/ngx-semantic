@@ -7,8 +7,7 @@ import {SuiFlagDirective} from './flag.directive';
 import {CommonModule} from '@angular/common';
 
 @NgModule({
-  declarations: [SuiFlagDirective],
-  imports: [CommonModule],
+  imports: [CommonModule, SuiFlagDirective],
   exports: [SuiFlagDirective]
 })
 export class SuiFlagModule {

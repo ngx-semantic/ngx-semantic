@@ -13,14 +13,14 @@ import {SuiStepDescriptionDirective} from './step-description.directive';
 
 @NgModule({
   declarations: [
-    SuiStepDirective,
-    SuiStepsDirective,
     SuiStepTitleDirective,
-    SuiStepContentDirective,
     SuiStepDescriptionDirective
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SuiStepDirective,
+    SuiStepsDirective,
+    SuiStepContentDirective
   ],
   exports: [
     SuiStepDirective,

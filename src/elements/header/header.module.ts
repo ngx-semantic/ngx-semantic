@@ -8,8 +8,7 @@ import {SuiHeaderDirective} from './header.directive';
 import {SuiSubHeaderDirective} from './sub-header.directive';
 
 @NgModule({
-  declarations: [SuiHeaderDirective, SuiSubHeaderDirective],
-  imports: [CommonModule],
+  imports: [CommonModule, SuiHeaderDirective, SuiSubHeaderDirective],
   exports: [SuiHeaderDirective, SuiSubHeaderDirective]
 })
 export class SuiHeaderModule {

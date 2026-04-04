@@ -8,8 +8,7 @@ import {SuiImageDirective} from './image.directive';
 import {SuiImagesDirective} from './images.directive';
 
 @NgModule({
-  declarations: [SuiImageDirective, SuiImagesDirective],
-  imports: [CommonModule],
+  imports: [CommonModule, SuiImageDirective, SuiImagesDirective],
   exports: [SuiImageDirective, SuiImagesDirective]
 })
 export class SuiImageModule {

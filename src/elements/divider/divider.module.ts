@@ -7,8 +7,7 @@ import {SuiDividerDirective} from './divider.directive';
 import {CommonModule} from '@angular/common';
 
 @NgModule({
-  declarations: [SuiDividerDirective],
-  imports: [CommonModule],
+  imports: [CommonModule, SuiDividerDirective],
   exports: [SuiDividerDirective]
 })
 export class SuiDividerModule {

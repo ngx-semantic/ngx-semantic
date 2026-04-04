@@ -7,11 +7,9 @@ import {CommonModule} from '@angular/common';
 import {SuiRailDirective} from './rail.directive';
 
 @NgModule({
-  declarations: [
-    SuiRailDirective
-  ],
   imports: [
-    CommonModule
+    CommonModule,
+    SuiRailDirective
   ],
   exports: [
     SuiRailDirective

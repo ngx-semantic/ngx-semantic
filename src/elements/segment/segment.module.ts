@@ -9,12 +9,12 @@ import {SuiSegmentsDirective} from './segments.directive';
 import {SuiSegmentInlineDirective} from './segment-inline.directive';
 
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
     SuiSegmentDirective,
     SuiSegmentsDirective,
     SuiSegmentInlineDirective
   ],
-  imports: [CommonModule],
   exports: [
     SuiSegmentDirective,
     SuiSegmentsDirective,

@@ -8,11 +8,11 @@ import {SuiListItemDirective} from './list-item.directive';
 import {SuiListDirective} from './list.directive';
 
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
     SuiListDirective,
     SuiListItemDirective
   ],
-  imports: [CommonModule],
   exports: [
     SuiListDirective,
     SuiListItemDirective

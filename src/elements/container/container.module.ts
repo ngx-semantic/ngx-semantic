@@ -7,11 +7,9 @@ import {NgModule} from '@angular/core';
 import {SuiContainerDirective} from './container.directive';
 
 @NgModule({
-  declarations: [
-    SuiContainerDirective
-  ],
   imports: [
-    CommonModule
+    CommonModule,
+    SuiContainerDirective
   ],
   exports: [
     SuiContainerDirective

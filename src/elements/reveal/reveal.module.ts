@@ -8,12 +8,10 @@ import {SuiRevealDirective} from './reveal.directive';
 import {SuiRevealContentDirective} from './reveal-content.directive';
 
 @NgModule({
-  declarations: [
-    SuiRevealDirective,
-    SuiRevealContentDirective
-  ],
+  declarations: [SuiRevealContentDirective],
   imports: [
-    CommonModule
+    CommonModule,
+    SuiRevealDirective
   ],
   exports: [
     SuiRevealDirective,

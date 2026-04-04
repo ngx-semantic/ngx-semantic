@@ -12,14 +12,14 @@ import {SuiPlaceholderDirective} from './placeholder.directive';
 
 @NgModule({
   declarations: [
-    SuiPlaceholderDirective,
-    SuiPlaceholderParagraphDirective,
-    SuiPlaceholderLineDirective,
     SuiPlaceholderImageDirective,
     SuiPlaceholderHeaderDirective
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SuiPlaceholderDirective,
+    SuiPlaceholderParagraphDirective,
+    SuiPlaceholderLineDirective
   ],
   exports: [
     SuiPlaceholderDirective,

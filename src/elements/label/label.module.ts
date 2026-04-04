@@ -8,8 +8,7 @@ import {CommonModule} from '@angular/common';
 import {SuiLabelsDirective} from './labels.directive';
 
 @NgModule({
-  declarations: [SuiLabelDirective, SuiLabelsDirective],
-  imports: [CommonModule],
+  imports: [CommonModule, SuiLabelDirective, SuiLabelsDirective],
   exports: [SuiLabelDirective, SuiLabelsDirective]
 })
 export class SuiLabelModule {
