@@ -5,12 +5,12 @@
 import { Directive, HostBinding } from '@angular/core';
 
 @Directive({
-  selector: '[suiModalActions]',
-  exportAs: 'suiModalActions'
+  selector: '[suiModalDescription]',
+  exportAs: 'suiModalDescription'
 })
-export class SuiModalActionsDirective {
+export class SuiModalDescriptionDirective {
   @HostBinding('class')
   get classes(): string {
-    return 'actions';
+    return 'description';
   }
 }

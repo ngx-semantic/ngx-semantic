@@ -29,6 +29,7 @@ import { ISelectOption } from './interfaces/ISelectOption';
            style="display: inline-block !important;">
           <ng-container *ngIf="option.image">
             <img class="ui mini image"
+                 alt="Dropdown option image"
                  [class.avatar]="option.image.avatar"
                  [src]="option.image.src"/>
           </ng-container>
@@ -65,6 +66,7 @@ import { ISelectOption } from './interfaces/ISelectOption';
         <ng-container *ngIf="selectedOption">
           <ng-container *ngIf="selectedOption.image">
             <img class="ui mini image"
+                 alt="Dropdown option image"
                  [class.avatar]="selectedOption.image.avatar"
                  [src]="selectedOption.image.src"/>
           </ng-container>
@@ -91,6 +93,7 @@ import { ISelectOption } from './interfaces/ISelectOption';
              (click)="onItemClick(option, $event)">
           <ng-container *ngIf="option.image">
             <img class="ui mini image"
+                 alt="Dropdown option image"
                  [class.avatar]="option.image.avatar"
                  [src]="option.image.src"/>
           </ng-container>
@@ -117,7 +120,7 @@ import { ISelectOption } from './interfaces/ISelectOption';
 export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
   @ViewChild(SuiSelectMenuDirective) public optionsMenu: SuiSelectMenuDirective;
 
-  @Output() public suiSelectionChanged = new EventEmitter<any | Array<any>>();
+  @Output() public suiSelectionChanged = new EventEmitter<any | any[]>();
   @Input() public suiPlaceholder: string = null;
   @Input() @InputBoolean() public suiSearch = false;
   @Input() @InputBoolean() public suiFluid = false;
@@ -132,22 +135,22 @@ export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
 
   private isOpen = false;
   private isSearching = false;
-  private selectedValues: Array<any> = [];
+  private selectedValues: any[] = [];
   public searchTerm: string;
-  private allOptions: Array<ISelectOption> = [];
-  public filteredOptions: Array<ISelectOption> = [];
+  private allOptions: ISelectOption[] = [];
+  public filteredOptions: ISelectOption[] = [];
   public selectedOption: ISelectOption;
-  public selectedOptions: Array<ISelectOption> = [];
+  public selectedOptions: ISelectOption[] = [];
 
-  private controlValueChangeFn: (value: any | Array<any>) => void = () => {
-  };
+  private controlValueChangeFn: (value: any | any[]) => void = () => {
+  }
 
   @Input()
-  set suiOptions(options: Array<ISelectOption>) {
+  set suiOptions(options: ISelectOption[]) {
     this.allOptions = this.filteredOptions = options;
   }
 
-  get suiOptions(): Array<ISelectOption> {
+  get suiOptions(): ISelectOption[] {
     return this.allOptions;
   }
 
@@ -304,7 +307,7 @@ export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
     event.stopPropagation();
   }
 
-  public writeValue(value: any | Array<any>): void {
+  public writeValue(value: any | any[]): void {
     const valueChanged = value !== this.selectedOption?.value;
 
     if (valueChanged) {
@@ -322,8 +325,10 @@ export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
   }
 
   public registerOnTouched(fn: any): void {
+    this.controlValueChangeFn = fn;
   }
 
   public setDisabledState?(isDisabled: boolean): void {
+    this.disabled = isDisabled;
   }
 }

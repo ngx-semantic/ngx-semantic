@@ -1,12 +1,12 @@
 import { Directive, HostBinding } from '@angular/core';
 
 @Directive({
-  exportAs: 'suiItemMeta',
-  selector: '[suiItemMeta]'
+  exportAs: 'suiItemImage',
+  selector: '[suiItemImage]'
 })
-export class SuiItemMetadataDirective {
+export class SuiItemImageDirective {
   @HostBinding('class')
   get classes(): string {
-    return 'meta';
+    return 'image';
   }
 }

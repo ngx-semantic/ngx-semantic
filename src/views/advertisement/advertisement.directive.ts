@@ -2,7 +2,7 @@
  * Created by bolor on 7/9/2020
  */
 
-import { Directive, ElementRef, HostBinding, Input } from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiSize } from 'ngx-semantic/core/enums';
 import { BaseDirective } from 'ngx-semantic/core/base';

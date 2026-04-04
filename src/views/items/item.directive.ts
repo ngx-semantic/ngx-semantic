@@ -2,11 +2,11 @@
  * Created by bolor on 8/2/2020
  */
 
-import {Directive, HostBinding} from '@angular/core';
+import { Directive, HostBinding } from '@angular/core';
 
 @Directive({
-  exportAs: 'suiItem',
-  selector: '[suiItem]'
+  selector: '[sui-item]',
+  exportAs: 'suiItem'
 })
 export class SuiItemDirective {
   @HostBinding('class')
