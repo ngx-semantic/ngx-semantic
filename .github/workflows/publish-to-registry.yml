@@ -2,7 +2,7 @@ name: Publish to Registry
 
 on:
   push:
-    branches: [dev, master]
+    branches: [master]
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
         id: check_changes
         run: |
           git fetch origin
-          CHANGED_FILES=$(git diff --name-only "origin/${{ github.ref_name }}...HEAD")
+          CHANGED_FILES=$(git diff --name-only origin/master...HEAD)
           if echo "$CHANGED_FILES" | grep -q "^src/"; then
             echo "src_changed=true" >> $GITHUB_OUTPUT
           else
@@ -58,23 +58,17 @@ jobs:
         id: tag-version
         run: |
           cd src
-          if [ "${{ github.ref_name }}" = "dev" ]; then
-            NEW_VERSION=$(npm version prerelease --preid=beta)
-            COMMIT_MSG="ci: version pre-release"
-          else
-            NEW_VERSION=$(npm version patch)
-            COMMIT_MSG="ci: version release"
-          fi
+          NEW_VERSION=$(npm version patch)
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
           git config --local user.email "indexz3ro@aol.com"
           git config --local user.name "CI"
-          git commit -a -m "$COMMIT_MSG"
+          git commit -a -m "ci: version release"
           git tag $NEW_VERSION
       - name: Push Tags to GitHub
         uses: ad-m/github-push-action@v0.8.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref_name }}
+          branch: master
           tags: true
 
   publish:
@@ -85,7 +79,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.ref_name }}
+          ref: master
       - name: Setup NodeJS
         uses: actions/setup-node@v4
         with:
@@ -97,13 +91,7 @@ jobs:
           name: build-artifacts
           path: ./dist
       - name: Publish Lib
-        run: |
-          if [ "${{ github.ref_name }}" = "dev" ]; then
-            TAG="beta"
-          else
-            TAG="latest"
-          fi
-          npm publish ./dist --tag $TAG --access public
+        run: npm publish ./dist --tag latest --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -115,7 +103,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.ref_name }}
+          ref: master
       - name: Prerelease from version tag
         id: version_meta
         env:
