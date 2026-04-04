@@ -1,0 +1,97 @@
+name: Publish to Registry
+
+on:
+  push:
+    branches: [dev, master]
+
+jobs:
+  build:
+    uses: ./.github/workflows/build-and-test.yml
+    with:
+      base_branch: ${{ github.ref_name }}
+      upload_artifact: true
+    secrets: inherit
+
+  tag:
+    needs: build
+    if: needs.build.outputs.src_changed == 'true'
+    runs-on: ubuntu-latest
+    outputs:
+      new_version: ${{ steps.tag-version.outputs.new_version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Tag Version
+        id: tag-version
+        run: |
+          cd src
+          if [ "${{ github.ref_name }}" = "dev" ]; then
+            NEW_VERSION=$(npm version prerelease --preid=beta)
+            COMMIT_MSG="ci: version pre-release"
+          else
+            NEW_VERSION=$(npm version patch)
+            COMMIT_MSG="ci: version release"
+          fi
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          git config --local user.email "indexz3ro@aol.com"
+          git config --local user.name "CI"
+          git commit -a -m "$COMMIT_MSG"
+          git tag $NEW_VERSION
+      - name: Push Tags to GitHub
+        uses: ad-m/github-push-action@v0.8.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref_name }}
+          tags: true
+
+  publish:
+    needs: [build, tag]
+    if: needs.build.outputs.src_changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref_name }}
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+          path: ./dist
+      - name: Publish Lib
+        run: |
+          if [ "${{ github.ref_name }}" = "dev" ]; then
+            TAG="beta"
+          else
+            TAG="latest"
+          fi
+          npm publish ./dist --tag $TAG --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  release:
+    needs: [build, tag, publish]
+    if: needs.build.outputs.src_changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref_name }}
+      - name: Create Release
+        uses: ncipollo/release-action@v1.14.0
+        with:
+          prerelease: ${{ github.ref_name == 'dev' }}
+          tag: ${{ needs.tag.outputs.new_version }}
+          makeLatest: ${{ github.ref_name == 'master' && 'true' || 'false' }}
+          generateReleaseNotes: true
