@@ -3,6 +3,9 @@ name: Build and Test
 on:
   pull_request:
     types: [opened, reopened, synchronize, ready_for_review]
+  push:
+    branches: [master]
+  workflow_dispatch:
   workflow_call:
     inputs:
       base_branch:
@@ -25,7 +28,7 @@ concurrency:
 
 jobs:
   test:
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request' || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -37,14 +40,15 @@ jobs:
           node-version: 22
       - name: Setup Angular
         run: npm install -g @angular/cli@latest
-      - name: Setup Codecov
-        run: npm install -g codecov
       - name: Install Dependencies
         run: npm install
       - name: Run Tests
         run: npm run test:ci
       - name: Report Code Coverage
-        run: codecov --disable=gcov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: bolorundurowb/ngx-semantic
       - name: Build
         run: npm run build:prod
 
@@ -71,7 +75,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          registry-url: 'https://registry.npmjs.org'
       - name: Setup Angular
         run: npm install -g @angular/cli@latest
       - name: Install Dependencies
