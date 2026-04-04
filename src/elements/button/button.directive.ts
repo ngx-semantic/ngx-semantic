@@ -20,6 +20,7 @@ export type SuiSocialButtonStyle =
 export type SuiButtonAttachment = 'top' | 'bottom' | 'left' | 'right' | null;
 
 @Directive({
+  standalone: true,
   selector: '[sui-button]',
   exportAs: 'suiButton'
 })

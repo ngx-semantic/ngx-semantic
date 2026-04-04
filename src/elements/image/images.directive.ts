@@ -6,6 +6,7 @@ import {Directive, HostBinding, Input} from '@angular/core';
 import {SuiSize} from 'ngx-semantic/core/enums';
 
 @Directive({
+  standalone: true,
   selector: '[sui-images]',
   exportAs: 'suiImages'
 })

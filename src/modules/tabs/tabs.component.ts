@@ -20,6 +20,7 @@ export type SuiTabType = 'basic' | 'pointing' | 'secondary' | 'text' | 'bordered
 export type SuiTabMenuPosition = 'top' | 'bottom';
 
 @Component({
+  standalone: false,
   selector: 'sui-tabs',
   preserveWhitespaces: false,
   encapsulation: ViewEncapsulation.None,
@@ -32,7 +33,7 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
 
       <div class="active tab"
            sui-segment
-           [class.loading]="currentTab.suiLoading"
+           [class.loading]="currentTab?.suiLoading"
            [suiAttached]="segmentAttachment">
         <ng-container *ngIf="currentTab">
           <ng-container
@@ -93,7 +94,7 @@ export class SuiTabsComponent implements AfterContentChecked {
 
   private selectedTabIndex = 0;
   public hasTabs = false;
-  public currentTab: SuiTabComponent = null;
+  public currentTab: SuiTabComponent | null = null;
 
   get isSecondary(): boolean {
     return this.suiTabType === 'secondary';

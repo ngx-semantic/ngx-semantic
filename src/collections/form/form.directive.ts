@@ -10,6 +10,7 @@ import {BaseDirective} from 'ngx-semantic/core/base';
 export type SuiFormState = 'success' | 'warning' | 'error' | null;
 
 @Directive({
+  standalone: false,
   selector: '[sui-form]',
   exportAs: 'suiForm'
 })

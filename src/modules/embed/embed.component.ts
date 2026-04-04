@@ -9,6 +9,7 @@ export type SuiEmbedSource = 'youtube' | 'vimeo' | null;
 export type SuiEmbedAspectRatio = '4:3' | '16:9' | '21:9' | null;
 
 @Component({
+  standalone: false,
   selector: 'sui-embed',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -38,12 +39,12 @@ export class SuiEmbedComponent implements AfterViewInit {
   @Input() public suiSource: SuiEmbedSource = null;
   @Input() public suiAspectRatio: SuiEmbedAspectRatio = null;
   @Input() public suiIcon = 'video play';
-  @Input() public suiId: string | number;
-  @Input() public suiPlaceHolder: string;
-  @Input() public suiSourceUrl: string;
-  @Input() @InputBoolean() public suiAutoplay: boolean;
+  @Input() public suiId: string | number | null = null;
+  @Input() public suiPlaceHolder: string | null = null;
+  @Input() public suiSourceUrl: string | null = null;
+  @Input() @InputBoolean() public suiAutoplay = false;
 
-  public isPLaying: boolean;
+  public isPLaying = false;
   public videoUrl = '';
 
   constructor(private cdr: ChangeDetectorRef) {

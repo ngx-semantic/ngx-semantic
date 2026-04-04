@@ -8,11 +8,12 @@ import { BaseDirective } from 'ngx-semantic/core/base';
 export type SuiExtraType = 'text' | 'images';
 
 @Directive({
+  standalone: false,
   exportAs: 'suiFeedExtra',
   selector: '[suiFeedExtra]'
 })
 export class SuiFeedExtraDirective extends BaseDirective {
-  @Input() suiExtraType?: SuiExtraType = null;
+  @Input() suiExtraType: SuiExtraType | null = null;
 
   constructor(element: ElementRef) {
     super(element);

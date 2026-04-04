@@ -7,8 +7,7 @@ import {SuiLoaderDirective} from './loader.directive';
 import {CommonModule} from '@angular/common';
 
 @NgModule({
-  declarations: [SuiLoaderDirective],
-  imports: [CommonModule],
+  imports: [CommonModule, SuiLoaderDirective],
   exports: [SuiLoaderDirective]
 })
 export class SuiLoaderModule {

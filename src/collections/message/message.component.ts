@@ -6,6 +6,7 @@ import { SuiResultState } from './enums';
 export type SuiMessageAttachment = 'attached' | 'bottom attached' | null;
 
 @Component({
+  standalone: false,
   selector: '[sui-message]',
   template: `
     <i *ngIf="suiDismissible"
@@ -49,7 +50,9 @@ export class SuiMessageComponent {
 
   public dismiss(): void {
     const nativeElement: HTMLElement = this.el.nativeElement;
-    const parentElement: HTMLElement = nativeElement.parentElement;
-    parentElement.removeChild(nativeElement);
+    const parentElement = nativeElement.parentElement;
+    if (parentElement) {
+      parentElement.removeChild(nativeElement);
+    }
   }
 }

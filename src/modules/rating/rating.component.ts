@@ -10,6 +10,7 @@ import {SuiSize} from 'ngx-semantic/core/enums';
 export type SuiRatingType = 'star' | 'heart' | null;
 
 @Component({
+  standalone: false,
   selector: 'sui-rating',
   encapsulation: ViewEncapsulation.None,
   template: `
@@ -40,8 +41,8 @@ export class SuiRatingComponent implements ControlValueAccessor {
   @Input() @InputBoolean() public suiReadOnly = false;
   @Input() @InputBoolean() public suiClearable = false;
 
-  public ratingsArray = [];
-  public hoverValue: number;
+  public ratingsArray: number[] = [];
+  public hoverValue = 0;
   private value = 0;
   private maxValue = 5;
   private controlValueChangeFn: (value: any) => void = () => {
@@ -81,9 +82,10 @@ export class SuiRatingComponent implements ControlValueAccessor {
   }
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {
+    this.generateRatingsArray();
   }
 
-  public onClick(value): void {
+  public onClick(value: number): void {
     if (this.suiReadOnly) {
       return;
     }
@@ -100,7 +102,7 @@ export class SuiRatingComponent implements ControlValueAccessor {
     this.suiValue = value;
   }
 
-  public onHover(value): void {
+  public onHover(value: number): void {
     if (this.suiReadOnly) {
       this.hoverValue = 0;
     } else {

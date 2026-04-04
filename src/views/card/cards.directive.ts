@@ -7,6 +7,7 @@ import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {SuiWidth} from 'ngx-semantic/core/enums';
 
 @Directive({
+  standalone: false,
   selector: '[sui-cards]',
   exportAs: 'suiCards'
 })

@@ -9,10 +9,11 @@ import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 export type SuiMenuDirection = 'left' | 'right' | null;
 
 @Directive({
+  standalone: false,
   selector: '[suiDropdownMenuItem]'
 })
 export class SuiDropdownMenuItemDirective {
-  @ContentChild(SuiDropdownMenuDirective) public contentMenu: SuiDropdownMenuDirective;
+  @ContentChild(SuiDropdownMenuDirective) public contentMenu: SuiDropdownMenuDirective | undefined = undefined;
 
   @Input() public suiDirection: SuiMenuDirection = null;
   @Input() @InputBoolean() public disabled = false;

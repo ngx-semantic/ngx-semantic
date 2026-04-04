@@ -7,26 +7,29 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "ignoreDeprecations": "5.0",
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
     "importHelpers": true,
     "paths": {
       "ngx-semantic": [
-        "dist/ngx-semantic/ngx-semantic",
-        "dist/ngx-semantic"
+        "./src/ngx-semantic.module.ts"
+      ],
+      "ngx-semantic/*": [
+        "./src/*"
       ]
     },
     "target": "ES2022",
-    "module": "es2020",
+    "module": "ESNext",
     "lib": [
-      "es2018",
+      "ES2022",
       "dom"
     ],
+    "moduleResolution": "bundler",
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {

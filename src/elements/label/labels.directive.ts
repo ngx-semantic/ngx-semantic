@@ -7,6 +7,7 @@ import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
 import {InputBoolean} from 'ngx-semantic/core/util';
 
 @Directive({
+  standalone: true,
   selector: '[sui-labels]',
   exportAs: 'suiLabels'
 })

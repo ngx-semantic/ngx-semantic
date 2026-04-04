@@ -19,6 +19,7 @@ import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 export type SuiCheckboxType = 'radio' | 'slider' | 'toggle' | null;
 
 @Component({
+  standalone: false,
   selector: 'sui-checkbox',
   encapsulation: ViewEncapsulation.None,
   template: `
@@ -44,7 +45,7 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
   @Output() public valueChanged = new EventEmitter<any>();
   @Output() public checkedChange = new EventEmitter<boolean>();
   @Input() public suiType: SuiCheckboxType = null;
-  @Input() public name: string = null;
+  @Input() public name: string | null = null;
   @Input() public suiValue: any = null;
   @Input() @InputBoolean() public suiReadOnly = false;
   @Input() @InputBoolean() public suiFitted = false;
@@ -98,7 +99,7 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
   }
 
   get isRadioType(): boolean {
-    return ['radio', 'slider'].includes(this.suiType);
+    return this.suiType != null && ['radio', 'slider'].includes(this.suiType);
   }
 
   public get rawCheckedAttribute(): string | undefined {

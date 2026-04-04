@@ -15,11 +15,13 @@ import {SuiDimmerComponent} from './dimmer.component';
 export type SuiDimmerContentAlignment = 'top' | 'bottom' | null;
 
 @Directive({
+  standalone: false,
   selector: '[sui-dimmer]',
   exportAs: 'suiDimmer'
 })
 export class SuiDimmerDirective implements OnChanges, OnDestroy {
-  @ContentChild(SuiDimmerContentDirective, {static: true, read: TemplateRef}) private content: TemplateRef<any>;
+  @ContentChild(SuiDimmerContentDirective, {static: true, read: TemplateRef})
+  private content: TemplateRef<any> | null = null;
 
   @Input() public suiDimmerAlignment: SuiDimmerContentAlignment = null;
   @Input() @InputBoolean() public suiDimmerBlurring = false;
@@ -31,9 +33,9 @@ export class SuiDimmerDirective implements OnChanges, OnDestroy {
   @Output() public dimmedChange = new EventEmitter<boolean>();
 
 
-  private _dimmed;
-  private _dimmerDomRef: HTMLElement;
-  private clickListener: () => void;
+  private _dimmed = false;
+  private _dimmerDomRef: HTMLElement | null = null;
+  private clickListener: (() => void) | null = null;
 
   get dimmed(): boolean {
     return this._dimmed;
@@ -132,9 +134,8 @@ export class SuiDimmerDirective implements OnChanges, OnDestroy {
     return !!this.getDimmerFromDom();
   }
 
-  private getDimmerFromDom(): any {
-    const elements = Array.from(this.element.nativeElement.children);
-    // tslint:disable-next-line:no-string-literal
-    return elements.filter(x => x['localName'] === 'sui-dimmer')[0];
+  private getDimmerFromDom(): Element | undefined {
+    const elements = Array.from(this.element.nativeElement.children) as Element[];
+    return elements.find((el) => el.localName === 'sui-dimmer');
   }
 }

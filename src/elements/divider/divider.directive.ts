@@ -4,6 +4,7 @@ import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 export type SuiDividerDirection = 'vertical' | 'horizontal' | null;
 
 @Directive({
+  standalone: true,
   selector: '[sui-divider]',
   exportAs: 'suiDivider'
 })

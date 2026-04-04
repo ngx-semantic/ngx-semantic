@@ -10,6 +10,7 @@ export type SuiProgressAttachment = 'bottom' | 'top' | null;
 export type SuiProgressState = 'active' | 'success' | 'warning' | 'error' | null;
 
 @Component({
+  standalone: false,
   selector: 'sui-progress',
   template: `
     <div [ngClass]="classes" [attr.data-percent]="progressPercentage">
@@ -42,7 +43,7 @@ export class SuiProgressComponent {
 
   private value = 0;
   private maxValue = 100;
-  public progressPercentage: number;
+  public progressPercentage = 0;
 
   @Input()
   set suiValue(value: number) {
@@ -67,14 +68,14 @@ export class SuiProgressComponent {
   get classes(): string {
     return ClassUtils.combineToClass([
       'ui',
-      this.suiSize,
-      this.suiColour,
+      this.suiSize ?? '',
+      this.suiColour ?? '',
       this.suiAttached ? `${this.suiAttached} attached` : '',
       ClassUtils.getPropClass(this.suiIndicating, 'indicating'),
       ClassUtils.getPropClass(this.disabled, 'disabled'),
       ClassUtils.getPropClass(this.suiInverted, 'inverted'),
       'progress',
-      this.suiState
+      this.suiState ?? ''
     ]);
   }
 

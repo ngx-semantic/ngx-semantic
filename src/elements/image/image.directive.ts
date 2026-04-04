@@ -12,6 +12,7 @@ export type SuiImageFloat = 'left floated' | 'right floated' | null;
 export type SuiImageSpace = 'spaced' | 'left spaced' | 'right spaced' | null;
 
 @Directive({
+  standalone: true,
   selector: '[sui-image]',
   exportAs: 'suiImage'
 })

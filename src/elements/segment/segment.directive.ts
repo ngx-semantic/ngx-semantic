@@ -15,6 +15,7 @@ export type SuiSegmentTextAlignment = 'left aligned' | 'center aligned' | 'right
 export type SuiSegmentFloat = 'left floated' | 'right floated' | null;
 
 @Directive({
+  standalone: true,
   selector: '[sui-segment]',
   exportAs: 'suiSegment'
 })

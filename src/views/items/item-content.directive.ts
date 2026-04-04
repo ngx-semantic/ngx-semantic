@@ -4,6 +4,7 @@ import {BaseDirective} from 'ngx-semantic/core/base';
 export type SuiItemContentAlignment = 'middle aligned' | 'bottom aligned' | null;
 
 @Directive({
+  standalone: false,
   exportAs: 'suiItemContent',
   selector: '[suiItemContent]'
 })

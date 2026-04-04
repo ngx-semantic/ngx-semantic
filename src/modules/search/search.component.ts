@@ -5,6 +5,7 @@ import {ISearchOption} from './interfaces/ISearchOption';
 export type SuiSearchAlignment = 'right' | null;
 
 @Component({
+  standalone: false,
   selector: 'sui-search',
   encapsulation: ViewEncapsulation.None,
   template: `
@@ -83,10 +84,10 @@ export type SuiSearchAlignment = 'right' | null;
 })
 export class SuiSearchComponent {
   @Output() public suiResultSelected = new EventEmitter<ISearchOption>();
-  @Input() public suiOptionsLookup: (query: string) => Promise<ISearchOption[]>;
+  @Input() public suiOptionsLookup?: (query: string) => Promise<ISearchOption[]>;
   @Input() public suiOptions: ISearchOption[] = [];
   @Input() public suiAlignment: SuiSearchAlignment = null;
-  @Input() public suiPlaceholder: string = null;
+  @Input() public suiPlaceholder: string | null = null;
   @Input() public suiSearchDelay = 200;
   @Input() @InputBoolean() public suiShowIcon = false;
   @Input() @InputBoolean() public disabled = false;
@@ -94,13 +95,13 @@ export class SuiSearchComponent {
   @Input() @InputBoolean() public suiLoading = false;
 
   // field to track whether there has been an outside click
-  private isInsideClick: boolean;
+  private isInsideClick = false;
   private isLoading = false;
   private isFocused = false;
-  public isOpen: boolean;
-  public searchTerm: string;
+  public isOpen = false;
+  public searchTerm = '';
   public filteredOptions: ISearchOption[] = [];
-  public selectedOption: ISearchOption;
+  public selectedOption: ISearchOption | undefined = undefined;
 
   get classes(): string {
     return [
@@ -123,7 +124,7 @@ export class SuiSearchComponent {
     return this.filteredOptions
       .reduce((option, a) => {
         const category = a.category || '(None)';
-        option[category] = option[a.category] || [];
+        option[category] = option[category] || [];
         option[category].push(a);
         return option;
       }, Object.create(null));

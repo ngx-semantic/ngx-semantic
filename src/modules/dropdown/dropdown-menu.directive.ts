@@ -8,13 +8,14 @@ import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 export type SuiDropdownMenuDirection = 'left' | 'right' | null;
 
 @Directive({
+  standalone: false,
   selector: '[suiDropdownMenu]'
 })
 export class SuiDropdownMenuDirective {
   @Input() public suiDirection: SuiDropdownMenuDirection = null;
   @Input() @InputBoolean() public suiScrolling = false;
 
-  private isOpen;
+  private isOpen = false;
 
   @Input()
   set suiIsOpen(isOpen: boolean) {

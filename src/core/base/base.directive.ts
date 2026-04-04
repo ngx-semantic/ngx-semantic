@@ -1,26 +1,18 @@
 /**
  * Created by bolorundurowb on 4/28/2021
  */
-import { Directive, ElementRef, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { ClassUtils } from 'ngx-semantic/core/util';
+import {Directive, ElementRef, HostBinding} from '@angular/core';
+import {ClassUtils} from 'ngx-semantic/core/util';
 
-@Directive()
-export abstract class BaseDirective implements OnInit, OnChanges {
-  abstract classes: string;
+@Directive({standalone: false})
+export abstract class BaseDirective {
+  abstract get classes(): string;
 
   protected constructor(private element: ElementRef) {
   }
 
-  ngOnInit() {
-    this.setClasses();
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    this.setClasses();
-  }
-
-  private setClasses(): void {
-    const cleanedClasses = ClassUtils.removeExcessWhitespace(this.classes);
-    this.element?.nativeElement?.setAttribute('class', cleanedClasses);
+  @HostBinding('class')
+  get hostClasses(): string {
+    return ClassUtils.removeExcessWhitespace(this.classes);
   }
 }

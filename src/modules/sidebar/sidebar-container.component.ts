@@ -7,6 +7,7 @@ import {SuiSidebarComponent} from './sidebar.component';
 import {SuiSidebarPusherComponent} from './sidebar-pusher.component';
 
 @Component({
+  standalone: false,
   selector: 'sui-sidebar-container',
   encapsulation: ViewEncapsulation.None,
   template: `
@@ -14,8 +15,8 @@ import {SuiSidebarPusherComponent} from './sidebar-pusher.component';
   `
 })
 export class SuiSidebarContainerComponent implements AfterContentInit {
-  @ContentChild(SuiSidebarComponent) public suiSidebar: SuiSidebarComponent;
-  @ContentChild(SuiSidebarPusherComponent) public suiPusher: SuiSidebarPusherComponent;
+  @ContentChild(SuiSidebarComponent) public suiSidebar!: SuiSidebarComponent;
+  @ContentChild(SuiSidebarPusherComponent) public suiPusher!: SuiSidebarPusherComponent;
 
   public ngAfterContentInit(): void {
     if (!this.suiSidebar) {

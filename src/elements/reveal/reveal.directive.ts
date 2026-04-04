@@ -10,6 +10,7 @@ export type SuiMoveDirection = 'left' | 'right' | 'up' | 'down' | null;
 export type SuiRotateDirection = 'left' | 'right' | null;
 
 @Directive({
+  standalone: true,
   selector: '[sui-reveal]',
   exportAs: 'suiReveal'
 })
