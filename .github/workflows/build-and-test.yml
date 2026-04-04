@@ -6,21 +6,6 @@ on:
   push:
     branches: [master]
   workflow_dispatch:
-  workflow_call:
-    inputs:
-      base_branch:
-        required: false
-        type: string
-        default: 'master'
-      upload_artifact:
-        required: false
-        type: boolean
-        default: false
-    outputs:
-      src_changed:
-        description: "Whether the src directory has changed"
-        value: ${{ jobs.build.outputs.src_changed }}
-    secrets: inherit
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.sha }}
@@ -28,7 +13,6 @@ concurrency:
 
 jobs:
   test:
-    if: github.event_name == 'pull_request' || github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -51,39 +35,3 @@ jobs:
           slug: bolorundurowb/ngx-semantic
       - name: Build
         run: npm run build:prod
-
-  build:
-    if: github.event_name == 'workflow_call' && inputs.upload_artifact == true
-    runs-on: ubuntu-latest
-    outputs:
-      src_changed: ${{ steps.check_changes.outputs.src_changed }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Check for changes in src directory
-        id: check_changes
-        run: |
-          git fetch origin
-          CHANGED_FILES=$(git diff --name-only origin/${{ inputs.base_branch }}...HEAD)
-          if echo "$CHANGED_FILES" | grep -q "^src/"; then
-            echo "src_changed=true" >> $GITHUB_OUTPUT
-          else
-            echo "src_changed=false" >> $GITHUB_OUTPUT
-          fi
-      - name: Setup NodeJS
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - name: Setup Angular
-        run: npm install -g @angular/cli@latest
-      - name: Install Dependencies
-        run: npm install
-      - name: Build
-        run: npm run build:prod
-      - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-artifacts
-          path: ./dist
-          retention-days: 1

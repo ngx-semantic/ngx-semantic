@@ -4,13 +4,45 @@ on:
   push:
     branches: [dev, master]
 
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
-    uses: ./.github/workflows/build-and-test.yml
-    with:
-      base_branch: ${{ github.ref_name }}
-      upload_artifact: true
-    secrets: inherit
+    runs-on: ubuntu-latest
+    outputs:
+      src_changed: ${{ steps.check_changes.outputs.src_changed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check for changes in src directory
+        id: check_changes
+        run: |
+          git fetch origin
+          CHANGED_FILES=$(git diff --name-only "origin/${{ github.ref_name }}...HEAD")
+          if echo "$CHANGED_FILES" | grep -q "^src/"; then
+            echo "src_changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "src_changed=false" >> $GITHUB_OUTPUT
+          fi
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Setup Angular
+        run: npm install -g @angular/cli@latest
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build:prod
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: ./dist
+          retention-days: 1
 
   tag:
     needs: build
