@@ -20,15 +20,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
-      - name: Setup Yarn
-        run: npm install -g yarn
       - name: Setup Angular
-        run: yarn global add @angular/cli@latest
+        run: npm install -g @angular/cli@latest
       - name: Setup Codecov
-        run: yarn global add codecov
+        run: npm install -g codecov
       - name: Install Dependencies
-        run: yarn install
+        run: npm install
       - name: Run Tests
-        run: yarn test:ci
+        run: npm run test:ci
       - name: Report Code Coverage
         run: codecov --disable=gcov
