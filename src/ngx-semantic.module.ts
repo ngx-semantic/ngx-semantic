@@ -40,6 +40,7 @@ import {SuiContainerModule} from 'ngx-semantic/elements/container';
 import {SuiPlaceholderModule} from 'ngx-semantic/elements/placeholder';
 import {SuiBreadcrumbModule} from 'ngx-semantic/collections/breadcrumb';
 import {SuiAdvertisementModule} from 'ngx-semantic/views/advertisement';
+import {SuiStickyModule} from 'ngx-semantic/modules/sticky';
 import {SuiShapeModule} from 'ngx-semantic/modules/shape';
 
 const NGX_SEMANTIC_MODULES = [
@@ -83,6 +84,7 @@ const NGX_SEMANTIC_MODULES = [
   SuiBreadcrumbModule,
   SuiPlaceholderModule,
   SuiAdvertisementModule,
+  SuiStickyModule,
   SuiShapeModule
 ];
 
@@ -129,6 +131,7 @@ const NGX_SEMANTIC_MODULES = [
     SuiBreadcrumbModule,
     SuiPlaceholderModule,
     SuiAdvertisementModule,
+    SuiStickyModule,
     SuiShapeModule
   ]
 })
