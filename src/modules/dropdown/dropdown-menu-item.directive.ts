@@ -9,7 +9,7 @@ import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 export type SuiMenuDirection = 'left' | 'right' | null;
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: '[suiDropdownMenuItem]'
 })
 export class SuiDropdownMenuItemDirective {

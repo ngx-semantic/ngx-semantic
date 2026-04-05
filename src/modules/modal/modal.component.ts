@@ -10,14 +10,16 @@ import {
   ViewChild, ViewContainerRef,
   ViewEncapsulation
 } from '@angular/core';
-import {DOCUMENT} from '@angular/common';
+import {CommonModule, DOCUMENT} from '@angular/common';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import {SuiIconDirective} from 'ngx-semantic/elements/icon';
 
 export type SuiModalSize = 'mini' | 'tiny' | 'small' | 'large' | null;
 export type SuiModalScrollability = 'full' | 'medium' | 'none';
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, SuiIconDirective],
   selector: 'sui-modal',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -5,14 +5,29 @@ import {By} from '@angular/platform-browser';
 import {SuiPlaceholderModule} from './placeholder.module';
 import {SuiPlaceholderImageDirective} from './placeholder-image.directive';
 
+@Component({
+  standalone: true,
+  imports: [CommonModule, SuiPlaceholderModule],
+  template: `
+    <div
+      suiPlaceholderImage
+      [suiSquare]="suiSquare"
+      [suiRectangular]="suiRectangular">
+    </div>
+  `
+})
+class TestPlaceholderImageHostComponent {
+  @Input() suiSquare = false;
+  @Input() suiRectangular = false;
+}
+
 describe('SuiPlaceholderImageDirective', () => {
   let fixture: ComponentFixture<TestPlaceholderImageHostComponent>;
   let imageElement: HTMLDivElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonModule, SuiPlaceholderModule],
-      declarations: [TestPlaceholderImageHostComponent]
+      imports: [TestPlaceholderImageHostComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(TestPlaceholderImageHostComponent);
@@ -40,18 +55,3 @@ describe('SuiPlaceholderImageDirective', () => {
     expect(imageElement.className).toContain('rectangular');
   });
 });
-
-@Component({
-  standalone: false,
-  template: `
-    <div
-      suiPlaceholderImage
-      [suiSquare]="suiSquare"
-      [suiRectangular]="suiRectangular">
-    </div>
-  `
-})
-class TestPlaceholderImageHostComponent {
-  @Input() suiSquare = false;
-  @Input() suiRectangular = false;
-}

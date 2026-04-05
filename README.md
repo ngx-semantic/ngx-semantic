@@ -42,6 +42,13 @@ See the [Documentation](https://ngx-semantic.github.io/) for installation instru
 * [Angular](https://angular.io) (>=21.0.0)
 * [Semantic UI CSS](https://semantic-ui.com/) (>=2.4.1) (jQuery is **not** required)
 
+## Standalone usage
+
+All directives, components, and pipes in this library are **standalone**. You can either:
+
+- **NgModules (existing style):** import a feature module such as `SuiButtonModule` from `ngx-semantic/elements/button` and add it to your module’s `imports`, or import `NgxSemanticModule` from `ngx-semantic` to register the full set.
+- **Standalone components / `bootstrapApplication`:** import the concrete classes you need (for example `SuiButtonDirective`, `SuiTabsComponent`) from the same secondary entry points and add them to your component’s `imports` array.
+
 ## Component Support
 
 |           Icon          |                                      Description                                    |

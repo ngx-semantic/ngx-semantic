@@ -9,7 +9,7 @@ import { BaseDirective } from 'ngx-semantic/core/base';
 export type SuiItemsRelaxation = 'relaxed' | 'very relaxed' | null;
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: '[sui-items]',
   exportAs: 'suiItems'
 })

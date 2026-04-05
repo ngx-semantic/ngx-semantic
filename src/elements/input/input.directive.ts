@@ -13,7 +13,7 @@ export type SuiInputActions = 'action' | 'left action' | 'right action' | null;
 export type SuiInputIconOptions = 'icon' | 'left icon' |  null;
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: '[sui-input]',
   exportAs: 'suiInput'
 })

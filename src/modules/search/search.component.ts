@@ -1,11 +1,16 @@
 import {Component, EventEmitter, HostListener, Input, Output, ViewEncapsulation} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {SuiInputDirective} from 'ngx-semantic/elements/input';
+import {SuiIconDirective} from 'ngx-semantic/elements/icon';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {ISearchOption} from './interfaces/ISearchOption';
 
 export type SuiSearchAlignment = 'right' | null;
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, FormsModule, SuiInputDirective, SuiIconDirective],
   selector: 'sui-search',
   encapsulation: ViewEncapsulation.None,
   template: `

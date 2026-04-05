@@ -8,7 +8,7 @@ import { BaseDirective } from 'ngx-semantic/core/base';
 export type SuiExtraType = 'text' | 'images';
 
 @Directive({
-  standalone: false,
+  standalone: true,
   exportAs: 'suiFeedExtra',
   selector: '[suiFeedExtra]'
 })

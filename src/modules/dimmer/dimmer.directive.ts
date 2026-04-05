@@ -15,7 +15,7 @@ import {SuiDimmerComponent} from './dimmer.component';
 export type SuiDimmerContentAlignment = 'top' | 'bottom' | null;
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: '[sui-dimmer]',
   exportAs: 'suiDimmer'
 })

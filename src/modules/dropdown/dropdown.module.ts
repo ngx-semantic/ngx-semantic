@@ -11,15 +11,13 @@ import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 import {SuiDropdownComponent} from './dropdown.component';
 
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
     SuiDropdownComponent,
     SuiDropdownMenuDirective,
     SuiDropdownMenuItemDirective,
     SuiDropdownMenuHeaderDirective,
     SuiDropdownMenuDividerDirective
-  ],
-  imports: [
-    CommonModule
   ],
   exports: [
     SuiDropdownComponent,

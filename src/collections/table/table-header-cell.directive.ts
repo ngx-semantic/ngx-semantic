@@ -8,7 +8,7 @@ import { SuiWidth } from 'ngx-semantic/core/enums';
 import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
-  standalone: false,
+  standalone: true,
   exportAs: 'suiTableHeaderCell',
   selector: '[suiTableHeaderCell]'
 })

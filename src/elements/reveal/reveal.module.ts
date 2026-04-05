@@ -1,17 +1,17 @@
 /**
- * Created by bolor on 5/17/2020
+ * Created by bolor on 5/18/2020
  */
 
-import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SuiRevealDirective} from './reveal.directive';
+import {NgModule} from '@angular/core';
 import {SuiRevealContentDirective} from './reveal-content.directive';
+import {SuiRevealDirective} from './reveal.directive';
 
 @NgModule({
-  declarations: [SuiRevealContentDirective],
   imports: [
     CommonModule,
-    SuiRevealDirective
+    SuiRevealDirective,
+    SuiRevealContentDirective
   ],
   exports: [
     SuiRevealDirective,

@@ -7,7 +7,7 @@ import {SuiSidebarComponent} from './sidebar.component';
 import {SuiSidebarPusherComponent} from './sidebar-pusher.component';
 
 @Component({
-  standalone: false,
+  standalone: true,
   selector: 'sui-sidebar-container',
   encapsulation: ViewEncapsulation.None,
   template: `

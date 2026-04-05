@@ -8,7 +8,7 @@ import { SuiTableState, SuiTableTextAlignment, SuiTableVerticalAlignment } from 
 import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
-  standalone: false,
+  standalone: true,
   exportAs: 'suiTableCell',
   selector: '[suiTableCell]'
 })

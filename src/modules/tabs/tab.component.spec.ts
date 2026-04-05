@@ -5,7 +5,8 @@ import {SuiTabsModule} from './tabs.module';
 import {SuiTabComponent} from './tab.component';
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [SuiTabsModule],
   template: `
     <sui-tab suiTitle="T" [disabled]="disabled">Body</sui-tab>
   `
@@ -19,8 +20,7 @@ describe('SuiTabComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SuiTabsModule],
-      declarations: [HostTabComponent]
+      imports: [HostTabComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HostTabComponent);

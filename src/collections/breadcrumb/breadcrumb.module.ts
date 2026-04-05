@@ -9,8 +9,12 @@ import {SuiBreadcrumbSectionDirective} from './breadcrumb-section.directive';
 import {SuiBreadcrumbDirective} from './breadcrumb.directive';
 
 @NgModule({
-  declarations: [SuiBreadcrumbDividerDirective, SuiBreadcrumbSectionDirective, SuiBreadcrumbDirective],
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    SuiBreadcrumbDividerDirective,
+    SuiBreadcrumbSectionDirective,
+    SuiBreadcrumbDirective
+  ],
   exports: [SuiBreadcrumbDividerDirective, SuiBreadcrumbSectionDirective, SuiBreadcrumbDirective],
 })
 export class SuiBreadcrumbModule {

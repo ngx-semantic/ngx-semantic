@@ -6,7 +6,8 @@ import {SuiDropdownComponent} from './dropdown.component';
 import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [SuiDropdownModule],
   template: `
     <sui-dropdown [disabled]="dropdownDisabled">
       <div suiDropdownMenu>Menu</div>
@@ -25,8 +26,7 @@ describe('SuiDropdownComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SuiDropdownModule],
-      declarations: [HostDropdownComponent]
+      imports: [HostDropdownComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HostDropdownComponent);

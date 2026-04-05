@@ -5,7 +5,8 @@ import {SuiSidebarModule} from './sidebar.module';
 import {SuiSidebarContainerComponent} from './sidebar-container.component';
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [SuiSidebarModule],
   template: `
     <sui-sidebar-container>
       <sui-sidebar [visible]="true">Nav</sui-sidebar>
@@ -21,8 +22,7 @@ describe('SuiSidebarContainerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SuiSidebarModule],
-      declarations: [HostSidebarContainerComponent]
+      imports: [HostSidebarContainerComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HostSidebarContainerComponent);

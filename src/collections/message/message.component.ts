@@ -1,4 +1,6 @@
 import { Component, ElementRef, HostBinding, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SuiIconDirective } from 'ngx-semantic/elements/icon';
 import { SuiColour, SuiSize } from 'ngx-semantic/core/enums';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiResultState } from './enums';
@@ -6,7 +8,8 @@ import { SuiResultState } from './enums';
 export type SuiMessageAttachment = 'attached' | 'bottom attached' | null;
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, SuiIconDirective],
   selector: '[sui-message]',
   template: `
     <i *ngIf="suiDismissible"

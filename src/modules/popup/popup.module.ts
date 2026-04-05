@@ -6,13 +6,11 @@ import {SuiPopupComponent} from './popup.component';
 import {SuiPopupDirective} from './popup.directive';
 
 @NgModule({
-    declarations: [
-        SuiPopupDirective,
-        SuiPopupComponent
-    ],
     imports: [
         CommonModule,
-        OverlayModule
+        OverlayModule,
+        SuiPopupDirective,
+        SuiPopupComponent
     ],
     exports: [
         SuiPopupDirective,

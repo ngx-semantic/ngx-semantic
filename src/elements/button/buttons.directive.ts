@@ -11,7 +11,7 @@ export type SuiButtonsAttachment = 'top' | 'bottom' | null;
 export type SuiButtonsIconType = 'icon' | 'labeled icon' | null;
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: '[sui-buttons]',
   exportAs: 'suiButtons'
 })

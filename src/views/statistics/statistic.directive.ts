@@ -11,7 +11,7 @@ import { BaseDirective } from 'ngx-semantic/core/base';
 export type SuiFloat = 'right' | 'left';
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: '[sui-statistic]',
   exportAs: 'suiStatistic'
 })

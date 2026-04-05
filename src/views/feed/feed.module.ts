@@ -24,8 +24,8 @@ import { SuiFeedUserDirective } from './feed-user.directive';
     SuiFeedLikeDirective,
     SuiFeedUserDirective
   ],
-  imports: [ CommonModule ],
-  declarations: [
+  imports: [
+    CommonModule,
     SuiFeedDirective,
     SuiFeedEventComponent,
     SuiFeedMetaDirective,

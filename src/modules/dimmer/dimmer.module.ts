@@ -9,13 +9,11 @@ import {SuiDimmerDirective} from './dimmer.directive';
 import {SuiDimmerContentDirective} from './dimmer-content.directive';
 
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
     SuiDimmerComponent,
     SuiDimmerDirective,
     SuiDimmerContentDirective
-  ],
-  imports: [
-    CommonModule
   ],
   exports: [
     SuiDimmerDirective,

@@ -4,7 +4,8 @@ import {By} from '@angular/platform-browser';
 import {SuiPopupModule} from './popup.module';
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [SuiPopupModule],
   template: `
     <sui-popup [suiTitle]="'Hi'" [suiContent]="'Plain text'" [suiFluid]="true"></sui-popup>
   `
@@ -17,8 +18,7 @@ describe('SuiPopupComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SuiPopupModule],
-      declarations: [HostPopupComponent]
+      imports: [HostPopupComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HostPopupComponent);

@@ -7,7 +7,7 @@ import { SuiSize } from 'ngx-semantic/core/enums';
 import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: '[sui-feed]',
   exportAs: 'suiFeed'
 })

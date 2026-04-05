@@ -24,8 +24,8 @@ import { SuiItemImageDirective } from './item-image.directive';
     SuiItemDescriptionDirective,
     SuiItemExtraContentDirective
   ],
-  imports: [ CommonModule ],
-  declarations: [
+  imports: [
+    CommonModule,
     SuiItemsDirective,
     SuiItemDirective,
     SuiItemImageDirective,

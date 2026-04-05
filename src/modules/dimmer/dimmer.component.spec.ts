@@ -1,11 +1,11 @@
-import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {SuiDimmerComponent} from './dimmer.component';
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [SuiDimmerComponent],
   template: `
     <ng-template #tpl><span>inner</span></ng-template>
     <sui-dimmer [suiContent]="tpl" [suiInverted]="true" [suiSimple]="true"></sui-dimmer>
@@ -19,8 +19,7 @@ describe('SuiDimmerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonModule],
-      declarations: [SuiDimmerComponent, HostDimmerComponent]
+      imports: [HostDimmerComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HostDimmerComponent);

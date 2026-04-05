@@ -8,7 +8,7 @@ import {SuiColour} from 'ngx-semantic/core/enums';
 import {SuiCardsDirective} from './cards.directive';
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: '[sui-card]',
   exportAs: 'suiCard'
 })

@@ -3,6 +3,7 @@
  */
 
 import { Component, Input, TemplateRef, ViewEncapsulation } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { SuiSize } from 'ngx-semantic/core/enums';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
@@ -10,7 +11,8 @@ import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiPopupPlacement, SuiPopupWidth } from './popup.directive';
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule],
   selector: 'sui-popup',
   encapsulation: ViewEncapsulation.None,
   template: `

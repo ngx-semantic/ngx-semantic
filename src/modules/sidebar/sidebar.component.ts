@@ -11,7 +11,7 @@ export type SuiSidebarWidth = 'thin' | 'very thin' | 'wide' | 'very wide' | null
 export type SuiSidebarAnimation = 'overlay' | 'push' | 'scale down' | 'uncover' | 'slide along' | 'slide out' | null;
 
 @Component({
-  standalone: false,
+  standalone: true,
   selector: 'sui-sidebar, [sui-sidebar]',
   encapsulation: ViewEncapsulation.None,
   template: `

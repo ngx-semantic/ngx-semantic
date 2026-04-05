@@ -5,14 +5,29 @@ import {By} from '@angular/platform-browser';
 import {SuiButtonModule} from './button.module';
 import {SuiButtonsDirective} from './buttons.directive';
 
+@Component({
+  standalone: true,
+  imports: [CommonModule, SuiButtonModule],
+  template: `
+    <div
+      sui-buttons
+      [suiVertical]="suiVertical">
+      <button sui-button type="button">A</button>
+      <button sui-button type="button">B</button>
+    </div>
+  `
+})
+class TestButtonsHostComponent {
+  @Input() suiVertical = false;
+}
+
 describe('SuiButtonsDirective', () => {
   let fixture: ComponentFixture<TestButtonsHostComponent>;
   let groupElement: HTMLDivElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonModule, SuiButtonModule],
-      declarations: [TestButtonsHostComponent]
+      imports: [TestButtonsHostComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(TestButtonsHostComponent);
@@ -35,18 +50,3 @@ describe('SuiButtonsDirective', () => {
     expect(groupElement.classList).toContain('vertical');
   });
 });
-
-@Component({
-  standalone: false,
-  template: `
-    <div
-      sui-buttons
-      [suiVertical]="suiVertical">
-      <button sui-button type="button">A</button>
-      <button sui-button type="button">B</button>
-    </div>
-  `
-})
-class TestButtonsHostComponent {
-  @Input() suiVertical = false;
-}

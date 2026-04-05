@@ -11,11 +11,13 @@ import {
   QueryList,
   ViewEncapsulation
 } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiAccordionPanelComponent } from './accordion-panel.component';
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule],
   selector: 'sui-accordion',
   encapsulation: ViewEncapsulation.None,
   template: `

@@ -7,7 +7,7 @@ import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {SuiColour} from 'ngx-semantic/core/enums';
 
 @Component({
-  standalone: false,
+  standalone: true,
   selector: 'sui-tab',
   exportAs: 'suiTab',
   preserveWhitespaces: false,

@@ -11,13 +11,16 @@ import {
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiSelectMenuDirective } from './select-menu.directive';
+import { SuiSelectMenuItemDirective } from './select-menu-item.directive';
 import { ISelectOption } from './interfaces/ISelectOption';
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, FormsModule, SuiSelectMenuDirective, SuiSelectMenuItemDirective],
   selector: 'sui-select',
   encapsulation: ViewEncapsulation.None,
   template: `

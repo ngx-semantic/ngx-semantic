@@ -5,7 +5,8 @@ import {SuiTabsModule} from './tabs.module';
 import {SuiTabsComponent} from './tabs.component';
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [SuiTabsModule],
   template: `
     <sui-tabs (suiSelectedIndexChanged)="lastIndex = $event">
       <sui-tab suiTitle="First"><p class="pane-a">A</p></sui-tab>
@@ -23,8 +24,7 @@ describe('SuiTabsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SuiTabsModule],
-      declarations: [HostTabsComponent]
+      imports: [HostTabsComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HostTabsComponent);

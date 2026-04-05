@@ -2,7 +2,7 @@ import { Directive, ElementRef } from '@angular/core';
 import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
-  standalone: false,
+  standalone: true,
   exportAs: 'suiItemDescription',
   selector: '[suiItemDescription]'
 })

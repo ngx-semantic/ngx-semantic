@@ -7,8 +7,7 @@ import {NgModule} from '@angular/core';
 import {SuiInputDirective} from './input.directive';
 
 @NgModule({
-  declarations: [SuiInputDirective],
-  imports: [CommonModule],
+  imports: [CommonModule, SuiInputDirective],
   exports: [SuiInputDirective]
 })
 export class SuiInputModule {

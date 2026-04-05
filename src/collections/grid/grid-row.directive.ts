@@ -10,7 +10,7 @@ import {BaseDirective} from 'ngx-semantic/core/base';
 export type SuiRowAlignment = 'left aligned' | 'middle aligned' | 'right aligned' | null;
 
 @Directive({
-  standalone: false,
+  standalone: true,
   exportAs: 'suiGridRow',
   selector: '[suiGridRow]'
 })

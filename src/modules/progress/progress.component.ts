@@ -3,6 +3,7 @@
  */
 
 import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiColour, SuiSize } from 'ngx-semantic/core/enums';
 
@@ -10,7 +11,8 @@ export type SuiProgressAttachment = 'bottom' | 'top' | null;
 export type SuiProgressState = 'active' | 'success' | 'warning' | 'error' | null;
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule],
   selector: 'sui-progress',
   template: `
     <div [ngClass]="classes" [attr.data-percent]="progressPercentage">

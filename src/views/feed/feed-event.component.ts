@@ -3,9 +3,11 @@
  */
 
 import { Component, HostBinding, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule],
   exportAs: 'suiFeedEvent',
   selector: '[suiFeedEvent]',
   template: `

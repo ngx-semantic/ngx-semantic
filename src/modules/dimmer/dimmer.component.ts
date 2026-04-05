@@ -7,11 +7,13 @@ import {
   Input, OnInit, TemplateRef,
   ViewEncapsulation
 } from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {ClassUtils} from 'ngx-semantic/core/util';
 import {SuiDimmerContentAlignment} from './dimmer.directive';
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule],
   selector: 'sui-dimmer',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,

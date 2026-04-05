@@ -8,8 +8,7 @@ import {SuiIconDirective} from './icon.directive';
 import {SuiIconsDirective} from './icons.directive';
 
 @NgModule({
-  declarations: [SuiIconsDirective],
-  imports: [CommonModule, SuiIconDirective],
+  imports: [CommonModule, SuiIconDirective, SuiIconsDirective],
   exports: [
     SuiIconDirective,
     SuiIconsDirective

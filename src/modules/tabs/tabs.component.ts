@@ -10,17 +10,28 @@ import {
   Input, Output,
   QueryList, ViewEncapsulation
 } from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {InputBoolean} from 'ngx-semantic/core/util';
 import {SuiTabComponent} from './tab.component';
 import {SuiColour} from 'ngx-semantic/core/enums';
-import {SuiMenuAttachment} from 'ngx-semantic/collections/menu';
-import {SuiSegmentAttachment} from 'ngx-semantic/elements/segment';
+import {SuiMenuAttachment, SuiMenuDirective, SuiMenuItemDirective} from 'ngx-semantic/collections/menu';
+import {SuiSegmentAttachment, SuiSegmentDirective} from 'ngx-semantic/elements/segment';
+import {SuiIconDirective} from 'ngx-semantic/elements/icon';
+import {SuiLabelDirective} from 'ngx-semantic/elements/label';
 
 export type SuiTabType = 'basic' | 'pointing' | 'secondary' | 'text' | 'bordered' | 'borderless';
 export type SuiTabMenuPosition = 'top' | 'bottom';
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [
+    CommonModule,
+    SuiSegmentDirective,
+    SuiMenuDirective,
+    SuiMenuItemDirective,
+    SuiIconDirective,
+    SuiLabelDirective
+  ],
   selector: 'sui-tabs',
   preserveWhitespaces: false,
   encapsulation: ViewEncapsulation.None,
