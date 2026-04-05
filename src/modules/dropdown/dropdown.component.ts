@@ -9,7 +9,7 @@ import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
 export type SuiDropdownPointingDirection = 'top left' | 'top right' | 'left' | 'right' | 'bottom left' | 'bottom right' | null;
 
 @Component({
-  standalone: false,
+  standalone: true,
   selector: 'sui-dropdown, [sui-dropdown]',
   encapsulation: ViewEncapsulation.None,
   template: `

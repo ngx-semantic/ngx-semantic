@@ -1,22 +1,21 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {SuiIconModule} from 'ngx-semantic/elements/icon';
+/**
+ * Created by bolor on 5/26/2020
+ */
 
+import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
 import {SuiMessageComponent} from './message.component';
-import {SuiMessageHeaderDirective} from './message-header.directive';
 import {SuiMessageContentDirective} from './message-content.directive';
+import {SuiMessageHeaderDirective} from './message-header.directive';
 import {SuiMessageListDirective} from './message-list.directive';
 
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
     SuiMessageComponent,
     SuiMessageHeaderDirective,
     SuiMessageContentDirective,
     SuiMessageListDirective
-  ],
-  imports: [
-    CommonModule,
-    SuiIconModule
   ],
   exports: [
     SuiMessageComponent,

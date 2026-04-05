@@ -4,9 +4,11 @@
 
 import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
 import {InputBoolean} from 'ngx-semantic/core/util';
+import {SuiIconDirective} from 'ngx-semantic/elements/icon';
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [SuiIconDirective],
   selector: 'sui-accordion-panel',
   encapsulation: ViewEncapsulation.None,
   template: `

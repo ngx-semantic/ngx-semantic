@@ -10,7 +10,8 @@ import {SuiTableRowDirective} from './table-row.directive';
 import {SuiTableDirective} from './table.directive';
 
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
     SuiTableDirective,
     SuiTableRowDirective,
     SuiTableCellDirective,
@@ -22,9 +23,6 @@ import {SuiTableDirective} from './table.directive';
     SuiTableCellDirective,
     SuiTableHeaderCellDirective,
   ],
-  imports: [
-    CommonModule
-  ]
 })
 export class SuiTableModule {
 }

@@ -1,11 +1,11 @@
-import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {SuiSelectMenuItemDirective} from './select-menu-item.directive';
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [SuiSelectMenuItemDirective],
   template: `<div suiSelectMenuItem></div>`
 })
 class TestHostComponent {}
@@ -16,8 +16,7 @@ describe('SuiSelectMenuItemDirective', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonModule],
-      declarations: [TestHostComponent, SuiSelectMenuItemDirective]
+      imports: [TestHostComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(TestHostComponent);

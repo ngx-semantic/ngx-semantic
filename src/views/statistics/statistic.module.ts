@@ -10,13 +10,13 @@ import { SuiStatisticDirective } from './statistic.directive';
 import { SuiStatisticsDirective } from './statistics.directive';
 
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
     SuiStatisticLabelDirective,
     SuiStatisticValueDirective,
     SuiStatisticDirective,
     SuiStatisticsDirective
   ],
-  imports: [ CommonModule ],
   exports: [
     SuiStatisticValueDirective,
     SuiStatisticLabelDirective,

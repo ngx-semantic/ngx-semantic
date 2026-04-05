@@ -4,7 +4,7 @@
 import {Directive, ElementRef, HostBinding} from '@angular/core';
 import {ClassUtils} from 'ngx-semantic/core/util';
 
-@Directive({standalone: false})
+@Directive()
 export abstract class BaseDirective {
   abstract get classes(): string;
 

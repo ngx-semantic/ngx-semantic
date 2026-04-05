@@ -8,8 +8,7 @@ import {CommonModule} from '@angular/common';
 
 @NgModule({
   exports: [SuiAdvertisementDirective],
-  imports: [CommonModule],
-  declarations: [SuiAdvertisementDirective]
+  imports: [CommonModule, SuiAdvertisementDirective]
 })
 export class SuiAdvertisementModule {
 }

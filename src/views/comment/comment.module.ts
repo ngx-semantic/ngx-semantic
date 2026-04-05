@@ -15,7 +15,8 @@ import {SuiCommentsDirective} from './comments.directive';
 import {SuiCommentReplyDirective} from './comment-reply.directive';
 
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
     SuiCommentDirective,
     SuiCommentsDirective,
     SuiCommentActionsDirective,
@@ -24,10 +25,8 @@ import {SuiCommentReplyDirective} from './comment-reply.directive';
     SuiCommentMetadataDirective,
     SuiCommentContentDirective,
     SuiCommentTextDirective,
-    SuiCommentReplyDirective,
     SuiCommentReplyDirective
   ],
-  imports: [CommonModule],
   exports: [
     SuiCommentDirective,
     SuiCommentsDirective,

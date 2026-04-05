@@ -15,7 +15,7 @@ export type SuiGridReverse = 'computer reversed' | 'tablet reversed' | 'mobile r
 export type SuiGridRelaxation = 'relaxed' | 'very relaxed' | null;
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: '[sui-grid]',
   exportAs: 'suiGrid'
 })

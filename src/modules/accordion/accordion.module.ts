@@ -4,19 +4,14 @@
 
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SuiIconModule} from 'ngx-semantic/elements/icon';
-
-import {SuiAccordionComponent} from './accordion.component';
 import {SuiAccordionPanelComponent} from './accordion-panel.component';
+import {SuiAccordionComponent} from './accordion.component';
 
 @NgModule({
-  declarations: [
-    SuiAccordionComponent,
-    SuiAccordionPanelComponent
-  ],
   imports: [
     CommonModule,
-    SuiIconModule
+    SuiAccordionComponent,
+    SuiAccordionPanelComponent
   ],
   exports: [
     SuiAccordionComponent,

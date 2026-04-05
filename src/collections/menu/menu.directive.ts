@@ -12,7 +12,7 @@ export type SuiMenuFixation = 'top' | 'bottom' | 'left' | 'right' | null;
 export type SuiMenuIconType = 'icon' | 'labeled icon' | null;
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: '[sui-menu]',
   exportAs: 'suiMenu'
 })

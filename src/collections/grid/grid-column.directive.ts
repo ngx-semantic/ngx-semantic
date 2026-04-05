@@ -10,7 +10,7 @@ export type SuiColumnFloat = 'left floated' | 'right floated' | null;
 export type SuiColumnAlignment = 'left aligned' | 'middle aligned' | 'right aligned' | null;
 
 @Directive({
-  standalone: false,
+  standalone: true,
   exportAs: 'suiGridColumn',
   selector: '[suiGridColumn]'
 })

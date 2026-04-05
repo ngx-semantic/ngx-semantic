@@ -3,13 +3,17 @@
  */
 
 import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import {SuiIconDirective} from 'ngx-semantic/elements/icon';
+import {SafeUrlPipe} from './pipes/safe-url.pipe';
 
 export type SuiEmbedSource = 'youtube' | 'vimeo' | null;
 export type SuiEmbedAspectRatio = '4:3' | '16:9' | '21:9' | null;
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, SuiIconDirective, SafeUrlPipe],
   selector: 'sui-embed',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,

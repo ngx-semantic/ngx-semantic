@@ -4,7 +4,8 @@ import {By} from '@angular/platform-browser';
 import {SuiFeedModule} from './feed.module';
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [SuiFeedModule],
   template: `
     <div suiFeedEvent [suiLabelIcon]="icon" [suiLabelImageUrl]="imageUrl">
       <span class="inner">Body</span>
@@ -21,8 +22,7 @@ describe('SuiFeedEventComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SuiFeedModule],
-      declarations: [HostFeedEventComponent]
+      imports: [HostFeedEventComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HostFeedEventComponent);

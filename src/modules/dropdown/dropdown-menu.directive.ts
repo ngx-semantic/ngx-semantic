@@ -8,7 +8,7 @@ import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 export type SuiDropdownMenuDirection = 'left' | 'right' | null;
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: '[suiDropdownMenu]'
 })
 export class SuiDropdownMenuDirective {

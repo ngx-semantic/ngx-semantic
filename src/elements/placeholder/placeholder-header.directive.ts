@@ -6,7 +6,7 @@ import {Directive, HostBinding, Input} from '@angular/core';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 
 @Directive({
-  standalone: false,
+  standalone: true,
   exportAs: 'suiPlaceholderHeader',
   selector: '[suiPlaceholderHeader]'
 })

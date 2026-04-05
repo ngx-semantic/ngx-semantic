@@ -1,20 +1,20 @@
 /**
- * Created by bolor on 6/11/2020
+ * Created by bolor on 5/26/2020
  */
 
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
+import {SuiGridDirective} from './grid.directive';
 import {SuiGridColumnDirective} from './grid-column.directive';
 import {SuiGridRowDirective} from './grid-row.directive';
-import {SuiGridDirective} from './grid.directive';
 
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
     SuiGridDirective,
     SuiGridColumnDirective,
     SuiGridRowDirective
   ],
-  imports: [CommonModule],
   exports: [
     SuiGridDirective,
     SuiGridColumnDirective,

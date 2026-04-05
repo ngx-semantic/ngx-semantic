@@ -29,7 +29,7 @@ export type SuiPopupWidth = 'wide' | 'very wide' | null;
 export type SuiPopupTrigger = 'hover' | 'click';
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: '[sui-popup]',
   exportAs: 'suiPopup'
 })

@@ -5,7 +5,8 @@ import {SuiMessageModule} from './message.module';
 import {SuiColour} from 'ngx-semantic/core/enums';
 
 @Component({
-  standalone: false,
+  standalone: true,
+  imports: [SuiMessageModule],
   template: `
     <div id="wrap">
       <div sui-message
@@ -25,16 +26,13 @@ class HostMessageComponent {
 
 describe('SuiMessageComponent', () => {
   let fixture: ComponentFixture<HostMessageComponent>;
-  let host: HostMessageComponent;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SuiMessageModule],
-      declarations: [HostMessageComponent]
+      imports: [HostMessageComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HostMessageComponent);
-    host = fixture.componentInstance;
     fixture.detectChanges();
   });
 

@@ -4,7 +4,7 @@ import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 export type SuiSelectMenuDirection = 'left' | 'right' | null;
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: '[suiSelectMenu]'
 })
 export class SuiSelectMenuDirective {

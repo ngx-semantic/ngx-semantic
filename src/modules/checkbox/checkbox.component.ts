@@ -19,7 +19,7 @@ import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 export type SuiCheckboxType = 'radio' | 'slider' | 'toggle' | null;
 
 @Component({
-  standalone: false,
+  standalone: true,
   selector: 'sui-checkbox',
   encapsulation: ViewEncapsulation.None,
   template: `

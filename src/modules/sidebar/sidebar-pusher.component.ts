@@ -7,7 +7,7 @@ import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {SuiSidebarService} from './sidebar.service';
 
 @Component({
-  standalone: false,
+  standalone: true,
   selector: 'sui-sidebar-pusher',
   encapsulation: ViewEncapsulation.None,
   template: `

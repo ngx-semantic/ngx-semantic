@@ -1,5 +1,5 @@
 /**
- * Created by bolor on 8/17/2020
+ * Created by bolor on 7/20/2020
  */
 
 import {CommonModule} from '@angular/common';
@@ -14,7 +14,8 @@ import {SuiCardDirective} from './card.directive';
 import {SuiCardsDirective} from './cards.directive';
 
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
     SuiCardDirective,
     SuiCardsDirective,
     SuiCardMetaDirective,
@@ -23,9 +24,6 @@ import {SuiCardsDirective} from './cards.directive';
     SuiCardDescriptionDirective,
     SuiCardExtraContentDirective,
     SuiCardImageDirective
-  ],
-  imports: [
-    CommonModule
   ],
   exports: [
     SuiCardDirective,

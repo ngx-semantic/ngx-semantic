@@ -4,8 +4,7 @@ import {SuiButtonDirective} from './button.directive';
 import {SuiButtonsDirective} from './buttons.directive';
 
 @NgModule({
-  declarations: [SuiButtonsDirective],
-  imports: [CommonModule, SuiButtonDirective],
+  imports: [CommonModule, SuiButtonDirective, SuiButtonsDirective],
   exports: [SuiButtonDirective, SuiButtonsDirective]
 })
 export class SuiButtonModule {

@@ -41,7 +41,51 @@ import {SuiPlaceholderModule} from 'ngx-semantic/elements/placeholder';
 import {SuiBreadcrumbModule} from 'ngx-semantic/collections/breadcrumb';
 import {SuiAdvertisementModule} from 'ngx-semantic/views/advertisement';
 
+const NGX_SEMANTIC_MODULES = [
+  SuiTabsModule,
+  SuiFlagModule,
+  SuiIconModule,
+  SuiListModule,
+  SuiRailModule,
+  SuiGridModule,
+  SuiFormModule,
+  SuiMenuModule,
+  SuiCardModule,
+  SuiImageModule,
+  SuiInputModule,
+  SuiItemsModule,
+  SuiLabelModule,
+  SuiStepsModule,
+  SuiTableModule,
+  SuiPopupModule,
+  SuiEmbedModule,
+  SuiModalModule,
+  SuiLoaderModule,
+  SuiDimmerModule,
+  SuiHeaderModule,
+  SuiButtonModule,
+  SuiRevealModule,
+  SuiRatingModule,
+  SuiSelectModule,
+  SuiSearchModule,
+  SuiMessageModule,
+  SuiDividerModule,
+  SuiCommentModule,
+  SuiSegmentModule,
+  SuiSidebarModule,
+  SuiProgressModule,
+  SuiDropdownModule,
+  SuiCheckboxModule,
+  SuiStatisticModule,
+  SuiAccordionModule,
+  SuiContainerModule,
+  SuiBreadcrumbModule,
+  SuiPlaceholderModule,
+  SuiAdvertisementModule
+];
+
 @NgModule({
+  imports: [...NGX_SEMANTIC_MODULES],
   exports: [
     SuiTabsModule,
     SuiFlagModule,

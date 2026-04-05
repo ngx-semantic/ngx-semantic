@@ -7,7 +7,7 @@ import { InputBoolean } from 'ngx-semantic/core/util';
 import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
-  standalone: false,
+  standalone: true,
   exportAs: 'suiBreadcrumbSection',
   selector: '[suiBreadcrumbSection]'
 })

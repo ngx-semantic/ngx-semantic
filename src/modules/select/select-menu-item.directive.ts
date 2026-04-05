@@ -2,7 +2,7 @@ import { Directive, HostBinding, Input } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 
 @Directive({
-  standalone: false,
+  standalone: true,
   selector: '[suiSelectMenuItem]'
 })
 export class SuiSelectMenuItemDirective {
