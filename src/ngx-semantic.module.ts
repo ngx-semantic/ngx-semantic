@@ -84,7 +84,7 @@ const NGX_SEMANTIC_MODULES = [
   SuiBreadcrumbModule,
   SuiPlaceholderModule,
   SuiAdvertisementModule,
-  SuiStickyModule
+  SuiStickyModule,
   SuiShapeModule
 ];
 
@@ -131,7 +131,7 @@ const NGX_SEMANTIC_MODULES = [
     SuiBreadcrumbModule,
     SuiPlaceholderModule,
     SuiAdvertisementModule,
-    SuiStickyModule
+    SuiStickyModule,
     SuiShapeModule
   ]
 })
