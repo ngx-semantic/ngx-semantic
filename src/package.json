@@ -29,7 +29,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ngx-semantic/ngx-semantic"
+    "url": "git+https://github.com/ngx-semantic/ngx-semantic.git"
   },
   "peerDependencies": {
     "@angular/core": ">=9.0.0",
@@ -38,5 +38,8 @@
   },
   "dependencies": {
     "tslib": ">=1.10.0"
+  },
+  "publishConfig": {
+    "provenance": true
   }
 }
