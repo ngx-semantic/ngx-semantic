@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {SuiShapeComponent} from './shape.component';
 import {SuiShapeSideComponent} from './shape-side.component';
@@ -53,11 +53,12 @@ describe('SuiShapeComponent', () => {
     expect(sides[1].nativeElement.classList.contains('active')).toBeFalse();
   });
 
-  it('should flip to the next side when transition ends', () => {
+  it('should flip to the next side when transition ends', fakeAsync(() => {
     const shape = fixture.componentInstance.shape;
     const sidesEl = fixture.debugElement.query(By.css('.sides'))!.nativeElement as HTMLElement;
 
     shape.flipUp();
+    tick();
     fixture.detectChanges();
 
     expect(shape.isAnimating()).toBeTrue();
@@ -69,9 +70,9 @@ describe('SuiShapeComponent', () => {
     const sideEls = fixture.debugElement.queryAll(By.css('.side'));
     expect(sideEls[0].nativeElement.classList.contains('active')).toBeFalse();
     expect(sideEls[1].nativeElement.classList.contains('active')).toBeTrue();
-  });
+  }));
 
-  it('should emit suiBeforeChange and suiOnChange when flipping', () => {
+  it('should emit suiBeforeChange and suiOnChange when flipping', fakeAsync(() => {
     const shape = fixture.componentInstance.shape;
     const sidesEl = fixture.debugElement.query(By.css('.sides'))!.nativeElement as HTMLElement;
 
@@ -82,6 +83,7 @@ describe('SuiShapeComponent', () => {
     shape.suiOnChange.subscribe((s) => (after = s));
 
     shape.flipUp();
+    tick();
     fixture.detectChanges();
     sidesEl.dispatchEvent(new TransitionEvent('transitionend', {bubbles: true}));
     fixture.detectChanges();
@@ -89,48 +91,52 @@ describe('SuiShapeComponent', () => {
     expect(before).toBeTruthy();
     expect(after).toBeTruthy();
     expect(after!.nativeElement.textContent?.trim()).toContain('B');
-  });
+  }));
 
-  it('setNextSide should choose which face receives the next flip', () => {
+  it('setNextSide should choose which face receives the next flip', fakeAsync(() => {
     const shape = fixture.componentInstance.shape;
     const sidesEl = fixture.debugElement.query(By.css('.sides'))!.nativeElement as HTMLElement;
 
     shape.flipUp();
+    tick();
     fixture.detectChanges();
     sidesEl.dispatchEvent(new TransitionEvent('transitionend', {bubbles: true}));
     fixture.detectChanges();
 
     shape.setNextSide('.first');
     shape.flipRight();
+    tick();
     fixture.detectChanges();
     sidesEl.dispatchEvent(new TransitionEvent('transitionend', {bubbles: true}));
     fixture.detectChanges();
 
     const sideEls = fixture.debugElement.queryAll(By.css('.side'));
     expect(sideEls[0].nativeElement.classList.contains('active')).toBeTrue();
-  });
+  }));
 
-  it('reset should clear animating state and inline styles', () => {
+  it('reset should clear animating state and inline styles', fakeAsync(() => {
     const shape = fixture.componentInstance.shape;
     shape.flipUp();
+    tick();
     fixture.detectChanges();
     shape.reset();
     fixture.detectChanges();
 
     expect(shape.isAnimating()).toBeFalse();
     expect(Object.keys(shape.shapeInlineStyle).length).toBe(0);
-  });
+  }));
 
-  it('flip() should run the named flip behavior', () => {
+  it('flip() should run the named flip behavior', fakeAsync(() => {
     const shape = fixture.componentInstance.shape;
     const sidesEl = fixture.debugElement.query(By.css('.sides'))!.nativeElement as HTMLElement;
 
     shape.flip('flip up');
+    tick();
     fixture.detectChanges();
     sidesEl.dispatchEvent(new TransitionEvent('transitionend', {bubbles: true}));
     fixture.detectChanges();
 
     const sideEls = fixture.debugElement.queryAll(By.css('.side'));
     expect(sideEls[1].nativeElement.classList.contains('active')).toBeTrue();
-  });
+  }));
 });

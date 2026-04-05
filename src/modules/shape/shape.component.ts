@@ -369,13 +369,15 @@ export class SuiShapeComponent implements AfterContentInit, OnDestroy {
       });
     };
 
-    this.animating = true;
-    sidesEl.addEventListener(this.transitionEnd, onEnd, {once: true});
-    this.sidesInlineStyle = {...this.sidesInlineStyle, ...finalSidesTransform};
-
-    requestAnimationFrame(() => {
-      $active.styleHidden = true;
-      this.cdr.markForCheck();
+    // Defer DOM-facing state to the next task so callers do not hit NG0100 when flipping from tests or templates.
+    setTimeout(() => {
+      this.zone.run(() => {
+        this.animating = true;
+        sidesEl.addEventListener(this.transitionEnd, onEnd, {once: true});
+        this.sidesInlineStyle = {...this.sidesInlineStyle, ...finalSidesTransform};
+        $active.styleHidden = true;
+        this.cdr.markForCheck();
+      });
     });
   }
 
