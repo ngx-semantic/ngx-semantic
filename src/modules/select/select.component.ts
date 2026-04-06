@@ -27,92 +27,92 @@ import { ISelectOption } from './interfaces/ISelectOption';
     <i class="dropdown icon"></i>
 
     <!-- Multiple Select Display -->
-    <ng-container *ngIf="suiMultiple">
-      <ng-container *ngFor="let option of selectedOptions">
+    @if (suiMultiple) {
+      @for (option of selectedOptions; track option) {
         <a class="ui label transition visible"
            style="display: inline-block !important;">
-          <ng-container *ngIf="option.image">
+          @if (option.image) {
             <img class="ui mini image"
                  alt="Dropdown option image"
                  [class.avatar]="option.image.avatar"
                  [src]="option.image.src"/>
-          </ng-container>
-          <ng-container *ngIf="option.flag">
+          }
+          @if (option.flag) {
             <i [className]="'flag ' + option.flag"></i>
-          </ng-container>
+          }
 
           {{ option.text }}
 
           <i class="delete icon"
              (click)="removeSelection(option, $event)"></i>
         </a>
-      </ng-container>
+      }
 
       <div class="default text">{{ suiPlaceholder }}</div>
-    </ng-container>
+    }
 
     <!-- Search Section -->
-    <ng-container *ngIf="suiSearch">
+    @if (suiSearch) {
       <input class="search"
              autocomplete="off"
              tabindex="0"
              [(ngModel)]="searchTerm"
              (focus)="onClick()"
              (keyup)="onSearch()">
-    </ng-container>
+    }
 
     <!-- Display Section -->
-    <ng-container *ngIf="!suiMultiple">
+    @if (!suiMultiple) {
       <div
         [class.default]="isDefaultText"
         [class.filtered]="isFilteredText"
         [class.text]="true">
-        <ng-container *ngIf="selectedOption">
-          <ng-container *ngIf="selectedOption.image">
+        @if (selectedOption) {
+          @if (selectedOption.image) {
             <img class="ui mini image"
                  alt="Dropdown option image"
                  [class.avatar]="selectedOption.image.avatar"
                  [src]="selectedOption.image.src"/>
-          </ng-container>
-          <ng-container *ngIf="selectedOption.flag">
+          }
+          @if (selectedOption.flag) {
             <i [className]="'flag ' + selectedOption.flag"></i>
-          </ng-container>
+          }
 
           {{ selectedOption.text }}
-        </ng-container>
+        }
 
-        <ng-container *ngIf="!selectedOption">
+        @if (!selectedOption) {
           {{ suiPlaceholder }}
-        </ng-container>
+        }
       </div>
-    </ng-container>
+    }
 
     <!-- Drop Down Menu Section -->
     <div suiSelectMenu>
-      <ng-container *ngFor="let option of filteredOptions">
+      @for (option of filteredOptions; track option) {
         <div suiSelectMenuItem
              [suiValue]="option.value"
              [suiSelected]="isActive(option)"
              [suiMultiple]="suiMultiple"
              (click)="onItemClick(option, $event)">
-          <ng-container *ngIf="option.image">
+          @if (option.image) {
             <img class="ui mini image"
                  alt="Dropdown option image"
                  [class.avatar]="option.image.avatar"
                  [src]="option.image.src"/>
-          </ng-container>
-          <ng-container *ngIf="option.flag">
+          }
+          @if (option.flag) {
             <i [className]="'flag ' + option.flag"></i>
-          </ng-container>
+          }
           {{ option.text }}
         </div>
-      </ng-container>
-      <ng-container *ngIf="hasNoSearchResults()">
+      }
+      @if (hasNoSearchResults()) {
         <div class="message"
              (click)="$event.stopPropagation()">
           No results found.
         </div>
-      </ng-container>
+      }
     </div>
   `,
   providers: [ {

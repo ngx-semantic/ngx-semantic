@@ -195,7 +195,7 @@ class HostStickyNoSetSizeComponent {
 
 describe('SuiStickyDirective', () => {
   let fixture: ComponentFixture<HostStickyComponent>;
-  let scrollYValue = {value: 0};
+  const scrollYValue = {value: 0};
 
   beforeAll(() => {
     enableProdMode();

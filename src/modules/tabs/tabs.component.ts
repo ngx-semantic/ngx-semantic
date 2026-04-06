@@ -37,26 +37,26 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <ng-container *ngIf="hasTabs">
-      <ng-container *ngIf="isTop">
+    @if (hasTabs) {
+      @if (isTop) {
         <ng-container *ngTemplateOutlet="tabMenu"></ng-container>
-      </ng-container>
+      }
 
       <div class="active tab"
            sui-segment
            [class.loading]="currentTab?.suiLoading"
            [suiAttached]="segmentAttachment">
-        <ng-container *ngIf="currentTab">
+        @if (currentTab) {
           <ng-container
             *ngTemplateOutlet="currentTab.contentTemplate">
           </ng-container>
-        </ng-container>
+        }
       </div>
 
-      <ng-container *ngIf="!isTop">
+      @if (!isTop) {
         <ng-container *ngTemplateOutlet="tabMenu"></ng-container>
-      </ng-container>
-    </ng-container>
+      }
+    }
 
     <ng-template #tabMenu>
       <div sui-menu
@@ -68,27 +68,27 @@ export type SuiTabMenuPosition = 'top' | 'bottom';
            [suiPointing]="isPointing"
            [suiText]="isText"
            [suiBorderless]="isBorderless">
-        <ng-container *ngFor="let tab of tabs; let i = index;">
+        @for (tab of tabs; track tab; let i = $index) {
           <div suiMenuItem
                [disabled]="tab.disabled"
                [suiActive]="isTabSelected(i)"
                (click)="changeTab(tab, i)">
-            <ng-container *ngIf="tab.suiIcon">
+            @if (tab.suiIcon) {
               <i sui-icon
                  [suiIconType]="tab.suiIcon"></i>
-            </ng-container>
+            }
 
             {{tab.suiTitle}}
 
-            <ng-container *ngIf="tab.suiLabel">
+            @if (tab.suiLabel) {
               <div sui-label
                    [suiColour]="tab.suiLabelColour"
                    [suiCircular]="tab.suiLabelCircular">
                 {{tab.suiLabel}}
               </div>
-            </ng-container>
+            }
           </div>
-        </ng-container>
+        }
       </div>
     </ng-template>
   `

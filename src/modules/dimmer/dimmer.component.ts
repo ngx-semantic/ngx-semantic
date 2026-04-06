@@ -19,11 +19,11 @@ import {SuiDimmerContentAlignment} from './dimmer.directive';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div [ngClass]="classes" style="display: flex !important;">
-      <ng-container *ngIf="suiContent">
+      @if (suiContent) {
         <div class="content">
           <ng-container *ngTemplateOutlet="suiContent"></ng-container>
         </div>
-      </ng-container>
+      }
     </div>
   `
 })

@@ -27,24 +27,25 @@ export type SuiModalScrollability = 'full' | 'medium' | 'none';
     <ng-template #contentTemplate>
       <div style="display: block !important;"
            [ngClass]="classes">
-        <ng-container *ngIf="suiClosable">
-          <i *ngIf="!suiBasic"
-             sui-icon
-             suiIconType="close"
-             (click)="visible = false;"></i>
-        </ng-container>
+        @if (suiClosable) {
+          @if (!suiBasic) {
+            <i sui-icon
+               suiIconType="close"
+               (click)="visible = false;"></i>
+          }
+        }
 
-        <ng-container *ngIf="suiHeaderText || suiHeaderIcon">
+        @if (suiHeaderText || suiHeaderIcon) {
           <div [class.ui]="!!suiHeaderIcon"
                [class.icon]="!!suiHeaderIcon"
                [class.header]="true">
-            <ng-container *ngIf="suiHeaderIcon">
+            @if (suiHeaderIcon) {
               <i sui-icon
                  [suiIconType]="suiHeaderIcon"></i>
-            </ng-container>
+            }
             {{suiHeaderText}}
           </div>
-        </ng-container>
+        }
         <ng-content></ng-content>
       </div>
     </ng-template>

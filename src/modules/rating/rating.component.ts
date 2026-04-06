@@ -3,7 +3,6 @@
  */
 
 import {ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Input, Output, ViewEncapsulation} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {SuiSize} from 'ngx-semantic/core/enums';
@@ -12,18 +11,18 @@ export type SuiRatingType = 'star' | 'heart' | null;
 
 @Component({
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   selector: 'sui-rating',
   encapsulation: ViewEncapsulation.None,
   template: `
-    <ng-container *ngFor="let i of ratingsArray">
+    @for (i of ratingsArray; track i) {
       <i class="icon"
          [class.active]="i <= suiValue"
          [class.selected]="i <= hoverValue"
          (click)="onClick(i)"
          (mouseover)="onHover(i)"
          (mouseout)="onUnhover()"></i>
-    </ng-container>
+    }
   `,
   styles: [`
     :host.read-only .icon {

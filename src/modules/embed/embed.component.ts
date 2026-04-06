@@ -23,19 +23,19 @@ export type SuiEmbedAspectRatio = '4:3' | '16:9' | '21:9' | null;
          [suiIconType]="suiIcon"
          (click)="playVideo()"></i>
 
-      <ng-container *ngIf="suiPlaceHolder">
+      @if (suiPlaceHolder) {
         <img class="placeholder"
              [src]="suiPlaceHolder"/>
-      </ng-container>
+      }
 
-      <ng-container *ngIf="isPLaying">
+      @if (isPLaying) {
         <div class="embed">
           <iframe
             [src]="videoUrl | safeUrl"
             scrolling="no" webkitallowfullscreen="" mozallowfullscreen=""
             allowfullscreen="" width="100%" height="100%" frameborder="0"></iframe>
         </div>
-      </ng-container>
+      }
     </div>
   `
 })
