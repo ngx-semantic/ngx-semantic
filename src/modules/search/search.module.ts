@@ -1,5 +1,5 @@
-import {NgModule} from '@angular/core';
-import {SuiSearchComponent} from './search.component';
+import { NgModule } from '@angular/core';
+import { SuiSearchComponent } from './search.component';
 
 @NgModule({
   imports: [

@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiShapeSideComponent} from './shape-side.component';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiShapeSideComponent } from './shape-side.component';
 
 @Component({
   standalone: true,
@@ -31,7 +31,7 @@ describe('SuiShapeSideComponent', () => {
   it('clearInlineStyles should empty ngStyle map', () => {
     const cmp = fixture.debugElement.query(By.directive(SuiShapeSideComponent))
       .componentInstance as SuiShapeSideComponent;
-    cmp.inlineStyles = {transform: 'rotate(1deg)'};
+    cmp.inlineStyles = { transform: 'rotate(1deg)' };
     cmp.clearInlineStyles();
     expect(Object.keys(cmp.inlineStyles).length).toBe(0);
   });

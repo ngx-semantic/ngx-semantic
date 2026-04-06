@@ -2,11 +2,11 @@
  * Created by bolor on 4/26/2020
  */
 
-import {Component, Input} from '@angular/core';
-import {SuiImageDirective} from './image.directive';
-import {By} from '@angular/platform-browser';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {CommonModule} from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { SuiImageDirective } from './image.directive';
+import { By } from '@angular/platform-browser';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CommonModule } from '@angular/common';
 
 describe('SuiImageComponent', () => {
   let component: TestImageComponent;

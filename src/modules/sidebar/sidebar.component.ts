@@ -3,8 +3,8 @@
  */
 
 import { Component, EventEmitter, HostBinding, Input, Output, ViewEncapsulation, inject } from '@angular/core';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiSidebarService} from './sidebar.service';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { SuiSidebarService } from './sidebar.service';
 
 export type SuiSidebarPosition = 'top' | 'bottom' | 'left' | 'right';
 export type SuiSidebarWidth = 'thin' | 'very thin' | 'wide' | 'very wide' | null;

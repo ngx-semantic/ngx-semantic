@@ -9,10 +9,10 @@ function toRuleSpecs(
   rules: SuiFormValidationRuleSpec[] | string | string[]
 ): SuiFormValidationRuleSpec[] {
   if (typeof rules === 'string') {
-    return [{type: rules}];
+    return [{ type: rules }];
   }
   if (Array.isArray(rules)) {
-    return rules.map(r => (typeof r === 'string' ? {type: r} : r));
+    return rules.map(r => (typeof r === 'string' ? { type: r } : r));
   }
   return rules;
 }

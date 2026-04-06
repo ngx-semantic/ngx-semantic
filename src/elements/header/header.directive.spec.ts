@@ -1,9 +1,9 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, Input} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {SuiHeaderAlignment, SuiHeaderAttachment, SuiHeaderDirective, SuiHeaderFloating} from './header.directive';
-import {By} from '@angular/platform-browser';
-import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SuiHeaderAlignment, SuiHeaderAttachment, SuiHeaderDirective, SuiHeaderFloating } from './header.directive';
+import { By } from '@angular/platform-browser';
+import { SuiColour, SuiSize } from 'ngx-semantic/core/enums';
 
 describe('SuiHeaderComponent', () => {
   let component: TestHeaderComponent;

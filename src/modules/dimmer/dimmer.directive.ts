@@ -3,9 +3,9 @@
  */
 
 import { ApplicationRef, ComponentFactoryResolver, ContentChild, Directive, ElementRef, EmbeddedViewRef, EventEmitter, HostBinding, Injector, Input, OnChanges, OnDestroy, Output, Renderer2, SimpleChanges, TemplateRef, inject } from '@angular/core';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiDimmerContentDirective} from './dimmer-content.directive';
-import {SuiDimmerComponent} from './dimmer.component';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { SuiDimmerContentDirective } from './dimmer-content.directive';
+import { SuiDimmerComponent } from './dimmer.component';
 
 export type SuiDimmerContentAlignment = 'top' | 'bottom' | null;
 
@@ -21,7 +21,7 @@ export class SuiDimmerDirective implements OnChanges, OnDestroy {
   private appRef = inject(ApplicationRef);
   private renderer = inject(Renderer2);
 
-  @ContentChild(SuiDimmerContentDirective, {static: true, read: TemplateRef})
+  @ContentChild(SuiDimmerContentDirective, { static: true, read: TemplateRef })
   private content: TemplateRef<any> | null = null;
 
   @Input() public suiDimmerAlignment: SuiDimmerContentAlignment = null;

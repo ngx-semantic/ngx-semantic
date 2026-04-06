@@ -7,9 +7,9 @@ import {
   Input, OnInit, TemplateRef,
   ViewEncapsulation
 } from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {ClassUtils} from 'ngx-semantic/core/util';
-import {SuiDimmerContentAlignment} from './dimmer.directive';
+import { CommonModule } from '@angular/common';
+import { ClassUtils } from 'ngx-semantic/core/util';
+import { SuiDimmerContentAlignment } from './dimmer.directive';
 
 @Component({
   standalone: true,

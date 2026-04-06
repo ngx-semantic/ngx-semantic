@@ -1,7 +1,7 @@
-import {Component, Input} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiFeedModule} from './feed.module';
+import { Component, Input } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiFeedModule } from './feed.module';
 
 @Component({
   standalone: true,

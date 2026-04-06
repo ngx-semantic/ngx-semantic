@@ -1,9 +1,9 @@
-import {CommonModule} from '@angular/common';
-import {Component, Input} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiPlaceholderModule} from './placeholder.module';
-import {SuiPlaceholderImageDirective} from './placeholder-image.directive';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiPlaceholderModule } from './placeholder.module';
+import { SuiPlaceholderImageDirective } from './placeholder-image.directive';
 
 @Component({
   standalone: true,

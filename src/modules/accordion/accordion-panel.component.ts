@@ -2,9 +2,9 @@
  * Created by bolorundurowb on 1/25/2021
  */
 
-import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
-import {InputBoolean} from 'ngx-semantic/core/util';
-import {SuiIconDirective} from 'ngx-semantic/elements/icon';
+import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
+import { InputBoolean } from 'ngx-semantic/core/util';
+import { SuiIconDirective } from 'ngx-semantic/elements/icon';
 
 @Component({
   standalone: true,

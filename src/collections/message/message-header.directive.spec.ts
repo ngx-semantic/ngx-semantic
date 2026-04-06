@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiMessageHeaderDirective} from './message-header.directive';
-import {SuiMessageModule} from './message.module';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiMessageHeaderDirective } from './message-header.directive';
+import { SuiMessageModule } from './message.module';
 
 @Component({
   standalone: true,

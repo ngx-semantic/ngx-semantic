@@ -1,5 +1,5 @@
-import {NgModule} from '@angular/core';
-import {SuiSelectComponent} from './select.component';
+import { NgModule } from '@angular/core';
+import { SuiSelectComponent } from './select.component';
 
 @NgModule({
   exports: [

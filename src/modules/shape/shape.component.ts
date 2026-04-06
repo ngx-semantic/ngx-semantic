@@ -3,10 +3,10 @@
  * jQuery `$.fn.shape` behavior (3D CSS transforms). Include Semantic UI’s shape CSS in your app.
  */
 
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { AfterContentInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, Input, NgZone, OnDestroy, Output, QueryList, ViewChild, ViewEncapsulation, inject } from '@angular/core';
-import {InputBoolean} from 'ngx-semantic/core/util';
-import {SuiShapeSideComponent} from './shape-side.component';
+import { InputBoolean } from 'ngx-semantic/core/util';
+import { SuiShapeSideComponent } from './shape-side.component';
 
 export type SuiShapeDimension = 'initial' | 'next' | number;
 export type SuiShapeFlip =
@@ -70,8 +70,8 @@ export class SuiShapeComponent implements AfterContentInit, OnDestroy {
   private readonly zone = inject(NgZone);
 
   @ContentChildren(SuiShapeSideComponent) private sideList!: QueryList<SuiShapeSideComponent>;
-  @ViewChild('shapeEl', {static: true}) private shapeEl!: ElementRef<HTMLElement>;
-  @ViewChild('sidesEl', {static: true}) private sidesEl!: ElementRef<HTMLElement>;
+  @ViewChild('shapeEl', { static: true }) private shapeEl!: ElementRef<HTMLElement>;
+  @ViewChild('sidesEl', { static: true }) private sidesEl!: ElementRef<HTMLElement>;
 
   /** Animation length in ms. `null` skips inline `transition-duration` (Semantic UI CSS defaults). */
   @Input() public suiDuration: number | null = null;
@@ -302,9 +302,9 @@ export class SuiShapeComponent implements AfterContentInit, OnDestroy {
       MozTransitionDuration: d,
       OTransitionDuration: d
     };
-    this.sidesInlineStyle = {...this.sidesInlineStyle, ...style};
+    this.sidesInlineStyle = { ...this.sidesInlineStyle, ...style };
     for (const side of this.sideList.toArray()) {
-      side.inlineStyles = {...side.inlineStyles, ...style};
+      side.inlineStyles = { ...side.inlineStyles, ...style };
     }
   }
 
@@ -357,8 +357,8 @@ export class SuiShapeComponent implements AfterContentInit, OnDestroy {
     setTimeout(() => {
       this.zone.run(() => {
         this.animating = true;
-        sidesEl.addEventListener(this.transitionEnd, onEnd, {once: true});
-        this.sidesInlineStyle = {...this.sidesInlineStyle, ...finalSidesTransform};
+        sidesEl.addEventListener(this.transitionEnd, onEnd, { once: true });
+        this.sidesInlineStyle = { ...this.sidesInlineStyle, ...finalSidesTransform };
         $active.styleHidden = true;
         this.cdr.markForCheck();
       });

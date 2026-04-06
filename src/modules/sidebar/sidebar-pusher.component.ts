@@ -3,8 +3,8 @@
  */
 
 import { Component, HostBinding, HostListener, Input, OnInit, ViewEncapsulation, inject } from '@angular/core';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiSidebarService} from './sidebar.service';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { SuiSidebarService } from './sidebar.service';
 
 @Component({
   standalone: true,

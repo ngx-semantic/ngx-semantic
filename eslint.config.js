@@ -36,6 +36,7 @@ module.exports = defineConfig([
           varsIgnorePattern: "^_",
         },
       ],
+      "object-curly-spacing": ["error", "always"],
     },
   },
   {

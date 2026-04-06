@@ -1,10 +1,10 @@
-import {Component, EventEmitter, HostListener, Input, Output, ViewEncapsulation} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {SuiInputDirective} from 'ngx-semantic/elements/input';
-import {SuiIconDirective} from 'ngx-semantic/elements/icon';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {ISearchOption} from './interfaces/ISearchOption';
+import { Component, EventEmitter, HostListener, Input, Output, ViewEncapsulation } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { SuiInputDirective } from 'ngx-semantic/elements/input';
+import { SuiIconDirective } from 'ngx-semantic/elements/icon';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { ISearchOption } from './interfaces/ISearchOption';
 
 export type SuiSearchAlignment = 'right' | null;
 

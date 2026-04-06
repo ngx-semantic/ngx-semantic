@@ -3,8 +3,8 @@
  */
 
 import { Directive, ElementRef, Input, inject } from '@angular/core';
-import {SuiColour, SuiWidth} from 'ngx-semantic/core/enums';
-import {BaseDirective} from 'ngx-semantic/core/base';
+import { SuiColour, SuiWidth } from 'ngx-semantic/core/enums';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiColumnFloat = 'left floated' | 'right floated' | null;
 export type SuiColumnAlignment = 'left aligned' | 'middle aligned' | 'right aligned' | null;

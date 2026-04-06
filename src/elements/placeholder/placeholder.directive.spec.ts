@@ -2,11 +2,11 @@
  * Created by bolor on 5/6/2020
  */
 
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {CommonModule} from '@angular/common';
-import {By} from '@angular/platform-browser';
-import {Component, Input} from '@angular/core';
-import {SuiPlaceholderDirective} from './placeholder.directive';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CommonModule } from '@angular/common';
+import { By } from '@angular/platform-browser';
+import { Component, Input } from '@angular/core';
+import { SuiPlaceholderDirective } from './placeholder.directive';
 
 describe('SuiPlaceholderComponent', () => {
   let component: TestPlaceholderComponent;

@@ -4,11 +4,11 @@
  * Requires Semantic UI sticky CSS (and typically `position: relative` on the rail/column container).
  */
 
-import {DOCUMENT} from '@angular/common';
+import { DOCUMENT } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Directive, ElementRef, EventEmitter, HostBinding, Input, NgZone, OnDestroy, OnInit, Output, Renderer2, inject } from '@angular/core';
-import {InputBoolean} from 'ngx-semantic/core/util';
-import {Subject, fromEvent} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import { InputBoolean } from 'ngx-semantic/core/util';
+import { Subject, fromEvent } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 /** Cached layout (see Semantic UI `save.positions`). */
 export interface SuiStickyCache {
@@ -81,7 +81,7 @@ export class SuiStickyDirective implements OnInit, AfterViewInit, OnDestroy {
     const win = this.document.defaultView!;
     this.zone.runOutsideAngular(() => {
       const scrollTarget = this.scrollEl === window ? win : this.scrollEl;
-      fromEvent(scrollTarget, 'scroll', {passive: true})
+      fromEvent(scrollTarget, 'scroll', { passive: true })
         .pipe(takeUntil(this.destroy$))
         .subscribe(() => {
           requestAnimationFrame(() => {
@@ -92,7 +92,7 @@ export class SuiStickyDirective implements OnInit, AfterViewInit, OnDestroy {
             });
           });
         });
-      fromEvent(win, 'resize', {passive: true})
+      fromEvent(win, 'resize', { passive: true })
         .pipe(takeUntil(this.destroy$))
         .subscribe(() => {
           requestAnimationFrame(() => this.zone.run(() => this.refresh(false)));
@@ -130,8 +130,8 @@ export class SuiStickyDirective implements OnInit, AfterViewInit, OnDestroy {
     this.cdr.markForCheck();
     if (this.suiObserveChanges && typeof MutationObserver !== 'undefined' && !this.mutationObserver) {
       this.mutationObserver = new MutationObserver(() => this.scheduleRefresh());
-      this.mutationObserver.observe(this.contextEl, {childList: true, subtree: true});
-      this.mutationObserver.observe(this.el.nativeElement, {childList: true, subtree: true});
+      this.mutationObserver.observe(this.contextEl, { childList: true, subtree: true });
+      this.mutationObserver.observe(this.el.nativeElement, { childList: true, subtree: true });
     }
   }
 
@@ -201,9 +201,9 @@ export class SuiStickyDirective implements OnInit, AfterViewInit, OnDestroy {
     this.cache = {
       fits: elementHeight + this.suiOffset <= scrollH,
       sameHeight: elementHeight === contextHeight,
-      scrollContext: {height: scrollH},
+      scrollContext: { height: scrollH },
       element: {
-        margin: {top: marginTop, bottom: marginBottom},
+        margin: { top: marginTop, bottom: marginBottom },
         top: elementTop,
         left: elementOffsetLeft,
         width: mod.offsetWidth,

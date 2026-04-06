@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiFlagDirective} from './flag.directive';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiFlagDirective } from './flag.directive';
 
 describe('SuiFlagDirective', () => {
   let fixture: ComponentFixture<TestFlagComponent>;

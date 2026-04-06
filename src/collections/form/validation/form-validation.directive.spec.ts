@@ -1,9 +1,9 @@
-import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {By} from '@angular/platform-browser';
-import {SuiFormValidationDirective} from './form-validation.directive';
-import {SUI_FORM_VALIDATION_ERROR_KEY} from './form-validation.model';
+import { Component, ViewChild } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { By } from '@angular/platform-browser';
+import { SuiFormValidationDirective } from './form-validation.directive';
+import { SUI_FORM_VALIDATION_ERROR_KEY } from './form-validation.model';
 
 @Component({
   standalone: true,
@@ -20,7 +20,7 @@ import {SUI_FORM_VALIDATION_ERROR_KEY} from './form-validation.model';
 })
 class HostFormComponent {
   @ViewChild('fv') fv!: SuiFormValidationDirective;
-  fields = {email: ['empty', 'email']};
+  fields = { email: ['empty', 'email'] };
 }
 
 @Component({
@@ -44,7 +44,7 @@ class ReactiveHostComponent {
     email: new FormControl(''),
     extra: new FormControl('', Validators.required)
   });
-  fields = {email: ['empty', 'email']};
+  fields = { email: ['empty', 'email'] };
 }
 
 describe('SuiFormValidationDirective', () => {
@@ -60,7 +60,7 @@ describe('SuiFormValidationDirective', () => {
 
   it('blocks submit when a rule fails', () => {
     const form = fixture.debugElement.query(By.css('form')).nativeElement as HTMLFormElement;
-    const ev = new Event('submit', {cancelable: true, bubbles: true});
+    const ev = new Event('submit', { cancelable: true, bubbles: true });
     const pd = spyOn(ev, 'preventDefault').and.callThrough();
     form.dispatchEvent(ev);
     expect(pd).toHaveBeenCalled();
@@ -73,7 +73,7 @@ describe('SuiFormValidationDirective', () => {
     fixture.detectChanges();
 
     const form = fixture.debugElement.query(By.css('form')).nativeElement as HTMLFormElement;
-    const ev = new Event('submit', {cancelable: true, bubbles: true});
+    const ev = new Event('submit', { cancelable: true, bubbles: true });
     const pd = spyOn(ev, 'preventDefault').and.callThrough();
     form.dispatchEvent(ev);
     expect(pd).not.toHaveBeenCalled();
@@ -104,26 +104,26 @@ describe('SuiFormValidationDirective with FormGroup', () => {
 
   it('sets AbstractControl errors for Semantic rule failures', () => {
     const form = fixture.debugElement.query(By.css('form')).nativeElement as HTMLFormElement;
-    form.dispatchEvent(new Event('submit', {cancelable: true, bubbles: true}));
+    form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
     fixture.detectChanges();
     const email = fixture.componentInstance.fg.get('email');
     expect(email?.errors?.[SUI_FORM_VALIDATION_ERROR_KEY]).toBeTruthy();
   });
 
   it('clears Semantic errors when validation passes', () => {
-    fixture.componentInstance.fg.patchValue({email: 'ok@example.com', extra: 'x'});
+    fixture.componentInstance.fg.patchValue({ email: 'ok@example.com', extra: 'x' });
     fixture.detectChanges();
     const form = fixture.debugElement.query(By.css('form')).nativeElement as HTMLFormElement;
-    form.dispatchEvent(new Event('submit', {cancelable: true, bubbles: true}));
+    form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
     fixture.detectChanges();
     expect(fixture.componentInstance.fg.get('email')?.errors?.[SUI_FORM_VALIDATION_ERROR_KEY]).toBeFalsy();
   });
 
   it('blocks submit when only built-in validators fail', () => {
-    fixture.componentInstance.fg.patchValue({email: 'ok@example.com', extra: ''});
+    fixture.componentInstance.fg.patchValue({ email: 'ok@example.com', extra: '' });
     fixture.detectChanges();
     const form = fixture.debugElement.query(By.css('form')).nativeElement as HTMLFormElement;
-    const ev = new Event('submit', {cancelable: true, bubbles: true});
+    const ev = new Event('submit', { cancelable: true, bubbles: true });
     const pd = spyOn(ev, 'preventDefault').and.callThrough();
     form.dispatchEvent(ev);
     expect(pd).toHaveBeenCalled();

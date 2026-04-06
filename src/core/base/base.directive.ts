@@ -2,7 +2,7 @@
  * Created by bolorundurowb on 4/28/2021
  */
 import { Directive, ElementRef, HostBinding } from '@angular/core';
-import {ClassUtils} from 'ngx-semantic/core/util';
+import { ClassUtils } from 'ngx-semantic/core/util';
 
 @Directive()
 export abstract class BaseDirective {

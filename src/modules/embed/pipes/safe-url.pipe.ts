@@ -3,7 +3,7 @@
  */
 
 import { Pipe, PipeTransform, inject } from '@angular/core';
-import {DomSanitizer} from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Pipe({
   standalone: true,

@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiCardDescriptionDirective} from './card-description.directive';
-import {SuiCardModule} from './card.module';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiCardDescriptionDirective } from './card-description.directive';
+import { SuiCardModule } from './card.module';
 
 @Component({
   standalone: true,

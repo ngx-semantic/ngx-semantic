@@ -9,11 +9,11 @@
  */
 
 import { Directive, ElementRef, EventEmitter, HostListener, Input, NgZone, OnChanges, OnDestroy, Output, Renderer2, SimpleChanges, inject } from '@angular/core';
-import {FormGroupDirective, NgForm} from '@angular/forms';
-import type {AbstractControl, FormGroup} from '@angular/forms';
-import {InputBoolean} from 'ngx-semantic/core/util';
-import {Subject, fromEvent, merge} from 'rxjs';
-import {debounceTime, takeUntil} from 'rxjs/operators';
+import { FormGroupDirective, NgForm } from '@angular/forms';
+import type { AbstractControl, FormGroup } from '@angular/forms';
+import { InputBoolean } from 'ngx-semantic/core/util';
+import { Subject, fromEvent, merge } from 'rxjs';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 
 import type {
   SuiFormNormalizedField,
@@ -27,10 +27,10 @@ import {
   readControlValue,
   resolveFieldElement
 } from './form-validation.dom';
-import {normalizeFields} from './form-validation.normalize';
-import {formatValidationPrompt} from './form-validation.prompt';
-import {patchSuiFormValidationControlError} from './form-validation.control-errors';
-import {evaluateRule, parseRuleType} from './form-validation.rules';
+import { normalizeFields } from './form-validation.normalize';
+import { formatValidationPrompt } from './form-validation.prompt';
+import { patchSuiFormValidationControlError } from './form-validation.control-errors';
+import { evaluateRule, parseRuleType } from './form-validation.rules';
 
 function isEmptyValue(v: unknown): boolean {
   if (v === null || v === undefined) {
@@ -138,7 +138,7 @@ export class SuiFormValidationDirective implements OnChanges, OnDestroy {
           : form && !form.valid
             ? ['This form has validation errors.']
             : r.errors;
-      this.suiOnFailure.emit({errors: errorsOut, fields: r.fieldIds});
+      this.suiOnFailure.emit({ errors: errorsOut, fields: r.fieldIds });
       return;
     }
     this.suiOnSuccess.emit(event);
@@ -173,7 +173,7 @@ export class SuiFormValidationDirective implements OnChanges, OnDestroy {
           : form && !form.valid
             ? ['This form has validation errors.']
             : r.errors;
-      this.suiOnFailure.emit({errors: errorsOut, fields: r.fieldIds});
+      this.suiOnFailure.emit({ errors: errorsOut, fields: r.fieldIds });
     } else {
       this.suiOnSuccess.emit(new Event('semantic-form-valid'));
     }
@@ -198,7 +198,7 @@ export class SuiFormValidationDirective implements OnChanges, OnDestroy {
       }
     }
     this.renderFormLevelErrors(errors);
-    return {valid: errors.length === 0, errors, fieldIds};
+    return { valid: errors.length === 0, errors, fieldIds };
   }
 
   /** Validate one field by identifier (updates UI and `AbstractControl` errors when bound). */
@@ -367,7 +367,7 @@ export class SuiFormValidationDirective implements OnChanges, OnDestroy {
     const fieldName = el ? inferFieldName(el, field.identifier) : field.identifier;
     for (const rule of field.rules) {
       if (!evaluateRule(rule, value, field.identifier, ctx)) {
-        const {bracket} = parseRuleType(rule.type);
+        const { bracket } = parseRuleType(rule.type);
         return formatValidationPrompt(
           rule.type,
           fieldName,

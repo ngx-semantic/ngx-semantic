@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input, inject } from '@angular/core';
-import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {BaseDirective} from 'ngx-semantic/core/base';
+import { SuiColour, SuiSize } from 'ngx-semantic/core/enums';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiButtonEmphasis = 'primary' | 'secondary' | 'positive' | 'negative' | null;
 export type SuiButtonAnimation = 'animated' | 'animated fade' | 'vertical animated' | null;

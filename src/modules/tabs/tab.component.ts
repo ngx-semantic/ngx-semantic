@@ -2,9 +2,9 @@
  * Created by bolorundurowb on 12/22/2020
  */
 
-import {Component, HostBinding, Input, TemplateRef, ViewChild, ViewEncapsulation} from '@angular/core';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiColour} from 'ngx-semantic/core/enums';
+import { Component, HostBinding, Input, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { SuiColour } from 'ngx-semantic/core/enums';
 
 @Component({
   standalone: true,

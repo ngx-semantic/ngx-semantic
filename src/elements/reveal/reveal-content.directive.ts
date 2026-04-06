@@ -2,7 +2,7 @@
  * Created by bolor on 5/17/2020
  */
 
-import {Directive, HostBinding, Input} from '@angular/core';
+import { Directive, HostBinding, Input } from '@angular/core';
 
 export type SuiRevealContentVisibility = 'visible' | 'hidden';
 

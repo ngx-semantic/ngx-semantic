@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiAdvertisementDirective} from './advertisement.directive';
-import {SuiAdvertisementModule} from './advertisement.module';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiAdvertisementDirective } from './advertisement.directive';
+import { SuiAdvertisementModule } from './advertisement.module';
 
 @Component({
   standalone: true,

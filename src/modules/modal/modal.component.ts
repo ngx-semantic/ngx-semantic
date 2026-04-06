@@ -3,9 +3,9 @@
  */
 
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, Output, Renderer2, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation, inject } from '@angular/core';
-import {CommonModule, DOCUMENT} from '@angular/common';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiIconDirective} from 'ngx-semantic/elements/icon';
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { SuiIconDirective } from 'ngx-semantic/elements/icon';
 
 export type SuiModalSize = 'mini' | 'tiny' | 'small' | 'large' | null;
 export type SuiModalScrollability = 'full' | 'medium' | 'none';
@@ -49,7 +49,7 @@ export class SuiModalComponent implements OnDestroy {
   private renderer = inject(Renderer2);
   private viewRef = inject(ViewContainerRef);
 
-  @ViewChild('contentTemplate', {static: true}) public contentTemplate!: TemplateRef<any>;
+  @ViewChild('contentTemplate', { static: true }) public contentTemplate!: TemplateRef<any>;
 
   @Input() public suiHeaderText: string | null = null;
   @Input() public suiHeaderIcon: string | null = null;

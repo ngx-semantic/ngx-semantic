@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Input, inject } from '@angular/core';
-import {BaseDirective} from 'ngx-semantic/core/base';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
   standalone: true,

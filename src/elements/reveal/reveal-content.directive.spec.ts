@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiRevealContentDirective} from './reveal-content.directive';
-import {SuiRevealModule} from './reveal.module';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiRevealContentDirective } from './reveal-content.directive';
+import { SuiRevealModule } from './reveal.module';
 
 @Component({
   standalone: true,

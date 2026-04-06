@@ -2,11 +2,11 @@
  * Created by bolor on 5/6/2020
  */
 
-import {CommonModule} from '@angular/common';
-import {Component, Input} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiPlaceholderLineDirective} from './placeholder-line.directive';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiPlaceholderLineDirective } from './placeholder-line.directive';
 
 describe('SuiPlaceholderLineComponent', () => {
   let component: TestPlaceholderLineComponent;

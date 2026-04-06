@@ -2,9 +2,9 @@
  * Created by bolor on 4/26/2020
  */
 
-import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
-import {InputBoolean} from 'ngx-semantic/core/util';
+import { Directive, HostBinding, Input } from '@angular/core';
+import { SuiColour, SuiSize } from 'ngx-semantic/core/enums';
+import { InputBoolean } from 'ngx-semantic/core/util';
 
 @Directive({
   standalone: true,

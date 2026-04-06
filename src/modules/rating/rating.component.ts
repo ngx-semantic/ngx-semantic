@@ -3,9 +3,9 @@
  */
 
 import { ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Input, Output, ViewEncapsulation, inject } from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiSize} from 'ngx-semantic/core/enums';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { SuiSize } from 'ngx-semantic/core/enums';
 
 export type SuiRatingType = 'star' | 'heart' | null;
 

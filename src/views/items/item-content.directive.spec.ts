@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiItemContentDirective} from './item-content.directive';
-import {SuiItemsModule} from './items.module';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiItemContentDirective } from './item-content.directive';
+import { SuiItemsModule } from './items.module';
 
 @Component({
   standalone: true,

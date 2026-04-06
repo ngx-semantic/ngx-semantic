@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiTabsModule} from './tabs.module';
-import {SuiTabsComponent} from './tabs.component';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiTabsModule } from './tabs.module';
+import { SuiTabsComponent } from './tabs.component';
 
 @Component({
   standalone: true,

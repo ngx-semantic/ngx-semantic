@@ -3,9 +3,9 @@
  */
 
 import { Directive, HostBinding, Input, inject } from '@angular/core';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiColour} from 'ngx-semantic/core/enums';
-import {SuiCardsDirective} from './cards.directive';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { SuiColour } from 'ngx-semantic/core/enums';
+import { SuiCardsDirective } from './cards.directive';
 
 @Directive({
   standalone: true,

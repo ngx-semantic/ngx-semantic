@@ -2,11 +2,11 @@
  * Created by bolor on 5/6/2020
  */
 
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {CommonModule} from '@angular/common';
-import {By} from '@angular/platform-browser';
-import {Component} from '@angular/core';
-import {SuiPlaceholderParagraphDirective} from './placeholder-paragraph.directive';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CommonModule } from '@angular/common';
+import { By } from '@angular/platform-browser';
+import { Component } from '@angular/core';
+import { SuiPlaceholderParagraphDirective } from './placeholder-paragraph.directive';
 
 describe('SuiPlaceholderParagraphComponent', () => {
   let component: TestPlaceholderParagraphComponent;

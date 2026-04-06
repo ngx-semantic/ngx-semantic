@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiMenuDirective} from './menu.directive';
-import {SuiMenuModule} from './menu.module';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiMenuDirective } from './menu.directive';
+import { SuiMenuModule } from './menu.module';
 
 @Component({
   standalone: true,

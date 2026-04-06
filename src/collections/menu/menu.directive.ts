@@ -3,8 +3,8 @@
  */
 
 import { Directive, ElementRef, Input, inject } from '@angular/core';
-import {SuiColour, SuiSize, SuiWidth} from 'ngx-semantic/core/enums';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import { SuiColour, SuiSize, SuiWidth } from 'ngx-semantic/core/enums';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiMenuAttachment = 'top' | 'bottom' | null;

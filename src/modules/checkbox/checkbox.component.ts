@@ -3,8 +3,8 @@
  */
 
 import { ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, HostListener, Input, Output, ViewEncapsulation, inject } from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 
 export type SuiCheckboxType = 'radio' | 'slider' | 'toggle' | null;
 

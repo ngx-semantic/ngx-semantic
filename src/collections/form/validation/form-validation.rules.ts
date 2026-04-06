@@ -1,15 +1,15 @@
-import type {SuiFormRuleContext, SuiFormRuleParseResult, SuiFormValidationRuleSpec} from './form-validation.model';
+import type { SuiFormRuleContext, SuiFormRuleParseResult, SuiFormValidationRuleSpec } from './form-validation.model';
 
 /** Split `ruleName[param]` (supports nested brackets in regExp by using `value` on rule spec instead). */
 export function parseRuleType(type: string): SuiFormRuleParseResult {
   const t = type.trim();
   const open = t.indexOf('[');
   if (open === -1) {
-    return {name: t};
+    return { name: t };
   }
   const close = t.lastIndexOf(']');
   if (close <= open) {
-    return {name: t};
+    return { name: t };
   }
   return {
     name: t.slice(0, open),
@@ -63,7 +63,7 @@ function parseIntegerRange(
   }
   const m = /^(-?\d+)\.\.(-?\d+)$/.exec(bracket.trim());
   if (m) {
-    return {min: Number(m[1]), max: Number(m[2])};
+    return { min: Number(m[1]), max: Number(m[2]) };
   }
   return null;
 }
@@ -111,7 +111,7 @@ export function evaluateRule(
   fieldIdentifier: string,
   ctx: SuiFormRuleContext
 ): boolean {
-  const {name, bracket} = parseRuleType(rule.type);
+  const { name, bracket } = parseRuleType(rule.type);
   const s = asString(fieldValue);
   const lower = name.toLowerCase();
 

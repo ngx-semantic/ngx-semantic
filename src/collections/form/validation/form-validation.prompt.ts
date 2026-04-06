@@ -1,4 +1,4 @@
-import {parseRuleType} from './form-validation.rules';
+import { parseRuleType } from './form-validation.rules';
 
 const DEFAULT_PROMPTS: Record<string, string> = {
   empty: '{name} must have a value',
@@ -43,7 +43,7 @@ export function formatValidationPrompt(
   if (customPrompt) {
     return applyTemplate(customPrompt, fieldName, fieldIdentifier, fieldValue, ruleValue);
   }
-  const {name} = parseRuleType(ruleType);
+  const { name } = parseRuleType(ruleType);
   const key = name.toLowerCase();
   const template = DEFAULT_PROMPTS[key] ?? 'Please enter a valid value';
   return applyTemplate(template, fieldName, fieldIdentifier, fieldValue, ruleValue);

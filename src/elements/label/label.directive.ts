@@ -3,9 +3,9 @@
  */
 
 import { Directive, ElementRef, Input, inject } from '@angular/core';
-import {SuiColour, SuiHorizontalAlignment, SuiLocation, SuiSize} from 'ngx-semantic/core/enums';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {BaseDirective} from 'ngx-semantic/core/base';
+import { SuiColour, SuiHorizontalAlignment, SuiLocation, SuiSize } from 'ngx-semantic/core/enums';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiLabelPointing = 'above' | 'below' | 'left' | 'right' | null;
 

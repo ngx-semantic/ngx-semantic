@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiSidebarModule} from './sidebar.module';
-import {SuiSidebarContainerComponent} from './sidebar-container.component';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiSidebarModule } from './sidebar.module';
+import { SuiSidebarContainerComponent } from './sidebar-container.component';
 
 @Component({
   standalone: true,

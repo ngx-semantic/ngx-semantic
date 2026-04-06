@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiGridColumnDirective} from './grid-column.directive';
-import {SuiGridModule} from './grid.module';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiGridColumnDirective } from './grid-column.directive';
+import { SuiGridModule } from './grid.module';
 
 @Component({
   standalone: true,

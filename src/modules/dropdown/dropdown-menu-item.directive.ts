@@ -2,9 +2,9 @@
  * Created by bolor on 10/30/2020
  */
 
-import {ContentChild, Directive, HostBinding, HostListener, Input} from '@angular/core';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiDropdownMenuDirective} from './dropdown-menu.directive';
+import { ContentChild, Directive, HostBinding, HostListener, Input } from '@angular/core';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { SuiDropdownMenuDirective } from './dropdown-menu.directive';
 
 export type SuiMenuDirection = 'left' | 'right' | null;
 

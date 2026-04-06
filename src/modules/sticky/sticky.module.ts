@@ -1,6 +1,6 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {SuiStickyDirective} from './sticky.directive';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SuiStickyDirective } from './sticky.directive';
 
 @NgModule({
   imports: [CommonModule, SuiStickyDirective],
