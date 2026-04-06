@@ -8,7 +8,7 @@ import {ClassUtils} from 'ngx-semantic/core/util';
 export abstract class BaseDirective {
 
   // eslint-disable-next-line @angular-eslint/prefer-inject
-  constructor(private element: ElementRef) {
+  protected constructor(private element: ElementRef) {
   }
 
   abstract get classes(): string;
