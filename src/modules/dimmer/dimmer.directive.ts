@@ -67,7 +67,7 @@ export class SuiDimmerDirective implements OnChanges, OnDestroy {
               private renderer: Renderer2) {
   }
 
-  public ngOnChanges(changes: SimpleChanges): void {
+  public ngOnChanges(_changes: SimpleChanges): void {
     this.generateDomElement();
     this.hideDimmer();
 

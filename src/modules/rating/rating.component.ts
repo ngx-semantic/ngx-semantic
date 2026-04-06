@@ -128,10 +128,10 @@ export class SuiRatingComponent implements ControlValueAccessor {
     this.controlValueChangeFn = fn;
   }
 
-  public registerOnTouched(fn: any): void {
+  public registerOnTouched(_fn: any): void {
   }
 
-  public setDisabledState?(isDisabled: boolean): void {
+  public setDisabledState?(_isDisabled: boolean): void {
   }
 
   private generateRatingsArray(): void {

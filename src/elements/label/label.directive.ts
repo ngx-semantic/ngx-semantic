@@ -3,7 +3,7 @@
  */
 
 import {Directive, ElementRef, Input} from '@angular/core';
-import {SuiColour, SuiHorizontalAlignment, SuiLocation, SuiSize, SuiWidth} from 'ngx-semantic/core/enums';
+import {SuiColour, SuiHorizontalAlignment, SuiLocation, SuiSize} from 'ngx-semantic/core/enums';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {BaseDirective} from 'ngx-semantic/core/base';
 

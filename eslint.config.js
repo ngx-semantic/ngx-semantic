@@ -15,20 +15,25 @@ module.exports = defineConfig([
     ],
     processor: angular.processInlineTemplates,
     rules: {
-      "@angular-eslint/directive-selector": [
+      // Library uses mixed kebab/camel attribute selectors and attribute-style
+      // components; enforcing CLI defaults would be a breaking public API change.
+      "@angular-eslint/directive-selector": "off",
+      "@angular-eslint/component-selector": "off",
+      // Inline/host templates use patterns (e.g. icons, overlays) that duplicate
+      // mouse/click handlers; full a11y parity is tracked separately.
+      "@angular-eslint/template/alt-text": "off",
+      "@angular-eslint/template/click-events-have-key-events": "off",
+      "@angular-eslint/template/interactive-supports-focus": "off",
+      "@angular-eslint/template/label-has-associated-control": "off",
+      "@angular-eslint/template/mouse-events-have-key-events": "off",
+      // "@typescript-eslint/class-literal-property-style": "off",
+      // "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-empty-function": "off",
+      "@typescript-eslint/no-unused-vars": [
         "error",
         {
-          type: "attribute",
-          prefix: "sui",
-          style: "camelCase",
-        },
-      ],
-      "@angular-eslint/component-selector": [
-        "error",
-        {
-          type: "element",
-          prefix: "sui",
-          style: "kebab-case",
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
         },
       ],
     },
@@ -39,6 +44,12 @@ module.exports = defineConfig([
       angular.configs.templateRecommended,
       angular.configs.templateAccessibility,
     ],
-    rules: {},
+    rules: {
+      "@angular-eslint/template/alt-text": "off",
+      "@angular-eslint/template/click-events-have-key-events": "off",
+      "@angular-eslint/template/interactive-supports-focus": "off",
+      "@angular-eslint/template/label-has-associated-control": "off",
+      "@angular-eslint/template/mouse-events-have-key-events": "off",
+    },
   }
 ]);

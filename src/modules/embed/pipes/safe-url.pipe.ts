@@ -13,7 +13,7 @@ export class SafeUrlPipe implements PipeTransform {
   constructor(private sanitizer: DomSanitizer) {
   }
 
-  public transform(value: string, ...args: any[]): any {
+  public transform(value: string, ..._args: any[]): any {
     return this.sanitizer.bypassSecurityTrustResourceUrl(value);
   }
 }

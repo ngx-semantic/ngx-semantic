@@ -6,7 +6,6 @@ import {SuiRatingComponent} from './rating.component';
 describe('SuiRatingComponent', () => {
   let fixture: ComponentFixture<SuiRatingComponent>;
   let component: SuiRatingComponent;
-  let host: HTMLElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -15,7 +14,6 @@ describe('SuiRatingComponent', () => {
 
     fixture = TestBed.createComponent(SuiRatingComponent);
     component = fixture.componentInstance;
-    host = fixture.nativeElement as HTMLElement;
     fixture.componentRef.setInput('suiMaxValue', 3);
     fixture.detectChanges();
   });
