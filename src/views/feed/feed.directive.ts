@@ -2,7 +2,7 @@
  * Created by bolor on 7/28/2020
  */
 
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
 import { SuiSize } from 'ngx-semantic/core/enums';
 import { BaseDirective } from 'ngx-semantic/core/base';
 
@@ -14,7 +14,9 @@ import { BaseDirective } from 'ngx-semantic/core/base';
 export class SuiFeedDirective extends BaseDirective {
   @Input() public suiSize: SuiSize = null;
 
-  constructor(element: ElementRef) {
+  constructor() {
+    const element = inject(ElementRef);
+
     super(element);
   }
 

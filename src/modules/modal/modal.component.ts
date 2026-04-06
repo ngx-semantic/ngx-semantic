@@ -2,14 +2,7 @@
  * Created by bolorundurowb on 1/22/2021
  */
 
-import {
-  ChangeDetectionStrategy, Component,
-  EventEmitter, Inject,
-  Input, OnDestroy, Output,
-  Renderer2, TemplateRef,
-  ViewChild, ViewContainerRef,
-  ViewEncapsulation
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, Output, Renderer2, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation, inject } from '@angular/core';
 import {CommonModule, DOCUMENT} from '@angular/common';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {SuiIconDirective} from 'ngx-semantic/elements/icon';
@@ -52,6 +45,10 @@ export type SuiModalScrollability = 'full' | 'medium' | 'none';
   `
 })
 export class SuiModalComponent implements OnDestroy {
+  private document = inject<Document>(DOCUMENT);
+  private renderer = inject(Renderer2);
+  private viewRef = inject(ViewContainerRef);
+
   @ViewChild('contentTemplate', {static: true}) public contentTemplate!: TemplateRef<any>;
 
   @Input() public suiHeaderText: string | null = null;
@@ -114,8 +111,7 @@ export class SuiModalComponent implements OnDestroy {
     }
   }
 
-  constructor(@Inject(DOCUMENT) private document: Document, private renderer: Renderer2,
-              private viewRef: ViewContainerRef) {
+  constructor() {
     this.uniqueId = Math.ceil(Math.random() * 100000000);
   }
 

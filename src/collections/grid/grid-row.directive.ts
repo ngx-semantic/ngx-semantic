@@ -2,7 +2,7 @@
  * Created by bolor on 6/14/2020
  */
 
-import {Directive, ElementRef, Input} from '@angular/core';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
 import {SuiDeviceVisibility, SuiWidth} from 'ngx-semantic/core/enums';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {BaseDirective} from 'ngx-semantic/core/base';
@@ -21,7 +21,9 @@ export class SuiGridRowDirective extends BaseDirective {
   @Input() @InputBoolean() public suiEqual = false;
   @Input() @InputBoolean() public suiCentered = false;
 
-  constructor(element: ElementRef) {
+  constructor() {
+    const element = inject(ElementRef);
+
     super(element);
   }
 

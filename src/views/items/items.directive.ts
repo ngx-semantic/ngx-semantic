@@ -2,7 +2,7 @@
  * Created by bolor on 8/2/2020
  */
 
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { BaseDirective } from 'ngx-semantic/core/base';
 
@@ -19,7 +19,9 @@ export class SuiItemsDirective extends BaseDirective {
   @Input() @InputBoolean() public suiUnstackable = false;
   @Input() @InputBoolean() public suiLink = false;
 
-  constructor(element: ElementRef) {
+  constructor() {
+    const element = inject(ElementRef);
+
     super(element);
   }
 

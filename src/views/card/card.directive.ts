@@ -2,7 +2,7 @@
  * Created by bolor on 8/17/2020
  */
 
-import {Directive, Host, HostBinding, Input, Optional} from '@angular/core';
+import { Directive, HostBinding, Input, inject } from '@angular/core';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {SuiColour} from 'ngx-semantic/core/enums';
 import {SuiCardsDirective} from './cards.directive';
@@ -13,6 +13,8 @@ import {SuiCardsDirective} from './cards.directive';
   exportAs: 'suiCard'
 })
 export class SuiCardDirective {
+  private parent = inject(SuiCardsDirective, { optional: true, host: true });
+
   @Input() public suiColour: SuiColour = null;
   @Input() @InputBoolean() public suiLink = false;
   @Input() @InputBoolean() public suiCentered = false;
@@ -34,7 +36,9 @@ export class SuiCardDirective {
     ].join(' ');
   }
 
-  constructor(@Optional() @Host() private parent: SuiCardsDirective) {
+  constructor() {
+    const parent = this.parent;
+
     this.isChildComponent = !!parent;
   }
 }

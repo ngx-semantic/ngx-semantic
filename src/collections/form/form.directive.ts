@@ -4,7 +4,7 @@
  * For Semantic-style rules on the same element, add `suiFormValidation` (`SuiFormValidationDirective` in `./validation/`).
  */
 
-import {Directive, ElementRef, Input} from '@angular/core';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
 import {SuiSize} from 'ngx-semantic/core/enums';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {BaseDirective} from 'ngx-semantic/core/base';
@@ -24,7 +24,9 @@ export class SuiFormDirective extends BaseDirective {
   @Input() @InputBoolean() public suiInverted = false;
   @Input() @InputBoolean() public suiReply = false;
 
-  constructor(element: ElementRef) {
+  constructor() {
+    const element = inject(ElementRef);
+
     super(element);
   }
 

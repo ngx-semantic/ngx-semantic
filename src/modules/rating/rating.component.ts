@@ -2,7 +2,7 @@
  * Created by bolor on 10/24/2020
  */
 
-import {ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Input, Output, ViewEncapsulation} from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Input, Output, ViewEncapsulation, inject } from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {SuiSize} from 'ngx-semantic/core/enums';
@@ -36,6 +36,8 @@ export type SuiRatingType = 'star' | 'heart' | null;
   }]
 })
 export class SuiRatingComponent implements ControlValueAccessor {
+  private changeDetectorRef = inject(ChangeDetectorRef);
+
   @Output() public valueChanged = new EventEmitter<number>();
   @Input() public suiSize: SuiSize = null;
   @Input() public suiType: SuiRatingType = null;
@@ -82,7 +84,7 @@ export class SuiRatingComponent implements ControlValueAccessor {
     ].join(' ');
   }
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {
+  constructor() {
     this.generateRatingsArray();
   }
 

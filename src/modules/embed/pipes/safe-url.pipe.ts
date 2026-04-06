@@ -2,7 +2,7 @@
  * Created by bolorundurowb on 1/24/2021
  */
 
-import {Pipe, PipeTransform} from '@angular/core';
+import { Pipe, PipeTransform, inject } from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 
 @Pipe({
@@ -10,8 +10,8 @@ import {DomSanitizer} from '@angular/platform-browser';
   name: 'safeUrl'
 })
 export class SafeUrlPipe implements PipeTransform {
-  constructor(private sanitizer: DomSanitizer) {
-  }
+  private sanitizer = inject(DomSanitizer);
+
 
   public transform(value: string, ..._args: any[]): any {
     return this.sanitizer.bypassSecurityTrustResourceUrl(value);

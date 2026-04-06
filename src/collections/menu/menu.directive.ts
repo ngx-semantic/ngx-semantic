@@ -2,7 +2,7 @@
  * Created by bolor on 6/17/2020
  */
 
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
 import {SuiColour, SuiSize, SuiWidth} from 'ngx-semantic/core/enums';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import { BaseDirective } from 'ngx-semantic/core/base';
@@ -36,7 +36,9 @@ export class SuiMenuDirective extends BaseDirective {
   @Input() @InputBoolean() public suiInverted = false;
   @Input() @InputBoolean() public suiBorderless = false;
 
-  constructor(element: ElementRef) {
+  constructor() {
+    const element = inject(ElementRef);
+
     super(element);
   }
 

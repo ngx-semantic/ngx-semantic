@@ -2,7 +2,7 @@
  * Created by bolor on 7/3/2020
  */
 
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
 import { ClassUtils } from 'ngx-semantic/core/util';
 import { BaseDirective } from 'ngx-semantic/core/base';
 
@@ -17,7 +17,9 @@ export class SuiMenuItemDirective extends BaseDirective {
   @Input() public suiBrowser = false;
   @Input() public disabled = false;
 
-  constructor(element: ElementRef) {
+  constructor() {
+    const element = inject(ElementRef);
+
     super(element);
   }
 

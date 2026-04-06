@@ -4,21 +4,7 @@
  */
 
 import {CommonModule} from '@angular/common';
-import {
-  AfterContentInit,
-  ChangeDetectorRef,
-  Component,
-  ContentChildren,
-  ElementRef,
-  EventEmitter,
-  Input,
-  NgZone,
-  OnDestroy,
-  Output,
-  QueryList,
-  ViewChild,
-  ViewEncapsulation
-} from '@angular/core';
+import { AfterContentInit, ChangeDetectorRef, Component, ContentChildren, ElementRef, EventEmitter, Input, NgZone, OnDestroy, Output, QueryList, ViewChild, ViewEncapsulation, inject } from '@angular/core';
 import {InputBoolean} from 'ngx-semantic/core/util';
 import {SuiShapeSideComponent} from './shape-side.component';
 
@@ -80,6 +66,9 @@ function getTransitionEventName(): string {
   `
 })
 export class SuiShapeComponent implements AfterContentInit, OnDestroy {
+  private readonly cdr = inject(ChangeDetectorRef);
+  private readonly zone = inject(NgZone);
+
   @ContentChildren(SuiShapeSideComponent) private sideList!: QueryList<SuiShapeSideComponent>;
   @ViewChild('shapeEl', {static: true}) private shapeEl!: ElementRef<HTMLElement>;
   @ViewChild('sidesEl', {static: true}) private sidesEl!: ElementRef<HTMLElement>;
@@ -112,11 +101,6 @@ export class SuiShapeComponent implements AfterContentInit, OnDestroy {
   private manualNextIndex: number | null = null;
   private readonly queue: SuiShapeFlip[] = [];
   private sidesChangeSub: { unsubscribe(): void } | null = null;
-
-  constructor(
-    private readonly cdr: ChangeDetectorRef,
-    private readonly zone: NgZone
-  ) {}
 
   public ngAfterContentInit(): void {
     this.ensureFirstSideActive();

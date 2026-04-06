@@ -2,7 +2,7 @@
  * Created by bolorundurowb on 4/27/2024
  */
 
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
 import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiExtraType = 'text' | 'images';
@@ -15,7 +15,9 @@ export type SuiExtraType = 'text' | 'images';
 export class SuiFeedExtraDirective extends BaseDirective {
   @Input() suiExtraType: SuiExtraType | null = null;
 
-  constructor(element: ElementRef) {
+  constructor() {
+    const element = inject(ElementRef);
+
     super(element);
   }
 

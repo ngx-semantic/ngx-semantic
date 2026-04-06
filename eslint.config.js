@@ -26,8 +26,8 @@ module.exports = defineConfig([
       "@angular-eslint/template/interactive-supports-focus": "off",
       "@angular-eslint/template/label-has-associated-control": "off",
       "@angular-eslint/template/mouse-events-have-key-events": "off",
-      // "@typescript-eslint/class-literal-property-style": "off",
-      // "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/class-literal-property-style": "off",
+      "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-empty-function": "off",
       "@typescript-eslint/no-unused-vars": [
         "error",

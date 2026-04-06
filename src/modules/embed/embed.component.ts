@@ -2,7 +2,7 @@
  * Created by bolorundurowb on 1/24/2021
  */
 
-import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation} from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation, inject } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {SuiIconDirective} from 'ngx-semantic/elements/icon';
@@ -40,6 +40,8 @@ export type SuiEmbedAspectRatio = '4:3' | '16:9' | '21:9' | null;
   `
 })
 export class SuiEmbedComponent implements AfterViewInit {
+  private cdr = inject(ChangeDetectorRef);
+
   @Input() public suiSource: SuiEmbedSource = null;
   @Input() public suiAspectRatio: SuiEmbedAspectRatio = null;
   @Input() public suiIcon = 'video play';
@@ -50,9 +52,6 @@ export class SuiEmbedComponent implements AfterViewInit {
 
   public isPLaying = false;
   public videoUrl = '';
-
-  constructor(private cdr: ChangeDetectorRef) {
-  }
 
   public ngAfterViewInit(): void {
     if (this.suiAutoplay) {

@@ -2,12 +2,7 @@
  * Created by bolorundurowb on 1/6/2021
  */
 
-import {
-  ApplicationRef, ComponentFactoryResolver,
-  ContentChild, Directive, ElementRef, EmbeddedViewRef,
-  EventEmitter, HostBinding, Injector, Input, OnChanges, OnDestroy,
-  Output, Renderer2, SimpleChanges, TemplateRef
-} from '@angular/core';
+import { ApplicationRef, ComponentFactoryResolver, ContentChild, Directive, ElementRef, EmbeddedViewRef, EventEmitter, HostBinding, Injector, Input, OnChanges, OnDestroy, Output, Renderer2, SimpleChanges, TemplateRef, inject } from '@angular/core';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {SuiDimmerContentDirective} from './dimmer-content.directive';
 import {SuiDimmerComponent} from './dimmer.component';
@@ -20,6 +15,12 @@ export type SuiDimmerContentAlignment = 'top' | 'bottom' | null;
   exportAs: 'suiDimmer'
 })
 export class SuiDimmerDirective implements OnChanges, OnDestroy {
+  private element = inject(ElementRef);
+  private factoryResolver = inject(ComponentFactoryResolver);
+  private injector = inject(Injector);
+  private appRef = inject(ApplicationRef);
+  private renderer = inject(Renderer2);
+
   @ContentChild(SuiDimmerContentDirective, {static: true, read: TemplateRef})
   private content: TemplateRef<any> | null = null;
 
@@ -60,11 +61,6 @@ export class SuiDimmerDirective implements OnChanges, OnDestroy {
       'dimmable',
       ClassUtils.getPropClass(this.dimmed, 'dimmed')
     ].join(' ');
-  }
-
-  constructor(private element: ElementRef, private factoryResolver: ComponentFactoryResolver,
-              private injector: Injector, private appRef: ApplicationRef,
-              private renderer: Renderer2) {
   }
 
   public ngOnChanges(_changes: SimpleChanges): void {

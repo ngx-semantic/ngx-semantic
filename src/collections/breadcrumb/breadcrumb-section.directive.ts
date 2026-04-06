@@ -2,7 +2,7 @@
  * Created by bolor on 5/26/2020
  */
 
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
 import { InputBoolean } from 'ngx-semantic/core/util';
 import { BaseDirective } from 'ngx-semantic/core/base';
 
@@ -14,7 +14,9 @@ import { BaseDirective } from 'ngx-semantic/core/base';
 export class SuiBreadcrumbSectionDirective extends BaseDirective {
   @Input() @InputBoolean() public suiActive = false;
 
-  constructor(element: ElementRef) {
+  constructor() {
+    const element = inject(ElementRef);
+
     super(element);
   }
 

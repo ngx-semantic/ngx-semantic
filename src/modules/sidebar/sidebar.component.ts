@@ -2,7 +2,7 @@
  * Created by bolorundurowb on 12/30/2020
  */
 
-import {Component, EventEmitter, HostBinding, Input, Output, ViewEncapsulation} from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, ViewEncapsulation, inject } from '@angular/core';
 import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
 import {SuiSidebarService} from './sidebar.service';
 
@@ -19,6 +19,8 @@ export type SuiSidebarAnimation = 'overlay' | 'push' | 'scale down' | 'uncover' 
   `
 })
 export class SuiSidebarComponent {
+  private sidebarService = inject(SuiSidebarService);
+
   @Input() public suiSidebarPosition: SuiSidebarPosition = 'left';
   @Input() public suiSidebarWidth: SuiSidebarWidth = null;
   @Input() public suiSidebarAnimation: SuiSidebarAnimation = null;
@@ -51,7 +53,9 @@ export class SuiSidebarComponent {
     ].join(' ');
   }
 
-  constructor(private sidebarService: SuiSidebarService) {
+  constructor() {
+    const sidebarService = this.sidebarService;
+
     sidebarService.pusherClicked
       .subscribe(() => {
         // only close sidebar on pusher when the visibility is dynamic

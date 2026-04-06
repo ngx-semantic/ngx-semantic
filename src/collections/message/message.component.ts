@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, Input } from '@angular/core';
+import { Component, ElementRef, HostBinding, Input, inject } from '@angular/core';
 import { SuiIconDirective } from 'ngx-semantic/elements/icon';
 import { SuiColour, SuiSize } from 'ngx-semantic/core/enums';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
@@ -20,6 +20,8 @@ export type SuiMessageAttachment = 'attached' | 'bottom attached' | null;
   `
 })
 export class SuiMessageComponent {
+  private el = inject(ElementRef);
+
   @Input() public suiAttached: SuiMessageAttachment = null;
   @Input() public suiState: SuiResultState = null;
   @Input() public suiSize: SuiSize = null;
@@ -30,9 +32,6 @@ export class SuiMessageComponent {
   @Input() @InputBoolean() public suiVisible = false;
   @Input() @InputBoolean() public suiFloating = false;
   @Input() @InputBoolean() public suiCompact = false;
-
-  constructor(private el: ElementRef) {
-  }
 
   @HostBinding('class')
   get classes(): string {

@@ -5,21 +5,7 @@
  */
 
 import {DOCUMENT} from '@angular/common';
-import {
-  AfterViewInit,
-  ChangeDetectorRef,
-  Directive,
-  ElementRef,
-  EventEmitter,
-  HostBinding,
-  Inject,
-  Input,
-  NgZone,
-  OnDestroy,
-  OnInit,
-  Output,
-  Renderer2
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Directive, ElementRef, EventEmitter, HostBinding, Input, NgZone, OnDestroy, OnInit, Output, Renderer2, inject } from '@angular/core';
 import {InputBoolean} from 'ngx-semantic/core/util';
 import {Subject, fromEvent} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -50,6 +36,12 @@ export interface SuiStickyCache {
   exportAs: 'suiSticky'
 })
 export class SuiStickyDirective implements OnInit, AfterViewInit, OnDestroy {
+  private readonly document = inject<Document>(DOCUMENT);
+  private readonly el = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly renderer = inject(Renderer2);
+  private readonly zone = inject(NgZone);
+  private readonly cdr = inject(ChangeDetectorRef);
+
   @Input() public suiContext: string | HTMLElement | null = null;
   @Input() public suiScrollContext: 'window' | string = 'window';
   @Input() public suiOffset = 0;
@@ -83,14 +75,6 @@ export class SuiStickyDirective implements OnInit, AfterViewInit, OnDestroy {
   private containerEl: HTMLElement | null = null;
   private mutationObserver: MutationObserver | null = null;
   private refreshTimer: ReturnType<typeof setTimeout> | null = null;
-
-  constructor(
-    @Inject(DOCUMENT) private readonly document: Document,
-    private readonly el: ElementRef<HTMLElement>,
-    private readonly renderer: Renderer2,
-    private readonly zone: NgZone,
-    private readonly cdr: ChangeDetectorRef
-  ) {}
 
   public ngOnInit(): void {
     this.scrollEl = this.resolveScrollElement();

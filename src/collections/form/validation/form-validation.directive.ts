@@ -8,21 +8,7 @@
  * `control.invalid` align with Semantic rules alongside built-in validators.
  */
 
-import {
-  Directive,
-  ElementRef,
-  EventEmitter,
-  Host,
-  HostListener,
-  Input,
-  NgZone,
-  OnChanges,
-  OnDestroy,
-  Optional,
-  Output,
-  Renderer2,
-  SimpleChanges
-} from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostListener, Input, NgZone, OnChanges, OnDestroy, Output, Renderer2, SimpleChanges, inject } from '@angular/core';
 import {FormGroupDirective, NgForm} from '@angular/forms';
 import type {AbstractControl, FormGroup} from '@angular/forms';
 import {InputBoolean} from 'ngx-semantic/core/util';
@@ -65,6 +51,12 @@ function isEmptyValue(v: unknown): boolean {
   exportAs: 'suiFormValidation'
 })
 export class SuiFormValidationDirective implements OnChanges, OnDestroy {
+  private readonly el = inject<ElementRef<HTMLFormElement>>(ElementRef);
+  private readonly renderer = inject(Renderer2);
+  private readonly zone = inject(NgZone);
+  private readonly ngForm = inject(NgForm, { optional: true, host: true });
+  private readonly formGroupDir = inject(FormGroupDirective, { optional: true, host: true });
+
   /** Validation field definitions (shorthand or longhand), matching Semantic UI `fields`. */
   @Input() public suiFields: SuiFormValidationFieldsInput | null = null;
   /** `submit`, `blur`, or `change` — when to validate fields. */
@@ -86,13 +78,9 @@ export class SuiFormValidationDirective implements OnChanges, OnDestroy {
   private defaultValues = new Map<string, string>();
   private teardownFieldSubs: (() => void) | null = null;
 
-  constructor(
-    private readonly el: ElementRef<HTMLFormElement>,
-    private readonly renderer: Renderer2,
-    private readonly zone: NgZone,
-    @Optional() @Host() private readonly ngForm: NgForm | null,
-    @Optional() @Host() private readonly formGroupDir: FormGroupDirective | null
-  ) {
+  constructor() {
+    const el = this.el;
+
     this.host = el.nativeElement;
   }
 

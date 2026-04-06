@@ -1,16 +1,4 @@
-import {
-  AfterViewInit,
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  forwardRef,
-  HostBinding,
-  HostListener,
-  Input,
-  Output,
-  ViewChild,
-  ViewEncapsulation
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, HostListener, Input, Output, ViewChild, ViewEncapsulation, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
@@ -122,6 +110,8 @@ import { ISelectOption } from './interfaces/ISelectOption';
   } ]
 })
 export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
+  private changeDetectorRef = inject(ChangeDetectorRef);
+
   @ViewChild(SuiSelectMenuDirective) public optionsMenu!: SuiSelectMenuDirective;
 
   @Output() public suiSelectionChanged = new EventEmitter<any | any[]>();
@@ -181,9 +171,6 @@ export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
       ClassUtils.getPropClass(this.isOpen, 'visible'),
       ClassUtils.getPropClass(this.suiError, 'error')
     ]);
-  }
-
-  constructor(private changeDetectorRef: ChangeDetectorRef) {
   }
 
   public get multiple(): string | undefined {
