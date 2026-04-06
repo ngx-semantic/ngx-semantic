@@ -31,7 +31,7 @@ module.exports = function (config) {
         { type: 'html' },
         { type: 'lcovonly' },
         { type: 'text-summary' }
-      ]
+      ],
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
