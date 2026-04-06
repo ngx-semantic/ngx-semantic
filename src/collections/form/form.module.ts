@@ -7,18 +7,21 @@ import {NgModule} from '@angular/core';
 import {SuiFormFieldDirective} from './form-field.directive';
 import {SuiFormDirective} from './form.directive';
 import {SuiFormFieldsDirective} from './form-fields.directive';
+import {SuiFormValidationDirective} from './validation/form-validation.directive';
 
 @NgModule({
   imports: [
     CommonModule,
     SuiFormFieldDirective,
     SuiFormDirective,
-    SuiFormFieldsDirective
+    SuiFormFieldsDirective,
+    SuiFormValidationDirective
   ],
   exports: [
     SuiFormFieldDirective,
     SuiFormDirective,
-    SuiFormFieldsDirective
+    SuiFormFieldsDirective,
+    SuiFormValidationDirective
   ]
 })
 export class SuiFormModule {

@@ -1,5 +1,6 @@
 /**
  * Types for Semantic UI [Form Validation](https://semantic-ui.com/behaviors/form.html) — Angular port.
+ * Lives with `ngx-semantic/collections/form` (use with `sui-form` + `suiFormValidation` on the same `<form>`).
  */
 
 /** Single rule as string, e.g. `'empty'`, `'minLength[6]'`. */

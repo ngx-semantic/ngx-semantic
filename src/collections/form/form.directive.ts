@@ -1,5 +1,7 @@
 /**
  * Created by bolor on 6/5/2020
+ *
+ * For Semantic-style rules on the same element, add `suiFormValidation` (`SuiFormValidationDirective` in `./validation/`).
  */
 
 import {Directive, ElementRef, Input} from '@angular/core';

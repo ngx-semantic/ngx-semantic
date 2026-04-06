@@ -1,6 +1,7 @@
 /**
  * Semantic UI [Form Validation](https://semantic-ui.com/behaviors/form.html) — native Angular (no jQuery).
- * Add `suiFormValidation` to a `<form>`; configure `suiFields` to match Semantic’s `fields` object.
+ * Use on the same `<form>` as `[sui-form]` (via `SuiFormModule`); add `suiFormValidation` and `suiFields`
+ * matching Semantic’s `fields` object. Implementation lives under `collections/form/validation/`.
  */
 
 import {
