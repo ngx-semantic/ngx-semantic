@@ -124,5 +124,19 @@ jobs:
         with:
           name: build-artifacts
           path: ./dist
+      - name: Determine npm Publish Tag
+        id: npm_tag
+        env:
+          VERSION: ${{ needs.build.outputs.new_version }}
+        run: |
+          V="${VERSION#v}"
+          L=$(printf '%s' "$V" | tr '[:upper:]' '[:lower:]')
+          NPM_TAG=latest
+          if echo "$L" | grep -qE -- '-alpha([.-]|$)'; then
+            NPM_TAG=alpha
+          elif echo "$L" | grep -qE -- '-beta([.-]|$)'; then
+            NPM_TAG=beta
+          fi
+          echo "npm_tag=$NPM_TAG" >> $GITHUB_OUTPUT
       - name: Publish Lib
-        run: npm publish ./dist --provenance --tag latest --access public
+        run: npm publish ./dist --provenance --tag ${{ steps.npm_tag.outputs.npm_tag }} --access public
