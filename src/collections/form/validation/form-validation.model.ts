@@ -3,6 +3,9 @@
  * Lives with `ngx-semantic/collections/form` (use with `sui-form` + `suiFormValidation` on the same `<form>`).
  */
 
+/** `AbstractControl.errors` key for Semantic rule failures (string message). Works with built-in validators. */
+export const SUI_FORM_VALIDATION_ERROR_KEY = 'suiFormValidation';
+
 /** Single rule as string, e.g. `'empty'`, `'minLength[6]'`. */
 export type SuiFormRuleTypeString = string;
 

@@ -7,6 +7,7 @@ export * from './form-fields.directive';
 export * from './form.directive';
 export * from './form.module';
 export * from './validation/form-validation.model';
+export * from './validation/form-validation.control-errors';
 export * from './validation/form-validation.rules';
 export * from './validation/form-validation.normalize';
 export * from './validation/form-validation.prompt';

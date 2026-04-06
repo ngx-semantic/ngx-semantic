@@ -1,22 +1,30 @@
 /**
  * Semantic UI [Form Validation](https://semantic-ui.com/behaviors/form.html) — native Angular (no jQuery).
  * Use on the same `<form>` as `[sui-form]` (via `SuiFormModule`); add `suiFormValidation` and `suiFields`
- * matching Semantic’s `fields` object. Implementation lives under `collections/form/validation/`.
+ * matching Semantic’s `fields` object.
+ *
+ * When the host `<form>` uses **`NgForm`** (template-driven) or **`[formGroup]`** (reactive), rule failures are
+ * written to matching `AbstractControl` errors under `suiFormValidation` so `form.valid` /
+ * `control.invalid` align with Semantic rules alongside built-in validators.
  */
 
 import {
   Directive,
   ElementRef,
   EventEmitter,
+  Host,
   HostListener,
   Input,
   NgZone,
   OnChanges,
   OnDestroy,
+  Optional,
   Output,
   Renderer2,
   SimpleChanges
 } from '@angular/core';
+import {FormGroupDirective, NgForm} from '@angular/forms';
+import type {AbstractControl, FormGroup} from '@angular/forms';
 import {InputBoolean} from 'ngx-semantic/core/util';
 import {Subject, fromEvent, merge} from 'rxjs';
 import {debounceTime, takeUntil} from 'rxjs/operators';
@@ -35,6 +43,7 @@ import {
 } from './form-validation.dom';
 import {normalizeFields} from './form-validation.normalize';
 import {formatValidationPrompt} from './form-validation.prompt';
+import {patchSuiFormValidationControlError} from './form-validation.control-errors';
 import {evaluateRule, parseRuleType} from './form-validation.rules';
 
 function isEmptyValue(v: unknown): boolean {
@@ -65,6 +74,8 @@ export class SuiFormValidationDirective implements OnChanges, OnDestroy {
   /** Debounce (ms) for `change` / revalidation; `true` uses 300ms; `false` disables. */
   @Input() public suiDelay: number | boolean = true;
   @Input() @InputBoolean() public suiKeyboardShortcuts = true;
+  /** When using `NgForm` / `FormGroup`, mark all controls touched after a failed submit (shows native errors). */
+  @Input() @InputBoolean() public suiMarkControlsTouchedOnInvalid = true;
 
   @Output() public readonly suiOnSuccess = new EventEmitter<Event>();
   @Output() public readonly suiOnFailure = new EventEmitter<{errors: string[]; fields: string[]}>();
@@ -78,9 +89,29 @@ export class SuiFormValidationDirective implements OnChanges, OnDestroy {
   constructor(
     private readonly el: ElementRef<HTMLFormElement>,
     private readonly renderer: Renderer2,
-    private readonly zone: NgZone
+    private readonly zone: NgZone,
+    @Optional() @Host() private readonly ngForm: NgForm | null,
+    @Optional() @Host() private readonly formGroupDir: FormGroupDirective | null
   ) {
     this.host = el.nativeElement;
+  }
+
+  /** Reactive `[formGroup]` or template-driven `NgForm` on this host, if any. */
+  public getAngularForm(): FormGroup | null {
+    if (this.formGroupDir?.form) {
+      return this.formGroupDir.form;
+    }
+    if (this.ngForm?.form) {
+      return this.ngForm.form;
+    }
+    return null;
+  }
+
+  /** Control whose name matches `suiFields` identifier (flat `FormGroup` only). */
+  public resolveControl(identifier: string): AbstractControl | null {
+    const g = this.getAngularForm();
+    const c = g?.get(identifier);
+    return c ?? null;
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -105,10 +136,21 @@ export class SuiFormValidationDirective implements OnChanges, OnDestroy {
     }
     this.cacheDefaultsOnce();
     const r = this.runValidationWithUi();
-    if (!r.valid) {
+    const form = this.getAngularForm();
+    const ok = r.valid && (!form || form.valid);
+    if (!ok) {
+      if (this.suiMarkControlsTouchedOnInvalid && form) {
+        form.markAllAsTouched();
+      }
       event.preventDefault();
       event.stopPropagation();
-      this.suiOnFailure.emit({errors: r.errors, fields: r.fieldIds});
+      const errorsOut =
+        r.errors.length > 0
+          ? r.errors
+          : form && !form.valid
+            ? ['This form has validation errors.']
+            : r.errors;
+      this.suiOnFailure.emit({errors: errorsOut, fields: r.fieldIds});
       return;
     }
     this.suiOnSuccess.emit(event);
@@ -131,12 +173,23 @@ export class SuiFormValidationDirective implements OnChanges, OnDestroy {
   public validateForm(): boolean {
     this.cacheDefaultsOnce();
     const r = this.runValidationWithUi();
-    if (!r.valid) {
-      this.suiOnFailure.emit({errors: r.errors, fields: r.fieldIds});
+    const form = this.getAngularForm();
+    const ok = r.valid && (!form || form.valid);
+    if (!ok) {
+      if (this.suiMarkControlsTouchedOnInvalid && form) {
+        form.markAllAsTouched();
+      }
+      const errorsOut =
+        r.errors.length > 0
+          ? r.errors
+          : form && !form.valid
+            ? ['This form has validation errors.']
+            : r.errors;
+      this.suiOnFailure.emit({errors: errorsOut, fields: r.fieldIds});
     } else {
       this.suiOnSuccess.emit(new Event('semantic-form-valid'));
     }
-    return r.valid;
+    return ok;
   }
 
   private runValidationWithUi(): {valid: boolean; errors: string[]; fieldIds: string[]} {
@@ -146,17 +199,21 @@ export class SuiFormValidationDirective implements OnChanges, OnDestroy {
     this.clearAllFieldUi();
     for (const f of this.normalized) {
       const msg = this.evaluateFieldMessage(f);
+      const ctrl = this.resolveControl(f.identifier);
       if (msg) {
         errors.push(msg);
         fieldIds.push(f.identifier);
         this.applyFieldError(f.identifier, msg);
+        if (ctrl) {
+          patchSuiFormValidationControlError(ctrl, msg);
+        }
       }
     }
     this.renderFormLevelErrors(errors);
     return {valid: errors.length === 0, errors, fieldIds};
   }
 
-  /** Validate one field by identifier (updates UI). */
+  /** Validate one field by identifier (updates UI and `AbstractControl` errors when bound). */
   public validateField(identifier: string): boolean {
     const field = this.normalized.find(
       x => x.identifier === identifier || x.key === identifier
@@ -166,7 +223,11 @@ export class SuiFormValidationDirective implements OnChanges, OnDestroy {
     }
     this.clearFieldUi(field.identifier);
     const msg = this.evaluateFieldMessage(field);
+    const ctrl = this.resolveControl(field.identifier);
     if (msg) {
+      if (ctrl) {
+        patchSuiFormValidationControlError(ctrl, msg);
+      }
       this.applyFieldError(field.identifier, msg);
       return false;
     }
@@ -189,6 +250,10 @@ export class SuiFormValidationDirective implements OnChanges, OnDestroy {
   }
 
   public getValue(identifier: string): unknown {
+    const ctrl = this.resolveControl(identifier);
+    if (ctrl) {
+      return ctrl.value;
+    }
     const el = this.getFieldElement(identifier);
     return el ? readControlValue(el) : undefined;
   }
@@ -199,6 +264,11 @@ export class SuiFormValidationDirective implements OnChanges, OnDestroy {
       this.normalized.map(f => f.identifier);
     const out: Record<string, unknown> = {};
     for (const id of ids) {
+      const ctrl = this.resolveControl(id);
+      if (ctrl) {
+        out[id] = ctrl.value;
+        continue;
+      }
       const el = resolveFieldElement(this.host, id);
       if (!el) {
         continue;
@@ -211,6 +281,11 @@ export class SuiFormValidationDirective implements OnChanges, OnDestroy {
   }
 
   public setValue(identifier: string, value: unknown): void {
+    const ctrl = this.resolveControl(identifier);
+    if (ctrl) {
+      ctrl.setValue(value);
+      return;
+    }
     const el = resolveFieldElement(this.host, identifier);
     if (!el) {
       return;
@@ -276,6 +351,10 @@ export class SuiFormValidationDirective implements OnChanges, OnDestroy {
   private ctx(): SuiFormRuleContext {
     return {
       getFieldValue: id => {
+        const c = this.resolveControl(id);
+        if (c) {
+          return c.value;
+        }
         const el = resolveFieldElement(this.host, id);
         return el ? readControlValue(el) : '';
       },
@@ -291,8 +370,9 @@ export class SuiFormValidationDirective implements OnChanges, OnDestroy {
         return null;
       }
     }
+    const ctrl = this.resolveControl(field.identifier);
     const el = resolveFieldElement(this.host, field.identifier);
-    const value = el ? readControlValue(el) : undefined;
+    const value = ctrl ? ctrl.value : el ? readControlValue(el) : undefined;
     if (field.optional && isEmptyValue(value)) {
       return null;
     }
@@ -395,6 +475,10 @@ export class SuiFormValidationDirective implements OnChanges, OnDestroy {
   }
 
   private clearFieldUi(identifier: string): void {
+    const ctrl = this.resolveControl(identifier);
+    if (ctrl) {
+      patchSuiFormValidationControlError(ctrl, null);
+    }
     const el = resolveFieldElement(this.host, identifier);
     const group = el ? findSemanticField(el) : null;
     if (group) {
