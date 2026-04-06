@@ -42,6 +42,7 @@ import {SuiBreadcrumbModule} from 'ngx-semantic/collections/breadcrumb';
 import {SuiAdvertisementModule} from 'ngx-semantic/views/advertisement';
 import {SuiStickyModule} from 'ngx-semantic/modules/sticky';
 import {SuiShapeModule} from 'ngx-semantic/modules/shape';
+import {SuiFormValidationModule} from 'ngx-semantic/behaviors/form-validation';
 
 const NGX_SEMANTIC_MODULES = [
   SuiTabsModule,
@@ -85,7 +86,8 @@ const NGX_SEMANTIC_MODULES = [
   SuiPlaceholderModule,
   SuiAdvertisementModule,
   SuiStickyModule,
-  SuiShapeModule
+  SuiShapeModule,
+  SuiFormValidationModule
 ];
 
 @NgModule({
@@ -132,7 +134,8 @@ const NGX_SEMANTIC_MODULES = [
     SuiPlaceholderModule,
     SuiAdvertisementModule,
     SuiStickyModule,
-    SuiShapeModule
+    SuiShapeModule,
+    SuiFormValidationModule
   ]
 })
 export class NgxSemanticModule {
