@@ -1,9 +1,9 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, Input} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {SuiLoaderDirective, SuiLoaderInlineAlignment} from './loader.directive';
-import {By} from '@angular/platform-browser';
-import {SuiSize} from 'ngx-semantic/core/enums';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SuiLoaderDirective, SuiLoaderInlineAlignment } from './loader.directive';
+import { By } from '@angular/platform-browser';
+import { SuiSize } from 'ngx-semantic/core/enums';
 
 describe('SuiLoaderComponent', () => {
   let component: TestLoaderComponent;

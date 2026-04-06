@@ -1,6 +1,6 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {SuiSidebarModule} from './sidebar.module';
-import {SuiSidebarComponent} from './sidebar.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SuiSidebarModule } from './sidebar.module';
+import { SuiSidebarComponent } from './sidebar.component';
 
 describe('SuiSidebarComponent', () => {
   let fixture: ComponentFixture<SuiSidebarComponent>;

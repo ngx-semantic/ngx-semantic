@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiDimmerContentDirective} from './dimmer-content.directive';
-import {SuiDimmerModule} from './dimmer.module';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiDimmerContentDirective } from './dimmer-content.directive';
+import { SuiDimmerModule } from './dimmer.module';
 
 @Component({
   standalone: true,

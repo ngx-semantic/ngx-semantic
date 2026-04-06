@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiDropdownMenuDividerDirective} from './dropdown-menu-divider.directive';
-import {SuiDropdownModule} from './dropdown.module';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiDropdownMenuDividerDirective } from './dropdown-menu-divider.directive';
+import { SuiDropdownModule } from './dropdown.module';
 
 @Component({
   standalone: true,

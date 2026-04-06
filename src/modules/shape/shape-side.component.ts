@@ -2,8 +2,8 @@
  * One face of a `sui-shape`. Renders the required Semantic UI `.side` markup.
  */
 
-import {CommonModule} from '@angular/common';
-import {Component, ElementRef, ViewChild, ViewEncapsulation} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
 
 @Component({
   standalone: true,
@@ -23,7 +23,7 @@ import {Component, ElementRef, ViewChild, ViewEncapsulation} from '@angular/core
   `
 })
 export class SuiShapeSideComponent {
-  @ViewChild('root', {static: true}) root!: ElementRef<HTMLElement>;
+  @ViewChild('root', { static: true }) root!: ElementRef<HTMLElement>;
 
   /** Driven by {@link SuiShapeComponent}; mirrors Semantic UI `.active`. */
   public styleActive = false;

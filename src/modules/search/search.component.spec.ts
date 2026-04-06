@@ -1,7 +1,7 @@
-import {fakeAsync, tick, ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiSearchModule} from './search.module';
-import {SuiSearchComponent} from './search.component';
+import { fakeAsync, tick, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiSearchModule } from './search.module';
+import { SuiSearchComponent } from './search.component';
 
 describe('SuiSearchComponent', () => {
   let fixture: ComponentFixture<SuiSearchComponent>;
@@ -17,8 +17,8 @@ describe('SuiSearchComponent', () => {
     component = fixture.componentInstance;
     host = fixture.nativeElement as HTMLElement;
     fixture.componentRef.setInput('suiOptions', [
-      {title: 'Alpha', value: 1},
-      {title: 'Beta', value: 2}
+      { title: 'Alpha', value: 1 },
+      { title: 'Beta', value: 2 }
     ]);
     fixture.componentRef.setInput('suiSearchDelay', 200);
     fixture.detectChanges();
@@ -58,7 +58,7 @@ describe('SuiSearchComponent', () => {
     result.triggerEventHandler('click', null);
     fixture.detectChanges();
 
-    expect(selected).toEqual(jasmine.objectContaining({title: 'Beta', value: 2}));
+    expect(selected).toEqual(jasmine.objectContaining({ title: 'Beta', value: 2 }));
     expect(component.searchTerm).toBe('Beta');
     expect(component.isOpen).toBe(false);
   }));

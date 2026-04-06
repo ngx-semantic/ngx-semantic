@@ -1,10 +1,10 @@
-import {Component, EventEmitter, HostListener, Input, Output, ViewEncapsulation} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {SuiInputDirective} from 'ngx-semantic/elements/input';
-import {SuiIconDirective} from 'ngx-semantic/elements/icon';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {ISearchOption} from './interfaces/ISearchOption';
+import { Component, EventEmitter, HostListener, Input, Output, ViewEncapsulation } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { SuiInputDirective } from 'ngx-semantic/elements/input';
+import { SuiIconDirective } from 'ngx-semantic/elements/icon';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { ISearchOption } from './interfaces/ISearchOption';
 
 export type SuiSearchAlignment = 'right' | null;
 
@@ -15,12 +15,12 @@ export type SuiSearchAlignment = 'right' | null;
   encapsulation: ViewEncapsulation.None,
   template: `
     <div [ngClass]="classes">
-      <ng-container *ngIf="isSimple">
+      @if (isSimple) {
         <ng-container
           *ngTemplateOutlet="input"></ng-container>
-      </ng-container>
+      }
 
-      <ng-container *ngIf="!isSimple">
+      @if (!isSimple) {
         <div sui-input
              suiIcon="icon">
           <ng-container
@@ -28,34 +28,34 @@ export type SuiSearchAlignment = 'right' | null;
           <i sui-icon
              suiIconType="search"></i>
         </div>
-      </ng-container>
+      }
 
       <div class="results transition"
            [class.visible]="isOpen"
            [class.hidden]="!isOpen"
            style="display: block !important;">
-        <ng-container *ngIf="!hasCategories">
-          <ng-container *ngFor="let option of filteredOptions">
+        @if (!hasCategories) {
+          @for (option of filteredOptions; track option) {
             <ng-container
               *ngTemplateOutlet="result; context: {option:option}"></ng-container>
-          </ng-container>
-        </ng-container>
+          }
+        }
 
-        <ng-container *ngIf="hasCategories">
-          <ng-container *ngFor="let category of optionsByCategory | keyvalue">
+        @if (hasCategories) {
+          @for (category of optionsByCategory | keyvalue; track category.key) {
             <div class="category">
               <div class="name">
                 {{category.key}}
               </div>
               <div class="results">
-                <ng-container *ngFor="let option of category.value">
+                @for (option of category.value; track option) {
                   <ng-container
                     *ngTemplateOutlet="result; context: {option:option}"></ng-container>
-                </ng-container>
+                }
               </div>
             </div>
-          </ng-container>
-        </ng-container>
+          }
+        }
       </div>
     </div>
 
@@ -77,11 +77,11 @@ export type SuiSearchAlignment = 'right' | null;
             {{option.title}}
           </div>
 
-          <ng-container *ngIf="option.description">
+          @if (option.description) {
             <div class="description">
               {{option.description}}
             </div>
-          </ng-container>
+          }
         </div>
       </a>
     </ng-template>

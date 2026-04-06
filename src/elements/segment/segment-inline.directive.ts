@@ -2,7 +2,7 @@
  * Created by bolorundurowb on 5/15/2021
  */
 
-import {Directive, HostBinding} from '@angular/core';
+import { Directive, HostBinding } from '@angular/core';
 
 @Directive({
   standalone: true,

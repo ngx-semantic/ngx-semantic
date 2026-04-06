@@ -2,7 +2,7 @@
  * Created by bolor on 7/9/2020
  */
 
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiSize } from 'ngx-semantic/core/enums';
 import { BaseDirective } from 'ngx-semantic/core/base';
@@ -36,7 +36,9 @@ export class SuiAdvertisementDirective extends BaseDirective {
   @Input() @InputBoolean() public suiTest = false;
   @Input() @InputBoolean() public suiMobile = false;
 
-  constructor(element: ElementRef) {
+  constructor() {
+    const element = inject(ElementRef);
+
     super(element);
   }
 

@@ -2,9 +2,9 @@
  * Created by bolorundurowb on 1/1/2021
  */
 
-import {AfterContentInit, Component, ContentChild, ViewEncapsulation} from '@angular/core';
-import {SuiSidebarComponent} from './sidebar.component';
-import {SuiSidebarPusherComponent} from './sidebar-pusher.component';
+import { AfterContentInit, Component, ContentChild, ViewEncapsulation } from '@angular/core';
+import { SuiSidebarComponent } from './sidebar.component';
+import { SuiSidebarPusherComponent } from './sidebar-pusher.component';
 
 @Component({
   standalone: true,

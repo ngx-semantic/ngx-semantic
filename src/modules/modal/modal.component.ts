@@ -2,17 +2,10 @@
  * Created by bolorundurowb on 1/22/2021
  */
 
-import {
-  ChangeDetectionStrategy, Component,
-  EventEmitter, Inject,
-  Input, OnDestroy, Output,
-  Renderer2, TemplateRef,
-  ViewChild, ViewContainerRef,
-  ViewEncapsulation
-} from '@angular/core';
-import {CommonModule, DOCUMENT} from '@angular/common';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiIconDirective} from 'ngx-semantic/elements/icon';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, Output, Renderer2, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation, inject } from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { SuiIconDirective } from 'ngx-semantic/elements/icon';
 
 export type SuiModalSize = 'mini' | 'tiny' | 'small' | 'large' | null;
 export type SuiModalScrollability = 'full' | 'medium' | 'none';
@@ -27,31 +20,36 @@ export type SuiModalScrollability = 'full' | 'medium' | 'none';
     <ng-template #contentTemplate>
       <div style="display: block !important;"
            [ngClass]="classes">
-        <ng-container *ngIf="suiClosable">
-          <i *ngIf="!suiBasic"
-             sui-icon
-             suiIconType="close"
-             (click)="visible = false;"></i>
-        </ng-container>
+        @if (suiClosable) {
+          @if (!suiBasic) {
+            <i sui-icon
+               suiIconType="close"
+               (click)="visible = false;"></i>
+          }
+        }
 
-        <ng-container *ngIf="suiHeaderText || suiHeaderIcon">
+        @if (suiHeaderText || suiHeaderIcon) {
           <div [class.ui]="!!suiHeaderIcon"
                [class.icon]="!!suiHeaderIcon"
                [class.header]="true">
-            <ng-container *ngIf="suiHeaderIcon">
+            @if (suiHeaderIcon) {
               <i sui-icon
                  [suiIconType]="suiHeaderIcon"></i>
-            </ng-container>
+            }
             {{suiHeaderText}}
           </div>
-        </ng-container>
+        }
         <ng-content></ng-content>
       </div>
     </ng-template>
   `
 })
 export class SuiModalComponent implements OnDestroy {
-  @ViewChild('contentTemplate', {static: true}) public contentTemplate!: TemplateRef<any>;
+  private document = inject<Document>(DOCUMENT);
+  private renderer = inject(Renderer2);
+  private viewRef = inject(ViewContainerRef);
+
+  @ViewChild('contentTemplate', { static: true }) public contentTemplate!: TemplateRef<any>;
 
   @Input() public suiHeaderText: string | null = null;
   @Input() public suiHeaderIcon: string | null = null;
@@ -113,8 +111,7 @@ export class SuiModalComponent implements OnDestroy {
     }
   }
 
-  constructor(@Inject(DOCUMENT) private document: Document, private renderer: Renderer2,
-              private viewRef: ViewContainerRef) {
+  constructor() {
     this.uniqueId = Math.ceil(Math.random() * 100000000);
   }
 

@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiFeedDirective} from './feed.directive';
-import {SuiFeedModule} from './feed.module';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiFeedDirective } from './feed.directive';
+import { SuiFeedModule } from './feed.module';
 
 @Component({
   standalone: true,

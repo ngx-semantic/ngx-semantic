@@ -1,7 +1,7 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiProgressModule} from './progress.module';
-import {SuiProgressComponent} from './progress.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiProgressModule } from './progress.module';
+import { SuiProgressComponent } from './progress.component';
 
 describe('SuiProgressComponent', () => {
   let fixture: ComponentFixture<SuiProgressComponent>;

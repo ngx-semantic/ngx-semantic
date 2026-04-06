@@ -2,7 +2,7 @@
  * Created by bolor on 10/10/2020
  */
 
-import { Directive, ElementRef, HostBinding, Input } from '@angular/core';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
 import { SuiTableTextAlignment, SuiTableVerticalAlignment } from './enums';
 import { SuiWidth } from 'ngx-semantic/core/enums';
 import { BaseDirective } from 'ngx-semantic/core/base';
@@ -17,7 +17,9 @@ export class SuiTableHeaderCellDirective extends BaseDirective {
   @Input() public suiVerticalAlignment: SuiTableVerticalAlignment = null;
   @Input() public suiWidth: SuiWidth = null;
 
-  constructor(element: ElementRef) {
+  constructor() {
+    const element = inject(ElementRef);
+
     super(element);
   }
 

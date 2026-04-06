@@ -2,9 +2,9 @@
  * Created by bolor on 6/14/2020
  */
 
-import {Directive, ElementRef, Input} from '@angular/core';
-import {SuiColour, SuiWidth} from 'ngx-semantic/core/enums';
-import {BaseDirective} from 'ngx-semantic/core/base';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
+import { SuiColour, SuiWidth } from 'ngx-semantic/core/enums';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiColumnFloat = 'left floated' | 'right floated' | null;
 export type SuiColumnAlignment = 'left aligned' | 'middle aligned' | 'right aligned' | null;
@@ -21,7 +21,9 @@ export class SuiGridColumnDirective extends BaseDirective{
   @Input() public suiAlignment: SuiColumnAlignment = null;
   @Input() public suiDeviceVisibility: string | null = null;
 
-  constructor(element: ElementRef) {
+  constructor() {
+    const element = inject(ElementRef);
+
     super(element);
   }
 

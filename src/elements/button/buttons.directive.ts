@@ -2,10 +2,10 @@
  * Created by bolor on 4/20/2020
  */
 
-import {Directive, ElementRef, Input} from '@angular/core';
-import {SuiColour, SuiSize, SuiWidth} from 'ngx-semantic/core/enums';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {BaseDirective} from 'ngx-semantic/core/base';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
+import { SuiColour, SuiSize, SuiWidth } from 'ngx-semantic/core/enums';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiButtonsAttachment = 'top' | 'bottom' | null;
 export type SuiButtonsIconType = 'icon' | 'labeled icon' | null;
@@ -25,7 +25,9 @@ export class SuiButtonsDirective extends BaseDirective {
   @Input() @InputBoolean() public suiVertical = false;
   @Input() @InputBoolean() public suiAttached = false;
 
-  constructor(element: ElementRef) {
+  constructor() {
+    const element = inject(ElementRef);
+
     super(element);
   }
 

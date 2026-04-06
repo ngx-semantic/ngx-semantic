@@ -2,11 +2,11 @@
  * Created by bolor on 5/18/2020
  */
 
-import {Directive, ElementRef, Input} from '@angular/core';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
 
-import {SuiColour} from 'ngx-semantic/core/enums';
-import {BaseDirective} from 'ngx-semantic/core/base';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import { SuiColour } from 'ngx-semantic/core/enums';
+import { BaseDirective } from 'ngx-semantic/core/base';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 
 export type SuiSegmentStacking = 'stacked' | 'tall stacked' | null;
 export type SuiSegmentPadding = 'padded' | 'very padded' | null;
@@ -40,7 +40,9 @@ export class SuiSegmentDirective extends BaseDirective {
   @Input() @InputBoolean() public suiSecondary = false;
   @Input() @InputBoolean() public suiTertiary = false;
 
-  constructor(element: ElementRef) {
+  constructor() {
+    const element = inject(ElementRef);
+
     super(element);
   }
 

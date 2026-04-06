@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiCommentContentDirective} from './comment-content.directive';
-import {SuiCommentModule} from './comment.module';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiCommentContentDirective } from './comment-content.directive';
+import { SuiCommentModule } from './comment.module';
 
 @Component({
   standalone: true,

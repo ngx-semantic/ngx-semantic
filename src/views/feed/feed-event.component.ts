@@ -3,24 +3,23 @@
  */
 
 import { Component, HostBinding, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   exportAs: 'suiFeedEvent',
   selector: '[suiFeedEvent]',
   template: `
-    <ng-container *ngIf="hasLabel">
+    @if (hasLabel) {
       <div class="label">
-        <ng-container *ngIf="suiLabelIcon">
+        @if (suiLabelIcon) {
           <i class="{{suiLabelIcon}} icon"></i>
-        </ng-container>
-        <ng-container *ngIf="suiLabelImageUrl">
+        }
+        @if (suiLabelImageUrl) {
           <img [src]="suiLabelImageUrl" alt="Label image" />
-        </ng-container>
+        }
       </div>
-    </ng-container>
+    }
 
     <div class="content">
       <ng-content></ng-content>

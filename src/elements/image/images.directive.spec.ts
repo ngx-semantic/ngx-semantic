@@ -2,12 +2,12 @@
  * Created by bolor on 4/26/2020
  */
 
-import {Component, Input} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {CommonModule} from '@angular/common';
-import {SuiImagesDirective} from './images.directive';
-import {By} from '@angular/platform-browser';
-import {SuiImageDirective} from './image.directive';
+import { Component, Input } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CommonModule } from '@angular/common';
+import { SuiImagesDirective } from './images.directive';
+import { By } from '@angular/platform-browser';
+import { SuiImageDirective } from './image.directive';
 
 describe('SuiImageGroupComponent', () => {
   let component: TestImageGroupComponent;

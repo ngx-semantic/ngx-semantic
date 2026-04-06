@@ -1,7 +1,6 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiModalModule} from './modal.module';
-import {SuiModalComponent} from './modal.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SuiModalModule } from './modal.module';
+import { SuiModalComponent } from './modal.component';
 
 describe('SuiModalComponent', () => {
   let fixture: ComponentFixture<SuiModalComponent>;

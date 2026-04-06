@@ -2,11 +2,11 @@
  * Created by bolorundurowb on 1/24/2021
  */
 
-import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiIconDirective} from 'ngx-semantic/elements/icon';
-import {SafeUrlPipe} from './pipes/safe-url.pipe';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, ViewEncapsulation, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { SuiIconDirective } from 'ngx-semantic/elements/icon';
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
 export type SuiEmbedSource = 'youtube' | 'vimeo' | null;
 export type SuiEmbedAspectRatio = '4:3' | '16:9' | '21:9' | null;
@@ -23,23 +23,25 @@ export type SuiEmbedAspectRatio = '4:3' | '16:9' | '21:9' | null;
          [suiIconType]="suiIcon"
          (click)="playVideo()"></i>
 
-      <ng-container *ngIf="suiPlaceHolder">
+      @if (suiPlaceHolder) {
         <img class="placeholder"
              [src]="suiPlaceHolder"/>
-      </ng-container>
+      }
 
-      <ng-container *ngIf="isPLaying">
+      @if (isPLaying) {
         <div class="embed">
           <iframe
             [src]="videoUrl | safeUrl"
             scrolling="no" webkitallowfullscreen="" mozallowfullscreen=""
             allowfullscreen="" width="100%" height="100%" frameborder="0"></iframe>
         </div>
-      </ng-container>
+      }
     </div>
   `
 })
 export class SuiEmbedComponent implements AfterViewInit {
+  private cdr = inject(ChangeDetectorRef);
+
   @Input() public suiSource: SuiEmbedSource = null;
   @Input() public suiAspectRatio: SuiEmbedAspectRatio = null;
   @Input() public suiIcon = 'video play';
@@ -50,9 +52,6 @@ export class SuiEmbedComponent implements AfterViewInit {
 
   public isPLaying = false;
   public videoUrl = '';
-
-  constructor(private cdr: ChangeDetectorRef) {
-  }
 
   public ngAfterViewInit(): void {
     if (this.suiAutoplay) {

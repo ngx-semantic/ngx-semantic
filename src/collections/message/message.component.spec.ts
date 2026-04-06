@@ -1,8 +1,8 @@
-import {Component, Input} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiMessageModule} from './message.module';
-import {SuiColour} from 'ngx-semantic/core/enums';
+import { Component, Input } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiMessageModule } from './message.module';
+import { SuiColour } from 'ngx-semantic/core/enums';
 
 @Component({
   standalone: true,

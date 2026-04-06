@@ -2,9 +2,9 @@
  * Created by bolorundurowb on 12/30/2020
  */
 
-import {Component, HostBinding, HostListener, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiSidebarService} from './sidebar.service';
+import { Component, HostBinding, HostListener, Input, OnInit, ViewEncapsulation, inject } from '@angular/core';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { SuiSidebarService } from './sidebar.service';
 
 @Component({
   standalone: true,
@@ -15,6 +15,8 @@ import {SuiSidebarService} from './sidebar.service';
   `
 })
 export class SuiSidebarPusherComponent implements OnInit {
+  private sidebarService = inject(SuiSidebarService);
+
   @Input() @InputBoolean() public suiDimmable = false;
   public isSidebarOpen = false;
 
@@ -24,9 +26,6 @@ export class SuiSidebarPusherComponent implements OnInit {
       ClassUtils.getPropClass(this.isSidebarOpen && this.suiDimmable, 'dimmed'),
       'pusher'
     ].join(' ');
-  }
-
-  constructor(private sidebarService: SuiSidebarService) {
   }
 
   public ngOnInit(): void {

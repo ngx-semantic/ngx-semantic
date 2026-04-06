@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiPlaceholderHeaderDirective} from './placeholder-header.directive';
-import {SuiPlaceholderModule} from './placeholder.module';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiPlaceholderHeaderDirective } from './placeholder-header.directive';
+import { SuiPlaceholderModule } from './placeholder.module';
 
 @Component({
   standalone: true,

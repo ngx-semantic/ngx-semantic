@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiIconsDirective} from './icons.directive';
-import {SuiIconModule} from './icon.module';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiIconsDirective } from './icons.directive';
+import { SuiIconModule } from './icon.module';
 
 @Component({
   standalone: true,

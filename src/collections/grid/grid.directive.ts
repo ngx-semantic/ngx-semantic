@@ -2,10 +2,10 @@
  * Created by bolor on 6/11/2020
  */
 
-import {Directive, ElementRef, Input} from '@angular/core';
-import {SuiWidth} from 'ngx-semantic/core/enums';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {BaseDirective} from 'ngx-semantic/core/base';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
+import { SuiWidth } from 'ngx-semantic/core/enums';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiGridAlignment = 'left aligned' | 'center aligned' | 'right aligned' | null;
 export type SuiGridDivision = 'divided' | 'vertically divided' | null;
@@ -33,7 +33,9 @@ export class SuiGridDirective extends BaseDirective {
   @Input() @InputBoolean() public suiStackable = false;
   @Input() @InputBoolean() public suiDoubling = false;
 
-  constructor(element: ElementRef) {
+  constructor() {
+    const element = inject(ElementRef);
+
     super(element);
   }
 

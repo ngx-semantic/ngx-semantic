@@ -1,5 +1,5 @@
-import {Directive, ElementRef, Input} from '@angular/core';
-import {BaseDirective} from 'ngx-semantic/core/base';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
   standalone: true,
@@ -9,7 +9,9 @@ import {BaseDirective} from 'ngx-semantic/core/base';
 export class SuiFlagDirective extends BaseDirective {
   @Input() public suiCountry = '';
 
-  constructor(element: ElementRef) {
+  constructor() {
+    const element = inject(ElementRef);
+
     super(element);
   }
 

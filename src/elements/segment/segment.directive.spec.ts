@@ -1,9 +1,9 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, Input} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {SuiSegmentDirective, SuiSegmentAttachment, SuiSegmentPadding, SuiSegmentStacking, SuiSegmentTextAlignment} from './segment.directive';
-import {By} from '@angular/platform-browser';
-import {SuiColour} from 'ngx-semantic/core/enums';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SuiSegmentDirective, SuiSegmentAttachment, SuiSegmentPadding, SuiSegmentStacking, SuiSegmentTextAlignment } from './segment.directive';
+import { By } from '@angular/platform-browser';
+import { SuiColour } from 'ngx-semantic/core/enums';
 
 describe('SuiSegmentComponent', () => {
   let component: TestSegmentComponent;

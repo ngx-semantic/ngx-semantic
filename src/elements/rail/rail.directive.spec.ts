@@ -2,11 +2,11 @@
  * Created by bolor on 5/10/2020
  */
 
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {CommonModule} from '@angular/common';
-import {By} from '@angular/platform-browser';
-import {Component, Input} from '@angular/core';
-import {SuiRailDirective} from './rail.directive';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CommonModule } from '@angular/common';
+import { By } from '@angular/platform-browser';
+import { Component, Input } from '@angular/core';
+import { SuiRailDirective } from './rail.directive';
 
 describe('SuiRailComponent', () => {
   let component: TestRailComponent;

@@ -1,7 +1,7 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiAccordionModule} from './accordion.module';
-import {SuiAccordionPanelComponent} from './accordion-panel.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiAccordionModule } from './accordion.module';
+import { SuiAccordionPanelComponent } from './accordion-panel.component';
 
 describe('SuiAccordionPanelComponent', () => {
   let fixture: ComponentFixture<SuiAccordionPanelComponent>;

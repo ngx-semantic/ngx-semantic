@@ -2,8 +2,8 @@
  * Created by bolor on 10/24/2020
  */
 
-import {NgModule} from '@angular/core';
-import {SuiRatingComponent} from './rating.component';
+import { NgModule } from '@angular/core';
+import { SuiRatingComponent } from './rating.component';
 
 @NgModule({
   imports: [

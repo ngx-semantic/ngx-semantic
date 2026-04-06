@@ -1,7 +1,7 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiCheckboxModule} from './checkbox.module';
-import {SuiCheckboxComponent} from './checkbox.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiCheckboxModule } from './checkbox.module';
+import { SuiCheckboxComponent } from './checkbox.component';
 
 describe('SuiCheckboxComponent', () => {
   let fixture: ComponentFixture<SuiCheckboxComponent>;

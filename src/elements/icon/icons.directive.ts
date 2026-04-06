@@ -2,8 +2,8 @@
  * Created by bolorundurowb on 2/8/2021
  */
 
-import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiSize} from 'ngx-semantic/core/enums';
+import { Directive, HostBinding, Input } from '@angular/core';
+import { SuiSize } from 'ngx-semantic/core/enums';
 
 @Directive({
   standalone: true,

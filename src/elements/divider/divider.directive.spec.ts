@@ -1,8 +1,8 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {Component, Input} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {SuiDividerDirective, SuiDividerDirection} from './divider.directive';
-import {By} from '@angular/platform-browser';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SuiDividerDirective, SuiDividerDirection } from './divider.directive';
+import { By } from '@angular/platform-browser';
 
 describe('SuiDividerComponent', () => {
   let component: TestDividerComponent;

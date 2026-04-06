@@ -2,11 +2,11 @@
  * Created by bolor on 4/28/2020
  */
 
-import {Directive, ElementRef, Input} from '@angular/core';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
 
-import {SuiSize} from 'ngx-semantic/core/enums';
-import {BaseDirective} from 'ngx-semantic/core/base';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import { SuiSize } from 'ngx-semantic/core/enums';
+import { BaseDirective } from 'ngx-semantic/core/base';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 
 export type SuiInputLabeling = 'labeled' | 'right labeled' | 'left corner labeled' | 'corner labeled' | null;
 export type SuiInputActions = 'action' | 'left action' | 'right action' | null;
@@ -32,7 +32,9 @@ export class SuiInputDirective extends BaseDirective {
   @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiError = false;
 
-  constructor(element: ElementRef) {
+  constructor() {
+    const element = inject(ElementRef);
+
     super(element);
   }
 

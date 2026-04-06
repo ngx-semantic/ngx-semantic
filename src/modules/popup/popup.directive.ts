@@ -1,15 +1,6 @@
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ConnectedPosition, Overlay, OverlayPositionBuilder, OverlayRef } from '@angular/cdk/overlay';
-import {
-  ComponentRef,
-  Directive,
-  ElementRef,
-  HostListener,
-  Input,
-  OnDestroy,
-  OnInit,
-  TemplateRef
-} from '@angular/core';
+import { ComponentRef, Directive, ElementRef, HostListener, Input, OnDestroy, OnInit, TemplateRef, inject } from '@angular/core';
 
 import { SuiSize } from 'ngx-semantic/core/enums';
 import { InputBoolean } from 'ngx-semantic/core/util';
@@ -34,6 +25,10 @@ export type SuiPopupTrigger = 'hover' | 'click';
   exportAs: 'suiPopup'
 })
 export class SuiPopupDirective implements OnInit, OnDestroy {
+  private elementRef = inject(ElementRef);
+  private overlay = inject(Overlay);
+  private positionBuilder = inject(OverlayPositionBuilder);
+
   @Input() public suiPopupPlacement: SuiPopupPlacement = 'top left';
   @Input() public suiPopupTrigger: SuiPopupTrigger = 'hover';
   @Input() public suiPopupWidth: SuiPopupWidth = null;
@@ -57,10 +52,6 @@ export class SuiPopupDirective implements OnInit, OnDestroy {
     bottomCenter: { originX: 'center', originY: 'bottom', overlayX: 'center', overlayY: 'top' },
     bottomRight: { originX: 'end', originY: 'bottom', overlayX: 'end', overlayY: 'top' }
   };
-
-  constructor(private elementRef: ElementRef, private overlay: Overlay,
-              private positionBuilder: OverlayPositionBuilder) {
-  }
 
   public ngOnInit(): void {
     const scrollStrategy = this.overlay

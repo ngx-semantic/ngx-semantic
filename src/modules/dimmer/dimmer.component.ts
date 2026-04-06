@@ -7,9 +7,9 @@ import {
   Input, OnInit, TemplateRef,
   ViewEncapsulation
 } from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {ClassUtils} from 'ngx-semantic/core/util';
-import {SuiDimmerContentAlignment} from './dimmer.directive';
+import { CommonModule } from '@angular/common';
+import { ClassUtils } from 'ngx-semantic/core/util';
+import { SuiDimmerContentAlignment } from './dimmer.directive';
 
 @Component({
   standalone: true,
@@ -19,11 +19,11 @@ import {SuiDimmerContentAlignment} from './dimmer.directive';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div [ngClass]="classes" style="display: flex !important;">
-      <ng-container *ngIf="suiContent">
+      @if (suiContent) {
         <div class="content">
           <ng-container *ngTemplateOutlet="suiContent"></ng-container>
         </div>
-      </ng-container>
+      }
     </div>
   `
 })

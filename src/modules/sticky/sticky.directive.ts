@@ -4,25 +4,11 @@
  * Requires Semantic UI sticky CSS (and typically `position: relative` on the rail/column container).
  */
 
-import {DOCUMENT} from '@angular/common';
-import {
-  AfterViewInit,
-  ChangeDetectorRef,
-  Directive,
-  ElementRef,
-  EventEmitter,
-  HostBinding,
-  Inject,
-  Input,
-  NgZone,
-  OnDestroy,
-  OnInit,
-  Output,
-  Renderer2
-} from '@angular/core';
-import {InputBoolean} from 'ngx-semantic/core/util';
-import {Subject, fromEvent} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import { DOCUMENT } from '@angular/common';
+import { AfterViewInit, ChangeDetectorRef, Directive, ElementRef, EventEmitter, HostBinding, Input, NgZone, OnDestroy, OnInit, Output, Renderer2, inject } from '@angular/core';
+import { InputBoolean } from 'ngx-semantic/core/util';
+import { Subject, fromEvent } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 /** Cached layout (see Semantic UI `save.positions`). */
 export interface SuiStickyCache {
@@ -50,6 +36,12 @@ export interface SuiStickyCache {
   exportAs: 'suiSticky'
 })
 export class SuiStickyDirective implements OnInit, AfterViewInit, OnDestroy {
+  private readonly document = inject<Document>(DOCUMENT);
+  private readonly el = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly renderer = inject(Renderer2);
+  private readonly zone = inject(NgZone);
+  private readonly cdr = inject(ChangeDetectorRef);
+
   @Input() public suiContext: string | HTMLElement | null = null;
   @Input() public suiScrollContext: 'window' | string = 'window';
   @Input() public suiOffset = 0;
@@ -84,20 +76,12 @@ export class SuiStickyDirective implements OnInit, AfterViewInit, OnDestroy {
   private mutationObserver: MutationObserver | null = null;
   private refreshTimer: ReturnType<typeof setTimeout> | null = null;
 
-  constructor(
-    @Inject(DOCUMENT) private readonly document: Document,
-    private readonly el: ElementRef<HTMLElement>,
-    private readonly renderer: Renderer2,
-    private readonly zone: NgZone,
-    private readonly cdr: ChangeDetectorRef
-  ) {}
-
   public ngOnInit(): void {
     this.scrollEl = this.resolveScrollElement();
     const win = this.document.defaultView!;
     this.zone.runOutsideAngular(() => {
       const scrollTarget = this.scrollEl === window ? win : this.scrollEl;
-      fromEvent(scrollTarget, 'scroll', {passive: true})
+      fromEvent(scrollTarget, 'scroll', { passive: true })
         .pipe(takeUntil(this.destroy$))
         .subscribe(() => {
           requestAnimationFrame(() => {
@@ -108,7 +92,7 @@ export class SuiStickyDirective implements OnInit, AfterViewInit, OnDestroy {
             });
           });
         });
-      fromEvent(win, 'resize', {passive: true})
+      fromEvent(win, 'resize', { passive: true })
         .pipe(takeUntil(this.destroy$))
         .subscribe(() => {
           requestAnimationFrame(() => this.zone.run(() => this.refresh(false)));
@@ -146,8 +130,8 @@ export class SuiStickyDirective implements OnInit, AfterViewInit, OnDestroy {
     this.cdr.markForCheck();
     if (this.suiObserveChanges && typeof MutationObserver !== 'undefined' && !this.mutationObserver) {
       this.mutationObserver = new MutationObserver(() => this.scheduleRefresh());
-      this.mutationObserver.observe(this.contextEl, {childList: true, subtree: true});
-      this.mutationObserver.observe(this.el.nativeElement, {childList: true, subtree: true});
+      this.mutationObserver.observe(this.contextEl, { childList: true, subtree: true });
+      this.mutationObserver.observe(this.el.nativeElement, { childList: true, subtree: true });
     }
   }
 
@@ -217,9 +201,9 @@ export class SuiStickyDirective implements OnInit, AfterViewInit, OnDestroy {
     this.cache = {
       fits: elementHeight + this.suiOffset <= scrollH,
       sameHeight: elementHeight === contextHeight,
-      scrollContext: {height: scrollH},
+      scrollContext: { height: scrollH },
       element: {
-        margin: {top: marginTop, bottom: marginBottom},
+        margin: { top: marginTop, bottom: marginBottom },
         top: elementTop,
         left: elementOffsetLeft,
         width: mod.offsetWidth,

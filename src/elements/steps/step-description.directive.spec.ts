@@ -1,8 +1,8 @@
-import {Component} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiStepDescriptionDirective} from './step-description.directive';
-import {SuiStepsModule} from './steps.module';
+import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiStepDescriptionDirective } from './step-description.directive';
+import { SuiStepsModule } from './steps.module';
 
 @Component({
   standalone: true,

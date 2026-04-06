@@ -1,7 +1,7 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiSelectModule} from './select.module';
-import {SuiSelectComponent} from './select.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiSelectModule } from './select.module';
+import { SuiSelectComponent } from './select.component';
 
 describe('SuiSelectComponent', () => {
   let fixture: ComponentFixture<SuiSelectComponent>;
@@ -17,8 +17,8 @@ describe('SuiSelectComponent', () => {
     component = fixture.componentInstance;
     host = fixture.nativeElement as HTMLElement;
     fixture.componentRef.setInput('suiOptions', [
-      {value: 1, text: 'One'},
-      {value: 2, text: 'Two'}
+      { value: 1, text: 'One' },
+      { value: 2, text: 'Two' }
     ]);
     fixture.componentRef.setInput('suiPlaceholder', 'Pick');
     fixture.detectChanges();

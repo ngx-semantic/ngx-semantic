@@ -2,10 +2,10 @@
  * Created by bolor on 4/30/2020
  */
 
-import {Directive, ElementRef, Input} from '@angular/core';
-import {SuiColour, SuiHorizontalAlignment, SuiLocation, SuiSize, SuiWidth} from 'ngx-semantic/core/enums';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {BaseDirective} from 'ngx-semantic/core/base';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
+import { SuiColour, SuiHorizontalAlignment, SuiLocation, SuiSize } from 'ngx-semantic/core/enums';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiLabelPointing = 'above' | 'below' | 'left' | 'right' | null;
 
@@ -29,7 +29,9 @@ export class SuiLabelDirective extends BaseDirective {
   @Input() @InputBoolean() public suiCircular = false;
   @Input() @InputBoolean() public suiEmpty = false;
 
-  constructor(element: ElementRef) {
+  constructor() {
+    const element = inject(ElementRef);
+
     super(element);
   }
 

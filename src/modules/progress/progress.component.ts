@@ -18,9 +18,9 @@ export type SuiProgressState = 'active' | 'success' | 'warning' | 'error' | null
     <div [ngClass]="classes" [attr.data-percent]="progressPercentage">
       <div class="bar"
            [style.width.%]="progressPercentage">
-        <ng-container *ngIf="suiShowProgress">
+        @if (suiShowProgress) {
           <div class="progress">{{ progressPercentage }}%</div>
-        </ng-container>
+        }
       </div>
       <div class="label">
         <ng-content></ng-content>

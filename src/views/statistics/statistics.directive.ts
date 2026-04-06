@@ -2,7 +2,7 @@
  * Created by bolor on 7/16/2020
  */
 
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiWidth } from 'ngx-semantic/core/enums';
 import { BaseDirective } from 'ngx-semantic/core/base';
@@ -16,7 +16,9 @@ export class SuiStatisticsDirective extends BaseDirective {
   @Input() public suiWidth: SuiWidth = null;
   @Input() @InputBoolean() public suiHorizontal = false;
 
-  constructor(elementRef: ElementRef) {
+  constructor() {
+    const elementRef = inject(ElementRef);
+
     super(elementRef);
   }
 

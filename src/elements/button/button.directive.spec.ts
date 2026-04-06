@@ -1,7 +1,7 @@
-import {CommonModule} from '@angular/common';
-import {Component, Input} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import {
   SuiButtonAnimation, SuiButtonAttachment,
   SuiButtonDirective,
@@ -10,7 +10,7 @@ import {
   SuiButtonLabeling,
   SuiSocialButtonStyle
 } from './button.directive';
-import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
+import { SuiColour, SuiSize } from 'ngx-semantic/core/enums';
 
 describe('SuiButtonComponent', () => {
   let component: TestButtonComponent;

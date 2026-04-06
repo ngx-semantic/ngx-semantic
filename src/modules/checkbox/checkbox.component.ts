@@ -2,19 +2,9 @@
  * Created by bolor on 10/24/2020
  */
 
-import {
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  forwardRef,
-  HostBinding,
-  HostListener,
-  Input,
-  Output,
-  ViewEncapsulation
-} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import { ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, HostListener, Input, Output, ViewEncapsulation, inject } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 
 export type SuiCheckboxType = 'radio' | 'slider' | 'toggle' | null;
 
@@ -42,6 +32,8 @@ export type SuiCheckboxType = 'radio' | 'slider' | 'toggle' | null;
   }]
 })
 export class SuiCheckboxComponent implements ControlValueAccessor {
+  private changeDetectorRef = inject(ChangeDetectorRef);
+
   @Output() public valueChanged = new EventEmitter<any>();
   @Output() public checkedChange = new EventEmitter<boolean>();
   @Input() public suiType: SuiCheckboxType = null;
@@ -95,9 +87,6 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
     }
   }
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {
-  }
-
   get isRadioType(): boolean {
     return this.suiType != null && ['radio', 'slider'].includes(this.suiType);
   }
@@ -135,9 +124,9 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
     this.controlValueChangeFn = fn;
   }
 
-  public registerOnTouched(fn: any): void {
+  public registerOnTouched(_fn: any): void {
   }
 
-  public setDisabledState?(isDisabled: boolean): void {
+  public setDisabledState?(_isDisabled: boolean): void {
   }
 }

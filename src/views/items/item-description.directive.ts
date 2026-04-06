@@ -1,4 +1,4 @@
-import { Directive, ElementRef } from '@angular/core';
+import { Directive, ElementRef, inject } from '@angular/core';
 import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
@@ -7,7 +7,9 @@ import { BaseDirective } from 'ngx-semantic/core/base';
   selector: '[suiItemDescription]'
 })
 export class SuiItemDescriptionDirective extends BaseDirective {
-  constructor(element: ElementRef) {
+  constructor() {
+    const element = inject(ElementRef);
+
     super(element);
   }
 

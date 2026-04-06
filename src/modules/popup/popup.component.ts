@@ -18,20 +18,20 @@ import { SuiPopupPlacement, SuiPopupWidth } from './popup.directive';
   template: `
     <div style="position: unset !important;"
          [ngClass]="classes">
-      <ng-container *ngIf="suiTitle">
+      @if (suiTitle) {
         <div class="header">
           {{ suiTitle }}
         </div>
-      </ng-container>
+      }
 
       <div class="content">
-        <ng-container *ngIf="isString">
+        @if (isString) {
           {{ suiContent }}
-        </ng-container>
+        }
 
-        <ng-container *ngIf="isTemplate">
+        @if (isTemplate) {
           <ng-container *ngTemplateOutlet="suiContent"></ng-container>
-        </ng-container>
+        }
       </div>
     </div>
   `,

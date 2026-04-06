@@ -1,8 +1,8 @@
-import {Component, ViewChild} from '@angular/core';
-import {ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiShapeComponent} from './shape.component';
-import {SuiShapeSideComponent} from './shape-side.component';
+import { Component, ViewChild } from '@angular/core';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiShapeComponent } from './shape.component';
+import { SuiShapeSideComponent } from './shape-side.component';
 
 @Component({
   standalone: true,
@@ -52,7 +52,7 @@ class HostShapeOptionsComponent {
 }
 
 function endTransition(sidesEl: HTMLElement, fixture: ComponentFixture<unknown>): void {
-  sidesEl.dispatchEvent(new TransitionEvent('transitionend', {bubbles: true}));
+  sidesEl.dispatchEvent(new TransitionEvent('transitionend', { bubbles: true }));
   fixture.detectChanges();
 }
 
@@ -101,7 +101,7 @@ describe('SuiShapeComponent', () => {
 
     expect(shape.isAnimating()).toBeTrue();
 
-    sidesEl.dispatchEvent(new TransitionEvent('transitionend', {bubbles: true}));
+    sidesEl.dispatchEvent(new TransitionEvent('transitionend', { bubbles: true }));
     fixture.detectChanges();
 
     expect(shape.isAnimating()).toBeFalse();
@@ -123,7 +123,7 @@ describe('SuiShapeComponent', () => {
     shape.flipUp();
     tick();
     fixture.detectChanges();
-    sidesEl.dispatchEvent(new TransitionEvent('transitionend', {bubbles: true}));
+    sidesEl.dispatchEvent(new TransitionEvent('transitionend', { bubbles: true }));
     fixture.detectChanges();
 
     expect(before).toBeTruthy();
@@ -138,14 +138,14 @@ describe('SuiShapeComponent', () => {
     shape.flipUp();
     tick();
     fixture.detectChanges();
-    sidesEl.dispatchEvent(new TransitionEvent('transitionend', {bubbles: true}));
+    sidesEl.dispatchEvent(new TransitionEvent('transitionend', { bubbles: true }));
     fixture.detectChanges();
 
     shape.setNextSide('.first');
     shape.flipRight();
     tick();
     fixture.detectChanges();
-    sidesEl.dispatchEvent(new TransitionEvent('transitionend', {bubbles: true}));
+    sidesEl.dispatchEvent(new TransitionEvent('transitionend', { bubbles: true }));
     fixture.detectChanges();
 
     const sideEls = fixture.debugElement.queryAll(By.css('.side'));
@@ -171,7 +171,7 @@ describe('SuiShapeComponent', () => {
     shape.flip('flip up');
     tick();
     fixture.detectChanges();
-    sidesEl.dispatchEvent(new TransitionEvent('transitionend', {bubbles: true}));
+    sidesEl.dispatchEvent(new TransitionEvent('transitionend', { bubbles: true }));
     fixture.detectChanges();
 
     const sideEls = fixture.debugElement.queryAll(By.css('.side'));

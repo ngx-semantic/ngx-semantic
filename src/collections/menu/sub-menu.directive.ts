@@ -2,7 +2,7 @@
  * Created by bolor on 7/3/2020
  */
 
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { BaseDirective } from 'ngx-semantic/core/base';
 
@@ -14,7 +14,9 @@ import { BaseDirective } from 'ngx-semantic/core/base';
 export class SuiSubMenuDirective extends BaseDirective {
   @Input() @InputBoolean() public suiRight = false;
 
-  constructor(element: ElementRef) {
+  constructor() {
+    const element = inject(ElementRef);
+
     super(element);
   }
 

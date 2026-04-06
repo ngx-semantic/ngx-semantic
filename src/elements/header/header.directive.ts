@@ -1,6 +1,6 @@
-import {Directive, HostBinding, Input} from '@angular/core';
-import {SuiColour, SuiSize} from 'ngx-semantic/core/enums';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import { Directive, HostBinding, Input } from '@angular/core';
+import { SuiColour, SuiSize } from 'ngx-semantic/core/enums';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 
 export type SuiHeaderAlignment = 'left aligned' | 'right aligned' | 'center aligned' | 'justified' | null;
 export type SuiHeaderAttachment = 'attached' | 'top attached' | 'bottom attached' | null;

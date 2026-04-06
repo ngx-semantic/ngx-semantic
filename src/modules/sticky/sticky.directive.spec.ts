@@ -1,7 +1,7 @@
-import {Component, ViewChild, enableProdMode} from '@angular/core';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiStickyDirective} from './sticky.directive';
+import { Component, ViewChild, enableProdMode } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiStickyDirective } from './sticky.directive';
 
 /** Shared DOM mocks + synchronous rAF for scroll/resize handlers. */
 function installStickyWindowMocks(opts: {
@@ -45,9 +45,9 @@ function installStickyWindowMocks(opts: {
 
   const stickyH = opts.stickyRect?.height ?? 40;
   const ctxH = opts.ctxRect?.height ?? 500;
-  Object.defineProperty(opts.sticky, 'offsetWidth', {configurable: true, get: () => 200});
-  Object.defineProperty(opts.sticky, 'offsetHeight', {configurable: true, get: () => stickyH});
-  Object.defineProperty(opts.ctx, 'offsetHeight', {configurable: true, get: () => ctxH});
+  Object.defineProperty(opts.sticky, 'offsetWidth', { configurable: true, get: () => 200 });
+  Object.defineProperty(opts.sticky, 'offsetHeight', { configurable: true, get: () => stickyH });
+  Object.defineProperty(opts.ctx, 'offsetHeight', { configurable: true, get: () => ctxH });
 
   spyOn(window, 'requestAnimationFrame').and.callFake((cb: FrameRequestCallback) => {
     cb(0);
@@ -195,7 +195,7 @@ class HostStickyNoSetSizeComponent {
 
 describe('SuiStickyDirective', () => {
   let fixture: ComponentFixture<HostStickyComponent>;
-  let scrollYValue = {value: 0};
+  const scrollYValue = { value: 0 };
 
   beforeAll(() => {
     enableProdMode();
@@ -214,7 +214,7 @@ describe('SuiStickyDirective', () => {
     fixture = TestBed.createComponent(HostStickyComponent);
     const ctx = fixture.nativeElement.querySelector('#ctx') as HTMLElement;
     const sticky = fixture.nativeElement.querySelector('[suiSticky]') as HTMLElement;
-    installStickyWindowMocks({scrollY: scrollYValue, ctx, sticky});
+    installStickyWindowMocks({ scrollY: scrollYValue, ctx, sticky });
 
     fixture.detectChanges();
     await fixture.whenStable();
@@ -307,16 +307,16 @@ describe('SuiStickyDirective', () => {
 
   it('should bind bottom from initial scroll when past context (tall element)', async () => {
     await TestBed.resetTestingModule();
-    await TestBed.configureTestingModule({imports: [HostStickyComponent]}).compileComponents();
+    await TestBed.configureTestingModule({ imports: [HostStickyComponent] }).compileComponents();
     const f = TestBed.createComponent(HostStickyComponent);
     const ctx = f.nativeElement.querySelector('#ctx') as HTMLElement;
     const sticky = f.nativeElement.querySelector('[suiSticky]') as HTMLElement;
-    const sy = {value: 0};
+    const sy = { value: 0 };
     installStickyWindowMocks({
       scrollY: sy,
       ctx,
       sticky,
-      stickyRect: {top: 400, height: 200, bottom: 600, y: 400},
+      stickyRect: { top: 400, height: 200, bottom: 600, y: 400 },
       innerHeight: 800
     });
     f.detectChanges();
@@ -345,12 +345,12 @@ describe('SuiStickyDirective', () => {
 
   it('should apply suiOffset to fixed top styles', async () => {
     await TestBed.resetTestingModule();
-    await TestBed.configureTestingModule({imports: [HostStickyOffsetComponent]}).compileComponents();
+    await TestBed.configureTestingModule({ imports: [HostStickyOffsetComponent] }).compileComponents();
     const f = TestBed.createComponent(HostStickyOffsetComponent);
     const ctx = f.nativeElement.querySelector('#ctx') as HTMLElement;
     const sticky = f.nativeElement.querySelector('[suiSticky]') as HTMLElement;
-    const sy = {value: 0};
-    installStickyWindowMocks({scrollY: sy, ctx, sticky});
+    const sy = { value: 0 };
+    installStickyWindowMocks({ scrollY: sy, ctx, sticky });
     f.detectChanges();
     await f.whenStable();
     sy.value = 150;
@@ -361,12 +361,12 @@ describe('SuiStickyDirective', () => {
 
   it('should not set width/height when suiSetSize is false', async () => {
     await TestBed.resetTestingModule();
-    await TestBed.configureTestingModule({imports: [HostStickyNoSetSizeComponent]}).compileComponents();
+    await TestBed.configureTestingModule({ imports: [HostStickyNoSetSizeComponent] }).compileComponents();
     const f = TestBed.createComponent(HostStickyNoSetSizeComponent);
     const ctx = f.nativeElement.querySelector('#ctx') as HTMLElement;
     const sticky = f.nativeElement.querySelector('[suiSticky]') as HTMLElement;
-    const sy = {value: 0};
-    installStickyWindowMocks({scrollY: sy, ctx, sticky});
+    const sy = { value: 0 };
+    installStickyWindowMocks({ scrollY: sy, ctx, sticky });
     f.detectChanges();
     await f.whenStable();
     sy.value = 150;
@@ -378,12 +378,12 @@ describe('SuiStickyDirective', () => {
 
   it('should accept HTMLElement as suiContext', async () => {
     await TestBed.resetTestingModule();
-    await TestBed.configureTestingModule({imports: [HostStickyComponent]}).compileComponents();
+    await TestBed.configureTestingModule({ imports: [HostStickyComponent] }).compileComponents();
     const f = TestBed.createComponent(HostStickyComponent);
     const ctx = f.nativeElement.querySelector('#ctx') as HTMLElement;
     const sticky = f.nativeElement.querySelector('[suiSticky]') as HTMLElement;
-    const sy = {value: 0};
-    installStickyWindowMocks({scrollY: sy, ctx, sticky});
+    const sy = { value: 0 };
+    installStickyWindowMocks({ scrollY: sy, ctx, sticky });
     f.detectChanges();
     await f.whenStable();
     const dir = f.componentInstance.sticky;
@@ -394,11 +394,11 @@ describe('SuiStickyDirective', () => {
 
   it('should use implicit container context when suiContext is omitted', async () => {
     await TestBed.resetTestingModule();
-    await TestBed.configureTestingModule({imports: [HostStickyNoExplicitContextComponent]}).compileComponents();
+    await TestBed.configureTestingModule({ imports: [HostStickyNoExplicitContextComponent] }).compileComponents();
     const f = TestBed.createComponent(HostStickyNoExplicitContextComponent);
     const wrap = f.nativeElement.querySelector('#wrap') as HTMLElement;
     const sticky = f.nativeElement.querySelector('[suiSticky]') as HTMLElement;
-    const sy = {value: 0};
+    const sy = { value: 0 };
     spyOnProperty(window, 'scrollX', 'get').and.returnValue(0);
     spyOnProperty(window, 'innerHeight', 'get').and.returnValue(800);
     spyOnProperty(window, 'scrollY', 'get').and.callFake(() => sy.value);
@@ -424,9 +424,9 @@ describe('SuiStickyDirective', () => {
       y: 100,
       toJSON: () => ({})
     } as DOMRect);
-    Object.defineProperty(sticky, 'offsetWidth', {configurable: true, get: () => 200});
-    Object.defineProperty(sticky, 'offsetHeight', {configurable: true, get: () => 40});
-    Object.defineProperty(wrap, 'offsetHeight', {configurable: true, get: () => 500});
+    Object.defineProperty(sticky, 'offsetWidth', { configurable: true, get: () => 200 });
+    Object.defineProperty(sticky, 'offsetHeight', { configurable: true, get: () => 40 });
+    Object.defineProperty(wrap, 'offsetHeight', { configurable: true, get: () => 500 });
     spyOn(window, 'requestAnimationFrame').and.callFake((cb: FrameRequestCallback) => {
       cb(0);
       return 0;
@@ -439,12 +439,12 @@ describe('SuiStickyDirective', () => {
 
   it('should leave cache null when context selector does not exist', async () => {
     await TestBed.resetTestingModule();
-    await TestBed.configureTestingModule({imports: [HostStickyMissingContextComponent]}).compileComponents();
+    await TestBed.configureTestingModule({ imports: [HostStickyMissingContextComponent] }).compileComponents();
     const f = TestBed.createComponent(HostStickyMissingContextComponent);
     const ctx = f.nativeElement.querySelector('#ctx') as HTMLElement;
     const sticky = f.nativeElement.querySelector('[suiSticky]') as HTMLElement;
-    const sy = {value: 0};
-    installStickyWindowMocks({scrollY: sy, ctx, sticky});
+    const sy = { value: 0 };
+    installStickyWindowMocks({ scrollY: sy, ctx, sticky });
     f.detectChanges();
     await f.whenStable();
     expect(f.componentInstance.sticky.cache).toBeNull();
@@ -452,12 +452,12 @@ describe('SuiStickyDirective', () => {
 
   it('should fall back to window when scroll context selector is missing', async () => {
     await TestBed.resetTestingModule();
-    await TestBed.configureTestingModule({imports: [HostStickyBadScrollComponent]}).compileComponents();
+    await TestBed.configureTestingModule({ imports: [HostStickyBadScrollComponent] }).compileComponents();
     const f = TestBed.createComponent(HostStickyBadScrollComponent);
     const ctx = f.nativeElement.querySelector('#ctx') as HTMLElement;
     const sticky = f.nativeElement.querySelector('[suiSticky]') as HTMLElement;
-    const sy = {value: 0};
-    installStickyWindowMocks({scrollY: sy, ctx, sticky});
+    const sy = { value: 0 };
+    installStickyWindowMocks({ scrollY: sy, ctx, sticky });
     f.detectChanges();
     await f.whenStable();
     expect(f.componentInstance.sticky.cache).toBeTruthy();
@@ -465,14 +465,14 @@ describe('SuiStickyDirective', () => {
 
   it('should read scrollTop from custom scroll element', async () => {
     await TestBed.resetTestingModule();
-    await TestBed.configureTestingModule({imports: [HostStickyScrollElementComponent]}).compileComponents();
+    await TestBed.configureTestingModule({ imports: [HostStickyScrollElementComponent] }).compileComponents();
     const f = TestBed.createComponent(HostStickyScrollElementComponent);
     const ctx = f.nativeElement.querySelector('#ctx') as HTMLElement;
     const sticky = f.nativeElement.querySelector('[suiSticky]') as HTMLElement;
     const scrollHost = f.nativeElement.querySelector('#scrollHost') as HTMLElement;
-    const sy = {value: 0};
-    installStickyWindowMocks({scrollY: sy, ctx, sticky});
-    Object.defineProperty(scrollHost, 'scrollTop', {configurable: true, get: () => 150, set: () => {}});
+    const sy = { value: 0 };
+    installStickyWindowMocks({ scrollY: sy, ctx, sticky });
+    Object.defineProperty(scrollHost, 'scrollTop', { configurable: true, get: () => 150, set: () => {} });
     f.detectChanges();
     await f.whenStable();
 
@@ -484,14 +484,14 @@ describe('SuiStickyDirective', () => {
 
   it('should set container height when inner wrapper height differs from context', async () => {
     await TestBed.resetTestingModule();
-    await TestBed.configureTestingModule({imports: [HostStickyNestedContainerComponent]}).compileComponents();
+    await TestBed.configureTestingModule({ imports: [HostStickyNestedContainerComponent] }).compileComponents();
     const f = TestBed.createComponent(HostStickyNestedContainerComponent);
     const ctx = f.nativeElement.querySelector('#ctx') as HTMLElement;
     const inner = f.nativeElement.querySelector('#inner') as HTMLElement;
     const sticky = f.nativeElement.querySelector('[suiSticky]') as HTMLElement;
-    const sy = {value: 0};
-    installStickyWindowMocks({scrollY: sy, ctx, sticky});
-    Object.defineProperty(inner, 'offsetHeight', {configurable: true, get: () => 40});
+    const sy = { value: 0 };
+    installStickyWindowMocks({ scrollY: sy, ctx, sticky });
+    Object.defineProperty(inner, 'offsetHeight', { configurable: true, get: () => 40 });
     f.detectChanges();
     await f.whenStable();
     expect(inner.style.height).toBe('500px');
@@ -499,14 +499,14 @@ describe('SuiStickyDirective', () => {
 
   it('should clear cache when sticky is taller than context', async () => {
     await TestBed.resetTestingModule();
-    await TestBed.configureTestingModule({imports: [HostStickyComponent]}).compileComponents();
+    await TestBed.configureTestingModule({ imports: [HostStickyComponent] }).compileComponents();
     const f = TestBed.createComponent(HostStickyComponent);
     const ctx = f.nativeElement.querySelector('#ctx') as HTMLElement;
     const sticky = f.nativeElement.querySelector('[suiSticky]') as HTMLElement;
-    const sy = {value: 0};
-    installStickyWindowMocks({scrollY: sy, ctx, sticky});
-    Object.defineProperty(sticky, 'offsetHeight', {configurable: true, get: () => 600});
-    Object.defineProperty(ctx, 'offsetHeight', {configurable: true, get: () => 500});
+    const sy = { value: 0 };
+    installStickyWindowMocks({ scrollY: sy, ctx, sticky });
+    Object.defineProperty(sticky, 'offsetHeight', { configurable: true, get: () => 600 });
+    Object.defineProperty(ctx, 'offsetHeight', { configurable: true, get: () => 500 });
     f.detectChanges();
     await f.whenStable();
     expect(f.componentInstance.sticky.cache).toBeNull();
@@ -522,12 +522,12 @@ describe('SuiStickyDirective', () => {
         marginBottom: '0'
       } as CSSStyleDeclaration);
       await TestBed.resetTestingModule();
-      await TestBed.configureTestingModule({imports: [HostStickyComponent]}).compileComponents();
+      await TestBed.configureTestingModule({ imports: [HostStickyComponent] }).compileComponents();
       const f = TestBed.createComponent(HostStickyComponent);
       const ctx = f.nativeElement.querySelector('#ctx') as HTMLElement;
       const sticky = f.nativeElement.querySelector('[suiSticky]') as HTMLElement;
-      const sy = {value: 0};
-      installStickyWindowMocks({scrollY: sy, ctx, sticky});
+      const sy = { value: 0 };
+      installStickyWindowMocks({ scrollY: sy, ctx, sticky });
       f.detectChanges();
       await f.whenStable();
       expect(f.componentInstance.sticky.cache).toBeNull();
@@ -538,14 +538,14 @@ describe('SuiStickyDirective', () => {
 
   it('should not change stick state when element height equals context (sameHeight)', async () => {
     await TestBed.resetTestingModule();
-    await TestBed.configureTestingModule({imports: [HostStickyComponent]}).compileComponents();
+    await TestBed.configureTestingModule({ imports: [HostStickyComponent] }).compileComponents();
     const f = TestBed.createComponent(HostStickyComponent);
     const ctx = f.nativeElement.querySelector('#ctx') as HTMLElement;
     const sticky = f.nativeElement.querySelector('[suiSticky]') as HTMLElement;
-    const sy = {value: 0};
-    installStickyWindowMocks({scrollY: sy, ctx, sticky});
-    Object.defineProperty(sticky, 'offsetHeight', {configurable: true, get: () => 500});
-    Object.defineProperty(ctx, 'offsetHeight', {configurable: true, get: () => 500});
+    const sy = { value: 0 };
+    installStickyWindowMocks({ scrollY: sy, ctx, sticky });
+    Object.defineProperty(sticky, 'offsetHeight', { configurable: true, get: () => 500 });
+    Object.defineProperty(ctx, 'offsetHeight', { configurable: true, get: () => 500 });
     f.detectChanges();
     await f.whenStable();
     const dir = f.componentInstance.sticky;
@@ -559,12 +559,12 @@ describe('SuiStickyDirective', () => {
 
   it('should debounce refresh when observeChanges and DOM mutates', async () => {
     await TestBed.resetTestingModule();
-    await TestBed.configureTestingModule({imports: [HostStickyObserveComponent]}).compileComponents();
+    await TestBed.configureTestingModule({ imports: [HostStickyObserveComponent] }).compileComponents();
     const f = TestBed.createComponent(HostStickyObserveComponent);
     const ctx = f.nativeElement.querySelector('#ctx') as HTMLElement;
     const sticky = f.nativeElement.querySelector('[suiSticky]') as HTMLElement;
-    const sy = {value: 0};
-    installStickyWindowMocks({scrollY: sy, ctx, sticky});
+    const sy = { value: 0 };
+    installStickyWindowMocks({ scrollY: sy, ctx, sticky });
     f.detectChanges();
     await f.whenStable();
     let repositions = 0;
@@ -579,12 +579,12 @@ describe('SuiStickyDirective', () => {
 
   it('should call fixBottom when pushing from bound state with small viewport', async () => {
     await TestBed.resetTestingModule();
-    await TestBed.configureTestingModule({imports: [HostStickyPushingComponent]}).compileComponents();
+    await TestBed.configureTestingModule({ imports: [HostStickyPushingComponent] }).compileComponents();
     const f = TestBed.createComponent(HostStickyPushingComponent);
     const ctx = f.nativeElement.querySelector('#ctx') as HTMLElement;
     const sticky = f.nativeElement.querySelector('[suiSticky]') as HTMLElement;
-    const sy = {value: 0};
-    installStickyWindowMocks({scrollY: sy, ctx, sticky, innerHeight: 200});
+    const sy = { value: 0 };
+    installStickyWindowMocks({ scrollY: sy, ctx, sticky, innerHeight: 200 });
     f.detectChanges();
     await f.whenStable();
     const dir = f.componentInstance.sticky;
@@ -602,12 +602,12 @@ describe('SuiStickyDirective', () => {
 
   it('should fixTop from bound when not pushing', async () => {
     await TestBed.resetTestingModule();
-    await TestBed.configureTestingModule({imports: [HostStickyComponent]}).compileComponents();
+    await TestBed.configureTestingModule({ imports: [HostStickyComponent] }).compileComponents();
     const f = TestBed.createComponent(HostStickyComponent);
     const ctx = f.nativeElement.querySelector('#ctx') as HTMLElement;
     const sticky = f.nativeElement.querySelector('[suiSticky]') as HTMLElement;
-    const sy = {value: 0};
-    installStickyWindowMocks({scrollY: sy, ctx, sticky, innerHeight: 200});
+    const sy = { value: 0 };
+    installStickyWindowMocks({ scrollY: sy, ctx, sticky, innerHeight: 200 });
     f.detectChanges();
     await f.whenStable();
     const dir = f.componentInstance.sticky;
@@ -625,18 +625,18 @@ describe('SuiStickyDirective', () => {
 
   it('should stay fixed top when element taller than viewport and context is tall', async () => {
     await TestBed.resetTestingModule();
-    await TestBed.configureTestingModule({imports: [HostStickyComponent]}).compileComponents();
+    await TestBed.configureTestingModule({ imports: [HostStickyComponent] }).compileComponents();
     const f = TestBed.createComponent(HostStickyComponent);
     const ctx = f.nativeElement.querySelector('#ctx') as HTMLElement;
     const sticky = f.nativeElement.querySelector('[suiSticky]') as HTMLElement;
-    const sy = {value: 0};
+    const sy = { value: 0 };
     installStickyWindowMocks({
       scrollY: sy,
       ctx,
       sticky,
       innerHeight: 300,
-      ctxRect: {top: 0, height: 2000, bottom: 2000},
-      stickyRect: {top: 100, height: 400, bottom: 500, y: 100}
+      ctxRect: { top: 0, height: 2000, bottom: 2000 },
+      stickyRect: { top: 100, height: 400, bottom: 500, y: 100 }
     });
     f.detectChanges();
     await f.whenStable();
@@ -661,12 +661,12 @@ describe('SuiStickyDirective', () => {
 
   it('should clear pending observe refresh timer on destroy', async () => {
     await TestBed.resetTestingModule();
-    await TestBed.configureTestingModule({imports: [HostStickyObserveComponent]}).compileComponents();
+    await TestBed.configureTestingModule({ imports: [HostStickyObserveComponent] }).compileComponents();
     const f = TestBed.createComponent(HostStickyObserveComponent);
     const ctx = f.nativeElement.querySelector('#ctx') as HTMLElement;
     const sticky = f.nativeElement.querySelector('[suiSticky]') as HTMLElement;
-    const sy = {value: 0};
-    installStickyWindowMocks({scrollY: sy, ctx, sticky});
+    const sy = { value: 0 };
+    installStickyWindowMocks({ scrollY: sy, ctx, sticky });
     f.detectChanges();
     await f.whenStable();
     ctx.appendChild(document.createElement('div'));

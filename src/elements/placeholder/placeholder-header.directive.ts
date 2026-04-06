@@ -2,8 +2,8 @@
  * Created by bolor on 5/8/2020
  */
 
-import {Directive, HostBinding, Input} from '@angular/core';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
+import { Directive, HostBinding, Input } from '@angular/core';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 
 @Directive({
   standalone: true,

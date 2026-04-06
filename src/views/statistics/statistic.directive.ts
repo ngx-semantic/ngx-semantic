@@ -2,7 +2,7 @@
  * Created by bolor on 7/16/2020
  */
 
-import { Directive, ElementRef, Host, Input, Optional } from '@angular/core';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiColour, SuiSize } from 'ngx-semantic/core/enums';
 import { SuiStatisticsDirective } from './statistics.directive';
@@ -16,6 +16,9 @@ export type SuiFloat = 'right' | 'left';
   exportAs: 'suiStatistic'
 })
 export class SuiStatisticDirective extends BaseDirective {
+  private parent = inject(SuiStatisticsDirective, { optional: true, host: true });
+  private elementRef: ElementRef;
+
   @Input() public suiColour: SuiColour = null;
   @Input() public suiFloated: SuiFloat | null = null;
   @Input() public suiSize: SuiSize = null;
@@ -24,8 +27,13 @@ export class SuiStatisticDirective extends BaseDirective {
 
   private isChildComponent: boolean;
 
-  constructor(@Optional() @Host() private parent: SuiStatisticsDirective, private elementRef: ElementRef) {
+  constructor() {
+    const elementRef = inject(ElementRef);
+
     super(elementRef);
+    const parent = this.parent;
+    this.elementRef = elementRef;
+
     this.isChildComponent = !!parent;
   }
 

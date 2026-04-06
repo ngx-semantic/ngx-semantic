@@ -1,7 +1,7 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {SuiEmbedModule} from './embed.module';
-import {SuiEmbedComponent} from './embed.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { SuiEmbedModule } from './embed.module';
+import { SuiEmbedComponent } from './embed.component';
 
 describe('SuiEmbedComponent', () => {
   let fixture: ComponentFixture<SuiEmbedComponent>;

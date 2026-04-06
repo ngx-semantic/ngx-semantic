@@ -2,9 +2,9 @@
  * Created by bolor on 4/23/2020
  */
 
-import {NgModule} from '@angular/core';
-import {SuiFlagDirective} from './flag.directive';
-import {CommonModule} from '@angular/common';
+import { NgModule } from '@angular/core';
+import { SuiFlagDirective } from './flag.directive';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [CommonModule, SuiFlagDirective],

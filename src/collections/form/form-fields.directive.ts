@@ -2,10 +2,10 @@
  * Created by bolor on 6/5/2020
  */
 
-import {Directive, ElementRef, Input} from '@angular/core';
-import {SuiWidth} from 'ngx-semantic/core/enums';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {BaseDirective} from 'ngx-semantic/core/base';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
+import { SuiWidth } from 'ngx-semantic/core/enums';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
   standalone: true,
@@ -18,7 +18,9 @@ export class SuiFormFieldsDirective extends BaseDirective {
   @Input() @InputBoolean() public suiGrouped = false;
   @Input() @InputBoolean() public suiEqualWidth = false;
 
-  constructor(element: ElementRef) {
+  constructor() {
+    const element = inject(ElementRef);
+
     super(element);
   }
 

@@ -2,28 +2,27 @@
  * Created by bolor on 10/24/2020
  */
 
-import {ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Input, Output, ViewEncapsulation} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {ClassUtils, InputBoolean} from 'ngx-semantic/core/util';
-import {SuiSize} from 'ngx-semantic/core/enums';
+import { ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, Input, Output, ViewEncapsulation, inject } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { SuiSize } from 'ngx-semantic/core/enums';
 
 export type SuiRatingType = 'star' | 'heart' | null;
 
 @Component({
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   selector: 'sui-rating',
   encapsulation: ViewEncapsulation.None,
   template: `
-    <ng-container *ngFor="let i of ratingsArray">
+    @for (i of ratingsArray; track i) {
       <i class="icon"
          [class.active]="i <= suiValue"
          [class.selected]="i <= hoverValue"
          (click)="onClick(i)"
          (mouseover)="onHover(i)"
          (mouseout)="onUnhover()"></i>
-    </ng-container>
+    }
   `,
   styles: [`
     :host.read-only .icon {
@@ -37,6 +36,8 @@ export type SuiRatingType = 'star' | 'heart' | null;
   }]
 })
 export class SuiRatingComponent implements ControlValueAccessor {
+  private changeDetectorRef = inject(ChangeDetectorRef);
+
   @Output() public valueChanged = new EventEmitter<number>();
   @Input() public suiSize: SuiSize = null;
   @Input() public suiType: SuiRatingType = null;
@@ -83,7 +84,7 @@ export class SuiRatingComponent implements ControlValueAccessor {
     ].join(' ');
   }
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {
+  constructor() {
     this.generateRatingsArray();
   }
 
@@ -129,10 +130,10 @@ export class SuiRatingComponent implements ControlValueAccessor {
     this.controlValueChangeFn = fn;
   }
 
-  public registerOnTouched(fn: any): void {
+  public registerOnTouched(_fn: any): void {
   }
 
-  public setDisabledState?(isDisabled: boolean): void {
+  public setDisabledState?(_isDisabled: boolean): void {
   }
 
   private generateRatingsArray(): void {
