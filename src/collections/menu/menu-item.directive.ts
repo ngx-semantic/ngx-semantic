@@ -3,7 +3,7 @@
  */
 
 import { Directive, ElementRef, Input, inject } from '@angular/core';
-import { ClassUtils } from 'ngx-semantic/core/util';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
@@ -12,10 +12,10 @@ import { BaseDirective } from 'ngx-semantic/core/base';
   selector: '[suiMenuItem]'
 })
 export class SuiMenuItemDirective extends BaseDirective {
-  @Input() public suiLink = false;
-  @Input() public suiActive = false;
-  @Input() public suiBrowser = false;
-  @Input() public disabled = false;
+  @Input() @InputBoolean() public suiLink = false;
+  @Input() @InputBoolean() public suiActive = false;
+  @Input() @InputBoolean() public suiBrowser = false;
+  @Input() @InputBoolean() public disabled = false;
 
   constructor() {
     const element = inject(ElementRef);

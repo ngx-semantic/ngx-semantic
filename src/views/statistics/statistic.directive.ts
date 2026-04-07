@@ -17,7 +17,6 @@ export type SuiFloat = 'right' | 'left';
 })
 export class SuiStatisticDirective extends BaseDirective {
   private parent = inject(SuiStatisticsDirective, { optional: true, host: true });
-  private elementRef: ElementRef;
 
   @Input() public suiColour: SuiColour = null;
   @Input() public suiFloated: SuiFloat | null = null;
@@ -32,8 +31,6 @@ export class SuiStatisticDirective extends BaseDirective {
 
     super(elementRef);
     const parent = this.parent;
-    this.elementRef = elementRef;
-
     this.isChildComponent = !!parent;
   }
 

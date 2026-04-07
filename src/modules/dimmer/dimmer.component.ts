@@ -8,7 +8,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ClassUtils } from 'ngx-semantic/core/util';
+import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiDimmerContentAlignment } from './dimmer.directive';
 
 @Component({
@@ -29,10 +29,10 @@ import { SuiDimmerContentAlignment } from './dimmer.directive';
 })
 export class SuiDimmerComponent implements OnInit {
   @Input() public suiAlignment: SuiDimmerContentAlignment = null;
-  @Input() public suiBlurring = false;
-  @Input() public suiInverted = false;
-  @Input() public suiSimple = false;
-  @Input() public suiFullPage = false;
+  @Input() @InputBoolean() public suiBlurring = false;
+  @Input() @InputBoolean() public suiInverted = false;
+  @Input() @InputBoolean() public suiSimple = false;
+  @Input() @InputBoolean() public suiFullPage = false;
 
   private _content: TemplateRef<any> | null = null;
   public classes = '';

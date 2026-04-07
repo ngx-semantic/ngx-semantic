@@ -64,7 +64,7 @@ export class SuiTransitionComponent implements OnChanges, OnDestroy {
   /** When not forced by the animation string, controls automatic in vs out (default mirrors Semantic `auto`). */
   @Input() public suiDirection: SuiTransitionDirectionMode = 'auto';
   /** Whether the host is shown (after transitions complete). Two-way bindable. */
-  @Input() public suiVisible = true;
+  @Input() @InputBoolean() public suiVisible = true;
   /** Increment to replay the current **static** animation (`pulse`, `shake`, …). */
   @Input() public suiPlay = 0;
   /** Disables animations; visibility updates apply immediately. */
