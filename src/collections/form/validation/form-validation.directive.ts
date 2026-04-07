@@ -126,11 +126,12 @@ export class SuiFormValidationDirective implements OnChanges, OnDestroy {
     const r = this.runValidationWithUi();
     const form = this.getAngularForm();
     const ok = r.valid && (!form || form.valid);
+    // Always prevent native form navigation; consumers use suiOnSuccess for follow-up.
+    event.preventDefault();
     if (!ok) {
       if (this.suiMarkControlsTouchedOnInvalid && form) {
         form.markAllAsTouched();
       }
-      event.preventDefault();
       event.stopPropagation();
       const errorsOut =
         r.errors.length > 0
