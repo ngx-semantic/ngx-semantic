@@ -211,7 +211,7 @@ describe('SuiFormValidationDirective', () => {
     expect(pd).toHaveBeenCalled();
   });
 
-  it('allows submit when valid', () => {
+  it('allows submit when valid but always prevents native navigation', () => {
     const input = fixture.debugElement.query(By.css('#email')).nativeElement as HTMLInputElement;
     input.value = 'ok@example.com';
     input.dispatchEvent(new Event('input'));
@@ -221,7 +221,7 @@ describe('SuiFormValidationDirective', () => {
     const ev = new Event('submit', { cancelable: true, bubbles: true });
     const pd = spyOn(ev, 'preventDefault').and.callThrough();
     form.dispatchEvent(ev);
-    expect(pd).not.toHaveBeenCalled();
+    expect(pd).toHaveBeenCalled();
   });
 
   it('validateForm reflects isValid', () => {

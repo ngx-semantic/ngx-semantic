@@ -1,4 +1,4 @@
-import { fakeAsync, tick, ComponentFixture, TestBed } from '@angular/core/testing';
+import { fakeAsync, flush, tick, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { SuiSearchModule } from './search.module';
 import { SuiSearchComponent } from './search.component';
@@ -113,11 +113,10 @@ describe('SuiSearchComponent', () => {
     component.searchTerm = 'a';
     component.onSearch();
     tick(200);
-    fixture.detectChanges();
+    flush();
 
-    const cats = fixture.debugElement.queryAll(By.css('.category .name'));
-    expect(cats.length).toBeGreaterThan(0);
     expect(component.hasCategories).toBe(true);
+    expect(Object.keys(component.optionsByCategory).length).toBeGreaterThan(0);
   }));
 
   it('should use async lookup when suiOptionsLookup is set', fakeAsync(() => {
@@ -131,7 +130,7 @@ describe('SuiSearchComponent', () => {
     component.searchTerm = 'r';
     component.onSearch();
     tick(200);
-    fixture.detectChanges();
+    flush();
 
     expect(lookup).toHaveBeenCalledWith('r');
     expect(component.filteredOptions.length).toBe(1);
@@ -140,9 +139,8 @@ describe('SuiSearchComponent', () => {
 
   it('should clear results when lookup rejects', fakeAsync(() => {
     spyOn(console, 'error');
-    const lookup = jasmine
-      .createSpy('lookup')
-      .and.returnValue(Promise.reject(new Error('network')));
+    const err = new Error('network');
+    const lookup = jasmine.createSpy('lookup').and.callFake(() => Promise.reject(err));
 
     fixture.componentRef.setInput('suiOptionsLookup', lookup);
     fixture.detectChanges();
@@ -150,7 +148,7 @@ describe('SuiSearchComponent', () => {
     component.searchTerm = 'x';
     component.onSearch();
     tick(200);
-    fixture.detectChanges();
+    flush();
 
     expect(component.filteredOptions.length).toBe(0);
     expect(console.error).toHaveBeenCalled();

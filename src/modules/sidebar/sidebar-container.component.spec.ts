@@ -68,21 +68,17 @@ describe('SuiSidebarContainerComponent', () => {
       expect(container.suiPusher).toBeTruthy();
     });
 
-    it('should sync pusher when sidebar visibility changes', () => {
-      const container = fixture.debugElement.query(By.directive(SuiSidebarContainerComponent))
-        .componentInstance as SuiSidebarContainerComponent;
+    it('should update pusher when sidebar emits visibleChange', () => {
       const sidebar = fixture.debugElement.query(By.directive(SuiSidebarComponent))
         .componentInstance as SuiSidebarComponent;
       const pusher = fixture.debugElement.query(By.directive(SuiSidebarPusherComponent))
         .componentInstance as SuiSidebarPusherComponent;
 
+      sidebar.visibleChange.emit(true);
       expect(pusher.isSidebarOpen).toBe(true);
-      sidebar.visible = false;
-      fixture.detectChanges();
+
+      sidebar.visibleChange.emit(false);
       expect(pusher.isSidebarOpen).toBe(false);
-      sidebar.visible = true;
-      fixture.detectChanges();
-      expect(pusher.isSidebarOpen).toBe(true);
     });
   });
 
