@@ -64,7 +64,7 @@ export class SuiFormValidationDirective implements OnChanges, OnDestroy {
   @Input() @InputBoolean() public suiInline = false;
   @Input() @InputBoolean() public suiRevalidate = true;
   /** Debounce (ms) for `change` / revalidation; `true` uses 300ms; `false` disables. */
-  @Input() @InputBoolean() public suiDelay: number | boolean = true;
+  @Input() public suiDelay: number | boolean = true;
   @Input() @InputBoolean() public suiKeyboardShortcuts = true;
   /** When using `NgForm` / `FormGroup`, mark all controls touched after a failed submit (shows native errors). */
   @Input() @InputBoolean() public suiMarkControlsTouchedOnInvalid = true;
