@@ -67,7 +67,7 @@ jobs:
           git config --local user.name "CI"
           git tag ${{ needs.build.outputs.new_version }}
       - name: Push Tag to GitHub
-        uses: ad-m/github-push-action@v0.8.0
+        uses: ad-m/github-push-action@v1.3.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: master
