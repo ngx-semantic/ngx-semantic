@@ -58,24 +58,24 @@ All directives, components, and pipes in this library are **standalone**. You ca
 | :x:                     | Component currently unavailable.                                                    |
 | :no_entry_sign:         | Component not applicable to Angular.                                                |
 
-|            Elements            |         Collections          |                Views                |             Modules             |              Behaviors              |
-|--------------------------------|------------------------------|-------------------------------------|---------------------------------|-------------------------------------|
-| :white_check_mark: Button     | :white_check_mark: Breadcrumb | :white_check_mark: Advertisement    | :white_check_mark: Accordion    | :no_entry_sign: API                 |
-| :white_check_mark: Container  | :white_check_mark: Form       | :white_check_mark: Card             | :white_check_mark: Checkbox     | :no_entry_sign: Form Validation     |
-| :white_check_mark: Divider    | :white_check_mark: Grid       | :white_check_mark: Comment          | :white_check_mark: Dimmer       | :x: Visibility                      |
-| :white_check_mark: Flag       | :white_check_mark: Menu       | :white_check_mark: Feed             | :white_check_mark: Dropdown     |                                     |
-| :white_check_mark: Header     | :white_check_mark: Message    | :white_check_mark: Item             | :white_check_mark: Embed        |                                     |
-| :white_check_mark: Icon       | :white_check_mark: Table      | :white_check_mark: Statistic        | :white_check_mark: Modal        |                                     |
-| :white_check_mark: Image      |                               |                                     | :white_check_mark: Popup        |                                     |
-| :white_check_mark: Input      |                               |                                     | :white_check_mark: Progress     |                                     |
-| :white_check_mark: Label      |                               |                                     | :white_check_mark: Rating       |                                     |
-| :white_check_mark: List       |                               |                                     | :white_check_mark: Search       |                                     |
-| :white_check_mark: Loader     |                               |                                     | :rocket: Select                 |                                     |
-| :white_check_mark: Rail       |                               |                                     | :x: Shape                       |                                     |
-| :white_check_mark: Reveal     |                               |                                     | :white_check_mark: Sidebar      |                                     |
-| :white_check_mark: Segment    |                               |                                     | :x: Sticky                      |                                     |
-| :white_check_mark: Step       |                               |                                     | :white_check_mark: Tab          |                                     |
-|                               |                               |                                     | :x: Transition                  |                                     |
+| Elements                     | Collections                   | Views                            | Modules                       | Behaviors                       |
+|------------------------------|-------------------------------|----------------------------------|-------------------------------|---------------------------------|
+| :white_check_mark: Button    | :white_check_mark: Breadcrumb | :white_check_mark: Advertisement | :white_check_mark: Accordion  | :no_entry_sign: API             |
+| :white_check_mark: Container | :white_check_mark: Form       | :white_check_mark: Card          | :white_check_mark: Checkbox   | :no_entry_sign: Form Validation |
+| :white_check_mark: Divider   | :white_check_mark: Grid       | :white_check_mark: Comment       | :white_check_mark: Dimmer     | :white_check_mark: Visibility   |
+| :white_check_mark: Flag      | :white_check_mark: Menu       | :white_check_mark: Feed          | :white_check_mark: Dropdown   |                                 |
+| :white_check_mark: Header    | :white_check_mark: Message    | :white_check_mark: Item          | :white_check_mark: Embed      |                                 |
+| :white_check_mark: Icon      | :white_check_mark: Table      | :white_check_mark: Statistic     | :white_check_mark: Modal      |                                 |
+| :white_check_mark: Image     |                               |                                  | :white_check_mark: Popup      |                                 |
+| :white_check_mark: Input     |                               |                                  | :white_check_mark: Progress   |                                 |
+| :white_check_mark: Label     |                               |                                  | :white_check_mark: Rating     |                                 |
+| :white_check_mark: List      |                               |                                  | :white_check_mark: Search     |                                 |
+| :white_check_mark: Loader    |                               |                                  | :rocket: Select               |                                 |
+| :white_check_mark: Rail      |                               |                                  | :white_check_mark: Shape      |                                 |
+| :white_check_mark: Reveal    |                               |                                  | :white_check_mark: Sidebar    |                                 |
+| :white_check_mark: Segment   |                               |                                  | :white_check_mark: Sticky     |                                 |
+| :white_check_mark: Step      |                               |                                  | :white_check_mark: Tab        |                                 |
+|                              |                               |                                  | :white_check_mark: Transition |                                 |
 
 ## Development
 
