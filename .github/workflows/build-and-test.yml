@@ -27,7 +27,7 @@ jobs:
       - name: Run Tests
         run: npm run test:ci
       - name: Report Code Coverage
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v7
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage/ngx-semantic/lcov.info
