@@ -92,6 +92,12 @@ To run the unit tests suite:
 $ npm test
 ```
 
+## Dependency security
+
+The published library depends only on `tslib` and Angular peer packages. CI fails on high-or-worse findings from `npm audit --omit=dev`.
+
+Full `npm audit` may still report a moderate `uuid` issue pulled in through `sockjs` → `webpack-dev-server` (Karma / `ng serve` only). There is no patched `sockjs` on Angular 21; it is not shipped to consumers.
+
 ## License
 
 MIT © [Ngx-Semantic Team](https://github.com/ngx-semantic)
