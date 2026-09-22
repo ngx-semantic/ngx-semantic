@@ -43,6 +43,7 @@ import { SuiAdvertisementModule } from 'ngx-semantic/views/advertisement';
 import { SuiStickyModule } from 'ngx-semantic/modules/sticky';
 import { SuiShapeModule } from 'ngx-semantic/modules/shape';
 import { SuiTransitionModule } from 'ngx-semantic/modules/transition';
+import { SuiVisibilityModule } from 'ngx-semantic/modules/visibility';
 
 const NGX_SEMANTIC_MODULES = [
   SuiTabsModule,
@@ -87,7 +88,8 @@ const NGX_SEMANTIC_MODULES = [
   SuiAdvertisementModule,
   SuiStickyModule,
   SuiShapeModule,
-  SuiTransitionModule
+  SuiTransitionModule,
+  SuiVisibilityModule
 ];
 
 @NgModule({
@@ -135,7 +137,8 @@ const NGX_SEMANTIC_MODULES = [
     SuiAdvertisementModule,
     SuiStickyModule,
     SuiShapeModule,
-    SuiTransitionModule
+    SuiTransitionModule,
+    SuiVisibilityModule
   ]
 })
 export class NgxSemanticModule {
