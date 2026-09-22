@@ -37,7 +37,7 @@ jobs:
             fi
           fi
       - name: Setup NodeJS
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 24
       - name: Setup Angular
@@ -67,7 +67,7 @@ jobs:
           git config --local user.name "CI"
           git tag ${{ needs.build.outputs.new_version }}
       - name: Push Tag to GitHub
-        uses: ad-m/github-push-action@v0.8.0
+        uses: ad-m/github-push-action@v1.3.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: master
@@ -115,7 +115,7 @@ jobs:
           fetch-depth: 0
           ref: master
       - name: Setup NodeJS
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 24
           registry-url: 'https://registry.npmjs.org'
