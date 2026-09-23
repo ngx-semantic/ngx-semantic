@@ -94,17 +94,16 @@ $ npm test
 
 ## Releasing
 
-The version that is published to npm is **`src/package.json`**, not the root workspace `package.json`.
-
-1. Bump the version in `src/package.json` and merge that change to `master`.
-2. Tag the release to match that version (include the leading `v`):
+The git tag is the source of truth for the version. You do not need to bump any `package.json` by hand:
 
 ```bash
 git tag vX.Y.Z
 git push origin vX.Y.Z
 ```
 
-Pushing a `v*` tag runs CI on that commit, publishes `dist/` to npm with provenance, and creates a GitHub Release. Alpha and beta versions (`-alpha`, `-beta`) publish to the `alpha` / `beta` npm dist-tags and are marked as GitHub prereleases.
+Pushing a `v*` tag writes that version into `package.json`, `src/package.json`, and `package-lock.json`, runs CI on the tagged commit, publishes `dist/` to npm with provenance, and creates a GitHub Release. After a successful publish, the version bump is committed back to `master` as `chore(release): vX.Y.Z`.
+
+Alpha and beta versions (`-alpha`, `-beta`) publish to the `alpha` / `beta` npm dist-tags and are marked as GitHub prereleases.
 
 To retry a failed publish of an existing tag, use **Actions → Publish to Registry → Run workflow** and pass the tag (for example `v2.0.7-beta.2`). npm will reject a version that is already published.
 

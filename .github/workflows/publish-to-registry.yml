@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       tag: ${{ steps.meta.outputs.tag }}
+      version: ${{ steps.meta.outputs.version }}
       prerelease: ${{ steps.meta.outputs.prerelease }}
       npm_tag: ${{ steps.meta.outputs.npm_tag }}
     steps:
@@ -36,22 +37,20 @@ jobs:
         with:
           ref: ${{ steps.resolve.outputs.tag }}
           fetch-depth: 1
-      - name: Verify tag matches src/package.json
+      - name: Derive version from tag
         id: meta
         env:
           TAG: ${{ steps.resolve.outputs.tag }}
         run: |
-          CURR_VERSION=$(python3 -c "import json; print(json.load(open('src/package.json'))['version'])")
-          EXPECTED="v${CURR_VERSION}"
-          echo "Lib version: $CURR_VERSION"
+          V="${TAG#v}"
           echo "Tag: $TAG"
+          echo "Version: $V"
 
-          if [ "$TAG" != "$EXPECTED" ]; then
-            echo "Tag $TAG does not match src/package.json version $CURR_VERSION (expected $EXPECTED)"
+          if ! echo "$V" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?$'; then
+            echo "Tag $TAG does not contain a valid semver version"
             exit 1
           fi
 
-          V="${TAG#v}"
           L=$(printf '%s' "$V" | tr '[:upper:]' '[:lower:]')
           PRE=false
           NPM_TAG=latest
@@ -64,6 +63,7 @@ jobs:
           fi
 
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=$V" >> "$GITHUB_OUTPUT"
           echo "prerelease=$PRE" >> "$GITHUB_OUTPUT"
           echo "npm_tag=$NPM_TAG" >> "$GITHUB_OUTPUT"
       - name: Setup NodeJS
@@ -73,6 +73,8 @@ jobs:
           cache: npm
       - name: Install Dependencies
         run: npm ci
+      - name: Apply version from tag
+        run: node .github/scripts/set-version.mjs "${{ steps.meta.outputs.version }}"
       - name: Audit production dependencies
         run: npm audit --omit=dev --audit-level=high
       - name: Lint
@@ -111,6 +113,43 @@ jobs:
           path: ./dist
       - name: Publish Lib
         run: npm publish ./dist --provenance --tag ${{ needs.quality.outputs.npm_tag }} --access public
+
+  sync-version:
+    needs: [quality, publish]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 0
+      - name: Apply version from tag
+        run: node .github/scripts/set-version.mjs "${{ needs.quality.outputs.version }}"
+      - name: Commit version to master
+        env:
+          TAG: ${{ needs.quality.outputs.tag }}
+        run: |
+          if git diff --quiet; then
+            echo "master is already at ${{ needs.quality.outputs.version }}"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json src/package.json package-lock.json
+          git commit -m "chore(release): $TAG"
+
+          for attempt in 1 2 3; do
+            if git push origin HEAD:master; then
+              exit 0
+            fi
+            echo "Push attempt $attempt failed, rebasing on master"
+            git pull --rebase origin master
+          done
+
+          echo "Could not push the release commit to master"
+          exit 1
 
   release:
     needs: [quality, publish]
