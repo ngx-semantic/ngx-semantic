@@ -1,0 +1,3 @@
+# Workflow and Dependabot changes should be reviewed by a maintainer.
+.github/workflows/** @bolorundurowb
+.github/dependabot.yml @bolorundurowb
