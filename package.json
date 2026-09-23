@@ -38,7 +38,7 @@
     "@angular/compiler-cli": "^21.2.23",
     "@eslint/js": "^10.0.1",
     "@types/jasmine": "~5.1.4",
-    "@types/node": "^22.12.0",
+    "@types/node": "^26.6.2",
     "angular-eslint": "^21.4.0",
     "eslint": "^10.0.3",
     "jasmine-core": "^5.5.0",
