@@ -4,6 +4,7 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    open-pull-requests-limit: 10
     groups:
       angular:
         patterns:
@@ -11,7 +12,16 @@ updates:
           - "@angular-devkit/*"
           - "ng-packagr"
           - "angular-eslint"
+      eslint:
+        patterns:
+          - "eslint"
+          - "@eslint/*"
+          - "typescript-eslint"
+      karma:
+        patterns:
+          - "karma*"
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: monthly
+    open-pull-requests-limit: 10

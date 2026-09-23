@@ -92,6 +92,22 @@ To run the unit tests suite:
 $ npm test
 ```
 
+## Releasing
+
+The version that is published to npm is **`src/package.json`**, not the root workspace `package.json`.
+
+1. Bump the version in `src/package.json` and merge that change to `master`.
+2. Tag the release to match that version (include the leading `v`):
+
+```bash
+git tag vX.Y.Z
+git push origin vX.Y.Z
+```
+
+Pushing a `v*` tag runs CI on that commit, publishes `dist/` to npm with provenance, and creates a GitHub Release. Alpha and beta versions (`-alpha`, `-beta`) publish to the `alpha` / `beta` npm dist-tags and are marked as GitHub prereleases.
+
+To retry a failed publish of an existing tag, use **Actions → Publish to Registry → Run workflow** and pass the tag (for example `v2.0.7-beta.2`). npm will reject a version that is already published.
+
 ## Dependency security
 
 The published library depends only on `tslib` and Angular peer packages. CI fails on high-or-worse findings from `npm audit --omit=dev`.
