@@ -67,7 +67,7 @@ jobs:
           echo "prerelease=$PRE" >> "$GITHUB_OUTPUT"
           echo "npm_tag=$NPM_TAG" >> "$GITHUB_OUTPUT"
       - name: Setup NodeJS
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
@@ -82,7 +82,7 @@ jobs:
       - name: Build
         run: npm run build:prod
       - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: build-artifacts
           path: ./dist
@@ -100,12 +100,12 @@ jobs:
           ref: ${{ needs.quality.outputs.tag }}
           fetch-depth: 1
       - name: Setup NodeJS
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 24
           registry-url: 'https://registry.npmjs.org'
       - name: Download Build Artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: build-artifacts
           path: ./dist
@@ -123,7 +123,7 @@ jobs:
           ref: ${{ needs.quality.outputs.tag }}
           fetch-depth: 1
       - name: Create Release
-        uses: ncipollo/release-action@v1.14.0
+        uses: ncipollo/release-action@v1.21.0
         with:
           tag: ${{ needs.quality.outputs.tag }}
           prerelease: ${{ needs.quality.outputs.prerelease == 'true' }}
