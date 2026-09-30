@@ -2,7 +2,8 @@
  * Created by bolorundurowb on 12/30/2020
  */
 
-import { Component, HostBinding, HostListener, Input, OnInit, ViewEncapsulation, inject } from '@angular/core';
+import { Component, HostBinding, HostListener, Input, OnDestroy, OnInit, ViewEncapsulation, inject } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiSidebarService } from './sidebar.service';
 
@@ -10,29 +11,39 @@ import { SuiSidebarService } from './sidebar.service';
   standalone: true,
   selector: 'sui-sidebar-pusher',
   encapsulation: ViewEncapsulation.None,
+  host: {
+    style: 'display: block'
+  },
   template: `
     <ng-content></ng-content>
   `
 })
-export class SuiSidebarPusherComponent implements OnInit {
+export class SuiSidebarPusherComponent implements OnInit, OnDestroy {
   private sidebarService = inject(SuiSidebarService);
 
   @Input() @InputBoolean() public suiDimmable = false;
   public isSidebarOpen = false;
+
+  private subscription: Subscription | null = null;
 
   @HostBinding('class')
   get classes(): string {
     return [
       ClassUtils.getPropClass(this.isSidebarOpen && this.suiDimmable, 'dimmed'),
       'pusher'
-    ].join(' ');
+    ].join(' ').trim();
   }
 
   public ngOnInit(): void {
-    this.sidebarService.visibilityChanged
+    this.isSidebarOpen = this.isSidebarOpen || this.sidebarService.isVisible;
+    this.subscription = this.sidebarService.visibilityChanged
       .subscribe((isVisible) => {
         this.isSidebarOpen = isVisible;
       });
+  }
+
+  public ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 
   @HostListener('click')
