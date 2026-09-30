@@ -7,7 +7,7 @@ import { SuiColour, SuiSize, SuiWidth } from 'ngx-semantic/core/enums';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { BaseDirective } from 'ngx-semantic/core/base';
 
-export type SuiMenuAttachment = 'top' | 'bottom' | null;
+export type SuiMenuAttachment = 'top' | 'bottom' | 'attached' | null;
 export type SuiMenuFixation = 'top' | 'bottom' | 'left' | 'right' | null;
 export type SuiMenuIconType = 'icon' | 'labeled icon' | null;
 
@@ -47,7 +47,7 @@ export class SuiMenuDirective extends BaseDirective {
       'ui',
       this.suiColour,
       this.suiSize,
-      this.suiAttached,
+      this.suiAttached === 'attached' ? '' : this.suiAttached,
       this.suiAttached ? 'attached' : '',
       this.suiFixed,
       this.suiFixed ? 'fixed' : '',
