@@ -347,7 +347,12 @@ export class SuiShapeComponent implements AfterContentInit, OnDestroy {
     this.suiBeforeChange.emit($next);
 
     const sidesEl = this.sidesEl.nativeElement;
-    const onEnd = () => {
+    const onEnd = (event: Event) => {
+      // side opacity transitions bubble up from the children; only the sides transform ends the flip
+      if (event.target !== sidesEl) {
+        sidesEl.addEventListener(this.transitionEnd, onEnd, { once: true });
+        return;
+      }
       this.zone.run(() => {
         this.finishAnimation();
       });

@@ -1,1 +1,8 @@
-export type SuiDeviceVisibility = 'large screen only' | 'mobile only' | 'computer only' | 'tablet mobile only' | 'tablet only' | null;
+export type SuiDeviceVisibility =
+  'mobile only'
+  | 'tablet only'
+  | 'computer only'
+  | 'large screen only'
+  | 'widescreen only'
+  | 'tablet mobile only'
+  | null;

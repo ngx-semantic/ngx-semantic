@@ -177,13 +177,16 @@ export class SuiStickyDirective implements OnInit, AfterViewInit, OnDestroy {
   private savePositions(): void {
     const mod = this.el.nativeElement;
     const ctx = this.contextEl!;
-    const scrollH = window.innerHeight;
+    const scrollH = this.scrollEl === window ? window.innerHeight : (this.scrollEl as HTMLElement).clientHeight;
 
     const cs = getComputedStyle(mod);
     const marginTop = parseInt(cs.marginTop, 10) || 0;
     const marginBottom = parseInt(cs.marginBottom, 10) || 0;
 
-    const sy = window.scrollY;
+    // positions are measured in the coordinate space of the scroll context so they can be compared with its scrollTop
+    const scroller = this.scrollEl === window ? null : this.scrollEl as HTMLElement;
+    const scrollerTop = scroller ? scroller.getBoundingClientRect().top : 0;
+    const sy = scroller ? scroller.scrollTop - scrollerTop : window.scrollY;
     const sx = window.scrollX;
     const er = mod.getBoundingClientRect();
     const cr = ctx.getBoundingClientRect();
@@ -384,6 +387,9 @@ export class SuiStickyDirective implements OnInit, AfterViewInit, OnDestroy {
     this.renderer.setStyle(this.el.nativeElement, 'left', `${cache.element.left}px`);
     this.renderer.setStyle(this.el.nativeElement, 'bottom', '');
     this.renderer.setStyle(this.el.nativeElement, 'margin-bottom', '');
+    if (this.scrollEl !== window) {
+      this.renderer.setStyle(this.el.nativeElement, 'top', `${(this.scrollEl as HTMLElement).getBoundingClientRect().top}px`);
+    }
     this.fixed = true;
     this.bound = false;
     this.topState = true;
@@ -404,6 +410,10 @@ export class SuiStickyDirective implements OnInit, AfterViewInit, OnDestroy {
     }
     this.renderer.setStyle(this.el.nativeElement, 'margin-top', `${this.suiOffset}px`);
     this.renderer.setStyle(this.el.nativeElement, 'left', `${cache.element.left}px`);
+    if (this.scrollEl !== window) {
+      const bottom = window.innerHeight - (this.scrollEl as HTMLElement).getBoundingClientRect().bottom;
+      this.renderer.setStyle(this.el.nativeElement, 'bottom', `${bottom}px`);
+    }
     this.fixed = true;
     this.bound = false;
     this.topState = false;
@@ -418,6 +428,7 @@ export class SuiStickyDirective implements OnInit, AfterViewInit, OnDestroy {
     this.lastScroll = undefined;
     this.elementScroll = 0;
     if (wasStuck) {
+      this.suiOnTop.emit();
       this.suiOnUnstick.emit();
     }
   }

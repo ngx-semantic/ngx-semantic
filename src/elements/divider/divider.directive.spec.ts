@@ -65,6 +65,16 @@ describe('SuiDividerComponent', () => {
     expect(dividerElement.classList).toContain('section');
   });
 
+  it('should apply class name if clearing', () => {
+    fixture.componentRef.setInput('suiClearing', true);
+    fixture.detectChanges();
+    expect(dividerElement.classList).toContain('clearing');
+  });
+
+  it('should not contain excess whitespace', () => {
+    expect(dividerElement.className).toBe('ui divider');
+  });
+
   it('should apply class name if inverted', () => {
     fixture.componentRef.setInput('suiInverted', true);
     fixture.detectChanges();
@@ -83,6 +93,7 @@ describe('SuiDividerComponent', () => {
       [suiHidden]="suiHidden"
       [suiSection]="suiSection"
       [suiInverted]="suiInverted"
+      [suiClearing]="suiClearing"
       [suiDirection]="suiDirection">
     </div>
   `

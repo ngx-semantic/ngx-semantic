@@ -2,7 +2,7 @@
  * Created by bolorundurowb on 1/6/2021
  */
 
-import { ApplicationRef, ComponentFactoryResolver, ContentChild, Directive, ElementRef, EmbeddedViewRef, EventEmitter, HostBinding, Injector, Input, OnChanges, OnDestroy, Output, Renderer2, SimpleChanges, TemplateRef, inject } from '@angular/core';
+import { ApplicationRef, ContentChild, Directive, ElementRef, EmbeddedViewRef, EnvironmentInjector, EventEmitter, HostBinding, Injector, Input, OnChanges, OnDestroy, Output, Renderer2, SimpleChanges, TemplateRef, createComponent, inject } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiDimmerContentDirective } from './dimmer-content.directive';
 import { SuiDimmerComponent } from './dimmer.component';
@@ -16,7 +16,7 @@ export type SuiDimmerContentAlignment = 'top' | 'bottom' | null;
 })
 export class SuiDimmerDirective implements OnChanges, OnDestroy {
   private element = inject(ElementRef);
-  private factoryResolver = inject(ComponentFactoryResolver);
+  private environmentInjector = inject(EnvironmentInjector);
   private injector = inject(Injector);
   private appRef = inject(ApplicationRef);
   private renderer = inject(Renderer2);
@@ -85,8 +85,10 @@ export class SuiDimmerDirective implements OnChanges, OnDestroy {
   }
 
   private generateDomElement(): void {
-    const factory = this.factoryResolver.resolveComponentFactory(SuiDimmerComponent);
-    const component = factory.create(this.injector);
+    const component = createComponent(SuiDimmerComponent, {
+      environmentInjector: this.environmentInjector,
+      elementInjector: this.injector
+    });
     component.instance.suiAlignment = this.suiDimmerAlignment;
     component.instance.suiBlurring = this.suiDimmerBlurring;
     component.instance.suiInverted = this.suiDimmerInverted;
