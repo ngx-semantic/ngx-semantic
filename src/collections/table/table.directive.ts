@@ -11,6 +11,7 @@ export type SuiTableBasicType = 'basic' | 'very basic' | null;
 export type SuiTablePadding = 'padded' | 'very padded' | null;
 export type SuiTableCompactness = 'compact' | 'very compact' | null;
 export type SuiTableSize = 'small' | 'large' | null;
+export type SuiTableAttachment = 'top attached' | 'bottom attached' | 'attached' | null;
 
 @Directive({
   standalone: true,
@@ -25,6 +26,7 @@ export class SuiTableDirective extends BaseDirective {
   @Input() public suiCompact: SuiTableCompactness = null;
   @Input() public suiSize: SuiTableSize = null;
   @Input() public suiStacking: SuiStacking = null;
+  @Input() public suiAttached: SuiTableAttachment = null;
   @Input() @InputBoolean() public suiCelled = false;
   @Input() @InputBoolean() public suiStriped = false;
   @Input() @InputBoolean() public suiDefinition = false;
@@ -34,6 +36,7 @@ export class SuiTableDirective extends BaseDirective {
   @Input() @InputBoolean() public suiSelectable = false;
   @Input() @InputBoolean() public suiInverted = false;
   @Input() @InputBoolean() public suiCollapsing = false;
+  @Input() @InputBoolean() public suiSortable = false;
 
   constructor() {
     const element = inject(ElementRef);
@@ -49,6 +52,8 @@ export class SuiTableDirective extends BaseDirective {
       this.suiCompact,
       this.suiSize,
       this.suiStacking,
+      this.suiAttached,
+      this.suiWidth,
       this.suiWidth ? 'column' : '',
       ClassUtils.getPropClass(this.suiSelectable, 'selectable'),
       ClassUtils.getPropClass(this.suiInverted, 'inverted'),
@@ -60,6 +65,7 @@ export class SuiTableDirective extends BaseDirective {
       ClassUtils.getPropClass(this.suiFixed, 'fixed'),
       ClassUtils.getPropClass(this.suiSingleLine, 'single line'),
       ClassUtils.getPropClass(this.suiCollapsing, 'collapsing'),
+      ClassUtils.getPropClass(this.suiSortable, 'sortable'),
       'table'
     ].join(' ');
   }

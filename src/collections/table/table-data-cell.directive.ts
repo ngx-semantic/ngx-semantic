@@ -20,6 +20,7 @@ export class SuiTableCellDirective extends BaseDirective {
   @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiCollapsing = false;
   @Input() @InputBoolean() public suiSelectable = false;
+  @Input() @InputBoolean() public suiSingleLine = false;
 
   constructor() {
     const element = inject(ElementRef);
@@ -36,6 +37,7 @@ export class SuiTableCellDirective extends BaseDirective {
       ClassUtils.getPropClass(this.disabled, 'disabled'),
       ClassUtils.getPropClass(this.suiCollapsing, 'collapsing'),
       ClassUtils.getPropClass(this.suiSelectable, 'selectable'),
+      ClassUtils.getPropClass(this.suiSingleLine, 'single line'),
     ].join(' ');
   }
 }

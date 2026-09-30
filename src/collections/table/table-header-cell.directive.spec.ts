@@ -3,16 +3,35 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { SuiTableHeaderCellDirective } from './table-header-cell.directive';
 import { SuiTableModule } from './table.module';
+import { SuiTableSortDirection, SuiTableTextAlignment } from './enums';
+import { SuiWidth } from 'ngx-semantic/core/enums';
 
 @Component({
   standalone: true,
   imports: [SuiTableModule],
-  template: `<div suiTableHeaderCell suiTextAlignment="right"></div>`
+  template: `
+    <table>
+      <thead>
+      <tr>
+        <th suiTableHeaderCell
+            [suiTextAlignment]="alignment"
+            [suiWidth]="width"
+            [suiSorted]="sorted"
+            [suiSingleLine]="singleLine"></th>
+      </tr>
+      </thead>
+    </table>`
 })
-class TestHostComponent {}
+class TestHostComponent {
+  alignment: SuiTableTextAlignment = 'right';
+  width: SuiWidth = null;
+  sorted: SuiTableSortDirection = null;
+  singleLine = false;
+}
 
 describe('SuiTableHeaderCellDirective', () => {
   let fixture: ComponentFixture<TestHostComponent>;
+  let host: TestHostComponent;
   let el: HTMLElement;
 
   beforeEach(async () => {
@@ -21,16 +40,30 @@ describe('SuiTableHeaderCellDirective', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(TestHostComponent);
+    host = fixture.componentInstance;
     fixture.detectChanges();
     el = fixture.debugElement.query(By.directive(SuiTableHeaderCellDirective)).nativeElement;
   });
 
   it('should create', () => {
-    expect(fixture.componentInstance).toBeTruthy();
+    expect(host).toBeTruthy();
   });
 
   it('should apply alignment classes from inputs', () => {
-    expect(el.classList).toContain('right');
-    expect(el.classList).toContain('aligned');
+    expect(el.className).toBe('right aligned');
+  });
+
+  it('should include the width value in the class', () => {
+    host.width = 'ten';
+    fixture.detectChanges();
+    expect(el.className).toContain('ten wide');
+  });
+
+  it('should apply sorted and single line classes', () => {
+    host.sorted = 'descending';
+    host.singleLine = true;
+    fixture.detectChanges();
+    expect(el.className).toContain('sorted descending');
+    expect(el.className).toContain('single line');
   });
 });

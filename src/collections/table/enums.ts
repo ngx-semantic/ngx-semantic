@@ -1,5 +1,7 @@
 export type SuiTableState = 'positive' | 'negative' | 'warning' | 'error' | null;
 
-export type SuiTableTextAlignment = 'center' | 'right' | null;
+export type SuiTableTextAlignment = 'left' | 'center' | 'right' | null;
 
-export type SuiTableVerticalAlignment = 'top' | 'bottom' | null;
+export type SuiTableVerticalAlignment = 'top' | 'middle' | 'bottom' | null;
+
+export type SuiTableSortDirection = 'ascending' | 'descending' | null;
