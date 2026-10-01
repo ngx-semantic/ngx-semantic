@@ -2,7 +2,8 @@
  * Created by bolor on 5/17/2020
  */
 
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiRevealContentVisibility = 'visible' | 'hidden';
 
@@ -11,10 +12,9 @@ export type SuiRevealContentVisibility = 'visible' | 'hidden';
   exportAs: 'suiRevealContent',
   selector: '[suiRevealContent]'
 })
-export class SuiRevealContentDirective {
+export class SuiRevealContentDirective extends BaseDirective {
   @Input() public suiVisible: SuiRevealContentVisibility = 'visible';
 
-  @HostBinding('class')
   get classes(): string {
     return [
       this.suiVisible,

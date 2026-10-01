@@ -2,21 +2,21 @@
  * Created by bolor on 9/20/2020
  */
 
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
   standalone: true,
   selector: '[sui-step]',
   exportAs: 'suiStep'
 })
-export class SuiStepDirective {
+export class SuiStepDirective extends BaseDirective {
   @Input() @InputBoolean() public suiActive = false;
   @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiCompleted = false;
   @Input() @InputBoolean() public suiLink = false;
 
-  @HostBinding('class')
   get classes(): string {
     return [
       ClassUtils.getPropClass(this.suiActive, 'active'),

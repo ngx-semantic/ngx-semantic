@@ -2,10 +2,11 @@
  * Created by bolorundurowb on 1/6/2021
  */
 
-import { ApplicationRef, ContentChild, Directive, ElementRef, EmbeddedViewRef, EnvironmentInjector, EventEmitter, HostBinding, Injector, Input, OnChanges, OnDestroy, Output, Renderer2, SimpleChanges, TemplateRef, createComponent, inject } from '@angular/core';
+import { ApplicationRef, ContentChild, Directive, ElementRef, EmbeddedViewRef, EnvironmentInjector, EventEmitter, Injector, Input, OnChanges, OnDestroy, Output, Renderer2, SimpleChanges, TemplateRef, createComponent, inject } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiDimmerContentDirective } from './dimmer-content.directive';
 import { SuiDimmerComponent } from './dimmer.component';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiDimmerContentAlignment = 'top' | 'bottom' | null;
 
@@ -14,7 +15,7 @@ export type SuiDimmerContentAlignment = 'top' | 'bottom' | null;
   selector: '[sui-dimmer]',
   exportAs: 'suiDimmer'
 })
-export class SuiDimmerDirective implements OnChanges, OnDestroy {
+export class SuiDimmerDirective extends BaseDirective implements OnChanges, OnDestroy {
   private element = inject(ElementRef);
   private environmentInjector = inject(EnvironmentInjector);
   private injector = inject(Injector);
@@ -54,7 +55,6 @@ export class SuiDimmerDirective implements OnChanges, OnDestroy {
     }
   }
 
-  @HostBinding('class')
   get classes(): string {
     return [
       ClassUtils.getPropClass(this.suiDimmerBlurring, 'blurring'),

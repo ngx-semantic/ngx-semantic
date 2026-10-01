@@ -2,18 +2,18 @@
  * Created by bolor on 5/8/2020
  */
 
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
   standalone: true,
   exportAs: 'suiPlaceholderHeader',
   selector: '[suiPlaceholderHeader]'
 })
-export class SuiPlaceholderHeaderDirective {
+export class SuiPlaceholderHeaderDirective extends BaseDirective {
   @Input() @InputBoolean() public suiImage = false;
 
-  @HostBinding('class')
   get classes(): string {
     return [
       ClassUtils.getPropClass(this.suiImage, 'image'),

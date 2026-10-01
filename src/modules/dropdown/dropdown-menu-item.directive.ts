@@ -2,9 +2,10 @@
  * Created by bolor on 10/30/2020
  */
 
-import { ContentChild, Directive, HostBinding, HostListener, Input } from '@angular/core';
+import { ContentChild, Directive, HostListener, Input } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiDropdownMenuDirective } from './dropdown-menu.directive';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiMenuDirection = 'left' | 'right' | null;
 
@@ -12,13 +13,12 @@ export type SuiMenuDirection = 'left' | 'right' | null;
   standalone: true,
   selector: '[suiDropdownMenuItem]'
 })
-export class SuiDropdownMenuItemDirective {
+export class SuiDropdownMenuItemDirective extends BaseDirective {
   @ContentChild(SuiDropdownMenuDirective) public contentMenu: SuiDropdownMenuDirective | undefined = undefined;
 
   @Input() public suiDirection: SuiMenuDirection = null;
   @Input() @InputBoolean() public disabled = false;
 
-  @HostBinding('class')
   get classes(): string {
     return [
       ClassUtils.getPropClass(this.disabled, 'disabled'),

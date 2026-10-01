@@ -2,9 +2,10 @@
  * Created by bolorundurowb on 12/22/2020
  */
 
-import { Component, HostBinding, Input, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Input, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiColour } from 'ngx-semantic/core/enums';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Component({
   standalone: true,
@@ -18,7 +19,7 @@ import { SuiColour } from 'ngx-semantic/core/enums';
     </ng-template>
   `
 })
-export class SuiTabComponent {
+export class SuiTabComponent extends BaseDirective {
   @Input() public suiContent!: TemplateRef<any>;
   @Input() public suiTitle: string | null = null;
   @Input() public suiIcon: string | null = null;
@@ -30,7 +31,6 @@ export class SuiTabComponent {
 
   @ViewChild('contentTemplate', { static: true }) public contentTemplate!: TemplateRef<any>;
 
-  @HostBinding('class')
   get classes(): string {
     return [
       ClassUtils.getPropClass(this.suiLoading, 'loading'),

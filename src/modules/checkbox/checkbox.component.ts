@@ -2,9 +2,10 @@
  * Created by bolor on 10/24/2020
  */
 
-import { ChangeDetectorRef, Component, EventEmitter, forwardRef, HostBinding, HostListener, Input, Output, ViewEncapsulation, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, forwardRef, HostListener, Input, Output, ViewEncapsulation, inject } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiCheckboxType = 'radio' | 'slider' | 'toggle' | null;
 
@@ -31,7 +32,7 @@ export type SuiCheckboxType = 'radio' | 'slider' | 'toggle' | null;
     multi: true
   }]
 })
-export class SuiCheckboxComponent implements ControlValueAccessor {
+export class SuiCheckboxComponent extends BaseDirective implements ControlValueAccessor {
   private changeDetectorRef = inject(ChangeDetectorRef);
 
   @Output() public valueChanged = new EventEmitter<any>();
@@ -57,7 +58,6 @@ export class SuiCheckboxComponent implements ControlValueAccessor {
     this.isChecked = isChecked;
   }
 
-  @HostBinding('class')
   get classes(): string {
     return [
       'ui',

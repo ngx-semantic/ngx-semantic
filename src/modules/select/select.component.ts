@@ -5,6 +5,7 @@ import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiSelectMenuDirective } from './select-menu.directive';
 import { SuiSelectMenuItemDirective } from './select-menu-item.directive';
 import { ISelectOption } from './interfaces/ISelectOption';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Component({
   standalone: true,
@@ -109,7 +110,7 @@ import { ISelectOption } from './interfaces/ISelectOption';
     multi: true
   } ]
 })
-export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
+export class SuiSelectComponent extends BaseDirective implements AfterViewInit, ControlValueAccessor {
   private changeDetectorRef = inject(ChangeDetectorRef);
 
   @ViewChild(SuiSelectMenuDirective) public optionsMenu!: SuiSelectMenuDirective;
@@ -153,7 +154,6 @@ export class SuiSelectComponent implements AfterViewInit, ControlValueAccessor {
     return 0;
   }
 
-  @HostBinding('class')
   get classes(): string {
     return ClassUtils.combineToClass([
       'ui',

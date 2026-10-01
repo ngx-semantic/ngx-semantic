@@ -4,6 +4,7 @@
 
 import { Directive, HostBinding, Input } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiDropdownMenuDirection = 'left' | 'right' | null;
 
@@ -11,7 +12,7 @@ export type SuiDropdownMenuDirection = 'left' | 'right' | null;
   standalone: true,
   selector: '[suiDropdownMenu]'
 })
-export class SuiDropdownMenuDirective {
+export class SuiDropdownMenuDirective extends BaseDirective {
   @Input() public suiDirection: SuiDropdownMenuDirection = null;
   @Input() @InputBoolean() public suiScrolling = false;
 
@@ -31,7 +32,6 @@ export class SuiDropdownMenuDirective {
     return -1;
   }
 
-  @HostBinding('class')
   get classes(): string {
     return [
       ClassUtils.getPropClass(this.suiScrolling, 'scrolling'),

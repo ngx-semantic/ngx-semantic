@@ -2,9 +2,10 @@
  * Created by bolor on 5/8/2020
  */
 
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { SuiHorizontalPosition, SuiSize } from 'ngx-semantic/core/enums';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiRailCloseness = 'close' | 'very close' | null;
 
@@ -13,7 +14,7 @@ export type SuiRailCloseness = 'close' | 'very close' | null;
   selector: 'div[sui-rail]',
   exportAs: 'suiRail'
 })
-export class SuiRailDirective {
+export class SuiRailDirective extends BaseDirective {
   @Input() public suiLocation: SuiHorizontalPosition = null;
   @Input() public suiSize: SuiSize = null;
   @Input() public suiCloseness: SuiRailCloseness = null;
@@ -21,7 +22,6 @@ export class SuiRailDirective {
   @Input() @InputBoolean() public suiDividing = false;
   @Input() @InputBoolean() public suiAttached = false;
 
-  @HostBinding('class')
   get classes(): string {
     return [
       'ui',

@@ -2,22 +2,22 @@
  * Created by bolor on 4/26/2020
  */
 
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { SuiColour, SuiSize } from 'ngx-semantic/core/enums';
 import { InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
   standalone: true,
   selector: '[sui-labels]',
   exportAs: 'suiLabels'
 })
-export class SuiLabelsDirective {
+export class SuiLabelsDirective extends BaseDirective {
   @Input() public suiSize: SuiSize = null;
   @Input() public suiColour: SuiColour = null;
   @Input() @InputBoolean() public suiTag = false;
   @Input() @InputBoolean() public suiCircular = false;
 
-  @HostBinding('class')
   get classes(): string {
     return [
       'ui',

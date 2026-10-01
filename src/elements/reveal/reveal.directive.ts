@@ -2,9 +2,10 @@
  * Created by bolor on 5/17/2020
  */
 
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { SuiSize } from 'ngx-semantic/core/enums';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiMoveDirection = 'left' | 'right' | 'up' | 'down' | null;
 export type SuiRotateDirection = 'left' | 'right' | null;
@@ -14,7 +15,7 @@ export type SuiRotateDirection = 'left' | 'right' | null;
   selector: '[sui-reveal]',
   exportAs: 'suiReveal'
 })
-export class SuiRevealDirective {
+export class SuiRevealDirective extends BaseDirective {
   @Input() public suiMove: SuiMoveDirection = null;
   @Input() public suiRotate: SuiRotateDirection = null;
   @Input() public suiSize: SuiSize = null;
@@ -23,7 +24,6 @@ export class SuiRevealDirective {
   @Input() @InputBoolean() public suiInstant = false;
   @Input() @InputBoolean() public disabled = false;
 
-  @HostBinding('class')
   get classes(): string {
     return [
       'ui',

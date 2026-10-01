@@ -2,9 +2,10 @@
  * Created by bolor on 5/2/2020
  */
 
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { SuiSize, SuiVerticalAlignment } from 'ngx-semantic/core/enums';
 import { InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiListRelaxation = 'relaxed' | 'very relaxed' | null;
 
@@ -13,7 +14,7 @@ export type SuiListRelaxation = 'relaxed' | 'very relaxed' | null;
   selector: '[sui-list]',
   exportAs: 'suiList'
 })
-export class SuiListDirective {
+export class SuiListDirective extends BaseDirective {
   @Input() public suiRelaxation: SuiListRelaxation = null;
   @Input() public suiSize: SuiSize = null;
   @Input() public suiAlignment: SuiVerticalAlignment = null;
@@ -27,7 +28,6 @@ export class SuiListDirective {
   @Input() @InputBoolean() public suiAnimated = false;
   @Input() @InputBoolean() public suiCelled = false;
 
-  @HostBinding('class')
   get classes(): string {
     return [
       'ui',

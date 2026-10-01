@@ -2,10 +2,11 @@
  * Created by bolorundurowb on 12/30/2020
  */
 
-import { Component, HostBinding, HostListener, Input, OnDestroy, OnInit, ViewEncapsulation, inject } from '@angular/core';
+import { Component, HostListener, Input, OnDestroy, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiSidebarService } from './sidebar.service';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Component({
   standalone: true,
@@ -18,7 +19,7 @@ import { SuiSidebarService } from './sidebar.service';
     <ng-content></ng-content>
   `
 })
-export class SuiSidebarPusherComponent implements OnInit, OnDestroy {
+export class SuiSidebarPusherComponent extends BaseDirective implements OnInit, OnDestroy {
   private sidebarService = inject(SuiSidebarService);
 
   @Input() @InputBoolean() public suiDimmable = false;
@@ -26,7 +27,6 @@ export class SuiSidebarPusherComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription | null = null;
 
-  @HostBinding('class')
   get classes(): string {
     return [
       ClassUtils.getPropClass(this.isSidebarOpen && this.suiDimmable, 'dimmed'),
