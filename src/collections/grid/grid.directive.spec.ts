@@ -1,3 +1,4 @@
+import { expectClasses, expectExactClasses } from '../../test-helpers';
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -69,46 +70,46 @@ describe('SuiGridDirective', () => {
   });
 
   it('should apply the base classes', () => {
-    expect(el.className).toBe('ui grid');
+    expectExactClasses(el, 'ui grid');
   });
 
   it('should apply the column count', () => {
     update({ width: 'four' });
-    expect(el.className).toContain('four column grid');
+    expectClasses(el, 'four column grid');
   });
 
   it('should apply the equal width class', () => {
     update({ equal: true });
-    expect(el.className).toContain('equal width grid');
+    expectClasses(el, 'equal width grid');
   });
 
   it('should apply the padded classes', () => {
     update({ padded: 'padded' });
     expect(el.classList).toContain('padded');
     update({ padded: 'vertically padded' });
-    expect(el.className).toContain('vertically padded');
+    expectClasses(el, 'vertically padded');
     update({ padded: 'horizontally padded' });
-    expect(el.className).toContain('horizontally padded');
+    expectClasses(el, 'horizontally padded');
   });
 
   it('should apply the divided and celled classes', () => {
     update({ divided: 'vertically divided', celled: 'internally celled' });
-    expect(el.className).toContain('vertically divided');
-    expect(el.className).toContain('internally celled');
+    expectClasses(el, 'vertically divided');
+    expectClasses(el, 'internally celled');
   });
 
   it('should apply alignments', () => {
     update({ alignment: 'center aligned', verticalAlignment: 'middle aligned' });
-    expect(el.className).toContain('center aligned');
-    expect(el.className).toContain('middle aligned');
+    expectClasses(el, 'center aligned');
+    expectClasses(el, 'middle aligned');
   });
 
   it('should apply one or many reversed classes', () => {
     update({ reversed: 'computer reversed' });
-    expect(el.className).toContain('computer reversed');
+    expectClasses(el, 'computer reversed');
     update({ reversed: ['mobile reversed', 'tablet vertically reversed'] });
-    expect(el.className).toContain('mobile reversed');
-    expect(el.className).toContain('tablet vertically reversed');
+    expectClasses(el, 'mobile reversed');
+    expectClasses(el, 'tablet vertically reversed');
   });
 
   it('should apply the boolean classes', () => {
@@ -118,6 +119,6 @@ describe('SuiGridDirective', () => {
 
   it('should apply the relaxation class', () => {
     update({ relaxation: 'very relaxed' });
-    expect(el.className).toContain('very relaxed');
+    expectClasses(el, 'very relaxed');
   });
 });

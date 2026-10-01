@@ -1,3 +1,4 @@
+import { expectClasses, expectExactClasses } from '../../test-helpers';
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -45,7 +46,7 @@ describe('SuiMenuItemDirective', () => {
   });
 
   it('should apply host classes', () => {
-    expect(el.className).toBe('item');
+    expectExactClasses(el, 'item');
   });
 
   it('should apply colour, fitted, header and active classes', () => {
@@ -55,7 +56,7 @@ describe('SuiMenuItemDirective', () => {
     host.active = true;
     fixture.detectChanges();
     expect(el.classList).toContain('red');
-    expect(el.className).toContain('vertically fitted');
+    expectClasses(el, 'vertically fitted');
     expect(el.classList).toContain('header');
     expect(el.classList).toContain('active');
   });

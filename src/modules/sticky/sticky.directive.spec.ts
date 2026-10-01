@@ -473,6 +473,9 @@ describe('SuiStickyDirective', () => {
     const sy = { value: 0 };
     installStickyWindowMocks({ scrollY: sy, ctx, sticky });
     Object.defineProperty(scrollHost, 'scrollTop', { configurable: true, get: () => 150, set: () => {} });
+    // pin the scroller's geometry; otherwise positions depend on where the Karma page happens to lay it out
+    spyOn(scrollHost, 'getBoundingClientRect').and.returnValue({ top: 150, left: 0, width: 200, height: 200, bottom: 350, right: 200, x: 0, y: 150, toJSON: () => ({}) } as DOMRect);
+    Object.defineProperty(scrollHost, 'clientHeight', { configurable: true, get: () => 200 });
     f.detectChanges();
     await f.whenStable();
 

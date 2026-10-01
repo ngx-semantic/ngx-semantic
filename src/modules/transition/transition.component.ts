@@ -220,6 +220,10 @@ export class SuiTransitionComponent implements OnChanges, OnDestroy {
   ): void {
     this.destroyPlayer();
     this.animating = true;
+    if (endingVisible) {
+      // drop the `hidden` state class up front so the inward animation is not rendered with display: none
+      this.hidden = false;
+    }
     this.suiAnimationStart.emit();
     this.syncHostClasses();
     this.cdr.markForCheck();

@@ -1,3 +1,4 @@
+import { expectClasses, expectExactClasses } from '../../test-helpers';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -28,8 +29,8 @@ describe('SuiDividerComponent', () => {
   });
 
   it('should apply class name', () => {
-    expect(dividerElement.className).toContain('ui');
-    expect(dividerElement.className).toContain('divider');
+    expectClasses(dividerElement, 'ui');
+    expectClasses(dividerElement, 'divider');
   });
 
   it('should apply class name by direction', () => {
@@ -72,7 +73,7 @@ describe('SuiDividerComponent', () => {
   });
 
   it('should not contain excess whitespace', () => {
-    expect(dividerElement.className).toBe('ui divider');
+    expectExactClasses(dividerElement, 'ui divider');
   });
 
   it('should apply class name if inverted', () => {

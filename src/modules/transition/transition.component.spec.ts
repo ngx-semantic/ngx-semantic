@@ -154,6 +154,7 @@ describe('SuiTransitionComponent', () => {
       cmp().hide();
       fixture.detectChanges();
       tick();
+      fixture.detectChanges();
       expect(host.starts).toBeGreaterThan(0);
       expect(host.completes).toBeGreaterThan(0);
       expect(host.hides).toBeGreaterThan(0);

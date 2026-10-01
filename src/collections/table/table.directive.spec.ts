@@ -1,3 +1,4 @@
+import { expectClasses, expectExactClasses } from '../../test-helpers';
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -43,13 +44,13 @@ describe('SuiTableDirective', () => {
   });
 
   it('should apply host classes', () => {
-    expect(el.className).toBe('ui table');
+    expectExactClasses(el, 'ui table');
   });
 
   it('should include the column count in the class', () => {
     host.width = 'five';
     fixture.detectChanges();
-    expect(el.className).toContain('five column');
+    expectClasses(el, 'five column');
   });
 
   it('should apply attached, sortable and celled classes', () => {
@@ -57,7 +58,7 @@ describe('SuiTableDirective', () => {
     host.sortable = true;
     host.celled = true;
     fixture.detectChanges();
-    expect(el.className).toContain('top attached');
+    expectClasses(el, 'top attached');
     expect(el.classList).toContain('sortable');
     expect(el.classList).toContain('celled');
   });

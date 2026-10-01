@@ -1,3 +1,4 @@
+import { expectClasses, expectExactClasses } from '../../test-helpers';
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -67,12 +68,12 @@ describe('SuiGridColumnDirective', () => {
   });
 
   it('should apply the base class', () => {
-    expect(el.className).toBe('column');
+    expectExactClasses(el, 'column');
   });
 
   it('should apply the width', () => {
     update({ width: 'four' });
-    expect(el.className).toBe('four wide column');
+    expectExactClasses(el, 'four wide column');
   });
 
   it('should apply responsive widths', () => {
@@ -83,23 +84,23 @@ describe('SuiGridColumnDirective', () => {
       largeScreenWidth: 'three',
       widescreenWidth: 'two'
     });
-    expect(el.className).toContain('sixteen wide mobile');
-    expect(el.className).toContain('eight wide tablet');
-    expect(el.className).toContain('four wide computer');
-    expect(el.className).toContain('three wide large screen');
-    expect(el.className).toContain('two wide widescreen');
+    expectClasses(el, 'sixteen wide mobile');
+    expectClasses(el, 'eight wide tablet');
+    expectClasses(el, 'four wide computer');
+    expectClasses(el, 'three wide large screen');
+    expectClasses(el, 'two wide widescreen');
   });
 
   it('should apply float, alignment and colour', () => {
     update({ floated: 'left floated', alignment: 'right aligned', verticalAlignment: 'top aligned', colour: 'red' });
-    expect(el.className).toContain('left floated right aligned');
-    expect(el.className).toContain('top aligned');
+    expectClasses(el, 'left floated right aligned');
+    expectClasses(el, 'top aligned');
     expect(el.classList).toContain('red');
   });
 
   it('should apply visibility and stretched', () => {
     update({ visibility: 'computer only', stretched: true });
-    expect(el.className).toContain('computer only');
+    expectClasses(el, 'computer only');
     expect(el.classList).toContain('stretched');
   });
 });

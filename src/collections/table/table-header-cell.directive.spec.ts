@@ -1,3 +1,4 @@
+import { expectClasses, expectExactClasses } from '../../test-helpers';
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -50,20 +51,20 @@ describe('SuiTableHeaderCellDirective', () => {
   });
 
   it('should apply alignment classes from inputs', () => {
-    expect(el.className).toBe('right aligned');
+    expectExactClasses(el, 'right aligned');
   });
 
   it('should include the width value in the class', () => {
     host.width = 'ten';
     fixture.detectChanges();
-    expect(el.className).toContain('ten wide');
+    expectClasses(el, 'ten wide');
   });
 
   it('should apply sorted and single line classes', () => {
     host.sorted = 'descending';
     host.singleLine = true;
     fixture.detectChanges();
-    expect(el.className).toContain('sorted descending');
-    expect(el.className).toContain('single line');
+    expectClasses(el, 'sorted descending');
+    expectClasses(el, 'single line');
   });
 });
