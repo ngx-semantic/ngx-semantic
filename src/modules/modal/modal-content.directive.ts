@@ -2,19 +2,19 @@
  * Created by bolorundurowb on 1/22/2021
  */
 
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
   standalone: true,
   selector: '[suiModalContent]',
   exportAs: 'suiModalContent'
 })
-export class SuiModalContentDirective {
+export class SuiModalContentDirective extends BaseDirective {
   @Input() @InputBoolean() public suiImage = false;
   @Input() @InputBoolean() public suiScrollable = false;
 
-  @HostBinding('class')
   get classes(): string {
     return [
       ClassUtils.getPropClass(this.suiScrollable, 'scrolling'),

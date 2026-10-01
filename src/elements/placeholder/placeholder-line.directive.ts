@@ -2,7 +2,8 @@
  * Created by bolor on 5/8/2020
  */
 
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiPlaceholderLineLength = 'full' | 'very long' | 'long' | 'medium' | 'short' | 'very short' | null;
 
@@ -11,10 +12,9 @@ export type SuiPlaceholderLineLength = 'full' | 'very long' | 'long' | 'medium' 
   exportAs: 'suiPlaceholderLine',
   selector: '[suiPlaceholderLine]'
 })
-export class SuiPlaceholderLineDirective {
+export class SuiPlaceholderLineDirective extends BaseDirective {
   @Input() public suiLength: SuiPlaceholderLineLength = null;
 
-  @HostBinding('class')
   get classes(): string {
     return [this.suiLength, 'line'].join(' ');
   }

@@ -5,6 +5,7 @@
 import { Component, ContentChild, HostBinding, HostListener, Input, ViewEncapsulation } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiDropdownMenuDirective } from './dropdown-menu.directive';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiDropdownPointingDirection = 'top left' | 'top right' | 'left' | 'right' | 'bottom left' | 'bottom right' | null;
 
@@ -16,7 +17,7 @@ export type SuiDropdownPointingDirection = 'top left' | 'top right' | 'left' | '
     <ng-content></ng-content>
   `
 })
-export class SuiDropdownComponent {
+export class SuiDropdownComponent extends BaseDirective {
   @ContentChild(SuiDropdownMenuDirective) public contentMenu: SuiDropdownMenuDirective | undefined = undefined;
 
   @Input() public suiPointingDirection: SuiDropdownPointingDirection = null;
@@ -39,7 +40,6 @@ export class SuiDropdownComponent {
     return 0;
   }
 
-  @HostBinding('class')
   get classes(): string {
     return [
       'ui',

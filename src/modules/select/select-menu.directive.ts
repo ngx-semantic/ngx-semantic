@@ -1,5 +1,6 @@
 import { Directive, HostBinding, Input } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiSelectMenuDirection = 'left' | 'right' | null;
 
@@ -7,7 +8,7 @@ export type SuiSelectMenuDirection = 'left' | 'right' | null;
   standalone: true,
   selector: '[suiSelectMenu]'
 })
-export class SuiSelectMenuDirective {
+export class SuiSelectMenuDirective extends BaseDirective {
   @Input() public suiDirection: SuiSelectMenuDirection = null;
   @Input() @InputBoolean() public suiScrolling = false;
 
@@ -27,7 +28,6 @@ export class SuiSelectMenuDirective {
     return -1;
   }
 
-  @HostBinding('class')
   get classes(): string {
     return [
       ClassUtils.getPropClass(this.suiScrolling, 'scrolling'),

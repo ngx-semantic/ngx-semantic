@@ -1,16 +1,16 @@
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
   standalone: true,
   selector: '[suiSelectMenuItem]'
 })
-export class SuiSelectMenuItemDirective {
+export class SuiSelectMenuItemDirective extends BaseDirective {
   @Input() public suiValue: any = null;
   @Input() @InputBoolean() public suiSelected = false;
   @Input() @InputBoolean() public suiMultiple = false;
 
-  @HostBinding('class')
   get classes(): string {
     return [
       'item',

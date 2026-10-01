@@ -2,22 +2,22 @@
  * Created by bolor on 7/20/2020
  */
 
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiSize } from 'ngx-semantic/core/enums';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
   standalone: true,
   selector: '[sui-comments]',
   exportAs: 'suiComments'
 })
-export class SuiCommentsDirective {
+export class SuiCommentsDirective extends BaseDirective {
   @Input() public suiSize: SuiSize = null;
   @Input() @InputBoolean() public suiThreaded = false;
   @Input() @InputBoolean() public suiMinimal = false;
   @Input() @InputBoolean() public suiCollapsed = false;
 
-  @HostBinding('class')
   get classes(): string {
     return [
       'ui',

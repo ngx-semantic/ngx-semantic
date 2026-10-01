@@ -25,6 +25,7 @@ import {
   SimpleChanges,
   ViewEncapsulation
 } from '@angular/core';
+import { BaseDirective } from 'ngx-semantic/core/base';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import {
   buildEnterSteps,
@@ -45,12 +46,9 @@ import {
   exportAs: 'suiTransition',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  host: {
-    '[class]': 'hostClassList'
-  }
+  template: '<ng-content></ng-content>'
 })
-export class SuiTransitionComponent implements OnChanges, OnDestroy {
+export class SuiTransitionComponent extends BaseDirective implements OnChanges, OnDestroy {
   private readonly builder = inject(AnimationBuilder);
   private readonly el = inject(ElementRef<HTMLElement>);
   private readonly renderer = inject(Renderer2);
@@ -86,6 +84,10 @@ export class SuiTransitionComponent implements OnChanges, OnDestroy {
   public hidden = false;
 
   public hostClassList = '';
+
+  get classes(): string {
+    return this.hostClassList;
+  }
 
   private player: AnimationPlayer | null = null;
   private initialized = false;
@@ -316,5 +318,6 @@ export class SuiTransitionComponent implements OnChanges, OnDestroy {
       ClassUtils.getPropClass(this.hidden, 'hidden')
     ]);
     this.hostClassList = ClassUtils.removeExcessWhitespace(tokens);
+    this.syncClasses();
   }
 }

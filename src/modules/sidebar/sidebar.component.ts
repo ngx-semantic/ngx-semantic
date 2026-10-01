@@ -2,10 +2,11 @@
  * Created by bolorundurowb on 12/30/2020
  */
 
-import { Component, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Output, ViewEncapsulation, inject } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewEncapsulation, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiSidebarService } from './sidebar.service';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiSidebarPosition = 'top' | 'bottom' | 'left' | 'right';
 export type SuiSidebarWidth = 'thin' | 'very thin' | 'wide' | 'very wide' | null;
@@ -23,7 +24,7 @@ const SIDEBAR_ANIMATION_DURATION = 500;
     <ng-content></ng-content>
   `
 })
-export class SuiSidebarComponent implements OnInit, OnDestroy {
+export class SuiSidebarComponent extends BaseDirective implements OnInit, OnDestroy {
   private sidebarService = inject(SuiSidebarService);
 
   @Input() public suiSidebarPosition: SuiSidebarPosition = 'left';
@@ -57,7 +58,6 @@ export class SuiSidebarComponent implements OnInit, OnDestroy {
     this.sidebarService.changeVisibility(this._visible);
   }
 
-  @HostBinding('class')
   get classes(): string {
     return [
       'ui',
@@ -72,6 +72,7 @@ export class SuiSidebarComponent implements OnInit, OnDestroy {
   }
 
   constructor() {
+    super();
     this.sidebarService.changeVisibility(this._visible);
     this.subscription = this.sidebarService.pusherClicked
       .subscribe(() => {

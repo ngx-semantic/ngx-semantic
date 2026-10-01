@@ -1,6 +1,7 @@
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { SuiColour, SuiSize } from 'ngx-semantic/core/enums';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiHeaderAlignment = 'left aligned' | 'right aligned' | 'center aligned' | 'justified' | null;
 export type SuiHeaderAttachment = 'attached' | 'top attached' | 'bottom attached' | null;
@@ -11,7 +12,7 @@ export type SuiHeaderFloating = 'left floated' | 'right floated' | null;
   selector: '[sui-header]',
   exportAs: 'suiHeader'
 })
-export class SuiHeaderDirective {
+export class SuiHeaderDirective extends BaseDirective {
   @Input() public suiSize: SuiSize = null;
   @Input() public suiAlignment: SuiHeaderAlignment = null;
   @Input() public suiColour: SuiColour = null;
@@ -24,7 +25,6 @@ export class SuiHeaderDirective {
   @Input() @InputBoolean() public suiInverted = false;
   @Input() @InputBoolean() public suiIcon = false;
 
-  @HostBinding('class')
   get classes(): string {
     return [
       'ui',

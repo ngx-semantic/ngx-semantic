@@ -2,22 +2,22 @@
  * Created by bolor on 5/23/2020
  */
 
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 @Directive({
   standalone: true,
   selector: '[sui-segments]',
   exportAs: 'suiSegments'
 })
-export class SuiSegmentsDirective {
+export class SuiSegmentsDirective extends BaseDirective {
   @Input() @InputBoolean() public suiHorizontal = false;
   @Input() @InputBoolean() public suiRaised = false;
   @Input() @InputBoolean() public suiStacked = false;
   @Input() @InputBoolean() public suiPiled = false;
   @Input() @InputBoolean() public suiCompact = false;
 
-  @HostBinding('class')
   get classes(): string {
     return [
       'ui',

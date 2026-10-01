@@ -2,9 +2,10 @@
  * Created by bolor on 5/4/2020
  */
 
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { SuiSize } from 'ngx-semantic/core/enums';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
+import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiLoaderInlineAlignment = 'centered' | 'normal' | null;
 
@@ -13,7 +14,7 @@ export type SuiLoaderInlineAlignment = 'centered' | 'normal' | null;
   selector: '[sui-loader]',
   exportAs: 'suiLoader'
 })
-export class SuiLoaderDirective {
+export class SuiLoaderDirective extends BaseDirective {
   @Input() public suiInline: SuiLoaderInlineAlignment = null;
   @Input() public suiSize: SuiSize = null;
   @Input() @InputBoolean() public suiText = false;
@@ -22,7 +23,6 @@ export class SuiLoaderDirective {
   @Input() @InputBoolean() public disabled = false;
   @Input() @InputBoolean() public suiInverted = false;
 
-  @HostBinding('class')
   get classes(): string {
     return [
       'ui',
