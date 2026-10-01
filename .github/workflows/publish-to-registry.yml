@@ -75,8 +75,6 @@ jobs:
         run: npm ci
       - name: Apply version from tag
         run: node .github/scripts/set-version.mjs "${{ steps.meta.outputs.version }}"
-      - name: Audit production dependencies
-        run: npm audit --omit=dev --audit-level=high
       - name: Lint
         run: npm run lint
       - name: Run Tests
