@@ -1,4 +1,4 @@
-import { expectClasses, expectExactClasses } from '../../test-helpers';
+import { expectClasses, expectExactClasses, expectStylesheetMatch } from '../../test-helpers';
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -102,5 +102,19 @@ describe('SuiGridColumnDirective', () => {
     update({ visibility: 'computer only', stretched: true });
     expectClasses(el, 'computer only');
     expect(el.classList).toContain('stretched');
+  });
+
+  it('matches responsive widths alongside the default width', () => {
+    update({ width: 'eight', mobileWidth: 'eight', tabletWidth: 'four' });
+    expect(el.className).toBe('eight wide eight wide mobile four wide tablet column');
+    expectStylesheetMatch(el, 'eight wide mobile');
+    expectStylesheetMatch(el, 'four wide tablet');
+  });
+
+  it('matches horizontal and vertical alignment together', () => {
+    update({ alignment: 'left aligned', verticalAlignment: 'top aligned' });
+    expect(el.className).toBe('left aligned top aligned column');
+    expectStylesheetMatch(el, 'left aligned');
+    expectStylesheetMatch(el, 'top aligned');
   });
 });

@@ -61,4 +61,16 @@ describe('BaseDirective', () => {
     expect(element.classList).not.toContain('labeled');
     expect(element.className).toContain('ui button');
   });
+
+  it('preserves repeated words across host class updates', () => {
+    fixture.componentInstance.variation = 'left aligned top aligned';
+    fixture.detectChanges();
+    fixture.componentInstance.active = true;
+    fixture.detectChanges();
+    expect(element.className).toContain('ui left aligned top aligned button');
+    expect(element.classList).toContain('active');
+    fixture.componentInstance.active = false;
+    fixture.detectChanges();
+    expect(element.className).toBe('custom ui left aligned top aligned button');
+  });
 });

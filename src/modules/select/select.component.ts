@@ -130,6 +130,8 @@ export class SuiSelectComponent extends BaseDirective implements AfterViewInit, 
 
   private isOpen = false;
   private isSearching = false;
+  private modelValue: any;
+  private controlTouchedFn: () => void = () => {};
   private selectedValues: any[] = [];
   public searchTerm = '';
   private allOptions: ISelectOption[] = [];
@@ -143,6 +145,7 @@ export class SuiSelectComponent extends BaseDirective implements AfterViewInit, 
   @Input()
   set suiOptions(options: ISelectOption[]) {
     this.allOptions = this.filteredOptions = options;
+    this.resolveSelection();
   }
 
   get suiOptions(): ISelectOption[] {
@@ -211,6 +214,13 @@ export class SuiSelectComponent extends BaseDirective implements AfterViewInit, 
     }
   }
 
+  @HostListener('focusout', ['$event'])
+  public onFocusOut(event: FocusEvent): void {
+    if (!(event.currentTarget as HTMLElement).contains(event.relatedTarget as Node | null)) {
+      this.controlTouchedFn();
+    }
+  }
+
   public ngAfterViewInit(): void {
     if (!this.optionsMenu) {
       throw new Error('An error occurred rendering the options.');
@@ -252,6 +262,7 @@ export class SuiSelectComponent extends BaseDirective implements AfterViewInit, 
     // handle single select
     if (!this.suiMultiple) {
       const valueChanged = this.selectedOption?.value !== option.value;
+      this.modelValue = option.value;
       this.selectedOption = option;
 
       if (valueChanged) {
@@ -265,11 +276,7 @@ export class SuiSelectComponent extends BaseDirective implements AfterViewInit, 
       const valueChanged = !this.selectedValues.includes(option.value);
 
       if (valueChanged) {
-        this.selectedValues.push(option.value);
-        this.selectedOptions.push(option);
-
-        this.controlValueChangeFn(this.selectedValues);
-        this.suiSelectionChanged.emit(this.selectedValues);
+        this.updateMultipleSelection([...this.selectedValues, option.value]);
       }
 
       event.stopPropagation();
@@ -289,34 +296,46 @@ export class SuiSelectComponent extends BaseDirective implements AfterViewInit, 
       return;
     }
 
-    this.selectedValues = this.selectedValues.filter((x) => x !== option.value);
-    this.selectedOptions = this.selectedOptions.filter((x) => x !== option);
-
-    this.controlValueChangeFn(this.selectedValues);
-    this.suiSelectionChanged.emit(this.selectedValues);
+    this.updateMultipleSelection(this.selectedValues.filter((value) => !Object.is(value, option.value)));
 
     event.stopPropagation();
   }
 
-  public writeValue(value: any | any[]): void {
-    const valueChanged = value !== this.selectedOption?.value;
-
-    if (valueChanged) {
-      this.suiSelectionChanged.emit(value);
-    }
-
-    const matchedOptions = this.allOptions
-      .filter((x) => x.value === value);
-    this.selectedOption = matchedOptions[0];
+  public writeValue(value: any): void {
+    this.modelValue = Array.isArray(value) && this.suiMultiple ? [...value] : value;
+    this.resolveSelection();
     this.changeDetectorRef.markForCheck();
+  }
+
+  private resolveSelection(): void {
+    if (this.suiMultiple) {
+      this.selectedValues = Array.isArray(this.modelValue) ? this.modelValue : [];
+      const optionsByValue = new Map(this.allOptions.map(option => [option.value, option]));
+      this.selectedOptions = [...new Set(this.selectedValues)]
+        .map(value => optionsByValue.get(value))
+        .filter((option): option is ISelectOption => option !== undefined);
+      this.selectedOption = undefined;
+      return;
+    }
+    this.selectedOption = this.modelValue == null
+      ? undefined
+      : this.allOptions.find(option => option.value === this.modelValue);
+    this.selectedValues = [];
+    this.selectedOptions = [];
+  }
+
+  private updateMultipleSelection(values: any[]): void {
+    this.writeValue(values);
+    this.controlValueChangeFn([...values]);
+    this.suiSelectionChanged.emit([...values]);
   }
 
   public registerOnChange(fn: any): void {
     this.controlValueChangeFn = fn;
   }
 
-  public registerOnTouched(fn: any): void {
-    this.controlValueChangeFn = fn;
+  public registerOnTouched(fn: () => void): void {
+    this.controlTouchedFn = fn;
   }
 
   public setDisabledState?(isDisabled: boolean): void {

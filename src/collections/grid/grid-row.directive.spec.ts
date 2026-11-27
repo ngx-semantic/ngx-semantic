@@ -1,4 +1,4 @@
-import { expectClasses, expectExactClasses } from '../../test-helpers';
+import { expectClasses, expectExactClasses, expectStylesheetMatch } from '../../test-helpers';
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -94,5 +94,12 @@ describe('SuiGridRowDirective', () => {
   it('should apply the boolean classes', () => {
     update({ centered: true, stretched: true, doubling: true });
     ['centered', 'stretched', 'doubling'].forEach(c => expect(el.classList).toContain(c));
+  });
+
+  it('matches reversed rows at more than one breakpoint', () => {
+    update({ reversed: ['mobile reversed', 'tablet reversed'] });
+    expect(el.className).toBe('mobile reversed tablet reversed row');
+    expectStylesheetMatch(el, 'mobile reversed');
+    expectStylesheetMatch(el, 'tablet reversed');
   });
 });

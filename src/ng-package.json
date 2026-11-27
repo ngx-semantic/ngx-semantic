@@ -4,6 +4,5 @@
   "deleteDestPath": true,
   "lib": {
     "entryFile": "./ngx-semantic.module.ts"
-  },
-  "allowedNonPeerDependencies": ["@angular/cdk"]
+  }
 }

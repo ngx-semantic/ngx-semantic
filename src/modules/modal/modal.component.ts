@@ -2,8 +2,10 @@
  * Created by bolorundurowb on 1/22/2021
  */
 
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, Output, Renderer2, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EmbeddedViewRef, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, Renderer2, TemplateRef, ViewChild, ViewContainerRef, ViewEncapsulation, inject } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
+import { FocusTrapFactory } from '@angular/cdk/a11y';
+import { ModalStack } from './modal-stack.service';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiIconDirective } from 'ngx-semantic/elements/icon';
 
@@ -19,7 +21,11 @@ export type SuiModalScrollability = 'full' | 'medium' | 'none';
   template: `
     <ng-template #contentTemplate>
       <div style="display: block !important;"
-           [ngClass]="classes">
+           [ngClass]="classes"
+           role="dialog"
+           aria-modal="true"
+           tabindex="-1"
+           [attr.aria-labelledby]="suiHeaderText || suiHeaderIcon ? headerId : null">
         @if (suiClosable) {
           @if (!suiBasic) {
             <i sui-icon
@@ -29,7 +35,8 @@ export type SuiModalScrollability = 'full' | 'medium' | 'none';
         }
 
         @if (suiHeaderText || suiHeaderIcon) {
-          <div [class.ui]="!!suiHeaderIcon"
+          <div [id]="headerId"
+               [class.ui]="!!suiHeaderIcon"
                [class.icon]="!!suiHeaderIcon"
                [class.header]="true">
             @if (suiHeaderIcon) {
@@ -44,10 +51,12 @@ export type SuiModalScrollability = 'full' | 'medium' | 'none';
     </ng-template>
   `
 })
-export class SuiModalComponent implements OnDestroy {
+export class SuiModalComponent implements OnChanges, OnDestroy, OnInit {
   private document = inject<Document>(DOCUMENT);
   private renderer = inject(Renderer2);
   private viewRef = inject(ViewContainerRef);
+  private readonly trapFactory = inject(FocusTrapFactory);
+  private readonly stack = inject(ModalStack);
 
   @ViewChild('contentTemplate', { static: true }) public contentTemplate!: TemplateRef<any>;
 
@@ -63,7 +72,11 @@ export class SuiModalComponent implements OnDestroy {
   @Input() @InputBoolean() public suiMaskClosable = true;
   @Output() public visibleChange = new EventEmitter<boolean>();
 
-  private readonly uniqueId: number;
+  protected readonly headerId = this.stack.allocateId();
+  private initialized = false;
+  private dialog: HTMLElement | null = null;
+  private contentView: EmbeddedViewRef<unknown> | null = null;
+  private keyListener: (() => void) | null = null;
   private _visible = false;
   private _modalDomRef: HTMLElement | null = null;
   private clickListener: (() => void) | null = null;
@@ -74,13 +87,11 @@ export class SuiModalComponent implements OnDestroy {
   }
 
   set visible(isVisible: boolean) {
-    if (isVisible) {
-      this.showModal();
-    } else {
-      this.hideModal();
+    if (isVisible === this._visible) {
+      return;
     }
-
     this._visible = isVisible;
+    this.syncVisibility();
     this.visibleChange.emit(isVisible);
   }
 
@@ -111,98 +122,88 @@ export class SuiModalComponent implements OnDestroy {
     }
   }
 
-  constructor() {
-    this.uniqueId = Math.ceil(Math.random() * 100000000);
+  public ngOnInit(): void {
+    this.initialized = true;
+    this.syncVisibility();
+  }
+
+  public ngOnChanges(): void {
+    if (this.dialog) {
+      this.stack.setBlurring(this.dialog, this.suiBlurring, this.renderer);
+    }
   }
 
   public ngOnDestroy(): void {
-    const container = this.getModalFromDom();
-    if (container) {
-      this.renderer.removeChild(this.document.body, container);
-
-      // if blurring, remove classes from the body
-      if (this.suiBlurring) {
-        this.renderer.removeClass(this.document.body, 'dimmable');
-      }
+    this.close();
+    this.clickListener?.();
+    if (this._modalDomRef) {
+      this.renderer.removeChild(this.document.body, this._modalDomRef);
+    }
+    if (this.contentView && !this.contentView.destroyed) {
+      this.contentView.destroy();
     }
   }
 
-  showModal(): void {
-    if (!this.isModalInDom()) {
-      this.generateDomElement();
-    }
+  public showModal(): void {
+    this.visible = true;
+  }
 
-    if (!this._modalDomRef) {
+  public hideModal(): void {
+    this.visible = false;
+  }
+
+  private syncVisibility(): void {
+    if (!this.initialized) {
       return;
     }
-
-    // insert necessary classes to show the modal
-    this.renderer.setProperty(this._modalDomRef, 'style', 'display: flex !important;');
-    this.renderer.addClass(this._modalDomRef, 'visible');
-    this.renderer.addClass(this._modalDomRef, 'active');
-
-    // if blurring, add classes to the body
-    if (this.suiBlurring) {
-      this.renderer.addClass(this.document.body, 'dimmable');
-      this.renderer.addClass(this.document.body, 'blurring');
-      this.renderer.addClass(this.document.body, 'dimmed');
+    if (!this.visible) {
+      this.close();
+      return;
     }
+    const container = this._modalDomRef ?? this.generateDomElement();
+    const dialog = this.dialog!;
+    this.renderer.setAttribute(container, 'style', 'display: flex !important;');
+    this.renderer.addClass(container, 'visible');
+    this.renderer.addClass(container, 'active');
+    this.stack.open(dialog, this.trapFactory.create(dialog), this.suiBlurring, this.renderer);
+    this.keyListener = this.renderer.listen('document', 'keydown', (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && !event.defaultPrevented && this.suiClosable && this.stack.isTop(dialog)) {
+        event.preventDefault();
+        this.hideModal();
+      }
+    });
   }
 
-  hideModal(): void {
-    if (this._modalDomRef) {
-      // remove necessary classes to hide the modal
+  private close(): void {
+    this.keyListener?.();
+    this.keyListener = null;
+    if (this._modalDomRef && this.dialog) {
       this.renderer.removeAttribute(this._modalDomRef, 'style');
       this.renderer.removeClass(this._modalDomRef, 'visible');
       this.renderer.removeClass(this._modalDomRef, 'active');
-
-      // if blurring, remove classes from the body
-      if (this.suiBlurring) {
-        this.renderer.removeClass(this.document.body, 'blurring');
-        this.renderer.removeClass(this.document.body, 'dimmed');
-      }
+      this.stack.close(this.dialog, this.renderer);
     }
   }
 
-  private generateDomElement(): void {
-    const container = this.renderer.createElement('div');
-    this.renderer.setAttribute(container, 'id', this.uniqueId.toString());
+  private generateDomElement(): HTMLElement {
+    const container: HTMLElement = this.renderer.createElement('div');
     const containerStyle = 'ui dimmer modals page' + (this.suiCentered ? '' : ' top aligned') + ' transition';
     this.renderer.setAttribute(container, 'class', containerStyle);
 
-    // render the modal contents
     const content = this.viewRef.createEmbeddedView(this.contentTemplate);
+    this.contentView = content;
     content.detectChanges();
     for (const node of content.rootNodes) {
       this.renderer.appendChild(container, node);
     }
-
-    // set the class properties
+    this.dialog = container.firstElementChild as HTMLElement;
     this._modalDomRef = container;
-
-    // set the click listener
-    this.clickListener = this.renderer.listen(this._modalDomRef, 'click', (event) => {
-      const targetId = event.target.id;
-      if (targetId === this.uniqueId.toString()) {
-        this.onClick();
+    this.clickListener = this.renderer.listen(container, 'click', (event: MouseEvent) => {
+      if (event.target === container && this.suiMaskClosable && this.stack.isTop(this.dialog!)) {
+        this.hideModal();
       }
     });
-
-    // insert the generated html into the DOM
-    this.renderer.appendChild(this.document.body, this._modalDomRef);
-  }
-
-  private isModalInDom(): boolean {
-    return !!this.getModalFromDom();
-  }
-
-  private getModalFromDom(): HTMLElement | null {
-    return this.document.getElementById(String(this.uniqueId));
-  }
-
-  private onClick(): void {
-    if (this.suiMaskClosable) {
-      this.visible = false;
-    }
+    this.renderer.appendChild(this.document.body, container);
+    return container;
   }
 }
