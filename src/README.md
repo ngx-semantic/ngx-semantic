@@ -89,3 +89,7 @@ $ npm run test
 ## License
 
 MIT © [Ngx-Semantic Team](https://github.com/ngx-semantic)
+
+## Peer dependencies
+
+Install Angular 21 or later with matching versions of `@angular/animations`, `@angular/cdk`, `@angular/common`, `@angular/core`, `@angular/forms`, and `@angular/platform-browser`. The package also requires RxJS 7.4 or later within the 7.x series.

@@ -32,12 +32,16 @@
     "url": "git+https://github.com/ngx-semantic/ngx-semantic.git"
   },
   "peerDependencies": {
-    "@angular/core": ">=9.0.0",
-    "@angular/common": ">=9.0.0",
-    "@angular/forms": ">=9.0.0"
+    "@angular/animations": ">=21.0.0",
+    "@angular/cdk": ">=21.0.0",
+    "@angular/common": ">=21.0.0",
+    "@angular/core": ">=21.0.0",
+    "@angular/forms": ">=21.0.0",
+    "@angular/platform-browser": ">=21.0.0",
+    "rxjs": "^7.4.0"
   },
   "dependencies": {
-    "tslib": ">=1.10.0"
+    "tslib": "^2.3.0"
   },
   "publishConfig": {
     "provenance": true
