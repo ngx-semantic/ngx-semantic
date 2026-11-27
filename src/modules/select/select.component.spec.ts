@@ -200,7 +200,7 @@ describe('SuiSelectComponent', () => {
     fixture.detectChanges();
 
     expect(component.selectedOption?.text).toBe('Three');
-    expect(emitted).toBe(3);
+    expect(emitted).toBeUndefined();
   });
 
   it('registerOnChange should wire CVA callback', () => {
@@ -231,5 +231,44 @@ describe('SuiSelectComponent', () => {
     const imgs = fixture.debugElement.queryAll(By.css('img.ui.mini.image'));
     expect(imgs.length).toBeGreaterThan(0);
     expect(fixture.nativeElement.querySelector('.flag.us')).toBeTruthy();
+  });
+
+  it('uses separate callbacks for selection and blur', () => {
+    const changed = jasmine.createSpy('changed');
+    const touched = jasmine.createSpy('touched');
+    component.registerOnChange(changed);
+    component.registerOnTouched(touched);
+    component.onItemClick(component.suiOptions[0], new MouseEvent('click'));
+    expect(changed).toHaveBeenCalledOnceWith(component.suiOptions[0].value);
+    expect(touched).not.toHaveBeenCalled();
+    fixture.nativeElement.dispatchEvent(new FocusEvent('focusout', { bubbles: true }));
+    expect(touched).toHaveBeenCalledTimes(1);
+  });
+
+  it('restores late multiple options and clears silently', () => {
+    fixture.componentRef.setInput('suiMultiple', true);
+    fixture.detectChanges();
+    const changed = jasmine.createSpy('selection changed');
+    component.suiSelectionChanged.subscribe(changed);
+    component.writeValue([9, 8]);
+    expect(component.selectedOptions).toEqual([]);
+    const options = [{ value: 8, text: 'Eight' }, { value: 9, text: 'Nine' }];
+    fixture.componentRef.setInput('suiOptions', options);
+    fixture.detectChanges();
+    expect(component.selectedOptions).toEqual([options[1], options[0]]);
+    component.writeValue(null);
+    expect(component.selectedOptions).toEqual([]);
+    component.writeValue([8]);
+    component.writeValue([]);
+    expect(component.selectedOptions).toEqual([]);
+    expect(changed).not.toHaveBeenCalled();
+  });
+
+  it('retains a single model value until its option arrives', () => {
+    component.writeValue(9);
+    const option = { value: 9, text: 'Nine' };
+    fixture.componentRef.setInput('suiOptions', [option]);
+    fixture.detectChanges();
+    expect(component.selectedOption).toBe(option);
   });
 });
