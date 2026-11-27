@@ -4,7 +4,7 @@
 
 import {
   ChangeDetectionStrategy, Component,
-  Input, OnInit, TemplateRef,
+  Input, TemplateRef,
   ViewEncapsulation
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -27,7 +27,7 @@ import { SuiDimmerContentAlignment } from './dimmer.directive';
     </div>
   `
 })
-export class SuiDimmerComponent implements OnInit {
+export class SuiDimmerComponent {
   @Input() public suiAlignment: SuiDimmerContentAlignment = null;
   @Input() @InputBoolean() public suiBlurring = false;
   @Input() @InputBoolean() public suiInverted = false;
@@ -35,7 +35,6 @@ export class SuiDimmerComponent implements OnInit {
   @Input() @InputBoolean() public suiFullPage = false;
 
   private _content: TemplateRef<any> | null = null;
-  public classes = '';
 
   @Input()
   get suiContent(): TemplateRef<any> | null {
@@ -46,11 +45,7 @@ export class SuiDimmerComponent implements OnInit {
     this._content = content;
   }
 
-  public ngOnInit(): void {
-    this.classes = this.genClasses();
-  }
-
-  private genClasses(): string {
+  public get classes(): string {
     return [
       'ui',
       ClassUtils.getPropClass(this.suiFullPage, 'page'),

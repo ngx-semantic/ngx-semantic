@@ -2,7 +2,7 @@
  * Created by bolorundurowb on 1/6/2021
  */
 
-import { ApplicationRef, ContentChild, Directive, ElementRef, EmbeddedViewRef, EnvironmentInjector, EventEmitter, Injector, Input, OnChanges, OnDestroy, Output, Renderer2, SimpleChanges, TemplateRef, createComponent, inject } from '@angular/core';
+import { ApplicationRef, ChangeDetectorRef, ComponentRef, ContentChild, Directive, ElementRef, EnvironmentInjector, EventEmitter, Injector, Input, OnChanges, OnDestroy, OnInit, Output, Renderer2, TemplateRef, createComponent, inject } from '@angular/core';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { SuiDimmerContentDirective } from './dimmer-content.directive';
 import { SuiDimmerComponent } from './dimmer.component';
@@ -15,12 +15,13 @@ export type SuiDimmerContentAlignment = 'top' | 'bottom' | null;
   selector: '[sui-dimmer]',
   exportAs: 'suiDimmer'
 })
-export class SuiDimmerDirective extends BaseDirective implements OnChanges, OnDestroy {
+export class SuiDimmerDirective extends BaseDirective implements OnChanges, OnDestroy, OnInit {
   private element = inject(ElementRef);
   private environmentInjector = inject(EnvironmentInjector);
   private injector = inject(Injector);
   private appRef = inject(ApplicationRef);
   private renderer = inject(Renderer2);
+  private cdr = inject(ChangeDetectorRef);
 
   @ContentChild(SuiDimmerContentDirective, { static: true, read: TemplateRef })
   private content: TemplateRef<any> | null = null;
@@ -36,7 +37,8 @@ export class SuiDimmerDirective extends BaseDirective implements OnChanges, OnDe
 
 
   private _dimmed = false;
-  private _dimmerDomRef: HTMLElement | null = null;
+  private initialized = false;
+  private componentRef: ComponentRef<SuiDimmerComponent> | null = null;
   private clickListener: (() => void) | null = null;
 
   get dimmed(): boolean {
@@ -51,6 +53,8 @@ export class SuiDimmerDirective extends BaseDirective implements OnChanges, OnDe
 
     if (isDimmed !== this._dimmed) {
       this._dimmed = isDimmed;
+      this.syncDimmer();
+      this.cdr.markForCheck();
       this.dimmedChange.emit(this._dimmed);
     }
   }
@@ -59,81 +63,72 @@ export class SuiDimmerDirective extends BaseDirective implements OnChanges, OnDe
     return [
       ClassUtils.getPropClass(this.suiDimmerBlurring, 'blurring'),
       'dimmable',
-      ClassUtils.getPropClass(this.dimmed, 'dimmed')
+      ClassUtils.getPropClass(this.dimmed && !this.disabled, 'dimmed')
     ].join(' ');
   }
 
-  public ngOnChanges(_changes: SimpleChanges): void {
-    this.generateDomElement();
-    this.hideDimmer();
+  public ngOnInit(): void {
+    this.initialized = true;
+    this.syncDimmer();
+  }
 
-    if (this.dimmed) {
-      this.showDimmer();
-    }
+  public ngOnChanges(): void {
+    this.syncDimmer();
   }
 
   public ngOnDestroy(): void {
-    // resent the handler
-    if (this.clickListener) {
-      this.clickListener();
-    }
-
-    // remove the dom element if it exists
-    if (this._dimmerDomRef) {
-      this.hideDimmer();
+    this.clickListener?.();
+    const component = this.componentRef;
+    if (component) {
+      this.removeDimmerNode(component.location.nativeElement);
+      this.appRef.detachView(component.hostView);
+      component.destroy();
     }
   }
 
-  private generateDomElement(): void {
-    const component = createComponent(SuiDimmerComponent, {
-      environmentInjector: this.environmentInjector,
-      elementInjector: this.injector
-    });
-    component.instance.suiAlignment = this.suiDimmerAlignment;
-    component.instance.suiBlurring = this.suiDimmerBlurring;
-    component.instance.suiInverted = this.suiDimmerInverted;
-    component.instance.suiSimple = this.suiDimmerSimple;
-    component.instance.suiFullPage = this.suiDimmerFullPage;
-    component.instance.suiContent = this.content;
+  private syncDimmer(): void {
+    if (!this.initialized) {
+      return;
+    }
+    if (!this.dimmed || this.disabled) {
+      if (this.componentRef) {
+        this.removeDimmerNode(this.componentRef.location.nativeElement);
+      }
+      return;
+    }
 
-    this.appRef.attachView(component.hostView);
-    this._dimmerDomRef = (component.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
-
-    if (this.suiCloseOnClick) {
-      this.clickListener = this.renderer.listen(this._dimmerDomRef, 'click', (event) => {
-        const classes = Array.from(event.target.classList);
-        // verify that the dimmer is shown and is the item clicked
-        if (classes.includes('ui') && classes.includes('dimmer') && classes.includes('visible')) {
+    const component = this.componentRef ??= this.createDimmer();
+    component.setInput('suiAlignment', this.suiDimmerAlignment);
+    component.setInput('suiBlurring', this.suiDimmerBlurring);
+    component.setInput('suiInverted', this.suiDimmerInverted);
+    component.setInput('suiSimple', this.suiDimmerSimple);
+    component.setInput('suiFullPage', this.suiDimmerFullPage);
+    component.setInput('suiContent', this.content);
+    const node = component.location.nativeElement as HTMLElement;
+    if (node.parentNode !== this.element.nativeElement) {
+      this.renderer.appendChild(this.element.nativeElement, node);
+    }
+    if (this.suiCloseOnClick && !this.clickListener) {
+      this.clickListener = this.renderer.listen(node, 'click', (event: MouseEvent) => {
+        if (this.suiCloseOnClick && event.target === node.firstElementChild) {
           this.dimmed = false;
         }
       });
     }
   }
 
-  private showDimmer(): void {
-    if (!this.disabled) {
-      if (this._dimmerDomRef && !this.isDimmerInDom()) {
-        this.element.nativeElement.appendChild(this._dimmerDomRef);
-      }
+  private createDimmer(): ComponentRef<SuiDimmerComponent> {
+    const component = createComponent(SuiDimmerComponent, {
+      environmentInjector: this.environmentInjector,
+      elementInjector: this.injector
+    });
+    this.appRef.attachView(component.hostView);
+    return component;
+  }
+
+  private removeDimmerNode(node: HTMLElement): void {
+    if (node.parentNode === this.element.nativeElement) {
+      this.renderer.removeChild(this.element.nativeElement, node);
     }
-  }
-
-  private hideDimmer(): void {
-    if (!this.disabled) {
-      const dimmer = this.getDimmerFromDom();
-
-      if (dimmer) {
-        this.element.nativeElement.removeChild(dimmer);
-      }
-    }
-  }
-
-  private isDimmerInDom(): boolean {
-    return !!this.getDimmerFromDom();
-  }
-
-  private getDimmerFromDom(): Element | undefined {
-    const elements = Array.from(this.element.nativeElement.children) as Element[];
-    return elements.find((el) => el.localName === 'sui-dimmer');
   }
 }

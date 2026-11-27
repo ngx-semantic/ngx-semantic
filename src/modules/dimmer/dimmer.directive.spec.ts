@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ApplicationRef, Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { SuiDimmerDirective } from './dimmer.directive';
@@ -120,5 +120,33 @@ describe('SuiDimmerDirective', () => {
     fixture.componentRef.setInput('isDimmed', true);
     fixture.detectChanges();
     expect(() => fixture.destroy()).not.toThrow();
+  });
+
+  it('reuses one Angular view across toggles and releases it on destruction', () => {
+    const appRef = TestBed.inject(ApplicationRef);
+    const attach = spyOn(appRef, 'attachView').and.callThrough();
+    const detach = spyOn(appRef, 'detachView').and.callThrough();
+    const dimmer = fixture.debugElement.query(By.directive(SuiDimmerDirective)).injector.get(SuiDimmerDirective);
+    dimmer.dimmed = true;
+    fixture.detectChanges();
+    const node = el.querySelector('sui-dimmer');
+    for (let cycle = 0; cycle < 3; cycle++) {
+      dimmer.dimmed = false;
+      dimmer.dimmed = true;
+    }
+    expect(el.querySelector('sui-dimmer')).toBe(node);
+    expect(attach).toHaveBeenCalledTimes(1);
+    fixture.destroy();
+    expect(detach).toHaveBeenCalledWith(attach.calls.mostRecent().args[0]);
+  });
+
+  it('hides immediately on mask click without waiting for a new input', () => {
+    const dimmer = fixture.debugElement.query(By.directive(SuiDimmerDirective)).injector.get(SuiDimmerDirective);
+    dimmer.suiCloseOnClick = true;
+    dimmer.dimmed = true;
+    fixture.detectChanges();
+    el.querySelector<HTMLElement>('sui-dimmer > div')!.click();
+    expect(dimmer.dimmed).toBeFalse();
+    expect(el.querySelector('sui-dimmer')).toBeNull();
   });
 });
