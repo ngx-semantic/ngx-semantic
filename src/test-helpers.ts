@@ -13,3 +13,17 @@ export function expectClasses(el: Element, classes: string): void {
 export function expectExactClasses(el: Element, classes: string): void {
   expect(Array.from(el.classList).sort()).toEqual(tokens(classes).sort());
 }
+
+
+/** Checks a Semantic UI class-phrase selector, including rules for other viewport sizes. */
+export function expectStylesheetMatch(element: Element, phrase: string): void {
+  const matches = (rules: CSSRuleList): boolean => Array.from(rules).some(rule => {
+    if (rule instanceof CSSStyleRule) {
+      return rule.selectorText.split(',').some(selector =>
+        selector.includes('[class*="' + phrase + '"]') && element.matches(selector));
+    }
+    return rule instanceof CSSGroupingRule && matches(rule.cssRules);
+  });
+  expect(Array.from(document.styleSheets).some(sheet => matches(sheet.cssRules)))
+    .withContext('Semantic UI selector for ' + phrase + ' in ' + element.className).toBeTrue();
+}
