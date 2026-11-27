@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnDestroy, Output, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SuiInputDirective } from 'ngx-semantic/elements/input';
@@ -87,7 +87,7 @@ export type SuiSearchAlignment = 'right' | null;
     </ng-template>
   `
 })
-export class SuiSearchComponent {
+export class SuiSearchComponent implements OnDestroy {
   @Output() public suiResultSelected = new EventEmitter<ISearchOption>();
   @Input() public suiOptionsLookup?: (query: string) => Promise<ISearchOption[]>;
   @Input() public suiOptions: ISearchOption[] = [];
@@ -102,6 +102,8 @@ export class SuiSearchComponent {
   // field to track whether there has been an outside click
   private isInsideClick = false;
   private isLoading = false;
+  private searchTimer?: ReturnType<typeof setTimeout>;
+  private requestId = 0;
   private isFocused = false;
   public isOpen = false;
   public searchTerm = '';
@@ -162,37 +164,40 @@ export class SuiSearchComponent {
   }
 
   public onSearch(): void {
+    const requestId = ++this.requestId;
+    const query = this.searchTerm;
+    clearTimeout(this.searchTimer);
     this.isLoading = true;
-
-    setTimeout(() => {
-      // if there is a lookup function, then use that
+    this.searchTimer = setTimeout(() => {
       if (this.suiOptionsLookup) {
-        this.suiOptionsLookup(this.searchTerm)
-          .then((results) => {
-            this.filteredOptions = results;
-
-            // indicate search is complete
-            this.isLoading = false;
-          })
-          .catch((err) => {
-            console.error(err);
-            this.filteredOptions = [];
-
-            // indicate search is complete
-            this.isLoading = false;
-          });
-      } else {
-        // limit the options displayed
-        this.filteredOptions = this.suiOptions
-          .filter((x) => x.title.toLocaleLowerCase()
-            .includes(this.searchTerm.toLocaleLowerCase()));
-
-        // indicate search is complete
-        this.isLoading = false;
+        this.suiOptionsLookup(query).then(
+          results => this.applyResults(requestId, results),
+          error => {
+            if (requestId === this.requestId) {
+              console.error(error);
+              this.applyResults(requestId, []);
+            }
+          }
+        );
+        return;
       }
-
-      this.isOpen = this.filteredOptions.length > 0;
+      const term = query.toLocaleLowerCase();
+      this.applyResults(requestId, this.suiOptions.filter(option => option.title.toLocaleLowerCase().includes(term)));
     }, this.suiSearchDelay);
+  }
+
+  public ngOnDestroy(): void {
+    this.requestId++;
+    clearTimeout(this.searchTimer);
+  }
+
+  private applyResults(requestId: number, results: ISearchOption[]): void {
+    if (requestId !== this.requestId) {
+      return;
+    }
+    this.filteredOptions = results;
+    this.isLoading = false;
+    this.isOpen = results.length > 0;
   }
 
   public onFocus(): void {

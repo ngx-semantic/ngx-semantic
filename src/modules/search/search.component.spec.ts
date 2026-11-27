@@ -1,6 +1,7 @@
 import { fakeAsync, flush, tick, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { SuiSearchModule } from './search.module';
+import { ISearchOption } from './interfaces/ISearchOption';
 import { SuiSearchComponent } from './search.component';
 
 describe('SuiSearchComponent', () => {
@@ -135,6 +136,8 @@ describe('SuiSearchComponent', () => {
     expect(lookup).toHaveBeenCalledWith('r');
     expect(component.filteredOptions.length).toBe(1);
     expect(component.filteredOptions[0].title).toBe('Remote');
+    expect(component.isOpen).toBeTrue();
+    expect(component.classes).not.toContain('loading');
   }));
 
   it('should clear results when lookup rejects', fakeAsync(() => {
@@ -152,6 +155,8 @@ describe('SuiSearchComponent', () => {
 
     expect(component.filteredOptions.length).toBe(0);
     expect(console.error).toHaveBeenCalled();
+    expect(component.isOpen).toBeFalse();
+    expect(component.classes).not.toContain('loading');
   }));
 
   it('suiShowIcon should use non-simple template with icon', () => {
@@ -176,4 +181,34 @@ describe('SuiSearchComponent', () => {
     expect(root.className).toContain('right');
     expect(root.className).toContain('fluid');
   });
+
+  it('makes one lookup for a burst of keystrokes', fakeAsync(() => {
+    const lookup = jasmine.createSpy('lookup').and.resolveTo([]);
+    component.suiOptionsLookup = lookup;
+    for (const term of ['a', 'ab', 'abc']) {
+      component.searchTerm = term;
+      component.onSearch();
+      tick(50);
+    }
+    tick(150);
+    expect(lookup).toHaveBeenCalledOnceWith('abc');
+  }));
+
+  it('ignores out-of-order lookup responses', fakeAsync(() => {
+    const pending = new Map<string, (options: ISearchOption[]) => void>();
+    component.suiOptionsLookup = query => new Promise(resolve => pending.set(query, resolve));
+    for (const term of ['older', 'newer']) {
+      component.searchTerm = term;
+      component.onSearch();
+      tick(200);
+    }
+    const result = { title: 'Latest', value: 1 };
+    pending.get('newer')!([result]);
+    tick();
+    pending.get('older')!([]);
+    tick();
+    expect(component.filteredOptions).toEqual([result]);
+    expect(component.isOpen).toBeTrue();
+    expect(component.classes).not.toContain('loading');
+  }));
 });
