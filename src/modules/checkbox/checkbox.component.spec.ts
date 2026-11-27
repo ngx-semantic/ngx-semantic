@@ -1,7 +1,17 @@
+import { Component } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { SuiCheckboxModule } from './checkbox.module';
 import { SuiCheckboxComponent } from './checkbox.component';
+
+@Component({
+  imports: [ReactiveFormsModule, SuiCheckboxComponent],
+  template: '<sui-checkbox [formControl]="control" suiType="slider">Slider</sui-checkbox>'
+})
+class CheckboxFormHost {
+  readonly control = new FormControl(false);
+}
 
 describe('SuiCheckboxComponent', () => {
   let fixture: ComponentFixture<SuiCheckboxComponent>;
@@ -10,7 +20,7 @@ describe('SuiCheckboxComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SuiCheckboxModule]
+      imports: [SuiCheckboxModule, CheckboxFormHost]
     }).compileComponents();
 
     fixture = TestBed.createComponent(SuiCheckboxComponent);
@@ -57,5 +67,33 @@ describe('SuiCheckboxComponent', () => {
     component.writeValue('x');
     fixture.detectChanges();
     expect(component.isChecked).toBe(true);
+  });
+
+  it('sets the live checked property on every model write', () => {
+    const input = host.querySelector('input')!;
+    for (const value of [true, true, false, false]) {
+      component.writeValue(value);
+      fixture.detectChanges();
+      expect(input.checked).toBe(value);
+    }
+  });
+
+  it('toggles a slider as a boolean and honors Forms touched and disabled state', () => {
+    const formFixture = TestBed.createComponent(CheckboxFormHost);
+    formFixture.detectChanges();
+    const control = formFixture.componentInstance.control;
+    const input = (formFixture.nativeElement as HTMLElement).querySelector('input')!;
+    input.click();
+    expect(control.value).toBeTrue();
+    input.click();
+    expect(control.value).toBeFalse();
+    expect(control.touched).toBeFalse();
+    input.dispatchEvent(new FocusEvent('blur'));
+    expect(control.touched).toBeTrue();
+    control.disable();
+    formFixture.detectChanges();
+    expect(input.disabled).toBeTrue();
+    input.click();
+    expect(control.value).toBeFalse();
   });
 });

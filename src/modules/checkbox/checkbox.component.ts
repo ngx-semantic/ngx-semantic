@@ -2,7 +2,7 @@
  * Created by bolor on 10/24/2020
  */
 
-import { ChangeDetectorRef, Component, EventEmitter, forwardRef, HostListener, Input, Output, ViewEncapsulation, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, forwardRef, HostListener, Input, Output, ElementRef, ViewChild, ViewEncapsulation, inject } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { BaseDirective } from 'ngx-semantic/core/base';
@@ -14,13 +14,15 @@ export type SuiCheckboxType = 'radio' | 'slider' | 'toggle' | null;
   selector: 'sui-checkbox',
   encapsulation: ViewEncapsulation.None,
   template: `
-    <input
+    <input #nativeInput
       class="hidden"
       tabindex="0"
       [attr.type]="suiType === 'radio' ? 'radio' : 'checkbox'"
       [attr.name]="name"
-      [attr.disabled]="disabledAttribute"
-      [attr.checked]="rawCheckedAttribute"
+      [disabled]="disabled"
+      [checked]="isChecked"
+      (change)="onNativeChange(nativeInput)"
+      (blur)="onBlur()"
       [attr.value]="suiValue"/>
     <label>
       <ng-content></ng-content>
@@ -44,6 +46,9 @@ export class SuiCheckboxComponent extends BaseDirective implements ControlValueA
   @Input() @InputBoolean() public suiFitted = false;
   @Input() @InputBoolean() public disabled = false;
 
+  @ViewChild('nativeInput', { static: true }) private nativeInput!: ElementRef<HTMLInputElement>;
+
+  private controlTouchedFn: () => void = () => {};
   public isChecked = false;
   public currentValue: any;
   private controlValueChangeFn: (value: any) => void = () => {
@@ -69,34 +74,36 @@ export class SuiCheckboxComponent extends BaseDirective implements ControlValueA
     ].join(' ');
   }
 
-  @HostListener('click')
-  public onClick(): void {
+  @HostListener('click', ['$event'])
+  public onClick(event: MouseEvent): void {
     if (this.disabled || this.suiReadOnly) {
+      event.preventDefault();
       return;
     }
+    const input = this.nativeInput.nativeElement;
+    if (event.target !== input) {
+      input.click();
+    }
+  }
 
+  public onNativeChange(input: HTMLInputElement): void {
+    this.isChecked = input.checked;
     if (this.isRadioType) {
       this.currentValue = this.suiValue;
-      this.isChecked = this.currentValue === this.suiValue;
       this.valueChanged.emit(this.currentValue);
       this.controlValueChangeFn(this.currentValue);
     } else {
-      this.isChecked = !this.isChecked;
       this.checkedChange.emit(this.isChecked);
       this.controlValueChangeFn(this.isChecked);
     }
   }
 
+  public onBlur(): void {
+    this.controlTouchedFn();
+  }
+
   get isRadioType(): boolean {
-    return this.suiType != null && ['radio', 'slider'].includes(this.suiType);
-  }
-
-  public get rawCheckedAttribute(): string | undefined {
-    return this.isChecked ? '' : undefined;
-  }
-
-  public get disabledAttribute(): string | undefined {
-    return this.disabled ? 'disabled' : undefined;
+    return this.suiType === 'radio';
   }
 
   public writeValue(value: any): void {
@@ -114,7 +121,7 @@ export class SuiCheckboxComponent extends BaseDirective implements ControlValueA
       this.currentValue = value;
       this.isChecked = isChecked;
     } else {
-      this.isChecked = !this.isChecked;
+      this.isChecked = !!value;
     }
 
     this.changeDetectorRef.markForCheck();
@@ -124,9 +131,12 @@ export class SuiCheckboxComponent extends BaseDirective implements ControlValueA
     this.controlValueChangeFn = fn;
   }
 
-  public registerOnTouched(_fn: any): void {
+  public registerOnTouched(fn: () => void): void {
+    this.controlTouchedFn = fn;
   }
 
-  public setDisabledState?(_isDisabled: boolean): void {
+  public setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+    this.changeDetectorRef.markForCheck();
   }
 }
