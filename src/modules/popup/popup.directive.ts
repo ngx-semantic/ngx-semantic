@@ -62,7 +62,8 @@ export class SuiPopupDirective implements OnInit, OnDestroy {
       .withPositions(this.getPositions())
       .withPush(false);
 
-    this._overlayRef = this.overlay.create({ positionStrategy, scrollStrategy });
+    // Keep the connected overlay in the viewport-relative container when Firefox scrolls.
+    this._overlayRef = this.overlay.create({ positionStrategy, scrollStrategy, usePopover: false });
   }
 
   public ngOnDestroy(): void {

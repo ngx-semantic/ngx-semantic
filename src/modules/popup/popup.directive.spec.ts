@@ -58,7 +58,9 @@ describe('SuiPopupDirective', () => {
     const btn = fixture.debugElement.query(By.directive(SuiPopupDirective)).nativeElement as HTMLElement;
     btn.click();
     fixture.detectChanges();
-    expect(document.querySelector('.cdk-overlay-container .popup')).toBeTruthy();
+    const popup = document.querySelector('.cdk-overlay-container .popup');
+    expect(popup).toBeTruthy();
+    expect(popup?.closest('[popover]')).toBeNull();
   });
 
   it('closes popup when clicking outside', () => {

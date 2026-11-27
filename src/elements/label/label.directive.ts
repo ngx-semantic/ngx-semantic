@@ -8,6 +8,7 @@ import { ClassUtils, InputBoolean } from 'ngx-semantic/core/util';
 import { BaseDirective } from 'ngx-semantic/core/base';
 
 export type SuiLabelPointing = 'above' | 'below' | 'left' | 'right' | null;
+export type SuiLabelAttachment = SuiLocation | 'top left' | 'top right' | 'bottom left' | 'bottom right';
 
 @Directive({
   standalone: true,
@@ -19,7 +20,7 @@ export class SuiLabelDirective extends BaseDirective {
   @Input() public suiPointing: SuiLabelPointing = null;
   @Input() public suiCorner: SuiHorizontalAlignment = null;
   @Input() public suiRibbon: SuiHorizontalAlignment = null;
-  @Input() public suiAttached: SuiLocation = null;
+  @Input() public suiAttached: SuiLabelAttachment = null;
   @Input() public suiSize: SuiSize = null;
   @Input() @InputBoolean() public suiImage = false;
   @Input() @InputBoolean() public suiBasic = false;
